@@ -202,7 +202,7 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
     <button onclick="clearFood()">清空</button>
   </div>
   <div class="input-row" style="margin-top:6px;">
-    <input type="text" id="prodInput" placeholder="或按标称生产单位查（如：双汇、雨润、蒙牛、庆云县…）—— 与食品名互斥" autocomplete="off" style="border-color:#8e44ad;">
+    <input type="text" id="prodInput" placeholder="或按标称生产单位查（如：双汇、雨润、蒙牛、庆云县…）—— 可与食品名同时填写" autocomplete="off" style="border-color:#8e44ad;">
     <button onclick="clearProd()">清空</button>
   </div>
 </section>
@@ -245,7 +245,7 @@ const DATA_BASE = 'data/';
 
 let state = {
   foodName: '',
-  prodName: '',          // 标称生产单位（与 foodName 互斥）
+  prodName: '',          // 标称生产单位（可与食品名同时填写，AND 交集）
   category: '',
   subcategory: '',
   multiSelect: false,    // 多选模式开关
@@ -542,12 +542,11 @@ function render() {
   const cat = state.multiSelect ? cats.join(' + ') : (state.category || '');
   const sub = state.subcategory;
 
-  // 按生产单位查询（与食品名/类别互斥）
-  if (prod) {
-    if (food || cats.length > 0) {
-      // 用户既输入了生产单位又选了类别 → 仅以生产单位为准
-    }
-    renderProdOnly(result, prod);
+  // 按生产单位查询（可与食品名/类别同时填写，AND 交集）
+  if (prod && food) {
+    // 食品名 + 生产单位 同时填写 → 复合查询（交集）
+    renderProdAndFood(result, prod, food);
+  } else if (prod) {
   } else if (!food && cats.length === 0) {
     renderDashboard(result);
   } else if (food && cats.length === 0) {
@@ -577,9 +576,9 @@ function render() {
   if (result.innerHTML && (food || cats.length > 0 || prod) && !result.innerHTML.includes('result-toolbar')) {
     const countMatch = result.innerHTML.match(/(\d+)\s*条不合格记录/);
     const catLabel = cats.length === 1 ? cats[0] : (cats.length > 1 ? `${cats.length}个类别` : '');
-    if (prod) {
-      result.innerHTML = renderToolbar('', `🏭 ${prod}`, '', countMatch ? countMatch[1] : 0) + result.innerHTML;
-    } else {
+    if (prod && food) {
+      result.innerHTML = renderToolbar(food, `🏭 ${prod}`, sub, countMatch ? countMatch[1] : 0) + result.innerHTML;
+    } else if (prod) {
       result.innerHTML = renderToolbar(food, catLabel, sub, countMatch ? countMatch[1] : 0) + result.innerHTML;
     }
   }
@@ -831,6 +830,73 @@ function renderDashboard(result) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   });
+}
+
+// ============ 状态 1.5：食品名 + 生产单位 复合查询（AND 交集）============
+function renderProdAndFood(result, prodName, foodName) {
+  const master = state.master;
+  // AND：同时匹配生产单位 + 食品名
+  const pq = prodName.toLowerCase();
+  const fq = foodName.toLowerCase();
+  const records = (master?.records || []).filter(r => {
+    const p = (r.prod_name || '').toLowerCase();
+    const hasProd = p && p.includes(pq);
+    if (!hasProd) return false;
+    return (r.food_name_raw && r.food_name_raw.includes(fq))
+        || (r.food_name_canonical && r.food_name_canonical.includes(fq));
+  });
+  const n = records.length;
+
+  // 聚合（同 renderProdOnly）
+  const byItem = {};
+  const byFood = {};
+  records.forEach(r => {
+    (r.failed_items || []).forEach(fi => {
+      const k = fi.item;
+      if (!byItem[k]) byItem[k] = {item: k, count: 0, foods: new Set(), cats: new Set()};
+      byItem[k].count++;
+      byItem[k].foods.add(r.food_name_raw);
+      byItem[k].cats.add(r.big_category || '');
+    });
+    const fk = r.food_name_raw;
+    if (!byFood[fk]) byFood[fk] = {food: fk, count: 0, items: new Set()};
+    byFood[fk].count++;
+    (r.failed_items || []).forEach(fi => byFood[fk].items.add(fi.item));
+  });
+
+  const itemRows = Object.values(byItem).sort((a, b) => b.count - a.count);
+  const foodRows = Object.values(byFood).sort((a, b) => b.count - a.count);
+
+  let riskLabel, riskColor;
+  if (n === 0) { riskLabel = '未检出'; riskColor = '#7f8c8d'; }
+  else if (n >= 5 || itemRows.some(r => /不得检出|禁用/i.test(r.item))) { riskLabel = '🔴 高风险'; riskColor = '#c62828'; }
+  else if (n >= 3) { riskLabel = '🟠 中-高'; riskColor = '#ef6c00'; }
+  else { riskLabel = '🟡 中风险'; riskColor = '#f9a825'; }
+
+  result.innerHTML = `
+    <div class="card">
+      <div class="card-title">🔍 复合查询：<span style="color:#8e44ad;">${escapeHtml(prodName)}</span> + <span style="color:#2980b9;">${escapeHtml(foodName)}</span></div>
+      <div class="meta-row">
+        <span class="meta-tag" style="background:#e8f5e9;color:#2e7d32;">综合风险 <strong style="color:${riskColor};">${riskLabel}</strong></span>
+        <span class="meta-tag">匹配记录 <strong>${n}</strong> 条</span>
+        <span class="meta-tag">涉及食品 <strong>${foodRows.length}</strong> 类</span>
+        <span class="meta-tag">不合格项目 <strong>${itemRows.length}</strong> 项</span>
+      </div>
+      <div class="tip-source" style="background:#e8f5e9;border-left-color:#2e7d32;">
+        📊 按「标称生产单位」AND「食品名」交集筛选；仅显示同时满足两个条件的不合格记录
+      </div>
+    </div>
+
+    ${n === 0 ? `
+      <div class="card">
+        <div class="empty-tip">⚠️ 「${escapeHtml(prodName)}」+「${escapeHtml(foodName)}」无交集记录</div>
+        <div class="empty-tip" style="font-size:13px;color:#5d6d7e;">
+          提示：试试只填其中一个，或检查单位名/食品名是否有误
+        </div>
+      </div>` : `
+      ${renderItemsTable(records, `「${prodName}」×「${foodName}」复合查询结果`)}
+    `}
+  `;
 }
 
 // ============ 状态 2：只输入食品名 ============
@@ -1720,12 +1786,7 @@ function setupFoodInput() {
     clearTimeout(debounce);
     debounce = setTimeout(() => {
       state.foodName = input.value.trim();
-      // 与 prodName 互斥：输入食品名时清空生产单位
-      if (state.foodName && state.prodName) {
-        state.prodName = '';
-        const p = document.getElementById('prodInput');
-        if (p) p.value = '';
-      }
+      // 不再互斥：食品名和生产单位可同时填写（AND 交集筛选）
       render();
     }, 250);
   });
@@ -1738,12 +1799,7 @@ function setupProdInput() {
     clearTimeout(debounce);
     debounce = setTimeout(() => {
       state.prodName = input.value.trim();
-      // 与 foodName 互斥
-      if (state.prodName && state.foodName) {
-        state.foodName = '';
-        const f = document.getElementById('foodInput');
-        if (f) f.value = '';
-      }
+      // 不再互斥：生产单位和食品名可同时填写（AND 交集筛选）
       render();
     }, 250);
   });
