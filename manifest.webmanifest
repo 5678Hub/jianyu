@@ -1,0 +1,20 @@
+{
+  "name": "jianyu · 食品抽检风险查询",
+  "short_name": "jianyu",
+  "description": "食品安全抽检不合格风险查询工作台",
+  "lang": "zh-CN",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#1a365d",
+  "theme_color": "#1a365d",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    }
+  ]
+}

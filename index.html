@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>jianyu · 食品抽检风险查询</title>
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='44' font-family='Arial,sans-serif' font-size='30' font-weight='600' fill='white' text-anchor='middle'>JY</text></svg>">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1a365d">
 <style>
 :root {
   --c-bg: #f6f8fb;
@@ -1769,6 +1771,11 @@ document.addEventListener('DOMContentLoaded', () => {
   setupSubcatFilter();
   loadData();
 });
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+  }
 </script>
 </body>
 </html>
