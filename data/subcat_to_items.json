@@ -1,0 +1,3804 @@
+{
+  "source": "食品安全监督抽检实施细则（2026年版）",
+  "aliases": {
+    "小麦粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "小麦粉"
+    },
+    "大米": {
+      "big_category": "粮食加工品",
+      "subcategory": "大米"
+    },
+    "挂面": {
+      "big_category": "粮食加工品",
+      "subcategory": "挂面"
+    },
+    "谷物加工品": {
+      "big_category": "粮食加工品",
+      "subcategory": "谷物加工品",
+      "table_no": "1-4"
+    },
+    "玉米粉（片、渣）": {
+      "big_category": "粮食加工品",
+      "subcategory": "玉米粉（片、渣）",
+      "table_no": "1-5"
+    },
+    "米粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "米粉"
+    },
+    "其他谷物碾磨加工品": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物碾磨加工品",
+      "table_no": "1-7"
+    },
+    "生湿面制品": {
+      "big_category": "粮食加工品",
+      "subcategory": "生湿面制品",
+      "table_no": "1-8"
+    },
+    "发酵面制品": {
+      "big_category": "粮食加工品",
+      "subcategory": "发酵面制品",
+      "table_no": "1-9"
+    },
+    "米粉制品": {
+      "big_category": "粮食加工品",
+      "subcategory": "米粉制品"
+    },
+    "其他谷物粉类制成品": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物粉类制成品",
+      "table_no": "1-11"
+    },
+    "食用植物油": {
+      "big_category": "食用油、油脂及其制品",
+      "subcategory": "食用植物油",
+      "table_no": "2-1"
+    },
+    "食用动物油脂": {
+      "big_category": "食用油、油脂及其制品",
+      "subcategory": "食用动物油脂",
+      "table_no": "2-2"
+    },
+    "食用油脂制品": {
+      "big_category": "食用油、油脂及其制品",
+      "subcategory": "食用油脂制品",
+      "table_no": "2-3"
+    },
+    "酱油": {
+      "big_category": "调味品",
+      "subcategory": "酱油",
+      "table_no": "3-1"
+    },
+    "食醋": {
+      "big_category": "调味品",
+      "subcategory": "食醋",
+      "table_no": "3-2"
+    },
+    "酿造酱": {
+      "big_category": "调味品",
+      "subcategory": "酿造酱",
+      "table_no": "3-3"
+    },
+    "调味料酒": {
+      "big_category": "调味品",
+      "subcategory": "调味料酒",
+      "table_no": "3-4"
+    },
+    "香辛料调味油": {
+      "big_category": "调味品",
+      "subcategory": "香辛料调味油",
+      "table_no": "3-5"
+    },
+    "辣椒、花椒、辣椒粉、花椒粉": {
+      "big_category": "调味品",
+      "subcategory": "辣椒、花椒、辣椒粉、花椒粉",
+      "table_no": "3-6"
+    },
+    "其他香辛料调味品": {
+      "big_category": "调味品",
+      "subcategory": "其他香辛料调味品",
+      "table_no": "3-7"
+    },
+    "鸡粉、鸡精调味料": {
+      "big_category": "调味品",
+      "subcategory": "鸡粉、鸡精调味料",
+      "table_no": "3-8"
+    },
+    "其他固体调味料": {
+      "big_category": "调味品",
+      "subcategory": "其他固体调味料",
+      "table_no": "3-9"
+    },
+    "蛋黄酱、沙拉酱": {
+      "big_category": "调味品",
+      "subcategory": "蛋黄酱、沙拉酱",
+      "table_no": "3-10"
+    },
+    "坚果与籽类的泥（酱）": {
+      "big_category": "调味品",
+      "subcategory": "坚果与籽类的泥（酱）",
+      "table_no": "3-11"
+    },
+    "辣椒酱": {
+      "big_category": "调味品",
+      "subcategory": "辣椒酱",
+      "table_no": "3-12"
+    },
+    "火锅底料、麻辣烫底料": {
+      "big_category": "调味品",
+      "subcategory": "火锅底料、麻辣烫底料",
+      "table_no": "3-13"
+    },
+    "其他半固体调味料": {
+      "big_category": "调味品",
+      "subcategory": "其他半固体调味料",
+      "table_no": "3-14"
+    },
+    "蚝油、虾油、鱼露": {
+      "big_category": "调味品",
+      "subcategory": "蚝油、虾油、鱼露",
+      "table_no": "3-15"
+    },
+    "其他液体调味料": {
+      "big_category": "调味品",
+      "subcategory": "其他液体调味料",
+      "table_no": "3-16"
+    },
+    "味精": {
+      "big_category": "调味品",
+      "subcategory": "味精",
+      "table_no": "3-17"
+    },
+    "普通食用盐": {
+      "big_category": "调味品",
+      "subcategory": "普通食用盐",
+      "table_no": "3-18"
+    },
+    "低钠食用盐": {
+      "big_category": "调味品",
+      "subcategory": "低钠食用盐",
+      "table_no": "3-19"
+    },
+    "风味食用盐": {
+      "big_category": "调味品",
+      "subcategory": "风味食用盐",
+      "table_no": "3-20"
+    },
+    "特殊工艺食用盐": {
+      "big_category": "调味品",
+      "subcategory": "特殊工艺食用盐",
+      "table_no": "3-21"
+    },
+    "食品生产加工用盐": {
+      "big_category": "调味品",
+      "subcategory": "食品生产加工用盐",
+      "table_no": "3-22"
+    },
+    "调理肉制品（非速冻）": {
+      "big_category": "肉制品",
+      "subcategory": "调理肉制品（非速冻）",
+      "table_no": "4-1"
+    },
+    "腌腊肉制品": {
+      "big_category": "肉制品",
+      "subcategory": "腌腊肉制品",
+      "table_no": "4-2"
+    },
+    "发酵肉制品": {
+      "big_category": "肉制品",
+      "subcategory": "发酵肉制品"
+    },
+    "酱卤肉制品": {
+      "big_category": "肉制品",
+      "subcategory": "酱卤肉制品",
+      "table_no": "4-4"
+    },
+    "油炸肉制品": {
+      "big_category": "肉制品",
+      "subcategory": "油炸肉制品",
+      "table_no": "4-5"
+    },
+    "熟肉干制品": {
+      "big_category": "肉制品",
+      "subcategory": "熟肉干制品",
+      "table_no": "4-6"
+    },
+    "熏烧烤肉制品": {
+      "big_category": "肉制品",
+      "subcategory": "熏烧烤肉制品",
+      "table_no": "4-7"
+    },
+    "熏煮香肠火腿制品": {
+      "big_category": "肉制品",
+      "subcategory": "熏煮香肠火腿制品",
+      "table_no": "4-8"
+    },
+    "液体乳（灭菌乳）": {
+      "big_category": "乳制品",
+      "subcategory": "液体乳（灭菌乳）",
+      "table_no": "5-1"
+    },
+    "液体乳（巴氏杀菌乳）": {
+      "big_category": "乳制品",
+      "subcategory": "液体乳（巴氏杀菌乳）",
+      "table_no": "5-2"
+    },
+    "液体乳（调制乳）": {
+      "big_category": "乳制品",
+      "subcategory": "液体乳（调制乳）",
+      "table_no": "5-3"
+    },
+    "液体乳（发酵乳）": {
+      "big_category": "乳制品",
+      "subcategory": "液体乳（发酵乳）",
+      "table_no": "5-4"
+    },
+    "液体乳（高温杀菌乳）": {
+      "big_category": "乳制品",
+      "subcategory": "液体乳（高温杀菌乳）",
+      "table_no": "5-5"
+    },
+    "乳粉（全脂、脱脂、部分脱脂）和调制乳粉": {
+      "big_category": "乳制品",
+      "subcategory": "乳粉（全脂、脱脂、部分脱脂）和调制乳粉",
+      "table_no": "5-6"
+    },
+    "其他乳制品（浓缩乳制品）": {
+      "big_category": "乳制品",
+      "subcategory": "其他乳制品（浓缩乳制品）",
+      "table_no": "5-8"
+    },
+    "其他乳制品（奶油）": {
+      "big_category": "乳制品",
+      "subcategory": "其他乳制品（奶油）",
+      "table_no": "5-9"
+    },
+    "其他乳制品（干酪、再制干酪、干酪制品）": {
+      "big_category": "乳制品",
+      "subcategory": "其他乳制品（干酪、再制干酪、干酪制品）",
+      "table_no": "5-10"
+    },
+    "其他乳制品（奶片、奶条等固态成型产品）": {
+      "big_category": "乳制品",
+      "subcategory": "其他乳制品（奶片、奶条等固态成型产品）",
+      "table_no": "5-11"
+    },
+    "饮用天然矿泉水": {
+      "big_category": "饮料",
+      "subcategory": "饮用天然矿泉水",
+      "table_no": "6-1"
+    },
+    "饮用纯净水": {
+      "big_category": "饮料",
+      "subcategory": "饮用纯净水",
+      "table_no": "6-2"
+    },
+    "其他类饮用水": {
+      "big_category": "饮料",
+      "subcategory": "其他类饮用水",
+      "table_no": "6-3"
+    },
+    "果蔬汁类及其饮料": {
+      "big_category": "饮料",
+      "subcategory": "果蔬汁类及其饮料",
+      "table_no": "6-4"
+    },
+    "蛋白饮料": {
+      "big_category": "饮料",
+      "subcategory": "蛋白饮料",
+      "table_no": "6-5"
+    },
+    "碳酸饮料（汽水）": {
+      "big_category": "饮料",
+      "subcategory": "碳酸饮料（汽水）",
+      "table_no": "6-6"
+    },
+    "茶饮料": {
+      "big_category": "饮料",
+      "subcategory": "茶饮料",
+      "table_no": "6-7"
+    },
+    "固体饮料": {
+      "big_category": "饮料",
+      "subcategory": "固体饮料",
+      "table_no": "6-8"
+    },
+    "其他饮料": {
+      "big_category": "饮料",
+      "subcategory": "其他饮料",
+      "table_no": "6-9"
+    },
+    "油炸面、非油炸面": {
+      "big_category": "方便食品",
+      "subcategory": "油炸面、非油炸面",
+      "table_no": "7-1"
+    },
+    "方便米粉（米线）": {
+      "big_category": "方便食品",
+      "subcategory": "方便米粉（米线）",
+      "table_no": "7-2"
+    },
+    "方便粉丝": {
+      "big_category": "方便食品",
+      "subcategory": "方便粉丝"
+    },
+    "其他方便面": {
+      "big_category": "方便食品",
+      "subcategory": "其他方便面",
+      "table_no": "7-4"
+    },
+    "调味面制品": {
+      "big_category": "方便食品",
+      "subcategory": "调味面制品"
+    },
+    "冲调类方便食品": {
+      "big_category": "方便食品",
+      "subcategory": "冲调类方便食品",
+      "table_no": "7-6"
+    },
+    "饼干": {
+      "big_category": "饼干",
+      "subcategory": "饼干",
+      "table_no": "8-1"
+    },
+    "畜禽肉类罐头": {
+      "big_category": "罐头",
+      "subcategory": "畜禽肉类罐头",
+      "table_no": "9-1"
+    },
+    "水产动物类罐头": {
+      "big_category": "罐头",
+      "subcategory": "水产动物类罐头",
+      "table_no": "9-2"
+    },
+    "水果类罐头": {
+      "big_category": "罐头",
+      "subcategory": "水果类罐头",
+      "table_no": "9-3"
+    },
+    "蔬菜类罐头": {
+      "big_category": "罐头",
+      "subcategory": "蔬菜类罐头",
+      "table_no": "9-4"
+    },
+    "食用菌罐头": {
+      "big_category": "罐头",
+      "subcategory": "食用菌罐头"
+    },
+    "其他罐头": {
+      "big_category": "罐头",
+      "subcategory": "其他罐头",
+      "table_no": "9-6"
+    },
+    "冷冻饮品": {
+      "big_category": "冷冻饮品",
+      "subcategory": "冷冻饮品",
+      "table_no": "10-1"
+    },
+    "速冻面米食品": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻面米食品",
+      "table_no": "11-1",
+      "matched_by": "manual_alias"
+    },
+    "速冻调理肉制品": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻调理肉制品",
+      "table_no": "11-2",
+      "matched_by": "manual_alias"
+    },
+    "速冻调制水产制品": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻调制水产制品",
+      "table_no": "11-3",
+      "matched_by": "manual_alias"
+    },
+    "速冻谷物食品": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻谷物食品",
+      "table_no": "11-4"
+    },
+    "速冻蔬菜制品": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻蔬菜制品",
+      "table_no": "11-5"
+    },
+    "速冻水果制品": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻水果制品",
+      "table_no": "11-6"
+    },
+    "膨化食品": {
+      "big_category": "薯类和膨化食品",
+      "subcategory": "膨化食品",
+      "table_no": "12-1"
+    },
+    "干制薯类": {
+      "big_category": "薯类和膨化食品",
+      "subcategory": "干制薯类",
+      "table_no": "12-2"
+    },
+    "冷冻薯类": {
+      "big_category": "薯类和膨化食品",
+      "subcategory": "冷冻薯类",
+      "table_no": "12-3"
+    },
+    "薯泥（酱）类": {
+      "big_category": "薯类和膨化食品",
+      "subcategory": "薯泥（酱）类",
+      "table_no": "12-4"
+    },
+    "薯粉类": {
+      "big_category": "薯类和膨化食品",
+      "subcategory": "薯粉类",
+      "table_no": "12-5"
+    },
+    "其他薯类食品": {
+      "big_category": "薯类和膨化食品",
+      "subcategory": "其他薯类食品",
+      "table_no": "12-6"
+    },
+    "糖果": {
+      "big_category": "糖果制品",
+      "subcategory": "糖果",
+      "table_no": "13-1"
+    },
+    "巧克力及巧克力制品、代可可脂巧克力及代可可脂巧克力制品": {
+      "big_category": "糖果制品",
+      "subcategory": "巧克力及巧克力制品、代可可脂巧克力及代可可脂巧克力制品",
+      "table_no": "13-2"
+    },
+    "果冻": {
+      "big_category": "糖果制品",
+      "subcategory": "果冻",
+      "table_no": "13-3"
+    },
+    "茶叶": {
+      "big_category": "茶叶及相关制品",
+      "subcategory": "茶叶",
+      "table_no": "14-1"
+    },
+    "含茶制品": {
+      "big_category": "茶叶及相关制品",
+      "subcategory": "含茶制品",
+      "table_no": "14-2"
+    },
+    "代用茶": {
+      "big_category": "茶叶及相关制品",
+      "subcategory": "代用茶",
+      "table_no": "14-3"
+    },
+    "白酒": {
+      "big_category": "酒类",
+      "subcategory": "白酒"
+    },
+    "黄酒": {
+      "big_category": "酒类",
+      "subcategory": "黄酒"
+    },
+    "啤酒": {
+      "big_category": "酒类",
+      "subcategory": "啤酒"
+    },
+    "葡萄酒": {
+      "big_category": "酒类",
+      "subcategory": "葡萄酒"
+    },
+    "果酒（发酵型）": {
+      "big_category": "酒类",
+      "subcategory": "果酒（发酵型）",
+      "table_no": "15-5"
+    },
+    "以蒸馏酒及食用酒精为酒基的配制酒": {
+      "big_category": "酒类",
+      "subcategory": "以蒸馏酒及食用酒精为酒基的配制酒",
+      "table_no": "15-6"
+    },
+    "以发酵酒为酒基的配制酒": {
+      "big_category": "酒类",
+      "subcategory": "以发酵酒为酒基的配制酒",
+      "table_no": "15-7"
+    },
+    "其他蒸馏酒": {
+      "big_category": "酒类",
+      "subcategory": "其他蒸馏酒",
+      "table_no": "15-8"
+    },
+    "其他发酵酒": {
+      "big_category": "酒类",
+      "subcategory": "其他发酵酒",
+      "table_no": "15-9"
+    },
+    "酱腌菜": {
+      "big_category": "蔬菜制品",
+      "subcategory": "酱腌菜",
+      "table_no": "16-1"
+    },
+    "蔬菜干制品": {
+      "big_category": "蔬菜制品",
+      "subcategory": "蔬菜干制品",
+      "table_no": "16-2"
+    },
+    "其他蔬菜制品": {
+      "big_category": "蔬菜制品",
+      "subcategory": "其他蔬菜制品",
+      "table_no": "16-3"
+    },
+    "干制食用菌": {
+      "big_category": "蔬菜制品",
+      "subcategory": "干制食用菌",
+      "table_no": "16-4"
+    },
+    "腌渍食用菌": {
+      "big_category": "蔬菜制品",
+      "subcategory": "腌渍食用菌",
+      "table_no": "16-5"
+    },
+    "蜜饯": {
+      "big_category": "水果制品",
+      "subcategory": "蜜饯",
+      "table_no": "17-1",
+      "matched_by": "manual_alias"
+    },
+    "水果干制品": {
+      "big_category": "水果制品",
+      "subcategory": "水果干制品",
+      "table_no": "17-2"
+    },
+    "果酱": {
+      "big_category": "水果制品",
+      "subcategory": "果酱",
+      "table_no": "17-3",
+      "matched_by": "manual_alias"
+    },
+    "炒货食品及坚果制品": {
+      "big_category": "炒货食品及坚果制品",
+      "subcategory": "炒货食品及坚果制品",
+      "table_no": "18-1"
+    },
+    "再制蛋": {
+      "big_category": "蛋制品",
+      "subcategory": "再制蛋",
+      "table_no": "19-1"
+    },
+    "干蛋制品和冰蛋制品": {
+      "big_category": "蛋制品",
+      "subcategory": "干蛋制品和冰蛋制品",
+      "table_no": "19-2"
+    },
+    "液蛋制品、热凝固蛋制品和其他蛋制品": {
+      "big_category": "蛋制品",
+      "subcategory": "液蛋制品、热凝固蛋制品和其他蛋制品",
+      "table_no": "19-3"
+    },
+    "焙炒咖啡": {
+      "big_category": "可可及焙烤咖啡产品",
+      "subcategory": "焙炒咖啡",
+      "table_no": "20-1"
+    },
+    "可可制品": {
+      "big_category": "可可及焙烤咖啡产品",
+      "subcategory": "可可制品",
+      "table_no": "20-2"
+    },
+    "白砂糖、精幼砂糖": {
+      "big_category": "食糖",
+      "subcategory": "白砂糖、精幼砂糖",
+      "table_no": "21-1"
+    },
+    "绵白糖": {
+      "big_category": "食糖",
+      "subcategory": "绵白糖",
+      "table_no": "21-2"
+    },
+    "赤砂糖": {
+      "big_category": "食糖",
+      "subcategory": "赤砂糖",
+      "table_no": "21-3"
+    },
+    "红糖": {
+      "big_category": "食糖",
+      "subcategory": "红糖",
+      "table_no": "21-4"
+    },
+    "冰糖": {
+      "big_category": "食糖",
+      "subcategory": "冰糖",
+      "table_no": "21-5"
+    },
+    "冰片糖": {
+      "big_category": "食糖",
+      "subcategory": "冰片糖",
+      "table_no": "21-6"
+    },
+    "方糖": {
+      "big_category": "食糖",
+      "subcategory": "方糖",
+      "table_no": "21-7"
+    },
+    "其他糖": {
+      "big_category": "食糖",
+      "subcategory": "其他糖",
+      "table_no": "21-8"
+    },
+    "藻类干制品": {
+      "big_category": "水产制品",
+      "subcategory": "藻类干制品",
+      "table_no": "22-1"
+    },
+    "预制动物性水产干制品": {
+      "big_category": "水产制品",
+      "subcategory": "预制动物性水产干制品",
+      "table_no": "22-2"
+    },
+    "盐渍鱼": {
+      "big_category": "水产制品",
+      "subcategory": "盐渍鱼",
+      "table_no": "22-3"
+    },
+    "盐渍藻": {
+      "big_category": "水产制品",
+      "subcategory": "盐渍藻",
+      "table_no": "22-4"
+    },
+    "其他盐渍水产品": {
+      "big_category": "水产制品",
+      "subcategory": "其他盐渍水产品",
+      "table_no": "22-5"
+    },
+    "预制鱼糜制品": {
+      "big_category": "水产制品",
+      "subcategory": "预制鱼糜制品",
+      "table_no": "22-6"
+    },
+    "熟制动物性水产制品": {
+      "big_category": "水产制品",
+      "subcategory": "熟制动物性水产制品",
+      "table_no": "22-7"
+    },
+    "生食动物性水产品": {
+      "big_category": "水产制品",
+      "subcategory": "生食动物性水产品",
+      "table_no": "22-8"
+    },
+    "其他水产制品": {
+      "big_category": "水产制品",
+      "subcategory": "其他水产制品",
+      "table_no": "22-9"
+    },
+    "淀粉": {
+      "big_category": "淀粉及淀粉制品",
+      "subcategory": "淀粉",
+      "table_no": "23-1"
+    },
+    "粉丝粉条": {
+      "big_category": "淀粉及淀粉制品",
+      "subcategory": "粉丝粉条",
+      "table_no": "23-2"
+    },
+    "其他淀粉制品": {
+      "big_category": "淀粉及淀粉制品",
+      "subcategory": "其他淀粉制品",
+      "table_no": "23-3"
+    },
+    "淀粉糖": {
+      "big_category": "淀粉及淀粉制品",
+      "subcategory": "淀粉糖",
+      "table_no": "23-4"
+    },
+    "面包": {
+      "big_category": "糕点",
+      "subcategory": "面包",
+      "table_no": "24-1"
+    },
+    "月饼": {
+      "big_category": "糕点",
+      "subcategory": "月饼",
+      "table_no": "24-2"
+    },
+    "粽子": {
+      "big_category": "糕点",
+      "subcategory": "粽子",
+      "table_no": "24-3"
+    },
+    "糕点": {
+      "big_category": "糕点",
+      "subcategory": "糕点",
+      "table_no": "24-4"
+    },
+    "发酵性豆制品": {
+      "big_category": "豆制品",
+      "subcategory": "发酵性豆制品",
+      "table_no": "25-1"
+    },
+    "非发酵性豆制品（腐竹、油皮及其再制品）": {
+      "big_category": "豆制品",
+      "subcategory": "非发酵性豆制品（腐竹、油皮及其再制品）",
+      "table_no": "25-2"
+    },
+    "非发酵性豆制品（豆干、豆腐、豆皮等）": {
+      "big_category": "豆制品",
+      "subcategory": "非发酵性豆制品（豆干、豆腐、豆皮等）",
+      "table_no": "25-3"
+    },
+    "其他豆制品": {
+      "big_category": "豆制品",
+      "subcategory": "其他豆制品",
+      "table_no": "25-4"
+    },
+    "蜂蜜": {
+      "big_category": "蜂产品",
+      "subcategory": "蜂蜜",
+      "table_no": "26-1"
+    },
+    "蜂王浆（含蜂王浆冻干品）": {
+      "big_category": "蜂产品",
+      "subcategory": "蜂王浆（含蜂王浆冻干品）",
+      "table_no": "26-2"
+    },
+    "蜂花粉": {
+      "big_category": "蜂产品",
+      "subcategory": "蜂花粉",
+      "table_no": "26-3"
+    },
+    "蜂产品制品": {
+      "big_category": "蜂产品",
+      "subcategory": "蜂产品制品",
+      "table_no": "26-4"
+    },
+    "保健食品": {
+      "big_category": "保健食品",
+      "subcategory": "保健食品",
+      "table_no": "27-1"
+    },
+    "婴幼儿谷类辅助食品": {
+      "big_category": "特殊膳食食品",
+      "subcategory": "婴幼儿谷类辅助食品",
+      "table_no": "28-1"
+    },
+    "婴幼儿罐装辅助食品": {
+      "big_category": "特殊膳食食品",
+      "subcategory": "婴幼儿罐装辅助食品",
+      "table_no": "28-2"
+    },
+    "辅食营养补充品": {
+      "big_category": "特殊膳食食品",
+      "subcategory": "辅食营养补充品",
+      "table_no": "28-3"
+    },
+    "孕妇及乳母营养补充品": {
+      "big_category": "特殊膳食食品",
+      "subcategory": "孕妇及乳母营养补充品",
+      "table_no": "28-4"
+    },
+    "运动营养食品": {
+      "big_category": "特殊膳食食品",
+      "subcategory": "运动营养食品",
+      "table_no": "28-5"
+    },
+    "特殊医学用途婴儿配方食品": {
+      "big_category": "特殊医学用途配方食品",
+      "subcategory": "特殊医学用途婴儿配方食品",
+      "table_no": "29-1"
+    },
+    "全营养配方食品": {
+      "big_category": "特殊医学用途配方食品",
+      "subcategory": "全营养配方食品",
+      "table_no": "29-2"
+    },
+    "非全营养配方食品": {
+      "big_category": "特殊医学用途配方食品",
+      "subcategory": "非全营养配方食品",
+      "table_no": "29-3"
+    },
+    "特定全营养配方食品": {
+      "big_category": "特殊医学用途配方食品",
+      "subcategory": "特定全营养配方食品",
+      "table_no": "29-4"
+    },
+    "婴儿配方食品": {
+      "big_category": "婴幼儿配方食品",
+      "subcategory": "婴儿配方食品",
+      "table_no": "30-1"
+    },
+    "较大婴儿配方食品": {
+      "big_category": "婴幼儿配方食品",
+      "subcategory": "较大婴儿配方食品",
+      "table_no": "30-2"
+    },
+    "幼儿配方食品": {
+      "big_category": "婴幼儿配方食品",
+      "subcategory": "幼儿配方食品",
+      "table_no": "30-3"
+    },
+    "馒头花卷（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "馒头花卷（自制）",
+      "table_no": "31-1"
+    },
+    "包子（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "包子（自制）",
+      "table_no": "31-2"
+    },
+    "油饼油条（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "油饼油条（自制）",
+      "table_no": "31-3"
+    },
+    "凉皮（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "凉皮（自制）",
+      "table_no": "31-4"
+    },
+    "肉冻皮冻（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "肉冻皮冻（自制）",
+      "table_no": "31-5"
+    },
+    "熏烧烤肉类（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "熏烧烤肉类（自制）",
+      "table_no": "31-6"
+    },
+    "火锅麻辣烫底料（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "火锅麻辣烫底料（自制）",
+      "table_no": "31-7"
+    },
+    "生食动物性水产品（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "生食动物性水产品（自制）",
+      "table_no": "31-8"
+    },
+    "花生制品（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "花生制品（自制）",
+      "table_no": "31-9"
+    },
+    "糕点（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "糕点（自制）",
+      "table_no": "31-10"
+    },
+    "煎炸过程用油": {
+      "big_category": "餐饮食品",
+      "subcategory": "煎炸过程用油",
+      "table_no": "31-11"
+    },
+    "粉丝粉条（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "粉丝粉条（自制）",
+      "table_no": "31-12"
+    },
+    "奶茶（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "奶茶（自制）",
+      "table_no": "31-13"
+    },
+    "复用餐饮具（餐馆自行消毒）": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）",
+      "table_no": "31-14"
+    },
+    "复用餐饮具（集中清洗消毒服务单位消毒）": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（集中清洗消毒服务单位消毒）",
+      "table_no": "31-15"
+    },
+    "除上述类别的餐饮加工自制食品": {
+      "big_category": "餐饮食品",
+      "subcategory": "除上述类别的餐饮加工自制食品",
+      "table_no": "31-16"
+    },
+    "猪肉": {
+      "big_category": "畜禽肉及副产品",
+      "subcategory": "猪肉",
+      "table_no": "33-1"
+    },
+    "牛肉": {
+      "big_category": "畜禽肉及副产品",
+      "subcategory": "牛肉",
+      "table_no": "33-2"
+    },
+    "羊肉": {
+      "big_category": "畜禽肉及副产品",
+      "subcategory": "羊肉",
+      "table_no": "33-3"
+    },
+    "其他畜肉": {
+      "big_category": "畜禽肉及副产品",
+      "subcategory": "其他畜肉",
+      "table_no": "33-4"
+    },
+    "鸡肉": {
+      "big_category": "畜禽肉及副产品",
+      "subcategory": "鸡肉",
+      "table_no": "33-5"
+    },
+    "鸭肉": {
+      "big_category": "畜禽肉及副产品",
+      "subcategory": "鸭肉",
+      "table_no": "33-6"
+    },
+    "其他禽肉": {
+      "big_category": "畜禽肉及副产品",
+      "subcategory": "其他禽肉",
+      "table_no": "33-7"
+    },
+    "其他水产品": {
+      "big_category": "畜禽肉及副产品",
+      "subcategory": "其他水产品",
+      "table_no": "33-8"
+    },
+    "牛肝": {
+      "big_category": "畜禽肉及副产品",
+      "subcategory": "牛肝",
+      "table_no": "33-9"
+    },
+    "羊肝": {
+      "big_category": "畜禽肉及副产品",
+      "subcategory": "羊肝",
+      "table_no": "33-10"
+    },
+    "猪肾": {
+      "big_category": "畜禽肉及副产品",
+      "subcategory": "猪肾",
+      "table_no": "33-11"
+    },
+    "牛肾": {
+      "big_category": "畜禽肉及副产品",
+      "subcategory": "牛肾",
+      "table_no": "33-12"
+    },
+    "羊肾": {
+      "big_category": "畜禽肉及副产品",
+      "subcategory": "羊肾",
+      "table_no": "33-13"
+    },
+    "其他畜副产品": {
+      "big_category": "畜禽肉及副产品",
+      "subcategory": "其他畜副产品",
+      "table_no": "33-14"
+    },
+    "鸡肝": {
+      "big_category": "畜禽肉及副产品",
+      "subcategory": "鸡肝",
+      "table_no": "33-15"
+    },
+    "其他禽副产品": {
+      "big_category": "畜禽肉及副产品",
+      "subcategory": "其他禽副产品",
+      "table_no": "33-16"
+    },
+    "海水鱼": {
+      "big_category": "水产品",
+      "subcategory": "海水鱼",
+      "table_no": "33-44"
+    },
+    "淡水鱼": {
+      "big_category": "水产品",
+      "subcategory": "淡水鱼",
+      "table_no": "35-1"
+    },
+    "淡水虾": {
+      "big_category": "水产品",
+      "subcategory": "淡水虾",
+      "table_no": "35-2"
+    },
+    "淡水蟹": {
+      "big_category": "水产品",
+      "subcategory": "淡水蟹",
+      "table_no": "35-3"
+    },
+    "海水虾": {
+      "big_category": "水产品",
+      "subcategory": "海水虾",
+      "table_no": "35-5"
+    },
+    "海水蟹": {
+      "big_category": "水产品",
+      "subcategory": "海水蟹",
+      "table_no": "35-6"
+    },
+    "贝类": {
+      "big_category": "水产品",
+      "subcategory": "贝类",
+      "table_no": "35-7"
+    },
+    "鸡蛋": {
+      "big_category": "鲜蛋",
+      "subcategory": "鸡蛋",
+      "table_no": "33-71"
+    },
+    "其他禽蛋": {
+      "big_category": "鲜蛋",
+      "subcategory": "其他禽蛋",
+      "table_no": "33-72"
+    },
+    "豆芽": {
+      "big_category": "蔬菜",
+      "subcategory": "豆芽",
+      "table_no": "34-2"
+    },
+    "鲜食用菌": {
+      "big_category": "蔬菜",
+      "subcategory": "鲜食用菌",
+      "table_no": "34-3"
+    },
+    "韭菜": {
+      "big_category": "蔬菜",
+      "subcategory": "韭菜",
+      "table_no": "34-4"
+    },
+    "葱": {
+      "big_category": "蔬菜",
+      "subcategory": "葱",
+      "table_no": "34-5"
+    },
+    "菠菜": {
+      "big_category": "蔬菜",
+      "subcategory": "菠菜",
+      "table_no": "34-6"
+    },
+    "大白菜": {
+      "big_category": "蔬菜",
+      "subcategory": "大白菜",
+      "table_no": "34-7"
+    },
+    "普通白菜（小白菜、小油菜、青菜）": {
+      "big_category": "蔬菜",
+      "subcategory": "普通白菜（小白菜、小油菜、青菜）",
+      "table_no": "34-8"
+    },
+    "芹菜": {
+      "big_category": "蔬菜",
+      "subcategory": "芹菜",
+      "table_no": "34-9"
+    },
+    "油麦菜": {
+      "big_category": "蔬菜",
+      "subcategory": "油麦菜",
+      "table_no": "34-10"
+    },
+    "茄子": {
+      "big_category": "蔬菜",
+      "subcategory": "茄子",
+      "table_no": "34-11"
+    },
+    "辣椒": {
+      "big_category": "蔬菜",
+      "subcategory": "辣椒",
+      "table_no": "34-12"
+    },
+    "甜椒": {
+      "big_category": "蔬菜",
+      "subcategory": "甜椒",
+      "table_no": "34-13"
+    },
+    "黄瓜": {
+      "big_category": "蔬菜",
+      "subcategory": "黄瓜",
+      "table_no": "34-14"
+    },
+    "菜豆": {
+      "big_category": "蔬菜",
+      "subcategory": "菜豆",
+      "table_no": "34-16"
+    },
+    "食荚豌豆": {
+      "big_category": "蔬菜",
+      "subcategory": "食荚豌豆",
+      "table_no": "34-17"
+    },
+    "马铃薯": {
+      "big_category": "蔬菜",
+      "subcategory": "马铃薯",
+      "table_no": "34-18"
+    },
+    "甘薯": {
+      "big_category": "蔬菜",
+      "subcategory": "甘薯",
+      "table_no": "34-19"
+    },
+    "山药": {
+      "big_category": "蔬菜",
+      "subcategory": "山药",
+      "table_no": "34-20"
+    },
+    "胡萝卜": {
+      "big_category": "蔬菜",
+      "subcategory": "胡萝卜",
+      "table_no": "34-21"
+    },
+    "萝卜": {
+      "big_category": "蔬菜",
+      "subcategory": "萝卜",
+      "table_no": "34-22"
+    },
+    "姜": {
+      "big_category": "蔬菜",
+      "subcategory": "姜",
+      "table_no": "34-23"
+    },
+    "净菜": {
+      "big_category": "蔬菜",
+      "subcategory": "净菜",
+      "table_no": "34-24"
+    },
+    "苹果": {
+      "big_category": "水果类",
+      "subcategory": "苹果",
+      "table_no": "36-2"
+    },
+    "梨": {
+      "big_category": "水果类",
+      "subcategory": "梨",
+      "table_no": "36-3"
+    },
+    "枣": {
+      "big_category": "水果类",
+      "subcategory": "枣",
+      "table_no": "36-4"
+    },
+    "桃": {
+      "big_category": "水果类",
+      "subcategory": "桃",
+      "table_no": "36-5"
+    },
+    "油桃": {
+      "big_category": "水果类",
+      "subcategory": "油桃",
+      "table_no": "36-6"
+    },
+    "柑、橘": {
+      "big_category": "水果类",
+      "subcategory": "柑、橘",
+      "table_no": "36-7"
+    },
+    "柚": {
+      "big_category": "水果类",
+      "subcategory": "柚",
+      "table_no": "36-8"
+    },
+    "柠檬": {
+      "big_category": "水果类",
+      "subcategory": "柠檬",
+      "table_no": "36-9"
+    },
+    "橙": {
+      "big_category": "水果类",
+      "subcategory": "橙",
+      "table_no": "36-10"
+    },
+    "葡萄": {
+      "big_category": "水果类",
+      "subcategory": "葡萄",
+      "table_no": "36-11"
+    },
+    "草莓": {
+      "big_category": "水果类",
+      "subcategory": "草莓",
+      "table_no": "36-12"
+    },
+    "猕猴桃": {
+      "big_category": "水果类",
+      "subcategory": "猕猴桃",
+      "table_no": "36-13"
+    },
+    "桑葚": {
+      "big_category": "水果类",
+      "subcategory": "桑葚",
+      "table_no": "36-14"
+    },
+    "西番莲（百香果）": {
+      "big_category": "水果类",
+      "subcategory": "西番莲（百香果）",
+      "table_no": "36-15"
+    },
+    "香蕉": {
+      "big_category": "水果类",
+      "subcategory": "香蕉",
+      "table_no": "36-16"
+    },
+    "芒果": {
+      "big_category": "水果类",
+      "subcategory": "芒果",
+      "table_no": "36-17"
+    },
+    "火龙果": {
+      "big_category": "水果类",
+      "subcategory": "火龙果",
+      "table_no": "36-18"
+    },
+    "荔枝": {
+      "big_category": "水果类",
+      "subcategory": "荔枝",
+      "table_no": "36-19"
+    },
+    "杨梅": {
+      "big_category": "水果类",
+      "subcategory": "杨梅",
+      "table_no": "36-20"
+    },
+    "龙眼": {
+      "big_category": "水果类",
+      "subcategory": "龙眼",
+      "table_no": "36-21"
+    },
+    "橄榄": {
+      "big_category": "水果类",
+      "subcategory": "橄榄",
+      "table_no": "36-22"
+    },
+    "番木瓜": {
+      "big_category": "水果类",
+      "subcategory": "番木瓜",
+      "table_no": "36-23"
+    },
+    "西瓜": {
+      "big_category": "水果类",
+      "subcategory": "西瓜",
+      "table_no": "36-24"
+    },
+    "甜瓜类": {
+      "big_category": "水果类",
+      "subcategory": "甜瓜类",
+      "table_no": "36-25"
+    },
+    "豆类": {
+      "big_category": "豆类",
+      "subcategory": "豆类",
+      "table_no": "38-1"
+    },
+    "生干坚果": {
+      "big_category": "生干坚果与籽类食品",
+      "subcategory": "生干坚果",
+      "table_no": "39-1"
+    },
+    "花生": {
+      "big_category": "生干坚果与籽类食品",
+      "subcategory": "花生",
+      "table_no": "39-2"
+    },
+    "其他籽类": {
+      "big_category": "生干坚果与籽类食品",
+      "subcategory": "其他籽类",
+      "table_no": "39-3"
+    },
+    "草莓酱": {
+      "big_category": "水果制品",
+      "subcategory": "果酱",
+      "table_no": "17-3",
+      "matched_by": "manual_alias"
+    },
+    "蓝莓酱": {
+      "big_category": "水果制品",
+      "subcategory": "果酱",
+      "table_no": "17-3",
+      "matched_by": "manual_alias"
+    },
+    "苹果酱": {
+      "big_category": "水果制品",
+      "subcategory": "果酱",
+      "table_no": "17-3",
+      "matched_by": "manual_alias"
+    },
+    "花生果酱": {
+      "big_category": "水果制品",
+      "subcategory": "果酱",
+      "table_no": "17-3",
+      "matched_by": "manual_alias"
+    },
+    "蜜饯类": {
+      "big_category": "水果制品",
+      "subcategory": "蜜饯",
+      "table_no": "17-1",
+      "matched_by": "manual_alias"
+    },
+    "果脯": {
+      "big_category": "水果制品",
+      "subcategory": "蜜饯",
+      "table_no": "17-1",
+      "matched_by": "manual_alias"
+    },
+    "话梅": {
+      "big_category": "水果制品",
+      "subcategory": "蜜饯",
+      "table_no": "17-1",
+      "matched_by": "manual_alias"
+    },
+    "凉果": {
+      "big_category": "水果制品",
+      "subcategory": "蜜饯",
+      "table_no": "17-1",
+      "matched_by": "manual_alias"
+    },
+    "水果干": {
+      "big_category": "水果制品",
+      "subcategory": "水果干制品",
+      "table_no": "17-2",
+      "matched_by": "manual_alias"
+    },
+    "果干": {
+      "big_category": "水果制品",
+      "subcategory": "水果干制品",
+      "table_no": "17-2",
+      "matched_by": "manual_alias"
+    },
+    "葡萄干": {
+      "big_category": "水果制品",
+      "subcategory": "水果干制品",
+      "table_no": "17-2",
+      "matched_by": "manual_alias"
+    },
+    "芒果干": {
+      "big_category": "水果制品",
+      "subcategory": "水果干制品",
+      "table_no": "17-2",
+      "matched_by": "manual_alias"
+    },
+    "小酥肉": {
+      "big_category": "肉制品",
+      "subcategory": "调理肉制品(非速冻)"
+    },
+    "速冻小酥肉": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻调理肉制品",
+      "table_no": "11-2",
+      "matched_by": "manual_alias"
+    },
+    "速冻面米制品": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻面米食品",
+      "table_no": "11-1",
+      "matched_by": "manual_alias"
+    },
+    "小笼包": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻面米食品",
+      "table_no": "11-1",
+      "matched_by": "manual_alias"
+    },
+    "水饺": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻面米食品",
+      "table_no": "11-1",
+      "matched_by": "manual_alias"
+    },
+    "汤圆": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻面米食品",
+      "table_no": "11-1",
+      "matched_by": "manual_alias"
+    },
+    "速冻鱼丸": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻调制水产制品",
+      "table_no": "11-3",
+      "matched_by": "manual_alias"
+    },
+    "速冻虾滑": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻调制水产制品",
+      "table_no": "11-3",
+      "matched_by": "manual_alias"
+    },
+    "畜禽肉罐头": {
+      "big_category": "罐头",
+      "subcategory": "畜禽肉类罐头",
+      "table_no": "9-1",
+      "matched_by": "manual_alias"
+    },
+    "午餐肉罐头": {
+      "big_category": "罐头",
+      "subcategory": "畜禽肉类罐头",
+      "table_no": "9-1",
+      "matched_by": "manual_alias"
+    },
+    "鱼罐头": {
+      "big_category": "罐头",
+      "subcategory": "水产动物类罐头"
+    },
+    "水果罐头": {
+      "big_category": "罐头",
+      "subcategory": "水果类罐头"
+    },
+    "黄桃罐头": {
+      "big_category": "罐头",
+      "subcategory": "水果类罐头"
+    },
+    "橘子罐头": {
+      "big_category": "罐头",
+      "subcategory": "水果类罐头"
+    },
+    "蔬菜罐头": {
+      "big_category": "罐头",
+      "subcategory": "蔬菜类罐头"
+    },
+    "卤蛋": {
+      "big_category": "蛋制品",
+      "subcategory": "再制蛋",
+      "table_no": "19-1"
+    },
+    "皮蛋": {
+      "big_category": "蛋制品",
+      "subcategory": "再制蛋",
+      "table_no": "19-1"
+    },
+    "松花蛋": {
+      "big_category": "蛋制品",
+      "subcategory": "再制蛋",
+      "table_no": "19-1"
+    },
+    "咸蛋": {
+      "big_category": "蛋制品",
+      "subcategory": "再制蛋",
+      "table_no": "19-1"
+    },
+    "咸蛋黄": {
+      "big_category": "蛋制品",
+      "subcategory": "再制蛋",
+      "table_no": "19-1"
+    },
+    "茶香蛋": {
+      "big_category": "蛋制品",
+      "subcategory": "再制蛋",
+      "table_no": "19-1"
+    },
+    "茶蛋": {
+      "big_category": "蛋制品",
+      "subcategory": "再制蛋",
+      "table_no": "19-1"
+    },
+    "糟蛋": {
+      "big_category": "蛋制品",
+      "subcategory": "再制蛋",
+      "table_no": "19-1"
+    },
+    "醉蛋": {
+      "big_category": "蛋制品",
+      "subcategory": "再制蛋",
+      "table_no": "19-1"
+    },
+    "醋蛋": {
+      "big_category": "蛋制品",
+      "subcategory": "再制蛋",
+      "table_no": "19-1"
+    },
+    "水煮蛋": {
+      "big_category": "蛋制品",
+      "subcategory": "再制蛋",
+      "table_no": "19-1"
+    },
+    "卤蛋制品": {
+      "big_category": "蛋制品",
+      "subcategory": "再制蛋",
+      "table_no": "19-1"
+    },
+    "干蛋制品": {
+      "big_category": "蛋制品",
+      "subcategory": "干蛋制品",
+      "table_no": "19-2"
+    },
+    "蛋粉": {
+      "big_category": "蛋制品",
+      "subcategory": "干蛋制品",
+      "table_no": "19-2"
+    },
+    "蛋黄粉": {
+      "big_category": "蛋制品",
+      "subcategory": "干蛋制品",
+      "table_no": "19-2"
+    },
+    "蛋白粉": {
+      "big_category": "蛋制品",
+      "subcategory": "干蛋制品",
+      "table_no": "19-2"
+    },
+    "全蛋粉": {
+      "big_category": "蛋制品",
+      "subcategory": "干蛋制品",
+      "table_no": "19-2"
+    },
+    "干蛋": {
+      "big_category": "蛋制品",
+      "subcategory": "干蛋制品",
+      "table_no": "19-2"
+    },
+    "干燥蛋制品": {
+      "big_category": "蛋制品",
+      "subcategory": "干蛋制品",
+      "table_no": "19-2"
+    },
+    "冰蛋制品": {
+      "big_category": "蛋制品",
+      "subcategory": "冰蛋制品",
+      "table_no": "19-2"
+    },
+    "冰蛋": {
+      "big_category": "蛋制品",
+      "subcategory": "冰蛋制品",
+      "table_no": "19-2"
+    },
+    "冷冻蛋": {
+      "big_category": "蛋制品",
+      "subcategory": "冰蛋制品",
+      "table_no": "19-2"
+    },
+    "冰蛋黄": {
+      "big_category": "蛋制品",
+      "subcategory": "冰蛋制品",
+      "table_no": "19-2"
+    },
+    "冰蛋白": {
+      "big_category": "蛋制品",
+      "subcategory": "冰蛋制品",
+      "table_no": "19-2"
+    },
+    "液蛋制品": {
+      "big_category": "蛋制品",
+      "subcategory": "液蛋制品",
+      "table_no": "19-3"
+    },
+    "蛋液": {
+      "big_category": "蛋制品",
+      "subcategory": "液蛋制品",
+      "table_no": "19-3"
+    },
+    "全蛋液": {
+      "big_category": "蛋制品",
+      "subcategory": "液蛋制品",
+      "table_no": "19-3"
+    },
+    "蛋黄液": {
+      "big_category": "蛋制品",
+      "subcategory": "液蛋制品",
+      "table_no": "19-3"
+    },
+    "蛋白液": {
+      "big_category": "蛋制品",
+      "subcategory": "液蛋制品",
+      "table_no": "19-3"
+    },
+    "冰蛋液": {
+      "big_category": "蛋制品",
+      "subcategory": "液蛋制品",
+      "table_no": "19-3"
+    },
+    "液蛋": {
+      "big_category": "蛋制品",
+      "subcategory": "液蛋制品",
+      "table_no": "19-3"
+    },
+    "蛋清液": {
+      "big_category": "蛋制品",
+      "subcategory": "液蛋制品",
+      "table_no": "19-3"
+    },
+    "蛋液制品": {
+      "big_category": "蛋制品",
+      "subcategory": "液蛋制品",
+      "table_no": "19-3"
+    },
+    "蛋清": {
+      "big_category": "蛋制品",
+      "subcategory": "液蛋制品",
+      "table_no": "19-3"
+    },
+    "蛋黄液制品": {
+      "big_category": "蛋制品",
+      "subcategory": "液蛋制品",
+      "table_no": "19-3"
+    },
+    "热凝固蛋制品": {
+      "big_category": "蛋制品",
+      "subcategory": "热凝固蛋制品",
+      "table_no": "19-3"
+    },
+    "热凝固蛋": {
+      "big_category": "蛋制品",
+      "subcategory": "热凝固蛋制品",
+      "table_no": "19-3"
+    },
+    "蒸蛋": {
+      "big_category": "蛋制品",
+      "subcategory": "热凝固蛋制品",
+      "table_no": "19-3"
+    },
+    "蛋羹": {
+      "big_category": "蛋制品",
+      "subcategory": "热凝固蛋制品",
+      "table_no": "19-3"
+    },
+    "蛋豆腐": {
+      "big_category": "蛋制品",
+      "subcategory": "热凝固蛋制品",
+      "table_no": "19-3"
+    },
+    "鸡蛋豆腐": {
+      "big_category": "蛋制品",
+      "subcategory": "热凝固蛋制品",
+      "table_no": "19-3"
+    },
+    "蛋皮": {
+      "big_category": "蛋制品",
+      "subcategory": "热凝固蛋制品",
+      "table_no": "19-3"
+    },
+    "其他蛋制品": {
+      "big_category": "蛋制品",
+      "subcategory": "其他蛋制品",
+      "table_no": "19-3"
+    },
+    "其他蛋": {
+      "big_category": "蛋制品",
+      "subcategory": "其他蛋制品",
+      "table_no": "19-3"
+    },
+    "其他禽蛋制品": {
+      "big_category": "蛋制品",
+      "subcategory": "其他蛋制品",
+      "table_no": "19-3"
+    },
+    "蛋制品其他": {
+      "big_category": "蛋制品",
+      "subcategory": "其他蛋制品",
+      "table_no": "19-3"
+    },
+    "生抽": {
+      "big_category": "调味品",
+      "subcategory": "酱油",
+      "table_no": "3-1"
+    },
+    "老抽": {
+      "big_category": "调味品",
+      "subcategory": "酱油",
+      "table_no": "3-1"
+    },
+    "高盐稀态发酵酱油": {
+      "big_category": "调味品",
+      "subcategory": "酱油",
+      "table_no": "3-1"
+    },
+    "低盐固态发酵酱油": {
+      "big_category": "调味品",
+      "subcategory": "酱油",
+      "table_no": "3-1"
+    },
+    "醋": {
+      "big_category": "调味品",
+      "subcategory": "食醋",
+      "table_no": "3-2"
+    },
+    "米醋": {
+      "big_category": "调味品",
+      "subcategory": "食醋",
+      "table_no": "3-2"
+    },
+    "白醋": {
+      "big_category": "调味品",
+      "subcategory": "食醋",
+      "table_no": "3-2"
+    },
+    "陈醋": {
+      "big_category": "调味品",
+      "subcategory": "食醋",
+      "table_no": "3-2"
+    },
+    "香醋": {
+      "big_category": "调味品",
+      "subcategory": "食醋",
+      "table_no": "3-2"
+    },
+    "老陈醋": {
+      "big_category": "调味品",
+      "subcategory": "食醋",
+      "table_no": "3-2"
+    },
+    "黄豆酱": {
+      "big_category": "调味品",
+      "subcategory": "酿造酱",
+      "table_no": "3-3"
+    },
+    "甜面酱": {
+      "big_category": "调味品",
+      "subcategory": "酿造酱",
+      "table_no": "3-3"
+    },
+    "豆瓣酱": {
+      "big_category": "调味品",
+      "subcategory": "酿造酱",
+      "table_no": "3-3"
+    },
+    "郫县豆瓣酱": {
+      "big_category": "调味品",
+      "subcategory": "酿造酱",
+      "table_no": "3-3"
+    },
+    "酱": {
+      "big_category": "调味品",
+      "subcategory": "酿造酱",
+      "table_no": "3-3"
+    },
+    "料酒": {
+      "big_category": "酒类",
+      "subcategory": "黄酒"
+    },
+    "烹饪料酒": {
+      "big_category": "调味品",
+      "subcategory": "调味料酒",
+      "table_no": "3-4"
+    },
+    "辣椒油": {
+      "big_category": "调味品",
+      "subcategory": "香辛料调味油",
+      "table_no": "3-5"
+    },
+    "花椒油": {
+      "big_category": "调味品",
+      "subcategory": "香辛料调味油",
+      "table_no": "3-5"
+    },
+    "胡椒油": {
+      "big_category": "调味品",
+      "subcategory": "香辛料调味油",
+      "table_no": "3-5"
+    },
+    "芥末油": {
+      "big_category": "调味品",
+      "subcategory": "香辛料调味油",
+      "table_no": "3-5"
+    },
+    "花椒": {
+      "big_category": "调味品",
+      "subcategory": "辣椒、花椒、辣椒粉、花椒粉",
+      "table_no": "3-6"
+    },
+    "辣椒粉": {
+      "big_category": "调味品",
+      "subcategory": "辣椒、花椒、辣椒粉、花椒粉",
+      "table_no": "3-6"
+    },
+    "花椒粉": {
+      "big_category": "调味品",
+      "subcategory": "辣椒、花椒、辣椒粉、花椒粉",
+      "table_no": "3-6"
+    },
+    "干辣椒": {
+      "big_category": "调味品",
+      "subcategory": "辣椒、花椒、辣椒粉、花椒粉",
+      "table_no": "3-6"
+    },
+    "干花椒": {
+      "big_category": "调味品",
+      "subcategory": "辣椒、花椒、辣椒粉、花椒粉",
+      "table_no": "3-6"
+    },
+    "八角": {
+      "big_category": "调味品",
+      "subcategory": "其他香辛料调味品",
+      "table_no": "3-7"
+    },
+    "桂皮": {
+      "big_category": "调味品",
+      "subcategory": "其他香辛料调味品",
+      "table_no": "3-7"
+    },
+    "胡椒": {
+      "big_category": "调味品",
+      "subcategory": "其他香辛料调味品",
+      "table_no": "3-7"
+    },
+    "孜然": {
+      "big_category": "调味品",
+      "subcategory": "其他香辛料调味品",
+      "table_no": "3-7"
+    },
+    "茴香": {
+      "big_category": "调味品",
+      "subcategory": "其他香辛料调味品",
+      "table_no": "3-7"
+    },
+    "干姜粉": {
+      "big_category": "调味品",
+      "subcategory": "其他香辛料调味品",
+      "table_no": "3-7"
+    },
+    "白芷": {
+      "big_category": "调味品",
+      "subcategory": "其他香辛料调味品",
+      "table_no": "3-7"
+    },
+    "山奈": {
+      "big_category": "调味品",
+      "subcategory": "其他香辛料调味品",
+      "table_no": "3-7"
+    },
+    "月桂叶": {
+      "big_category": "调味品",
+      "subcategory": "其他香辛料调味品",
+      "table_no": "3-7"
+    },
+    "咖喱粉": {
+      "big_category": "调味品",
+      "subcategory": "其他香辛料调味品",
+      "table_no": "3-7"
+    },
+    "蒜粉": {
+      "big_category": "调味品",
+      "subcategory": "其他香辛料调味品",
+      "table_no": "3-7"
+    },
+    "五香粉": {
+      "big_category": "调味品",
+      "subcategory": "其他香辛料调味品",
+      "table_no": "3-7"
+    },
+    "香辛料酱": {
+      "big_category": "调味品",
+      "subcategory": "其他香辛料调味品",
+      "table_no": "3-7"
+    },
+    "芥末酱": {
+      "big_category": "调味品",
+      "subcategory": "其他香辛料调味品",
+      "table_no": "3-7"
+    },
+    "青芥酱": {
+      "big_category": "调味品",
+      "subcategory": "其他香辛料调味品",
+      "table_no": "3-7"
+    },
+    "鸡粉": {
+      "big_category": "调味品",
+      "subcategory": "鸡粉、鸡精调味料",
+      "table_no": "3-8"
+    },
+    "鸡精": {
+      "big_category": "调味品",
+      "subcategory": "鸡粉、鸡精调味料",
+      "table_no": "3-8"
+    },
+    "固体调味料": {
+      "big_category": "调味品",
+      "subcategory": "其他固体调味料",
+      "table_no": "3-9"
+    },
+    "固体复合调味料": {
+      "big_category": "调味品",
+      "subcategory": "其他固体调味料",
+      "table_no": "3-9"
+    },
+    "蛋黄酱": {
+      "big_category": "调味品",
+      "subcategory": "蛋黄酱、沙拉酱",
+      "table_no": "3-10"
+    },
+    "沙拉酱": {
+      "big_category": "调味品",
+      "subcategory": "蛋黄酱、沙拉酱",
+      "table_no": "3-10"
+    },
+    "花生酱": {
+      "big_category": "调味品",
+      "subcategory": "坚果与籽类的泥（酱）",
+      "table_no": "3-11"
+    },
+    "坚果酱": {
+      "big_category": "调味品",
+      "subcategory": "坚果与籽类的泥（酱）",
+      "table_no": "3-11"
+    },
+    "芝麻酱": {
+      "big_category": "调味品",
+      "subcategory": "坚果与籽类的泥（酱）",
+      "table_no": "3-11"
+    },
+    "麻酱": {
+      "big_category": "调味品",
+      "subcategory": "坚果与籽类的泥（酱）",
+      "table_no": "3-11"
+    },
+    "火锅底料": {
+      "big_category": "调味品",
+      "subcategory": "火锅底料、麻辣烫底料",
+      "table_no": "3-13"
+    },
+    "麻辣烫底料": {
+      "big_category": "调味品",
+      "subcategory": "火锅底料、麻辣烫底料",
+      "table_no": "3-13"
+    },
+    "半固体调味料": {
+      "big_category": "调味品",
+      "subcategory": "其他半固体调味料",
+      "table_no": "3-14"
+    },
+    "半固体复合调味料": {
+      "big_category": "调味品",
+      "subcategory": "其他半固体调味料",
+      "table_no": "3-14"
+    },
+    "蚝油": {
+      "big_category": "调味品",
+      "subcategory": "蚝油、虾油、鱼露",
+      "table_no": "3-15"
+    },
+    "虾油": {
+      "big_category": "调味品",
+      "subcategory": "蚝油、虾油、鱼露",
+      "table_no": "3-15"
+    },
+    "鱼露": {
+      "big_category": "调味品",
+      "subcategory": "蚝油、虾油、鱼露",
+      "table_no": "3-15"
+    },
+    "酱汁": {
+      "big_category": "调味品",
+      "subcategory": "其他液体调味料",
+      "table_no": "3-16"
+    },
+    "糟卤": {
+      "big_category": "调味品",
+      "subcategory": "其他液体调味料",
+      "table_no": "3-16"
+    },
+    "鸡汁调味料": {
+      "big_category": "调味品",
+      "subcategory": "其他液体调味料",
+      "table_no": "3-16"
+    },
+    "酸性调味液": {
+      "big_category": "调味品",
+      "subcategory": "其他液体调味料",
+      "table_no": "3-16"
+    },
+    "液体调味料": {
+      "big_category": "调味品",
+      "subcategory": "其他液体调味料",
+      "table_no": "3-16"
+    },
+    "液体复合调味料": {
+      "big_category": "调味品",
+      "subcategory": "其他液体调味料",
+      "table_no": "3-16"
+    },
+    "精制盐": {
+      "big_category": "调味品",
+      "subcategory": "普通食用盐",
+      "table_no": "3-18"
+    },
+    "粉碎洗涤盐": {
+      "big_category": "调味品",
+      "subcategory": "普通食用盐",
+      "table_no": "3-18"
+    },
+    "日晒盐": {
+      "big_category": "调味品",
+      "subcategory": "普通食用盐",
+      "table_no": "3-18"
+    },
+    "食用盐": {
+      "big_category": "调味品",
+      "subcategory": "普通食用盐",
+      "table_no": "3-18"
+    },
+    "低钠盐": {
+      "big_category": "调味品",
+      "subcategory": "低钠食用盐",
+      "table_no": "3-19"
+    },
+    "风味盐": {
+      "big_category": "调味品",
+      "subcategory": "风味食用盐",
+      "table_no": "3-20"
+    },
+    "调味盐": {
+      "big_category": "调味品",
+      "subcategory": "风味食用盐",
+      "table_no": "3-20"
+    },
+    "螺旋藻盐": {
+      "big_category": "调味品",
+      "subcategory": "风味食用盐",
+      "table_no": "3-20"
+    },
+    "雪花盐": {
+      "big_category": "调味品",
+      "subcategory": "特殊工艺食用盐",
+      "table_no": "3-21"
+    },
+    "鱼籽盐": {
+      "big_category": "调味品",
+      "subcategory": "特殊工艺食用盐",
+      "table_no": "3-21"
+    },
+    "加工用盐": {
+      "big_category": "调味品",
+      "subcategory": "食品生产加工用盐",
+      "table_no": "3-22"
+    },
+    "工业盐": {
+      "big_category": "调味品",
+      "subcategory": "食品生产加工用盐",
+      "table_no": "3-22"
+    },
+    "食品加工用盐": {
+      "big_category": "调味品",
+      "subcategory": "食品生产加工用盐",
+      "table_no": "3-22"
+    },
+    "通用小麦粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "小麦粉"
+    },
+    "专用小麦粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "小麦粉"
+    },
+    "高筋小麦粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "小麦粉"
+    },
+    "中筋小麦粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "小麦粉"
+    },
+    "低筋小麦粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "小麦粉"
+    },
+    "标准粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "小麦粉"
+    },
+    "普通粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "小麦粉"
+    },
+    "精制粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "小麦粉"
+    },
+    "全麦粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "小麦粉"
+    },
+    "面包粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "小麦粉"
+    },
+    "面条粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "小麦粉"
+    },
+    "饺子粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "小麦粉"
+    },
+    "馒头粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "小麦粉"
+    },
+    "自发粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "小麦粉"
+    },
+    "饺子皮粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "小麦粉"
+    },
+    "籼米": {
+      "big_category": "粮食加工品",
+      "subcategory": "大米"
+    },
+    "粳米": {
+      "big_category": "粮食加工品",
+      "subcategory": "大米"
+    },
+    "糯米": {
+      "big_category": "粮食加工品",
+      "subcategory": "大米"
+    },
+    "糙米": {
+      "big_category": "粮食加工品",
+      "subcategory": "大米"
+    },
+    "香米": {
+      "big_category": "粮食加工品",
+      "subcategory": "大米"
+    },
+    "面条": {
+      "big_category": "粮食加工品",
+      "subcategory": "挂面"
+    },
+    "干面条": {
+      "big_category": "粮食加工品",
+      "subcategory": "挂面"
+    },
+    "挂面(挂面)": {
+      "big_category": "粮食加工品",
+      "subcategory": "挂面"
+    },
+    "玉米粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "玉米粉(片、渣)"
+    },
+    "玉米片": {
+      "big_category": "粮食加工品",
+      "subcategory": "玉米粉(片、渣)"
+    },
+    "玉米渣": {
+      "big_category": "粮食加工品",
+      "subcategory": "玉米粉(片、渣)"
+    },
+    "玉米糁": {
+      "big_category": "粮食加工品",
+      "subcategory": "玉米粉(片、渣)"
+    },
+    "玉米糁子": {
+      "big_category": "粮食加工品",
+      "subcategory": "玉米粉(片、渣)"
+    },
+    "玉米糊": {
+      "big_category": "粮食加工品",
+      "subcategory": "玉米粉(片、渣)"
+    },
+    "糯米粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "米粉"
+    },
+    "汤圆粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "米粉"
+    },
+    "粘米粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "米粉"
+    },
+    "大米粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "米粉"
+    },
+    "燕麦片": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物碾磨加工品"
+    },
+    "莜麦粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物碾磨加工品"
+    },
+    "小米粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物碾磨加工品"
+    },
+    "高粱粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物碾磨加工品"
+    },
+    "荞麦粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物碾磨加工品"
+    },
+    "大麦粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物碾磨加工品"
+    },
+    "青稞粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物碾磨加工品"
+    },
+    "杂面粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物碾磨加工品"
+    },
+    "绿豆粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物碾磨加工品"
+    },
+    "黄豆粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物碾磨加工品"
+    },
+    "红豆粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物碾磨加工品"
+    },
+    "黑豆粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物碾磨加工品"
+    },
+    "豌豆粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物碾磨加工品"
+    },
+    "蚕豆粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物碾磨加工品"
+    },
+    "芸豆粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物碾磨加工品"
+    },
+    "生切面": {
+      "big_category": "粮食加工品",
+      "subcategory": "生湿面制品"
+    },
+    "饺子皮": {
+      "big_category": "粮食加工品",
+      "subcategory": "生湿面制品"
+    },
+    "馄饨皮": {
+      "big_category": "粮食加工品",
+      "subcategory": "生湿面制品"
+    },
+    "烧麦皮": {
+      "big_category": "粮食加工品",
+      "subcategory": "生湿面制品"
+    },
+    "鲜面条": {
+      "big_category": "粮食加工品",
+      "subcategory": "生湿面制品"
+    },
+    "生湿面": {
+      "big_category": "粮食加工品",
+      "subcategory": "生湿面制品"
+    },
+    "湿面条": {
+      "big_category": "粮食加工品",
+      "subcategory": "生湿面制品"
+    },
+    "馒头": {
+      "big_category": "粮食加工品",
+      "subcategory": "发酵面制品"
+    },
+    "花卷": {
+      "big_category": "粮食加工品",
+      "subcategory": "发酵面制品"
+    },
+    "包子": {
+      "big_category": "粮食加工品",
+      "subcategory": "发酵面制品"
+    },
+    "发面饼": {
+      "big_category": "粮食加工品",
+      "subcategory": "发酵面制品"
+    },
+    "发糕": {
+      "big_category": "粮食加工品",
+      "subcategory": "发酵面制品"
+    },
+    "酵面": {
+      "big_category": "粮食加工品",
+      "subcategory": "发酵面制品"
+    },
+    "老面": {
+      "big_category": "粮食加工品",
+      "subcategory": "发酵面制品"
+    },
+    "发面": {
+      "big_category": "粮食加工品",
+      "subcategory": "发酵面制品"
+    },
+    "米线": {
+      "big_category": "粮食加工品",
+      "subcategory": "米粉制品"
+    },
+    "湿米线": {
+      "big_category": "粮食加工品",
+      "subcategory": "米粉制品"
+    },
+    "鲜米线": {
+      "big_category": "粮食加工品",
+      "subcategory": "米粉制品"
+    },
+    "方便面": {
+      "big_category": "方便食品",
+      "subcategory": "油炸面、非油炸面"
+    },
+    "速食面": {
+      "big_category": "方便食品",
+      "subcategory": "主食类方便食品"
+    },
+    "非油炸面": {
+      "big_category": "粮食加工品",
+      "subcategory": "油炸面、非油炸面"
+    },
+    "调理肉制品": {
+      "big_category": "肉制品",
+      "subcategory": "调理肉制品(非速冻)"
+    },
+    "炸鸡腿": {
+      "big_category": "肉制品",
+      "subcategory": "调理肉制品(非速冻)"
+    },
+    "腌腊肉": {
+      "big_category": "肉制品",
+      "subcategory": "腌腊肉制品"
+    },
+    "腊肉": {
+      "big_category": "肉制品",
+      "subcategory": "腌腊肉制品"
+    },
+    "咸肉": {
+      "big_category": "肉制品",
+      "subcategory": "腌腊肉制品"
+    },
+    "风干肉": {
+      "big_category": "肉制品",
+      "subcategory": "腌腊肉制品"
+    },
+    "中式火腿": {
+      "big_category": "肉制品",
+      "subcategory": "腌腊肉制品"
+    },
+    "咸鸭": {
+      "big_category": "肉制品",
+      "subcategory": "腌腊肉制品"
+    },
+    "板鸭": {
+      "big_category": "肉制品",
+      "subcategory": "腌腊肉制品"
+    },
+    "腊肠": {
+      "big_category": "肉制品",
+      "subcategory": "腌腊肉制品"
+    },
+    "发酵香肠": {
+      "big_category": "肉制品",
+      "subcategory": "发酵肉制品"
+    },
+    "萨拉米": {
+      "big_category": "肉制品",
+      "subcategory": "发酵肉制品"
+    },
+    "酱卤肉": {
+      "big_category": "肉制品",
+      "subcategory": "酱卤肉制品"
+    },
+    "卤肉": {
+      "big_category": "肉制品",
+      "subcategory": "酱卤肉制品"
+    },
+    "酱牛肉": {
+      "big_category": "肉制品",
+      "subcategory": "酱卤肉制品"
+    },
+    "卤鸡": {
+      "big_category": "肉制品",
+      "subcategory": "酱卤肉制品"
+    },
+    "卤鸭": {
+      "big_category": "肉制品",
+      "subcategory": "酱卤肉制品"
+    },
+    "酱鸡": {
+      "big_category": "肉制品",
+      "subcategory": "酱卤肉制品"
+    },
+    "白切鸡": {
+      "big_category": "肉制品",
+      "subcategory": "酱卤肉制品"
+    },
+    "盐水鸭": {
+      "big_category": "肉制品",
+      "subcategory": "酱卤肉制品"
+    },
+    "油炸肉": {
+      "big_category": "肉制品",
+      "subcategory": "油炸肉制品"
+    },
+    "炸鸡": {
+      "big_category": "肉制品",
+      "subcategory": "油炸肉制品"
+    },
+    "炸鸡翅": {
+      "big_category": "肉制品",
+      "subcategory": "油炸肉制品"
+    },
+    "炸鸡块": {
+      "big_category": "肉制品",
+      "subcategory": "油炸肉制品"
+    },
+    "油炸鸡腿": {
+      "big_category": "肉制品",
+      "subcategory": "油炸肉制品"
+    },
+    "炸肉": {
+      "big_category": "肉制品",
+      "subcategory": "油炸肉制品"
+    },
+    "熟肉干": {
+      "big_category": "肉制品",
+      "subcategory": "熟肉干制品"
+    },
+    "牛肉干": {
+      "big_category": "肉制品",
+      "subcategory": "熟肉干制品"
+    },
+    "猪肉干": {
+      "big_category": "肉制品",
+      "subcategory": "熟肉干制品"
+    },
+    "肉脯": {
+      "big_category": "肉制品",
+      "subcategory": "熟肉干制品"
+    },
+    "肉松": {
+      "big_category": "肉制品",
+      "subcategory": "熟肉干制品"
+    },
+    "鸡肉松": {
+      "big_category": "肉制品",
+      "subcategory": "熟肉干制品"
+    },
+    "猪肉松": {
+      "big_category": "肉制品",
+      "subcategory": "熟肉干制品"
+    },
+    "熏烧烤肉": {
+      "big_category": "肉制品",
+      "subcategory": "熏烧烤肉制品"
+    },
+    "烤鸭": {
+      "big_category": "肉制品",
+      "subcategory": "熏烧烤肉制品"
+    },
+    "烤鸡": {
+      "big_category": "肉制品",
+      "subcategory": "熏烧烤肉制品"
+    },
+    "烤肠": {
+      "big_category": "肉制品",
+      "subcategory": "熏烧烤肉制品"
+    },
+    "熏肉": {
+      "big_category": "肉制品",
+      "subcategory": "熏烧烤肉制品"
+    },
+    "烤肉": {
+      "big_category": "肉制品",
+      "subcategory": "熏烧烤肉制品"
+    },
+    "叉烧": {
+      "big_category": "肉制品",
+      "subcategory": "熏烧烤肉制品"
+    },
+    "熏煮香肠火腿": {
+      "big_category": "肉制品",
+      "subcategory": "熏煮香肠火腿制品"
+    },
+    "火腿": {
+      "big_category": "肉制品",
+      "subcategory": "熏煮香肠火腿制品"
+    },
+    "西式火腿": {
+      "big_category": "肉制品",
+      "subcategory": "熏煮香肠火腿制品"
+    },
+    "熏煮香肠": {
+      "big_category": "肉制品",
+      "subcategory": "熏煮香肠火腿制品"
+    },
+    "烤香肠": {
+      "big_category": "肉制品",
+      "subcategory": "熏煮香肠火腿制品"
+    },
+    "油炸方便面": {
+      "big_category": "方便食品",
+      "subcategory": "油炸面、非油炸面"
+    },
+    "非油炸方便面": {
+      "big_category": "方便食品",
+      "subcategory": "油炸面、非油炸面"
+    },
+    "方便米粉": {
+      "big_category": "方便食品",
+      "subcategory": "方便米粉(米线)"
+    },
+    "方便米线": {
+      "big_category": "方便食品",
+      "subcategory": "方便米粉(米线)"
+    },
+    "粉丝": {
+      "big_category": "方便食品",
+      "subcategory": "方便粉丝"
+    },
+    "辣条": {
+      "big_category": "方便食品",
+      "subcategory": "调味面制品"
+    },
+    "面筋": {
+      "big_category": "方便食品",
+      "subcategory": "调味面制品"
+    },
+    "冲调类": {
+      "big_category": "方便食品",
+      "subcategory": "冲调类方便食品"
+    },
+    "麦片": {
+      "big_category": "方便食品",
+      "subcategory": "冲调类方便食品"
+    },
+    "芝麻糊": {
+      "big_category": "方便食品",
+      "subcategory": "冲调类方便食品"
+    },
+    "奶茶粉": {
+      "big_category": "方便食品",
+      "subcategory": "冲调类方便食品"
+    },
+    "咖啡": {
+      "big_category": "方便食品",
+      "subcategory": "冲调类方便食品"
+    },
+    "豆浆粉": {
+      "big_category": "方便食品",
+      "subcategory": "冲调类方便食品"
+    },
+    "速食粥": {
+      "big_category": "方便食品",
+      "subcategory": "冲调类方便食品"
+    },
+    "主食类方便食品": {
+      "big_category": "方便食品",
+      "subcategory": "主食类方便食品"
+    },
+    "自热米饭": {
+      "big_category": "方便食品",
+      "subcategory": "主食类方便食品"
+    },
+    "自热火锅": {
+      "big_category": "方便食品",
+      "subcategory": "主食类方便食品"
+    },
+    "速食米饭": {
+      "big_category": "方便食品",
+      "subcategory": "主食类方便食品"
+    },
+    "肉类罐头": {
+      "big_category": "罐头",
+      "subcategory": "畜禽肉类罐头"
+    },
+    "猪肉罐头": {
+      "big_category": "罐头",
+      "subcategory": "畜禽肉类罐头"
+    },
+    "鸡肉罐头": {
+      "big_category": "罐头",
+      "subcategory": "畜禽肉类罐头"
+    },
+    "午餐肉": {
+      "big_category": "罐头",
+      "subcategory": "畜禽肉类罐头"
+    },
+    "红烧肉罐头": {
+      "big_category": "罐头",
+      "subcategory": "畜禽肉类罐头"
+    },
+    "水产罐头": {
+      "big_category": "罐头",
+      "subcategory": "水产动物类罐头"
+    },
+    "金枪鱼罐头": {
+      "big_category": "罐头",
+      "subcategory": "水产动物类罐头"
+    },
+    "豆豉鲮鱼罐头": {
+      "big_category": "罐头",
+      "subcategory": "水产动物类罐头"
+    },
+    "凤尾鱼罐头": {
+      "big_category": "罐头",
+      "subcategory": "水产动物类罐头"
+    },
+    "鲮鱼罐头": {
+      "big_category": "罐头",
+      "subcategory": "水产动物类罐头"
+    },
+    "菠萝罐头": {
+      "big_category": "罐头",
+      "subcategory": "水果类罐头"
+    },
+    "梨罐头": {
+      "big_category": "罐头",
+      "subcategory": "水果类罐头"
+    },
+    "苹果罐头": {
+      "big_category": "罐头",
+      "subcategory": "水果类罐头"
+    },
+    "番茄酱罐头": {
+      "big_category": "罐头",
+      "subcategory": "蔬菜类罐头"
+    },
+    "玉米笋罐头": {
+      "big_category": "罐头",
+      "subcategory": "蔬菜类罐头"
+    },
+    "蘑菇罐头": {
+      "big_category": "罐头",
+      "subcategory": "食用菌罐头"
+    },
+    "金针菇罐头": {
+      "big_category": "罐头",
+      "subcategory": "食用菌罐头"
+    },
+    "笋罐头": {
+      "big_category": "罐头",
+      "subcategory": "其他罐头"
+    },
+    "栗子罐头": {
+      "big_category": "罐头",
+      "subcategory": "其他罐头"
+    },
+    "八宝粥罐头": {
+      "big_category": "罐头",
+      "subcategory": "其他罐头"
+    },
+    "浓香型白酒": {
+      "big_category": "酒类",
+      "subcategory": "白酒"
+    },
+    "清香型白酒": {
+      "big_category": "酒类",
+      "subcategory": "白酒"
+    },
+    "酱香型白酒": {
+      "big_category": "酒类",
+      "subcategory": "白酒"
+    },
+    "米酒": {
+      "big_category": "酒类",
+      "subcategory": "黄酒"
+    },
+    "绍兴黄酒": {
+      "big_category": "酒类",
+      "subcategory": "黄酒"
+    },
+    "生啤酒": {
+      "big_category": "酒类",
+      "subcategory": "啤酒"
+    },
+    "熟啤酒": {
+      "big_category": "酒类",
+      "subcategory": "啤酒"
+    },
+    "纯生啤酒": {
+      "big_category": "酒类",
+      "subcategory": "啤酒"
+    },
+    "红酒": {
+      "big_category": "酒类",
+      "subcategory": "葡萄酒"
+    },
+    "干红": {
+      "big_category": "酒类",
+      "subcategory": "葡萄酒"
+    },
+    "干白": {
+      "big_category": "酒类",
+      "subcategory": "葡萄酒"
+    },
+    "果酒": {
+      "big_category": "酒类",
+      "subcategory": "果酒(发酵型)"
+    },
+    "梅子酒": {
+      "big_category": "酒类",
+      "subcategory": "果酒(发酵型)"
+    },
+    "蓝莓酒": {
+      "big_category": "酒类",
+      "subcategory": "果酒(发酵型)"
+    },
+    "桃花酒": {
+      "big_category": "酒类",
+      "subcategory": "果酒(发酵型)"
+    },
+    "杨梅酒": {
+      "big_category": "酒类",
+      "subcategory": "果酒(发酵型)"
+    },
+    "配制酒(蒸馏酒基)": {
+      "big_category": "酒类",
+      "subcategory": "以蒸馏酒及食用酒精为酒基的配制酒"
+    },
+    "人参酒": {
+      "big_category": "酒类",
+      "subcategory": "以蒸馏酒及食用酒精为酒基的配制酒"
+    },
+    "鹿茸酒": {
+      "big_category": "酒类",
+      "subcategory": "以蒸馏酒及食用酒精为酒基的配制酒"
+    },
+    "三鞭酒": {
+      "big_category": "酒类",
+      "subcategory": "以蒸馏酒及食用酒精为酒基的配制酒"
+    },
+    "配制酒(发酵酒基)": {
+      "big_category": "酒类",
+      "subcategory": "以发酵酒为酒基的配制酒"
+    },
+    "青梅酒": {
+      "big_category": "酒类",
+      "subcategory": "以发酵酒为酒基的配制酒"
+    },
+    "山楂酒": {
+      "big_category": "酒类",
+      "subcategory": "以发酵酒为酒基的配制酒"
+    },
+    "白兰地": {
+      "big_category": "酒类",
+      "subcategory": "其他蒸馏酒"
+    },
+    "威士忌": {
+      "big_category": "酒类",
+      "subcategory": "其他蒸馏酒"
+    },
+    "伏特加": {
+      "big_category": "酒类",
+      "subcategory": "其他蒸馏酒"
+    },
+    "朗姆酒": {
+      "big_category": "酒类",
+      "subcategory": "其他蒸馏酒"
+    },
+    "金酒": {
+      "big_category": "酒类",
+      "subcategory": "其他蒸馏酒"
+    },
+    "特基拉": {
+      "big_category": "酒类",
+      "subcategory": "其他蒸馏酒"
+    },
+    "清酒": {
+      "big_category": "酒类",
+      "subcategory": "其他发酵酒"
+    },
+    "奶酒": {
+      "big_category": "酒类",
+      "subcategory": "其他发酵酒"
+    },
+    "圆碗": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "碗（复用餐饮具）": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "碗": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "复用餐饮具（盘）": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "餐盘（餐馆自行消毒）": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "盘（复用餐饮具）": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "盘": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "餐盘": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "自消毒餐碗": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "小碗": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "自消毒餐盘": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "自消毒碗": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "餐碗（复用餐饮具）": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "餐碗": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "圆盘（直径20cm）": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "自消毒盘子": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "料碗（复用餐饮具）": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "大圆盘": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "小碗（复用餐饮具）": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "杯子（餐馆自行消毒）": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "凉菜盘（复用餐饮具）": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "自消毒杯子": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "自消毒餐碟": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "自消毒米饭碗": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "自消毒餐具（圆盘）": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "圆盘（直径22cm）": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "餐碗（自消毒）": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "自消毒酒杯": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "复用餐饮具（餐馆自行消毒）（餐盘）": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "方盘（11.5×17.5cm）": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "圆碗（直径17.5cm）": {
+      "big_category": "餐饮食品",
+      "subcategory": "复用餐饮具（餐馆自行消毒）"
+    },
+    "长豆角": {
+      "big_category": "蔬菜",
+      "subcategory": "豇豆"
+    },
+    "普通白菜(小油菜)": {
+      "big_category": "蔬菜",
+      "subcategory": "普通白菜（小白菜、小油菜、青菜）"
+    },
+    "线椒": {
+      "big_category": "蔬菜",
+      "subcategory": "辣椒"
+    },
+    "山芹": {
+      "big_category": "蔬菜",
+      "subcategory": "芹菜"
+    },
+    "木瓜": {
+      "big_category": "蔬菜",
+      "subcategory": "其他类蔬菜"
+    },
+    "牛奶木瓜": {
+      "big_category": "蔬菜",
+      "subcategory": "其他类蔬菜"
+    },
+    "小葱": {
+      "big_category": "蔬菜",
+      "subcategory": "葱"
+    },
+    "生姜": {
+      "big_category": "蔬菜",
+      "subcategory": "姜"
+    },
+    "鲜姜": {
+      "big_category": "蔬菜",
+      "subcategory": "姜"
+    },
+    "干姜": {
+      "big_category": "调味品",
+      "subcategory": "其他香辛料调味品"
+    },
+    "尖椒（辣椒）": {
+      "big_category": "蔬菜",
+      "subcategory": "辣椒"
+    },
+    "小米辣椒": {
+      "big_category": "蔬菜",
+      "subcategory": "辣椒"
+    },
+    "小米辣": {
+      "big_category": "蔬菜",
+      "subcategory": "辣椒"
+    },
+    "青小米辣": {
+      "big_category": "蔬菜",
+      "subcategory": "辣椒"
+    },
+    "豇豆（长豆角）": {
+      "big_category": "蔬菜",
+      "subcategory": "豇豆"
+    },
+    "白不老豆角（芸豆）": {
+      "big_category": "蔬菜",
+      "subcategory": "菜豆"
+    },
+    "扁豆角": {
+      "big_category": "蔬菜",
+      "subcategory": "菜豆"
+    },
+    "大扁豆角": {
+      "big_category": "蔬菜",
+      "subcategory": "菜豆"
+    },
+    "老来少芸豆": {
+      "big_category": "蔬菜",
+      "subcategory": "菜豆"
+    },
+    "扁芸豆": {
+      "big_category": "蔬菜",
+      "subcategory": "菜豆"
+    },
+    "架豆王（菜豆）": {
+      "big_category": "蔬菜",
+      "subcategory": "菜豆"
+    },
+    "上海青（普通白菜）": {
+      "big_category": "蔬菜",
+      "subcategory": "普通白菜（小白菜、小油菜、青菜）"
+    },
+    "小白菜": {
+      "big_category": "蔬菜",
+      "subcategory": "普通白菜（小白菜、小油菜、青菜）"
+    },
+    "水果甜椒": {
+      "big_category": "蔬菜",
+      "subcategory": "甜椒"
+    },
+    "山芹（芹菜）": {
+      "big_category": "蔬菜",
+      "subcategory": "芹菜"
+    },
+    "菠菜粉": {
+      "big_category": "蔬菜",
+      "subcategory": "菠菜"
+    },
+    "小台农芒果": {
+      "big_category": "水果类",
+      "subcategory": "芒果"
+    },
+    "大青芒": {
+      "big_category": "水果类",
+      "subcategory": "芒果"
+    },
+    "鲜龙眼": {
+      "big_category": "水果类",
+      "subcategory": "龙眼"
+    },
+    "桂圆（龙眼）": {
+      "big_category": "水果类",
+      "subcategory": "龙眼"
+    },
+    "沃柑": {
+      "big_category": "水果类",
+      "subcategory": "柑橘"
+    },
+    "青梨": {
+      "big_category": "水果类",
+      "subcategory": "梨"
+    },
+    "雪梨": {
+      "big_category": "水果类",
+      "subcategory": "梨"
+    },
+    "贡桔": {
+      "big_category": "水果类",
+      "subcategory": "柑橘"
+    },
+    "砂糖橘": {
+      "big_category": "水果类",
+      "subcategory": "柑橘"
+    },
+    "爱媛果冻橙": {
+      "big_category": "水果类",
+      "subcategory": "柑橘"
+    },
+    "大虾（冰鲜海水虾）": {
+      "big_category": "水产品",
+      "subcategory": "海水虾"
+    },
+    "大白虾（海水虾）": {
+      "big_category": "水产品",
+      "subcategory": "海水虾"
+    },
+    "冻海水虾": {
+      "big_category": "水产品",
+      "subcategory": "海水虾"
+    },
+    "罗氏虾": {
+      "big_category": "水产品",
+      "subcategory": "淡水虾"
+    },
+    "清江鱼（淡水鱼）": {
+      "big_category": "水产品",
+      "subcategory": "淡水鱼"
+    },
+    "鲤鱼（淡水鱼）": {
+      "big_category": "水产品",
+      "subcategory": "淡水鱼"
+    },
+    "海鲈鱼（海水鱼）": {
+      "big_category": "水产品",
+      "subcategory": "海水鱼"
+    },
+    "黑鱼（淡水鱼）": {
+      "big_category": "水产品",
+      "subcategory": "淡水鱼"
+    },
+    "乌鳢": {
+      "big_category": "水产品",
+      "subcategory": "淡水鱼"
+    },
+    "瘦身草鱼": {
+      "big_category": "水产品",
+      "subcategory": "淡水鱼"
+    },
+    "鲅鱼": {
+      "big_category": "水产品",
+      "subcategory": "海水鱼"
+    },
+    "小黄花鱼": {
+      "big_category": "水产品",
+      "subcategory": "海水鱼"
+    },
+    "螺丝椒（辣椒）": {
+      "big_category": "蔬菜",
+      "subcategory": "辣椒"
+    },
+    "即食海带丝（水产制品）": {
+      "big_category": "水产制品",
+      "subcategory": "干制水产品"
+    },
+    "虾米（预制动物性水产干制品）": {
+      "big_category": "水产制品",
+      "subcategory": "干制水产品"
+    },
+    "银鱼干": {
+      "big_category": "水产制品",
+      "subcategory": "干制水产品"
+    },
+    "海带王（即食藻类制品）": {
+      "big_category": "水产制品",
+      "subcategory": "干制水产品"
+    },
+    "海蜇丝（即食海蜇）": {
+      "big_category": "水产制品",
+      "subcategory": "其他水产制品"
+    },
+    "野生海蜇头": {
+      "big_category": "水产制品",
+      "subcategory": "其他水产制品"
+    },
+    "海蜇头（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "其他餐饮食品"
+    },
+    "自制凉拌海蜇丝": {
+      "big_category": "餐饮食品",
+      "subcategory": "其他餐饮食品"
+    },
+    "麻辣海带（其他水产制品）": {
+      "big_category": "水产制品",
+      "subcategory": "其他水产制品"
+    },
+    "碳烤鱿鱼丝（水产制品）": {
+      "big_category": "水产制品",
+      "subcategory": "干制水产品"
+    },
+    "烤虾干": {
+      "big_category": "水产制品",
+      "subcategory": "干制水产品"
+    },
+    "香辣海带菜（即食水产品）": {
+      "big_category": "水产制品",
+      "subcategory": "其他水产制品"
+    },
+    "陈桥海带丝": {
+      "big_category": "水产制品",
+      "subcategory": "其他水产制品"
+    },
+    "鲅鱼丸": {
+      "big_category": "水产制品",
+      "subcategory": "其他水产制品"
+    },
+    "拌饭海苔（原味）": {
+      "big_category": "水产制品",
+      "subcategory": "其他水产制品"
+    },
+    "碧螺春二号": {
+      "big_category": "茶叶及相关制品",
+      "subcategory": "茶叶"
+    },
+    "鲜鸡蛋": {
+      "big_category": "鲜蛋",
+      "subcategory": "鸡蛋"
+    },
+    "涮肉卷": {
+      "big_category": "畜禽肉及副产品",
+      "subcategory": "其他畜肉"
+    },
+    "去脂酱香猪头肉": {
+      "big_category": "肉制品",
+      "subcategory": "酱卤肉制品"
+    },
+    "淀粉肉灌肠": {
+      "big_category": "肉制品",
+      "subcategory": "熏煮香肠火腿制品"
+    },
+    "烧鸽（酱卤肉制品）": {
+      "big_category": "肉制品",
+      "subcategory": "酱卤肉制品"
+    },
+    "肉脯（原味）": {
+      "big_category": "肉制品",
+      "subcategory": "其他肉制品"
+    },
+    "老味卤肉皮": {
+      "big_category": "肉制品",
+      "subcategory": "酱卤肉制品"
+    },
+    "去皮鸡腿": {
+      "big_category": "畜禽肉及副产品",
+      "subcategory": "鸡肉"
+    },
+    "自制驴肉": {
+      "big_category": "肉制品",
+      "subcategory": "酱卤肉制品"
+    },
+    "带皮驴肉（酱卤肉制品）": {
+      "big_category": "肉制品",
+      "subcategory": "酱卤肉制品"
+    },
+    "拌驴肉（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "其他餐饮食品"
+    },
+    "熟驴肉（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "其他餐饮食品"
+    },
+    "五香猪耳（酱卤肉制品）": {
+      "big_category": "肉制品",
+      "subcategory": "酱卤肉制品"
+    },
+    "牛肉粒（牛肉糜干）（香辣味）": {
+      "big_category": "肉制品",
+      "subcategory": "其他肉制品"
+    },
+    "牛肉粒（牛肉糜干）（五香味）": {
+      "big_category": "肉制品",
+      "subcategory": "其他肉制品"
+    },
+    "卤牛肉": {
+      "big_category": "肉制品",
+      "subcategory": "酱卤肉制品"
+    },
+    "腌腊猪头肉": {
+      "big_category": "肉制品",
+      "subcategory": "腌腊肉制品"
+    },
+    "卤鹅头（辐照食品）": {
+      "big_category": "肉制品",
+      "subcategory": "酱卤肉制品"
+    },
+    "盐汽水饮料（无糖型）": {
+      "big_category": "饮料",
+      "subcategory": "碳酸饮料"
+    },
+    "饮用天然泉水": {
+      "big_category": "饮料",
+      "subcategory": "饮用天然矿泉水"
+    },
+    "天然山泉水": {
+      "big_category": "饮料",
+      "subcategory": "饮用天然矿泉水"
+    },
+    "平利山泉水": {
+      "big_category": "饮料",
+      "subcategory": "饮用天然矿泉水"
+    },
+    "天然深层山泉水": {
+      "big_category": "饮料",
+      "subcategory": "饮用天然矿泉水"
+    },
+    "雨露饮用纯净水": {
+      "big_category": "饮料",
+      "subcategory": "饮用纯净水"
+    },
+    "岚泉山水（饮用纯净水）": {
+      "big_category": "饮料",
+      "subcategory": "饮用纯净水"
+    },
+    "农井坊纯净水": {
+      "big_category": "饮料",
+      "subcategory": "饮用纯净水"
+    },
+    "亿年峯天然矿泉水": {
+      "big_category": "饮料",
+      "subcategory": "饮用天然矿泉水"
+    },
+    "桶装饮用水": {
+      "big_category": "饮料",
+      "subcategory": "饮用纯净水"
+    },
+    "饮用天然水": {
+      "big_category": "饮料",
+      "subcategory": "饮用纯净水"
+    },
+    "大窖珍荔荔枝味汽水": {
+      "big_category": "饮料",
+      "subcategory": "碳酸饮料"
+    },
+    "橙味汽水": {
+      "big_category": "饮料",
+      "subcategory": "碳酸饮料"
+    },
+    "百多利老冰棍汽水": {
+      "big_category": "饮料",
+      "subcategory": "碳酸饮料"
+    },
+    "老冰棍汽水": {
+      "big_category": "饮料",
+      "subcategory": "碳酸饮料"
+    },
+    "老汽水（蜜桃味）": {
+      "big_category": "饮料",
+      "subcategory": "碳酸饮料"
+    },
+    "蛋白固体饮料": {
+      "big_category": "饮料",
+      "subcategory": "其他饮料"
+    },
+    "草莓咖啡复合发酵果酒": {
+      "big_category": "酒类",
+      "subcategory": "果酒"
+    },
+    "小磨香油": {
+      "big_category": "食用油、油脂及其制品",
+      "subcategory": "芝麻油"
+    },
+    "小磨芝麻香油": {
+      "big_category": "食用油、油脂及其制品",
+      "subcategory": "芝麻油"
+    },
+    "一明香油": {
+      "big_category": "食用油、油脂及其制品",
+      "subcategory": "芝麻油"
+    },
+    "精品海蜇（减盐盐渍海蜇）": {
+      "big_category": "水产制品",
+      "subcategory": "其他水产制品"
+    },
+    "盐渍海蜇": {
+      "big_category": "水产制品",
+      "subcategory": "其他水产制品"
+    },
+    "水饺醋": {
+      "big_category": "调味品",
+      "subcategory": "食醋"
+    },
+    "醋香蜇头": {
+      "big_category": "水产制品",
+      "subcategory": "其他水产制品"
+    },
+    "春阳母油（酿造酱油）": {
+      "big_category": "调味品",
+      "subcategory": "酱油"
+    },
+    "大红袍花椒": {
+      "big_category": "调味品",
+      "subcategory": "辣椒、花椒、辣椒粉、花椒粉"
+    },
+    "酉州酱油（低盐固态）": {
+      "big_category": "调味品",
+      "subcategory": "酱油"
+    },
+    "加碘粉碎洗涤盐": {
+      "big_category": "调味品",
+      "subcategory": "普通食用盐"
+    },
+    "特级生抽": {
+      "big_category": "调味品",
+      "subcategory": "酱油"
+    },
+    "云雾绿茶": {
+      "big_category": "茶叶及相关制品",
+      "subcategory": "茶叶"
+    },
+    "绿茶": {
+      "big_category": "茶叶及相关制品",
+      "subcategory": "茶叶"
+    },
+    "毛尖茶啤中式精酿啤酒": {
+      "big_category": "酒类",
+      "subcategory": "啤酒"
+    },
+    "山茶油": {
+      "big_category": "食用油、油脂及其制品",
+      "subcategory": "食用植物油"
+    },
+    "桑叶挂面（花色挂面）": {
+      "big_category": "粮食加工品",
+      "subcategory": "挂面"
+    },
+    "碱水面（凉面）": {
+      "big_category": "粮食加工品",
+      "subcategory": "挂面"
+    },
+    "碱面（挂面）": {
+      "big_category": "粮食加工品",
+      "subcategory": "挂面"
+    },
+    "碱面": {
+      "big_category": "粮食加工品",
+      "subcategory": "挂面"
+    },
+    "武隆苕粉": {
+      "big_category": "淀粉及淀粉制品",
+      "subcategory": "粉丝粉条"
+    },
+    "红薯淀粉": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物粉类制成品"
+    },
+    "多彩蝴蝶面（粮食加工品）": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物粉类制成品"
+    },
+    "营养果蔬面": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物粉类制成品"
+    },
+    "肌酸粉": {
+      "big_category": "特殊膳食食品",
+      "subcategory": "营养补充品"
+    },
+    "面筋圈（孜然味）": {
+      "big_category": "豆制品",
+      "subcategory": "其他豆制品"
+    },
+    "豆面挂面": {
+      "big_category": "粮食加工品",
+      "subcategory": "挂面"
+    },
+    "荞麦牛筋面": {
+      "big_category": "粮食加工品",
+      "subcategory": "其他谷物粉类制成品"
+    },
+    "荞麦挂面": {
+      "big_category": "粮食加工品",
+      "subcategory": "挂面"
+    },
+    "鲜面条（细）（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "其他餐饮食品"
+    },
+    "江米条（油炸类）": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "冷面（生湿面制品）": {
+      "big_category": "粮食加工品",
+      "subcategory": "生湿面制品"
+    },
+    "农家苕粉（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "粉丝粉条（自制）"
+    },
+    "艳萍挂面": {
+      "big_category": "粮食加工品",
+      "subcategory": "挂面"
+    },
+    "白面馒头（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "馒头花卷（自制）"
+    },
+    "饭粮（白酒）": {
+      "big_category": "酒类",
+      "subcategory": "白酒"
+    },
+    "中老年加钙黑芝麻糊": {
+      "big_category": "方便食品",
+      "subcategory": "其他方便食品"
+    },
+    "钙奶饼干": {
+      "big_category": "饼干",
+      "subcategory": "饼干"
+    },
+    "武大煎饼（香酥花生味）": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "鸡蛋糕（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "其他餐饮食品"
+    },
+    "雪丽球（蜜饯（果糕类））": {
+      "big_category": "水果制品",
+      "subcategory": "蜜饯"
+    },
+    "轻乳奶酪蛋糕": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "香酥青豆": {
+      "big_category": "炒货食品及坚果制品",
+      "subcategory": "炒货食品及坚果制品"
+    },
+    "酥点焦饼（孜然味）": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "黑芝麻酥（烘烤类糕点）": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "原味酥饼（糕点）": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "香酥煎饼（黑芝麻口味）": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "老蛋糕": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "香酥煎饼（花生口味）": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "枣糕（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "其他餐饮食品"
+    },
+    "虎皮三明治蛋糕": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "鸡内金焦饼（糕点）": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "小米煎饼": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "蔓越莓贝果面包": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "黑芝麻桃酥": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "酥鱼": {
+      "big_category": "水产制品",
+      "subcategory": "其他水产制品"
+    },
+    "可可奥巧（奥巧慕斯味装饰饼干）": {
+      "big_category": "饼干",
+      "subcategory": "饼干"
+    },
+    "五仁月饼": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "大黄米宫廷桃酥": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "煎饼（玉米味）": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "焦饼（原味）": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "蓝莓味吐司面包": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "红豆奶皮烧饼": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "核桃糕": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "皇家曲奇（酥性饼干）": {
+      "big_category": "饼干",
+      "subcategory": "饼干"
+    },
+    "白糕": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "元宝蛋糕": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "葡式蛋挞皮（速冻食品）": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻面米食品"
+    },
+    "猪肉大葱水饺（速冻食品）": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻面米食品"
+    },
+    "马步鱼片（速冻食品）": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻动物性水产制品"
+    },
+    "豆挺好豌豆糕（速冻食品）": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻面米食品"
+    },
+    "小酥肉（速冻调理肉制品）": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻肉制品"
+    },
+    "芒果布丁优酪果冻（芒果味）": {
+      "big_category": "糖果制品",
+      "subcategory": "果冻"
+    },
+    "黑白米八宝饭（速冻食品）": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻面米食品"
+    },
+    "速冻调理鸡翅中": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻肉制品"
+    },
+    "五星鸡块（速冻生制品）": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻肉制品"
+    },
+    "爆皮西瓜（果味型果冻）": {
+      "big_category": "糖果制品",
+      "subcategory": "果冻"
+    },
+    "爆皮葡萄（青葡萄味）（果味型果冻）": {
+      "big_category": "糖果制品",
+      "subcategory": "果冻"
+    },
+    "爆皮果冻（芒果口味果冻）": {
+      "big_category": "糖果制品",
+      "subcategory": "果冻"
+    },
+    "黑椒味纯肉肠（速冻生制）": {
+      "big_category": "速冻食品",
+      "subcategory": "速冻肉制品"
+    },
+    "油条（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "油饼油条（自制）"
+    },
+    "馒头（自制）": {
+      "big_category": "餐饮食品",
+      "subcategory": "馒头花卷（自制）"
+    },
+    "山楂片（干片）": {
+      "big_category": "水果制品",
+      "subcategory": "蜜饯"
+    },
+    "山楂片": {
+      "big_category": "水果制品",
+      "subcategory": "蜜饯"
+    },
+    "高粱酒": {
+      "big_category": "酒类",
+      "subcategory": "白酒"
+    },
+    "巴氏黄酒": {
+      "big_category": "酒类",
+      "subcategory": "黄酒"
+    },
+    "竹叶酒": {
+      "big_category": "酒类",
+      "subcategory": "以蒸馏酒及食用酒精为酒基的配制酒"
+    },
+    "健能劲酒（配制酒）": {
+      "big_category": "酒类",
+      "subcategory": "以蒸馏酒及食用酒精为酒基的配制酒"
+    },
+    "雪糖花生（烘炒类）": {
+      "big_category": "炒货食品及坚果制品",
+      "subcategory": "炒货食品及坚果制品"
+    },
+    "糖美美彩糖针（坚实型压片糖果）": {
+      "big_category": "糖果制品",
+      "subcategory": "糖果"
+    },
+    "薄荷糖": {
+      "big_category": "糖果制品",
+      "subcategory": "糖果"
+    },
+    "合川桃片": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "100%石榴汁": {
+      "big_category": "饮料",
+      "subcategory": "果蔬汁类及其饮料"
+    },
+    "贾寨豆干五香味（非发酵豆制品）": {
+      "big_category": "豆制品",
+      "subcategory": "非发酵性豆制品"
+    },
+    "卤味千层丝（片）（大豆蛋白制品）": {
+      "big_category": "豆制品",
+      "subcategory": "其他豆制品"
+    },
+    "沙土花生（五香味）": {
+      "big_category": "炒货食品及坚果制品",
+      "subcategory": "炒货食品及坚果制品"
+    },
+    "熟制葵花籽": {
+      "big_category": "炒货食品及坚果制品",
+      "subcategory": "炒货食品及坚果制品"
+    },
+    "薄豆皮": {
+      "big_category": "豆制品",
+      "subcategory": "非发酵性豆制品"
+    },
+    "豆腐皮（W）": {
+      "big_category": "豆制品",
+      "subcategory": "非发酵性豆制品"
+    },
+    "土豆": {
+      "big_category": "蔬菜",
+      "subcategory": "马铃薯"
+    },
+    "去皮芋头": {
+      "big_category": "蔬菜",
+      "subcategory": "其他类蔬菜"
+    },
+    "白芸豆": {
+      "big_category": "豆类",
+      "subcategory": "其他豆类"
+    },
+    "手工蛋卷": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "自制油炸花生米": {
+      "big_category": "餐饮食品",
+      "subcategory": "其他餐饮食品"
+    },
+    "奶香花生米（烘炒类）": {
+      "big_category": "炒货食品及坚果制品",
+      "subcategory": "炒货食品及坚果制品"
+    },
+    "水煮花生米": {
+      "big_category": "餐饮食品",
+      "subcategory": "其他餐饮食品"
+    },
+    "花生米": {
+      "big_category": "炒货食品及坚果制品",
+      "subcategory": "炒货食品及坚果制品"
+    },
+    "恒裕小磨压榨花生油": {
+      "big_category": "食用油、油脂及其制品",
+      "subcategory": "食用植物油"
+    },
+    "洋槐蜂蜜": {
+      "big_category": "蜂产品",
+      "subcategory": "蜂蜜"
+    },
+    "鸡蛋油条": {
+      "big_category": "餐饮食品",
+      "subcategory": "油饼油条（自制）"
+    },
+    "鸡蛋小棋子": {
+      "big_category": "糕点",
+      "subcategory": "糕点"
+    },
+    "有机干红葡萄酒": {
+      "big_category": "酒类",
+      "subcategory": "葡萄酒"
+    },
+    "蓝泽蓝莓原汁酿 羽冠 Y6（果酒）": {
+      "big_category": "酒类",
+      "subcategory": "果酒"
+    },
+    "纯手工红枣馒头": {
+      "big_category": "餐饮食品",
+      "subcategory": "馒头花卷（自制）"
+    },
+    "红糖枣馒头": {
+      "big_category": "餐饮食品",
+      "subcategory": "馒头花卷（自制）"
+    },
+    "红枣牛奶燕麦片（方便食品）": {
+      "big_category": "方便食品",
+      "subcategory": "其他方便食品"
+    },
+    "无核蜜枣（果脯类）": {
+      "big_category": "水果制品",
+      "subcategory": "蜜饯"
+    },
+    "芥菜疙瘩 芥菜丝": {
+      "big_category": "蔬菜制品",
+      "subcategory": "酱腌菜"
+    },
+    "学宝酱菜（酱香疙瘩皮）": {
+      "big_category": "蔬菜制品",
+      "subcategory": "酱腌菜"
+    },
+    "红油酸豆角（腌制菜）": {
+      "big_category": "蔬菜制品",
+      "subcategory": "酱腌菜"
+    },
+    "调味萝卜": {
+      "big_category": "蔬菜制品",
+      "subcategory": "酱腌菜"
+    },
+    "香脆酱辣椒": {
+      "big_category": "蔬菜制品",
+      "subcategory": "酱腌菜"
+    },
+    "黑木耳（蔬菜制品）": {
+      "big_category": "蔬菜制品",
+      "subcategory": "蔬菜干制品"
+    },
+    "狮子头酱菜": {
+      "big_category": "蔬菜制品",
+      "subcategory": "酱腌菜"
+    },
+    "去皮小菠萝": {
+      "big_category": "水果类",
+      "subcategory": "菠萝"
+    },
+    "新鲜超甜好吃龙眼500克【500克】1斤": {
+      "big_category": "水果类",
+      "subcategory": "龙眼"
+    },
+    "【新品上市】金果园新鲜龙眼 约500g": {
+      "big_category": "水果类",
+      "subcategory": "龙眼"
+    }
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "_source": "《食品安全监督抽检实施细则（2026年版）》目录",
+  "_note": "三十一餐饮食品 + 三十三~三十九食用农产品系列",
+  "categories": [
+    {
+      "no": "一",
+      "name": "粮食加工品",
+      "available": true
+    },
+    {
+      "no": "二",
+      "name": "食用油、油脂及其制品",
+      "available": true
+    },
+    {
+      "no": "三",
+      "name": "调味品",
+      "available": true
+    },
+    {
+      "no": "四",
+      "name": "肉制品",
+      "available": true
+    },
+    {
+      "no": "五",
+      "name": "乳制品",
+      "available": true
+    },
+    {
+      "no": "六",
+      "name": "饮料",
+      "available": true
+    },
+    {
+      "no": "七",
+      "name": "方便食品",
+      "available": true
+    },
+    {
+      "no": "八",
+      "name": "饼干",
+      "available": true
+    },
+    {
+      "no": "九",
+      "name": "罐头",
+      "available": true
+    },
+    {
+      "no": "十",
+      "name": "冷冻饮品",
+      "available": true
+    },
+    {
+      "no": "十一",
+      "name": "速冻食品",
+      "available": true
+    },
+    {
+      "no": "十二",
+      "name": "薯类和膨化食品",
+      "available": true
+    },
+    {
+      "no": "十三",
+      "name": "糖果制品",
+      "available": true
+    },
+    {
+      "no": "十四",
+      "name": "茶叶及相关制品",
+      "available": true
+    },
+    {
+      "no": "十五",
+      "name": "酒类",
+      "available": true
+    },
+    {
+      "no": "十六",
+      "name": "蔬菜制品",
+      "available": true
+    },
+    {
+      "no": "十七",
+      "name": "水果制品",
+      "available": true
+    },
+    {
+      "no": "十八",
+      "name": "炒货食品及坚果制品",
+      "available": true
+    },
+    {
+      "no": "十九",
+      "name": "蛋制品",
+      "available": true
+    },
+    {
+      "no": "二十",
+      "name": "可可及焙烤咖啡产品",
+      "available": true
+    },
+    {
+      "no": "二十一",
+      "name": "食糖",
+      "available": true
+    },
+    {
+      "no": "二十二",
+      "name": "水产制品",
+      "available": true
+    },
+    {
+      "no": "二十三",
+      "name": "淀粉及淀粉制品",
+      "available": true
+    },
+    {
+      "no": "二十四",
+      "name": "糕点",
+      "available": true
+    },
+    {
+      "no": "二十五",
+      "name": "豆制品",
+      "available": true
+    },
+    {
+      "no": "二十六",
+      "name": "蜂产品",
+      "available": true
+    },
+    {
+      "no": "二十七",
+      "name": "保健食品",
+      "available": true
+    },
+    {
+      "no": "二十八",
+      "name": "特殊膳食食品",
+      "available": true
+    },
+    {
+      "no": "二十九",
+      "name": "特殊医学用途配方食品",
+      "available": true
+    },
+    {
+      "no": "三十",
+      "name": "婴幼儿配方食品",
+      "available": true
+    },
+    {
+      "no": "三十一",
+      "name": "餐饮食品",
+      "available": true
+    },
+    {
+      "no": "三十二",
+      "name": "食品添加剂",
+      "available": false
+    },
+    {
+      "no": "三十三",
+      "name": "畜禽肉及副产品",
+      "available": true
+    },
+    {
+      "no": "三十四",
+      "name": "蔬菜",
+      "available": true
+    },
+    {
+      "no": "三十五",
+      "name": "水产品",
+      "available": true
+    },
+    {
+      "no": "三十六",
+      "name": "水果类",
+      "available": true
+    },
+    {
+      "no": "三十七",
+      "name": "鲜蛋",
+      "available": true
+    },
+    {
+      "no": "三十八",
+      "name": "豆类",
+      "available": true
+    },
+    {
+      "no": "三十九",
+      "name": "生干坚果与籽类食品",
+      "available": true
+    }
+  ]
+}

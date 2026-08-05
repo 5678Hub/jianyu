@@ -1,0 +1,1537 @@
+{
+  "high_confidence": [
+    {
+      "raw": "尖椒（辣椒）",
+      "via": "辣椒",
+      "category": "食用农产品-蔬菜",
+      "method": "hint"
+    },
+    {
+      "raw": "山芹（芹菜）",
+      "via": "芹菜",
+      "category": "食用农产品-蔬菜",
+      "method": "hint"
+    },
+    {
+      "raw": "架豆王（菜豆）",
+      "via": "菜豆",
+      "category": "食用农产品-蔬菜",
+      "method": "hint"
+    },
+    {
+      "raw": "白芸豆（菜豆）",
+      "via": "菜豆",
+      "category": "食用农产品-蔬菜",
+      "method": "hint"
+    },
+    {
+      "raw": "蓝泽蓝莓原汁酿 羽冠 Y6（果酒）",
+      "via": "果酒",
+      "category": "酒类-果酒（发酵型）",
+      "method": "hint"
+    },
+    {
+      "raw": "辣妹子（辣椒）",
+      "via": "辣椒",
+      "category": "食用农产品-蔬菜",
+      "method": "hint"
+    }
+  ],
+  "mid_confidence": [],
+  "no_match": [
+    {
+      "raw": "100%石榴汁",
+      "canonical": "100%石榴汁",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "【新品上市】金果园新鲜龙眼 约500g",
+      "canonical": "【新品上市】金果园新鲜龙眼 约500g",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "一明香油",
+      "canonical": "一明香油",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "上海青（普通白菜）",
+      "canonical": "上海青",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "丑桔（桔子口味冰棍）",
+      "canonical": "丑桔",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "中老年加钙黑芝麻糊",
+      "canonical": "中老年加钙黑芝麻糊",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "乌鳢",
+      "canonical": "乌鳢",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "云雾绿茶",
+      "canonical": "云雾绿茶",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "五仁月饼",
+      "canonical": "五仁月饼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "五彩拉皮（自制）",
+      "canonical": "五彩拉皮",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "五星鸡块（速冻生制品）",
+      "canonical": "五星鸡块",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "五香芥片（酱腌菜）",
+      "canonical": "五香芥片",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "五香花生",
+      "canonical": "五香花生",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "健能劲酒（配制酒）",
+      "canonical": "健能劲酒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "农井坊纯净水",
+      "canonical": "农井坊纯净水",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "冷面碗（20cm×6cm）",
+      "canonical": "冷面碗",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "冷面碗（21cm×7cm）",
+      "canonical": "冷面碗",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "冷面（生湿面制品）",
+      "canonical": "冷面",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "加碘粉碎洗涤盐",
+      "canonical": "加碘粉碎洗涤盐",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "南极北豆（冰棍）",
+      "canonical": "南极北豆",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "卤味千层丝（片）（大豆蛋白制品）",
+      "canonical": "卤味千层丝",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "卤水豆腐",
+      "canonical": "卤水豆腐",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "即食海带丝（水产制品）",
+      "canonical": "即食海带丝",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "原味酥饼（糕点）",
+      "canonical": "原味酥饼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "去皮小菠萝",
+      "canonical": "去皮小菠萝",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "去脂酱香猪头肉",
+      "canonical": "去脂酱香猪头肉",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "可可奥巧（奥巧慕斯味装饰饼干）",
+      "canonical": "可可奥巧",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "四季豆",
+      "canonical": "四季豆",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "国涵啤酒",
+      "canonical": "国涵啤酒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "圆形汤碗（16cm×6.5cm）",
+      "canonical": "圆形汤碗",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "圆碗",
+      "canonical": "圆碗",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "圆碗（直径17.5cm）",
+      "canonical": "圆碗",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "地瓜烧粗粮酒",
+      "canonical": "地瓜烧粗粮酒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "多彩蝴蝶面（粮食加工品）",
+      "canonical": "多彩蝴蝶面",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "大圆盘",
+      "canonical": "大圆盘",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "大碗",
+      "canonical": "大碗",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "大窖珍荔荔枝味汽水",
+      "canonical": "大窖珍荔荔枝味汽水",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "大红袍花椒",
+      "canonical": "大红袍花椒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "大青芒",
+      "canonical": "大青芒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "大黄米宫廷桃酥",
+      "canonical": "大黄米宫廷桃酥",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "天然山泉水",
+      "canonical": "天然山泉水",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "天然深层山泉水",
+      "canonical": "天然深层山泉水",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "学宝酱菜（酱香疙瘩皮）",
+      "canonical": "学宝酱菜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "小台农芒果",
+      "canonical": "小台农芒果",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "小台芒",
+      "canonical": "小台芒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "小白嘴山药",
+      "canonical": "小白嘴山药",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "小白菜",
+      "canonical": "小白菜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "小碗",
+      "canonical": "小碗",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "小磨香油",
+      "canonical": "小磨香油",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "小米煎饼",
+      "canonical": "小米煎饼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "小米辣",
+      "canonical": "小米辣",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "小米辣椒",
+      "canonical": "小米辣椒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "小葱",
+      "canonical": "小葱",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "小酥肉（速冻调理肉制品）",
+      "canonical": "小酥肉",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "小黄花鱼",
+      "canonical": "小黄花鱼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "山楂片",
+      "canonical": "山楂片",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "山楂片（干片）",
+      "canonical": "山楂片",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "山芹",
+      "canonical": "山芹",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "岚泉山水（饮用纯净水）",
+      "canonical": "岚泉山水",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "巧和风（黑松露巧克力味夹心福团）",
+      "canonical": "巧和风",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "巴氏黄酒",
+      "canonical": "巴氏黄酒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "干姜",
+      "canonical": "干姜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "干豆角",
+      "canonical": "干豆角",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "平利山泉水",
+      "canonical": "平利山泉水",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "扁芸豆",
+      "canonical": "扁芸豆",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "手工蛋卷",
+      "canonical": "手工蛋卷",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "拌饭海苔（原味）",
+      "canonical": "拌饭海苔",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "拌驴肉（自制）",
+      "canonical": "拌驴肉",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "新鲜超甜好吃龙眼500克【500克】1斤",
+      "canonical": "新鲜超甜好吃龙眼500克【500克】1斤",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "无核蜜枣（果脯类）",
+      "canonical": "无核蜜枣",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "春阳母油（酿造酱油）",
+      "canonical": "春阳母油",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "普通白菜",
+      "canonical": "普通白菜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "普通白菜(小油菜)",
+      "canonical": "普通白菜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "普通白菜（小油菜）",
+      "canonical": "普通白菜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "月饼",
+      "canonical": "月饼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "有机干红葡萄酒",
+      "canonical": "有机干红葡萄酒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "木瓜",
+      "canonical": "木瓜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "杯子",
+      "canonical": "杯子",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "杯子（餐馆自行消毒）",
+      "canonical": "杯子",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "枣糕（自制）",
+      "canonical": "枣糕",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "桑叶挂面（花色挂面）",
+      "canonical": "桑叶挂面",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "桑椹山楂片",
+      "canonical": "桑椹山楂片",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "桑葚",
+      "canonical": "桑葚",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "橙味汽水",
+      "canonical": "橙味汽水",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "武大煎饼（香酥花生味）",
+      "canonical": "武大煎饼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "毛尖茶啤中式精酿啤酒",
+      "canonical": "毛尖茶啤中式精酿啤酒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "水仙芒",
+      "canonical": "水仙芒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "水果甜椒",
+      "canonical": "水果甜椒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "水果罐头（菠萝罐头）",
+      "canonical": "水果罐头",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "水饺醋",
+      "canonical": "水饺醋",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "江米条（油炸类）",
+      "canonical": "江米条",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "沃柑",
+      "canonical": "沃柑",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "沙土花生（五香味）",
+      "canonical": "沙土花生",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "油菜（普通白菜）",
+      "canonical": "油菜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "泡吧猪皮（椒香味）",
+      "canonical": "泡吧猪皮",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "泥鳅",
+      "canonical": "泥鳅",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "洋槐蜂蜜",
+      "canonical": "洋槐蜂蜜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "海带王（即食藻类制品）",
+      "canonical": "海带王",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "海蜇丝（即食海蜇）",
+      "canonical": "海蜇丝",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "海鲈鱼（海水鱼）",
+      "canonical": "海鲈鱼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "涮肉卷",
+      "canonical": "涮肉卷",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "淀粉肉灌肠",
+      "canonical": "淀粉肉灌肠",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "淡水鱼",
+      "canonical": "淡水鱼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "清江鱼（淡水鱼）",
+      "canonical": "清江鱼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "炒菜圆碟（直径27.5cm）",
+      "canonical": "炒菜圆碟",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "烤虾干",
+      "canonical": "烤虾干",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "焦饼（原味）",
+      "canonical": "焦饼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "煎饼（玉米味）",
+      "canonical": "煎饼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "熟制葵花籽",
+      "canonical": "熟制葵花籽",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "熟驴肉（自制）",
+      "canonical": "熟驴肉",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "爆皮果冻（芒果口味果冻）",
+      "canonical": "爆皮果冻",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "爆皮葡萄（青葡萄味）（果味型果冻）",
+      "canonical": "爆皮葡萄",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "爆皮西瓜（果味型果冻）",
+      "canonical": "爆皮西瓜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "爱媛果冻橙",
+      "canonical": "爱媛果冻橙",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "牛奶木瓜",
+      "canonical": "牛奶木瓜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "牛蛙",
+      "canonical": "牛蛙",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "特级生抽",
+      "canonical": "特级生抽",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "特质三鞭酒",
+      "canonical": "特质三鞭酒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "狮子头咸菜",
+      "canonical": "狮子头咸菜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "狮子头酱菜",
+      "canonical": "狮子头酱菜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "猪肉大葱水饺（速冻食品）",
+      "canonical": "猪肉大葱水饺",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "猪肝",
+      "canonical": "猪肝",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "玫瑰花露酒",
+      "canonical": "玫瑰花露酒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "玫瑰蜜酱（蜜饯）（蜜饯类）",
+      "canonical": "玫瑰蜜酱",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "玫瑰酱（蜜饯类）",
+      "canonical": "玫瑰酱",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "甘蔗马蹄饮",
+      "canonical": "甘蔗马蹄饮",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "生蜂蜜",
+      "canonical": "生蜂蜜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "番木瓜",
+      "canonical": "番木瓜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "白不老豆角（芸豆）",
+      "canonical": "白不老豆角",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "白玉山药",
+      "canonical": "白玉山药",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "白芸豆",
+      "canonical": "白芸豆",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "百多利老冰棍汽水",
+      "canonical": "百多利老冰棍汽水",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "百年宋楼彩瓷6年（白酒)",
+      "canonical": "百年宋楼彩瓷6年（白酒)",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "盐汽水饮料（无糖型）",
+      "canonical": "盐汽水饮料",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "盐渍海蜇",
+      "canonical": "盐渍海蜇",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "砂糖橘",
+      "canonical": "砂糖橘",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "碧螺春二号",
+      "canonical": "碧螺春二号",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "碳烤鱿鱼丝（水产制品）",
+      "canonical": "碳烤鱿鱼丝",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "竹叶酒",
+      "canonical": "竹叶酒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "精品海蜇（减盐盐渍海蜇）",
+      "canonical": "精品海蜇",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "糖姜片",
+      "canonical": "糖姜片",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "糖美美彩糖针（坚实型压片糖果）",
+      "canonical": "糖美美彩糖针",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "紫薯馒头（自制）",
+      "canonical": "紫薯馒头",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "红枣牛奶燕麦片（方便食品）",
+      "canonical": "红枣牛奶燕麦片",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "红油酸豆角（腌制菜）",
+      "canonical": "红油酸豆角",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "红糖枣馒头",
+      "canonical": "红糖枣馒头",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "红豆奶皮烧饼",
+      "canonical": "红豆奶皮烧饼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "纯凉皮",
+      "canonical": "纯凉皮",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "纯手工红枣馒头",
+      "canonical": "纯手工红枣馒头",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "线椒",
+      "canonical": "线椒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "绿茶",
+      "canonical": "绿茶",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "绿豆芽",
+      "canonical": "绿豆芽",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "老冰棍汽水",
+      "canonical": "老冰棍汽水",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "老姜",
+      "canonical": "老姜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "老式麻花",
+      "canonical": "老式麻花",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "老来少芸豆",
+      "canonical": "老来少芸豆",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "老汽水（蜜桃味）",
+      "canonical": "老汽水",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "老蛋糕",
+      "canonical": "老蛋糕",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "肘花小火腿",
+      "canonical": "肘花小火腿",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "胡萝卜",
+      "canonical": "胡萝卜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "自制凉拌海蜇丝",
+      "canonical": "自制凉拌海蜇丝",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "自消毒杯子",
+      "canonical": "自消毒杯子",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "自消毒盘子",
+      "canonical": "自消毒盘子",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "自消毒碗",
+      "canonical": "自消毒碗",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "自消毒米饭碗",
+      "canonical": "自消毒米饭碗",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "自消毒酒杯",
+      "canonical": "自消毒酒杯",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "自消毒餐具（圆盘）",
+      "canonical": "自消毒餐具",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "自消毒餐盘",
+      "canonical": "自消毒餐盘",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "自消毒餐碗",
+      "canonical": "自消毒餐碗",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "自消毒餐碟",
+      "canonical": "自消毒餐碟",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "良姜",
+      "canonical": "良姜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "芥菜疙瘩 芥菜丝",
+      "canonical": "芥菜疙瘩 芥菜丝",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "茉莉花啤酒",
+      "canonical": "茉莉花啤酒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "荞麦挂面",
+      "canonical": "荞麦挂面",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "荞麦牛筋面",
+      "canonical": "荞麦牛筋面",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "菜心蜇皮（生食动物性水产制品自制）",
+      "canonical": "菜心蜇皮",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "菜碟（24.5cm×18.5cm）",
+      "canonical": "菜碟",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "菠菜粉",
+      "canonical": "菠菜粉",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "营养果蔬面",
+      "canonical": "营养果蔬面",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "葡式蛋挞皮（速冻食品）",
+      "canonical": "葡式蛋挞皮",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "葱",
+      "canonical": "葱",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "蓝莓味吐司面包",
+      "canonical": "蓝莓味吐司面包",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "蔓越莓贝果面包",
+      "canonical": "蔓越莓贝果面包",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "薄豆皮",
+      "canonical": "薄豆皮",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "虎皮三明治蛋糕",
+      "canonical": "虎皮三明治蛋糕",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "蛋白固体饮料",
+      "canonical": "蛋白固体饮料",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "蜇皮白菜心",
+      "canonical": "蜇皮白菜心",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "蜜桔",
+      "canonical": "蜜桔",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "调味萝卜",
+      "canonical": "调味萝卜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "豆挺好豌豆糕（速冻食品）",
+      "canonical": "豆挺好豌豆糕",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "豆腐干",
+      "canonical": "豆腐干",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "豆腐皮（W）",
+      "canonical": "豆腐皮",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "豇豆",
+      "canonical": "豇豆",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "豇豆（长豆角）",
+      "canonical": "豇豆",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "贡桔",
+      "canonical": "贡桔",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "贾寨豆干五香味（非发酵豆制品）",
+      "canonical": "贾寨豆干五香味",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "轻乳奶酪蛋糕",
+      "canonical": "轻乳奶酪蛋糕",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "辣椒油",
+      "canonical": "辣椒油",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "速冻调理鸡翅中",
+      "canonical": "速冻调理鸡翅中",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "酥点焦饼（孜然味）",
+      "canonical": "酥点焦饼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "酥鱼",
+      "canonical": "酥鱼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "醋香蜇头",
+      "canonical": "醋香蜇头",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "钙奶饼干",
+      "canonical": "钙奶饼干",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "铁杆山药",
+      "canonical": "铁杆山药",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "银鱼干",
+      "canonical": "银鱼干",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "长豆角",
+      "canonical": "长豆角",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "陈桥海带丝",
+      "canonical": "陈桥海带丝",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "雨露饮用纯净水",
+      "canonical": "雨露饮用纯净水",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "雪丽球（蜜饯（果糕类））",
+      "canonical": "雪丽球）",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "雪梨",
+      "canonical": "雪梨",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "雪糖花生（烘炒类）",
+      "canonical": "雪糖花生",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "青圆椒（甜椒）",
+      "canonical": "青圆椒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "青尖椒",
+      "canonical": "青尖椒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "青梨",
+      "canonical": "青梨",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "面碗（19cm×6cm）",
+      "canonical": "面碗",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "餐盘",
+      "canonical": "餐盘",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "餐盘（餐馆自行消毒）",
+      "canonical": "餐盘",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "餐碟（餐馆自行消毒）",
+      "canonical": "餐碟",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "饮用天然水",
+      "canonical": "饮用天然水",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "饮用天然泉水",
+      "canonical": "饮用天然泉水",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "饮用纯净水",
+      "canonical": "饮用纯净水",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "馒头",
+      "canonical": "馒头",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "香梨",
+      "canonical": "香梨",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "香脆酱辣椒",
+      "canonical": "香脆酱辣椒",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "香葱麻花（烧烤味）",
+      "canonical": "香葱麻花",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "香辣海带菜（即食水产品）",
+      "canonical": "香辣海带菜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "香酥煎饼（花生口味）",
+      "canonical": "香酥煎饼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "香酥煎饼（黑芝麻口味）",
+      "canonical": "香酥煎饼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "香酥青豆",
+      "canonical": "香酥青豆",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "马步鱼片（速冻食品）",
+      "canonical": "马步鱼片",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "鲅鱼",
+      "canonical": "鲅鱼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "鲅鱼丸",
+      "canonical": "鲅鱼丸",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "鲜姜",
+      "canonical": "鲜姜",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "鲜面条",
+      "canonical": "鲜面条",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "鲜面条（细）（自制）",
+      "canonical": "鲜面条",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "鲜鸡蛋",
+      "canonical": "鲜鸡蛋",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "鲜龙眼",
+      "canonical": "鲜龙眼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "鸡内金焦饼（糕点）",
+      "canonical": "鸡内金焦饼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "鸡蛋小棋子",
+      "canonical": "鸡蛋小棋子",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "鸡蛋油条",
+      "canonical": "鸡蛋油条",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "鸡蛋糕（自制）",
+      "canonical": "鸡蛋糕",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "麻辣海带（其他水产制品）",
+      "canonical": "麻辣海带",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "麻辣花生",
+      "canonical": "麻辣花生",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "黑木耳（蔬菜制品）",
+      "canonical": "黑木耳",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "黑椒味纯肉肠（速冻生制）",
+      "canonical": "黑椒味纯肉肠",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "黑白米八宝饭（速冻食品）",
+      "canonical": "黑白米八宝饭",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "黑芝麻桃酥",
+      "canonical": "黑芝麻桃酥",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "黑芝麻酥（烘烤类糕点）",
+      "canonical": "黑芝麻酥",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    },
+    {
+      "raw": "黑鱼（淡水鱼）",
+      "canonical": "黑鱼",
+      "status": "无分类",
+      "reason": "no_heuristic_match"
+    }
+  ]
+}

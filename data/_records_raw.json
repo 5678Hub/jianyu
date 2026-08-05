@@ -1,0 +1,882 @@
+{
+  "ln": [
+    {
+      "source": "辽宁",
+      "sample_no": "",
+      "food_name_raw": "长方形凉菜盘（复用餐饮具）",
+      "spec": "/",
+      "prod_date": "2025-11-02",
+      "failed_items": [
+        {
+          "item": "阴离子合成洗涤剂(以十二烷基苯磺酸钠计)",
+          "result": "0.058mg/100cm²",
+          "limit": "不得检出"
+        }
+      ],
+      "sampler_name": "双塔区鲜味居家常菜馆",
+      "sampler_addr": "辽宁省朝阳市双塔区凌河街四段247号233C号107室",
+      "prod_enterprise": "",
+      "cat_raw": "",
+      "sub_cat_raw": "",
+      "bulletin_no": "",
+      "bulletin_date": ""
+    },
+    {
+      "source": "辽宁",
+      "sample_no": "",
+      "food_name_raw": "小磨芝麻香油",
+      "spec": "305ml/瓶",
+      "prod_date": "2024-09-24",
+      "failed_items": [
+        {
+          "item": "酸价(KOH)",
+          "result": "5.5mg/g",
+          "limit": "≤2.5mg/g"
+        }
+      ],
+      "sampler_name": "康平万家福购物广场有限公司九派店",
+      "sampler_addr": "康平县康平镇西岭街839栋",
+      "prod_enterprise": "",
+      "cat_raw": "",
+      "sub_cat_raw": "",
+      "bulletin_no": "",
+      "bulletin_date": ""
+    },
+    {
+      "source": "辽宁",
+      "sample_no": "",
+      "food_name_raw": "铁棍山药",
+      "spec": "/",
+      "prod_date": "2025-10-08",
+      "failed_items": [
+        {
+          "item": "咪鲜胺和咪鲜胺锰盐",
+          "result": "1.17mg/kg",
+          "limit": "≤0.3mg/kg"
+        }
+      ],
+      "sampler_name": "开原市农贸大厅李文博蔬菜摊床",
+      "sampler_addr": "辽宁省铁岭市开原市新城街开原大街34号一层QC-203号、QC-204号",
+      "prod_enterprise": "",
+      "cat_raw": "",
+      "sub_cat_raw": "",
+      "bulletin_no": "",
+      "bulletin_date": ""
+    },
+    {
+      "source": "辽宁",
+      "sample_no": "",
+      "food_name_raw": "复用餐饮具（凉菜碟）",
+      "spec": "/",
+      "prod_date": "2025-10-20",
+      "failed_items": [
+        {
+          "item": "阴离子合成洗涤剂(以十二烷基苯磺酸钠计)",
+          "result": "0.081mg/100cm²",
+          "limit": "不得检出"
+        }
+      ],
+      "sampler_name": "阜新又一春抻面老店",
+      "sampler_addr": "阜新市海州区保健街2#网点北三户",
+      "prod_enterprise": "",
+      "cat_raw": "",
+      "sub_cat_raw": "",
+      "bulletin_no": "",
+      "bulletin_date": ""
+    },
+    {
+      "source": "辽宁",
+      "sample_no": "",
+      "food_name_raw": "餐碗（复用餐饮具）",
+      "spec": "/",
+      "prod_date": "2025-10-23",
+      "failed_items": [
+        {
+          "item": "大肠菌群",
+          "result": "检出/50cm²",
+          "limit": "不得检出"
+        }
+      ],
+      "sampler_name": "凌河区有家砂锅米线店（个体工商户）",
+      "sampler_addr": "辽宁省锦州市凌河区万年万业辰苑43-142号",
+      "prod_enterprise": "",
+      "cat_raw": "",
+      "sub_cat_raw": "",
+      "bulletin_no": "",
+      "bulletin_date": ""
+    },
+    {
+      "source": "辽宁",
+      "sample_no": "",
+      "food_name_raw": "桂圆（龙眼）",
+      "spec": "/",
+      "prod_date": "2025-10-23",
+      "failed_items": [
+        {
+          "item": "二氧化硫残留量",
+          "result": "0.116g/kg",
+          "limit": "≤0.05g/kg"
+        }
+      ],
+      "sampler_name": "振安区鲜沐精品果业店",
+      "sampler_addr": "辽宁省丹东市振安区珍珠街249号",
+      "prod_enterprise": "",
+      "cat_raw": "",
+      "sub_cat_raw": "",
+      "bulletin_no": "",
+      "bulletin_date": ""
+    },
+    {
+      "source": "辽宁",
+      "sample_no": "",
+      "food_name_raw": "盘（复用餐饮具）",
+      "spec": "/",
+      "prod_date": "2025-11-02",
+      "failed_items": [
+        {
+          "item": "阴离子合成洗涤剂(以十二烷基苯磺酸钠计)",
+          "result": "1.5mg/100cm²",
+          "limit": "不得检出"
+        }
+      ],
+      "sampler_name": "甘井子区泉水街道故乡烤肉店",
+      "sampler_addr": "大连市甘井子区泉水K2区41号3单元1层1号",
+      "prod_enterprise": "",
+      "cat_raw": "",
+      "sub_cat_raw": "",
+      "bulletin_no": "",
+      "bulletin_date": ""
+    },
+    {
+      "source": "辽宁",
+      "sample_no": "",
+      "food_name_raw": "油条（自制）",
+      "spec": "计量称重",
+      "prod_date": "2025-11-14",
+      "failed_items": [
+        {
+          "item": "铝的残留量(干样品,以Al计)",
+          "result": "684mg/kg",
+          "limit": "≤100mg/kg"
+        }
+      ],
+      "sampler_name": "大连金普新区石河大众早餐店",
+      "sampler_addr": "大连市金普新区石河街道石河村集资楼9#车库2#",
+      "prod_enterprise": "",
+      "cat_raw": "",
+      "sub_cat_raw": "",
+      "bulletin_no": "",
+      "bulletin_date": ""
+    },
+    {
+      "source": "辽宁",
+      "sample_no": "",
+      "food_name_raw": "牛肉粒（牛肉糜干）（五香味）",
+      "spec": "145g/袋",
+      "prod_date": "2025-09-25",
+      "failed_items": [
+        {
+          "item": "N-二甲基亚硝胺",
+          "result": "6.66µg/kg",
+          "limit": "≤3.0µg/kg"
+        }
+      ],
+      "sampler_name": "调兵山市双燕购物广场",
+      "sampler_addr": "辽宁省铁岭市调兵山市商业大厦地下室三区、四区",
+      "prod_enterprise": "",
+      "cat_raw": "",
+      "sub_cat_raw": "",
+      "bulletin_no": "",
+      "bulletin_date": ""
+    },
+    {
+      "source": "辽宁",
+      "sample_no": "",
+      "food_name_raw": "碗（复用餐饮具）",
+      "spec": "/",
+      "prod_date": "2025-11-03",
+      "failed_items": [
+        {
+          "item": "阴离子合成洗涤剂(以十二烷基苯磺酸钠计)",
+          "result": "0.024mg/100cm²",
+          "limit": "不得检出"
+        }
+      ],
+      "sampler_name": "双塔区徐记包子铺",
+      "sampler_addr": "辽宁省朝阳市双塔区红星路6-37栋C311",
+      "prod_enterprise": "",
+      "cat_raw": "",
+      "sub_cat_raw": "",
+      "bulletin_no": "",
+      "bulletin_date": ""
+    },
+    {
+      "source": "辽宁",
+      "sample_no": "",
+      "food_name_raw": "虾爬子（海水虾）",
+      "spec": "/",
+      "prod_date": "2025-10-12",
+      "failed_items": [
+        {
+          "item": "镉(以Cd计)",
+          "result": "8.45mg/kg",
+          "limit": "≤3.0mg/kg"
+        }
+      ],
+      "sampler_name": "凌海市大凌河亮嫂水产海鲜店（个体工商户）",
+      "sampler_addr": "辽宁省锦州市凌海市青年街市场东门",
+      "prod_enterprise": "",
+      "cat_raw": "",
+      "sub_cat_raw": "",
+      "bulletin_no": "",
+      "bulletin_date": ""
+    },
+    {
+      "source": "辽宁",
+      "sample_no": "",
+      "food_name_raw": "麻椒（香辛料类）",
+      "spec": "/",
+      "prod_date": "2025-09-15",
+      "failed_items": [
+        {
+          "item": "二氧化硫残留量",
+          "result": "0.0381g/kg",
+          "limit": "不得使用"
+        }
+      ],
+      "sampler_name": "溪湖区金菊综合批发铺",
+      "sampler_addr": "辽宁省本溪市溪湖区民主街农贸大厅N054",
+      "prod_enterprise": "",
+      "cat_raw": "",
+      "sub_cat_raw": "",
+      "bulletin_no": "",
+      "bulletin_date": ""
+    }
+  ],
+  "sd": [
+    {
+      "source": "山东",
+      "sample_no": "GZJ25370000003142409",
+      "food_name_raw": "龙眼",
+      "spec": "/",
+      "prod_date": "2025-11-13",
+      "failed_items": [
+        {
+          "item": "二氧化硫残留量",
+          "result": "0.126g/kg",
+          "limit": "≤0.05g/kg"
+        }
+      ],
+      "sampler_name": "无棣丰阳超市有限公司",
+      "sampler_addr": "山东省滨州市无棣县海丰街道海丰十一路以北金羚时代广场负一楼",
+      "prod_enterprise": "/",
+      "cat_raw": "食用农产品",
+      "sub_cat_raw": "龙眼",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "SBJ26370000433230341",
+      "food_name_raw": "肉脯（原味）",
+      "spec": "252克/袋",
+      "prod_date": "2026-01-01",
+      "failed_items": [
+        {
+          "item": "沙门氏菌",
+          "result": "检出，检出，检出，检出，检出/25g",
+          "limit": "n=5,c=0,m=0/25g"
+        }
+      ],
+      "sampler_name": "单县豪富超市（个体工商户）",
+      "sampler_addr": "山东省菏泽市单县园艺街道舜师路东段路南舜师大厦1楼",
+      "prod_enterprise": "江苏中脯食品有限公司",
+      "cat_raw": "肉制品",
+      "sub_cat_raw": "熏烧烤肉制品",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "GZJ25370000435739129",
+      "food_name_raw": "大扁豆角",
+      "spec": "散装",
+      "prod_date": "2025-12-06",
+      "failed_items": [
+        {
+          "item": "噻虫胺",
+          "result": "0.10mg/kg",
+          "limit": "≤0.01mg/kg"
+        }
+      ],
+      "sampler_name": "郓城聚宝生鲜超市",
+      "sampler_addr": "山东省菏泽市郓城县郓州街道新天地北门向东50米路南",
+      "prod_enterprise": "/",
+      "cat_raw": "食用农产品",
+      "sub_cat_raw": "菜豆",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "GZJ25370000435738834",
+      "food_name_raw": "白芷",
+      "spec": "称重重量",
+      "prod_date": "2025-11-24",
+      "failed_items": [
+        {
+          "item": "二氧化硫残留量",
+          "result": "0.845g/kg",
+          "limit": "不得使用"
+        }
+      ],
+      "sampler_name": "滕州市杏花村八宝食品研发批发部",
+      "sampler_addr": "山东省枣庄市滕州市北辛街道杏花村市场四期19栋东西10号营业房",
+      "prod_enterprise": "/",
+      "cat_raw": "调味品",
+      "sub_cat_raw": "其他香辛料调味品",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "GZJ25370000435739077",
+      "food_name_raw": "辣椒",
+      "spec": "散装称重",
+      "prod_date": "2025-12-05",
+      "failed_items": [
+        {
+          "item": "噻虫胺",
+          "result": "0.12mg/kg",
+          "limit": "≤0.05mg/kg"
+        }
+      ],
+      "sampler_name": "新泰市青云街道芬红百货超市",
+      "sampler_addr": "山东省泰安市新泰市青云街道青云路678号",
+      "prod_enterprise": "/",
+      "cat_raw": "食用农产品",
+      "sub_cat_raw": "辣椒",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "SBJ26370000412430017",
+      "food_name_raw": "芒果布丁优酪果冻（芒果味）",
+      "spec": "180克/盒",
+      "prod_date": "2025-10-22",
+      "failed_items": [
+        {
+          "item": "蛋白质",
+          "result": "0.37g/100g",
+          "limit": "≥1.0g/100g"
+        }
+      ],
+      "sampler_name": "阳谷县博济桥办事处谷山中路酥麦坊烘焙店",
+      "sampler_addr": "山东省聊城市阳谷县博济桥街道办事处谷山中路119号",
+      "prod_enterprise": "浙江省余姚市万事达食品有限公司",
+      "cat_raw": "糖果制品",
+      "sub_cat_raw": "果冻",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "GZJ25370000415430800",
+      "food_name_raw": "圆盘（直径20cm）",
+      "spec": "/",
+      "prod_date": "2025-11-25",
+      "failed_items": [
+        {
+          "item": "大肠菌群",
+          "result": "检出/50cm²",
+          "limit": "不得检出"
+        }
+      ],
+      "sampler_name": "烟台哈乐达餐饮有限公司",
+      "sampler_addr": "山东省烟台市莱山区滨海路街道金滩南路352号",
+      "prod_enterprise": "/",
+      "cat_raw": "餐饮食品",
+      "sub_cat_raw": "复用餐饮具(餐馆自行消毒)",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "SBJ26370000003130158ZX",
+      "food_name_raw": "孜然",
+      "spec": "/",
+      "prod_date": "2026-01-06",
+      "failed_items": [
+        {
+          "item": "柠檬黄",
+          "result": "0.0128g/kg",
+          "limit": "不得使用"
+        },
+        {
+          "item": "日落黄",
+          "result": "0.00275g/kg",
+          "limit": "不得使用"
+        }
+      ],
+      "sampler_name": "诸城市于英凤调味品销售经营部（个体工商户）",
+      "sampler_addr": "山东省潍坊市诸城市密州街道市场街315号2号楼自北往南数第三间",
+      "prod_enterprise": "/",
+      "cat_raw": "调味品",
+      "sub_cat_raw": "其他香辛料调味品",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "GZJ25370000435739068",
+      "food_name_raw": "香蕉",
+      "spec": "散装",
+      "prod_date": "2025-12-05",
+      "failed_items": [
+        {
+          "item": "噻虫胺",
+          "result": "0.031mg/kg",
+          "limit": "≤0.02mg/kg"
+        },
+        {
+          "item": "噻虫嗪",
+          "result": "0.11mg/kg",
+          "limit": "≤0.02mg/kg"
+        }
+      ],
+      "sampler_name": "乐陵市三雨鲜果店（个体工商户）",
+      "sampler_addr": "山东省德州市乐陵市市中街道富民路102号",
+      "prod_enterprise": "/",
+      "cat_raw": "食用农产品",
+      "sub_cat_raw": "香蕉",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "SBJ26370000414730367",
+      "food_name_raw": "老味卤肉皮",
+      "spec": "420克/包",
+      "prod_date": "2026-01-22",
+      "failed_items": [
+        {
+          "item": "亚硝酸盐(以亚硝酸钠计)",
+          "result": "41.9mg/kg",
+          "limit": "≤30mg/kg"
+        }
+      ],
+      "sampler_name": "东营区好鲜生百货商店",
+      "sampler_addr": "山东省东营市东营区云门山路301号",
+      "prod_enterprise": "宽城区富之杰食品加工厂",
+      "cat_raw": "肉制品",
+      "sub_cat_raw": "酱卤肉制品",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "SBJ26370000433230354",
+      "food_name_raw": "韭菜",
+      "spec": "散装称重",
+      "prod_date": "2026-02-26",
+      "failed_items": [
+        {
+          "item": "甲拌磷",
+          "result": "0.058mg/kg",
+          "limit": "≤0.01mg/kg"
+        }
+      ],
+      "sampler_name": "曹县宏福购物超市（个体工商户）",
+      "sampler_addr": "山东省菏泽市曹县王集镇王集行政村王集社区东北角1-1号、1-2号",
+      "prod_enterprise": "/",
+      "cat_raw": "食用农产品",
+      "sub_cat_raw": "韭菜",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "SBJ26370000412530558",
+      "food_name_raw": "虾米（预制动物性水产干制品）",
+      "spec": "散装称重",
+      "prod_date": "2026-01-13",
+      "failed_items": [
+        {
+          "item": "日落黄",
+          "result": "0.00673g/kg",
+          "limit": "不得使用"
+        }
+      ],
+      "sampler_name": "禹城市虾兵蟹将水产店",
+      "sampler_addr": "山东省德州市禹城市市中街道百乐佳对面早市路南85米",
+      "prod_enterprise": "/",
+      "cat_raw": "水产制品",
+      "sub_cat_raw": "预制动物性水产干制品",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "SBJ26370000435230250",
+      "food_name_raw": "去皮鸡腿",
+      "spec": "80克/袋",
+      "prod_date": "2025-11-16",
+      "failed_items": [
+        {
+          "item": "山梨酸及其钾盐(以山梨酸计)",
+          "result": "0.102g/kg",
+          "limit": "≤0.075g/kg"
+        }
+      ],
+      "sampler_name": "淄博大润万佳购物广场有限公司",
+      "sampler_addr": "山东省淄博市桓台县索镇镇工业街990号101沿街房",
+      "prod_enterprise": "周口海纪伦清真食品有限公司",
+      "cat_raw": "肉制品",
+      "sub_cat_raw": "酱卤肉制品",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "GZJ25370000003142628",
+      "food_name_raw": "龙眼",
+      "spec": "/",
+      "prod_date": "2025-11-14",
+      "failed_items": [
+        {
+          "item": "二氧化硫残留量",
+          "result": "0.0882g/kg",
+          "limit": "≤0.05g/kg"
+        }
+      ],
+      "sampler_name": "临沂市兰山区果唯依水果超市",
+      "sampler_addr": "山东省临沂市兰山区银雀山街道新华路开阳路交汇西50米路北第一家商铺",
+      "prod_enterprise": "/",
+      "cat_raw": "食用农产品",
+      "sub_cat_raw": "龙眼",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "SBJ26370000435131090",
+      "food_name_raw": "肌酸粉",
+      "spec": "100g/罐",
+      "prod_date": "2026-02-11",
+      "failed_items": [
+        {
+          "item": "牛磺酸",
+          "result": "未检出（定量限：5mg/100g）g/每日",
+          "limit": "0.0024~0.6g/每日"
+        }
+      ],
+      "sampler_name": "潍坊市美凯威医药科技有限公司",
+      "sampler_addr": "山东省潍坊市诸城市南湖区魏家花园北200米",
+      "prod_enterprise": "潍坊市美凯威医药科技有限公司",
+      "cat_raw": "特殊膳食食品",
+      "sub_cat_raw": "运动营养食品",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "SBJ26370000415430585",
+      "food_name_raw": "方盘（11.5×17.5cm）",
+      "spec": "清洁消毒后待用餐具",
+      "prod_date": "2026-03-11",
+      "failed_items": [
+        {
+          "item": "大肠菌群",
+          "result": "检出/50cm²",
+          "limit": "不得检出"
+        }
+      ],
+      "sampler_name": "烟台市福山区城前全羊馆（个体工商户）",
+      "sampler_addr": "山东省烟台市福山区福新街道民丰路106-33号",
+      "prod_enterprise": "/",
+      "cat_raw": "餐饮食品",
+      "sub_cat_raw": "复用餐饮具(餐馆自行消毒)",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "SBJ26370000433230376",
+      "food_name_raw": "油条（自制）",
+      "spec": "散装称重",
+      "prod_date": "2026-02-27",
+      "failed_items": [
+        {
+          "item": "铝的残留量(干样品,以Al计)",
+          "result": "1.58×10³mg/kg",
+          "limit": "≤100mg/kg"
+        }
+      ],
+      "sampler_name": "单县敬娟水煎包店（个体工商户）",
+      "sampler_addr": "山东省菏泽市单县北城街道向阳路路南单州市政正对向东15米",
+      "prod_enterprise": "/",
+      "cat_raw": "餐饮食品",
+      "sub_cat_raw": "油饼油条(自制)",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "SBJ26370000411030497",
+      "food_name_raw": "草莓咖啡复合发酵果酒",
+      "spec": "260mL/瓶   酒精度5%vol",
+      "prod_date": "2024-09-21",
+      "failed_items": [
+        {
+          "item": "甜蜜素(以环己基氨基磺酸计)",
+          "result": "0.0150g/kg",
+          "limit": "不得使用"
+        }
+      ],
+      "sampler_name": "交运购物广场（鱼台）有限公司",
+      "sampler_addr": "山东省济宁市鱼台县滨湖街道观鱼大道西首路南、谭庄路1-1号（县汽车站东门北）",
+      "prod_enterprise": "襄城县常相见果酒厂",
+      "cat_raw": "酒类",
+      "sub_cat_raw": "果酒",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "SBJ26370000435130859",
+      "food_name_raw": "鲫鱼",
+      "spec": "/",
+      "prod_date": "2026-02-25",
+      "failed_items": [
+        {
+          "item": "氯霉素",
+          "result": "1.62μg/kg",
+          "limit": "不得检出"
+        }
+      ],
+      "sampler_name": "寿光市先思百货商店",
+      "sampler_addr": "寿光市东郭市场",
+      "prod_enterprise": "/",
+      "cat_raw": "食用农产品",
+      "sub_cat_raw": "淡水鱼",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "SBJ26370000412530591",
+      "food_name_raw": "海米",
+      "spec": "/",
+      "prod_date": "2025-10-17",
+      "failed_items": [
+        {
+          "item": "日落黄",
+          "result": "0.0210g/kg",
+          "limit": "不得使用"
+        }
+      ],
+      "sampler_name": "德州市陵城区万客隆生鲜超市（个体工商户）",
+      "sampler_addr": "山东省德州市陵城区临齐街道颜城街西侧、南环路北侧锦城小区15号楼",
+      "prod_enterprise": "/",
+      "cat_raw": "水产制品",
+      "sub_cat_raw": "预制动物性水产干制品",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "SBJ26370000414830016GZ",
+      "food_name_raw": "圣公源泉桶装饮用水",
+      "spec": "18.9L/桶",
+      "prod_date": "2026-03-04",
+      "failed_items": [
+        {
+          "item": "铜绿假单胞菌",
+          "result": "",
+          "limit": "0"
+        },
+        {
+          "item": "2CFU/250mL",
+          "result": "",
+          "limit": "≤n=5,c=0,m=0CFU/250mL"
+        }
+      ],
+      "sampler_name": "圣公源泉水业（日照市）有限公司",
+      "sampler_addr": "山东省日照市岚山区碑廓镇张北山",
+      "prod_enterprise": "圣公源泉水业（日照市）有限公司",
+      "cat_raw": "饮料",
+      "sub_cat_raw": "其他类饮用水",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "SJC26370000435730745ZX",
+      "food_name_raw": "特质三鞭酒",
+      "spec": "700ml/瓶，50%vol",
+      "prod_date": "2026-01-12",
+      "failed_items": [
+        {
+          "item": "纽甜",
+          "result": "0.552mg/kg",
+          "limit": "不得使用"
+        }
+      ],
+      "sampler_name": "烟台尊尼菲迪酒业有限公司",
+      "sampler_addr": "山东省烟台市海阳市留格工业园",
+      "prod_enterprise": "烟台市中圆酒业有限责任公司",
+      "cat_raw": "酒类",
+      "sub_cat_raw": "以蒸馏酒及食用酒精为酒基的配制酒",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "SJC26370000003132309ZX",
+      "food_name_raw": "自制驴肉",
+      "spec": "/",
+      "prod_date": "2026-03-17",
+      "failed_items": [
+        {
+          "item": "镉(以Cd计)",
+          "result": "0.241mg/kg",
+          "limit": "≤0.1mg/kg"
+        }
+      ],
+      "sampler_name": "沂水县老常驴肉火烧店",
+      "sampler_addr": "山东省临沂市沂水县沂城街道鑫华路中段",
+      "prod_enterprise": "/",
+      "cat_raw": "餐饮食品",
+      "sub_cat_raw": "酱卤肉制品(自制)",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "SBJ26370000003132263ZX",
+      "food_name_raw": "自制油炸花生米",
+      "spec": "/",
+      "prod_date": "2026-03-16",
+      "failed_items": [
+        {
+          "item": "黄曲霉毒素B₁",
+          "result": "42.6μg/kg",
+          "limit": "≤20μg/kg"
+        }
+      ],
+      "sampler_name": "滨州市滨城区鼎厨餐饮饭店（个体工商户）",
+      "sampler_addr": "山东省滨州市滨城区市西街道黄河二路渤海十三路市西汽配城沿街商铺东48号",
+      "prod_enterprise": "/",
+      "cat_raw": "餐饮食品",
+      "sub_cat_raw": "花生制品(自制)",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "GZJ26370000415430048",
+      "food_name_raw": "面筋圈（孜然味）",
+      "spec": "400克/袋",
+      "prod_date": "2026-03-01",
+      "failed_items": [
+        {
+          "item": "酸价(以脂肪计)(KOH)",
+          "result": "5.2mg/g",
+          "limit": "≤3.0mg/g"
+        }
+      ],
+      "sampler_name": "牟平区华顺商行",
+      "sampler_addr": "山东省烟台市牟平区北关大街508号",
+      "prod_enterprise": "新乡市鸿亮食品有限公司",
+      "cat_raw": "方便食品",
+      "sub_cat_raw": "主食类方便食品",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "GZJ26370000003133086",
+      "food_name_raw": "狮子头酱菜",
+      "spec": "计量称重",
+      "prod_date": "2025-06-01",
+      "failed_items": [
+        {
+          "item": "安赛蜜",
+          "result": "0.656g/kg",
+          "limit": "≤0.3g/kg"
+        }
+      ],
+      "sampler_name": "沂水家和超市",
+      "sampler_addr": "山东省临沂市沂水县许家湖镇永丰花苑14#—8.14#—9.14#—10.",
+      "prod_enterprise": "沂水鸿香源酱菜厂",
+      "cat_raw": "蔬菜制品",
+      "sub_cat_raw": "酱腌菜",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "GZJ26370000003133365",
+      "food_name_raw": "豆面挂面",
+      "spec": "950克/袋",
+      "prod_date": "2026-02-28",
+      "failed_items": [
+        {
+          "item": "柠檬黄",
+          "result": "0.00792g/kg",
+          "limit": "不得使用"
+        }
+      ],
+      "sampler_name": "新泰好客隆购物中心（个体工商户）",
+      "sampler_addr": "山东省泰安市新泰市汶南镇沈家庄村1幢（村委后50米）",
+      "prod_enterprise": "泰安畅顺食品有限公司",
+      "cat_raw": "粮食加工品",
+      "sub_cat_raw": "挂面",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "GZJ26370000435731331",
+      "food_name_raw": "藤椒大白仁（油炸类）",
+      "spec": "计量称重",
+      "prod_date": "2026-03-01",
+      "failed_items": [
+        {
+          "item": "过氧化值(以脂肪计)",
+          "result": "0.92g/100g",
+          "limit": "≤0.50g/100g"
+        }
+      ],
+      "sampler_name": "高新开发区舜华客利多超市",
+      "sampler_addr": "山东省济南市高新区舜华路街道崇华路1587号黄金时代小区三区五号楼底层商铺5-106",
+      "prod_enterprise": "茌平县万东食品厂",
+      "cat_raw": "炒货食品及坚果制品",
+      "sub_cat_raw": "花生制品",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    },
+    {
+      "source": "山东",
+      "sample_no": "GZJ26370000435731360",
+      "food_name_raw": "地瓜烧粗粮酒",
+      "spec": "500mL/瓶，42％vol",
+      "prod_date": "2020-10-08",
+      "failed_items": [
+        {
+          "item": "酒精度",
+          "result": "45.0%vol",
+          "limit": "41.0%vol～43.0%vol"
+        }
+      ],
+      "sampler_name": "济南高新开发区民华果蔬经营店",
+      "sampler_addr": "中国（山东）自由贸易试验区济南片区舜风路700中海天悦府北区南门12-2-105",
+      "prod_enterprise": "生产企业名称：保定闻鼎酒业有限公司；委托企业名称：永丰京道二锅头酒业（北京）有限公司",
+      "cat_raw": "酒类",
+      "sub_cat_raw": "白酒、白酒(液态)、白酒(原酒)",
+      "bulletin_no": "2026年第20期",
+      "bulletin_date": "2026.07.29"
+    }
+  ]
+}
