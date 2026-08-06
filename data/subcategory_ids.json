@@ -1,0 +1,2558 @@
+{
+  "_meta": {
+    "schema_version": "1.0",
+    "last_updated": "2026-08-06 10:10:00+08:00",
+    "description": "jianyu 全部细类（master + GB 检验项目表）→ 稳定英文 slug ID；manual = 人工指定；auto = pypinyin 生成",
+    "count": 282,
+    "sources": {
+      "master": 114,
+      "gb_checklist": 168
+    },
+    "slug_kinds": {
+      "manual": 153,
+      "auto": 129
+    }
+  },
+  "subcategories": [
+    {
+      "id": "frozen_drinks-frozen_drinks_placeholder",
+      "big_category_id": "frozen_drinks",
+      "big_category_name": "冷冻饮品",
+      "name": "冷冻饮品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "convenient_food-other_convenient_food",
+      "big_category_id": "convenient_food",
+      "big_category_name": "方便食品",
+      "name": "其他方便食品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "aquatic_products_processed-other_aquatic_products_processed",
+      "big_category_id": "aquatic_products_processed",
+      "big_category_name": "水产制品",
+      "name": "其他水产制品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "aquatic_products_processed-dried_aquatic_products",
+      "big_category_id": "aquatic_products_processed",
+      "big_category_name": "水产制品",
+      "name": "干制水产品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "aquatic_products-other_aquatic_products",
+      "big_category_id": "aquatic_products",
+      "big_category_name": "水产品",
+      "name": "其他水产品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "aquatic_products-sea_shrimp",
+      "big_category_id": "aquatic_products",
+      "big_category_name": "水产品",
+      "name": "海水虾",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "aquatic_products-marine_fish",
+      "big_category_id": "aquatic_products",
+      "big_category_name": "水产品",
+      "name": "海水鱼",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "aquatic_products-freshwater_shrimp",
+      "big_category_id": "aquatic_products",
+      "big_category_name": "水产品",
+      "name": "淡水虾",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "aquatic_products-freshwater_fish",
+      "big_category_id": "aquatic_products",
+      "big_category_name": "水产品",
+      "name": "淡水鱼",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "fruit_products_processed-candied_fruit",
+      "big_category_id": "fruit_products_processed",
+      "big_category_name": "水果制品",
+      "name": "蜜饯",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "fruits-mandarin_orange",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "柑、橘",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "fruits-citrus",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "柑橘",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "fruits-mulberry",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "桑葚",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "fruits-pear",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "梨",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "fruits-fruits_placeholder",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "水果类",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "fruits-papaya",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "番木瓜",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "fruits-mango",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "芒果",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "fruits-lychee",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "荔枝",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "fruits-pineapple",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "菠萝",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "fruits-banana",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "香蕉",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "fruits-longan",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "龙眼",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "starch_products-starch",
+      "big_category_id": "starch_products",
+      "big_category_name": "淀粉及淀粉制品",
+      "name": "淀粉",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "starch_products-vermicelli",
+      "big_category_id": "starch_products",
+      "big_category_name": "淀粉及淀粉制品",
+      "name": "粉丝粉条",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "roasted_seeds_nuts-roasted_seeds_nuts",
+      "big_category_id": "roasted_seeds_nuts",
+      "big_category_name": "炒货食品及坚果制品",
+      "name": "炒货食品及坚果制品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "roasted_seeds_nuts-peanut_products",
+      "big_category_id": "roasted_seeds_nuts",
+      "big_category_name": "炒货食品及坚果制品",
+      "name": "花生制品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "special_dietary_food-nutritional_supplement",
+      "big_category_id": "special_dietary_food",
+      "big_category_name": "特殊膳食食品",
+      "name": "营养补充品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "raw_dried_seeds_nuts-raw_dried_seeds_nuts",
+      "big_category_id": "raw_dried_seeds_nuts",
+      "big_category_name": "生干坚果与籽类食品",
+      "name": "生干坚果与籽类食品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "meat_poultry_offal-other_livestock_meat",
+      "big_category_id": "meat_poultry_offal",
+      "big_category_name": "畜禽肉及副产品",
+      "name": "其他畜肉",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "meat_poultry_offal-beef",
+      "big_category_id": "meat_poultry_offal",
+      "big_category_name": "畜禽肉及副产品",
+      "name": "牛肉",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "meat_poultry_offal-pork_liver",
+      "big_category_id": "meat_poultry_offal",
+      "big_category_name": "畜禽肉及副产品",
+      "name": "猪肝",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "meat_poultry_offal-mutton",
+      "big_category_id": "meat_poultry_offal",
+      "big_category_name": "畜禽肉及副产品",
+      "name": "羊肉",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "meat_poultry_offal-chicken",
+      "big_category_id": "meat_poultry_offal",
+      "big_category_name": "畜禽肉及副产品",
+      "name": "鸡肉",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "cereal_products-other_cereal_powder_products",
+      "big_category_id": "cereal_products",
+      "big_category_name": "粮食加工品",
+      "name": "其他谷物粉类制成品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "cereal_products-fermented_dough_products",
+      "big_category_id": "cereal_products",
+      "big_category_name": "粮食加工品",
+      "name": "发酵面制品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "cereal_products-dried_noodles",
+      "big_category_id": "cereal_products",
+      "big_category_name": "粮食加工品",
+      "name": "挂面",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "cereal_products-fresh_noodle_products",
+      "big_category_id": "cereal_products",
+      "big_category_name": "粮食加工品",
+      "name": "生湿面制品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "pastries-mooncake",
+      "big_category_id": "pastries",
+      "big_category_name": "糕点",
+      "name": "月饼",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "pastries-pastries",
+      "big_category_id": "pastries",
+      "big_category_name": "糕点",
+      "name": "糕点",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "confectionery-jelly",
+      "big_category_id": "confectionery",
+      "big_category_name": "糖果制品",
+      "name": "果冻",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "confectionery-preserved_fruit_candied",
+      "big_category_id": "confectionery",
+      "big_category_name": "糖果制品",
+      "name": "果脯蜜饯",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "confectionery-candy",
+      "big_category_id": "confectionery",
+      "big_category_name": "糖果制品",
+      "name": "糖果",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "canned_food-canned_fruit",
+      "big_category_id": "canned_food",
+      "big_category_name": "罐头",
+      "name": "水果罐头",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "meat_products_processed-other_meat_products",
+      "big_category_id": "meat_products_processed",
+      "big_category_name": "肉制品",
+      "name": "其他肉制品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "meat_products_processed-smoked_sausage_ham",
+      "big_category_id": "meat_products_processed",
+      "big_category_name": "肉制品",
+      "name": "熏煮香肠火腿制品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "meat_products_processed-cooked_meat",
+      "big_category_id": "meat_products_processed",
+      "big_category_name": "肉制品",
+      "name": "熟肉制品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "meat_products_processed-cured_meat",
+      "big_category_id": "meat_products_processed",
+      "big_category_name": "肉制品",
+      "name": "腌腊肉制品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "meat_products_processed-sauced_meat",
+      "big_category_id": "meat_products_processed",
+      "big_category_name": "肉制品",
+      "name": "酱卤肉制品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "tea_related_products-tea",
+      "big_category_id": "tea_related_products",
+      "big_category_name": "茶叶及相关制品",
+      "name": "茶叶",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-other_vegetables",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "其他类蔬菜",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-ginger",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "姜",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-yam",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "山药",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-bok_choy",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "普通白菜（小白菜、小油菜、青菜）",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-sweet_potato",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "甘薯",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-sweet_pepper",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "甜椒",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-carrot",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "胡萝卜",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-celery",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "芹菜",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-eggplant",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "茄子",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-string_bean",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "菜豆",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-spinach",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "菠菜",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-radish",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "萝卜",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-green_onion",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "葱",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-vegetables_placeholder",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "蔬菜",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-bean_sprouts",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "豆芽",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-cowpea",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "豇豆",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-chili_pepper",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "辣椒",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-leek",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "韭菜",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-snow_pea",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "食荚豌豆",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-potato",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "马铃薯",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetables-cucumber",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "黄瓜",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetable_products_processed-dried_vegetable_products",
+      "big_category_id": "vegetable_products_processed",
+      "big_category_name": "蔬菜制品",
+      "name": "蔬菜干制品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetable_products_processed-pickled_vegetables",
+      "big_category_id": "vegetable_products_processed",
+      "big_category_name": "蔬菜制品",
+      "name": "酱腌菜",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "puffed_food-puffed_food",
+      "big_category_id": "puffed_food",
+      "big_category_name": "薯类和膨化食品",
+      "name": "薯类和膨化食品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "bee_products-bee_products",
+      "big_category_id": "bee_products",
+      "big_category_name": "蜂产品",
+      "name": "蜂产品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "bee_products-honey",
+      "big_category_id": "bee_products",
+      "big_category_name": "蜂产品",
+      "name": "蜂蜜",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "seasonings-other_spice_seasonings",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "其他香辛料调味品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "seasonings-edible_salt",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "普通食用盐",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "seasonings-chili_pepper_sichuan_pepper_powder",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "辣椒、花椒、辣椒粉、花椒粉",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "seasonings-soy_sauce",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "酱油",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "seasonings-brewed_paste",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "酿造酱",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "seasonings-vinegar",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "食醋",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "seasonings-spice_seasoning_oil",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "香辛料调味油",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "soy_products-other_soy_products",
+      "big_category_id": "soy_products",
+      "big_category_name": "豆制品",
+      "name": "其他豆制品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "soy_products-soy_products_placeholder",
+      "big_category_id": "soy_products",
+      "big_category_name": "豆制品",
+      "name": "豆制品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "soy_products-non_fermented_soy_products",
+      "big_category_id": "soy_products",
+      "big_category_name": "豆制品",
+      "name": "非发酵性豆制品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "beans-other_beans",
+      "big_category_id": "beans",
+      "big_category_name": "豆类",
+      "name": "其他豆类",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "frozen_food-frozen_animal_aquatic_products",
+      "big_category_id": "frozen_food",
+      "big_category_name": "速冻食品",
+      "name": "速冻动物性水产制品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "frozen_food-frozen_meat_products",
+      "big_category_id": "frozen_food",
+      "big_category_name": "速冻食品",
+      "name": "速冻肉制品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "frozen_food-frozen_dough_rice_food",
+      "big_category_id": "frozen_food",
+      "big_category_name": "速冻食品",
+      "name": "速冻面米食品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "alcoholic_beverages-distilled_alcohol_based_blended_liquor",
+      "big_category_id": "alcoholic_beverages",
+      "big_category_name": "酒类",
+      "name": "以蒸馏酒及食用酒精为酒基的配制酒",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "alcoholic_beverages-beer",
+      "big_category_id": "alcoholic_beverages",
+      "big_category_name": "酒类",
+      "name": "啤酒",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "alcoholic_beverages-fruit_wine",
+      "big_category_id": "alcoholic_beverages",
+      "big_category_name": "酒类",
+      "name": "果酒",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "alcoholic_beverages-baijiu",
+      "big_category_id": "alcoholic_beverages",
+      "big_category_name": "酒类",
+      "name": "白酒",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "alcoholic_beverages-grape_wine",
+      "big_category_id": "alcoholic_beverages",
+      "big_category_name": "酒类",
+      "name": "葡萄酒",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "alcoholic_beverages-alcoholic_beverages_placeholder",
+      "big_category_id": "alcoholic_beverages",
+      "big_category_name": "酒类",
+      "name": "酒类",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "alcoholic_beverages-huangjiu",
+      "big_category_id": "alcoholic_beverages",
+      "big_category_name": "酒类",
+      "name": "黄酒",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "edible_oils-sesame_oil",
+      "big_category_id": "edible_oils",
+      "big_category_name": "食用油、油脂及其制品",
+      "name": "芝麻油",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "edible_oils-edible_vegetable_oil",
+      "big_category_id": "edible_oils",
+      "big_category_name": "食用油、油脂及其制品",
+      "name": "食用植物油",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "restaurant_food-other_restaurant_food",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "其他餐饮食品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "restaurant_food-reused_tableware_restaurant_disinfected",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "复用餐饮具（餐馆自行消毒）",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "restaurant_food-fried_dough_sticks_self_made",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "油饼油条（自制）",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "restaurant_food-raw_animal_aquatic_products_self_made",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "生食动物性水产制品(自制)",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "restaurant_food-vermicelli_self_made",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "粉丝粉条（自制）",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "restaurant_food-self_made_fried_dough_products",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "自制油炸面制品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "restaurant_food-other_restaurant_self_made_food",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "除上述类别的餐饮加工自制食品",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "restaurant_food-steamed_bun_self_made",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "馒头花卷（自制）",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "beverages-other_beverages",
+      "big_category_id": "beverages",
+      "big_category_name": "饮料",
+      "name": "其他饮料",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "beverages-packaged_drinking_water",
+      "big_category_id": "beverages",
+      "big_category_name": "饮料",
+      "name": "包装饮用水",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "beverages-fruit_vegetable_juice",
+      "big_category_id": "beverages",
+      "big_category_name": "饮料",
+      "name": "果蔬汁",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "beverages-fruit_vegetable_juice_beverages",
+      "big_category_id": "beverages",
+      "big_category_name": "饮料",
+      "name": "果蔬汁类及其饮料",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "beverages-carbonated_beverages",
+      "big_category_id": "beverages",
+      "big_category_name": "饮料",
+      "name": "碳酸饮料",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "beverages-natural_mineral_water",
+      "big_category_id": "beverages",
+      "big_category_name": "饮料",
+      "name": "饮用天然矿泉水",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "beverages-purified_water",
+      "big_category_id": "beverages",
+      "big_category_name": "饮料",
+      "name": "饮用纯净水",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "biscuits-biscuits",
+      "big_category_id": "biscuits",
+      "big_category_name": "饼干",
+      "name": "饼干",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "fresh_eggs-chicken_eggs",
+      "big_category_id": "fresh_eggs",
+      "big_category_name": "鲜蛋",
+      "name": "鸡蛋",
+      "source": "master",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "cereal_products-wheat_flour",
+      "big_category_id": "cereal_products",
+      "big_category_name": "粮食加工品",
+      "name": "小麦粉",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "cereal_products-rice",
+      "big_category_id": "cereal_products",
+      "big_category_name": "粮食加工品",
+      "name": "大米",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "cereal_products-gu_wu_jia_gong_pin",
+      "big_category_id": "cereal_products",
+      "big_category_name": "粮食加工品",
+      "name": "谷物加工品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "cereal_products-yu_mi_fen",
+      "big_category_id": "cereal_products",
+      "big_category_name": "粮食加工品",
+      "name": "玉米粉(片、渣)",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "cereal_products-rice_noodles",
+      "big_category_id": "cereal_products",
+      "big_category_name": "粮食加工品",
+      "name": "米粉",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "cereal_products-qi_ta_gu_wu_nian_mo_jia_gong_pin",
+      "big_category_id": "cereal_products",
+      "big_category_name": "粮食加工品",
+      "name": "其他谷物碾磨加工品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "cereal_products-mi_fen_zhi_pin",
+      "big_category_id": "cereal_products",
+      "big_category_name": "粮食加工品",
+      "name": "米粉制品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "seasonings-cooking_wine",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "调味料酒",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "seasonings-ji_fen_ji_jing_tiao_wei_liao",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "鸡粉、鸡精调味料",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "seasonings-qi_ta_gu_ti_tiao_wei_liao",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "其他固体调味料",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "seasonings-dan_huang_jiang_sha_la_jiang",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "蛋黄酱、沙拉酱",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "seasonings-jian_guo_yu_zi_lei_de_ni",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "坚果与籽类的泥（酱）",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "seasonings-la_jiao_jiang",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "辣椒酱",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "seasonings-huo_guo_di_liao_ma_la_tang_di_liao",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "火锅底料、麻辣烫底料",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "seasonings-qi_ta_ban_gu_ti_tiao_wei_liao",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "其他半固体调味料",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "seasonings-hao_you_xia_you_yu_lu",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "蚝油、虾油、鱼露",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "seasonings-qi_ta_ye_ti_tiao_wei_liao",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "其他液体调味料",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "seasonings-wei_jing",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "味精",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "seasonings-di_na_shi_yong_yan",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "低钠食用盐",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "seasonings-feng_wei_shi_yong_yan",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "风味食用盐",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "seasonings-te_shu_gong_yi_shi_yong_yan",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "特殊工艺食用盐",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "seasonings-shi_pin_sheng_chan_jia_gong_yong_yan",
+      "big_category_id": "seasonings",
+      "big_category_name": "调味品",
+      "name": "食品生产加工用盐",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "meat_products_processed-tiao_li_rou_zhi_pin",
+      "big_category_id": "meat_products_processed",
+      "big_category_name": "肉制品",
+      "name": "调理肉制品(非速冻)",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "meat_products_processed-fa_jiao_rou_zhi_pin",
+      "big_category_id": "meat_products_processed",
+      "big_category_name": "肉制品",
+      "name": "发酵肉制品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "meat_products_processed-you_zha_rou_zhi_pin",
+      "big_category_id": "meat_products_processed",
+      "big_category_name": "肉制品",
+      "name": "油炸肉制品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "meat_products_processed-cooked_dried_meat",
+      "big_category_id": "meat_products_processed",
+      "big_category_name": "肉制品",
+      "name": "熟肉干制品",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "meat_products_processed-smoked_roasted_meat",
+      "big_category_id": "meat_products_processed",
+      "big_category_name": "肉制品",
+      "name": "熏烧烤肉制品",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "convenient_food-you_zha_mian_fei_you_zha_mian",
+      "big_category_id": "convenient_food",
+      "big_category_name": "方便食品",
+      "name": "油炸面、非油炸面",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "convenient_food-fang_bian_mi_fen",
+      "big_category_id": "convenient_food",
+      "big_category_name": "方便食品",
+      "name": "方便米粉(米线)",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "convenient_food-fang_bian_fen_si",
+      "big_category_id": "convenient_food",
+      "big_category_name": "方便食品",
+      "name": "方便粉丝",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "convenient_food-qi_ta_fang_bian_mian",
+      "big_category_id": "convenient_food",
+      "big_category_name": "方便食品",
+      "name": "其他方便面",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "convenient_food-seasoned_dough_products",
+      "big_category_id": "convenient_food",
+      "big_category_name": "方便食品",
+      "name": "调味面制品",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "convenient_food-chong_diao_lei_fang_bian_shi_pin",
+      "big_category_id": "convenient_food",
+      "big_category_name": "方便食品",
+      "name": "冲调类方便食品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "convenient_food-zhu_shi_lei_fang_bian_shi_pin",
+      "big_category_id": "convenient_food",
+      "big_category_name": "方便食品",
+      "name": "主食类方便食品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "convenient_food-qi_ta_lei_fang_bian_shi_pin",
+      "big_category_id": "convenient_food",
+      "big_category_name": "方便食品",
+      "name": "其他类方便食品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "canned_food-chu_qin_rou_lei_guan_tou",
+      "big_category_id": "canned_food",
+      "big_category_name": "罐头",
+      "name": "畜禽肉类罐头",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "canned_food-shui_chan_dong_wu_lei_guan_tou",
+      "big_category_id": "canned_food",
+      "big_category_name": "罐头",
+      "name": "水产动物类罐头",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "canned_food-shui_guo_lei_guan_tou",
+      "big_category_id": "canned_food",
+      "big_category_name": "罐头",
+      "name": "水果类罐头",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "canned_food-shu_cai_lei_guan_tou",
+      "big_category_id": "canned_food",
+      "big_category_name": "罐头",
+      "name": "蔬菜类罐头",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "canned_food-shi_yong_jun_guan_tou",
+      "big_category_id": "canned_food",
+      "big_category_name": "罐头",
+      "name": "食用菌罐头",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "canned_food-other_canned_food",
+      "big_category_id": "canned_food",
+      "big_category_name": "罐头",
+      "name": "其他罐头",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "alcoholic_beverages-guo_jiu",
+      "big_category_id": "alcoholic_beverages",
+      "big_category_name": "酒类",
+      "name": "果酒(发酵型)",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "alcoholic_beverages-yi_fa_jiao_jiu_wei_jiu_ji_de_pei_zhi_jiu",
+      "big_category_id": "alcoholic_beverages",
+      "big_category_name": "酒类",
+      "name": "以发酵酒为酒基的配制酒",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "alcoholic_beverages-other_distilled_liquor",
+      "big_category_id": "alcoholic_beverages",
+      "big_category_name": "酒类",
+      "name": "其他蒸馏酒",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "alcoholic_beverages-other_fermented_liquor",
+      "big_category_id": "alcoholic_beverages",
+      "big_category_name": "酒类",
+      "name": "其他发酵酒",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "egg_products-reconstituted_eggs",
+      "big_category_id": "egg_products",
+      "big_category_name": "蛋制品",
+      "name": "再制蛋",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "egg_products-dry_egg_products",
+      "big_category_id": "egg_products",
+      "big_category_name": "蛋制品",
+      "name": "干蛋制品",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "egg_products-frozen_egg_products",
+      "big_category_id": "egg_products",
+      "big_category_name": "蛋制品",
+      "name": "冰蛋制品",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "egg_products-liquid_egg_products",
+      "big_category_id": "egg_products",
+      "big_category_name": "蛋制品",
+      "name": "液蛋制品",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "egg_products-heat_coagulated_egg_products",
+      "big_category_id": "egg_products",
+      "big_category_name": "蛋制品",
+      "name": "热凝固蛋制品",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "egg_products-other_egg_products",
+      "big_category_id": "egg_products",
+      "big_category_name": "蛋制品",
+      "name": "其他蛋制品",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "edible_oils-shi_yong_dong_wu_you_zhi",
+      "big_category_id": "edible_oils",
+      "big_category_name": "食用油、油脂及其制品",
+      "name": "食用动物油脂",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "edible_oils-shi_yong_you_zhi_zhi_pin",
+      "big_category_id": "edible_oils",
+      "big_category_name": "食用油、油脂及其制品",
+      "name": "食用油脂制品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "dairy_products-ye_ti_ru",
+      "big_category_id": "dairy_products",
+      "big_category_name": "乳制品",
+      "name": "液体乳（灭菌乳）",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "dairy_products-ru_fen_he_tiao_zhi_ru_fen",
+      "big_category_id": "dairy_products",
+      "big_category_name": "乳制品",
+      "name": "乳粉（全脂、脱脂、部分脱脂）和调制乳粉",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "dairy_products-ru_qing_fen_he_ru_qing_dan_bai_fen",
+      "big_category_id": "dairy_products",
+      "big_category_name": "乳制品",
+      "name": "乳清粉和乳清蛋白粉",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "dairy_products-qi_ta_ru_zhi_pin",
+      "big_category_id": "dairy_products",
+      "big_category_name": "乳制品",
+      "name": "其他乳制品（浓缩乳制品）",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "beverages-qi_ta_lei_yin_yong_shui",
+      "big_category_id": "beverages",
+      "big_category_name": "饮料",
+      "name": "其他类饮用水",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "beverages-dan_bai_yin_liao",
+      "big_category_id": "beverages",
+      "big_category_name": "饮料",
+      "name": "蛋白饮料",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "beverages-tan_suan_yin_liao",
+      "big_category_id": "beverages",
+      "big_category_name": "饮料",
+      "name": "碳酸饮料（汽水）",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "beverages-tea_beverages",
+      "big_category_id": "beverages",
+      "big_category_name": "饮料",
+      "name": "茶饮料",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "beverages-solid_beverages",
+      "big_category_id": "beverages",
+      "big_category_name": "饮料",
+      "name": "固体饮料",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "frozen_food-su_dong_tiao_li_rou_zhi_pin",
+      "big_category_id": "frozen_food",
+      "big_category_name": "速冻食品",
+      "name": "速冻调理肉制品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "frozen_food-su_dong_tiao_zhi_shui_chan_zhi_pin",
+      "big_category_id": "frozen_food",
+      "big_category_name": "速冻食品",
+      "name": "速冻调制水产制品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "frozen_food-su_dong_gu_wu_shi_pin",
+      "big_category_id": "frozen_food",
+      "big_category_name": "速冻食品",
+      "name": "速冻谷物食品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "frozen_food-frozen_vegetable_products",
+      "big_category_id": "frozen_food",
+      "big_category_name": "速冻食品",
+      "name": "速冻蔬菜制品",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "frozen_food-su_dong_shui_guo_zhi_pin",
+      "big_category_id": "frozen_food",
+      "big_category_name": "速冻食品",
+      "name": "速冻水果制品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "puffed_food-gan_zhi_shu_lei",
+      "big_category_id": "puffed_food",
+      "big_category_name": "薯类和膨化食品",
+      "name": "干制薯类",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "puffed_food-leng_dong_shu_lei",
+      "big_category_id": "puffed_food",
+      "big_category_name": "薯类和膨化食品",
+      "name": "冷冻薯类",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "puffed_food-shu_ni_lei",
+      "big_category_id": "puffed_food",
+      "big_category_name": "薯类和膨化食品",
+      "name": "薯泥（酱）类",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "puffed_food-shu_fen_lei",
+      "big_category_id": "puffed_food",
+      "big_category_name": "薯类和膨化食品",
+      "name": "薯粉类",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "puffed_food-qi_ta_shu_lei_shi_pin",
+      "big_category_id": "puffed_food",
+      "big_category_name": "薯类和膨化食品",
+      "name": "其他薯类食品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "confectionery-qiao_ke_li_ji_qiao_ke_li_zhi_pin_dai_ke_ke_zhi_qiao_ke_li_ji_dai_ke_ke_zhi_qiao_ke_li_zhi_pin",
+      "big_category_id": "confectionery",
+      "big_category_name": "糖果制品",
+      "name": "巧克力及巧克力制品、代可可脂巧克力及代可可脂巧克力制品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "tea_related_products-han_cha_zhi_pin",
+      "big_category_id": "tea_related_products",
+      "big_category_name": "茶叶及相关制品",
+      "name": "含茶制品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "tea_related_products-herbal_tea",
+      "big_category_id": "tea_related_products",
+      "big_category_name": "茶叶及相关制品",
+      "name": "代用茶",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetable_products_processed-other_vegetable_products",
+      "big_category_id": "vegetable_products_processed",
+      "big_category_name": "蔬菜制品",
+      "name": "其他蔬菜制品",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "vegetable_products_processed-gan_zhi_shi_yong_jun",
+      "big_category_id": "vegetable_products_processed",
+      "big_category_name": "蔬菜制品",
+      "name": "干制食用菌",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "vegetable_products_processed-yan_zi_shi_yong_jun",
+      "big_category_id": "vegetable_products_processed",
+      "big_category_name": "蔬菜制品",
+      "name": "腌渍食用菌",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fruit_products_processed-shui_guo_gan_zhi_pin",
+      "big_category_id": "fruit_products_processed",
+      "big_category_name": "水果制品",
+      "name": "水果干制品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fruit_products_processed-guo_jiang",
+      "big_category_id": "fruit_products_processed",
+      "big_category_name": "水果制品",
+      "name": "果酱",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "cocoa_coffee_products-bei_chao_ka_fei",
+      "big_category_id": "cocoa_coffee_products",
+      "big_category_name": "可可及焙烤咖啡产品",
+      "name": "焙炒咖啡",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "cocoa_coffee_products-cocoa_products",
+      "big_category_id": "cocoa_coffee_products",
+      "big_category_name": "可可及焙烤咖啡产品",
+      "name": "可可制品",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "sugar-bai_sha_tang_jing_you_sha_tang",
+      "big_category_id": "sugar",
+      "big_category_name": "食糖",
+      "name": "白砂糖、精幼砂糖",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "sugar-soft_white_sugar",
+      "big_category_id": "sugar",
+      "big_category_name": "食糖",
+      "name": "绵白糖",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "sugar-brown_sugar",
+      "big_category_id": "sugar",
+      "big_category_name": "食糖",
+      "name": "赤砂糖",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "sugar-hong_tang",
+      "big_category_id": "sugar",
+      "big_category_name": "食糖",
+      "name": "红糖",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "sugar-rock_sugar",
+      "big_category_id": "sugar",
+      "big_category_name": "食糖",
+      "name": "冰糖",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "sugar-bing_pian_tang",
+      "big_category_id": "sugar",
+      "big_category_name": "食糖",
+      "name": "冰片糖",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "sugar-fang_tang",
+      "big_category_id": "sugar",
+      "big_category_name": "食糖",
+      "name": "方糖",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "sugar-qi_ta_tang",
+      "big_category_id": "sugar",
+      "big_category_name": "食糖",
+      "name": "其他糖",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "aquatic_products_processed-zao_lei_gan_zhi_pin",
+      "big_category_id": "aquatic_products_processed",
+      "big_category_name": "水产制品",
+      "name": "藻类干制品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "aquatic_products_processed-yu_zhi_dong_wu_xing_shui_chan_gan_zhi_pin",
+      "big_category_id": "aquatic_products_processed",
+      "big_category_name": "水产制品",
+      "name": "预制动物性水产干制品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "aquatic_products_processed-yan_zi_yu",
+      "big_category_id": "aquatic_products_processed",
+      "big_category_name": "水产制品",
+      "name": "盐渍鱼",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "aquatic_products_processed-yan_zi_zao",
+      "big_category_id": "aquatic_products_processed",
+      "big_category_name": "水产制品",
+      "name": "盐渍藻",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "aquatic_products_processed-qi_ta_yan_zi_shui_chan_pin",
+      "big_category_id": "aquatic_products_processed",
+      "big_category_name": "水产制品",
+      "name": "其他盐渍水产品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "aquatic_products_processed-yu_zhi_yu_mi_zhi_pin",
+      "big_category_id": "aquatic_products_processed",
+      "big_category_name": "水产制品",
+      "name": "预制鱼糜制品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "aquatic_products_processed-shu_zhi_dong_wu_xing_shui_chan_zhi_pin",
+      "big_category_id": "aquatic_products_processed",
+      "big_category_name": "水产制品",
+      "name": "熟制动物性水产制品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "aquatic_products_processed-sheng_shi_dong_wu_xing_shui_chan_pin",
+      "big_category_id": "aquatic_products_processed",
+      "big_category_name": "水产制品",
+      "name": "生食动物性水产品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "starch_products-other_starch_products",
+      "big_category_id": "starch_products",
+      "big_category_name": "淀粉及淀粉制品",
+      "name": "其他淀粉制品",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "starch_products-dian_fen_tang",
+      "big_category_id": "starch_products",
+      "big_category_name": "淀粉及淀粉制品",
+      "name": "淀粉糖",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "pastries-mian_bao",
+      "big_category_id": "pastries",
+      "big_category_name": "糕点",
+      "name": "面包",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "pastries-zong_zi",
+      "big_category_id": "pastries",
+      "big_category_name": "糕点",
+      "name": "粽子",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "soy_products-fermented_soy_products",
+      "big_category_id": "soy_products",
+      "big_category_name": "豆制品",
+      "name": "发酵性豆制品",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "soy_products-fei_fa_jiao_xing_dou_zhi_pin",
+      "big_category_id": "soy_products",
+      "big_category_name": "豆制品",
+      "name": "非发酵性豆制品（腐竹、油皮及其再制品）",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "bee_products-feng_wang_jiang",
+      "big_category_id": "bee_products",
+      "big_category_name": "蜂产品",
+      "name": "蜂王浆（含蜂王浆冻干品）",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "bee_products-bee_pollen",
+      "big_category_id": "bee_products",
+      "big_category_name": "蜂产品",
+      "name": "蜂花粉",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "bee_products-feng_chan_pin_zhi_pin",
+      "big_category_id": "bee_products",
+      "big_category_name": "蜂产品",
+      "name": "蜂产品制品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "health_food-health_food",
+      "big_category_id": "health_food",
+      "big_category_name": "保健食品",
+      "name": "保健食品",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "special_dietary_food-infant_cereal_assist_food",
+      "big_category_id": "special_dietary_food",
+      "big_category_name": "特殊膳食食品",
+      "name": "婴幼儿谷类辅助食品",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "special_dietary_food-ying_you_er_guan_zhuang_fu_zhu_shi_pin",
+      "big_category_id": "special_dietary_food",
+      "big_category_name": "特殊膳食食品",
+      "name": "婴幼儿罐装辅助食品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "special_dietary_food-complementary_food_supplement",
+      "big_category_id": "special_dietary_food",
+      "big_category_name": "特殊膳食食品",
+      "name": "辅食营养补充品",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "special_dietary_food-yun_fu_ji_ru_mu_ying_yang_bu_chong_pin",
+      "big_category_id": "special_dietary_food",
+      "big_category_name": "特殊膳食食品",
+      "name": "孕妇及乳母营养补充品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "special_dietary_food-sports_nutrition_food",
+      "big_category_id": "special_dietary_food",
+      "big_category_name": "特殊膳食食品",
+      "name": "运动营养食品",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "fsmp-fsmp_infant_formula",
+      "big_category_id": "fsmp",
+      "big_category_name": "特殊医学用途配方食品",
+      "name": "特殊医学用途婴儿配方食品",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "fsmp-quan_ying_yang_pei_fang_shi_pin",
+      "big_category_id": "fsmp",
+      "big_category_name": "特殊医学用途配方食品",
+      "name": "全营养配方食品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fsmp-fei_quan_ying_yang_pei_fang_shi_pin",
+      "big_category_id": "fsmp",
+      "big_category_name": "特殊医学用途配方食品",
+      "name": "非全营养配方食品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fsmp-te_ding_quan_ying_yang_pei_fang_shi_pin",
+      "big_category_id": "fsmp",
+      "big_category_name": "特殊医学用途配方食品",
+      "name": "特定全营养配方食品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "infant_formula-you_er_pei_fang_shi_pin",
+      "big_category_id": "infant_formula",
+      "big_category_name": "婴幼儿配方食品",
+      "name": "幼儿配方食品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "restaurant_food-bao_zi",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "包子（自制）",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "restaurant_food-you_bing_you_tiao_a",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "油饼油条（自制）a",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "restaurant_food-liang_pi_a",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "凉皮（自制）a",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "restaurant_food-rou_dong_pi_dong",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "肉冻皮冻（自制）",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "restaurant_food-xun_shao_kao_rou_lei_a",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "熏烧烤肉类（自制）a",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "restaurant_food-huo_guo_ma_la_tang_di_liao",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "火锅麻辣烫底料（自制）",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "restaurant_food-sheng_shi_dong_wu_xing_shui_chan_pin",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "生食动物性水产品（自制）",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "restaurant_food-hua_sheng_zhi_pin_a",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "花生制品（自制）a",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "restaurant_food-gao_dian",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "糕点（自制）",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "restaurant_food-jian_zha_guo_cheng_yong_you_a",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "煎炸过程用油a",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "restaurant_food-fu_yong_can_yin_ju_a",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "复用餐饮具（餐馆自行消毒）a",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "restaurant_food-fu_yong_can_yin_ju",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "复用餐饮具（集中清洗消毒服务单位消毒）",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "restaurant_food-chu_shang_shu_lei_bie_de_can_yin_jia_gong_zi_zhi_shi_pin_a",
+      "big_category_id": "restaurant_food",
+      "big_category_name": "餐饮食品",
+      "name": "除上述类别的餐饮加工自制食品a",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "meat_poultry_offal-pork",
+      "big_category_id": "meat_poultry_offal",
+      "big_category_name": "畜禽肉及副产品",
+      "name": "猪肉",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "meat_poultry_offal-ya_rou",
+      "big_category_id": "meat_poultry_offal",
+      "big_category_name": "畜禽肉及副产品",
+      "name": "鸭肉",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "meat_poultry_offal-other_poultry",
+      "big_category_id": "meat_poultry_offal",
+      "big_category_name": "畜禽肉及副产品",
+      "name": "其他禽肉",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "meat_poultry_offal-niu_gan",
+      "big_category_id": "meat_poultry_offal",
+      "big_category_name": "畜禽肉及副产品",
+      "name": "牛肝",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "meat_poultry_offal-yang_gan",
+      "big_category_id": "meat_poultry_offal",
+      "big_category_name": "畜禽肉及副产品",
+      "name": "羊肝",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "meat_poultry_offal-zhu_shen",
+      "big_category_id": "meat_poultry_offal",
+      "big_category_name": "畜禽肉及副产品",
+      "name": "猪肾",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "meat_poultry_offal-niu_shen",
+      "big_category_id": "meat_poultry_offal",
+      "big_category_name": "畜禽肉及副产品",
+      "name": "牛肾",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "meat_poultry_offal-yang_shen",
+      "big_category_id": "meat_poultry_offal",
+      "big_category_name": "畜禽肉及副产品",
+      "name": "羊肾",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "meat_poultry_offal-qi_ta_chu_fu_chan_pin",
+      "big_category_id": "meat_poultry_offal",
+      "big_category_name": "畜禽肉及副产品",
+      "name": "其他畜副产品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "meat_poultry_offal-ji_gan",
+      "big_category_id": "meat_poultry_offal",
+      "big_category_name": "畜禽肉及副产品",
+      "name": "鸡肝",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "meat_poultry_offal-qi_ta_qin_fu_chan_pin",
+      "big_category_id": "meat_poultry_offal",
+      "big_category_name": "畜禽肉及副产品",
+      "name": "其他禽副产品",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "vegetables-xian_shi_yong_jun",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "鲜食用菌",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "vegetables-da_bai_cai",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "大白菜",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "vegetables-you_mai_cai",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "油麦菜",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "vegetables-jing_cai",
+      "big_category_id": "vegetables",
+      "big_category_name": "蔬菜",
+      "name": "净菜",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "aquatic_products-freshwater_crab",
+      "big_category_id": "aquatic_products",
+      "big_category_name": "水产品",
+      "name": "淡水蟹",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "aquatic_products-sea_crab",
+      "big_category_id": "aquatic_products",
+      "big_category_name": "水产品",
+      "name": "海水蟹",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "aquatic_products-shellfish",
+      "big_category_id": "aquatic_products",
+      "big_category_name": "水产品",
+      "name": "贝类",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "fruits-ping_guo",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "苹果",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fruits-zao",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "枣",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fruits-tao",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "桃",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fruits-you_tao",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "油桃",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fruits-you",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "柚",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fruits-ning_meng",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "柠檬",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fruits-cheng",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "橙",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fruits-pu_tao",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "葡萄",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fruits-cao_mei",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "草莓",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fruits-mi_hou_tao",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "猕猴桃",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fruits-xi_fan_lian",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "西番莲（百香果）",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fruits-yang_mei",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "杨梅",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fruits-gan_lan",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "橄榄",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fruits-xi_gua",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "西瓜",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fruits-tian_gua_lei",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "name": "甜瓜类",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "fresh_eggs-qi_ta_qin_dan",
+      "big_category_id": "fresh_eggs",
+      "big_category_name": "鲜蛋",
+      "name": "其他禽蛋",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "beans-beans_placeholder",
+      "big_category_id": "beans",
+      "big_category_name": "豆类",
+      "name": "豆类",
+      "source": "gb_checklist",
+      "slug_kind": "manual"
+    },
+    {
+      "id": "raw_dried_seeds_nuts-sheng_gan_jian_guo",
+      "big_category_id": "raw_dried_seeds_nuts",
+      "big_category_name": "生干坚果与籽类食品",
+      "name": "生干坚果",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
+      "id": "raw_dried_seeds_nuts-qi_ta_zi_lei",
+      "big_category_id": "raw_dried_seeds_nuts",
+      "big_category_name": "生干坚果与籽类食品",
+      "name": "其他籽类",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    }
+  ],
+  "by_big_sub": {
+    "冷冻饮品|||冷冻饮品": "frozen_drinks-frozen_drinks_placeholder",
+    "方便食品|||其他方便食品": "convenient_food-other_convenient_food",
+    "水产制品|||其他水产制品": "aquatic_products_processed-other_aquatic_products_processed",
+    "水产制品|||干制水产品": "aquatic_products_processed-dried_aquatic_products",
+    "水产品|||其他水产品": "aquatic_products-other_aquatic_products",
+    "水产品|||海水虾": "aquatic_products-sea_shrimp",
+    "水产品|||海水鱼": "aquatic_products-marine_fish",
+    "水产品|||淡水虾": "aquatic_products-freshwater_shrimp",
+    "水产品|||淡水鱼": "aquatic_products-freshwater_fish",
+    "水果制品|||蜜饯": "fruit_products_processed-candied_fruit",
+    "水果类|||柑、橘": "fruits-mandarin_orange",
+    "水果类|||柑橘": "fruits-citrus",
+    "水果类|||桑葚": "fruits-mulberry",
+    "水果类|||梨": "fruits-pear",
+    "水果类|||水果类": "fruits-fruits_placeholder",
+    "水果类|||番木瓜": "fruits-papaya",
+    "水果类|||芒果": "fruits-mango",
+    "水果类|||荔枝": "fruits-lychee",
+    "水果类|||菠萝": "fruits-pineapple",
+    "水果类|||香蕉": "fruits-banana",
+    "水果类|||龙眼": "fruits-longan",
+    "淀粉及淀粉制品|||淀粉": "starch_products-starch",
+    "淀粉及淀粉制品|||粉丝粉条": "starch_products-vermicelli",
+    "炒货食品及坚果制品|||炒货食品及坚果制品": "roasted_seeds_nuts-roasted_seeds_nuts",
+    "炒货食品及坚果制品|||花生制品": "roasted_seeds_nuts-peanut_products",
+    "特殊膳食食品|||营养补充品": "special_dietary_food-nutritional_supplement",
+    "生干坚果与籽类食品|||生干坚果与籽类食品": "raw_dried_seeds_nuts-raw_dried_seeds_nuts",
+    "畜禽肉及副产品|||其他畜肉": "meat_poultry_offal-other_livestock_meat",
+    "畜禽肉及副产品|||牛肉": "meat_poultry_offal-beef",
+    "畜禽肉及副产品|||猪肝": "meat_poultry_offal-pork_liver",
+    "畜禽肉及副产品|||羊肉": "meat_poultry_offal-mutton",
+    "畜禽肉及副产品|||鸡肉": "meat_poultry_offal-chicken",
+    "粮食加工品|||其他谷物粉类制成品": "cereal_products-other_cereal_powder_products",
+    "粮食加工品|||发酵面制品": "cereal_products-fermented_dough_products",
+    "粮食加工品|||挂面": "cereal_products-dried_noodles",
+    "粮食加工品|||生湿面制品": "cereal_products-fresh_noodle_products",
+    "糕点|||月饼": "pastries-mooncake",
+    "糕点|||糕点": "pastries-pastries",
+    "糖果制品|||果冻": "confectionery-jelly",
+    "糖果制品|||果脯蜜饯": "confectionery-preserved_fruit_candied",
+    "糖果制品|||糖果": "confectionery-candy",
+    "罐头|||水果罐头": "canned_food-canned_fruit",
+    "肉制品|||其他肉制品": "meat_products_processed-other_meat_products",
+    "肉制品|||熏煮香肠火腿制品": "meat_products_processed-smoked_sausage_ham",
+    "肉制品|||熟肉制品": "meat_products_processed-cooked_meat",
+    "肉制品|||腌腊肉制品": "meat_products_processed-cured_meat",
+    "肉制品|||酱卤肉制品": "meat_products_processed-sauced_meat",
+    "茶叶及相关制品|||茶叶": "tea_related_products-tea",
+    "蔬菜|||其他类蔬菜": "vegetables-other_vegetables",
+    "蔬菜|||姜": "vegetables-ginger",
+    "蔬菜|||山药": "vegetables-yam",
+    "蔬菜|||普通白菜（小白菜、小油菜、青菜）": "vegetables-bok_choy",
+    "蔬菜|||甘薯": "vegetables-sweet_potato",
+    "蔬菜|||甜椒": "vegetables-sweet_pepper",
+    "蔬菜|||胡萝卜": "vegetables-carrot",
+    "蔬菜|||芹菜": "vegetables-celery",
+    "蔬菜|||茄子": "vegetables-eggplant",
+    "蔬菜|||菜豆": "vegetables-string_bean",
+    "蔬菜|||菠菜": "vegetables-spinach",
+    "蔬菜|||萝卜": "vegetables-radish",
+    "蔬菜|||葱": "vegetables-green_onion",
+    "蔬菜|||蔬菜": "vegetables-vegetables_placeholder",
+    "蔬菜|||豆芽": "vegetables-bean_sprouts",
+    "蔬菜|||豇豆": "vegetables-cowpea",
+    "蔬菜|||辣椒": "vegetables-chili_pepper",
+    "蔬菜|||韭菜": "vegetables-leek",
+    "蔬菜|||食荚豌豆": "vegetables-snow_pea",
+    "蔬菜|||马铃薯": "vegetables-potato",
+    "蔬菜|||黄瓜": "vegetables-cucumber",
+    "蔬菜制品|||蔬菜干制品": "vegetable_products_processed-dried_vegetable_products",
+    "蔬菜制品|||酱腌菜": "vegetable_products_processed-pickled_vegetables",
+    "薯类和膨化食品|||薯类和膨化食品": "puffed_food-puffed_food",
+    "蜂产品|||蜂产品": "bee_products-bee_products",
+    "蜂产品|||蜂蜜": "bee_products-honey",
+    "调味品|||其他香辛料调味品": "seasonings-other_spice_seasonings",
+    "调味品|||普通食用盐": "seasonings-edible_salt",
+    "调味品|||辣椒、花椒、辣椒粉、花椒粉": "seasonings-chili_pepper_sichuan_pepper_powder",
+    "调味品|||酱油": "seasonings-soy_sauce",
+    "调味品|||酿造酱": "seasonings-brewed_paste",
+    "调味品|||食醋": "seasonings-vinegar",
+    "调味品|||香辛料调味油": "seasonings-spice_seasoning_oil",
+    "豆制品|||其他豆制品": "soy_products-other_soy_products",
+    "豆制品|||豆制品": "soy_products-soy_products_placeholder",
+    "豆制品|||非发酵性豆制品": "soy_products-non_fermented_soy_products",
+    "豆类|||其他豆类": "beans-other_beans",
+    "速冻食品|||速冻动物性水产制品": "frozen_food-frozen_animal_aquatic_products",
+    "速冻食品|||速冻肉制品": "frozen_food-frozen_meat_products",
+    "速冻食品|||速冻面米食品": "frozen_food-frozen_dough_rice_food",
+    "酒类|||以蒸馏酒及食用酒精为酒基的配制酒": "alcoholic_beverages-distilled_alcohol_based_blended_liquor",
+    "酒类|||啤酒": "alcoholic_beverages-beer",
+    "酒类|||果酒": "alcoholic_beverages-fruit_wine",
+    "酒类|||白酒": "alcoholic_beverages-baijiu",
+    "酒类|||葡萄酒": "alcoholic_beverages-grape_wine",
+    "酒类|||酒类": "alcoholic_beverages-alcoholic_beverages_placeholder",
+    "酒类|||黄酒": "alcoholic_beverages-huangjiu",
+    "食用油、油脂及其制品|||芝麻油": "edible_oils-sesame_oil",
+    "食用油、油脂及其制品|||食用植物油": "edible_oils-edible_vegetable_oil",
+    "餐饮食品|||其他餐饮食品": "restaurant_food-other_restaurant_food",
+    "餐饮食品|||复用餐饮具（餐馆自行消毒）": "restaurant_food-reused_tableware_restaurant_disinfected",
+    "餐饮食品|||油饼油条（自制）": "restaurant_food-fried_dough_sticks_self_made",
+    "餐饮食品|||生食动物性水产制品(自制)": "restaurant_food-raw_animal_aquatic_products_self_made",
+    "餐饮食品|||粉丝粉条（自制）": "restaurant_food-vermicelli_self_made",
+    "餐饮食品|||自制油炸面制品": "restaurant_food-self_made_fried_dough_products",
+    "餐饮食品|||除上述类别的餐饮加工自制食品": "restaurant_food-other_restaurant_self_made_food",
+    "餐饮食品|||馒头花卷（自制）": "restaurant_food-steamed_bun_self_made",
+    "饮料|||其他饮料": "beverages-other_beverages",
+    "饮料|||包装饮用水": "beverages-packaged_drinking_water",
+    "饮料|||果蔬汁": "beverages-fruit_vegetable_juice",
+    "饮料|||果蔬汁类及其饮料": "beverages-fruit_vegetable_juice_beverages",
+    "饮料|||碳酸饮料": "beverages-carbonated_beverages",
+    "饮料|||饮用天然矿泉水": "beverages-natural_mineral_water",
+    "饮料|||饮用纯净水": "beverages-purified_water",
+    "饼干|||饼干": "biscuits-biscuits",
+    "鲜蛋|||鸡蛋": "fresh_eggs-chicken_eggs",
+    "粮食加工品|||小麦粉": "cereal_products-wheat_flour",
+    "粮食加工品|||大米": "cereal_products-rice",
+    "粮食加工品|||谷物加工品": "cereal_products-gu_wu_jia_gong_pin",
+    "粮食加工品|||玉米粉(片、渣)": "cereal_products-yu_mi_fen",
+    "粮食加工品|||米粉": "cereal_products-rice_noodles",
+    "粮食加工品|||其他谷物碾磨加工品": "cereal_products-qi_ta_gu_wu_nian_mo_jia_gong_pin",
+    "粮食加工品|||米粉制品": "cereal_products-mi_fen_zhi_pin",
+    "调味品|||调味料酒": "seasonings-cooking_wine",
+    "调味品|||鸡粉、鸡精调味料": "seasonings-ji_fen_ji_jing_tiao_wei_liao",
+    "调味品|||其他固体调味料": "seasonings-qi_ta_gu_ti_tiao_wei_liao",
+    "调味品|||蛋黄酱、沙拉酱": "seasonings-dan_huang_jiang_sha_la_jiang",
+    "调味品|||坚果与籽类的泥（酱）": "seasonings-jian_guo_yu_zi_lei_de_ni",
+    "调味品|||辣椒酱": "seasonings-la_jiao_jiang",
+    "调味品|||火锅底料、麻辣烫底料": "seasonings-huo_guo_di_liao_ma_la_tang_di_liao",
+    "调味品|||其他半固体调味料": "seasonings-qi_ta_ban_gu_ti_tiao_wei_liao",
+    "调味品|||蚝油、虾油、鱼露": "seasonings-hao_you_xia_you_yu_lu",
+    "调味品|||其他液体调味料": "seasonings-qi_ta_ye_ti_tiao_wei_liao",
+    "调味品|||味精": "seasonings-wei_jing",
+    "调味品|||低钠食用盐": "seasonings-di_na_shi_yong_yan",
+    "调味品|||风味食用盐": "seasonings-feng_wei_shi_yong_yan",
+    "调味品|||特殊工艺食用盐": "seasonings-te_shu_gong_yi_shi_yong_yan",
+    "调味品|||食品生产加工用盐": "seasonings-shi_pin_sheng_chan_jia_gong_yong_yan",
+    "肉制品|||调理肉制品(非速冻)": "meat_products_processed-tiao_li_rou_zhi_pin",
+    "肉制品|||发酵肉制品": "meat_products_processed-fa_jiao_rou_zhi_pin",
+    "肉制品|||油炸肉制品": "meat_products_processed-you_zha_rou_zhi_pin",
+    "肉制品|||熟肉干制品": "meat_products_processed-cooked_dried_meat",
+    "肉制品|||熏烧烤肉制品": "meat_products_processed-smoked_roasted_meat",
+    "方便食品|||油炸面、非油炸面": "convenient_food-you_zha_mian_fei_you_zha_mian",
+    "方便食品|||方便米粉(米线)": "convenient_food-fang_bian_mi_fen",
+    "方便食品|||方便粉丝": "convenient_food-fang_bian_fen_si",
+    "方便食品|||其他方便面": "convenient_food-qi_ta_fang_bian_mian",
+    "方便食品|||调味面制品": "convenient_food-seasoned_dough_products",
+    "方便食品|||冲调类方便食品": "convenient_food-chong_diao_lei_fang_bian_shi_pin",
+    "方便食品|||主食类方便食品": "convenient_food-zhu_shi_lei_fang_bian_shi_pin",
+    "方便食品|||其他类方便食品": "convenient_food-qi_ta_lei_fang_bian_shi_pin",
+    "罐头|||畜禽肉类罐头": "canned_food-chu_qin_rou_lei_guan_tou",
+    "罐头|||水产动物类罐头": "canned_food-shui_chan_dong_wu_lei_guan_tou",
+    "罐头|||水果类罐头": "canned_food-shui_guo_lei_guan_tou",
+    "罐头|||蔬菜类罐头": "canned_food-shu_cai_lei_guan_tou",
+    "罐头|||食用菌罐头": "canned_food-shi_yong_jun_guan_tou",
+    "罐头|||其他罐头": "canned_food-other_canned_food",
+    "酒类|||果酒(发酵型)": "alcoholic_beverages-guo_jiu",
+    "酒类|||以发酵酒为酒基的配制酒": "alcoholic_beverages-yi_fa_jiao_jiu_wei_jiu_ji_de_pei_zhi_jiu",
+    "酒类|||其他蒸馏酒": "alcoholic_beverages-other_distilled_liquor",
+    "酒类|||其他发酵酒": "alcoholic_beverages-other_fermented_liquor",
+    "蛋制品|||再制蛋": "egg_products-reconstituted_eggs",
+    "蛋制品|||干蛋制品": "egg_products-dry_egg_products",
+    "蛋制品|||冰蛋制品": "egg_products-frozen_egg_products",
+    "蛋制品|||液蛋制品": "egg_products-liquid_egg_products",
+    "蛋制品|||热凝固蛋制品": "egg_products-heat_coagulated_egg_products",
+    "蛋制品|||其他蛋制品": "egg_products-other_egg_products",
+    "食用油、油脂及其制品|||食用动物油脂": "edible_oils-shi_yong_dong_wu_you_zhi",
+    "食用油、油脂及其制品|||食用油脂制品": "edible_oils-shi_yong_you_zhi_zhi_pin",
+    "乳制品|||液体乳（灭菌乳）": "dairy_products-ye_ti_ru",
+    "乳制品|||乳粉（全脂、脱脂、部分脱脂）和调制乳粉": "dairy_products-ru_fen_he_tiao_zhi_ru_fen",
+    "乳制品|||乳清粉和乳清蛋白粉": "dairy_products-ru_qing_fen_he_ru_qing_dan_bai_fen",
+    "乳制品|||其他乳制品（浓缩乳制品）": "dairy_products-qi_ta_ru_zhi_pin",
+    "饮料|||其他类饮用水": "beverages-qi_ta_lei_yin_yong_shui",
+    "饮料|||蛋白饮料": "beverages-dan_bai_yin_liao",
+    "饮料|||碳酸饮料（汽水）": "beverages-tan_suan_yin_liao",
+    "饮料|||茶饮料": "beverages-tea_beverages",
+    "饮料|||固体饮料": "beverages-solid_beverages",
+    "速冻食品|||速冻调理肉制品": "frozen_food-su_dong_tiao_li_rou_zhi_pin",
+    "速冻食品|||速冻调制水产制品": "frozen_food-su_dong_tiao_zhi_shui_chan_zhi_pin",
+    "速冻食品|||速冻谷物食品": "frozen_food-su_dong_gu_wu_shi_pin",
+    "速冻食品|||速冻蔬菜制品": "frozen_food-frozen_vegetable_products",
+    "速冻食品|||速冻水果制品": "frozen_food-su_dong_shui_guo_zhi_pin",
+    "薯类和膨化食品|||干制薯类": "puffed_food-gan_zhi_shu_lei",
+    "薯类和膨化食品|||冷冻薯类": "puffed_food-leng_dong_shu_lei",
+    "薯类和膨化食品|||薯泥（酱）类": "puffed_food-shu_ni_lei",
+    "薯类和膨化食品|||薯粉类": "puffed_food-shu_fen_lei",
+    "薯类和膨化食品|||其他薯类食品": "puffed_food-qi_ta_shu_lei_shi_pin",
+    "糖果制品|||巧克力及巧克力制品、代可可脂巧克力及代可可脂巧克力制品": "confectionery-qiao_ke_li_ji_qiao_ke_li_zhi_pin_dai_ke_ke_zhi_qiao_ke_li_ji_dai_ke_ke_zhi_qiao_ke_li_zhi_pin",
+    "茶叶及相关制品|||含茶制品": "tea_related_products-han_cha_zhi_pin",
+    "茶叶及相关制品|||代用茶": "tea_related_products-herbal_tea",
+    "蔬菜制品|||其他蔬菜制品": "vegetable_products_processed-other_vegetable_products",
+    "蔬菜制品|||干制食用菌": "vegetable_products_processed-gan_zhi_shi_yong_jun",
+    "蔬菜制品|||腌渍食用菌": "vegetable_products_processed-yan_zi_shi_yong_jun",
+    "水果制品|||水果干制品": "fruit_products_processed-shui_guo_gan_zhi_pin",
+    "水果制品|||果酱": "fruit_products_processed-guo_jiang",
+    "可可及焙烤咖啡产品|||焙炒咖啡": "cocoa_coffee_products-bei_chao_ka_fei",
+    "可可及焙烤咖啡产品|||可可制品": "cocoa_coffee_products-cocoa_products",
+    "食糖|||白砂糖、精幼砂糖": "sugar-bai_sha_tang_jing_you_sha_tang",
+    "食糖|||绵白糖": "sugar-soft_white_sugar",
+    "食糖|||赤砂糖": "sugar-brown_sugar",
+    "食糖|||红糖": "sugar-hong_tang",
+    "食糖|||冰糖": "sugar-rock_sugar",
+    "食糖|||冰片糖": "sugar-bing_pian_tang",
+    "食糖|||方糖": "sugar-fang_tang",
+    "食糖|||其他糖": "sugar-qi_ta_tang",
+    "水产制品|||藻类干制品": "aquatic_products_processed-zao_lei_gan_zhi_pin",
+    "水产制品|||预制动物性水产干制品": "aquatic_products_processed-yu_zhi_dong_wu_xing_shui_chan_gan_zhi_pin",
+    "水产制品|||盐渍鱼": "aquatic_products_processed-yan_zi_yu",
+    "水产制品|||盐渍藻": "aquatic_products_processed-yan_zi_zao",
+    "水产制品|||其他盐渍水产品": "aquatic_products_processed-qi_ta_yan_zi_shui_chan_pin",
+    "水产制品|||预制鱼糜制品": "aquatic_products_processed-yu_zhi_yu_mi_zhi_pin",
+    "水产制品|||熟制动物性水产制品": "aquatic_products_processed-shu_zhi_dong_wu_xing_shui_chan_zhi_pin",
+    "水产制品|||生食动物性水产品": "aquatic_products_processed-sheng_shi_dong_wu_xing_shui_chan_pin",
+    "淀粉及淀粉制品|||其他淀粉制品": "starch_products-other_starch_products",
+    "淀粉及淀粉制品|||淀粉糖": "starch_products-dian_fen_tang",
+    "糕点|||面包": "pastries-mian_bao",
+    "糕点|||粽子": "pastries-zong_zi",
+    "豆制品|||发酵性豆制品": "soy_products-fermented_soy_products",
+    "豆制品|||非发酵性豆制品（腐竹、油皮及其再制品）": "soy_products-fei_fa_jiao_xing_dou_zhi_pin",
+    "蜂产品|||蜂王浆（含蜂王浆冻干品）": "bee_products-feng_wang_jiang",
+    "蜂产品|||蜂花粉": "bee_products-bee_pollen",
+    "蜂产品|||蜂产品制品": "bee_products-feng_chan_pin_zhi_pin",
+    "保健食品|||保健食品": "health_food-health_food",
+    "特殊膳食食品|||婴幼儿谷类辅助食品": "special_dietary_food-infant_cereal_assist_food",
+    "特殊膳食食品|||婴幼儿罐装辅助食品": "special_dietary_food-ying_you_er_guan_zhuang_fu_zhu_shi_pin",
+    "特殊膳食食品|||辅食营养补充品": "special_dietary_food-complementary_food_supplement",
+    "特殊膳食食品|||孕妇及乳母营养补充品": "special_dietary_food-yun_fu_ji_ru_mu_ying_yang_bu_chong_pin",
+    "特殊膳食食品|||运动营养食品": "special_dietary_food-sports_nutrition_food",
+    "特殊医学用途配方食品|||特殊医学用途婴儿配方食品": "fsmp-fsmp_infant_formula",
+    "特殊医学用途配方食品|||全营养配方食品": "fsmp-quan_ying_yang_pei_fang_shi_pin",
+    "特殊医学用途配方食品|||非全营养配方食品": "fsmp-fei_quan_ying_yang_pei_fang_shi_pin",
+    "特殊医学用途配方食品|||特定全营养配方食品": "fsmp-te_ding_quan_ying_yang_pei_fang_shi_pin",
+    "婴幼儿配方食品|||幼儿配方食品": "infant_formula-you_er_pei_fang_shi_pin",
+    "餐饮食品|||包子（自制）": "restaurant_food-bao_zi",
+    "餐饮食品|||油饼油条（自制）a": "restaurant_food-you_bing_you_tiao_a",
+    "餐饮食品|||凉皮（自制）a": "restaurant_food-liang_pi_a",
+    "餐饮食品|||肉冻皮冻（自制）": "restaurant_food-rou_dong_pi_dong",
+    "餐饮食品|||熏烧烤肉类（自制）a": "restaurant_food-xun_shao_kao_rou_lei_a",
+    "餐饮食品|||火锅麻辣烫底料（自制）": "restaurant_food-huo_guo_ma_la_tang_di_liao",
+    "餐饮食品|||生食动物性水产品（自制）": "restaurant_food-sheng_shi_dong_wu_xing_shui_chan_pin",
+    "餐饮食品|||花生制品（自制）a": "restaurant_food-hua_sheng_zhi_pin_a",
+    "餐饮食品|||糕点（自制）": "restaurant_food-gao_dian",
+    "餐饮食品|||煎炸过程用油a": "restaurant_food-jian_zha_guo_cheng_yong_you_a",
+    "餐饮食品|||复用餐饮具（餐馆自行消毒）a": "restaurant_food-fu_yong_can_yin_ju_a",
+    "餐饮食品|||复用餐饮具（集中清洗消毒服务单位消毒）": "restaurant_food-fu_yong_can_yin_ju",
+    "餐饮食品|||除上述类别的餐饮加工自制食品a": "restaurant_food-chu_shang_shu_lei_bie_de_can_yin_jia_gong_zi_zhi_shi_pin_a",
+    "畜禽肉及副产品|||猪肉": "meat_poultry_offal-pork",
+    "畜禽肉及副产品|||鸭肉": "meat_poultry_offal-ya_rou",
+    "畜禽肉及副产品|||其他禽肉": "meat_poultry_offal-other_poultry",
+    "畜禽肉及副产品|||牛肝": "meat_poultry_offal-niu_gan",
+    "畜禽肉及副产品|||羊肝": "meat_poultry_offal-yang_gan",
+    "畜禽肉及副产品|||猪肾": "meat_poultry_offal-zhu_shen",
+    "畜禽肉及副产品|||牛肾": "meat_poultry_offal-niu_shen",
+    "畜禽肉及副产品|||羊肾": "meat_poultry_offal-yang_shen",
+    "畜禽肉及副产品|||其他畜副产品": "meat_poultry_offal-qi_ta_chu_fu_chan_pin",
+    "畜禽肉及副产品|||鸡肝": "meat_poultry_offal-ji_gan",
+    "畜禽肉及副产品|||其他禽副产品": "meat_poultry_offal-qi_ta_qin_fu_chan_pin",
+    "蔬菜|||鲜食用菌": "vegetables-xian_shi_yong_jun",
+    "蔬菜|||大白菜": "vegetables-da_bai_cai",
+    "蔬菜|||油麦菜": "vegetables-you_mai_cai",
+    "蔬菜|||净菜": "vegetables-jing_cai",
+    "水产品|||淡水蟹": "aquatic_products-freshwater_crab",
+    "水产品|||海水蟹": "aquatic_products-sea_crab",
+    "水产品|||贝类": "aquatic_products-shellfish",
+    "水果类|||苹果": "fruits-ping_guo",
+    "水果类|||枣": "fruits-zao",
+    "水果类|||桃": "fruits-tao",
+    "水果类|||油桃": "fruits-you_tao",
+    "水果类|||柚": "fruits-you",
+    "水果类|||柠檬": "fruits-ning_meng",
+    "水果类|||橙": "fruits-cheng",
+    "水果类|||葡萄": "fruits-pu_tao",
+    "水果类|||草莓": "fruits-cao_mei",
+    "水果类|||猕猴桃": "fruits-mi_hou_tao",
+    "水果类|||西番莲（百香果）": "fruits-xi_fan_lian",
+    "水果类|||杨梅": "fruits-yang_mei",
+    "水果类|||橄榄": "fruits-gan_lan",
+    "水果类|||西瓜": "fruits-xi_gua",
+    "水果类|||甜瓜类": "fruits-tian_gua_lei",
+    "鲜蛋|||其他禽蛋": "fresh_eggs-qi_ta_qin_dan",
+    "豆类|||豆类": "beans-beans_placeholder",
+    "生干坚果与籽类食品|||生干坚果": "raw_dried_seeds_nuts-sheng_gan_jian_guo",
+    "生干坚果与籽类食品|||其他籽类": "raw_dried_seeds_nuts-qi_ta_zi_lei"
+  }
+}

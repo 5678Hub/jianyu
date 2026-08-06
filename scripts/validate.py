@@ -115,6 +115,60 @@ def main():
             else:
                 print(f"  ✅ {idx_name}  {len(idx)} key，全部 id 引用合法")
 
+        # 2.2b *_id 字段检查（schema v1.2+）
+        print("\n[2b] *_id 字段覆盖率（schema v1.2+）")
+        cat_ids = json.load(open(os.path.join(root, 'data/category_ids.json'), encoding='utf-8'))
+        sub_ids = json.load(open(os.path.join(root, 'data/subcategory_ids.json'), encoding='utf-8'))
+        big_id_set = set(c['id'] for c in cat_ids.get('categories', []))
+        sub_id_set = set(s['id'] for s in sub_ids.get('subcategories', []))
+
+        big_missing = 0
+        sub_missing = 0
+        invalid_big = 0
+        invalid_sub = 0
+        for r in records:
+            bid = r.get('big_category_id')
+            sid = r.get('subcategory_id')
+            if not bid:
+                big_missing += 1
+            elif bid not in big_id_set:
+                invalid_big += 1
+                if invalid_big <= 3:
+                    failures.append(f"❌ record {r.get('id')}  big_category_id={bid!r} 不在 category_ids.json 中")
+            if not sid:
+                sub_missing += 1
+            elif sid not in sub_id_set:
+                invalid_sub += 1
+                if invalid_sub <= 3:
+                    failures.append(f"❌ record {r.get('id')}  subcategory_id={sid!r} 不在 subcategory_ids.json 中")
+
+            # failed_items 内嵌字段
+            for fi in r.get('failed_items', []):
+                if not fi.get('big_category_id'):
+                    big_missing += 1
+                if not fi.get('subcategory_id'):
+                    sub_missing += 1
+                # table_id 可为 None（数据源无表号），有值时校验
+                tid = fi.get('table_id')
+                if tid is not None and tid != '':
+                    table_ids = json.load(open(os.path.join(root, 'data/table_ids.json'), encoding='utf-8'))
+                    table_id_set = set(t['id'] for t in table_ids.get('tables', []))
+                    if tid not in table_id_set:
+                        invalid_big += 1
+
+        if big_missing == 0 and invalid_big == 0:
+            print(f"  ✅ big_category_id 全部 {len(records)} 条覆盖且合法")
+        if sub_missing == 0 and invalid_sub == 0:
+            print(f"  ✅ subcategory_id 全部 {len(records)} 条覆盖且合法")
+        if big_missing:
+            failures.append(f"❌ master.json  big_category_id 缺失 {big_missing} 处")
+        if sub_missing:
+            failures.append(f"❌ master.json  subcategory_id 缺失 {sub_missing} 处")
+        if invalid_big:
+            failures.append(f"❌ master.json  big_category_id 非法 {invalid_big} 处")
+        if invalid_sub:
+            failures.append(f"❌ master.json  subcategory_id 非法 {invalid_sub} 处")
+
         # 2.3 µ/μ 混用检查（仅扫描非 _raw 字段）
         print("\n[3] µ/μ 混用检查（仅非 _raw 字段）")
         def walk_strings(obj, path_parts=()):
@@ -184,12 +238,21 @@ def main():
 
     # ============================================================
     # 4. 表号重复警告（gb_checklist_subcat.json）
+    # 区分两类重复：
+    #   (a) 同 table_no 在多个 big_category 出现 → 跨大类续编（已知 PDF 现象）
+    #   (b) 同 table_no 在同一 big_category 多次出现 → 同大类续编
     # ============================================================
-    print("\n[4] 表号重复警告")
+    print("\n[4] 表号续编警告")
     gbs_path = os.path.join(root, 'data/current_period/gb_checklist_subcat.json')
-    if os.path.exists(gbs_path):
+    table_ids_path = os.path.join(root, 'data/table_ids.json')
+    if os.path.exists(gbs_path) and os.path.exists(table_ids_path):
         gbs = json.load(open(gbs_path, encoding='utf-8'))
-        table_to_cats = {}
+        tids = json.load(open(table_ids_path, encoding='utf-8'))
+        # table_id set 校验
+        tid_set = set(t['id'] for t in tids.get('tables', []))
+
+        # 按 (big, table_no) → list[sub_name]
+        loc = {}
         for big, tables in gbs.get('categories', {}).items():
             if not isinstance(tables, list):
                 continue
@@ -197,15 +260,41 @@ def main():
                 if not isinstance(t, dict):
                     continue
                 tno = t.get('table_no') or ''
-                if tno:
-                    table_to_cats.setdefault(tno, set()).add(big)
-        dup = {k: v for k, v in table_to_cats.items() if len(v) > 1}
-        if dup:
-            for tno, cats in dup.items():
-                warnings.append(f"⚠️ 表号 {tno} 跨大类续编：{sorted(cats)}")
-                print(f"  ⚠️ 表号 {tno} 跨大类续编：{sorted(cats)}")
+                if not tno:
+                    continue
+                loc.setdefault(tno, {}).setdefault(big, []).append(t.get('name', ''))
+
+        # 找重复：table_no 在多个 big 或同 big 多张
+        cross = {tno: bd for tno, bd in loc.items() if len(bd) > 1}
+        same = {}
+        for tno, bd in loc.items():
+            for big, subs in bd.items():
+                if len(subs) > 1:
+                    same.setdefault(tno, []).append((big, subs))
+        if cross:
+            for tno, bd in sorted(cross.items()):
+                warnings.append(f"⚠️ 表号 {tno} 跨大类续编：{sorted(bd.keys())}")
+                print(f"  ⚠️ 表号 {tno} 跨大类续编：{sorted(bd.keys())}")
+        if same:
+            for tno, groups in sorted(same.items()):
+                warnings.append(f"⚠️ 表号 {tno} 同大类内多张：{groups}")
+                print(f"  ⚠️ 表号 {tno} 同大类内多张：{groups}")
+        if not cross and not same:
+            print(f"  ✅ {len(loc)} 个表号，无重复")
+
+        # table_ids.json 校验
+        all_table_ids = [t['id'] for t in tids.get('tables', [])]
+        if len(set(all_table_ids)) != len(all_table_ids):
+            failures.append(f"❌ table_ids.json 含重复 id")
         else:
-            print(f"  ✅ {len(table_to_cats)} 个表号，无重复")
+            print(f"  ✅ table_ids.json  {len(all_table_ids)} 条 id 唯一")
+        # continuation_of 引用合法
+        tid_set_global = set(all_table_ids)
+        bad_refs = [t['id'] for t in tids.get('tables', []) if t.get('continuation_of') and t['continuation_of'] not in tid_set_global]
+        if bad_refs:
+            failures.append(f"❌ table_ids.json  {len(bad_refs)} 条 continuation_of 引用不存在")
+        else:
+            print(f"  ✅ table_ids.json  continuation_of 引用全部合法")
 
     # ============================================================
     # 汇总

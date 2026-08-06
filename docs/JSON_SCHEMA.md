@@ -327,3 +327,86 @@ subcat_to_items.json         ← 别名 → 规范名 映射
 3. **分类命名**：big_category 与 category 两个字段重复，是否可合并？
 4. **跨类表号**：33-44 / 33-8 这种 PDF 跨大类续编，对前端展示逻辑有何影响？
 5. **Unicode 字符**：limit 中 µ/μ 统一处理是否应移到数据预处理而非运行时？
+
+---
+
+## schema v1.2 升级说明（2026-08-06）
+
+按 ChatGPT 审查建议实施的核心改造：
+
+### 新增 ID 体系（程序内部稳定标识）
+
+| 文件 | 内容 | 条数 |
+|------|------|------|
+| `data/category_ids.json` | 31 大类英文 slug ID + 中文名映射 | 40（1 root + 39） |
+| `data/subcategory_ids.json` | 282 细类英文 slug ID（master 153 + GB 检验 129） | 282 |
+| `data/table_ids.json` | 253 张检验项目表稳定 ID + continuation_of 续编关系 | 253 |
+
+**ID 命名规则**：
+- 大类：`snake_case` 英文短语，避免与同义词根冲突（如 `aquatic_products` ≠ `aquatic_products_processed`）
+- 细类：`{big_id}-{sub_slug}`（slug 优先手工指定，未指定用 pypinyin 全拼自动生成）
+- 表号：`gb2026-{big_id}-{norm_no}[-{sub_slug}]`（跨大类续编加 sub_slug 区分）
+
+### master.json schema v1.1 → v1.2
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `id` | str | record_id（r0001~rXXXX），全局唯一 |
+| `big_category_id` | str | 大类英文 slug ID |
+| `subcategory_id` | str | 细类英文 slug ID |
+| `big_category` | str | **[deprecated]** 大类中文名 |
+| `sub_category` | str | **[deprecated]** "大类-细类"中文拼接 |
+| `category` | str | **[deprecated]** 大类全称 |
+
+### failed_items[*] schema
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `item` | str | 检验项目 |
+| `result` | str | 实测值 |
+| `limit` | str | 限值（已 µ/μ 归一化） |
+| `limit_raw` | str | 原始 limit（仅不一致时存在） |
+| `limit_normalized` | str | 归一化 limit（必填） |
+| `result_normalized` | str | 归一化 result（必填） |
+| `big_category_id` | str | 大类 ID |
+| `subcategory_id` | str | 细类 ID |
+| `table_id` | str \| null | 表号 ID（数据源无表号时 null） |
+
+### 索引去重（schema v1.1）
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `indexes.by_canonical[k]` | `{ids: [...], count, big_categories, food_names}` | 仅存 record_id 引用 |
+| `indexes.by_category[k]` | `{ids: [...], count, foods, items}` | 同上 |
+| `indexes.by_item[k]` | `{ids: [...], count, foods, big_categories}` | 同上 |
+
+**效果**：master.json 体积 3.0 MB → 1.07 MB（-64%）
+
+### 单一事实源流程（build_all.py）
+
+```
+上游事实源
+├─ data/category_ids.json (人工维护)
+├─ data/gb_checklist_subcat.json (PDF ETL 产物)
+├─ data/subcat_to_items.json (人工维护 alias)
+└─ data/master.json (records 来自手工 ETL)
+
+build_all.py 一键执行：
+  Step 1: 校验 category_ids.json
+  Step 2: gen_subcategory_ids.py → 282 条 slug
+  Step 3: gen_table_ids.py → 253 条 stable id
+  Step 4: rebuild_index.py → master.json 加 id + 索引 + µ/μ + sw.js 同步
+  Step 5: enrich_gb_checklist.py + enrich_subcat_to_items.py → 派生 JSON 注入 *_id
+  Step 6: upgrade_master_v12.py → master.json 注入 *_id
+  校验：validate.py
+```
+
+### Service Worker 缓存隔离
+
+`sw.js` 顶部 `DATA_VERSION` 由 `rebuild_index.py` 自动同步，CACHE 名 = `jianyu-cache-${DATA_VERSION}`。
+数据版本变了，activate 时清理所有旧缓存。
+
+### 已确认不做的项（留给未来）
+
+- IndexedDB 改造（当前 712 条规模不需要）
+- category/subcategory 字段合并（ChatGPT 建议的"语义化合并"暂不需要；用 *_id 体系替代）
