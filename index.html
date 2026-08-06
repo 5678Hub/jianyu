@@ -159,6 +159,7 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
 .record-detail .rd-no { background: var(--c-high); color: #fff; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; flex-shrink: 0; }
 .record-detail > summary.rd-summary strong { font-size: 15px; color: var(--c-text-1); flex-shrink: 0; }
 .record-detail .rd-canon { background: #fff3e0; padding: 1px 6px; border-radius: 3px; font-size: 11px; color: #5d4037; font-family: 'SF Mono', Consolas, monospace; flex-shrink: 0; }
+.record-detail .rd-items-tag { background: var(--c-high-soft); color: var(--c-high); padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; flex-shrink: 0; max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor: help; border: 1px solid var(--c-high); }
 .record-detail .rd-prod-tag { font-size: 12px; color: var(--c-text-2); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .record-detail .rd-source { background: #e3f2fd; color: #1565c0; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; flex-shrink: 0; }
 .record-detail .rd-toggle { color: var(--c-text-3); font-size: 12px; transition: transform 0.2s; flex-shrink: 0; }
@@ -209,7 +210,7 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
     <div class="brand-title"><span class="zh">食品抽检风险查询</span></div>
     <div class="subtitle" id="subtitle">加载中…</div>
   </div>
-  <div class="ver">v4.0.2 · 2026</div>
+  <div class="ver">v4.0.3 · 2026</div>
 </header>
 
 <!-- 主搜索框（核心：单输入框） -->
@@ -587,15 +588,19 @@ function renderDetailTable(q, hits, ctx) {
     const nameDiff = canonical && canonical !== raw ? `<code>${canonical}</code>` : canonical;
     const subShort = (r.sub_category || '').split('-').slice(-1)[0] || '';
     const prodName = r.prod_name || '';
-    const itemNames = items.slice(0, 3).map(it => it.item || '').filter(Boolean).join('、');
+    const itemNames = items.slice(0, 3).map(it => it.item || '').filter(Boolean).join('·');
     const moreItems = items.length > 3 ? ` 等 ${items.length} 项` : '';
-    // summary 显示：编号 + 食品名 + 主要不合格项 + 来源
+    // v4.0.3 summary 加不合格项目 tag（不展开也能看到）
+    const itemsTag = itemNames
+      ? `<span class="rd-items-tag" title="${items.map(it => (it.item || '—') + (it.result ? ' ' + it.result : '')).join('；')}">🔴 ${itemNames}${moreItems}</span>`
+      : '';
     return `
       <details class="record-detail">
         <summary class="rd-summary">
           <span class="rd-no">#${idx + 1}</span>
           <strong>${raw || canonical}</strong>
           ${nameDiff ? `<span class="rd-canon">${nameDiff}</span>` : ''}
+          ${itemsTag}
           <span class="rd-prod-tag">${prodName ? '🏭 ' + prodName.slice(0, 24) + (prodName.length > 24 ? '…' : '') : '（未公示厂家）'}</span>
           <span class="rd-source">${r.source || '?'}</span>
           <span class="rd-toggle">▶</span>
