@@ -148,6 +148,36 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
 .summary-block .sum-title { font-weight: 600; color: var(--c-text-1); }
 .summary-block .sum-detail { color: var(--c-text-2); font-size: 11px; margin-top: 2px; }
 
+/* v4.0.1 详细明细（全字段展开） */
+.record-detail { background: #fff; border: 1px solid var(--c-border); border-left: 4px solid var(--c-high); border-radius: var(--r-sm); padding: 0; margin-bottom: 10px; overflow: hidden; }
+.record-detail .rd-head { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: linear-gradient(90deg, var(--c-high-soft), transparent); border-bottom: 1px solid var(--c-border); font-size: 14px; }
+.record-detail .rd-head .rd-no { background: var(--c-high); color: #fff; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+.record-detail .rd-head strong { font-size: 15px; color: var(--c-text-1); }
+.record-detail .rd-head code { background: #fff3e0; padding: 1px 6px; border-radius: 3px; font-size: 11px; color: #5d4037; }
+.record-detail .rd-head .rd-source { margin-left: auto; background: #e3f2fd; color: #1565c0; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+.record-detail .rd-body { padding: 12px 14px; }
+.record-detail .rd-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px 16px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed var(--c-border); }
+.record-detail .rd-grid > div { display: flex; flex-direction: column; gap: 2px; font-size: 12px; }
+.record-detail .rd-key { color: var(--c-text-3); font-size: 11px; }
+.record-detail .rd-val { color: var(--c-text-1); font-weight: 500; }
+.record-detail .rd-val.bad { color: var(--c-high); font-weight: 700; }
+.record-detail .rd-items { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+.record-detail .rd-item { display: grid; grid-template-columns: 1.5fr 1fr 1fr auto; gap: 10px; padding: 8px 12px; background: #fafbfc; border-radius: var(--r-sm); font-size: 12px; align-items: center; border-left: 3px solid var(--c-border-strong); }
+.record-detail .rd-item.fail { border-left-color: var(--c-high); background: var(--c-high-soft); }
+.record-detail .rd-item.pass { border-left-color: #4caf50; background: #e8f5e9; }
+.record-detail .rd-item .it-name { font-weight: 600; color: var(--c-text-1); }
+.record-detail .rd-item .it-result { font-family: 'SF Mono', Consolas, monospace; color: var(--c-high); font-weight: 700; }
+.record-detail .rd-item .it-limit { font-family: 'SF Mono', Consolas, monospace; color: var(--c-text-2); font-size: 11px; }
+.record-detail .rd-item .it-verdict { font-size: 11px; padding: 2px 6px; border-radius: 8px; background: #fff; }
+.record-detail .rd-item .it-plan { font-size: 10px; grid-column: 1 / -1; }
+.record-detail .rd-prod { font-size: 12px; color: var(--c-text-2); padding: 4px 0; line-height: 1.6; }
+.record-detail .rd-prod .rd-key { display: inline-block; min-width: 90px; color: var(--c-text-3); font-size: 11px; margin-right: 6px; }
+@media (max-width: 600px) {
+  .record-detail .rd-item { grid-template-columns: 1fr; gap: 4px; }
+  .record-detail .rd-head { flex-wrap: wrap; }
+  .record-detail .rd-head .rd-source { margin-left: 0; }
+}
+
 @media (max-width: 600px) {
   body { padding: 14px 10px; }
   .section { padding: 14px 14px; }
@@ -171,7 +201,7 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
     <div class="brand-title"><span class="zh">食品抽检风险查询</span></div>
     <div class="subtitle" id="subtitle">加载中…</div>
   </div>
-  <div class="ver">v4.0 · 2026</div>
+  <div class="ver">v4.0.1 · 2026</div>
 </header>
 
 <!-- 主搜索框（核心：单输入框） -->
@@ -498,7 +528,7 @@ function renderSummaryBlocks(q, hits) {
   `;
 }
 
-// ============ 详细明细表（可展开） ============
+// ============ 详细明细表（全部字段默认展开） ============
 function renderDetailTable(q, hits) {
   if (!hits.length) {
     return `
@@ -508,40 +538,55 @@ function renderDetailTable(q, hits) {
       </div>
     `;
   }
-  // 默认展示前 10 条
-  const top = hits.slice(0, 10);
+  const toggleLimit = 20;
+  const top = hits.slice(0, toggleLimit);
   const more = hits.length - top.length;
+  const renderOne = (r, idx) => {
+    const items = r.failed_items || [];
+    const canonical = r.food_name_canonical || '';
+    const raw = r.food_name_raw || '';
+    const nameDiff = canonical && canonical !== raw ? `（规范名：<code>${canonical}</code>）` : '';
+    const subShort = (r.sub_category || '').split('-').slice(-1)[0] || '';
+    return `
+      <div class="record-detail">
+        <div class="rd-head">
+          <span class="rd-no">#${idx + 1}</span>
+          <strong>${raw || canonical}</strong>${nameDiff}
+          <span class="rd-source">${r.source || '?'}</span>
+        </div>
+        <div class="rd-body">
+          <div class="rd-grid">
+            <div><span class="rd-key">不合格项目</span><span class="rd-val bad">${items.length} 项</span></div>
+            <div><span class="rd-key">生产日期</span><span class="rd-val">${r.prod_date || '—'}</span></div>
+            <div><span class="rd-key">公告编号</span><span class="rd-val">${r.bulletin_no || '—'}</span></div>
+            <div><span class="rd-key">细类</span><span class="rd-val">${subShort || '—'}</span></div>
+          </div>
+          <div class="rd-items">
+            ${items.map(it => `
+              <div class="rd-item ${it._verdict === 'fail' ? 'fail' : it._verdict === 'pass' ? 'pass' : ''}">
+                <span class="it-name">${it.item || '—'}</span>
+                <span class="it-result">${it.result || '—'}</span>
+                <span class="it-limit">限值 ${(it.limit || '—').replace(/\\u03bc/g, 'µ')}</span>
+                ${it._verdict ? `<span class="it-verdict">${it._verdict === 'fail' ? '❌ 不合格' : it._verdict === 'pass' ? '✅ 合格' : it._verdict}</span>` : ''}
+                ${it._sample_plan ? `<span class="it-plan muted">采样方案 ${it._sample_plan}</span>` : ''}
+              </div>
+            `).join('') || '<div class="muted">（无项目数据）</div>'}
+          </div>
+          ${r.prod_name ? `<div class="rd-prod"><span class="rd-key">标称生产单位</span>${r.prod_name}${r.prod_addr ? `（${r.prod_addr}）` : ''}</div>` : ''}
+          ${r.sampler_name ? `<div class="rd-prod"><span class="rd-key">抽样单位</span>${r.sampler_name}${r.sampler_addr ? `（${r.sampler_addr}）` : ''}</div>` : ''}
+        </div>
+      </div>
+    `;
+  };
   return `
     <div class="card">
       <div class="card-title">📋 历史不合格明细（${hits.length} 条）
-        ${more > 0 ? `<button onclick="document.getElementById('moreRecords').style.display='block';this.style.display='none';" style="margin-left:auto;font-size:12px;">展开剩余 ${more} 条</button>` : ''}
+        ${more > 0 ? `<button onclick="document.getElementById('moreRecords').style.display='block';this.style.display='none';" style="margin-left:auto;font-size:12px;">展开剩余 ${more} 条</button>` : '<span style="margin-left:auto;font-size:12px;color:#666;">已全部展开</span>'}
       </div>
-      ${top.map(r => {
-        const fi = (r.failed_items || [])[0] || {};
-        return `
-          <div class="record-row">
-            <div><strong>${r.food_name_raw || r.food_name_canonical}</strong></div>
-            <div class="hide-on-mobile">${fi.item || '—'}</div>
-            <div class="bad hide-on-mobile">${fi.result || '—'}</div>
-            <div class="hide-on-mobile">${(fi.limit || '—').replace(/\\u03bc/g, 'µ')}</div>
-            <div>${r.source || '?'}</div>
-          </div>
-        `;
-      }).join('')}
+      ${top.map((r, i) => renderOne(r, i)).join('')}
       ${more > 0 ? `
         <div id="moreRecords" style="display:none;">
-          ${hits.slice(10).map(r => {
-            const fi = (r.failed_items || [])[0] || {};
-            return `
-              <div class="record-row">
-                <div><strong>${r.food_name_raw || r.food_name_canonical}</strong></div>
-                <div class="hide-on-mobile">${fi.item || '—'}</div>
-                <div class="bad hide-on-mobile">${fi.result || '—'}</div>
-                <div class="hide-on-mobile">${(fi.limit || '—').replace(/\\u03bc/g, 'µ')}</div>
-                <div>${r.source || '?'}</div>
-              </div>
-            `;
-          }).join('')}
+          ${hits.slice(toggleLimit).map((r, i) => renderOne(r, toggleLimit + i)).join('')}
         </div>
       ` : ''}
     </div>
