@@ -5,8 +5,8 @@
     "description": "jianyu 全部细类（master + GB 检验项目表）→ 稳定英文 slug ID；manual = 人工指定；auto = pypinyin 生成",
     "count": 282,
     "sources": {
-      "master": 114,
-      "gb_checklist": 168
+      "master": 115,
+      "gb_checklist": 167
     },
     "slug_kinds": {
       "manual": 153,
@@ -301,6 +301,14 @@
       "name": "生湿面制品",
       "source": "master",
       "slug_kind": "manual"
+    },
+    {
+      "id": "cereal_products-mi_fen_zhi_pin",
+      "big_category_id": "cereal_products",
+      "big_category_name": "粮食加工品",
+      "name": "米粉制品",
+      "source": "master",
+      "slug_kind": "auto"
     },
     {
       "id": "pastries-mooncake",
@@ -971,14 +979,6 @@
       "big_category_id": "cereal_products",
       "big_category_name": "粮食加工品",
       "name": "其他谷物碾磨加工品",
-      "source": "gb_checklist",
-      "slug_kind": "auto"
-    },
-    {
-      "id": "cereal_products-mi_fen_zhi_pin",
-      "big_category_id": "cereal_products",
-      "big_category_name": "粮食加工品",
-      "name": "米粉制品",
       "source": "gb_checklist",
       "slug_kind": "auto"
     },
@@ -2308,6 +2308,7 @@
     "粮食加工品|||发酵面制品": "cereal_products-fermented_dough_products",
     "粮食加工品|||挂面": "cereal_products-dried_noodles",
     "粮食加工品|||生湿面制品": "cereal_products-fresh_noodle_products",
+    "粮食加工品|||米粉制品": "cereal_products-mi_fen_zhi_pin",
     "糕点|||月饼": "pastries-mooncake",
     "糕点|||糕点": "pastries-pastries",
     "糖果制品|||果冻": "confectionery-jelly",
@@ -2392,7 +2393,6 @@
     "粮食加工品|||玉米粉(片、渣)": "cereal_products-yu_mi_fen",
     "粮食加工品|||米粉": "cereal_products-rice_noodles",
     "粮食加工品|||其他谷物碾磨加工品": "cereal_products-qi_ta_gu_wu_nian_mo_jia_gong_pin",
-    "粮食加工品|||米粉制品": "cereal_products-mi_fen_zhi_pin",
     "调味品|||调味料酒": "seasonings-cooking_wine",
     "调味品|||鸡粉、鸡精调味料": "seasonings-ji_fen_ji_jing_tiao_wei_liao",
     "调味品|||其他固体调味料": "seasonings-qi_ta_gu_ti_tiao_wei_liao",
