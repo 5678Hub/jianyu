@@ -1,7 +1,7 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-06 13:40:24+08:00",
+    "last_updated": "2026-08-06 13:30:17+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
@@ -9,7 +9,7 @@
     "record_count": 712,
     "by_canonical_count": 376,
     "by_category_count": 31,
-    "by_item_count": 132,
+    "by_item_count": 154,
     "project_weight_count": 45,
     "description": "历史不合格明细主库，含 records 和预建索引",
     "record_schema": {
@@ -36,10 +36,9 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-06 13:40:24+08:00",
-    "data_version": "2026.08.06.1340",
-    "calibrate_v9": "r0342/r0346 即食海带丝 → 水产制品-其他水产制品 / 表22-9",
-    "calibrate_v10": "17 条 n=,c=,m=,M= 微生物采样计划 fail_raw 重新解析"
+    "index_rebuilt": "2026-08-06 13:30:17+08:00",
+    "data_version": "2026.08.06.1330",
+    "calibrate_v9": "r0342/r0346 即食海带丝 → 水产制品-其他水产制品 / 表22-9"
   },
   "records": [
     {
@@ -823,13 +822,7 @@
           "result_normalized": "＜10，15，10，＜10，390CFU/g",
           "big_category_id": "convenient_food",
           "subcategory_id": "convenient_food-other_convenient_food",
-          "table_id": null,
-          "_sample_plan": true,
-          "_unit": "CFU/g",
-          "_sample_m": "10",
-          "_sample_M": "100",
-          "_sample_n": 5,
-          "_sample_c": 2
+          "table_id": null
         }
       ],
       "bulletin_no": "2026.07.08",
@@ -837,19 +830,7 @@
       "id": "r0026",
       "big_category_id": "convenient_food",
       "subcategory_id": "convenient_food-other_convenient_food",
-      "_canonical_orig": "方便粥、方便盒饭、冷面及其他熟制方便食品等",
-      "_failed_items_orig": [
-        {
-          "item": "大肠菌群",
-          "result": "＜10，15，10，＜10，390CFU/g",
-          "limit": "n=5,c=2,m=10,M=100CFU/g",
-          "limit_normalized": "n=5,c=2,m=10,M=100CFU/g",
-          "result_normalized": "＜10，15，10，＜10，390CFU/g",
-          "big_category_id": "convenient_food",
-          "subcategory_id": "convenient_food-other_convenient_food",
-          "table_id": null
-        }
-      ]
+      "_canonical_orig": "方便粥、方便盒饭、冷面及其他熟制方便食品等"
     },
     {
       "source": "山东",
@@ -1660,13 +1641,7 @@
           "result_normalized": "45,10,10,6.1×10⁵,3.8×10⁵CFU/g",
           "big_category_id": "aquatic_products_processed",
           "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
-          "table_id": null,
-          "_sample_plan": true,
-          "_unit": "CFU/g",
-          "_sample_m": "3×10⁴",
-          "_sample_M": "10⁵",
-          "_sample_n": 5,
-          "_sample_c": 2
+          "table_id": null
         }
       ],
       "bulletin_no": "山东-2026-5期",
@@ -1676,19 +1651,7 @@
       "big_category_id": "aquatic_products_processed",
       "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
       "bulletin_no_orig": "网店商铺名称：东立食品专营店\n网店网址：天猫（手机App）",
-      "sample_channel": "网店商铺名称：东立食品专营店\n网店网址：天猫（手机App）",
-      "_failed_items_orig": [
-        {
-          "item": "菌落总数",
-          "result": "45,10,10,6.1×10⁵,3.8×10⁵CFU/g",
-          "limit": "n=5,c=2,m=3×10⁴,M=10⁵CFU/g",
-          "limit_normalized": "n=5,c=2,m=3×10⁴,M=10⁵CFU/g",
-          "result_normalized": "45,10,10,6.1×10⁵,3.8×10⁵CFU/g",
-          "big_category_id": "aquatic_products_processed",
-          "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
-          "table_id": null
-        }
-      ]
+      "sample_channel": "网店商铺名称：东立食品专营店\n网店网址：天猫（手机App）"
     },
     {
       "source": "山东",
@@ -1840,13 +1803,7 @@
           "result_normalized": "2.6×10⁶,9.8×10⁵,2.7×10⁵,5.4×10⁵,1.0×10⁵CFU/g",
           "big_category_id": "aquatic_products_processed",
           "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
-          "table_id": null,
-          "_sample_plan": true,
-          "_unit": "CFU/g",
-          "_sample_m": "5×10⁴",
-          "_sample_M": "10⁵",
-          "_sample_n": 5,
-          "_sample_c": 2
+          "table_id": null
         }
       ],
       "bulletin_no": "山东-2026-5期",
@@ -1855,19 +1812,7 @@
       "big_category_id": "aquatic_products_processed",
       "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
       "bulletin_no_orig": "网店商铺名称：鲸御鲜旗舰店\n网店网址：淘宝（手机APP）",
-      "sample_channel": "网店商铺名称：鲸御鲜旗舰店\n网店网址：淘宝（手机APP）",
-      "_failed_items_orig": [
-        {
-          "item": "菌落总数",
-          "result": "2.6×10⁶,9.8×10⁵,2.7×10⁵,5.4×10⁵,1.0×10⁵CFU/g",
-          "limit": "n=5,c=2,m=5×10⁴,M=10⁵CFU/g",
-          "limit_normalized": "n=5,c=2,m=5×10⁴,M=10⁵CFU/g",
-          "result_normalized": "2.6×10⁶,9.8×10⁵,2.7×10⁵,5.4×10⁵,1.0×10⁵CFU/g",
-          "big_category_id": "aquatic_products_processed",
-          "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
-          "table_id": null
-        }
-      ]
+      "sample_channel": "网店商铺名称：鲸御鲜旗舰店\n网店网址：淘宝（手机APP）"
     },
     {
       "source": "山东",
@@ -2487,30 +2432,6 @@
       "failed_items": [
         {
           "item": "霉菌",
-          "result": "45;1.0×10²;1.6×10²;1.1×10²;70CFU/g",
-          "limit": "n=5,c=2,m=50,M=10²CFU/g",
-          "limit_normalized": "n=5,c=2,m=50,M=10²CFU/g",
-          "result_normalized": "45;1.0×10²;1.6×10²;1.1×10²;70CFU/g",
-          "big_category_id": "convenient_food",
-          "subcategory_id": "convenient_food-other_convenient_food",
-          "table_id": null,
-          "_sample_plan": true,
-          "_unit": "CFU/g",
-          "_sample_m": "50",
-          "_sample_M": "10²",
-          "_sample_n": 5,
-          "_sample_c": 2
-        }
-      ],
-      "bulletin_no": "山东-2026-7期",
-      "inst": "泰安市食品药品检验检测研究院（泰安市纤维检验所）",
-      "id": "r0075",
-      "big_category_id": "convenient_food",
-      "subcategory_id": "convenient_food-other_convenient_food",
-      "_canonical_orig": "方便粥、方便盒饭、冷面及其他熟制方便食品等",
-      "_failed_items_orig": [
-        {
-          "item": "霉菌",
           "result": "",
           "limit": "45",
           "limit_normalized": "45",
@@ -2527,7 +2448,13 @@
           "subcategory_id": "convenient_food-other_convenient_food",
           "table_id": null
         }
-      ]
+      ],
+      "bulletin_no": "山东-2026-7期",
+      "inst": "泰安市食品药品检验检测研究院（泰安市纤维检验所）",
+      "id": "r0075",
+      "big_category_id": "convenient_food",
+      "subcategory_id": "convenient_food-other_convenient_food",
+      "_canonical_orig": "方便粥、方便盒饭、冷面及其他熟制方便食品等"
     },
     {
       "source": "山东",
@@ -3260,29 +3187,13 @@
           "result_normalized": "2.3×10⁶，2.7×10⁶，  2.9×10⁶，2.8×10⁶，  2.8×10⁶CFU/g",
           "big_category_id": "meat_products_processed",
           "subcategory_id": "meat_products_processed-sauced_meat",
-          "table_id": null,
-          "_sample_plan": true,
-          "_unit": "CFU/g",
-          "_sample_n": 5,
-          "_sample_c": 2
+          "table_id": null
         }
       ],
       "bulletin_no": "山东-2026-19期",
       "id": "r0098",
       "big_category_id": "meat_products_processed",
-      "subcategory_id": "meat_products_processed-sauced_meat",
-      "_failed_items_orig": [
-        {
-          "item": "菌落总数",
-          "result": "2.3×10⁶，2.7×10⁶，  2.9×10⁶，2.8×10⁶，  2.8×10⁶CFU/g",
-          "limit": "n=5,c=2,m=10⁴，M=10⁵CFU/g",
-          "limit_normalized": "n=5,c=2,m=10⁴，M=10⁵CFU/g",
-          "result_normalized": "2.3×10⁶，2.7×10⁶，  2.9×10⁶，2.8×10⁶，  2.8×10⁶CFU/g",
-          "big_category_id": "meat_products_processed",
-          "subcategory_id": "meat_products_processed-sauced_meat",
-          "table_id": null
-        }
-      ]
+      "subcategory_id": "meat_products_processed-sauced_meat"
     },
     {
       "source": "山东",
@@ -4508,28 +4419,6 @@
       "failed_items": [
         {
           "item": "菌落总数",
-          "result": "94000；74000；68000；61000；65000CFU/g",
-          "limit": "n=5,c=2,m=30000,M=100000CFU/g",
-          "limit_normalized": "n=5,c=2,m=30000,M=100000CFU/g",
-          "result_normalized": "94000；74000；68000；61000；65000CFU/g",
-          "big_category_id": "aquatic_products_processed",
-          "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
-          "table_id": null,
-          "_sample_plan": true,
-          "_unit": "CFU/g",
-          "_sample_m": "30000",
-          "_sample_M": "100000",
-          "_sample_n": 5,
-          "_sample_c": 2
-        }
-      ],
-      "bulletin_no": "山东-2026-9期",
-      "id": "r0138",
-      "big_category_id": "aquatic_products_processed",
-      "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
-      "_failed_items_orig": [
-        {
-          "item": "菌落总数",
           "result": "",
           "limit": "94000",
           "limit_normalized": "94000",
@@ -4546,7 +4435,11 @@
           "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
           "table_id": null
         }
-      ]
+      ],
+      "bulletin_no": "山东-2026-9期",
+      "id": "r0138",
+      "big_category_id": "aquatic_products_processed",
+      "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed"
     },
     {
       "source": "山东",
@@ -5296,30 +5189,6 @@
       "failed_items": [
         {
           "item": "菌落总数",
-          "result": "1300000;1200000;810000;1200000;960000CFU/g",
-          "limit": "n=5,c=2,m=3×10⁴,M=10⁵CFU/g",
-          "limit_normalized": "n=5,c=2,m=3×10⁴,M=10⁵CFU/g",
-          "result_normalized": "1300000;1200000;810000;1200000;960000CFU/g",
-          "big_category_id": "aquatic_products_processed",
-          "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
-          "table_id": null,
-          "_sample_plan": true,
-          "_unit": "CFU/g",
-          "_sample_m": "3×10⁴",
-          "_sample_M": "10⁵",
-          "_sample_n": 5,
-          "_sample_c": 2
-        }
-      ],
-      "bulletin_no": "山东-2026-6期",
-      "inst": "威海市食品药品检验检测研究院",
-      "_canonical_orig": "其他水产制品",
-      "id": "r0162",
-      "big_category_id": "aquatic_products_processed",
-      "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
-      "_failed_items_orig": [
-        {
-          "item": "菌落总数",
           "result": "",
           "limit": "1300000",
           "limit_normalized": "1300000",
@@ -5336,7 +5205,13 @@
           "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
           "table_id": null
         }
-      ]
+      ],
+      "bulletin_no": "山东-2026-6期",
+      "inst": "威海市食品药品检验检测研究院",
+      "_canonical_orig": "其他水产制品",
+      "id": "r0162",
+      "big_category_id": "aquatic_products_processed",
+      "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed"
     },
     {
       "source": "山东",
@@ -5543,29 +5418,6 @@
       "failed_items": [
         {
           "item": "大肠菌群",
-          "result": "6.0×10²;2.5×10³;1.7×10³;3.7×10³;1.9×10²CFU/g",
-          "limit": "n=5,c=2,m=10,M=10²CFU/g；霉菌",
-          "limit_normalized": "n=5,c=2,m=10,M=10²CFU/g；霉菌",
-          "result_normalized": "6.0×10²;2.5×10³;1.7×10³;3.7×10³;1.9×10²CFU/g",
-          "big_category_id": "roasted_seeds_nuts",
-          "subcategory_id": "roasted_seeds_nuts-roasted_seeds_nuts",
-          "table_id": null,
-          "_sample_plan": true,
-          "_unit": "CFU/g",
-          "_sample_m": "10",
-          "_sample_M": "10²",
-          "_sample_n": 5,
-          "_sample_c": 2
-        }
-      ],
-      "bulletin_no": "山东-2026-16期",
-      "inst": "2026年第16期",
-      "id": "r0169",
-      "big_category_id": "roasted_seeds_nuts",
-      "subcategory_id": "roasted_seeds_nuts-roasted_seeds_nuts",
-      "_failed_items_orig": [
-        {
-          "item": "大肠菌群",
           "result": "",
           "limit": "6.0×10²",
           "limit_normalized": "6.0×10²",
@@ -5592,7 +5444,12 @@
           "subcategory_id": "roasted_seeds_nuts-roasted_seeds_nuts",
           "table_id": null
         }
-      ]
+      ],
+      "bulletin_no": "山东-2026-16期",
+      "inst": "2026年第16期",
+      "id": "r0169",
+      "big_category_id": "roasted_seeds_nuts",
+      "subcategory_id": "roasted_seeds_nuts-roasted_seeds_nuts"
     },
     {
       "source": "山东",
@@ -5735,29 +5592,6 @@
       "failed_items": [
         {
           "item": "菌落总数",
-          "result": "7.5×10⁴;3.9×10³;1.5×10³;1.7×10⁴;1.7×10³CFU/g",
-          "limit": "n=5,c=1,m=10⁴,M=10⁵CFU/g",
-          "limit_normalized": "n=5,c=1,m=10⁴,M=10⁵CFU/g",
-          "result_normalized": "7.5×10⁴;3.9×10³;1.5×10³;1.7×10⁴;1.7×10³CFU/g",
-          "big_category_id": "frozen_food",
-          "subcategory_id": "frozen_food-frozen_dough_rice_food",
-          "table_id": null,
-          "_sample_plan": true,
-          "_unit": "CFU/g",
-          "_sample_m": "10⁴",
-          "_sample_M": "10⁵",
-          "_sample_n": 5,
-          "_sample_c": 1
-        }
-      ],
-      "bulletin_no": "山东-2026-16期",
-      "inst": "2026年第16期",
-      "id": "r0174",
-      "big_category_id": "frozen_food",
-      "subcategory_id": "frozen_food-frozen_dough_rice_food",
-      "_failed_items_orig": [
-        {
-          "item": "菌落总数",
           "result": "",
           "limit": "7.5×10⁴",
           "limit_normalized": "7.5×10⁴",
@@ -5774,7 +5608,12 @@
           "subcategory_id": "frozen_food-frozen_dough_rice_food",
           "table_id": null
         }
-      ]
+      ],
+      "bulletin_no": "山东-2026-16期",
+      "inst": "2026年第16期",
+      "id": "r0174",
+      "big_category_id": "frozen_food",
+      "subcategory_id": "frozen_food-frozen_dough_rice_food"
     },
     {
       "source": "山东",
@@ -8296,28 +8135,6 @@
         {
           "item": "菌落总数",
           "result": "1.1×10⁴,7.9×10³,8.0×10³,1.5×10⁴,1.6×10⁴CFU/g",
-          "limit": "n=5,c=2,m=1000,M=10000CFU/g；霉菌",
-          "limit_normalized": "n=5,c=2,m=1000,M=10000CFU/g；霉菌",
-          "result_normalized": "1.1×10⁴,7.9×10³,8.0×10³,1.5×10⁴,1.6×10⁴CFU/g",
-          "big_category_id": "confectionery",
-          "subcategory_id": "confectionery-preserved_fruit_candied",
-          "table_id": null,
-          "_sample_plan": true,
-          "_unit": "CFU/g",
-          "_sample_m": "1000",
-          "_sample_M": "10000",
-          "_sample_n": 5,
-          "_sample_c": 2
-        }
-      ],
-      "bulletin_no": "山东-2026-10期",
-      "id": "r0253",
-      "big_category_id": "confectionery",
-      "subcategory_id": "confectionery-preserved_fruit_candied",
-      "_failed_items_orig": [
-        {
-          "item": "菌落总数",
-          "result": "1.1×10⁴,7.9×10³,8.0×10³,1.5×10⁴,1.6×10⁴CFU/g",
           "limit": "n=5,c=2,m=1000,M=10000CFU/g",
           "limit_normalized": "n=5,c=2,m=1000,M=10000CFU/g",
           "result_normalized": "1.1×10⁴,7.9×10³,8.0×10³,1.5×10⁴,1.6×10⁴CFU/g",
@@ -8335,7 +8152,11 @@
           "subcategory_id": "confectionery-preserved_fruit_candied",
           "table_id": null
         }
-      ]
+      ],
+      "bulletin_no": "山东-2026-10期",
+      "id": "r0253",
+      "big_category_id": "confectionery",
+      "subcategory_id": "confectionery-preserved_fruit_candied"
     },
     {
       "source": "山东",
@@ -9315,29 +9136,6 @@
       "failed_items": [
         {
           "item": "菌落总数",
-          "result": "56000;42000;49000;50000;64000CFU/g",
-          "limit": "n=5,c=2,m=30000,M=100000CFU/g",
-          "limit_normalized": "n=5,c=2,m=30000,M=100000CFU/g",
-          "result_normalized": "56000;42000;49000;50000;64000CFU/g",
-          "big_category_id": "aquatic_products_processed",
-          "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
-          "table_id": null,
-          "_sample_plan": true,
-          "_unit": "CFU/g",
-          "_sample_m": "30000",
-          "_sample_M": "100000",
-          "_sample_n": 5,
-          "_sample_c": 2
-        }
-      ],
-      "bulletin_no": "山东-2026-14期",
-      "_canonical_orig": "其他水产制品",
-      "id": "r0285",
-      "big_category_id": "aquatic_products_processed",
-      "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
-      "_failed_items_orig": [
-        {
-          "item": "菌落总数",
           "result": "",
           "limit": "56000",
           "limit_normalized": "56000",
@@ -9354,7 +9152,12 @@
           "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
           "table_id": null
         }
-      ]
+      ],
+      "bulletin_no": "山东-2026-14期",
+      "_canonical_orig": "其他水产制品",
+      "id": "r0285",
+      "big_category_id": "aquatic_products_processed",
+      "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed"
     },
     {
       "source": "山东",
@@ -10747,13 +10550,7 @@
           "result_normalized": "1.4×10⁵,90,4.0×10⁶,110,90CFU/g",
           "big_category_id": "aquatic_products_processed",
           "subcategory_id": "aquatic_products_processed-dried_aquatic_products",
-          "table_id": null,
-          "_sample_plan": true,
-          "_unit": "CFU/g",
-          "_sample_m": "3×10⁴",
-          "_sample_M": "10⁵",
-          "_sample_n": 5,
-          "_sample_c": 2
+          "table_id": null
         }
       ],
       "bulletin_no": "山东-2026-4期",
@@ -10763,19 +10560,7 @@
       "big_category_id": "aquatic_products_processed",
       "subcategory_id": "aquatic_products_processed-dried_aquatic_products",
       "bulletin_no_orig": "网店商铺名称：泰山土特产特色小店\n网店网址：淘宝（手机App）",
-      "sample_channel": "网店商铺名称：泰山土特产特色小店\n网店网址：淘宝（手机App）",
-      "_failed_items_orig": [
-        {
-          "item": "菌落总数",
-          "result": "1.4×10⁵,90,4.0×10⁶,110,90CFU/g",
-          "limit": "n=5,c=2,m=3×10⁴,M=10⁵CFU/g",
-          "limit_normalized": "n=5,c=2,m=3×10⁴,M=10⁵CFU/g",
-          "result_normalized": "1.4×10⁵,90,4.0×10⁶,110,90CFU/g",
-          "big_category_id": "aquatic_products_processed",
-          "subcategory_id": "aquatic_products_processed-dried_aquatic_products",
-          "table_id": null
-        }
-      ]
+      "sample_channel": "网店商铺名称：泰山土特产特色小店\n网店网址：淘宝（手机App）"
     },
     {
       "source": "山东",
@@ -16472,28 +16257,6 @@
         {
           "item": "菌落总数",
           "result": "40000,34000,39000,39000,39000CFU/g",
-          "limit": "n=5,c=2,m=25000,M=100000CFU/g；大肠菌群",
-          "limit_normalized": "n=5,c=2,m=25000,M=100000CFU/g；大肠菌群",
-          "result_normalized": "40000,34000,39000,39000,39000CFU/g",
-          "big_category_id": "frozen_drinks",
-          "subcategory_id": "frozen_drinks-frozen_drinks_placeholder",
-          "table_id": null,
-          "_sample_plan": true,
-          "_unit": "CFU/g",
-          "_sample_m": "25000",
-          "_sample_M": "100000",
-          "_sample_n": 5,
-          "_sample_c": 2
-        }
-      ],
-      "bulletin_no": "辽宁-2026-3期",
-      "id": "r0506",
-      "big_category_id": "frozen_drinks",
-      "subcategory_id": "frozen_drinks-frozen_drinks_placeholder",
-      "_failed_items_orig": [
-        {
-          "item": "菌落总数",
-          "result": "40000,34000,39000,39000,39000CFU/g",
           "limit": "n=5,c=2,m=25000,M=100000CFU/g",
           "limit_normalized": "n=5,c=2,m=25000,M=100000CFU/g",
           "result_normalized": "40000,34000,39000,39000,39000CFU/g",
@@ -16511,7 +16274,11 @@
           "subcategory_id": "frozen_drinks-frozen_drinks_placeholder",
           "table_id": null
         }
-      ]
+      ],
+      "bulletin_no": "辽宁-2026-3期",
+      "id": "r0506",
+      "big_category_id": "frozen_drinks",
+      "subcategory_id": "frozen_drinks-frozen_drinks_placeholder"
     },
     {
       "source": "辽宁",
@@ -21334,27 +21101,6 @@
       "failed_items": [
         {
           "item": "大肠菌群",
-          "result": "10；＜10；10；60；1.4×102CFU/g",
-          "limit": "n=5，c=2，m=10，M=100CFU/g",
-          "limit_normalized": "n=5，c=2，m=10，M=100CFU/g",
-          "result_normalized": "10；＜10；10；60；1.4×102CFU/g",
-          "big_category_id": "pastries",
-          "subcategory_id": "pastries-pastries",
-          "table_id": null,
-          "_sample_plan": true,
-          "_unit": "CFU/g",
-          "_sample_n": 5,
-          "_sample_c": 2
-        }
-      ],
-      "inst": "重庆市食品药品检验检测研究院",
-      "bulletin_no": "重庆-2026-4号",
-      "id": "r0654",
-      "big_category_id": "pastries",
-      "subcategory_id": "pastries-pastries",
-      "_failed_items_orig": [
-        {
-          "item": "大肠菌群",
           "result": "10",
           "limit": "",
           "result_normalized": "10",
@@ -21395,7 +21141,12 @@
           "subcategory_id": "pastries-pastries",
           "table_id": null
         }
-      ]
+      ],
+      "inst": "重庆市食品药品检验检测研究院",
+      "bulletin_no": "重庆-2026-4号",
+      "id": "r0654",
+      "big_category_id": "pastries",
+      "subcategory_id": "pastries-pastries"
     },
     {
       "source": "重庆",
@@ -22082,27 +21833,6 @@
       "failed_items": [
         {
           "item": "菌落总数",
-          "result": "2.0×105；1.2×105；7.9×104；2.7×105；4.0×105CFU/g",
-          "limit": "n=5，c=2，m=10000，M=100000CFU/g",
-          "limit_normalized": "n=5，c=2，m=10000，M=100000CFU/g",
-          "result_normalized": "2.0×105；1.2×105；7.9×104；2.7×105；4.0×105CFU/g",
-          "big_category_id": "meat_products_processed",
-          "subcategory_id": "meat_products_processed-sauced_meat",
-          "table_id": null,
-          "_sample_plan": true,
-          "_unit": "CFU/g",
-          "_sample_n": 5,
-          "_sample_c": 2
-        }
-      ],
-      "inst": "重庆市计量质量检测研究院",
-      "bulletin_no": "重庆-2026-5号",
-      "id": "r0674",
-      "big_category_id": "meat_products_processed",
-      "subcategory_id": "meat_products_processed-sauced_meat",
-      "_failed_items_orig": [
-        {
-          "item": "菌落总数",
           "result": "2.0×105",
           "limit": "",
           "result_normalized": "2.0×105",
@@ -22143,7 +21873,12 @@
           "subcategory_id": "meat_products_processed-sauced_meat",
           "table_id": null
         }
-      ]
+      ],
+      "inst": "重庆市计量质量检测研究院",
+      "bulletin_no": "重庆-2026-5号",
+      "id": "r0674",
+      "big_category_id": "meat_products_processed",
+      "subcategory_id": "meat_products_processed-sauced_meat"
     },
     {
       "source": "重庆",
@@ -23051,27 +22786,6 @@
       "failed_items": [
         {
           "item": "菌落总数",
-          "result": "1.3×103；6.8×104；3.4×104；2.4×105；1.2×104CFU/g",
-          "limit": "n=5，c=2，m=10000，M=100000CFU/g",
-          "limit_normalized": "n=5，c=2，m=10000，M=100000CFU/g",
-          "result_normalized": "1.3×103；6.8×104；3.4×104；2.4×105；1.2×104CFU/g",
-          "big_category_id": "pastries",
-          "subcategory_id": "pastries-pastries",
-          "table_id": null,
-          "_sample_plan": true,
-          "_unit": "CFU/g",
-          "_sample_n": 5,
-          "_sample_c": 2
-        }
-      ],
-      "inst": "重庆市食品药品检验检测研究院",
-      "bulletin_no": "重庆-2026-9号",
-      "id": "r0700",
-      "big_category_id": "pastries",
-      "subcategory_id": "pastries-pastries",
-      "_failed_items_orig": [
-        {
-          "item": "菌落总数",
           "result": "1.3×103",
           "limit": "",
           "result_normalized": "1.3×103",
@@ -23112,7 +22826,12 @@
           "subcategory_id": "pastries-pastries",
           "table_id": null
         }
-      ]
+      ],
+      "inst": "重庆市食品药品检验检测研究院",
+      "bulletin_no": "重庆-2026-9号",
+      "id": "r0700",
+      "big_category_id": "pastries",
+      "subcategory_id": "pastries-pastries"
     },
     {
       "source": "重庆",
@@ -23344,27 +23063,6 @@
       "failed_items": [
         {
           "item": "菌落总数",
-          "result": "9.4×105；6.4×105；8.0×105；6.0×105；1.2×104CFU/mL",
-          "limit": "n=5，c=2，m=5000，M=50000CFU/mL",
-          "limit_normalized": "n=5，c=2，m=5000，M=50000CFU/mL",
-          "result_normalized": "9.4×105；6.4×105；8.0×105；6.0×105；1.2×104CFU/mL",
-          "big_category_id": "seasonings",
-          "subcategory_id": "seasonings-soy_sauce",
-          "table_id": null,
-          "_sample_plan": true,
-          "_unit": "CFU/mL",
-          "_sample_n": 5,
-          "_sample_c": 2
-        }
-      ],
-      "inst": "重庆市食品药品检验检测研究院",
-      "bulletin_no": "重庆-2026-9号",
-      "id": "r0707",
-      "big_category_id": "seasonings",
-      "subcategory_id": "seasonings-soy_sauce",
-      "_failed_items_orig": [
-        {
-          "item": "菌落总数",
           "result": "9.4×105",
           "limit": "",
           "result_normalized": "9.4×105",
@@ -23405,7 +23103,12 @@
           "subcategory_id": "seasonings-soy_sauce",
           "table_id": null
         }
-      ]
+      ],
+      "inst": "重庆市食品药品检验检测研究院",
+      "bulletin_no": "重庆-2026-9号",
+      "id": "r0707",
+      "big_category_id": "seasonings",
+      "subcategory_id": "seasonings-soy_sauce"
     },
     {
       "source": "重庆",
@@ -29301,6 +29004,9 @@
         "麻辣海带（其他水产制品）"
       ],
       "items": [
+        "64000CFU/g",
+        "65000CFU/g",
+        "960000CFU/g",
         "山梨酸及其钾盐(以山梨酸计)",
         "日落黄",
         "甜蜜素(以环己基氨基磺酸计)",
@@ -29400,6 +29106,13 @@
         "黑芝麻酥（烘烤类糕点）"
       ],
       "items": [
+        "1.2×104CFU/g",
+        "1.4×102CFU/g",
+        "10",
+        "2.4×105",
+        "3.4×104",
+        "6.8×104",
+        "60",
         "大肠菌群",
         "山梨酸及其钾盐(以山梨酸计)",
         "日落黄",
@@ -29415,7 +29128,8 @@
         "铝的残留量(干样品,以Al计)",
         "铝的残留量（干样品,以Al计)",
         "防腐剂混合使用时各自用量占其最大使用量的比例之和",
-        "霉菌"
+        "霉菌",
+        "＜10"
       ]
     },
     "豆制品": {
@@ -29638,10 +29352,12 @@
         "香酥青豆"
       ],
       "items": [
+        "1.9×10²CFU/g",
         "大肠菌群",
         "过氧化值(以脂肪计)",
         "过氧化值（以脂肪计）",
         "酸价（以脂肪计）（KOH）",
+        "霉菌",
         "黄曲霉毒素B₁"
       ]
     },
@@ -29691,6 +29407,7 @@
         "红枣牛奶燕麦片（方便食品）"
       ],
       "items": [
+        "70CFU/g",
         "大肠菌群",
         "霉菌"
       ]
@@ -29752,6 +29469,10 @@
         "麻椒（香辛料类）"
       ],
       "items": [
+        "1.2×104CFU/mL",
+        "6.0×105",
+        "6.4×105",
+        "8.0×105",
         "不挥发酸(以乳酸计)",
         "二氧化硫残留量",
         "全氮(以氮计)",
@@ -29963,6 +29684,7 @@
         "黑白米八宝饭（速冻食品）"
       ],
       "items": [
+        "1.7×10³CFU/g",
         "山梨酸及其钾盐(以山梨酸计)",
         "柠檬黄",
         "糖精钠(以糖精计)",
@@ -30006,7 +29728,8 @@
         "蛋白质",
         "诱惑红",
         "赤藓红",
-        "防腐剂混合使用时各自用量占其最大使用量的比例之和"
+        "防腐剂混合使用时各自用量占其最大使用量的比例之和",
+        "霉菌"
       ]
     },
     "肉制品": {
@@ -30048,6 +29771,10 @@
         "鲜牛毛肚"
       ],
       "items": [
+        "1.2×105",
+        "2.7×105",
+        "4.0×105CFU/g",
+        "7.9×104",
         "N-二甲基亚硝胺",
         "亚硝酸盐(以亚硝酸钠计)",
         "亚硝酸盐（以亚硝酸钠计）",
@@ -30140,6 +29867,7 @@
         "丑桔（桔子口味冰棍）"
       ],
       "items": [
+        "大肠菌群",
         "菌落总数"
       ]
     },
@@ -30644,20 +30372,26 @@
       "ids": [
         "r0009",
         "r0075",
+        "r0169",
+        "r0253",
         "r0321",
         "r0666"
       ],
-      "count": 4,
+      "count": 6,
       "foods": [
         "可可奥巧（奥巧慕斯味装饰饼干）",
         "山楂片",
         "核桃糕",
+        "熟制葵花籽",
+        "玫瑰酱（蜜饯类）",
         "红枣牛奶燕麦片（方便食品）"
       ],
       "big_categories": [
         "方便食品",
         "水果制品",
+        "炒货食品及坚果制品",
         "糕点",
+        "糖果制品",
         "饼干"
       ]
     },
@@ -30944,6 +30678,7 @@
         "r0500",
         "r0501",
         "r0504",
+        "r0506",
         "r0507",
         "r0508",
         "r0510",
@@ -30976,8 +30711,9 @@
         "r0643",
         "r0654"
       ],
-      "count": 77,
+      "count": 78,
       "foods": [
+        "丑桔（桔子口味冰棍）",
         "中老年加钙黑芝麻糊",
         "冷面碗（20cm×6cm）",
         "冷面碗（21cm×7cm）",
@@ -31019,6 +30755,7 @@
         "餐碟（餐馆自行消毒）"
       ],
       "big_categories": [
+        "冷冻饮品",
         "方便食品",
         "炒货食品及坚果制品",
         "糕点",
@@ -31594,6 +31331,18 @@
         "饮料"
       ]
     },
+    "70CFU/g": {
+      "ids": [
+        "r0075"
+      ],
+      "count": 1,
+      "foods": [
+        "红枣牛奶燕麦片（方便食品）"
+      ],
+      "big_categories": [
+        "方便食品"
+      ]
+    },
     "毒死蜱": {
       "ids": [
         "r0079",
@@ -31929,6 +31678,18 @@
         "水果类"
       ]
     },
+    "65000CFU/g": {
+      "ids": [
+        "r0138"
+      ],
+      "count": 1,
+      "foods": [
+        "拌饭海苔（原味）"
+      ],
+      "big_categories": [
+        "水产制品"
+      ]
+    },
     "脱氢乙酸及其钠盐（以脱氢乙酸计)": {
       "ids": [
         "r0142",
@@ -31991,6 +31752,18 @@
         "蔬菜"
       ]
     },
+    "960000CFU/g": {
+      "ids": [
+        "r0162"
+      ],
+      "count": 1,
+      "foods": [
+        "香辣海带菜（即食水产品）"
+      ],
+      "big_categories": [
+        "水产制品"
+      ]
+    },
     "土霉素/金霉素/四环素(组合含量)": {
       "ids": [
         "r0163"
@@ -32001,6 +31774,18 @@
       ],
       "big_categories": [
         "水产品"
+      ]
+    },
+    "1.9×10²CFU/g": {
+      "ids": [
+        "r0169"
+      ],
+      "count": 1,
+      "foods": [
+        "熟制葵花籽"
+      ],
+      "big_categories": [
+        "炒货食品及坚果制品"
       ]
     },
     "呋虫胺": {
@@ -32020,6 +31805,18 @@
       "big_categories": [
         "蔬菜",
         "调味品"
+      ]
+    },
+    "1.7×10³CFU/g": {
+      "ids": [
+        "r0174"
+      ],
+      "count": 1,
+      "foods": [
+        "豆挺好豌豆糕（速冻食品）"
+      ],
+      "big_categories": [
+        "速冻食品"
       ]
     },
     "亚硝酸盐(以NO₂⁻计)": {
@@ -32220,6 +32017,18 @@
       ],
       "big_categories": [
         "畜禽肉及副产品"
+      ]
+    },
+    "64000CFU/g": {
+      "ids": [
+        "r0285"
+      ],
+      "count": 1,
+      "foods": [
+        "陈桥海带丝"
+      ],
+      "big_categories": [
+        "水产制品"
       ]
     },
     "克百威": {
@@ -32776,6 +32585,54 @@
         "蔬菜"
       ]
     },
+    "＜10": {
+      "ids": [
+        "r0654"
+      ],
+      "count": 1,
+      "foods": [
+        "合川桃片"
+      ],
+      "big_categories": [
+        "糕点"
+      ]
+    },
+    "10": {
+      "ids": [
+        "r0654"
+      ],
+      "count": 1,
+      "foods": [
+        "合川桃片"
+      ],
+      "big_categories": [
+        "糕点"
+      ]
+    },
+    "60": {
+      "ids": [
+        "r0654"
+      ],
+      "count": 1,
+      "foods": [
+        "合川桃片"
+      ],
+      "big_categories": [
+        "糕点"
+      ]
+    },
+    "1.4×102CFU/g": {
+      "ids": [
+        "r0654"
+      ],
+      "count": 1,
+      "foods": [
+        "合川桃片"
+      ],
+      "big_categories": [
+        "糕点"
+      ]
+    },
     "亚硝酸盐（以亚硝酸钠计）": {
       "ids": [
         "r0658"
@@ -32821,6 +32678,54 @@
         "淀粉及淀粉制品",
         "粮食加工品",
         "调味品"
+      ]
+    },
+    "1.2×105": {
+      "ids": [
+        "r0674"
+      ],
+      "count": 1,
+      "foods": [
+        "卤鹅头（辐照食品）"
+      ],
+      "big_categories": [
+        "肉制品"
+      ]
+    },
+    "7.9×104": {
+      "ids": [
+        "r0674"
+      ],
+      "count": 1,
+      "foods": [
+        "卤鹅头（辐照食品）"
+      ],
+      "big_categories": [
+        "肉制品"
+      ]
+    },
+    "2.7×105": {
+      "ids": [
+        "r0674"
+      ],
+      "count": 1,
+      "foods": [
+        "卤鹅头（辐照食品）"
+      ],
+      "big_categories": [
+        "肉制品"
+      ]
+    },
+    "4.0×105CFU/g": {
+      "ids": [
+        "r0674"
+      ],
+      "count": 1,
+      "foods": [
+        "卤鹅头（辐照食品）"
+      ],
+      "big_categories": [
+        "肉制品"
       ]
     },
     "孔雀石绿": {
@@ -32900,6 +32805,102 @@
       ],
       "big_categories": [
         "水产品"
+      ]
+    },
+    "6.8×104": {
+      "ids": [
+        "r0700"
+      ],
+      "count": 1,
+      "foods": [
+        "元宝蛋糕"
+      ],
+      "big_categories": [
+        "糕点"
+      ]
+    },
+    "3.4×104": {
+      "ids": [
+        "r0700"
+      ],
+      "count": 1,
+      "foods": [
+        "元宝蛋糕"
+      ],
+      "big_categories": [
+        "糕点"
+      ]
+    },
+    "2.4×105": {
+      "ids": [
+        "r0700"
+      ],
+      "count": 1,
+      "foods": [
+        "元宝蛋糕"
+      ],
+      "big_categories": [
+        "糕点"
+      ]
+    },
+    "1.2×104CFU/g": {
+      "ids": [
+        "r0700"
+      ],
+      "count": 1,
+      "foods": [
+        "元宝蛋糕"
+      ],
+      "big_categories": [
+        "糕点"
+      ]
+    },
+    "6.4×105": {
+      "ids": [
+        "r0707"
+      ],
+      "count": 1,
+      "foods": [
+        "酉州酱油（低盐固态）"
+      ],
+      "big_categories": [
+        "调味品"
+      ]
+    },
+    "8.0×105": {
+      "ids": [
+        "r0707"
+      ],
+      "count": 1,
+      "foods": [
+        "酉州酱油（低盐固态）"
+      ],
+      "big_categories": [
+        "调味品"
+      ]
+    },
+    "6.0×105": {
+      "ids": [
+        "r0707"
+      ],
+      "count": 1,
+      "foods": [
+        "酉州酱油（低盐固态）"
+      ],
+      "big_categories": [
+        "调味品"
+      ]
+    },
+    "1.2×104CFU/mL": {
+      "ids": [
+        "r0707"
+      ],
+      "count": 1,
+      "foods": [
+        "酉州酱油（低盐固态）"
+      ],
+      "big_categories": [
+        "调味品"
       ]
     },
     "克伦特罗": {
@@ -38680,6 +38681,9 @@
           "麻辣海带（其他水产制品）"
         ],
         "items": [
+          "64000CFU/g",
+          "65000CFU/g",
+          "960000CFU/g",
           "山梨酸及其钾盐(以山梨酸计)",
           "日落黄",
           "甜蜜素(以环己基氨基磺酸计)",
@@ -38779,6 +38783,13 @@
           "黑芝麻酥（烘烤类糕点）"
         ],
         "items": [
+          "1.2×104CFU/g",
+          "1.4×102CFU/g",
+          "10",
+          "2.4×105",
+          "3.4×104",
+          "6.8×104",
+          "60",
           "大肠菌群",
           "山梨酸及其钾盐(以山梨酸计)",
           "日落黄",
@@ -38794,7 +38805,8 @@
           "铝的残留量(干样品,以Al计)",
           "铝的残留量（干样品,以Al计)",
           "防腐剂混合使用时各自用量占其最大使用量的比例之和",
-          "霉菌"
+          "霉菌",
+          "＜10"
         ]
       },
       "豆制品": {
@@ -39017,10 +39029,12 @@
           "香酥青豆"
         ],
         "items": [
+          "1.9×10²CFU/g",
           "大肠菌群",
           "过氧化值(以脂肪计)",
           "过氧化值（以脂肪计）",
           "酸价（以脂肪计）（KOH）",
+          "霉菌",
           "黄曲霉毒素B₁"
         ]
       },
@@ -39070,6 +39084,7 @@
           "红枣牛奶燕麦片（方便食品）"
         ],
         "items": [
+          "70CFU/g",
           "大肠菌群",
           "霉菌"
         ]
@@ -39131,6 +39146,10 @@
           "麻椒（香辛料类）"
         ],
         "items": [
+          "1.2×104CFU/mL",
+          "6.0×105",
+          "6.4×105",
+          "8.0×105",
           "不挥发酸(以乳酸计)",
           "二氧化硫残留量",
           "全氮(以氮计)",
@@ -39342,6 +39361,7 @@
           "黑白米八宝饭（速冻食品）"
         ],
         "items": [
+          "1.7×10³CFU/g",
           "山梨酸及其钾盐(以山梨酸计)",
           "柠檬黄",
           "糖精钠(以糖精计)",
@@ -39385,7 +39405,8 @@
           "蛋白质",
           "诱惑红",
           "赤藓红",
-          "防腐剂混合使用时各自用量占其最大使用量的比例之和"
+          "防腐剂混合使用时各自用量占其最大使用量的比例之和",
+          "霉菌"
         ]
       },
       "肉制品": {
@@ -39427,6 +39448,10 @@
           "鲜牛毛肚"
         ],
         "items": [
+          "1.2×105",
+          "2.7×105",
+          "4.0×105CFU/g",
+          "7.9×104",
           "N-二甲基亚硝胺",
           "亚硝酸盐(以亚硝酸钠计)",
           "亚硝酸盐（以亚硝酸钠计）",
@@ -39519,6 +39544,7 @@
           "丑桔（桔子口味冰棍）"
         ],
         "items": [
+          "大肠菌群",
           "菌落总数"
         ]
       },
@@ -40023,20 +40049,26 @@
         "ids": [
           "r0009",
           "r0075",
+          "r0169",
+          "r0253",
           "r0321",
           "r0666"
         ],
-        "count": 4,
+        "count": 6,
         "foods": [
           "可可奥巧（奥巧慕斯味装饰饼干）",
           "山楂片",
           "核桃糕",
+          "熟制葵花籽",
+          "玫瑰酱（蜜饯类）",
           "红枣牛奶燕麦片（方便食品）"
         ],
         "big_categories": [
           "方便食品",
           "水果制品",
+          "炒货食品及坚果制品",
           "糕点",
+          "糖果制品",
           "饼干"
         ]
       },
@@ -40323,6 +40355,7 @@
           "r0500",
           "r0501",
           "r0504",
+          "r0506",
           "r0507",
           "r0508",
           "r0510",
@@ -40355,8 +40388,9 @@
           "r0643",
           "r0654"
         ],
-        "count": 77,
+        "count": 78,
         "foods": [
+          "丑桔（桔子口味冰棍）",
           "中老年加钙黑芝麻糊",
           "冷面碗（20cm×6cm）",
           "冷面碗（21cm×7cm）",
@@ -40398,6 +40432,7 @@
           "餐碟（餐馆自行消毒）"
         ],
         "big_categories": [
+          "冷冻饮品",
           "方便食品",
           "炒货食品及坚果制品",
           "糕点",
@@ -40973,6 +41008,18 @@
           "饮料"
         ]
       },
+      "70CFU/g": {
+        "ids": [
+          "r0075"
+        ],
+        "count": 1,
+        "foods": [
+          "红枣牛奶燕麦片（方便食品）"
+        ],
+        "big_categories": [
+          "方便食品"
+        ]
+      },
       "毒死蜱": {
         "ids": [
           "r0079",
@@ -41308,6 +41355,18 @@
           "水果类"
         ]
       },
+      "65000CFU/g": {
+        "ids": [
+          "r0138"
+        ],
+        "count": 1,
+        "foods": [
+          "拌饭海苔（原味）"
+        ],
+        "big_categories": [
+          "水产制品"
+        ]
+      },
       "脱氢乙酸及其钠盐（以脱氢乙酸计)": {
         "ids": [
           "r0142",
@@ -41370,6 +41429,18 @@
           "蔬菜"
         ]
       },
+      "960000CFU/g": {
+        "ids": [
+          "r0162"
+        ],
+        "count": 1,
+        "foods": [
+          "香辣海带菜（即食水产品）"
+        ],
+        "big_categories": [
+          "水产制品"
+        ]
+      },
       "土霉素/金霉素/四环素(组合含量)": {
         "ids": [
           "r0163"
@@ -41380,6 +41451,18 @@
         ],
         "big_categories": [
           "水产品"
+        ]
+      },
+      "1.9×10²CFU/g": {
+        "ids": [
+          "r0169"
+        ],
+        "count": 1,
+        "foods": [
+          "熟制葵花籽"
+        ],
+        "big_categories": [
+          "炒货食品及坚果制品"
         ]
       },
       "呋虫胺": {
@@ -41399,6 +41482,18 @@
         "big_categories": [
           "蔬菜",
           "调味品"
+        ]
+      },
+      "1.7×10³CFU/g": {
+        "ids": [
+          "r0174"
+        ],
+        "count": 1,
+        "foods": [
+          "豆挺好豌豆糕（速冻食品）"
+        ],
+        "big_categories": [
+          "速冻食品"
         ]
       },
       "亚硝酸盐(以NO₂⁻计)": {
@@ -41599,6 +41694,18 @@
         ],
         "big_categories": [
           "畜禽肉及副产品"
+        ]
+      },
+      "64000CFU/g": {
+        "ids": [
+          "r0285"
+        ],
+        "count": 1,
+        "foods": [
+          "陈桥海带丝"
+        ],
+        "big_categories": [
+          "水产制品"
         ]
       },
       "克百威": {
@@ -42155,6 +42262,54 @@
           "蔬菜"
         ]
       },
+      "＜10": {
+        "ids": [
+          "r0654"
+        ],
+        "count": 1,
+        "foods": [
+          "合川桃片"
+        ],
+        "big_categories": [
+          "糕点"
+        ]
+      },
+      "10": {
+        "ids": [
+          "r0654"
+        ],
+        "count": 1,
+        "foods": [
+          "合川桃片"
+        ],
+        "big_categories": [
+          "糕点"
+        ]
+      },
+      "60": {
+        "ids": [
+          "r0654"
+        ],
+        "count": 1,
+        "foods": [
+          "合川桃片"
+        ],
+        "big_categories": [
+          "糕点"
+        ]
+      },
+      "1.4×102CFU/g": {
+        "ids": [
+          "r0654"
+        ],
+        "count": 1,
+        "foods": [
+          "合川桃片"
+        ],
+        "big_categories": [
+          "糕点"
+        ]
+      },
       "亚硝酸盐（以亚硝酸钠计）": {
         "ids": [
           "r0658"
@@ -42200,6 +42355,54 @@
           "淀粉及淀粉制品",
           "粮食加工品",
           "调味品"
+        ]
+      },
+      "1.2×105": {
+        "ids": [
+          "r0674"
+        ],
+        "count": 1,
+        "foods": [
+          "卤鹅头（辐照食品）"
+        ],
+        "big_categories": [
+          "肉制品"
+        ]
+      },
+      "7.9×104": {
+        "ids": [
+          "r0674"
+        ],
+        "count": 1,
+        "foods": [
+          "卤鹅头（辐照食品）"
+        ],
+        "big_categories": [
+          "肉制品"
+        ]
+      },
+      "2.7×105": {
+        "ids": [
+          "r0674"
+        ],
+        "count": 1,
+        "foods": [
+          "卤鹅头（辐照食品）"
+        ],
+        "big_categories": [
+          "肉制品"
+        ]
+      },
+      "4.0×105CFU/g": {
+        "ids": [
+          "r0674"
+        ],
+        "count": 1,
+        "foods": [
+          "卤鹅头（辐照食品）"
+        ],
+        "big_categories": [
+          "肉制品"
         ]
       },
       "孔雀石绿": {
@@ -42279,6 +42482,102 @@
         ],
         "big_categories": [
           "水产品"
+        ]
+      },
+      "6.8×104": {
+        "ids": [
+          "r0700"
+        ],
+        "count": 1,
+        "foods": [
+          "元宝蛋糕"
+        ],
+        "big_categories": [
+          "糕点"
+        ]
+      },
+      "3.4×104": {
+        "ids": [
+          "r0700"
+        ],
+        "count": 1,
+        "foods": [
+          "元宝蛋糕"
+        ],
+        "big_categories": [
+          "糕点"
+        ]
+      },
+      "2.4×105": {
+        "ids": [
+          "r0700"
+        ],
+        "count": 1,
+        "foods": [
+          "元宝蛋糕"
+        ],
+        "big_categories": [
+          "糕点"
+        ]
+      },
+      "1.2×104CFU/g": {
+        "ids": [
+          "r0700"
+        ],
+        "count": 1,
+        "foods": [
+          "元宝蛋糕"
+        ],
+        "big_categories": [
+          "糕点"
+        ]
+      },
+      "6.4×105": {
+        "ids": [
+          "r0707"
+        ],
+        "count": 1,
+        "foods": [
+          "酉州酱油（低盐固态）"
+        ],
+        "big_categories": [
+          "调味品"
+        ]
+      },
+      "8.0×105": {
+        "ids": [
+          "r0707"
+        ],
+        "count": 1,
+        "foods": [
+          "酉州酱油（低盐固态）"
+        ],
+        "big_categories": [
+          "调味品"
+        ]
+      },
+      "6.0×105": {
+        "ids": [
+          "r0707"
+        ],
+        "count": 1,
+        "foods": [
+          "酉州酱油（低盐固态）"
+        ],
+        "big_categories": [
+          "调味品"
+        ]
+      },
+      "1.2×104CFU/mL": {
+        "ids": [
+          "r0707"
+        ],
+        "count": 1,
+        "foods": [
+          "酉州酱油（低盐固态）"
+        ],
+        "big_categories": [
+          "调味品"
         ]
       },
       "克伦特罗": {
