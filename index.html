@@ -190,7 +190,7 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
     <div class="brand-title"><span class="zh">食品抽检风险查询</span></div>
     <div class="subtitle" id="subtitle">加载中…</div>
   </div>
-  <div class="ver">v3.4 · 2026</div>
+  <div class="ver">v3.7.18 · 2026</div>
 </header>
 
 <section class="section">
@@ -551,7 +551,10 @@ function render() {
   // 触发状态：auto-render on input change
   const food = state.foodName.trim();
   const prod = state.prodName.trim();
-  autoApplyOfficialSubcat(food);
+  // v3.7.18 修复：不再自动归类到类别/细类。用户输入食品名 → 直接查所有命中 records，
+  //   不要替他选大类 + 细类（之前 autoApplyOfficialSubcat 会强制覆盖 state.category，
+  //   一旦残留值对不上当前输入（如上次输"糕点"→这次输"鸡蛋"），records=0 → 显示"未检出"）。
+  //   如需按细则查询，让用户自己点选类别卡片。
   // 多选模式用 selectedCats；单选用 category
   const cats = state.multiSelect ? state.selectedCats : (state.category ? [state.category] : []);
   const cat = state.multiSelect ? cats.join(' + ') : (state.category || '');
@@ -1885,8 +1888,17 @@ function setupFoodInput() {
   input.addEventListener('input', () => {
     clearTimeout(debounce);
     debounce = setTimeout(() => {
-      state.foodName = input.value.trim();
+      const v = input.value.trim();
+      state.foodName = v;
+      // v3.7.18：用户主动输入食品名 → 清掉残留的类别/细类（避免上次自动归类的值干扰本次查询）
+      if (v) {
+        state.category = '';
+        state.subcategory = '';
+        state.selectedCats = [];
+      }
       // 不再互斥：食品名和生产单位可同时填写（AND 交集筛选）
+      renderCats();
+      renderSubcats();
       render();
     }, 250);
   });
