@@ -5019,7 +5019,7 @@
       "subcategory": "水产制品-其他水产制品",
       "big_category_id": "aquatic_products_processed",
       "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
-      "table_id": null
+      "table_id": "gb2026-aquatic_products_processed-22-9"
     },
     "虾米（预制动物性水产干制品）": {
       "big_category": "水产制品",
@@ -5037,9 +5037,9 @@
     },
     "海带王（即食藻类制品）": {
       "big_category": "水产制品",
-      "subcategory": "水产制品-其他水产制品",
+      "subcategory": "水产制品-干制水产品",
       "big_category_id": "aquatic_products_processed",
-      "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
+      "subcategory_id": "aquatic_products_processed-dried_aquatic_products",
       "table_id": null
     },
     "海蜇丝（即食海蜇）": {
@@ -6955,9 +6955,9 @@
     },
     "海带王": {
       "big_category": "水产制品",
-      "subcategory": "水产制品-其他水产制品",
+      "subcategory": "水产制品-干制水产品",
       "big_category_id": "aquatic_products_processed",
-      "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
+      "subcategory_id": "aquatic_products_processed-dried_aquatic_products",
       "table_id": null
     },
     "玫瑰蜜酱（蜜饯）（蜜饯类）": {
@@ -7014,7 +7014,7 @@
       "subcategory": "水产制品-其他水产制品",
       "big_category_id": "aquatic_products_processed",
       "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
-      "table_id": null
+      "table_id": "gb2026-aquatic_products_processed-22-9"
     },
     "狮子头咸菜": {
       "big_category": "蔬菜制品",
@@ -8001,7 +8001,7 @@
       "subcategory": "水产制品-其他水产制品",
       "big_category_id": "aquatic_products_processed",
       "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
-      "table_id": null
+      "table_id": "gb2026-aquatic_products_processed-22-9"
     }
   },
   "_meta": {
@@ -8011,7 +8011,7 @@
     "bom": false,
     "source": "食品安全监督抽检实施细则（2026年版）",
     "origin": "jianyu 食品安全抽检风险查询",
-    "alias_count": 1095,
+    "alias_count": 848,
     "description": "食品名/别名 → 大类+细类+表号的反向索引；含 big_category_id / subcategory_id / table_id 字段",
     "schema": "{aliases: dict[别名] -> 规范名}",
     "misnamed_field_warning": "文件名 subcat_to_items 易误导——实际是品名→规范名映射，不是细类→项目映射",
@@ -8023,7 +8023,7 @@
       "subcategory_id": "str  稳定英文 slug 细类 ID",
       "table_id": "str  稳定 table_id（见 table_ids.json）"
     },
-    "synced_at": "2026-08-06T14:27:03.691579",
+    "synced_at": "2026-08-06T14:26:13.799220",
     "records": 712
   }
 }
