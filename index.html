@@ -277,7 +277,7 @@ function escapeHtml(s) {
 // ============ 数据加载 ============
 async function loadData() {
   try {
-    const [master, categoryMap, synonyms, gbChecklist, categories2026, subcatChecklist, subcatAliases] = await Promise.all([
+    const [master, categoryMap, synonyms, gbChecklist, categories2026, subcatChecklist, subcatAliases, categoryIds, subcategoryIds, tableIds] = await Promise.all([
       fetch(DATA_BASE + 'master.json').then(r => r.json()),
       fetch(DATA_BASE + 'category_map.json').then(r => r.json()),
       fetch(DATA_BASE + 'synonyms.json').then(r => r.json()),
@@ -285,6 +285,9 @@ async function loadData() {
       fetch(DATA_BASE + 'categories_2026.json').then(r => r.json()),
       fetch(DATA_BASE + 'current_period/gb_checklist_subcat.json').then(r => r.json()),
       fetch(DATA_BASE + 'subcat_to_items.json').then(r => r.json()),
+      fetch(DATA_BASE + 'category_ids.json').then(r => r.json()),
+      fetch(DATA_BASE + 'subcategory_ids.json').then(r => r.json()),
+      fetch(DATA_BASE + 'table_ids.json').then(r => r.json()),
     ]);
     state.master = master;
     state.categoryMap = categoryMap;
@@ -293,8 +296,14 @@ async function loadData() {
     state.categories2026 = categories2026;
     state.subcatChecklist = subcatChecklist;
     state.subcatAliases = subcatAliases;
+    state.categoryIds = categoryIds;
+    state.subcategoryIds = subcategoryIds;
+    state.tableIds = tableIds;
     // ⚠️ schema v1.1：索引只存 record_id，需要 map 才能 lookup
     state.idToRecord = Object.fromEntries((master.records || []).map(r => [r.id, r]));
+    // ⚠️ schema v1.2：用 id 排序分类（让有共同词根的相邻）
+    state.bigIdOrder = new Map();
+    (categoryIds.categories || []).forEach((c, idx) => state.bigIdOrder.set(c.name, idx));
     state.gbAvailableCats = new Set(
       (categories2026.categories || []).filter(c => c.available).map(c => c.name)
     );
@@ -339,7 +348,15 @@ function toggleMultiMode() {
 function renderCats() {
   const grid = document.getElementById('catGrid');
   const cats = state.categories2026?.categories || [];
-  grid.innerHTML = cats.map(c => {
+  // ⚠️ schema v1.2：按 category_ids.json 的 code 排序，让有共同词根的大类相邻
+  //    没在 category_ids.json 里的（如食品添加剂）排在末尾
+  const idOrder = state.bigIdOrder || new Map();
+  const sorted = [...cats].sort((a, b) => {
+    const oa = idOrder.has(a.name) ? idOrder.get(a.name) : 999;
+    const ob = idOrder.has(b.name) ? idOrder.get(b.name) : 999;
+    return oa - ob;
+  });
+  grid.innerHTML = sorted.map(c => {
     const cls = c.available ? '' : 'disabled';
     // 多选 vs 单选 的选中状态判定
     const selected = state.multiSelect
@@ -348,7 +365,9 @@ function renderCats() {
     const subCount = (state.subcatChecklist?.categories?.[c.name] || []).length;
     const subHint = subCount > 0 ? ` <span style="color:#3498db;font-size:11px;">(${subCount} 细类)</span>` : '';
     const checkBox = state.multiSelect ? `<span class="cat-checkbox">${selected ? '☑' : '☐'}</span>` : '';
-    return `<div class="cat-card ${cls} ${selected}" data-cat="${c.name}">
+    // ⚠️ schema v1.2：title 显示分类 id（鼠标悬停可见）
+    const catId = (state.categoryIds?.by_name || {})[c.name] || '';
+    return `<div class="cat-card ${cls} ${selected}" data-cat="${c.name}"${catId ? ` title="分类 ID: ${catId}"` : ''}>
       ${checkBox}<span class="cat-no">${c.no}</span>${c.name}${subHint}
     </div>`;
   }).join('');
@@ -947,17 +966,34 @@ function renderFoodOnly(result, food) {
   const bigCat = officialHit?.big_category || inferred?.category || '';
   const officialSub = officialHit?.subcategory || '';
   
+  // ⚠️ schema v1.2：从 records 反查 big_category_id / subcategory_id
+  const ids = (directMatches.length && state.idToRecord[directMatches[0].id])
+    ? {
+        big_id: state.idToRecord[directMatches[0].id].big_category_id,
+        sub_id: state.idToRecord[directMatches[0].id].subcategory_id,
+      }
+    : { big_id: '', sub_id: '' };
+  const idTag = (ids.big_id || ids.sub_id)
+    ? `<div class="card" style="background:#f5f7fa;border-left:3px solid #90a4ae;">
+         <div style="font-size:12px;color:#546e7a;font-family:monospace;">
+           <strong>分类 ID（schema v1.2）</strong>：
+           大类 <code>${ids.big_id || '?'}</code> ·
+           细类 <code>${ids.sub_id || '?'}</code>
+         </div>
+       </div>`
+    : '';
+
   result.innerHTML = `
     ${inferredNote}
-    
+    ${idTag}
     ${renderRiskBlock(risk, food, '', directMatches.length, inferred?.category)}
-    
+
     ${renderItemsTable(directMatches, `「${food}」历史不合格明细`)}
-    
+
     ${renderOfficialTable(bigCat, officialSub)}
-    
+
     ${renderTips(bigCat)}
-    
+
     <div class="card">
       <div class="card-title">💡 下一步操作</div>
       <div class="actions">
