@@ -1,13 +1,13 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-06 12:51:15+08:00",
+    "last_updated": "2026-08-06 13:01:30+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
     "origin": "jianyu 食品安全抽检风险查询",
     "record_count": 712,
-    "by_canonical_count": 372,
+    "by_canonical_count": 376,
     "by_category_count": 31,
     "by_item_count": 154,
     "project_weight_count": 45,
@@ -36,8 +36,8 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-06 12:51:15+08:00",
-    "data_version": "2026.08.06.1251"
+    "index_rebuilt": "2026-08-06 13:01:30+08:00",
+    "data_version": "2026.08.06.1301"
   },
   "records": [
     {
@@ -802,7 +802,7 @@
     {
       "source": "山东",
       "food_name_raw": "中老年加钙黑芝麻糊",
-      "food_name_canonical": "方便粥、方便盒饭、冷面及其他熟制方便食品等",
+      "food_name_canonical": "中老年加钙黑芝麻糊",
       "big_category": "方便食品",
       "sub_category": "方便食品-其他方便食品",
       "category": "速冻食品",
@@ -828,7 +828,8 @@
       "inst": "2026年第17期",
       "id": "r0026",
       "big_category_id": "convenient_food",
-      "subcategory_id": "convenient_food-other_convenient_food"
+      "subcategory_id": "convenient_food-other_convenient_food",
+      "_canonical_orig": "方便粥、方便盒饭、冷面及其他熟制方便食品等"
     },
     {
       "source": "山东",
@@ -2305,7 +2306,7 @@
     {
       "source": "山东",
       "food_name_raw": "雪丽球（蜜饯（果糕类））",
-      "food_name_canonical": "蜜饯类、凉果类、果脯类、话化类、果糕类",
+      "food_name_canonical": "雪丽球",
       "big_category": "水果制品",
       "sub_category": "水果制品-蜜饯",
       "category": "糖果制品-果脯蜜饯",
@@ -2331,7 +2332,8 @@
       "inst": "山东省食品药品检验研究院",
       "id": "r0072",
       "big_category_id": "fruit_products_processed",
-      "subcategory_id": "fruit_products_processed-candied_fruit"
+      "subcategory_id": "fruit_products_processed-candied_fruit",
+      "_canonical_orig": "蜜饯类、凉果类、果脯类、话化类、果糕类"
     },
     {
       "source": "山东",
@@ -2406,7 +2408,7 @@
     {
       "source": "山东",
       "food_name_raw": "红枣牛奶燕麦片（方便食品）",
-      "food_name_canonical": "方便粥、方便盒饭、冷面及其他熟制方便食品等",
+      "food_name_canonical": "红枣牛奶燕麦片",
       "big_category": "方便食品",
       "sub_category": "方便食品-其他方便食品",
       "category": "速冻食品",
@@ -2440,7 +2442,8 @@
       "inst": "泰安市食品药品检验检测研究院（泰安市纤维检验所）",
       "id": "r0075",
       "big_category_id": "convenient_food",
-      "subcategory_id": "convenient_food-other_convenient_food"
+      "subcategory_id": "convenient_food-other_convenient_food",
+      "_canonical_orig": "方便粥、方便盒饭、冷面及其他熟制方便食品等"
     },
     {
       "source": "山东",
@@ -2863,7 +2866,7 @@
     {
       "source": "山东",
       "food_name_raw": "碧螺春二号",
-      "food_name_canonical": "绿茶、红茶、乌龙茶、黄茶、白茶、黑茶、花茶、袋泡茶、紧压茶",
+      "food_name_canonical": "碧螺春二号",
       "big_category": "茶叶及相关制品",
       "sub_category": "茶叶及相关制品-茶叶",
       "category": "饮料-茶饮料",
@@ -2889,7 +2892,8 @@
       "inst": "威海市食品药品检验检测研究院",
       "id": "r0089",
       "big_category_id": "tea_related_products",
-      "subcategory_id": "tea_related_products-tea"
+      "subcategory_id": "tea_related_products-tea",
+      "_canonical_orig": "绿茶、红茶、乌龙茶、黄茶、白茶、黑茶、花茶、袋泡茶、紧压茶"
     },
     {
       "source": "山东",
@@ -6955,7 +6959,7 @@
     {
       "source": "山东",
       "food_name_raw": "卤水豆腐",
-      "food_name_canonical": "豆干、豆腐、豆皮等",
+      "food_name_canonical": "卤水豆腐",
       "big_category": "豆制品",
       "sub_category": "豆制品-豆制品",
       "category": "豆制品",
@@ -6980,7 +6984,8 @@
       "bulletin_no": "山东-2026-15期",
       "id": "r0218",
       "big_category_id": "soy_products",
-      "subcategory_id": "soy_products-soy_products_placeholder"
+      "subcategory_id": "soy_products-soy_products_placeholder",
+      "_canonical_orig": "豆干、豆腐、豆皮等"
     },
     {
       "source": "山东",
@@ -7118,7 +7123,7 @@
     {
       "source": "山东",
       "food_name_raw": "山楂片（干片）",
-      "food_name_canonical": "蜜饯类、凉果类、果脯类、话化类、果糕类",
+      "food_name_canonical": "山楂片",
       "big_category": "水果制品",
       "sub_category": "水果制品-蜜饯",
       "category": "糖果制品-果脯蜜饯",
@@ -7143,7 +7148,8 @@
       "bulletin_no": "山东-2026-15期",
       "id": "r0223",
       "big_category_id": "fruit_products_processed",
-      "subcategory_id": "fruit_products_processed-candied_fruit"
+      "subcategory_id": "fruit_products_processed-candied_fruit",
+      "_canonical_orig": "蜜饯类、凉果类、果脯类、话化类、果糕类"
     },
     {
       "source": "山东",
@@ -8054,7 +8060,7 @@
     {
       "source": "山东",
       "food_name_raw": "地瓜烧粗粮酒",
-      "food_name_canonical": "白酒、白酒(液态)、白酒(原酒)",
+      "food_name_canonical": "地瓜烧粗粮酒",
       "big_category": "酒类",
       "sub_category": "酒类-酒类",
       "category": "酒类",
@@ -8080,7 +8086,8 @@
       "inst": "2026年第20期",
       "id": "r0252",
       "big_category_id": "alcoholic_beverages",
-      "subcategory_id": "alcoholic_beverages-alcoholic_beverages_placeholder"
+      "subcategory_id": "alcoholic_beverages-alcoholic_beverages_placeholder",
+      "_canonical_orig": "白酒、白酒(液态)、白酒(原酒)"
     },
     {
       "source": "山东",
@@ -10589,7 +10596,7 @@
     {
       "source": "山东",
       "food_name_raw": "玫瑰蜜酱（蜜饯）（蜜饯类）",
-      "food_name_canonical": "蜜饯类、凉果类、果脯类、话化类、果糕类",
+      "food_name_canonical": "玫瑰蜜酱",
       "big_category": "糖果制品",
       "sub_category": "糖果制品-果脯蜜饯",
       "category": "糖果制品-果脯蜜饯",
@@ -10615,7 +10622,8 @@
       "inst": "山东省食品药品检验研究院",
       "id": "r0332",
       "big_category_id": "confectionery",
-      "subcategory_id": "confectionery-preserved_fruit_candied"
+      "subcategory_id": "confectionery-preserved_fruit_candied",
+      "_canonical_orig": "蜜饯类、凉果类、果脯类、话化类、果糕类"
     },
     {
       "source": "山东",
@@ -12184,7 +12192,7 @@
     {
       "source": "山东",
       "food_name_raw": "豆腐干",
-      "food_name_canonical": "豆干、豆腐、豆皮等",
+      "food_name_canonical": "豆腐干",
       "big_category": "豆制品",
       "sub_category": "豆制品-豆制品",
       "category": "豆制品",
@@ -12210,7 +12218,8 @@
       "inst": "泰安市食品药品检验检测研究院（泰安市纤维检验所）",
       "id": "r0380",
       "big_category_id": "soy_products",
-      "subcategory_id": "soy_products-soy_products_placeholder"
+      "subcategory_id": "soy_products-soy_products_placeholder",
+      "_canonical_orig": "豆干、豆腐、豆皮等"
     },
     {
       "source": "山东",
@@ -12592,7 +12601,7 @@
     {
       "source": "山东",
       "food_name_raw": "百年宋楼彩瓷6年（白酒)",
-      "food_name_canonical": "白酒、白酒（液态)、白酒（原酒)",
+      "food_name_canonical": "百年宋楼彩瓷6年",
       "big_category": "酒类",
       "sub_category": "酒类-酒类",
       "category": "酒类",
@@ -12618,7 +12627,8 @@
       "inst": "山东标准检测技术有限公司",
       "id": "r0393",
       "big_category_id": "alcoholic_beverages",
-      "subcategory_id": "alcoholic_beverages-alcoholic_beverages_placeholder"
+      "subcategory_id": "alcoholic_beverages-alcoholic_beverages_placeholder",
+      "_canonical_orig": "白酒、白酒（液态)、白酒（原酒)"
     },
     {
       "source": "山东",
@@ -13358,7 +13368,7 @@
     {
       "source": "山东",
       "food_name_raw": "无核蜜枣（果脯类）",
-      "food_name_canonical": "蜜饯类、凉果类、果脯类、话化类、果糕类",
+      "food_name_canonical": "无核蜜枣",
       "big_category": "水果制品",
       "sub_category": "水果制品-蜜饯",
       "category": "糖果制品-果脯蜜饯",
@@ -13384,7 +13394,8 @@
       "inst": "梅里埃检测技术（青岛）有限公司",
       "id": "r0417",
       "big_category_id": "fruit_products_processed",
-      "subcategory_id": "fruit_products_processed-candied_fruit"
+      "subcategory_id": "fruit_products_processed-candied_fruit",
+      "_canonical_orig": "蜜饯类、凉果类、果脯类、话化类、果糕类"
     },
     {
       "source": "山东",
@@ -23323,9 +23334,10 @@
     "山楂片": {
       "ids": [
         "r0009",
-        "r0119"
+        "r0119",
+        "r0223"
       ],
-      "count": 2,
+      "count": 3,
       "big_categories": [
         "水果制品"
       ],
@@ -23610,18 +23622,16 @@
         "芒果"
       ]
     },
-    "方便粥、方便盒饭、冷面及其他熟制方便食品等": {
+    "中老年加钙黑芝麻糊": {
       "ids": [
-        "r0026",
-        "r0075"
+        "r0026"
       ],
-      "count": 2,
+      "count": 1,
       "big_categories": [
         "方便食品"
       ],
       "food_names": [
-        "中老年加钙黑芝麻糊",
-        "红枣牛奶燕麦片（方便食品）"
+        "中老年加钙黑芝麻糊"
       ]
     },
     "山芹": {
@@ -24185,23 +24195,28 @@
         "盐汽水饮料（无糖型）"
       ]
     },
-    "蜜饯类、凉果类、果脯类、话化类、果糕类": {
+    "雪丽球": {
       "ids": [
-        "r0072",
-        "r0223",
-        "r0332",
-        "r0417"
+        "r0072"
       ],
-      "count": 4,
+      "count": 1,
       "big_categories": [
-        "水果制品",
-        "糖果制品"
+        "水果制品"
       ],
       "food_names": [
-        "山楂片（干片）",
-        "无核蜜枣（果脯类）",
-        "玫瑰蜜酱（蜜饯）（蜜饯类）",
         "雪丽球（蜜饯（果糕类））"
+      ]
+    },
+    "红枣牛奶燕麦片": {
+      "ids": [
+        "r0075"
+      ],
+      "count": 1,
+      "big_categories": [
+        "方便食品"
+      ],
+      "food_names": [
+        "红枣牛奶燕麦片（方便食品）"
       ]
     },
     "轻乳奶酪蛋糕": {
@@ -24331,7 +24346,7 @@
         "自消毒餐盘"
       ]
     },
-    "绿茶、红茶、乌龙茶、黄茶、白茶、黑茶、花茶、袋泡茶、紧压茶": {
+    "碧螺春二号": {
       "ids": [
         "r0089"
       ],
@@ -25079,18 +25094,16 @@
         "大青芒"
       ]
     },
-    "豆干、豆腐、豆皮等": {
+    "卤水豆腐": {
       "ids": [
-        "r0218",
-        "r0380"
+        "r0218"
       ],
-      "count": 2,
+      "count": 1,
       "big_categories": [
         "豆制品"
       ],
       "food_names": [
-        "卤水豆腐",
-        "豆腐干"
+        "卤水豆腐"
       ]
     },
     "营养果蔬面": {
@@ -25350,7 +25363,7 @@
         "藤椒大白仁（油炸类）"
       ]
     },
-    "白酒、白酒(液态)、白酒(原酒)": {
+    "地瓜烧粗粮酒": {
       "ids": [
         "r0252"
       ],
@@ -25953,6 +25966,18 @@
         "海带王（即食藻类制品）"
       ]
     },
+    "玫瑰蜜酱": {
+      "ids": [
+        "r0332"
+      ],
+      "count": 1,
+      "big_categories": [
+        "糖果制品"
+      ],
+      "food_names": [
+        "玫瑰蜜酱（蜜饯）（蜜饯类）"
+      ]
+    },
     "杯子": {
       "ids": [
         "r0333",
@@ -26239,6 +26264,18 @@
         "水煮花生米"
       ]
     },
+    "豆腐干": {
+      "ids": [
+        "r0380"
+      ],
+      "count": 1,
+      "big_categories": [
+        "豆制品"
+      ],
+      "food_names": [
+        "豆腐干"
+      ]
+    },
     "毛尖茶啤中式精酿啤酒": {
       "ids": [
         "r0382"
@@ -26316,7 +26353,7 @@
         "豇豆"
       ]
     },
-    "白酒、白酒（液态)、白酒（原酒)": {
+    "百年宋楼彩瓷6年": {
       "ids": [
         "r0393"
       ],
@@ -26407,6 +26444,18 @@
       ],
       "food_names": [
         "小台农芒果"
+      ]
+    },
+    "无核蜜枣": {
+      "ids": [
+        "r0417"
+      ],
+      "count": 1,
+      "big_categories": [
+        "水果制品"
+      ],
+      "food_names": [
+        "无核蜜枣（果脯类）"
       ]
     },
     "肘花小火腿": {
@@ -32962,9 +33011,10 @@
       "山楂片": {
         "ids": [
           "r0009",
-          "r0119"
+          "r0119",
+          "r0223"
         ],
-        "count": 2,
+        "count": 3,
         "big_categories": [
           "水果制品"
         ],
@@ -33249,18 +33299,16 @@
           "芒果"
         ]
       },
-      "方便粥、方便盒饭、冷面及其他熟制方便食品等": {
+      "中老年加钙黑芝麻糊": {
         "ids": [
-          "r0026",
-          "r0075"
+          "r0026"
         ],
-        "count": 2,
+        "count": 1,
         "big_categories": [
           "方便食品"
         ],
         "food_names": [
-          "中老年加钙黑芝麻糊",
-          "红枣牛奶燕麦片（方便食品）"
+          "中老年加钙黑芝麻糊"
         ]
       },
       "山芹": {
@@ -33824,23 +33872,28 @@
           "盐汽水饮料（无糖型）"
         ]
       },
-      "蜜饯类、凉果类、果脯类、话化类、果糕类": {
+      "雪丽球": {
         "ids": [
-          "r0072",
-          "r0223",
-          "r0332",
-          "r0417"
+          "r0072"
         ],
-        "count": 4,
+        "count": 1,
         "big_categories": [
-          "水果制品",
-          "糖果制品"
+          "水果制品"
         ],
         "food_names": [
-          "山楂片（干片）",
-          "无核蜜枣（果脯类）",
-          "玫瑰蜜酱（蜜饯）（蜜饯类）",
           "雪丽球（蜜饯（果糕类））"
+        ]
+      },
+      "红枣牛奶燕麦片": {
+        "ids": [
+          "r0075"
+        ],
+        "count": 1,
+        "big_categories": [
+          "方便食品"
+        ],
+        "food_names": [
+          "红枣牛奶燕麦片（方便食品）"
         ]
       },
       "轻乳奶酪蛋糕": {
@@ -33970,7 +34023,7 @@
           "自消毒餐盘"
         ]
       },
-      "绿茶、红茶、乌龙茶、黄茶、白茶、黑茶、花茶、袋泡茶、紧压茶": {
+      "碧螺春二号": {
         "ids": [
           "r0089"
         ],
@@ -34718,18 +34771,16 @@
           "大青芒"
         ]
       },
-      "豆干、豆腐、豆皮等": {
+      "卤水豆腐": {
         "ids": [
-          "r0218",
-          "r0380"
+          "r0218"
         ],
-        "count": 2,
+        "count": 1,
         "big_categories": [
           "豆制品"
         ],
         "food_names": [
-          "卤水豆腐",
-          "豆腐干"
+          "卤水豆腐"
         ]
       },
       "营养果蔬面": {
@@ -34989,7 +35040,7 @@
           "藤椒大白仁（油炸类）"
         ]
       },
-      "白酒、白酒(液态)、白酒(原酒)": {
+      "地瓜烧粗粮酒": {
         "ids": [
           "r0252"
         ],
@@ -35592,6 +35643,18 @@
           "海带王（即食藻类制品）"
         ]
       },
+      "玫瑰蜜酱": {
+        "ids": [
+          "r0332"
+        ],
+        "count": 1,
+        "big_categories": [
+          "糖果制品"
+        ],
+        "food_names": [
+          "玫瑰蜜酱（蜜饯）（蜜饯类）"
+        ]
+      },
       "杯子": {
         "ids": [
           "r0333",
@@ -35878,6 +35941,18 @@
           "水煮花生米"
         ]
       },
+      "豆腐干": {
+        "ids": [
+          "r0380"
+        ],
+        "count": 1,
+        "big_categories": [
+          "豆制品"
+        ],
+        "food_names": [
+          "豆腐干"
+        ]
+      },
       "毛尖茶啤中式精酿啤酒": {
         "ids": [
           "r0382"
@@ -35955,7 +36030,7 @@
           "豇豆"
         ]
       },
-      "白酒、白酒（液态)、白酒（原酒)": {
+      "百年宋楼彩瓷6年": {
         "ids": [
           "r0393"
         ],
@@ -36046,6 +36121,18 @@
         ],
         "food_names": [
           "小台农芒果"
+        ]
+      },
+      "无核蜜枣": {
+        "ids": [
+          "r0417"
+        ],
+        "count": 1,
+        "big_categories": [
+          "水果制品"
+        ],
+        "food_names": [
+          "无核蜜枣（果脯类）"
         ]
       },
       "肘花小火腿": {
