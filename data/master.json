@@ -1,13 +1,13 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-06 10:07:24+08:00",
+    "last_updated": "2026-08-06 10:34:29+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
     "origin": "jianyu 食品安全抽检风险查询",
     "record_count": 712,
-    "by_canonical_count": 329,
+    "by_canonical_count": 328,
     "by_category_count": 31,
     "by_item_count": 154,
     "project_weight_count": 45,
@@ -36,8 +36,8 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-06 10:07:24+08:00",
-    "data_version": "2026.08.06.1007"
+    "index_rebuilt": "2026-08-06 10:34:29+08:00",
+    "data_version": "2026.08.06.1034"
   },
   "records": [
     {
@@ -2115,7 +2115,7 @@
     {
       "source": "山东",
       "food_name_raw": "牛蛙",
-      "food_name_canonical": "其他水产品",
+      "food_name_canonical": "牛蛙",
       "big_category": "水产品",
       "sub_category": "水产品-其他水产品",
       "category": "食用农产品-水产品",
@@ -2802,7 +2802,7 @@
     {
       "source": "山东",
       "food_name_raw": "牛蛙",
-      "food_name_canonical": "其他水产品",
+      "food_name_canonical": "牛蛙",
       "big_category": "水产品",
       "sub_category": "水产品-其他水产品",
       "category": "食用农产品-水产品",
@@ -10742,7 +10742,7 @@
     {
       "source": "山东",
       "food_name_raw": "牛蛙",
-      "food_name_canonical": "其他水产品",
+      "food_name_canonical": "牛蛙",
       "big_category": "水产品",
       "sub_category": "水产品-其他水产品",
       "category": "食用农产品-水产品",
@@ -12501,7 +12501,7 @@
     {
       "source": "山东",
       "food_name_raw": "牛蛙",
-      "food_name_canonical": "其他水产品",
+      "food_name_canonical": "牛蛙",
       "big_category": "水产品",
       "sub_category": "水产品-其他水产品",
       "category": "食用农产品-水产品",
@@ -24031,14 +24031,19 @@
         "葡式蛋挞皮（速冻食品）"
       ]
     },
-    "其他水产品": {
+    "牛蛙": {
       "ids": [
         "r0067",
         "r0088",
         "r0339",
-        "r0394"
+        "r0394",
+        "r0606",
+        "r0625",
+        "r0671",
+        "r0692",
+        "r0699"
       ],
-      "count": 4,
+      "count": 9,
       "big_categories": [
         "水产品"
       ],
@@ -26623,22 +26628,6 @@
       ],
       "food_names": [
         "粉山药"
-      ]
-    },
-    "牛蛙": {
-      "ids": [
-        "r0606",
-        "r0625",
-        "r0671",
-        "r0692",
-        "r0699"
-      ],
-      "count": 5,
-      "big_categories": [
-        "水产品"
-      ],
-      "food_names": [
-        "牛蛙"
       ]
     },
     "包子": {
@@ -33247,14 +33236,19 @@
           "葡式蛋挞皮（速冻食品）"
         ]
       },
-      "其他水产品": {
+      "牛蛙": {
         "ids": [
           "r0067",
           "r0088",
           "r0339",
-          "r0394"
+          "r0394",
+          "r0606",
+          "r0625",
+          "r0671",
+          "r0692",
+          "r0699"
         ],
-        "count": 4,
+        "count": 9,
         "big_categories": [
           "水产品"
         ],
@@ -35839,22 +35833,6 @@
         ],
         "food_names": [
           "粉山药"
-        ]
-      },
-      "牛蛙": {
-        "ids": [
-          "r0606",
-          "r0625",
-          "r0671",
-          "r0692",
-          "r0699"
-        ],
-        "count": 5,
-        "big_categories": [
-          "水产品"
-        ],
-        "food_names": [
-          "牛蛙"
         ]
       },
       "包子": {

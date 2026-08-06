@@ -937,12 +937,21 @@ function renderFoodOnly(result, food) {
     // 向后兼容（万一有旧数据是 list）
     directMatches = indexEntry;
   }
+  // 兜底：历史 ETL 偶有 canonical 写成细类名（如「牛蛙」→「其他水产品」），
+  //       by_canonical['牛蛙'] 只有 5 条但实际 records 中 raw 含「牛蛙」的有 9 条。
+  //       补扫 raw + canonical 模糊匹配，取并集（SetBy id 去重）。
+  const rawHits = master.records.filter(r =>
+    (r.food_name_raw && r.food_name_raw.includes(food)) ||
+    (r.food_name_canonical && r.food_name_canonical.includes(food))
+  );
+  if (rawHits.length) {
+    const m = new Map();
+    [...directMatches, ...rawHits].forEach(r => r && r.id && m.set(r.id, r));
+    directMatches = Array.from(m.values());
+  }
   if (!directMatches.length) {
-    // 模糊匹配：扫所有 records
-    directMatches = master.records.filter(r =>
-      (r.food_name_raw && r.food_name_raw.includes(food)) ||
-      (r.food_name_canonical && r.food_name_canonical.includes(food))
-    );
+    // 完全没匹配 → 至少返回空数组
+    directMatches = [];
   }
   
   // 风险评估（简化版）
