@@ -6313,6 +6313,13 @@
       "big_category_id": "fruits",
       "subcategory_id": "fruits-longan",
       "table_id": null
+    },
+    "皇家曲奇": {
+      "big_category": "饼干",
+      "subcategory": "饼干",
+      "big_category_id": "biscuits",
+      "subcategory_id": "biscuits-biscuits",
+      "table_id": null
     }
   },
   "_meta": {
@@ -6322,7 +6329,7 @@
     "bom": false,
     "source": "食品安全监督抽检实施细则（2026年版）",
     "origin": "jianyu 食品安全抽检风险查询",
-    "alias_count": 847,
+    "alias_count": 848,
     "description": "食品名/别名 → 大类+细类+表号的反向索引；含 big_category_id / subcategory_id / table_id 字段",
     "schema": "{aliases: dict[别名] -> 规范名}",
     "misnamed_field_warning": "文件名 subcat_to_items 易误导——实际是品名→规范名映射，不是细类→项目映射",

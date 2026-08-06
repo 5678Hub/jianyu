@@ -1,7 +1,7 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-06 11:46:27+08:00",
+    "last_updated": "2026-08-06 11:48:57+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
@@ -36,8 +36,8 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-06 11:46:27+08:00",
-    "data_version": "2026.08.06.1146"
+    "index_rebuilt": "2026-08-06 11:48:57+08:00",
+    "data_version": "2026.08.06.1148"
   },
   "records": [
     {
@@ -21765,7 +21765,7 @@
     {
       "source": "重庆",
       "food_name_raw": "皇家曲奇（酥性饼干）",
-      "food_name_canonical": "皇家曲奇（酥性饼干）",
+      "food_name_canonical": "皇家曲奇",
       "big_category": "饼干",
       "sub_category": "饼干-饼干",
       "category": "饼干-饼干",
@@ -21793,6 +21793,7 @@
       ],
       "inst": "重庆市计量质量检测研究院",
       "bulletin_no": "重庆-2026-5号",
+      "_canonical_orig": "皇家曲奇（酥性饼干）",
       "id": "r0676",
       "big_category_id": "biscuits",
       "subcategory_id": "biscuits-biscuits"
@@ -27641,7 +27642,7 @@
         "瘦身草鱼"
       ]
     },
-    "皇家曲奇（酥性饼干）": {
+    "皇家曲奇": {
       "ids": [
         "r0676"
       ],
@@ -37229,7 +37230,7 @@
           "瘦身草鱼"
         ]
       },
-      "皇家曲奇（酥性饼干）": {
+      "皇家曲奇": {
         "ids": [
           "r0676"
         ],
