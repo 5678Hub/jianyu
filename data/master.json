@@ -1,13 +1,13 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-06 10:34:29+08:00",
+    "last_updated": "2026-08-06 10:38:51+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
     "origin": "jianyu 食品安全抽检风险查询",
     "record_count": 712,
-    "by_canonical_count": 328,
+    "by_canonical_count": 366,
     "by_category_count": 31,
     "by_item_count": 154,
     "project_weight_count": 45,
@@ -36,8 +36,8 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-06 10:34:29+08:00",
-    "data_version": "2026.08.06.1034"
+    "index_rebuilt": "2026-08-06 10:38:51+08:00",
+    "data_version": "2026.08.06.1038"
   },
   "records": [
     {
@@ -871,7 +871,7 @@
     {
       "source": "山东",
       "food_name_raw": "干姜",
-      "food_name_canonical": "其他香辛料调味品",
+      "food_name_canonical": "干姜",
       "big_category": "调味品",
       "sub_category": "调味品-其他香辛料调味品",
       "category": "调味品-其他香辛料调味品",
@@ -895,6 +895,7 @@
       ],
       "bulletin_no": "2026.07.08",
       "inst": "2026年第17期",
+      "_canonical_orig": "其他香辛料调味品",
       "id": "r0028",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-other_spice_seasonings"
@@ -1191,7 +1192,7 @@
     {
       "source": "山东",
       "food_name_raw": "100%石榴汁",
-      "food_name_canonical": "果蔬汁类及其饮料",
+      "food_name_canonical": "100%石榴汁",
       "big_category": "饮料",
       "sub_category": "饮料-果蔬汁类及其饮料",
       "category": "饮料-果蔬汁",
@@ -1215,6 +1216,7 @@
       ],
       "bulletin_no": "2026.07.08",
       "inst": "2026年第17期",
+      "_canonical_orig": "果蔬汁类及其饮料",
       "id": "r0038",
       "big_category_id": "beverages",
       "subcategory_id": "beverages-fruit_vegetable_juice_beverages"
@@ -1387,7 +1389,7 @@
     {
       "source": "山东",
       "food_name_raw": "学宝酱菜（酱香疙瘩皮）",
-      "food_name_canonical": "酱腌菜",
+      "food_name_canonical": "学宝酱菜",
       "big_category": "蔬菜制品",
       "sub_category": "蔬菜制品-酱腌菜",
       "category": "蔬菜制品-酱腌菜",
@@ -1411,6 +1413,7 @@
       ],
       "bulletin_no": "2026.07.08",
       "inst": "2026年第17期",
+      "_canonical_orig": "酱腌菜",
       "id": "r0044",
       "big_category_id": "vegetable_products_processed",
       "subcategory_id": "vegetable_products_processed-pickled_vegetables"
@@ -1480,7 +1483,7 @@
     {
       "source": "山东",
       "food_name_raw": "白芷",
-      "food_name_canonical": "其他香辛料调味品",
+      "food_name_canonical": "白芷",
       "big_category": "调味品",
       "sub_category": "调味品-其他香辛料调味品",
       "category": "调味品-其他香辛料调味品",
@@ -1504,6 +1507,7 @@
       ],
       "bulletin_no": "山东-2026-5期",
       "inst": "山东中质华检测试检验有限公司",
+      "_canonical_orig": "其他香辛料调味品",
       "id": "r0047",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-other_spice_seasonings"
@@ -1511,7 +1515,7 @@
     {
       "source": "山东",
       "food_name_raw": "红油酸豆角（腌制菜）",
-      "food_name_canonical": "酱腌菜",
+      "food_name_canonical": "红油酸豆角",
       "big_category": "蔬菜制品",
       "sub_category": "蔬菜制品-酱腌菜",
       "category": "蔬菜制品-酱腌菜",
@@ -1535,6 +1539,7 @@
       ],
       "bulletin_no": "山东-2026-5期",
       "inst": "山东省食品药品检验研究院",
+      "_canonical_orig": "酱腌菜",
       "id": "r0048",
       "big_category_id": "vegetable_products_processed",
       "subcategory_id": "vegetable_products_processed-pickled_vegetables"
@@ -1605,7 +1610,7 @@
     {
       "source": "山东",
       "food_name_raw": "麻辣海带（其他水产制品）",
-      "food_name_canonical": "其他水产制品",
+      "food_name_canonical": "麻辣海带",
       "big_category": "水产制品",
       "sub_category": "水产制品-其他水产制品",
       "category": "水产制品-其他水产制品",
@@ -1629,6 +1634,7 @@
       ],
       "bulletin_no": "网店商铺名称：东立食品专营店\n网店网址：天猫（手机App）",
       "inst": "山东省食品药品检验研究院",
+      "_canonical_orig": "其他水产制品",
       "id": "r0051",
       "big_category_id": "aquatic_products_processed",
       "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed"
@@ -1667,7 +1673,7 @@
     {
       "source": "山东",
       "food_name_raw": "红糖枣馒头",
-      "food_name_canonical": "发酵面制品",
+      "food_name_canonical": "红糖枣馒头",
       "big_category": "餐饮食品",
       "sub_category": "餐饮食品-馒头花卷（自制）",
       "category": "餐饮食品-自制油炸面制品",
@@ -1691,6 +1697,7 @@
       ],
       "bulletin_no": "网店商铺名称：渔味生鲜（东郭店）\n网店网址：美团（手机App）",
       "inst": "临沂市食品药品检验检测中心",
+      "_canonical_orig": "发酵面制品",
       "id": "r0053",
       "big_category_id": "restaurant_food",
       "subcategory_id": "restaurant_food-steamed_bun_self_made"
@@ -1728,7 +1735,7 @@
     {
       "source": "山东",
       "food_name_raw": "多彩蝴蝶面（粮食加工品）",
-      "food_name_canonical": "其他谷物粉类制成品",
+      "food_name_canonical": "多彩蝴蝶面",
       "big_category": "粮食加工品",
       "sub_category": "粮食加工品-其他谷物粉类制成品",
       "category": "方便食品",
@@ -1752,6 +1759,7 @@
       ],
       "bulletin_no": "复检不合格",
       "inst": "初检机构：滨州市检验检测中心\n复检机构：青岛市产品质量检验研究院",
+      "_canonical_orig": "其他谷物粉类制成品",
       "id": "r0055",
       "big_category_id": "cereal_products",
       "subcategory_id": "cereal_products-other_cereal_powder_products"
@@ -1790,7 +1798,7 @@
     {
       "source": "山东",
       "food_name_raw": "辣椒油",
-      "food_name_canonical": "香辛料调味油",
+      "food_name_canonical": "辣椒油",
       "big_category": "调味品",
       "sub_category": "调味品-香辛料调味油",
       "category": "调味品-其他香辛料调味品",
@@ -1814,6 +1822,7 @@
       ],
       "bulletin_no": "复检不合格",
       "inst": "初检机构：通标标准技术服务(青岛)有限公司\n复检机构：青岛海关技术中心",
+      "_canonical_orig": "香辛料调味油",
       "id": "r0057",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-spice_seasoning_oil"
@@ -1923,7 +1932,7 @@
     {
       "source": "山东",
       "food_name_raw": "豇豆（长豆角）",
-      "food_name_canonical": "豇豆",
+      "food_name_canonical": "豇豆（长豆角）",
       "big_category": "蔬菜",
       "sub_category": "蔬菜-豇豆",
       "category": "食用农产品-蔬菜",
@@ -1947,6 +1956,7 @@
       ],
       "bulletin_no": "山东-2026-5期",
       "inst": "山东中质华检测试检验有限公司",
+      "_canonical_orig": "豇豆",
       "id": "r0061",
       "big_category_id": "vegetables",
       "subcategory_id": "vegetables-cowpea"
@@ -1984,7 +1994,7 @@
     {
       "source": "山东",
       "food_name_raw": "爱媛果冻橙",
-      "food_name_canonical": "柑、橘",
+      "food_name_canonical": "爱媛果冻橙",
       "big_category": "水果类",
       "sub_category": "水果类-柑橘",
       "category": "食用农产品-水果类",
@@ -2008,6 +2018,7 @@
       ],
       "bulletin_no": "山东-2026-5期",
       "inst": "山东省食品药品检验研究院",
+      "_canonical_orig": "柑、橘",
       "id": "r0063",
       "big_category_id": "fruits",
       "subcategory_id": "fruits-citrus"
@@ -2420,7 +2431,7 @@
     {
       "source": "山东",
       "food_name_raw": "轻乳奶酪蛋糕",
-      "food_name_canonical": "糕点",
+      "food_name_canonical": "轻乳奶酪蛋糕",
       "big_category": "糕点",
       "sub_category": "糕点-糕点",
       "category": "糕点",
@@ -2444,6 +2455,7 @@
       ],
       "bulletin_no": "复检不合格",
       "inst": "初检机构：山东省产品质量检验研究院\n复检机构：青岛海关技术中心",
+      "_canonical_orig": "糕点",
       "id": "r0076",
       "big_category_id": "pastries",
       "subcategory_id": "pastries-pastries"
@@ -2451,7 +2463,7 @@
     {
       "source": "山东",
       "food_name_raw": "良姜",
-      "food_name_canonical": "其他香辛料调味品",
+      "food_name_canonical": "良姜",
       "big_category": "调味品",
       "sub_category": "调味品-其他香辛料调味品",
       "category": "调味品-其他香辛料调味品",
@@ -2475,6 +2487,7 @@
       ],
       "bulletin_no": "网店商铺名称：和诚鲜超（吉祥苑市场店）\n网店网址：美团（手机App）",
       "inst": "青岛市华测检测技术有限公司",
+      "_canonical_orig": "其他香辛料调味品",
       "id": "r0077",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-other_spice_seasonings"
@@ -2585,7 +2598,7 @@
     {
       "source": "山东",
       "food_name_raw": "特级生抽",
-      "food_name_canonical": "酱油",
+      "food_name_canonical": "特级生抽",
       "big_category": "调味品",
       "sub_category": "调味品-酱油",
       "category": "调味品-酱油",
@@ -2609,6 +2622,7 @@
       ],
       "bulletin_no": "网店商铺名称：锦善良品\n网店网址：淘宝网（网店）",
       "inst": "广州检验检测认证集团有限公司",
+      "_canonical_orig": "酱油",
       "id": "r0081",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-soy_sauce"
@@ -3017,7 +3031,7 @@
     {
       "source": "山东",
       "food_name_raw": "良姜",
-      "food_name_canonical": "其他香辛料调味品",
+      "food_name_canonical": "良姜",
       "big_category": "调味品",
       "sub_category": "调味品-其他香辛料调味品",
       "category": "调味品-其他香辛料调味品",
@@ -3040,6 +3054,7 @@
         }
       ],
       "bulletin_no": "山东-2026-19期",
+      "_canonical_orig": "其他香辛料调味品",
       "id": "r0095",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-other_spice_seasonings"
@@ -3077,7 +3092,7 @@
     {
       "source": "山东",
       "food_name_raw": "白芷",
-      "food_name_canonical": "其他香辛料调味品",
+      "food_name_canonical": "白芷",
       "big_category": "调味品",
       "sub_category": "调味品-其他香辛料调味品",
       "category": "调味品-其他香辛料调味品",
@@ -3100,6 +3115,7 @@
         }
       ],
       "bulletin_no": "山东-2026-19期",
+      "_canonical_orig": "其他香辛料调味品",
       "id": "r0097",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-other_spice_seasonings"
@@ -3197,7 +3213,7 @@
     {
       "source": "山东",
       "food_name_raw": "淀粉肉灌肠",
-      "food_name_canonical": "熏煮香肠火腿制品",
+      "food_name_canonical": "淀粉肉灌肠",
       "big_category": "肉制品",
       "sub_category": "肉制品-熏煮香肠火腿制品",
       "category": "肉制品-熟肉制品",
@@ -3220,6 +3236,7 @@
         }
       ],
       "bulletin_no": "山东-2026-19期",
+      "_canonical_orig": "熏煮香肠火腿制品",
       "id": "r0101",
       "big_category_id": "meat_products_processed",
       "subcategory_id": "meat_products_processed-smoked_sausage_ham"
@@ -3497,7 +3514,7 @@
     {
       "source": "山东",
       "food_name_raw": "水饺醋",
-      "food_name_canonical": "食醋",
+      "food_name_canonical": "水饺醋",
       "big_category": "调味品",
       "sub_category": "调味品-食醋",
       "category": "调味品-酱油",
@@ -3520,6 +3537,7 @@
         }
       ],
       "bulletin_no": "山东-2026-19期",
+      "_canonical_orig": "食醋",
       "id": "r0111",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-vinegar"
@@ -3527,7 +3545,7 @@
     {
       "source": "山东",
       "food_name_raw": "菠菜粉",
-      "food_name_canonical": "蔬菜干制品",
+      "food_name_canonical": "菠菜粉",
       "big_category": "蔬菜",
       "sub_category": "蔬菜-菠菜",
       "category": "调味品-固体复合调味料",
@@ -3550,6 +3568,7 @@
         }
       ],
       "bulletin_no": "山东-2026-19期",
+      "_canonical_orig": "蔬菜干制品",
       "id": "r0112",
       "big_category_id": "vegetables",
       "subcategory_id": "vegetables-spinach"
@@ -4463,7 +4482,7 @@
     {
       "source": "山东",
       "food_name_raw": "馒头",
-      "food_name_canonical": "发酵面制品",
+      "food_name_canonical": "馒头",
       "big_category": "粮食加工品",
       "sub_category": "粮食加工品-发酵面制品",
       "category": "餐饮食品-自制油炸面制品",
@@ -4487,6 +4506,7 @@
       ],
       "bulletin_no": "山东-2026-6期",
       "inst": "聊城市检验检测中心",
+      "_canonical_orig": "发酵面制品",
       "id": "r0142",
       "big_category_id": "cereal_products",
       "subcategory_id": "cereal_products-fermented_dough_products"
@@ -4494,7 +4514,7 @@
     {
       "source": "山东",
       "food_name_raw": "白芷",
-      "food_name_canonical": "其他香辛料调味品",
+      "food_name_canonical": "白芷",
       "big_category": "调味品",
       "sub_category": "调味品-其他香辛料调味品",
       "category": "调味品-其他香辛料调味品",
@@ -4518,6 +4538,7 @@
       ],
       "bulletin_no": "网店商铺名称：菜老包（凤凰城店）\n网店网址：美团（手机App）",
       "inst": "青岛谱尼测试有限公司",
+      "_canonical_orig": "其他香辛料调味品",
       "id": "r0143",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-other_spice_seasonings"
@@ -4556,7 +4577,7 @@
     {
       "source": "山东",
       "food_name_raw": "鲜面条",
-      "food_name_canonical": "生湿面制品",
+      "food_name_canonical": "鲜面条",
       "big_category": "粮食加工品",
       "sub_category": "粮食加工品-生湿面制品",
       "category": "食用农产品-畜禽肉及副产品",
@@ -4580,6 +4601,7 @@
       ],
       "bulletin_no": "山东-2026-6期",
       "inst": "滨州市检验检测中心",
+      "_canonical_orig": "生湿面制品",
       "id": "r0145",
       "big_category_id": "cereal_products",
       "subcategory_id": "cereal_products-fresh_noodle_products"
@@ -4618,7 +4640,7 @@
     {
       "source": "山东",
       "food_name_raw": "黑芝麻酥（烘烤类糕点）",
-      "food_name_canonical": "糕点",
+      "food_name_canonical": "黑芝麻酥",
       "big_category": "糕点",
       "sub_category": "糕点-糕点",
       "category": "糕点",
@@ -4642,6 +4664,7 @@
       ],
       "bulletin_no": "复检不合格",
       "inst": "初检机构：青岛顺昌检测评价有限公司\n复检机构：青岛海关技术中心",
+      "_canonical_orig": "糕点",
       "id": "r0147",
       "big_category_id": "pastries",
       "subcategory_id": "pastries-pastries"
@@ -4835,7 +4858,7 @@
     {
       "source": "山东",
       "food_name_raw": "原味酥饼（糕点）",
-      "food_name_canonical": "糕点",
+      "food_name_canonical": "原味酥饼",
       "big_category": "糕点",
       "sub_category": "糕点-糕点",
       "category": "糕点",
@@ -4859,6 +4882,7 @@
       ],
       "bulletin_no": "山东-2026-6期",
       "inst": "山东省产品质量检验研究院",
+      "_canonical_orig": "糕点",
       "id": "r0154",
       "big_category_id": "pastries",
       "subcategory_id": "pastries-pastries"
@@ -5093,7 +5117,7 @@
     {
       "source": "山东",
       "food_name_raw": "香辣海带菜（即食水产品）",
-      "food_name_canonical": "其他水产制品",
+      "food_name_canonical": "香辣海带菜",
       "big_category": "水产制品",
       "sub_category": "水产制品-其他水产制品",
       "category": "水产制品-其他水产制品",
@@ -5125,6 +5149,7 @@
       ],
       "bulletin_no": "山东-2026-6期",
       "inst": "威海市食品药品检验检测研究院",
+      "_canonical_orig": "其他水产制品",
       "id": "r0162",
       "big_category_id": "aquatic_products_processed",
       "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed"
@@ -5163,7 +5188,7 @@
     {
       "source": "山东",
       "food_name_raw": "水果甜椒",
-      "food_name_canonical": "甜椒",
+      "food_name_canonical": "水果甜椒",
       "big_category": "蔬菜",
       "sub_category": "蔬菜-甜椒",
       "category": "调味品-其他香辛料调味品",
@@ -5187,6 +5212,7 @@
       ],
       "bulletin_no": "山东-2026-6期",
       "inst": "青岛海关技术中心",
+      "_canonical_orig": "甜椒",
       "id": "r0164",
       "big_category_id": "vegetables",
       "subcategory_id": "vegetables-sweet_pepper"
@@ -5398,7 +5424,7 @@
     {
       "source": "山东",
       "food_name_raw": "香脆酱辣椒",
-      "food_name_canonical": "酱腌菜",
+      "food_name_canonical": "香脆酱辣椒",
       "big_category": "蔬菜制品",
       "sub_category": "蔬菜制品-酱腌菜",
       "category": "蔬菜制品-酱腌菜",
@@ -5422,6 +5448,7 @@
       ],
       "bulletin_no": "山东-2026-16期",
       "inst": "2026年第16期",
+      "_canonical_orig": "酱腌菜",
       "id": "r0171",
       "big_category_id": "vegetable_products_processed",
       "subcategory_id": "vegetable_products_processed-pickled_vegetables"
@@ -5561,7 +5588,7 @@
     {
       "source": "山东",
       "food_name_raw": "香酥煎饼（黑芝麻口味）",
-      "food_name_canonical": "糕点",
+      "food_name_canonical": "香酥煎饼",
       "big_category": "糕点",
       "sub_category": "糕点-糕点",
       "category": "糕点",
@@ -5585,6 +5612,7 @@
       ],
       "bulletin_no": "山东-2026-16期",
       "inst": "2026年第16期",
+      "_canonical_orig": "糕点",
       "id": "r0176",
       "big_category_id": "pastries",
       "subcategory_id": "pastries-pastries"
@@ -5633,7 +5661,7 @@
     {
       "source": "山东",
       "food_name_raw": "白芷",
-      "food_name_canonical": "其他香辛料调味品",
+      "food_name_canonical": "白芷",
       "big_category": "调味品",
       "sub_category": "调味品-其他香辛料调味品",
       "category": "调味品-其他香辛料调味品",
@@ -5657,6 +5685,7 @@
       ],
       "bulletin_no": "山东-2026-16期",
       "inst": "2026年第16期",
+      "_canonical_orig": "其他香辛料调味品",
       "id": "r0178",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-other_spice_seasonings"
@@ -5953,7 +5982,7 @@
     {
       "source": "山东",
       "food_name_raw": "手工蛋卷",
-      "food_name_canonical": "糕点",
+      "food_name_canonical": "手工蛋卷",
       "big_category": "糕点",
       "sub_category": "糕点-糕点",
       "category": "糕点",
@@ -5987,6 +6016,7 @@
       ],
       "bulletin_no": "山东-2026-16期",
       "inst": "2026年第16期",
+      "_canonical_orig": "糕点",
       "id": "r0188",
       "big_category_id": "pastries",
       "subcategory_id": "pastries-pastries"
@@ -6240,7 +6270,7 @@
     {
       "source": "山东",
       "food_name_raw": "白芷",
-      "food_name_canonical": "其他香辛料调味品",
+      "food_name_canonical": "白芷",
       "big_category": "调味品",
       "sub_category": "调味品-其他香辛料调味品",
       "category": "调味品-其他香辛料调味品",
@@ -6263,6 +6293,7 @@
         }
       ],
       "bulletin_no": "山东-2026-15期",
+      "_canonical_orig": "其他香辛料调味品",
       "id": "r0197",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-other_spice_seasonings"
@@ -6270,7 +6301,7 @@
     {
       "source": "山东",
       "food_name_raw": "香酥煎饼（花生口味）",
-      "food_name_canonical": "糕点",
+      "food_name_canonical": "香酥煎饼",
       "big_category": "糕点",
       "sub_category": "糕点-糕点",
       "category": "糕点",
@@ -6293,6 +6324,7 @@
         }
       ],
       "bulletin_no": "山东-2026-15期",
+      "_canonical_orig": "糕点",
       "id": "r0198",
       "big_category_id": "pastries",
       "subcategory_id": "pastries-pastries"
@@ -6480,7 +6512,7 @@
     {
       "source": "山东",
       "food_name_raw": "虎皮三明治蛋糕",
-      "food_name_canonical": "糕点",
+      "food_name_canonical": "虎皮三明治蛋糕",
       "big_category": "糕点",
       "sub_category": "糕点-糕点",
       "category": "糕点",
@@ -6503,6 +6535,7 @@
         }
       ],
       "bulletin_no": "山东-2026-15期",
+      "_canonical_orig": "糕点",
       "id": "r0205",
       "big_category_id": "pastries",
       "subcategory_id": "pastries-pastries"
@@ -6600,7 +6633,7 @@
     {
       "source": "山东",
       "food_name_raw": "白芷",
-      "food_name_canonical": "其他香辛料调味品",
+      "food_name_canonical": "白芷",
       "big_category": "调味品",
       "sub_category": "调味品-其他香辛料调味品",
       "category": "调味品-其他香辛料调味品",
@@ -6623,6 +6656,7 @@
         }
       ],
       "bulletin_no": "山东-2026-15期",
+      "_canonical_orig": "其他香辛料调味品",
       "id": "r0209",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-other_spice_seasonings"
@@ -6920,7 +6954,7 @@
     {
       "source": "山东",
       "food_name_raw": "营养果蔬面",
-      "food_name_canonical": "其他谷物粉类制成品",
+      "food_name_canonical": "营养果蔬面",
       "big_category": "粮食加工品",
       "sub_category": "粮食加工品-其他谷物粉类制成品",
       "category": "方便食品",
@@ -6953,6 +6987,7 @@
         }
       ],
       "bulletin_no": "山东-2026-15期",
+      "_canonical_orig": "其他谷物粉类制成品",
       "id": "r0219",
       "big_category_id": "cereal_products",
       "subcategory_id": "cereal_products-other_cereal_powder_products"
@@ -6960,7 +6995,7 @@
     {
       "source": "山东",
       "food_name_raw": "蜜桔",
-      "food_name_canonical": "柑、橘",
+      "food_name_canonical": "蜜桔",
       "big_category": "水果类",
       "sub_category": "水果类-水果类",
       "category": "食用农产品-水果类",
@@ -6983,6 +7018,7 @@
         }
       ],
       "bulletin_no": "山东-2026-15期",
+      "_canonical_orig": "柑、橘",
       "id": "r0220",
       "big_category_id": "fruits",
       "subcategory_id": "fruits-fruits_placeholder"
@@ -7173,7 +7209,7 @@
     {
       "source": "山东",
       "food_name_raw": "白芷",
-      "food_name_canonical": "其他香辛料调味品",
+      "food_name_canonical": "白芷",
       "big_category": "调味品",
       "sub_category": "调味品-其他香辛料调味品",
       "category": "调味品-其他香辛料调味品",
@@ -7197,6 +7233,7 @@
       ],
       "bulletin_no": "2026.07.29",
       "inst": "2026年第20期",
+      "_canonical_orig": "其他香辛料调味品",
       "id": "r0227",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-other_spice_seasonings"
@@ -7235,7 +7272,7 @@
     {
       "source": "山东",
       "food_name_raw": "芒果布丁优酪果冻（芒果味）",
-      "food_name_canonical": "果冻",
+      "food_name_canonical": "芒果布丁优酪果冻",
       "big_category": "糖果制品",
       "sub_category": "糖果制品-果冻",
       "category": "糖果制品-果冻",
@@ -7259,6 +7296,7 @@
       ],
       "bulletin_no": "2026.07.29",
       "inst": "2026年第20期",
+      "_canonical_orig": "果冻",
       "id": "r0229",
       "big_category_id": "confectionery",
       "subcategory_id": "confectionery-jelly"
@@ -7297,7 +7335,7 @@
     {
       "source": "山东",
       "food_name_raw": "孜然",
-      "food_name_canonical": "其他香辛料调味品",
+      "food_name_canonical": "孜然",
       "big_category": "调味品",
       "sub_category": "调味品-其他香辛料调味品",
       "category": "调味品-其他香辛料调味品",
@@ -7331,6 +7369,7 @@
       ],
       "bulletin_no": "2026.07.29",
       "inst": "2026年第20期",
+      "_canonical_orig": "其他香辛料调味品",
       "id": "r0231",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-other_spice_seasonings"
@@ -7627,7 +7666,7 @@
     {
       "source": "山东",
       "food_name_raw": "草莓咖啡复合发酵果酒",
-      "food_name_canonical": "果酒",
+      "food_name_canonical": "草莓咖啡复合发酵果酒",
       "big_category": "酒类",
       "sub_category": "酒类-果酒",
       "category": "酒类-果酒（发酵型）",
@@ -7651,6 +7690,7 @@
       ],
       "bulletin_no": "2026.07.29",
       "inst": "2026年第20期",
+      "_canonical_orig": "果酒",
       "id": "r0241",
       "big_category_id": "alcoholic_beverages",
       "subcategory_id": "alcoholic_beverages-fruit_wine"
@@ -7886,7 +7926,7 @@
     {
       "source": "山东",
       "food_name_raw": "狮子头酱菜",
-      "food_name_canonical": "酱腌菜",
+      "food_name_canonical": "狮子头酱菜",
       "big_category": "蔬菜制品",
       "sub_category": "蔬菜制品-酱腌菜",
       "category": "蔬菜制品-酱腌菜",
@@ -7910,6 +7950,7 @@
       ],
       "bulletin_no": "2026.07.29",
       "inst": "2026年第20期",
+      "_canonical_orig": "酱腌菜",
       "id": "r0249",
       "big_category_id": "vegetable_products_processed",
       "subcategory_id": "vegetable_products_processed-pickled_vegetables"
@@ -7917,7 +7958,7 @@
     {
       "source": "山东",
       "food_name_raw": "豆面挂面",
-      "food_name_canonical": "挂面",
+      "food_name_canonical": "豆面挂面",
       "big_category": "粮食加工品",
       "sub_category": "粮食加工品-挂面",
       "category": "粮食加工品-挂面",
@@ -7941,6 +7982,7 @@
       ],
       "bulletin_no": "2026.07.29",
       "inst": "2026年第20期",
+      "_canonical_orig": "挂面",
       "id": "r0250",
       "big_category_id": "cereal_products",
       "subcategory_id": "cereal_products-dried_noodles"
@@ -7948,7 +7990,7 @@
     {
       "source": "山东",
       "food_name_raw": "藤椒大白仁（油炸类）",
-      "food_name_canonical": "花生制品",
+      "food_name_canonical": "藤椒大白仁",
       "big_category": "炒货食品及坚果制品",
       "sub_category": "炒货食品及坚果制品-花生制品",
       "category": "炒货食品及坚果制品-花生制品",
@@ -7972,6 +8014,7 @@
       ],
       "bulletin_no": "2026.07.29",
       "inst": "2026年第20期",
+      "_canonical_orig": "花生制品",
       "id": "r0251",
       "big_category_id": "roasted_seeds_nuts",
       "subcategory_id": "roasted_seeds_nuts-peanut_products"
@@ -9008,7 +9051,7 @@
     {
       "source": "山东",
       "food_name_raw": "陈桥海带丝",
-      "food_name_canonical": "其他水产制品",
+      "food_name_canonical": "陈桥海带丝",
       "big_category": "水产制品",
       "sub_category": "水产制品-其他水产制品",
       "category": "水产制品-其他水产制品",
@@ -9039,6 +9082,7 @@
         }
       ],
       "bulletin_no": "山东-2026-14期",
+      "_canonical_orig": "其他水产制品",
       "id": "r0285",
       "big_category_id": "aquatic_products_processed",
       "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed"
@@ -9196,7 +9240,7 @@
     {
       "source": "山东",
       "food_name_raw": "八角",
-      "food_name_canonical": "其他香辛料调味品",
+      "food_name_canonical": "八角",
       "big_category": "调味品",
       "sub_category": "调味品-其他香辛料调味品",
       "category": "调味品-其他香辛料调味品",
@@ -9219,6 +9263,7 @@
         }
       ],
       "bulletin_no": "山东-2026-14期",
+      "_canonical_orig": "其他香辛料调味品",
       "id": "r0291",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-other_spice_seasonings"
@@ -9406,7 +9451,7 @@
     {
       "source": "山东",
       "food_name_raw": "青圆椒（甜椒）",
-      "food_name_canonical": "甜椒",
+      "food_name_canonical": "青圆椒",
       "big_category": "调味品",
       "sub_category": "调味品-其他香辛料调味品",
       "category": "调味品-其他香辛料调味品",
@@ -9429,6 +9474,7 @@
         }
       ],
       "bulletin_no": "山东-2026-14期",
+      "_canonical_orig": "甜椒",
       "id": "r0298",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-other_spice_seasonings"
@@ -9436,7 +9482,7 @@
     {
       "source": "山东",
       "food_name_raw": "良姜",
-      "food_name_canonical": "其他香辛料调味品",
+      "food_name_canonical": "良姜",
       "big_category": "调味品",
       "sub_category": "调味品-其他香辛料调味品",
       "category": "调味品-其他香辛料调味品",
@@ -9459,6 +9505,7 @@
         }
       ],
       "bulletin_no": "山东-2026-14期",
+      "_canonical_orig": "其他香辛料调味品",
       "id": "r0299",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-other_spice_seasonings"
@@ -9546,7 +9593,7 @@
     {
       "source": "山东",
       "food_name_raw": "橘子",
-      "food_name_canonical": "柑、橘",
+      "food_name_canonical": "橘子",
       "big_category": "水果类",
       "sub_category": "水果类-水果类",
       "category": "食用农产品-水果类",
@@ -9569,6 +9616,7 @@
         }
       ],
       "bulletin_no": "山东-2026-14期",
+      "_canonical_orig": "柑、橘",
       "id": "r0302",
       "big_category_id": "fruits",
       "subcategory_id": "fruits-fruits_placeholder"
@@ -9856,7 +9904,7 @@
     {
       "source": "山东",
       "food_name_raw": "鲅鱼",
-      "food_name_canonical": "海水鱼",
+      "food_name_canonical": "鲅鱼",
       "big_category": "水产品",
       "sub_category": "水产品-海水鱼",
       "category": "食用农产品-水产品",
@@ -9879,6 +9927,7 @@
         }
       ],
       "bulletin_no": "山东-2026-14期",
+      "_canonical_orig": "海水鱼",
       "id": "r0312",
       "big_category_id": "aquatic_products",
       "subcategory_id": "aquatic_products-marine_fish"
@@ -10146,7 +10195,7 @@
     {
       "source": "山东",
       "food_name_raw": "可可奥巧（奥巧慕斯味装饰饼干）",
-      "food_name_canonical": "饼干",
+      "food_name_canonical": "可可奥巧",
       "big_category": "饼干",
       "sub_category": "饼干-饼干",
       "category": "糕点",
@@ -10170,6 +10219,7 @@
       ],
       "bulletin_no": "山东-2026-4期",
       "inst": "济南市食品药品检验检测中心",
+      "_canonical_orig": "饼干",
       "id": "r0321",
       "big_category_id": "biscuits",
       "subcategory_id": "biscuits-biscuits"
@@ -10208,7 +10258,7 @@
     {
       "source": "山东",
       "food_name_raw": "沃柑",
-      "food_name_canonical": "柑、橘",
+      "food_name_canonical": "沃柑",
       "big_category": "水果类",
       "sub_category": "水果类-柑橘",
       "category": "食用农产品-水果类",
@@ -10232,6 +10282,7 @@
       ],
       "bulletin_no": "山东-2026-4期",
       "inst": "山东华检检测有限公司",
+      "_canonical_orig": "柑、橘",
       "id": "r0323",
       "big_category_id": "fruits",
       "subcategory_id": "fruits-citrus"
@@ -10239,7 +10290,7 @@
     {
       "source": "山东",
       "food_name_raw": "五香芥片（酱腌菜）",
-      "food_name_canonical": "酱腌菜",
+      "food_name_canonical": "五香芥片",
       "big_category": "蔬菜制品",
       "sub_category": "蔬菜制品-酱腌菜",
       "category": "蔬菜制品-酱腌菜",
@@ -10263,6 +10314,7 @@
       ],
       "bulletin_no": "山东-2026-4期",
       "inst": "青岛元信检测技术有限公司",
+      "_canonical_orig": "酱腌菜",
       "id": "r0324",
       "big_category_id": "vegetable_products_processed",
       "subcategory_id": "vegetable_products_processed-pickled_vegetables"
@@ -10394,7 +10446,7 @@
     {
       "source": "山东",
       "food_name_raw": "海带王（即食藻类制品）",
-      "food_name_canonical": "其他水产制品",
+      "food_name_canonical": "海带王",
       "big_category": "水产制品",
       "sub_category": "水产制品-干制水产品",
       "category": "水产制品-其他水产制品",
@@ -10418,6 +10470,7 @@
       ],
       "bulletin_no": "网店商铺名称：泰山土特产特色小店\n网店网址：淘宝（手机App）",
       "inst": "山东省食品药品检验研究院",
+      "_canonical_orig": "其他水产制品",
       "id": "r0329",
       "big_category_id": "aquatic_products_processed",
       "subcategory_id": "aquatic_products_processed-dried_aquatic_products"
@@ -10849,7 +10902,7 @@
     {
       "source": "山东",
       "food_name_raw": "即食海带丝（水产制品）",
-      "food_name_canonical": "其他水产制品",
+      "food_name_canonical": "即食海带丝",
       "big_category": "水产制品",
       "sub_category": "水产制品-干制水产品",
       "category": "水产制品-其他水产制品",
@@ -10873,6 +10926,7 @@
       ],
       "bulletin_no": "异议不认可",
       "inst": "山东省食品药品检验研究院",
+      "_canonical_orig": "其他水产制品",
       "id": "r0342",
       "big_category_id": "aquatic_products_processed",
       "subcategory_id": "aquatic_products_processed-dried_aquatic_products"
@@ -10911,7 +10965,7 @@
     {
       "source": "山东",
       "food_name_raw": "狮子头咸菜",
-      "food_name_canonical": "酱腌菜",
+      "food_name_canonical": "狮子头咸菜",
       "big_category": "蔬菜制品",
       "sub_category": "蔬菜制品-酱腌菜",
       "category": "蔬菜制品-酱腌菜",
@@ -10945,6 +10999,7 @@
       ],
       "bulletin_no": "山东-2026-2期",
       "inst": "泰安市食品药品检验检测研究院（泰安市纤维检验所）",
+      "_canonical_orig": "酱腌菜",
       "id": "r0344",
       "big_category_id": "vegetable_products_processed",
       "subcategory_id": "vegetable_products_processed-pickled_vegetables"
@@ -10983,7 +11038,7 @@
     {
       "source": "山东",
       "food_name_raw": "即食海带丝（水产制品）",
-      "food_name_canonical": "其他水产制品",
+      "food_name_canonical": "即食海带丝",
       "big_category": "水产制品",
       "sub_category": "水产制品-干制水产品",
       "category": "水产制品-其他水产制品",
@@ -11007,6 +11062,7 @@
       ],
       "bulletin_no": "异议不认可",
       "inst": "山东省食品药品检验研究院",
+      "_canonical_orig": "其他水产制品",
       "id": "r0346",
       "big_category_id": "aquatic_products_processed",
       "subcategory_id": "aquatic_products_processed-dried_aquatic_products"
@@ -11045,7 +11101,7 @@
     {
       "source": "山东",
       "food_name_raw": "巧和风（黑松露巧克力味夹心福团）",
-      "food_name_canonical": "糕点",
+      "food_name_canonical": "巧和风",
       "big_category": "糕点",
       "sub_category": "糕点-糕点",
       "category": "糕点",
@@ -11069,6 +11125,7 @@
       ],
       "bulletin_no": "山东-2026-2期",
       "inst": "山东省产品质量检验研究院",
+      "_canonical_orig": "糕点",
       "id": "r0348",
       "big_category_id": "pastries",
       "subcategory_id": "pastries-pastries"
@@ -11179,7 +11236,7 @@
     {
       "source": "山东",
       "food_name_raw": "钙奶饼干",
-      "food_name_canonical": "饼干",
+      "food_name_canonical": "钙奶饼干",
       "big_category": "饼干",
       "sub_category": "饼干-饼干",
       "category": "糕点",
@@ -11203,6 +11260,7 @@
       ],
       "bulletin_no": "网店商铺名称：志诺食品专营店\n网店网址：拼多多（手机App）",
       "inst": "青岛顺昌检测评价有限公司",
+      "_canonical_orig": "饼干",
       "id": "r0352",
       "big_category_id": "biscuits",
       "subcategory_id": "biscuits-biscuits"
@@ -11458,7 +11516,7 @@
     {
       "source": "山东",
       "food_name_raw": "大黄米宫廷桃酥",
-      "food_name_canonical": "糕点",
+      "food_name_canonical": "大黄米宫廷桃酥",
       "big_category": "糕点",
       "sub_category": "糕点-糕点",
       "category": "糕点",
@@ -11482,6 +11540,7 @@
       ],
       "bulletin_no": "山东-2026-2期",
       "inst": "潍坊市产品质量检验研究院",
+      "_canonical_orig": "糕点",
       "id": "r0361",
       "big_category_id": "pastries",
       "subcategory_id": "pastries-pastries"
@@ -11530,7 +11589,7 @@
     {
       "source": "山东",
       "food_name_raw": "煎饼（玉米味）",
-      "food_name_canonical": "其他谷物粉类制成品",
+      "food_name_canonical": "煎饼",
       "big_category": "糕点",
       "sub_category": "糕点-糕点",
       "category": "糕点",
@@ -11554,6 +11613,7 @@
       ],
       "bulletin_no": "1.网店商铺名称：永大食品专营店\n网店网址：拼多多（手机App）\n2.复检不合格",
       "inst": "初检机构：山东省食品药品检验研究院\n复检机构：山东省产品质量检验研究院/国家加工食品质量检验检测中心（山东）",
+      "_canonical_orig": "其他谷物粉类制成品",
       "id": "r0363",
       "big_category_id": "pastries",
       "subcategory_id": "pastries-pastries"
@@ -11716,7 +11776,7 @@
     {
       "source": "山东",
       "food_name_raw": "铁杆山药",
-      "food_name_canonical": "山药",
+      "food_name_canonical": "铁杆山药",
       "big_category": "蔬菜",
       "sub_category": "蔬菜-山药",
       "category": "食用农产品-蔬菜",
@@ -11740,6 +11800,7 @@
       ],
       "bulletin_no": "山东-2026-2期",
       "inst": "山东省食品药品检验研究院",
+      "_canonical_orig": "山药",
       "id": "r0369",
       "big_category_id": "vegetables",
       "subcategory_id": "vegetables-yam"
@@ -11912,7 +11973,7 @@
     {
       "source": "山东",
       "food_name_raw": "鲜面条",
-      "food_name_canonical": "生湿面制品",
+      "food_name_canonical": "鲜面条",
       "big_category": "粮食加工品",
       "sub_category": "粮食加工品-生湿面制品",
       "category": "食用农产品-畜禽肉及副产品",
@@ -11936,6 +11997,7 @@
       ],
       "bulletin_no": "异议不认可",
       "inst": "东营市食品药品检验研究院",
+      "_canonical_orig": "生湿面制品",
       "id": "r0375",
       "big_category_id": "cereal_products",
       "subcategory_id": "cereal_products-fresh_noodle_products"
@@ -12160,7 +12222,7 @@
     {
       "source": "山东",
       "food_name_raw": "焦饼（原味）",
-      "food_name_canonical": "糕点",
+      "food_name_canonical": "焦饼",
       "big_category": "糕点",
       "sub_category": "糕点-糕点",
       "category": "糕点",
@@ -12184,6 +12246,7 @@
       ],
       "bulletin_no": "复检不合格",
       "inst": "初检机构：山东省食品药品检验研究院\n复检机构：中华全国供销合作总社济南果品研究所/国家果蔬及加工产品质量检验检测中心",
+      "_canonical_orig": "糕点",
       "id": "r0383",
       "big_category_id": "pastries",
       "subcategory_id": "pastries-pastries"
@@ -12315,7 +12378,7 @@
     {
       "source": "山东",
       "food_name_raw": "白芷",
-      "food_name_canonical": "其他香辛料调味品",
+      "food_name_canonical": "白芷",
       "big_category": "调味品",
       "sub_category": "调味品-其他香辛料调味品",
       "category": "调味品-其他香辛料调味品",
@@ -12339,6 +12402,7 @@
       ],
       "bulletin_no": "山东-2026-3期",
       "inst": "山东省食品药品检验研究院",
+      "_canonical_orig": "其他香辛料调味品",
       "id": "r0388",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-other_spice_seasonings"
@@ -12408,7 +12472,7 @@
     {
       "source": "山东",
       "food_name_raw": "鸡蛋小棋子",
-      "food_name_canonical": "糕点",
+      "food_name_canonical": "鸡蛋小棋子",
       "big_category": "糕点",
       "sub_category": "糕点-糕点",
       "category": "糕点",
@@ -12432,6 +12496,7 @@
       ],
       "bulletin_no": "网店商铺名称：品枣园\n网店网址：淘宝网",
       "inst": "烟台市食品药品检验检测中心",
+      "_canonical_orig": "糕点",
       "id": "r0391",
       "big_category_id": "pastries",
       "subcategory_id": "pastries-pastries"
@@ -12563,7 +12628,7 @@
     {
       "source": "山东",
       "food_name_raw": "八角",
-      "food_name_canonical": "其他香辛料调味品",
+      "food_name_canonical": "八角",
       "big_category": "调味品",
       "sub_category": "调味品-其他香辛料调味品",
       "category": "调味品-其他香辛料调味品",
@@ -12587,6 +12652,7 @@
       ],
       "bulletin_no": "网店商铺名称：菜老包（凤凰城店）\n网店网址：美团（手机App）",
       "inst": "青岛谱尼测试有限公司",
+      "_canonical_orig": "其他香辛料调味品",
       "id": "r0396",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-other_spice_seasonings"
@@ -13048,7 +13114,7 @@
     {
       "source": "山东",
       "food_name_raw": "干豆角",
-      "food_name_canonical": "蔬菜干制品",
+      "food_name_canonical": "干豆角",
       "big_category": "调味品",
       "sub_category": "调味品-其他香辛料调味品",
       "category": "调味品-其他香辛料调味品",
@@ -13072,6 +13138,7 @@
       ],
       "bulletin_no": "网店商铺名称：菜人觐见(新城便民中心店)\n网店网址：美团（手机App）",
       "inst": "方圆标志检验检测（山东）有限公司",
+      "_canonical_orig": "蔬菜干制品",
       "id": "r0411",
       "big_category_id": "seasonings",
       "subcategory_id": "seasonings-other_spice_seasonings"
@@ -13296,7 +13363,7 @@
     {
       "source": "山东",
       "food_name_raw": "肘花小火腿",
-      "food_name_canonical": "熏煮香肠火腿制品",
+      "food_name_canonical": "肘花小火腿",
       "big_category": "肉制品",
       "sub_category": "肉制品-熟肉制品",
       "category": "肉制品-熟肉制品",
@@ -13320,6 +13387,7 @@
       ],
       "bulletin_no": "网店商铺名称：九如食品6\n网店网址：拼多多（手机App）",
       "inst": "青岛海关技术中心",
+      "_canonical_orig": "熏煮香肠火腿制品",
       "id": "r0419",
       "big_category_id": "meat_products_processed",
       "subcategory_id": "meat_products_processed-cooked_meat"
@@ -13358,7 +13426,7 @@
     {
       "source": "山东",
       "food_name_raw": "甘蔗马蹄饮",
-      "food_name_canonical": "其他饮料",
+      "food_name_canonical": "甘蔗马蹄饮",
       "big_category": "饮料",
       "sub_category": "饮料-果蔬汁",
       "category": "饮料-果蔬汁",
@@ -13382,6 +13450,7 @@
       ],
       "bulletin_no": "山东-2026-1期",
       "inst": "威海市食品药品检验检测研究院",
+      "_canonical_orig": "其他饮料",
       "id": "r0421",
       "big_category_id": "beverages",
       "subcategory_id": "beverages-fruit_vegetable_juice"
@@ -13451,7 +13520,7 @@
     {
       "source": "山东",
       "food_name_raw": "江米条（油炸类）",
-      "food_name_canonical": "糕点",
+      "food_name_canonical": "江米条",
       "big_category": "糕点",
       "sub_category": "糕点-糕点",
       "category": "餐饮食品-自制油炸面制品",
@@ -13475,6 +13544,7 @@
       ],
       "bulletin_no": "异议不认可",
       "inst": "山东省产品质量检验研究院",
+      "_canonical_orig": "糕点",
       "id": "r0424",
       "big_category_id": "pastries",
       "subcategory_id": "pastries-pastries"
@@ -13586,7 +13656,7 @@
     {
       "source": "山东",
       "food_name_raw": "沃柑",
-      "food_name_canonical": "柑、橘",
+      "food_name_canonical": "沃柑",
       "big_category": "水果类",
       "sub_category": "水果类-柑橘",
       "category": "食用农产品-水果类",
@@ -13610,6 +13680,7 @@
       ],
       "bulletin_no": "1.网店商铺名称：菜阿婆（恒大绿洲店）\n网店网址：美团（手机App）\n2.异议不认可",
       "inst": "深圳市计量质量检测研究院",
+      "_canonical_orig": "柑、橘",
       "id": "r0428",
       "big_category_id": "fruits",
       "subcategory_id": "fruits-citrus"
@@ -13892,7 +13963,7 @@
     {
       "source": "山东",
       "food_name_raw": "小白嘴山药",
-      "food_name_canonical": "山药",
+      "food_name_canonical": "小白嘴山药",
       "big_category": "蔬菜",
       "sub_category": "蔬菜-蔬菜",
       "category": "食用农产品-蔬菜",
@@ -13915,6 +13986,7 @@
         }
       ],
       "bulletin_no": "山东-2026-11期-你点我检",
+      "_canonical_orig": "山药",
       "id": "r0438",
       "big_category_id": "vegetables",
       "subcategory_id": "vegetables-vegetables_placeholder"
@@ -14185,7 +14257,7 @@
     {
       "source": "山东",
       "food_name_raw": "砂糖橘",
-      "food_name_canonical": "柑、橘",
+      "food_name_canonical": "砂糖橘",
       "big_category": "水果类",
       "sub_category": "水果类-柑橘",
       "category": "食用农产品-水果类",
@@ -14219,6 +14291,7 @@
       ],
       "bulletin_no": "2026.07.09",
       "inst": "2026年第18期",
+      "_canonical_orig": "柑、橘",
       "id": "r0447",
       "big_category_id": "fruits",
       "subcategory_id": "fruits-citrus"
@@ -14830,7 +14903,7 @@
     {
       "source": "辽宁",
       "food_name_raw": "铁杆山药",
-      "food_name_canonical": "山药",
+      "food_name_canonical": "铁杆山药",
       "big_category": "蔬菜",
       "sub_category": "蔬菜-山药",
       "category": "食用农产品-蔬菜",
@@ -14853,6 +14926,7 @@
         }
       ],
       "bulletin_no": "辽宁-2026-1期",
+      "_canonical_orig": "山药",
       "id": "r0468",
       "big_category_id": "vegetables",
       "subcategory_id": "vegetables-yam"
@@ -14920,7 +14994,7 @@
     {
       "source": "辽宁",
       "food_name_raw": "新鲜超甜好吃龙眼500克【500克】1斤",
-      "food_name_canonical": "龙眼",
+      "food_name_canonical": "新鲜超甜好吃龙眼500克1斤",
       "big_category": "水果类",
       "sub_category": "水果类-龙眼",
       "category": "食用农产品-水果类",
@@ -14943,6 +15017,7 @@
         }
       ],
       "bulletin_no": "辽宁-2026-1期",
+      "_canonical_orig": "龙眼",
       "id": "r0471",
       "big_category_id": "fruits",
       "subcategory_id": "fruits-longan"
@@ -15380,7 +15455,7 @@
     {
       "source": "辽宁",
       "food_name_raw": "螺丝椒（辣椒）",
-      "food_name_canonical": "辣椒",
+      "food_name_canonical": "螺丝椒",
       "big_category": "蔬菜",
       "sub_category": "蔬菜-辣椒",
       "category": "食用农产品-蔬菜",
@@ -15403,6 +15478,7 @@
         }
       ],
       "bulletin_no": "辽宁-2026-2期",
+      "_canonical_orig": "辣椒",
       "id": "r0486",
       "big_category_id": "vegetables",
       "subcategory_id": "vegetables-chili_pepper"
@@ -15440,7 +15516,7 @@
     {
       "source": "辽宁",
       "food_name_raw": "铁杆山药",
-      "food_name_canonical": "山药",
+      "food_name_canonical": "铁杆山药",
       "big_category": "蔬菜",
       "sub_category": "蔬菜-山药",
       "category": "食用农产品-蔬菜",
@@ -15463,6 +15539,7 @@
         }
       ],
       "bulletin_no": "辽宁-2026-2期",
+      "_canonical_orig": "山药",
       "id": "r0488",
       "big_category_id": "vegetables",
       "subcategory_id": "vegetables-yam"
@@ -15720,7 +15797,7 @@
     {
       "source": "辽宁",
       "food_name_raw": "螺丝椒",
-      "food_name_canonical": "辣椒",
+      "food_name_canonical": "螺丝椒",
       "big_category": "蔬菜",
       "sub_category": "蔬菜-辣椒",
       "category": "食用农产品-蔬菜",
@@ -15753,6 +15830,7 @@
         }
       ],
       "bulletin_no": "辽宁-2026-2期",
+      "_canonical_orig": "辣椒",
       "id": "r0497",
       "big_category_id": "vegetables",
       "subcategory_id": "vegetables-chili_pepper"
@@ -15980,7 +16058,7 @@
     {
       "source": "辽宁",
       "food_name_raw": "铁杆山药",
-      "food_name_canonical": "山药",
+      "food_name_canonical": "铁杆山药",
       "big_category": "蔬菜",
       "sub_category": "蔬菜-山药",
       "category": "食用农产品-蔬菜",
@@ -16003,6 +16081,7 @@
         }
       ],
       "bulletin_no": "辽宁-2026-3期",
+      "_canonical_orig": "山药",
       "id": "r0505",
       "big_category_id": "vegetables",
       "subcategory_id": "vegetables-yam"
@@ -16720,7 +16799,7 @@
     {
       "source": "辽宁",
       "food_name_raw": "白玉山药",
-      "food_name_canonical": "山药",
+      "food_name_canonical": "白玉山药",
       "big_category": "蔬菜",
       "sub_category": "蔬菜-蔬菜",
       "category": "食用农产品-蔬菜",
@@ -16743,6 +16822,7 @@
         }
       ],
       "bulletin_no": "辽宁-2026-4期",
+      "_canonical_orig": "山药",
       "id": "r0529",
       "big_category_id": "vegetables",
       "subcategory_id": "vegetables-vegetables_placeholder"
@@ -17270,7 +17350,7 @@
     {
       "source": "辽宁",
       "food_name_raw": "尖椒（辣椒）",
-      "food_name_canonical": "辣椒",
+      "food_name_canonical": "尖椒",
       "big_category": "蔬菜",
       "sub_category": "蔬菜-辣椒",
       "category": "食用农产品-蔬菜",
@@ -17293,6 +17373,7 @@
         }
       ],
       "bulletin_no": "辽宁-2026-5期",
+      "_canonical_orig": "辣椒",
       "id": "r0547",
       "big_category_id": "vegetables",
       "subcategory_id": "vegetables-chili_pepper"
@@ -17630,7 +17711,7 @@
     {
       "source": "辽宁",
       "food_name_raw": "铁杆山药",
-      "food_name_canonical": "山药",
+      "food_name_canonical": "铁杆山药",
       "big_category": "蔬菜",
       "sub_category": "蔬菜-山药",
       "category": "食用农产品-蔬菜",
@@ -17653,6 +17734,7 @@
         }
       ],
       "bulletin_no": "辽宁-2026-6期",
+      "_canonical_orig": "山药",
       "id": "r0559",
       "big_category_id": "vegetables",
       "subcategory_id": "vegetables-yam"
@@ -17960,7 +18042,7 @@
     {
       "source": "辽宁",
       "food_name_raw": "铁棍山药",
-      "food_name_canonical": "山药",
+      "food_name_canonical": "铁棍山药",
       "big_category": "蔬菜",
       "sub_category": "蔬菜-蔬菜",
       "category": "食用农产品-蔬菜",
@@ -17983,6 +18065,7 @@
         }
       ],
       "bulletin_no": "辽宁-2026-7期",
+      "_canonical_orig": "山药",
       "id": "r0570",
       "big_category_id": "vegetables",
       "subcategory_id": "vegetables-vegetables_placeholder"
@@ -18050,7 +18133,7 @@
     {
       "source": "辽宁",
       "food_name_raw": "桂圆（龙眼）",
-      "food_name_canonical": "龙眼",
+      "food_name_canonical": "桂圆",
       "big_category": "水果类",
       "sub_category": "水果类-龙眼",
       "category": "食用农产品-水果类",
@@ -18073,6 +18156,7 @@
         }
       ],
       "bulletin_no": "辽宁-2026-7期",
+      "_canonical_orig": "龙眼",
       "id": "r0573",
       "big_category_id": "fruits",
       "subcategory_id": "fruits-longan"
@@ -18380,7 +18464,7 @@
     {
       "source": "辽宁",
       "food_name_raw": "尖椒（辣椒）",
-      "food_name_canonical": "辣椒",
+      "food_name_canonical": "尖椒",
       "big_category": "蔬菜",
       "sub_category": "蔬菜-辣椒",
       "category": "食用农产品-蔬菜",
@@ -18403,6 +18487,7 @@
         }
       ],
       "bulletin_no": "辽宁-2026-8期",
+      "_canonical_orig": "辣椒",
       "id": "r0584",
       "big_category_id": "vegetables",
       "subcategory_id": "vegetables-chili_pepper"
@@ -23116,20 +23201,16 @@
         "r0224",
         "r0237",
         "r0335",
-        "r0471",
         "r0546",
-        "r0573",
         "r0604",
         "r0626",
         "r0646"
       ],
-      "count": 12,
+      "count": 10,
       "big_categories": [
         "水果类"
       ],
       "food_names": [
-        "新鲜超甜好吃龙眼500克【500克】1斤",
-        "桂圆（龙眼）",
         "龙眼"
       ]
     },
@@ -23406,36 +23487,24 @@
         "r0331",
         "r0337",
         "r0345",
-        "r0369",
         "r0381",
         "r0406",
         "r0412",
         "r0434",
-        "r0438",
         "r0446",
-        "r0468",
-        "r0488",
-        "r0505",
-        "r0529",
         "r0544",
-        "r0559",
-        "r0570",
         "r0592",
         "r0608",
         "r0614",
         "r0645",
         "r0688"
       ],
-      "count": 38,
+      "count": 30,
       "big_categories": [
         "蔬菜"
       ],
       "food_names": [
-        "小白嘴山药",
-        "山药",
-        "白玉山药",
-        "铁杆山药",
-        "铁棍山药"
+        "山药"
       ]
     },
     "薄豆皮": {
@@ -23509,34 +23578,16 @@
         "山芹（芹菜）"
       ]
     },
-    "其他香辛料调味品": {
+    "干姜": {
       "ids": [
-        "r0028",
-        "r0047",
-        "r0077",
-        "r0095",
-        "r0097",
-        "r0143",
-        "r0178",
-        "r0197",
-        "r0209",
-        "r0227",
-        "r0231",
-        "r0291",
-        "r0299",
-        "r0388",
-        "r0396"
+        "r0028"
       ],
-      "count": 15,
+      "count": 1,
       "big_categories": [
         "调味品"
       ],
       "food_names": [
-        "八角",
-        "孜然",
-        "干姜",
-        "白芷",
-        "良姜"
+        "干姜"
       ]
     },
     "香蕉": {
@@ -23595,20 +23646,13 @@
         "r0303",
         "r0433",
         "r0444",
-        "r0486",
-        "r0497",
-        "r0547",
-        "r0584",
         "r0629"
       ],
-      "count": 14,
+      "count": 10,
       "big_categories": [
         "蔬菜"
       ],
       "food_names": [
-        "尖椒（辣椒）",
-        "螺丝椒",
-        "螺丝椒（辣椒）",
         "辣椒"
       ]
     },
@@ -23667,7 +23711,7 @@
         "碧螺春二号"
       ]
     },
-    "果蔬汁类及其饮料": {
+    "100%石榴汁": {
       "ids": [
         "r0038"
       ],
@@ -23732,26 +23776,16 @@
         "醋香蜇头"
       ]
     },
-    "酱腌菜": {
+    "学宝酱菜": {
       "ids": [
-        "r0044",
-        "r0048",
-        "r0171",
-        "r0249",
-        "r0324",
-        "r0344"
+        "r0044"
       ],
-      "count": 6,
+      "count": 1,
       "big_categories": [
         "蔬菜制品"
       ],
       "food_names": [
-        "五香芥片（酱腌菜）",
-        "学宝酱菜（酱香疙瘩皮）",
-        "狮子头咸菜",
-        "狮子头酱菜",
-        "红油酸豆角（腌制菜）",
-        "香脆酱辣椒"
+        "学宝酱菜（酱香疙瘩皮）"
       ]
     },
     "黄瓜": {
@@ -23766,6 +23800,40 @@
       ],
       "food_names": [
         "黄瓜"
+      ]
+    },
+    "白芷": {
+      "ids": [
+        "r0047",
+        "r0097",
+        "r0121",
+        "r0141",
+        "r0143",
+        "r0178",
+        "r0197",
+        "r0209",
+        "r0227",
+        "r0388",
+        "r0649"
+      ],
+      "count": 11,
+      "big_categories": [
+        "调味品"
+      ],
+      "food_names": [
+        "白芷"
+      ]
+    },
+    "红油酸豆角": {
+      "ids": [
+        "r0048"
+      ],
+      "count": 1,
+      "big_categories": [
+        "蔬菜制品"
+      ],
+      "food_names": [
+        "红油酸豆角（腌制菜）"
       ]
     },
     "大葱": {
@@ -23804,40 +23872,28 @@
         "麻辣花生"
       ]
     },
-    "其他水产制品": {
+    "麻辣海带": {
       "ids": [
-        "r0051",
-        "r0162",
-        "r0285",
-        "r0329",
-        "r0342",
-        "r0346"
+        "r0051"
       ],
-      "count": 6,
+      "count": 1,
       "big_categories": [
         "水产制品"
       ],
       "food_names": [
-        "即食海带丝（水产制品）",
-        "海带王（即食藻类制品）",
-        "陈桥海带丝",
-        "香辣海带菜（即食水产品）",
         "麻辣海带（其他水产制品）"
       ]
     },
-    "发酵面制品": {
+    "红糖枣馒头": {
       "ids": [
-        "r0053",
-        "r0142"
+        "r0053"
       ],
-      "count": 2,
+      "count": 1,
       "big_categories": [
-        "粮食加工品",
         "餐饮食品"
       ],
       "food_names": [
-        "红糖枣馒头",
-        "馒头"
+        "红糖枣馒头"
       ]
     },
     "自消毒米饭碗": {
@@ -23852,21 +23908,16 @@
         "自消毒米饭碗"
       ]
     },
-    "其他谷物粉类制成品": {
+    "多彩蝴蝶面": {
       "ids": [
-        "r0055",
-        "r0219",
-        "r0363"
+        "r0055"
       ],
-      "count": 3,
+      "count": 1,
       "big_categories": [
-        "粮食加工品",
-        "糕点"
+        "粮食加工品"
       ],
       "food_names": [
-        "多彩蝴蝶面（粮食加工品）",
-        "煎饼（玉米味）",
-        "营养果蔬面"
+        "多彩蝴蝶面（粮食加工品）"
       ]
     },
     "生食动物性水产品": {
@@ -23883,7 +23934,7 @@
         "野生海蜇头"
       ]
     },
-    "香辛料调味油": {
+    "辣椒油": {
       "ids": [
         "r0057"
       ],
@@ -23926,20 +23977,15 @@
         "黑椒味纯肉肠（速冻生制）"
       ]
     },
-    "豇豆": {
+    "豇豆（长豆角）": {
       "ids": [
-        "r0061",
-        "r0392",
-        "r0589",
-        "r0622",
-        "r0632"
+        "r0061"
       ],
-      "count": 5,
+      "count": 1,
       "big_categories": [
         "蔬菜"
       ],
       "food_names": [
-        "豇豆",
         "豇豆（长豆角）"
       ]
     },
@@ -23955,25 +24001,16 @@
         "自消毒餐具（圆盘）"
       ]
     },
-    "柑、橘": {
+    "爱媛果冻橙": {
       "ids": [
-        "r0063",
-        "r0220",
-        "r0302",
-        "r0323",
-        "r0428",
-        "r0447"
+        "r0063"
       ],
-      "count": 6,
+      "count": 1,
       "big_categories": [
         "水果类"
       ],
       "food_names": [
-        "橘子",
-        "沃柑",
-        "爱媛果冻橙",
-        "砂糖橘",
-        "蜜桔"
+        "爱媛果冻橙"
       ]
     },
     "其他类饮用水": {
@@ -24117,38 +24154,31 @@
         "雪丽球（蜜饯（果糕类））"
       ]
     },
-    "糕点": {
+    "轻乳奶酪蛋糕": {
       "ids": [
-        "r0076",
-        "r0147",
-        "r0154",
-        "r0176",
-        "r0188",
-        "r0198",
-        "r0205",
-        "r0348",
-        "r0361",
-        "r0383",
-        "r0391",
-        "r0424"
+        "r0076"
       ],
-      "count": 12,
+      "count": 1,
       "big_categories": [
         "糕点"
       ],
       "food_names": [
-        "原味酥饼（糕点）",
-        "大黄米宫廷桃酥",
-        "巧和风（黑松露巧克力味夹心福团）",
-        "手工蛋卷",
-        "江米条（油炸类）",
-        "焦饼（原味）",
-        "虎皮三明治蛋糕",
-        "轻乳奶酪蛋糕",
-        "香酥煎饼（花生口味）",
-        "香酥煎饼（黑芝麻口味）",
-        "鸡蛋小棋子",
-        "黑芝麻酥（烘烤类糕点）"
+        "轻乳奶酪蛋糕"
+      ]
+    },
+    "良姜": {
+      "ids": [
+        "r0077",
+        "r0095",
+        "r0277",
+        "r0299"
+      ],
+      "count": 4,
+      "big_categories": [
+        "调味品"
+      ],
+      "food_names": [
+        "良姜"
       ]
     },
     "其他盐渍水产品": {
@@ -24182,7 +24212,7 @@
         "普通白菜（小油菜）"
       ]
     },
-    "酱油": {
+    "特级生抽": {
       "ids": [
         "r0081"
       ],
@@ -24312,18 +24342,16 @@
         "扁豆角"
       ]
     },
-    "熏煮香肠火腿制品": {
+    "淀粉肉灌肠": {
       "ids": [
-        "r0101",
-        "r0419"
+        "r0101"
       ],
-      "count": 2,
+      "count": 1,
       "big_categories": [
         "肉制品"
       ],
       "food_names": [
-        "淀粉肉灌肠",
-        "肘花小火腿"
+        "淀粉肉灌肠"
       ]
     },
     "恒裕小磨压榨花生油": {
@@ -24381,7 +24409,7 @@
         "绿豆芽"
       ]
     },
-    "食醋": {
+    "水饺醋": {
       "ids": [
         "r0111"
       ],
@@ -24393,18 +24421,15 @@
         "水饺醋"
       ]
     },
-    "蔬菜干制品": {
+    "菠菜粉": {
       "ids": [
-        "r0112",
-        "r0411"
+        "r0112"
       ],
-      "count": 2,
+      "count": 1,
       "big_categories": [
-        "蔬菜",
-        "调味品"
+        "蔬菜"
       ],
       "food_names": [
-        "干豆角",
         "菠菜粉"
       ]
     },
@@ -24430,20 +24455,6 @@
       ],
       "food_names": [
         "猪肉大葱水饺（速冻食品）"
-      ]
-    },
-    "白芷": {
-      "ids": [
-        "r0121",
-        "r0141",
-        "r0649"
-      ],
-      "count": 3,
-      "big_categories": [
-        "调味品"
-      ],
-      "food_names": [
-        "白芷"
       ]
     },
     "岚泉山水": {
@@ -24602,7 +24613,20 @@
         "调味萝卜"
       ]
     },
-    "生湿面制品": {
+    "馒头": {
+      "ids": [
+        "r0142",
+        "r0609"
+      ],
+      "count": 2,
+      "big_categories": [
+        "粮食加工品"
+      ],
+      "food_names": [
+        "馒头"
+      ]
+    },
+    "鲜面条": {
       "ids": [
         "r0145",
         "r0375"
@@ -24625,6 +24649,18 @@
       ],
       "food_names": [
         "扁芸豆"
+      ]
+    },
+    "黑芝麻酥": {
+      "ids": [
+        "r0147"
+      ],
+      "count": 1,
+      "big_categories": [
+        "糕点"
+      ],
+      "food_names": [
+        "黑芝麻酥（烘烤类糕点）"
       ]
     },
     "胡萝卜": {
@@ -24666,6 +24702,18 @@
         "自消毒酒杯"
       ]
     },
+    "原味酥饼": {
+      "ids": [
+        "r0154"
+      ],
+      "count": 1,
+      "big_categories": [
+        "糕点"
+      ],
+      "food_names": [
+        "原味酥饼（糕点）"
+      ]
+    },
     "烧鸽": {
       "ids": [
         "r0155"
@@ -24690,19 +24738,28 @@
         "上海青（普通白菜）"
       ]
     },
-    "甜椒": {
+    "香辣海带菜": {
       "ids": [
-        "r0164",
-        "r0298"
+        "r0162"
       ],
-      "count": 2,
+      "count": 1,
       "big_categories": [
-        "蔬菜",
-        "调味品"
+        "水产制品"
       ],
       "food_names": [
-        "水果甜椒",
-        "青圆椒（甜椒）"
+        "香辣海带菜（即食水产品）"
+      ]
+    },
+    "水果甜椒": {
+      "ids": [
+        "r0164"
+      ],
+      "count": 1,
+      "big_categories": [
+        "蔬菜"
+      ],
+      "food_names": [
+        "水果甜椒"
       ]
     },
     "去皮小菠萝": {
@@ -24742,6 +24799,18 @@
         "熟制葵花籽"
       ]
     },
+    "香脆酱辣椒": {
+      "ids": [
+        "r0171"
+      ],
+      "count": 1,
+      "big_categories": [
+        "蔬菜制品"
+      ],
+      "food_names": [
+        "香脆酱辣椒"
+      ]
+    },
     "小白菜": {
       "ids": [
         "r0172"
@@ -24776,6 +24845,20 @@
       ],
       "food_names": [
         "土豆"
+      ]
+    },
+    "香酥煎饼": {
+      "ids": [
+        "r0176",
+        "r0198"
+      ],
+      "count": 2,
+      "big_categories": [
+        "糕点"
+      ],
+      "food_names": [
+        "香酥煎饼（花生口味）",
+        "香酥煎饼（黑芝麻口味）"
       ]
     },
     "鲜姜": {
@@ -24818,6 +24901,18 @@
         "自消毒餐碗"
       ]
     },
+    "手工蛋卷": {
+      "ids": [
+        "r0188"
+      ],
+      "count": 1,
+      "big_categories": [
+        "糕点"
+      ],
+      "food_names": [
+        "手工蛋卷"
+      ]
+    },
     "糕点(自制)": {
       "ids": [
         "r0190",
@@ -24843,6 +24938,18 @@
       ],
       "food_names": [
         "牛肉"
+      ]
+    },
+    "虎皮三明治蛋糕": {
+      "ids": [
+        "r0205"
+      ],
+      "count": 1,
+      "big_categories": [
+        "糕点"
+      ],
+      "food_names": [
+        "虎皮三明治蛋糕"
       ]
     },
     "自消毒盘子": {
@@ -24912,6 +25019,30 @@
         "豆腐干"
       ]
     },
+    "营养果蔬面": {
+      "ids": [
+        "r0219"
+      ],
+      "count": 1,
+      "big_categories": [
+        "粮食加工品"
+      ],
+      "food_names": [
+        "营养果蔬面"
+      ]
+    },
+    "蜜桔": {
+      "ids": [
+        "r0220"
+      ],
+      "count": 1,
+      "big_categories": [
+        "水果类"
+      ],
+      "food_names": [
+        "蜜桔"
+      ]
+    },
     "鲤鱼": {
       "ids": [
         "r0221",
@@ -24950,7 +25081,7 @@
         "大扁豆角"
       ]
     },
-    "果冻": {
+    "芒果布丁优酪果冻": {
       "ids": [
         "r0229"
       ],
@@ -24960,6 +25091,18 @@
       ],
       "food_names": [
         "芒果布丁优酪果冻（芒果味）"
+      ]
+    },
+    "孜然": {
+      "ids": [
+        "r0231"
+      ],
+      "count": 1,
+      "big_categories": [
+        "调味品"
+      ],
+      "food_names": [
+        "孜然"
       ]
     },
     "老味卤肉皮": {
@@ -25012,7 +25155,7 @@
         "肌酸粉"
       ]
     },
-    "果酒": {
+    "草莓咖啡复合发酵果酒": {
       "ids": [
         "r0241"
       ],
@@ -25085,7 +25228,19 @@
         "面筋圈（孜然味）"
       ]
     },
-    "挂面": {
+    "狮子头酱菜": {
+      "ids": [
+        "r0249"
+      ],
+      "count": 1,
+      "big_categories": [
+        "蔬菜制品"
+      ],
+      "food_names": [
+        "狮子头酱菜"
+      ]
+    },
+    "豆面挂面": {
       "ids": [
         "r0250"
       ],
@@ -25097,7 +25252,7 @@
         "豆面挂面"
       ]
     },
-    "花生制品": {
+    "藤椒大白仁": {
       "ids": [
         "r0251"
       ],
@@ -25256,9 +25411,10 @@
     },
     "钙奶饼干": {
       "ids": [
-        "r0271"
+        "r0271",
+        "r0352"
       ],
-      "count": 1,
+      "count": 2,
       "big_categories": [
         "饼干"
       ],
@@ -25326,18 +25482,6 @@
         "生蜂蜜"
       ]
     },
-    "良姜": {
-      "ids": [
-        "r0277"
-      ],
-      "count": 1,
-      "big_categories": [
-        "调味品"
-      ],
-      "food_names": [
-        "良姜"
-      ]
-    },
     "蔓越莓贝果面包": {
       "ids": [
         "r0278"
@@ -25372,6 +25516,18 @@
       ],
       "food_names": [
         "速冻调理鸡翅中"
+      ]
+    },
+    "陈桥海带丝": {
+      "ids": [
+        "r0285"
+      ],
+      "count": 1,
+      "big_categories": [
+        "水产制品"
+      ],
+      "food_names": [
+        "陈桥海带丝"
       ]
     },
     "老姜": {
@@ -25425,6 +25581,19 @@
         "香葱麻花（烧烤味）"
       ]
     },
+    "八角": {
+      "ids": [
+        "r0291",
+        "r0396"
+      ],
+      "count": 2,
+      "big_categories": [
+        "调味品"
+      ],
+      "food_names": [
+        "八角"
+      ]
+    },
     "青梨": {
       "ids": [
         "r0293"
@@ -25449,6 +25618,18 @@
         "冻海水虾"
       ]
     },
+    "青圆椒": {
+      "ids": [
+        "r0298"
+      ],
+      "count": 1,
+      "big_categories": [
+        "调味品"
+      ],
+      "food_names": [
+        "青圆椒（甜椒）"
+      ]
+    },
     "蜜饯类": {
       "ids": [
         "r0300",
@@ -25462,6 +25643,18 @@
       "food_names": [
         "山楂片（干片）",
         "桑椹山楂片"
+      ]
+    },
+    "橘子": {
+      "ids": [
+        "r0302"
+      ],
+      "count": 1,
+      "big_categories": [
+        "水果类"
+      ],
+      "food_names": [
+        "橘子"
       ]
     },
     "清江鱼": {
@@ -25500,7 +25693,7 @@
         "蓝泽蓝莓原汁酿 羽冠 Y6（果酒）"
       ]
     },
-    "海水鱼": {
+    "鲅鱼": {
       "ids": [
         "r0312"
       ],
@@ -25589,18 +25782,16 @@
         "拌驴肉（自制）"
       ]
     },
-    "饼干": {
+    "可可奥巧": {
       "ids": [
-        "r0321",
-        "r0352"
+        "r0321"
       ],
-      "count": 2,
+      "count": 1,
       "big_categories": [
         "饼干"
       ],
       "food_names": [
-        "可可奥巧（奥巧慕斯味装饰饼干）",
-        "钙奶饼干"
+        "可可奥巧（奥巧慕斯味装饰饼干）"
       ]
     },
     "葱": {
@@ -25613,6 +25804,31 @@
       ],
       "food_names": [
         "葱"
+      ]
+    },
+    "沃柑": {
+      "ids": [
+        "r0323",
+        "r0428"
+      ],
+      "count": 2,
+      "big_categories": [
+        "水果类"
+      ],
+      "food_names": [
+        "沃柑"
+      ]
+    },
+    "五香芥片": {
+      "ids": [
+        "r0324"
+      ],
+      "count": 1,
+      "big_categories": [
+        "蔬菜制品"
+      ],
+      "food_names": [
+        "五香芥片（酱腌菜）"
       ]
     },
     "豆角": {
@@ -25637,6 +25853,18 @@
       ],
       "food_names": [
         "泡吧猪皮（椒香味）"
+      ]
+    },
+    "海带王": {
+      "ids": [
+        "r0329"
+      ],
+      "count": 1,
+      "big_categories": [
+        "水产制品"
+      ],
+      "food_names": [
+        "海带王（即食藻类制品）"
       ]
     },
     "杯子": {
@@ -25706,6 +25934,19 @@
         "国涵啤酒"
       ]
     },
+    "即食海带丝": {
+      "ids": [
+        "r0342",
+        "r0346"
+      ],
+      "count": 2,
+      "big_categories": [
+        "水产制品"
+      ],
+      "food_names": [
+        "即食海带丝（水产制品）"
+      ]
+    },
     "鲜龙眼": {
       "ids": [
         "r0343",
@@ -25717,6 +25958,30 @@
       ],
       "food_names": [
         "鲜龙眼"
+      ]
+    },
+    "狮子头咸菜": {
+      "ids": [
+        "r0344"
+      ],
+      "count": 1,
+      "big_categories": [
+        "蔬菜制品"
+      ],
+      "food_names": [
+        "狮子头咸菜"
+      ]
+    },
+    "巧和风": {
+      "ids": [
+        "r0348"
+      ],
+      "count": 1,
+      "big_categories": [
+        "糕点"
+      ],
+      "food_names": [
+        "巧和风（黑松露巧克力味夹心福团）"
       ]
     },
     "桑葚": {
@@ -25756,6 +26021,30 @@
       ],
       "food_names": [
         "油条（自制）"
+      ]
+    },
+    "大黄米宫廷桃酥": {
+      "ids": [
+        "r0361"
+      ],
+      "count": 1,
+      "big_categories": [
+        "糕点"
+      ],
+      "food_names": [
+        "大黄米宫廷桃酥"
+      ]
+    },
+    "煎饼": {
+      "ids": [
+        "r0363"
+      ],
+      "count": 1,
+      "big_categories": [
+        "糕点"
+      ],
+      "food_names": [
+        "煎饼（玉米味）"
       ]
     },
     "泥鳅": {
@@ -25800,6 +26089,22 @@
         "白芸豆（菜豆）"
       ]
     },
+    "铁杆山药": {
+      "ids": [
+        "r0369",
+        "r0468",
+        "r0488",
+        "r0505",
+        "r0559"
+      ],
+      "count": 5,
+      "big_categories": [
+        "蔬菜"
+      ],
+      "food_names": [
+        "铁杆山药"
+      ]
+    },
     "西红柿": {
       "ids": [
         "r0374"
@@ -25836,6 +26141,18 @@
         "毛尖茶啤中式精酿啤酒"
       ]
     },
+    "焦饼": {
+      "ids": [
+        "r0383"
+      ],
+      "count": 1,
+      "big_categories": [
+        "糕点"
+      ],
+      "food_names": [
+        "焦饼（原味）"
+      ]
+    },
     "爆皮西瓜": {
       "ids": [
         "r0386"
@@ -25860,6 +26177,33 @@
       "food_names": [
         "红豆奶皮烧饼",
         "蓝莓味吐司面包"
+      ]
+    },
+    "鸡蛋小棋子": {
+      "ids": [
+        "r0391"
+      ],
+      "count": 1,
+      "big_categories": [
+        "糕点"
+      ],
+      "food_names": [
+        "鸡蛋小棋子"
+      ]
+    },
+    "豇豆": {
+      "ids": [
+        "r0392",
+        "r0589",
+        "r0622",
+        "r0632"
+      ],
+      "count": 4,
+      "big_categories": [
+        "蔬菜"
+      ],
+      "food_names": [
+        "豇豆"
       ]
     },
     "白酒、白酒（液态)、白酒（原酒)": {
@@ -25911,6 +26255,18 @@
         "熟驴肉（自制）"
       ]
     },
+    "干豆角": {
+      "ids": [
+        "r0411"
+      ],
+      "count": 1,
+      "big_categories": [
+        "调味品"
+      ],
+      "food_names": [
+        "干豆角"
+      ]
+    },
     "小碗": {
       "ids": [
         "r0414",
@@ -25943,7 +26299,19 @@
         "小台农芒果"
       ]
     },
-    "其他饮料": {
+    "肘花小火腿": {
+      "ids": [
+        "r0419"
+      ],
+      "count": 1,
+      "big_categories": [
+        "肉制品"
+      ],
+      "food_names": [
+        "肘花小火腿"
+      ]
+    },
+    "甘蔗马蹄饮": {
       "ids": [
         "r0421"
       ],
@@ -25978,6 +26346,18 @@
       ],
       "food_names": [
         "淡水鱼"
+      ]
+    },
+    "江米条": {
+      "ids": [
+        "r0424"
+      ],
+      "count": 1,
+      "big_categories": [
+        "糕点"
+      ],
+      "food_names": [
+        "江米条（油炸类）"
       ]
     },
     "水果类罐头": {
@@ -26019,6 +26399,18 @@
         "香梨"
       ]
     },
+    "小白嘴山药": {
+      "ids": [
+        "r0438"
+      ],
+      "count": 1,
+      "big_categories": [
+        "蔬菜"
+      ],
+      "food_names": [
+        "小白嘴山药"
+      ]
+    },
     "水仙芒": {
       "ids": [
         "r0445"
@@ -26029,6 +26421,18 @@
       ],
       "food_names": [
         "水仙芒"
+      ]
+    },
+    "砂糖橘": {
+      "ids": [
+        "r0447"
+      ],
+      "count": 1,
+      "big_categories": [
+        "水果类"
+      ],
+      "food_names": [
+        "砂糖橘"
       ]
     },
     "食用农产品": {
@@ -26149,6 +26553,18 @@
         "米饭碗（复用餐饮具）"
       ]
     },
+    "新鲜超甜好吃龙眼500克1斤": {
+      "ids": [
+        "r0471"
+      ],
+      "count": 1,
+      "big_categories": [
+        "水果类"
+      ],
+      "food_names": [
+        "新鲜超甜好吃龙眼500克【500克】1斤"
+      ]
+    },
     "炒菜圆碟": {
       "ids": [
         "r0475"
@@ -26209,6 +26625,21 @@
       ],
       "food_names": [
         "盘子（复用餐饮具）"
+      ]
+    },
+    "螺丝椒": {
+      "ids": [
+        "r0486",
+        "r0497",
+        "r0653"
+      ],
+      "count": 3,
+      "big_categories": [
+        "蔬菜"
+      ],
+      "food_names": [
+        "螺丝椒",
+        "螺丝椒（辣椒）"
       ]
     },
     "餐碟": {
@@ -26323,6 +26754,18 @@
         "牛奶木瓜"
       ]
     },
+    "白玉山药": {
+      "ids": [
+        "r0529"
+      ],
+      "count": 1,
+      "big_categories": [
+        "蔬菜"
+      ],
+      "food_names": [
+        "白玉山药"
+      ]
+    },
     "菜碟": {
       "ids": [
         "r0530",
@@ -26371,6 +26814,19 @@
       ],
       "food_names": [
         "辣妹子（辣椒）"
+      ]
+    },
+    "尖椒": {
+      "ids": [
+        "r0547",
+        "r0584"
+      ],
+      "count": 2,
+      "big_categories": [
+        "蔬菜"
+      ],
+      "food_names": [
+        "尖椒（辣椒）"
       ]
     },
     "凉菜盘": {
@@ -26483,6 +26939,30 @@
       ],
       "food_names": [
         "小磨芝麻香油"
+      ]
+    },
+    "铁棍山药": {
+      "ids": [
+        "r0570"
+      ],
+      "count": 1,
+      "big_categories": [
+        "蔬菜"
+      ],
+      "food_names": [
+        "铁棍山药"
+      ]
+    },
+    "桂圆": {
+      "ids": [
+        "r0573"
+      ],
+      "count": 1,
+      "big_categories": [
+        "水果类"
+      ],
+      "food_names": [
+        "桂圆（龙眼）"
       ]
     },
     "麻椒": {
@@ -26640,18 +27120,6 @@
       ],
       "food_names": [
         "包子"
-      ]
-    },
-    "馒头": {
-      "ids": [
-        "r0609"
-      ],
-      "count": 1,
-      "big_categories": [
-        "粮食加工品"
-      ],
-      "food_names": [
-        "馒头"
       ]
     },
     "碱水面（凉面）": {
@@ -26991,18 +27459,6 @@
       ],
       "food_names": [
         "斌旗高粱原浆酒"
-      ]
-    },
-    "螺丝椒": {
-      "ids": [
-        "r0653"
-      ],
-      "count": 1,
-      "big_categories": [
-        "蔬菜"
-      ],
-      "food_names": [
-        "螺丝椒"
       ]
     },
     "合川桃片": {
@@ -32321,20 +32777,16 @@
           "r0224",
           "r0237",
           "r0335",
-          "r0471",
           "r0546",
-          "r0573",
           "r0604",
           "r0626",
           "r0646"
         ],
-        "count": 12,
+        "count": 10,
         "big_categories": [
           "水果类"
         ],
         "food_names": [
-          "新鲜超甜好吃龙眼500克【500克】1斤",
-          "桂圆（龙眼）",
           "龙眼"
         ]
       },
@@ -32611,36 +33063,24 @@
           "r0331",
           "r0337",
           "r0345",
-          "r0369",
           "r0381",
           "r0406",
           "r0412",
           "r0434",
-          "r0438",
           "r0446",
-          "r0468",
-          "r0488",
-          "r0505",
-          "r0529",
           "r0544",
-          "r0559",
-          "r0570",
           "r0592",
           "r0608",
           "r0614",
           "r0645",
           "r0688"
         ],
-        "count": 38,
+        "count": 30,
         "big_categories": [
           "蔬菜"
         ],
         "food_names": [
-          "小白嘴山药",
-          "山药",
-          "白玉山药",
-          "铁杆山药",
-          "铁棍山药"
+          "山药"
         ]
       },
       "薄豆皮": {
@@ -32714,34 +33154,16 @@
           "山芹（芹菜）"
         ]
       },
-      "其他香辛料调味品": {
+      "干姜": {
         "ids": [
-          "r0028",
-          "r0047",
-          "r0077",
-          "r0095",
-          "r0097",
-          "r0143",
-          "r0178",
-          "r0197",
-          "r0209",
-          "r0227",
-          "r0231",
-          "r0291",
-          "r0299",
-          "r0388",
-          "r0396"
+          "r0028"
         ],
-        "count": 15,
+        "count": 1,
         "big_categories": [
           "调味品"
         ],
         "food_names": [
-          "八角",
-          "孜然",
-          "干姜",
-          "白芷",
-          "良姜"
+          "干姜"
         ]
       },
       "香蕉": {
@@ -32800,20 +33222,13 @@
           "r0303",
           "r0433",
           "r0444",
-          "r0486",
-          "r0497",
-          "r0547",
-          "r0584",
           "r0629"
         ],
-        "count": 14,
+        "count": 10,
         "big_categories": [
           "蔬菜"
         ],
         "food_names": [
-          "尖椒（辣椒）",
-          "螺丝椒",
-          "螺丝椒（辣椒）",
           "辣椒"
         ]
       },
@@ -32872,7 +33287,7 @@
           "碧螺春二号"
         ]
       },
-      "果蔬汁类及其饮料": {
+      "100%石榴汁": {
         "ids": [
           "r0038"
         ],
@@ -32937,26 +33352,16 @@
           "醋香蜇头"
         ]
       },
-      "酱腌菜": {
+      "学宝酱菜": {
         "ids": [
-          "r0044",
-          "r0048",
-          "r0171",
-          "r0249",
-          "r0324",
-          "r0344"
+          "r0044"
         ],
-        "count": 6,
+        "count": 1,
         "big_categories": [
           "蔬菜制品"
         ],
         "food_names": [
-          "五香芥片（酱腌菜）",
-          "学宝酱菜（酱香疙瘩皮）",
-          "狮子头咸菜",
-          "狮子头酱菜",
-          "红油酸豆角（腌制菜）",
-          "香脆酱辣椒"
+          "学宝酱菜（酱香疙瘩皮）"
         ]
       },
       "黄瓜": {
@@ -32971,6 +33376,40 @@
         ],
         "food_names": [
           "黄瓜"
+        ]
+      },
+      "白芷": {
+        "ids": [
+          "r0047",
+          "r0097",
+          "r0121",
+          "r0141",
+          "r0143",
+          "r0178",
+          "r0197",
+          "r0209",
+          "r0227",
+          "r0388",
+          "r0649"
+        ],
+        "count": 11,
+        "big_categories": [
+          "调味品"
+        ],
+        "food_names": [
+          "白芷"
+        ]
+      },
+      "红油酸豆角": {
+        "ids": [
+          "r0048"
+        ],
+        "count": 1,
+        "big_categories": [
+          "蔬菜制品"
+        ],
+        "food_names": [
+          "红油酸豆角（腌制菜）"
         ]
       },
       "大葱": {
@@ -33009,40 +33448,28 @@
           "麻辣花生"
         ]
       },
-      "其他水产制品": {
+      "麻辣海带": {
         "ids": [
-          "r0051",
-          "r0162",
-          "r0285",
-          "r0329",
-          "r0342",
-          "r0346"
+          "r0051"
         ],
-        "count": 6,
+        "count": 1,
         "big_categories": [
           "水产制品"
         ],
         "food_names": [
-          "即食海带丝（水产制品）",
-          "海带王（即食藻类制品）",
-          "陈桥海带丝",
-          "香辣海带菜（即食水产品）",
           "麻辣海带（其他水产制品）"
         ]
       },
-      "发酵面制品": {
+      "红糖枣馒头": {
         "ids": [
-          "r0053",
-          "r0142"
+          "r0053"
         ],
-        "count": 2,
+        "count": 1,
         "big_categories": [
-          "粮食加工品",
           "餐饮食品"
         ],
         "food_names": [
-          "红糖枣馒头",
-          "馒头"
+          "红糖枣馒头"
         ]
       },
       "自消毒米饭碗": {
@@ -33057,21 +33484,16 @@
           "自消毒米饭碗"
         ]
       },
-      "其他谷物粉类制成品": {
+      "多彩蝴蝶面": {
         "ids": [
-          "r0055",
-          "r0219",
-          "r0363"
+          "r0055"
         ],
-        "count": 3,
+        "count": 1,
         "big_categories": [
-          "粮食加工品",
-          "糕点"
+          "粮食加工品"
         ],
         "food_names": [
-          "多彩蝴蝶面（粮食加工品）",
-          "煎饼（玉米味）",
-          "营养果蔬面"
+          "多彩蝴蝶面（粮食加工品）"
         ]
       },
       "生食动物性水产品": {
@@ -33088,7 +33510,7 @@
           "野生海蜇头"
         ]
       },
-      "香辛料调味油": {
+      "辣椒油": {
         "ids": [
           "r0057"
         ],
@@ -33131,20 +33553,15 @@
           "黑椒味纯肉肠（速冻生制）"
         ]
       },
-      "豇豆": {
+      "豇豆（长豆角）": {
         "ids": [
-          "r0061",
-          "r0392",
-          "r0589",
-          "r0622",
-          "r0632"
+          "r0061"
         ],
-        "count": 5,
+        "count": 1,
         "big_categories": [
           "蔬菜"
         ],
         "food_names": [
-          "豇豆",
           "豇豆（长豆角）"
         ]
       },
@@ -33160,25 +33577,16 @@
           "自消毒餐具（圆盘）"
         ]
       },
-      "柑、橘": {
+      "爱媛果冻橙": {
         "ids": [
-          "r0063",
-          "r0220",
-          "r0302",
-          "r0323",
-          "r0428",
-          "r0447"
+          "r0063"
         ],
-        "count": 6,
+        "count": 1,
         "big_categories": [
           "水果类"
         ],
         "food_names": [
-          "橘子",
-          "沃柑",
-          "爱媛果冻橙",
-          "砂糖橘",
-          "蜜桔"
+          "爱媛果冻橙"
         ]
       },
       "其他类饮用水": {
@@ -33322,38 +33730,31 @@
           "雪丽球（蜜饯（果糕类））"
         ]
       },
-      "糕点": {
+      "轻乳奶酪蛋糕": {
         "ids": [
-          "r0076",
-          "r0147",
-          "r0154",
-          "r0176",
-          "r0188",
-          "r0198",
-          "r0205",
-          "r0348",
-          "r0361",
-          "r0383",
-          "r0391",
-          "r0424"
+          "r0076"
         ],
-        "count": 12,
+        "count": 1,
         "big_categories": [
           "糕点"
         ],
         "food_names": [
-          "原味酥饼（糕点）",
-          "大黄米宫廷桃酥",
-          "巧和风（黑松露巧克力味夹心福团）",
-          "手工蛋卷",
-          "江米条（油炸类）",
-          "焦饼（原味）",
-          "虎皮三明治蛋糕",
-          "轻乳奶酪蛋糕",
-          "香酥煎饼（花生口味）",
-          "香酥煎饼（黑芝麻口味）",
-          "鸡蛋小棋子",
-          "黑芝麻酥（烘烤类糕点）"
+          "轻乳奶酪蛋糕"
+        ]
+      },
+      "良姜": {
+        "ids": [
+          "r0077",
+          "r0095",
+          "r0277",
+          "r0299"
+        ],
+        "count": 4,
+        "big_categories": [
+          "调味品"
+        ],
+        "food_names": [
+          "良姜"
         ]
       },
       "其他盐渍水产品": {
@@ -33387,7 +33788,7 @@
           "普通白菜（小油菜）"
         ]
       },
-      "酱油": {
+      "特级生抽": {
         "ids": [
           "r0081"
         ],
@@ -33517,18 +33918,16 @@
           "扁豆角"
         ]
       },
-      "熏煮香肠火腿制品": {
+      "淀粉肉灌肠": {
         "ids": [
-          "r0101",
-          "r0419"
+          "r0101"
         ],
-        "count": 2,
+        "count": 1,
         "big_categories": [
           "肉制品"
         ],
         "food_names": [
-          "淀粉肉灌肠",
-          "肘花小火腿"
+          "淀粉肉灌肠"
         ]
       },
       "恒裕小磨压榨花生油": {
@@ -33586,7 +33985,7 @@
           "绿豆芽"
         ]
       },
-      "食醋": {
+      "水饺醋": {
         "ids": [
           "r0111"
         ],
@@ -33598,18 +33997,15 @@
           "水饺醋"
         ]
       },
-      "蔬菜干制品": {
+      "菠菜粉": {
         "ids": [
-          "r0112",
-          "r0411"
+          "r0112"
         ],
-        "count": 2,
+        "count": 1,
         "big_categories": [
-          "蔬菜",
-          "调味品"
+          "蔬菜"
         ],
         "food_names": [
-          "干豆角",
           "菠菜粉"
         ]
       },
@@ -33635,20 +34031,6 @@
         ],
         "food_names": [
           "猪肉大葱水饺（速冻食品）"
-        ]
-      },
-      "白芷": {
-        "ids": [
-          "r0121",
-          "r0141",
-          "r0649"
-        ],
-        "count": 3,
-        "big_categories": [
-          "调味品"
-        ],
-        "food_names": [
-          "白芷"
         ]
       },
       "岚泉山水": {
@@ -33807,7 +34189,20 @@
           "调味萝卜"
         ]
       },
-      "生湿面制品": {
+      "馒头": {
+        "ids": [
+          "r0142",
+          "r0609"
+        ],
+        "count": 2,
+        "big_categories": [
+          "粮食加工品"
+        ],
+        "food_names": [
+          "馒头"
+        ]
+      },
+      "鲜面条": {
         "ids": [
           "r0145",
           "r0375"
@@ -33830,6 +34225,18 @@
         ],
         "food_names": [
           "扁芸豆"
+        ]
+      },
+      "黑芝麻酥": {
+        "ids": [
+          "r0147"
+        ],
+        "count": 1,
+        "big_categories": [
+          "糕点"
+        ],
+        "food_names": [
+          "黑芝麻酥（烘烤类糕点）"
         ]
       },
       "胡萝卜": {
@@ -33871,6 +34278,18 @@
           "自消毒酒杯"
         ]
       },
+      "原味酥饼": {
+        "ids": [
+          "r0154"
+        ],
+        "count": 1,
+        "big_categories": [
+          "糕点"
+        ],
+        "food_names": [
+          "原味酥饼（糕点）"
+        ]
+      },
       "烧鸽": {
         "ids": [
           "r0155"
@@ -33895,19 +34314,28 @@
           "上海青（普通白菜）"
         ]
       },
-      "甜椒": {
+      "香辣海带菜": {
         "ids": [
-          "r0164",
-          "r0298"
+          "r0162"
         ],
-        "count": 2,
+        "count": 1,
         "big_categories": [
-          "蔬菜",
-          "调味品"
+          "水产制品"
         ],
         "food_names": [
-          "水果甜椒",
-          "青圆椒（甜椒）"
+          "香辣海带菜（即食水产品）"
+        ]
+      },
+      "水果甜椒": {
+        "ids": [
+          "r0164"
+        ],
+        "count": 1,
+        "big_categories": [
+          "蔬菜"
+        ],
+        "food_names": [
+          "水果甜椒"
         ]
       },
       "去皮小菠萝": {
@@ -33947,6 +34375,18 @@
           "熟制葵花籽"
         ]
       },
+      "香脆酱辣椒": {
+        "ids": [
+          "r0171"
+        ],
+        "count": 1,
+        "big_categories": [
+          "蔬菜制品"
+        ],
+        "food_names": [
+          "香脆酱辣椒"
+        ]
+      },
       "小白菜": {
         "ids": [
           "r0172"
@@ -33981,6 +34421,20 @@
         ],
         "food_names": [
           "土豆"
+        ]
+      },
+      "香酥煎饼": {
+        "ids": [
+          "r0176",
+          "r0198"
+        ],
+        "count": 2,
+        "big_categories": [
+          "糕点"
+        ],
+        "food_names": [
+          "香酥煎饼（花生口味）",
+          "香酥煎饼（黑芝麻口味）"
         ]
       },
       "鲜姜": {
@@ -34023,6 +34477,18 @@
           "自消毒餐碗"
         ]
       },
+      "手工蛋卷": {
+        "ids": [
+          "r0188"
+        ],
+        "count": 1,
+        "big_categories": [
+          "糕点"
+        ],
+        "food_names": [
+          "手工蛋卷"
+        ]
+      },
       "糕点(自制)": {
         "ids": [
           "r0190",
@@ -34048,6 +34514,18 @@
         ],
         "food_names": [
           "牛肉"
+        ]
+      },
+      "虎皮三明治蛋糕": {
+        "ids": [
+          "r0205"
+        ],
+        "count": 1,
+        "big_categories": [
+          "糕点"
+        ],
+        "food_names": [
+          "虎皮三明治蛋糕"
         ]
       },
       "自消毒盘子": {
@@ -34117,6 +34595,30 @@
           "豆腐干"
         ]
       },
+      "营养果蔬面": {
+        "ids": [
+          "r0219"
+        ],
+        "count": 1,
+        "big_categories": [
+          "粮食加工品"
+        ],
+        "food_names": [
+          "营养果蔬面"
+        ]
+      },
+      "蜜桔": {
+        "ids": [
+          "r0220"
+        ],
+        "count": 1,
+        "big_categories": [
+          "水果类"
+        ],
+        "food_names": [
+          "蜜桔"
+        ]
+      },
       "鲤鱼": {
         "ids": [
           "r0221",
@@ -34155,7 +34657,7 @@
           "大扁豆角"
         ]
       },
-      "果冻": {
+      "芒果布丁优酪果冻": {
         "ids": [
           "r0229"
         ],
@@ -34165,6 +34667,18 @@
         ],
         "food_names": [
           "芒果布丁优酪果冻（芒果味）"
+        ]
+      },
+      "孜然": {
+        "ids": [
+          "r0231"
+        ],
+        "count": 1,
+        "big_categories": [
+          "调味品"
+        ],
+        "food_names": [
+          "孜然"
         ]
       },
       "老味卤肉皮": {
@@ -34217,7 +34731,7 @@
           "肌酸粉"
         ]
       },
-      "果酒": {
+      "草莓咖啡复合发酵果酒": {
         "ids": [
           "r0241"
         ],
@@ -34290,7 +34804,19 @@
           "面筋圈（孜然味）"
         ]
       },
-      "挂面": {
+      "狮子头酱菜": {
+        "ids": [
+          "r0249"
+        ],
+        "count": 1,
+        "big_categories": [
+          "蔬菜制品"
+        ],
+        "food_names": [
+          "狮子头酱菜"
+        ]
+      },
+      "豆面挂面": {
         "ids": [
           "r0250"
         ],
@@ -34302,7 +34828,7 @@
           "豆面挂面"
         ]
       },
-      "花生制品": {
+      "藤椒大白仁": {
         "ids": [
           "r0251"
         ],
@@ -34461,9 +34987,10 @@
       },
       "钙奶饼干": {
         "ids": [
-          "r0271"
+          "r0271",
+          "r0352"
         ],
-        "count": 1,
+        "count": 2,
         "big_categories": [
           "饼干"
         ],
@@ -34531,18 +35058,6 @@
           "生蜂蜜"
         ]
       },
-      "良姜": {
-        "ids": [
-          "r0277"
-        ],
-        "count": 1,
-        "big_categories": [
-          "调味品"
-        ],
-        "food_names": [
-          "良姜"
-        ]
-      },
       "蔓越莓贝果面包": {
         "ids": [
           "r0278"
@@ -34577,6 +35092,18 @@
         ],
         "food_names": [
           "速冻调理鸡翅中"
+        ]
+      },
+      "陈桥海带丝": {
+        "ids": [
+          "r0285"
+        ],
+        "count": 1,
+        "big_categories": [
+          "水产制品"
+        ],
+        "food_names": [
+          "陈桥海带丝"
         ]
       },
       "老姜": {
@@ -34630,6 +35157,19 @@
           "香葱麻花（烧烤味）"
         ]
       },
+      "八角": {
+        "ids": [
+          "r0291",
+          "r0396"
+        ],
+        "count": 2,
+        "big_categories": [
+          "调味品"
+        ],
+        "food_names": [
+          "八角"
+        ]
+      },
       "青梨": {
         "ids": [
           "r0293"
@@ -34654,6 +35194,18 @@
           "冻海水虾"
         ]
       },
+      "青圆椒": {
+        "ids": [
+          "r0298"
+        ],
+        "count": 1,
+        "big_categories": [
+          "调味品"
+        ],
+        "food_names": [
+          "青圆椒（甜椒）"
+        ]
+      },
       "蜜饯类": {
         "ids": [
           "r0300",
@@ -34667,6 +35219,18 @@
         "food_names": [
           "山楂片（干片）",
           "桑椹山楂片"
+        ]
+      },
+      "橘子": {
+        "ids": [
+          "r0302"
+        ],
+        "count": 1,
+        "big_categories": [
+          "水果类"
+        ],
+        "food_names": [
+          "橘子"
         ]
       },
       "清江鱼": {
@@ -34705,7 +35269,7 @@
           "蓝泽蓝莓原汁酿 羽冠 Y6（果酒）"
         ]
       },
-      "海水鱼": {
+      "鲅鱼": {
         "ids": [
           "r0312"
         ],
@@ -34794,18 +35358,16 @@
           "拌驴肉（自制）"
         ]
       },
-      "饼干": {
+      "可可奥巧": {
         "ids": [
-          "r0321",
-          "r0352"
+          "r0321"
         ],
-        "count": 2,
+        "count": 1,
         "big_categories": [
           "饼干"
         ],
         "food_names": [
-          "可可奥巧（奥巧慕斯味装饰饼干）",
-          "钙奶饼干"
+          "可可奥巧（奥巧慕斯味装饰饼干）"
         ]
       },
       "葱": {
@@ -34818,6 +35380,31 @@
         ],
         "food_names": [
           "葱"
+        ]
+      },
+      "沃柑": {
+        "ids": [
+          "r0323",
+          "r0428"
+        ],
+        "count": 2,
+        "big_categories": [
+          "水果类"
+        ],
+        "food_names": [
+          "沃柑"
+        ]
+      },
+      "五香芥片": {
+        "ids": [
+          "r0324"
+        ],
+        "count": 1,
+        "big_categories": [
+          "蔬菜制品"
+        ],
+        "food_names": [
+          "五香芥片（酱腌菜）"
         ]
       },
       "豆角": {
@@ -34842,6 +35429,18 @@
         ],
         "food_names": [
           "泡吧猪皮（椒香味）"
+        ]
+      },
+      "海带王": {
+        "ids": [
+          "r0329"
+        ],
+        "count": 1,
+        "big_categories": [
+          "水产制品"
+        ],
+        "food_names": [
+          "海带王（即食藻类制品）"
         ]
       },
       "杯子": {
@@ -34911,6 +35510,19 @@
           "国涵啤酒"
         ]
       },
+      "即食海带丝": {
+        "ids": [
+          "r0342",
+          "r0346"
+        ],
+        "count": 2,
+        "big_categories": [
+          "水产制品"
+        ],
+        "food_names": [
+          "即食海带丝（水产制品）"
+        ]
+      },
       "鲜龙眼": {
         "ids": [
           "r0343",
@@ -34922,6 +35534,30 @@
         ],
         "food_names": [
           "鲜龙眼"
+        ]
+      },
+      "狮子头咸菜": {
+        "ids": [
+          "r0344"
+        ],
+        "count": 1,
+        "big_categories": [
+          "蔬菜制品"
+        ],
+        "food_names": [
+          "狮子头咸菜"
+        ]
+      },
+      "巧和风": {
+        "ids": [
+          "r0348"
+        ],
+        "count": 1,
+        "big_categories": [
+          "糕点"
+        ],
+        "food_names": [
+          "巧和风（黑松露巧克力味夹心福团）"
         ]
       },
       "桑葚": {
@@ -34961,6 +35597,30 @@
         ],
         "food_names": [
           "油条（自制）"
+        ]
+      },
+      "大黄米宫廷桃酥": {
+        "ids": [
+          "r0361"
+        ],
+        "count": 1,
+        "big_categories": [
+          "糕点"
+        ],
+        "food_names": [
+          "大黄米宫廷桃酥"
+        ]
+      },
+      "煎饼": {
+        "ids": [
+          "r0363"
+        ],
+        "count": 1,
+        "big_categories": [
+          "糕点"
+        ],
+        "food_names": [
+          "煎饼（玉米味）"
         ]
       },
       "泥鳅": {
@@ -35005,6 +35665,22 @@
           "白芸豆（菜豆）"
         ]
       },
+      "铁杆山药": {
+        "ids": [
+          "r0369",
+          "r0468",
+          "r0488",
+          "r0505",
+          "r0559"
+        ],
+        "count": 5,
+        "big_categories": [
+          "蔬菜"
+        ],
+        "food_names": [
+          "铁杆山药"
+        ]
+      },
       "西红柿": {
         "ids": [
           "r0374"
@@ -35041,6 +35717,18 @@
           "毛尖茶啤中式精酿啤酒"
         ]
       },
+      "焦饼": {
+        "ids": [
+          "r0383"
+        ],
+        "count": 1,
+        "big_categories": [
+          "糕点"
+        ],
+        "food_names": [
+          "焦饼（原味）"
+        ]
+      },
       "爆皮西瓜": {
         "ids": [
           "r0386"
@@ -35065,6 +35753,33 @@
         "food_names": [
           "红豆奶皮烧饼",
           "蓝莓味吐司面包"
+        ]
+      },
+      "鸡蛋小棋子": {
+        "ids": [
+          "r0391"
+        ],
+        "count": 1,
+        "big_categories": [
+          "糕点"
+        ],
+        "food_names": [
+          "鸡蛋小棋子"
+        ]
+      },
+      "豇豆": {
+        "ids": [
+          "r0392",
+          "r0589",
+          "r0622",
+          "r0632"
+        ],
+        "count": 4,
+        "big_categories": [
+          "蔬菜"
+        ],
+        "food_names": [
+          "豇豆"
         ]
       },
       "白酒、白酒（液态)、白酒（原酒)": {
@@ -35116,6 +35831,18 @@
           "熟驴肉（自制）"
         ]
       },
+      "干豆角": {
+        "ids": [
+          "r0411"
+        ],
+        "count": 1,
+        "big_categories": [
+          "调味品"
+        ],
+        "food_names": [
+          "干豆角"
+        ]
+      },
       "小碗": {
         "ids": [
           "r0414",
@@ -35148,7 +35875,19 @@
           "小台农芒果"
         ]
       },
-      "其他饮料": {
+      "肘花小火腿": {
+        "ids": [
+          "r0419"
+        ],
+        "count": 1,
+        "big_categories": [
+          "肉制品"
+        ],
+        "food_names": [
+          "肘花小火腿"
+        ]
+      },
+      "甘蔗马蹄饮": {
         "ids": [
           "r0421"
         ],
@@ -35183,6 +35922,18 @@
         ],
         "food_names": [
           "淡水鱼"
+        ]
+      },
+      "江米条": {
+        "ids": [
+          "r0424"
+        ],
+        "count": 1,
+        "big_categories": [
+          "糕点"
+        ],
+        "food_names": [
+          "江米条（油炸类）"
         ]
       },
       "水果类罐头": {
@@ -35224,6 +35975,18 @@
           "香梨"
         ]
       },
+      "小白嘴山药": {
+        "ids": [
+          "r0438"
+        ],
+        "count": 1,
+        "big_categories": [
+          "蔬菜"
+        ],
+        "food_names": [
+          "小白嘴山药"
+        ]
+      },
       "水仙芒": {
         "ids": [
           "r0445"
@@ -35234,6 +35997,18 @@
         ],
         "food_names": [
           "水仙芒"
+        ]
+      },
+      "砂糖橘": {
+        "ids": [
+          "r0447"
+        ],
+        "count": 1,
+        "big_categories": [
+          "水果类"
+        ],
+        "food_names": [
+          "砂糖橘"
         ]
       },
       "食用农产品": {
@@ -35354,6 +36129,18 @@
           "米饭碗（复用餐饮具）"
         ]
       },
+      "新鲜超甜好吃龙眼500克1斤": {
+        "ids": [
+          "r0471"
+        ],
+        "count": 1,
+        "big_categories": [
+          "水果类"
+        ],
+        "food_names": [
+          "新鲜超甜好吃龙眼500克【500克】1斤"
+        ]
+      },
       "炒菜圆碟": {
         "ids": [
           "r0475"
@@ -35414,6 +36201,21 @@
         ],
         "food_names": [
           "盘子（复用餐饮具）"
+        ]
+      },
+      "螺丝椒": {
+        "ids": [
+          "r0486",
+          "r0497",
+          "r0653"
+        ],
+        "count": 3,
+        "big_categories": [
+          "蔬菜"
+        ],
+        "food_names": [
+          "螺丝椒",
+          "螺丝椒（辣椒）"
         ]
       },
       "餐碟": {
@@ -35528,6 +36330,18 @@
           "牛奶木瓜"
         ]
       },
+      "白玉山药": {
+        "ids": [
+          "r0529"
+        ],
+        "count": 1,
+        "big_categories": [
+          "蔬菜"
+        ],
+        "food_names": [
+          "白玉山药"
+        ]
+      },
       "菜碟": {
         "ids": [
           "r0530",
@@ -35576,6 +36390,19 @@
         ],
         "food_names": [
           "辣妹子（辣椒）"
+        ]
+      },
+      "尖椒": {
+        "ids": [
+          "r0547",
+          "r0584"
+        ],
+        "count": 2,
+        "big_categories": [
+          "蔬菜"
+        ],
+        "food_names": [
+          "尖椒（辣椒）"
         ]
       },
       "凉菜盘": {
@@ -35688,6 +36515,30 @@
         ],
         "food_names": [
           "小磨芝麻香油"
+        ]
+      },
+      "铁棍山药": {
+        "ids": [
+          "r0570"
+        ],
+        "count": 1,
+        "big_categories": [
+          "蔬菜"
+        ],
+        "food_names": [
+          "铁棍山药"
+        ]
+      },
+      "桂圆": {
+        "ids": [
+          "r0573"
+        ],
+        "count": 1,
+        "big_categories": [
+          "水果类"
+        ],
+        "food_names": [
+          "桂圆（龙眼）"
         ]
       },
       "麻椒": {
@@ -35845,18 +36696,6 @@
         ],
         "food_names": [
           "包子"
-        ]
-      },
-      "馒头": {
-        "ids": [
-          "r0609"
-        ],
-        "count": 1,
-        "big_categories": [
-          "粮食加工品"
-        ],
-        "food_names": [
-          "馒头"
         ]
       },
       "碱水面（凉面）": {
@@ -36196,18 +37035,6 @@
         ],
         "food_names": [
           "斌旗高粱原浆酒"
-        ]
-      },
-      "螺丝椒": {
-        "ids": [
-          "r0653"
-        ],
-        "count": 1,
-        "big_categories": [
-          "蔬菜"
-        ],
-        "food_names": [
-          "螺丝椒"
         ]
       },
       "合川桃片": {
