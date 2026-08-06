@@ -1,7 +1,7 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-06 11:13:40+08:00",
+    "last_updated": "2026-08-06 11:28:59+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
@@ -36,8 +36,8 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-06 11:13:40+08:00",
-    "data_version": "2026.08.06.1113"
+    "index_rebuilt": "2026-08-06 11:28:59+08:00",
+    "data_version": "2026.08.06.1128"
   },
   "records": [
     {
@@ -21488,8 +21488,8 @@
       "source": "重庆",
       "food_name_raw": "红薯淀粉",
       "food_name_canonical": "红薯淀粉",
-      "big_category": "粮食加工品",
-      "sub_category": "粮食加工品-其他谷物粉类制成品",
+      "big_category": "淀粉及淀粉制品",
+      "sub_category": "淀粉及淀粉制品-淀粉",
       "category": "淀粉及淀粉制品-淀粉",
       "table_no": "23-1",
       "sampler_name": "",
@@ -21508,16 +21508,16 @@
           "limit": "不得使用",
           "limit_normalized": "不得使用",
           "result_normalized": "0.582g/kg",
-          "big_category_id": "cereal_products",
-          "subcategory_id": "cereal_products-other_cereal_powder_products",
+          "big_category_id": "starch_products",
+          "subcategory_id": "starch_products-starch",
           "table_id": null
         }
       ],
       "inst": "广电计量检测（湖南）有限公司",
       "bulletin_no": "重庆-2026-4号",
-      "id": "r0669",
-      "big_category_id": "cereal_products",
-      "subcategory_id": "cereal_products-other_cereal_powder_products"
+      "big_category_id": "starch_products",
+      "subcategory_id": "starch_products-starch",
+      "id": "r0669"
     },
     {
       "source": "重庆",
@@ -27575,7 +27575,7 @@
       ],
       "count": 1,
       "big_categories": [
-        "粮食加工品"
+        "淀粉及淀粉制品"
       ],
       "food_names": [
         "红薯淀粉"
@@ -28543,11 +28543,10 @@
         "r0618",
         "r0650",
         "r0659",
-        "r0669",
         "r0670",
         "r0681"
       ],
-      "count": 20,
+      "count": 19,
       "foods": [
         "冷面（生湿面制品）",
         "包子",
@@ -28557,7 +28556,6 @@
         "碱面",
         "碱面（挂面）",
         "糍粑",
-        "红薯淀粉",
         "艳萍挂面",
         "荞麦挂面",
         "荞麦牛筋面",
@@ -29634,16 +29632,19 @@
     "淀粉及淀粉制品": {
       "ids": [
         "r0667",
+        "r0669",
         "r0686",
         "r0702"
       ],
-      "count": 3,
+      "count": 4,
       "foods": [
         "大豌豆片（精品）",
-        "武隆苕粉"
+        "武隆苕粉",
+        "红薯淀粉"
       ],
       "items": [
         "多菌灵",
+        "脱氢乙酸及其钠盐（以脱氢乙酸计）",
         "铝的残留量（干样品，以Al计）"
       ]
     }
@@ -32420,6 +32421,7 @@
       ],
       "big_categories": [
         "水果类",
+        "淀粉及淀粉制品",
         "粮食加工品",
         "调味品"
       ]
@@ -37151,7 +37153,7 @@
         ],
         "count": 1,
         "big_categories": [
-          "粮食加工品"
+          "淀粉及淀粉制品"
         ],
         "food_names": [
           "红薯淀粉"
@@ -38119,11 +38121,10 @@
           "r0618",
           "r0650",
           "r0659",
-          "r0669",
           "r0670",
           "r0681"
         ],
-        "count": 20,
+        "count": 19,
         "foods": [
           "冷面（生湿面制品）",
           "包子",
@@ -38133,7 +38134,6 @@
           "碱面",
           "碱面（挂面）",
           "糍粑",
-          "红薯淀粉",
           "艳萍挂面",
           "荞麦挂面",
           "荞麦牛筋面",
@@ -39210,16 +39210,19 @@
       "淀粉及淀粉制品": {
         "ids": [
           "r0667",
+          "r0669",
           "r0686",
           "r0702"
         ],
-        "count": 3,
+        "count": 4,
         "foods": [
           "大豌豆片（精品）",
-          "武隆苕粉"
+          "武隆苕粉",
+          "红薯淀粉"
         ],
         "items": [
           "多菌灵",
+          "脱氢乙酸及其钠盐（以脱氢乙酸计）",
           "铝的残留量（干样品，以Al计）"
         ]
       }
@@ -41996,6 +41999,7 @@
         ],
         "big_categories": [
           "水果类",
+          "淀粉及淀粉制品",
           "粮食加工品",
           "调味品"
         ]

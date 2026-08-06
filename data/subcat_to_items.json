@@ -5573,10 +5573,10 @@
       "table_id": null
     },
     "红薯淀粉": {
-      "big_category": "粮食加工品",
-      "subcategory": "其他谷物粉类制成品",
-      "big_category_id": "cereal_products",
-      "subcategory_id": "cereal_products-other_cereal_powder_products",
+      "big_category": "淀粉及淀粉制品",
+      "subcategory": "淀粉",
+      "big_category_id": "starch_products",
+      "subcategory_id": "starch_products-starch",
       "table_id": null
     },
     "多彩蝴蝶面（粮食加工品）": {
