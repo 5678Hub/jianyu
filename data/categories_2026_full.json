@@ -542,8 +542,49 @@
     {
       "no": "三十五",
       "name": "水产品",
-      "available": false,
-      "subcategories": []
+      "available": true,
+      "subcategories": [
+        {
+          "code": "35.1",
+          "no": 1,
+          "name": "淡水鱼"
+        },
+        {
+          "code": "35.2",
+          "no": 2,
+          "name": "淡水虾"
+        },
+        {
+          "code": "35.3",
+          "no": 3,
+          "name": "淡水蟹"
+        },
+        {
+          "code": "35.4",
+          "no": 4,
+          "name": "海水鱼"
+        },
+        {
+          "code": "35.5",
+          "no": 5,
+          "name": "海水虾"
+        },
+        {
+          "code": "35.6",
+          "no": 6,
+          "name": "海水蟹"
+        },
+        {
+          "code": "35.7",
+          "no": 7,
+          "name": "贝类"
+        },
+        {
+          "code": "35.8",
+          "no": 8,
+          "name": "其他水产品"
+        }
+      ]
     },
     {
       "no": "三十六",

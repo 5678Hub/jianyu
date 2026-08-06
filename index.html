@@ -1101,7 +1101,7 @@ function renderCategoryOnly(result, cat) {
   // 该类别下的食品名
   const foodCounts = {};
   records.forEach(r => {
-    const f = r.food_name_canonical || r.food_name_raw;
+    const f = r.food_name_raw || r.food_name_canonical;
     foodCounts[f] = (foodCounts[f] || 0) + 1;
   });
   const topFoods = Object.entries(foodCounts).sort((a,b) => b[1]-a[1]).slice(0, 10);
@@ -1214,19 +1214,28 @@ function parseNum(s) {
   return m ? parseFloat(m[0]) : NaN;
 }
 
+// 归一化限值字符串：µ(U+00B5 微符号) 与 μ(U+03BC 希腊字母mu) 长得一样但编码不同，
+// 会导致同样的"≤100µg/kg"被拆成两组。按"项目+限值"分组前统一成 µ(U+00B5)。
+function normLimit(s) {
+  if (!s) return '';
+  return String(s).replace(/\u03BC/g, '\u00B5');
+}
+
 function extractFailed(records) {
   return records.map(r => {
     const fi = (r.failed_items && r.failed_items[0]) || {};
+    const limitRaw = fi.limit || '';
+    const limitNorm = normLimit(limitRaw);
     return {
       ...r,
       item: fi.item || '（未列明项目）',
       detected_value: fi.result || '',
-      limit_value: fi.limit || '',
+      limit_value: limitNorm,
       // 解析后的数字（用于计算超标倍数）
       detected_num: parseNum(fi.result),
-      limit_num: parseNum(fi.limit),
+      limit_num: parseNum(limitNorm),
       // 国标限值是否包含"不得检出"字样 → 用于严重度标记
-      banDetect: typeof fi.limit === 'string' && fi.limit.includes('不得检出'),
+      banDetect: limitRaw.includes('不得检出'),
     };
   });
 }
@@ -1345,7 +1354,7 @@ function renderHistoricalItemsCard(records, title) {
         ${rows.map((r, idx) => {
           const s = severity(r);
           const limits = [...r.limits].join(' / ') || '限值未列明';
-          const foodCount = new Set(r.sampleItems.map(x => x.food_name_canonical || x.food_name_raw)).size;
+          const foodCount = new Set(r.sampleItems.map(x => x.food_name_raw || x.food_name_canonical)).size;
           return `
             <div class="summary-row history-summary-row" data-idx="${idx}" role="button" tabindex="0" aria-expanded="false">
               <div><strong>${r.item}</strong></div>
@@ -1372,10 +1381,10 @@ function renderItemsTable(records, title) {
     return `<div class="card"><div class="empty-tip">📭 ${title}：无记录</div></div>`;
   }
 
-  // 按"项目 + 限值"聚合
+  // 按"项目 + 限值"聚合（限值经 normLimit 兜底归一化 µ/μ）
   const agg = {};
   norm.forEach(r => {
-    const k = `${r.item}|${r.limit_value || ''}`;
+    const k = `${r.item}|${normLimit(r.limit_value)}`;
     if (!agg[k]) {
       agg[k] = {
         item: r.item,
@@ -1416,7 +1425,7 @@ function renderItemsTable(records, title) {
               <div><strong>${r.item}</strong></div>
               <div class="muted" style="font-size:12px;">${r.limit || '—'}</div>
               <div class="bad" style="font-weight:700;">${r.count} 次</div>
-              <div class="muted" style="font-size:12px;">涉及 ${new Set(r.sampleItems.map(x => x.food_name_canonical || x.food_name_raw)).size} 个食品</div>
+              <div class="muted" style="font-size:12px;">涉及 ${new Set(r.sampleItems.map(x => x.food_name_raw || x.food_name_canonical)).size} 个食品</div>
               <div><span class="sev ${s.cls}">${s.label}</span></div>
               <div class="arrow">▶</div>
             </div>
@@ -1434,8 +1443,8 @@ function renderItemsTable(records, title) {
 function renderItemDetail(records, itemName, limit) {
   if (!records.length) return '<div class="empty-tip">无明细</div>';
   const sorted = [...records].sort((a, b) => {
-    const k = (a.source || '') + '|' + (a.food_name_canonical || a.food_name_raw || '') + '|' + (a.prod_date || '');
-    const j = (b.source || '') + '|' + (b.food_name_canonical || b.food_name_raw || '') + '|' + (b.prod_date || '');
+    const k = (a.source || '') + '|' + (a.food_name_raw || a.food_name_canonical || '') + '|' + (a.prod_date || '');
+    const j = (b.source || '') + '|' + (b.food_name_raw || b.food_name_canonical || '') + '|' + (b.prod_date || '');
     return k.localeCompare(j);
   });
   return `
@@ -1461,7 +1470,7 @@ function renderItemDetail(records, itemName, limit) {
           return `
             <tr>
               <td><span class="meta-tag">${r.source || '—'}</span></td>
-              <td>${r.food_name_canonical || r.food_name_raw || '—'}</td>
+              <td>${r.food_name_raw || r.food_name_canonical || '—'}</td>
               <td class="muted" style="font-size:12px;">${r.sampler_name || '—'}</td>
               <td class="muted" style="font-size:12px;">${r.prod_date || '—'}</td>
               <td class="bad">${r.detected_value || '—'}</td>
@@ -1529,7 +1538,7 @@ function renderTips(cat, options = {}) {
                 cls = 'sev-low';
               }
               const limitTxt = [...r.limits].join(' / ') || '限值未列明';
-              const foodCount = new Set(r.sampleItems.map(x => x.food_name_canonical || x.food_name_raw)).size;
+              const foodCount = new Set(r.sampleItems.map(x => x.food_name_raw || x.food_name_canonical)).size;
               return `
                 <div class="summary-row history-summary-row" data-idx="${idx}" role="button" tabindex="0" aria-expanded="false">
                   <div><strong>${r.item}</strong></div>
@@ -1738,7 +1747,7 @@ function renderMultiTips(cats) {
                   <div class="muted" style="font-size:12px;">涉及 ${[...r.cats].join('·')}</div>
                   <div class="bad" style="font-weight:700;">${r.count} 次</div>
                   <div><span class="sev ${cls}">${sev}</span></div>
-                  <div class="muted" style="font-size:12px;">${new Set(r.sampleItems.map(x => x.food_name_canonical || x.food_name_raw)).size} 个食品</div>
+                  <div class="muted" style="font-size:12px;">${new Set(r.sampleItems.map(x => x.food_name_raw || x.food_name_canonical)).size} 个食品</div>
                   <div class="arrow">▶</div>
                 </div>
                 <div class="detail-block" data-detail="${idx}" style="display:none;">
