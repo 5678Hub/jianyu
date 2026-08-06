@@ -1272,6 +1272,9 @@ function extractFailed(records) {
     const fi = (r.failed_items && r.failed_items[0]) || {};
     const limitRaw = fi.limit || '';
     const limitNorm = normLimit(limitRaw);
+    // v3.7.13: 采样计划类 (_sample_plan=true) 直接判定, 不用 parseNum
+    const isSamplePlan = !!fi._sample_plan;
+    const sampleVerdict = fi._verdict; // pass | fail | unclear
     return {
       ...r,
       item: fi.item || '（未列明项目）',
@@ -1282,6 +1285,12 @@ function extractFailed(records) {
       limit_num: parseNum(limitNorm),
       // 国标限值是否包含"不得检出"字样 → 用于严重度标记
       banDetect: limitRaw.includes('不得检出'),
+      // v3.7.13: 采样计划标识 + 判定
+      _sample_plan: isSamplePlan,
+      _verdict: sampleVerdict,
+      _values: fi._values || [],
+      _count_in_m_M: fi['_count_in_(m,M]'] || 0,
+      _count_over_M: fi._count_>M || 0,
     };
   });
 }
@@ -1301,8 +1310,12 @@ function calcRisk(records) {
   norm.forEach(r => {
     items[r.item] = (items[r.item] || 0) + 1;
     if (r.source) provs.add(r.source);
-    // 解析"0.0926g/kg"或"281mg/kg"——若超过限制倍数=实测/限制（粗算）
-    if (!isNaN(r.detected_num) && !isNaN(r.limit_num) && r.limit_num > 0) {
+    // v3.7.13: 采样计划类按 _verdict 判定
+    if (r._sample_plan) {
+      if (r._verdict === 'fail') maxMultiple = Math.max(maxMultiple, 2.5);
+      else if (r._verdict === 'pass') maxMultiple = Math.max(maxMultiple, 0.8);
+    } else if (!isNaN(r.detected_num) && !isNaN(r.limit_num) && r.limit_num > 0) {
+      // 解析"0.0926g/kg"或"281mg/kg"——若超过限制倍数=实测/限制（粗算）
       const mult = r.detected_num / r.limit_num;
       if (mult > maxMultiple) maxMultiple = mult;
     }
@@ -1377,7 +1390,11 @@ function renderHistoricalItemsCard(records, title) {
     entry.count++;
     if (r.limit_value) entry.limits.add(r.limit_value);
     entry.banDetect = entry.banDetect || r.banDetect;
-    if (!isNaN(r.detected_num) && !isNaN(r.limit_num) && r.limit_num > 0) {
+    // v3.7.13: 采样计划类按 _verdict 判定, 不用 parseNum 算倍数
+    if (r._sample_plan) {
+      if (r._verdict === 'fail') entry.maxMult = Math.max(entry.maxMult, 2.5);
+      else if (r._verdict === 'pass') entry.maxMult = Math.max(entry.maxMult, 0.8);
+    } else if (!isNaN(r.detected_num) && !isNaN(r.limit_num) && r.limit_num > 0) {
       entry.maxMult = Math.max(entry.maxMult, r.detected_num / r.limit_num);
     }
     entry.sampleItems.push(r);
@@ -1386,6 +1403,12 @@ function renderHistoricalItemsCard(records, title) {
   const rows = Object.values(agg).sort((a, b) => b.count - a.count || a.item.localeCompare(b.item));
   const severity = (r) => {
     if (r.banDetect) return { cls: 'sev-high', label: '不得检出' };
+    // v3.7.13: 采样计划类直接判定 (按 GB 4789.1)
+    const sampleRecord = r.sampleItems.find(x => x._sample_plan);
+    if (sampleRecord && sampleRecord._verdict) {
+      if (sampleRecord._verdict === 'fail') return { cls: 'sev-high', label: '不合格' };
+      if (sampleRecord._verdict === 'pass') return { cls: 'sev-low', label: '合格' };
+    }
     if (r.maxMult >= 2) return { cls: 'sev-high', label: `${r.maxMult.toFixed(1)}× 超标` };
     if (r.count >= 5) return { cls: 'sev-high', label: '高频' };
     if (r.maxMult >= 1.2) return { cls: 'sev-mid', label: `${r.maxMult.toFixed(1)}× 超标` };
@@ -1509,10 +1532,24 @@ function renderItemDetail(records, itemName, limit) {
       </tr></thead>
       <tbody>
         ${sorted.map(r => {
+          // v3.7.13: 采样计划类直接显示判定结果, 不用数值倍数
           let mult = '';
-          if (!isNaN(r.detected_num) && !isNaN(r.limit_num) && r.limit_num > 0) {
+          if (r._sample_plan) {
+            // 采样计划类 → 显示 "不合格" (按 GB 4789.1 三级采样方案判定)
+            if (r._verdict === 'fail') {
+              mult = '不合格';
+            } else if (r._verdict === 'pass') {
+              mult = '合格';
+            } else {
+              mult = '待判';
+            }
+          } else if (!isNaN(r.detected_num) && !isNaN(r.limit_num) && r.limit_num > 0) {
             mult = (r.detected_num / r.limit_num).toFixed(2) + '×';
           }
+          // 根据判定结果选样式
+          let sevClass = 'bad';
+          if (r._sample_plan && r._verdict === 'fail') sevClass = 'bad sev-high';
+          else if (r._sample_plan && r._verdict === 'pass') sevClass = 'ok';
           return `
             <tr>
               <td><span class="meta-tag">${r.source || '—'}</span></td>
@@ -1521,7 +1558,7 @@ function renderItemDetail(records, itemName, limit) {
               <td class="muted" style="font-size:12px;">${r.prod_date || '—'}</td>
               <td class="bad">${r.detected_value || '—'}</td>
               <td class="muted">${r.limit_value || '—'}</td>
-              <td>${mult ? `<span class="bad">${mult}</span>` : '—'}</td>
+              <td>${mult ? `<span class="${sevClass}" style="font-weight:700;">${mult}</span>` : '—'}</td>
             </tr>
           `;
         }).join('')}
@@ -1757,7 +1794,11 @@ function renderMultiTips(cats) {
     if (!histAgg[r.item]) histAgg[r.item] = { item: r.item, count: 0, banDetect: r.banDetect, maxMult: 1, cats: new Set(), sampleItems: [] };
     histAgg[r.item].count++;
     histAgg[r.item].sampleItems.push(r);
-    if (!isNaN(r.detected_num) && !isNaN(r.limit_num) && r.limit_num > 0) {
+    // v3.7.13: 采样计划类按 _verdict 判定
+    if (r._sample_plan) {
+      if (r._verdict === 'fail') histAgg[r.item].maxMult = Math.max(histAgg[r.item].maxMult, 2.5);
+      else if (r._verdict === 'pass') histAgg[r.item].maxMult = Math.min(histAgg[r.item].maxMult, 0.8);
+    } else if (!isNaN(r.detected_num) && !isNaN(r.limit_num) && r.limit_num > 0) {
       const mult = r.detected_num / r.limit_num;
       if (mult > histAgg[r.item].maxMult) histAgg[r.item].maxMult = mult;
     }
@@ -1783,7 +1824,11 @@ function renderMultiTips(cats) {
           <div class="result-list">
             ${histRows.map((r, idx) => {
               let sev, cls;
+              // v3.7.13: 采样计划类直接判定
+              const sampleInHist = r.sampleItems.find(x => x._sample_plan && x._verdict);
               if (r.banDetect) { sev = '不得检出'; cls = 'sev-high'; }
+              else if (sampleInHist && sampleInHist._verdict === 'fail') { sev = '不合格'; cls = 'sev-high'; }
+              else if (sampleInHist && sampleInHist._verdict === 'pass') { sev = '合格'; cls = 'sev-low'; }
               else if (r.maxMult >= 2) { sev = `${r.maxMult.toFixed(1)}× 超标`; cls = 'sev-high'; }
               else if (r.maxMult >= 1.2) { sev = `${r.maxMult.toFixed(1)}× 超标`; cls = 'sev-mid'; }
               else { sev = '超限值'; cls = 'sev-low'; }
