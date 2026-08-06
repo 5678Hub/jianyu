@@ -190,7 +190,7 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
     <div class="brand-title"><span class="zh">食品抽检风险查询</span></div>
     <div class="subtitle" id="subtitle">加载中…</div>
   </div>
-  <div class="ver">v3.7.19 · 2026</div>
+  <div class="ver">v3.7.20 · 2026</div>
 </header>
 
 <section class="section">
@@ -1971,8 +1971,21 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 <script>
+  // v3.7.19 修复：本地版禁用 Service Worker（避免 sw.js 缓存旧 index.html）
+  // 同时强制 unregister 用户之前访问过 github 版时注册的 sw + 清空 cacheStorage
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+    navigator.serviceWorker.getRegistrations().then(regs => {
+      regs.forEach(reg => {
+        console.log('[v3.7.19] 注销旧 SW:', reg.scope);
+        reg.unregister();
+      });
+    });
+    if (window.caches) {
+      caches.keys().then(keys => keys.forEach(k => {
+        console.log('[v3.7.19] 清理 cache:', k);
+        caches.delete(k);
+      }));
+    }
   }
 </script>
 </body>
