@@ -1,13 +1,13 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-06 11:37:19+08:00",
+    "last_updated": "2026-08-06 11:44:17+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
     "origin": "jianyu 食品安全抽检风险查询",
     "record_count": 712,
-    "by_canonical_count": 366,
+    "by_canonical_count": 367,
     "by_category_count": 31,
     "by_item_count": 154,
     "project_weight_count": 45,
@@ -36,8 +36,8 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-06 11:37:19+08:00",
-    "data_version": "2026.08.06.1137"
+    "index_rebuilt": "2026-08-06 11:44:17+08:00",
+    "data_version": "2026.08.06.1144"
   },
   "records": [
     {
@@ -7056,7 +7056,7 @@
     {
       "source": "山东",
       "food_name_raw": "小酥肉（速冻调理肉制品）",
-      "food_name_canonical": "速冻调理肉制品",
+      "food_name_canonical": "小酥肉",
       "big_category": "速冻食品",
       "sub_category": "速冻食品-速冻肉制品",
       "category": "速冻食品",
@@ -7079,6 +7079,7 @@
         }
       ],
       "bulletin_no": "山东-2026-15期",
+      "_canonical_orig": "速冻调理肉制品",
       "id": "r0222",
       "big_category_id": "frozen_food",
       "subcategory_id": "frozen_food-frozen_meat_products"
@@ -23961,18 +23962,16 @@
     "速冻调理肉制品": {
       "ids": [
         "r0060",
-        "r0222",
         "r0327",
         "r0429"
       ],
-      "count": 4,
+      "count": 3,
       "big_categories": [
         "畜禽肉及副产品",
         "速冻食品"
       ],
       "food_names": [
         "五星鸡块（速冻生制品）",
-        "小酥肉（速冻调理肉制品）",
         "涮肉卷",
         "黑椒味纯肉肠（速冻生制）"
       ]
@@ -25055,6 +25054,18 @@
       "food_names": [
         "鲤鱼",
         "鲤鱼（淡水鱼）"
+      ]
+    },
+    "小酥肉": {
+      "ids": [
+        "r0222"
+      ],
+      "count": 1,
+      "big_categories": [
+        "速冻食品"
+      ],
+      "food_names": [
+        "小酥肉（速冻调理肉制品）"
       ]
     },
     "肉脯": {
@@ -33539,18 +33550,16 @@
       "速冻调理肉制品": {
         "ids": [
           "r0060",
-          "r0222",
           "r0327",
           "r0429"
         ],
-        "count": 4,
+        "count": 3,
         "big_categories": [
           "畜禽肉及副产品",
           "速冻食品"
         ],
         "food_names": [
           "五星鸡块（速冻生制品）",
-          "小酥肉（速冻调理肉制品）",
           "涮肉卷",
           "黑椒味纯肉肠（速冻生制）"
         ]
@@ -34633,6 +34642,18 @@
         "food_names": [
           "鲤鱼",
           "鲤鱼（淡水鱼）"
+        ]
+      },
+      "小酥肉": {
+        "ids": [
+          "r0222"
+        ],
+        "count": 1,
+        "big_categories": [
+          "速冻食品"
+        ],
+        "food_names": [
+          "小酥肉（速冻调理肉制品）"
         ]
       },
       "肉脯": {

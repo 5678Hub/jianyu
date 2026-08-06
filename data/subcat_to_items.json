@@ -2116,10 +2116,10 @@
       "table_id": "gb2026-fruit_products_processed-17-2"
     },
     "小酥肉": {
-      "big_category": "肉制品",
-      "subcategory": "调理肉制品(非速冻)",
-      "big_category_id": "meat_products_processed",
-      "subcategory_id": "meat_products_processed-tiao_li_rou_zhi_pin",
+      "big_category": "速冻食品",
+      "subcategory": "速冻肉制品",
+      "big_category_id": "frozen_food",
+      "subcategory_id": "frozen_food-frozen_meat_products",
       "table_id": null
     },
     "速冻小酥肉": {
