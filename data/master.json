@@ -1,7 +1,7 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-06 13:01:30+08:00",
+    "last_updated": "2026-08-06 13:12:31+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
@@ -36,8 +36,8 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-06 13:01:30+08:00",
-    "data_version": "2026.08.06.1301"
+    "index_rebuilt": "2026-08-06 13:12:31+08:00",
+    "data_version": "2026.08.06.1312"
   },
   "records": [
     {
@@ -1611,10 +1611,12 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：丰阳花生食品\n网店网址：拼多多（手机App）",
+      "bulletin_no": "山东-2026-5期",
       "id": "r0050",
       "big_category_id": "roasted_seeds_nuts",
-      "subcategory_id": "roasted_seeds_nuts-roasted_seeds_nuts"
+      "subcategory_id": "roasted_seeds_nuts-roasted_seeds_nuts",
+      "bulletin_no_orig": "网店商铺名称：丰阳花生食品\n网店网址：拼多多（手机App）",
+      "sample_channel": "网店商铺名称：丰阳花生食品\n网店网址：拼多多（手机App）"
     },
     {
       "source": "山东",
@@ -1641,12 +1643,14 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：东立食品专营店\n网店网址：天猫（手机App）",
+      "bulletin_no": "山东-2026-5期",
       "inst": "山东省食品药品检验研究院",
       "_canonical_orig": "其他水产制品",
       "id": "r0051",
       "big_category_id": "aquatic_products_processed",
-      "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed"
+      "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
+      "bulletin_no_orig": "网店商铺名称：东立食品专营店\n网店网址：天猫（手机App）",
+      "sample_channel": "网店商铺名称：东立食品专营店\n网店网址：天猫（手机App）"
     },
     {
       "source": "山东",
@@ -1704,12 +1708,14 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：渔味生鲜（东郭店）\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-5期",
       "inst": "临沂市食品药品检验检测中心",
       "_canonical_orig": "发酵面制品",
       "id": "r0053",
       "big_category_id": "restaurant_food",
-      "subcategory_id": "restaurant_food-steamed_bun_self_made"
+      "subcategory_id": "restaurant_food-steamed_bun_self_made",
+      "bulletin_no_orig": "网店商铺名称：渔味生鲜（东郭店）\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：渔味生鲜（东郭店）\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -1799,11 +1805,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：鲸御鲜旗舰店\n网店网址：淘宝（手机APP）",
+      "bulletin_no": "山东-2026-5期",
       "inst": "青岛顺昌检测评价有限公司",
       "id": "r0056",
       "big_category_id": "aquatic_products_processed",
-      "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed"
+      "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
+      "bulletin_no_orig": "网店商铺名称：鲸御鲜旗舰店\n网店网址：淘宝（手机APP）",
+      "sample_channel": "网店商铺名称：鲸御鲜旗舰店\n网店网址：淘宝（手机APP）"
     },
     {
       "source": "山东",
@@ -2266,11 +2274,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：百鲜汇生鲜超市\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-7期",
       "inst": "山东省食品药品检验研究院",
       "id": "r0070",
       "big_category_id": "fruits",
-      "subcategory_id": "fruits-banana"
+      "subcategory_id": "fruits-banana",
+      "bulletin_no_orig": "网店商铺名称：百鲜汇生鲜超市\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：百鲜汇生鲜超市\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -2504,12 +2514,14 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：和诚鲜超（吉祥苑市场店）\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-7期",
       "inst": "青岛市华测检测技术有限公司",
       "_canonical_orig": "其他香辛料调味品",
       "id": "r0077",
       "big_category_id": "seasonings",
-      "subcategory_id": "seasonings-other_spice_seasonings"
+      "subcategory_id": "seasonings-other_spice_seasonings",
+      "bulletin_no_orig": "网店商铺名称：和诚鲜超（吉祥苑市场店）\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：和诚鲜超（吉祥苑市场店）\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -2567,11 +2579,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：果蔬生鲜超市\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-7期",
       "inst": "方圆标志检验检测（山东）有限公司",
       "id": "r0079",
       "big_category_id": "vegetables",
-      "subcategory_id": "vegetables-bok_choy"
+      "subcategory_id": "vegetables-bok_choy",
+      "bulletin_no_orig": "网店商铺名称：果蔬生鲜超市\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：果蔬生鲜超市\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -2608,11 +2622,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：小特特鲜果铺（果切•新鲜水果）\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-7期",
       "inst": "山东华检检测有限公司",
       "id": "r0080",
       "big_category_id": "fruits",
-      "subcategory_id": "fruits-banana"
+      "subcategory_id": "fruits-banana",
+      "bulletin_no_orig": "网店商铺名称：小特特鲜果铺（果切•新鲜水果）\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：小特特鲜果铺（果切•新鲜水果）\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -2639,12 +2655,14 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：锦善良品\n网店网址：淘宝网（网店）",
+      "bulletin_no": "山东-2026-7期",
       "inst": "广州检验检测认证集团有限公司",
       "_canonical_orig": "酱油",
       "id": "r0081",
       "big_category_id": "seasonings",
-      "subcategory_id": "seasonings-soy_sauce"
+      "subcategory_id": "seasonings-soy_sauce",
+      "bulletin_no_orig": "网店商铺名称：锦善良品\n网店网址：淘宝网（网店）",
+      "sample_channel": "网店商铺名称：锦善良品\n网店网址：淘宝网（网店）"
     },
     {
       "source": "山东",
@@ -2826,11 +2844,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：菜农场（鑫怡生鲜超市店）\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-7期",
       "inst": "山东省食品药品检验研究院",
       "id": "r0087",
       "big_category_id": "vegetables",
-      "subcategory_id": "vegetables-celery"
+      "subcategory_id": "vegetables-celery",
+      "bulletin_no_orig": "网店商铺名称：菜农场（鑫怡生鲜超市店）\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：菜农场（鑫怡生鲜超市店）\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -2857,11 +2877,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：网菜大全（芳华园市场店）\n网店网址：美团（手机APP）",
+      "bulletin_no": "山东-2026-7期",
       "inst": "威海市食品药品检验检测研究院",
       "id": "r0088",
       "big_category_id": "aquatic_products",
-      "subcategory_id": "aquatic_products-other_aquatic_products"
+      "subcategory_id": "aquatic_products-other_aquatic_products",
+      "bulletin_no_orig": "网店商铺名称：网菜大全（芳华园市场店）\n网店网址：美团（手机APP）",
+      "sample_channel": "网店商铺名称：网菜大全（芳华园市场店）\n网店网址：美团（手机APP）"
     },
     {
       "source": "山东",
@@ -2920,11 +2942,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：茗君鲜旗舰店\n网店网址：天猫（手机APP）",
+      "bulletin_no": "山东-2026-7期",
       "inst": "山东省产品质量检验研究院",
       "id": "r0090",
       "big_category_id": "vegetables",
-      "subcategory_id": "vegetables-string_bean"
+      "subcategory_id": "vegetables-string_bean",
+      "bulletin_no_orig": "网店商铺名称：茗君鲜旗舰店\n网店网址：天猫（手机APP）",
+      "sample_channel": "网店商铺名称：茗君鲜旗舰店\n网店网址：天猫（手机APP）"
     },
     {
       "source": "山东",
@@ -4564,12 +4588,14 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：菜老包（凤凰城店）\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-6期",
       "inst": "青岛谱尼测试有限公司",
       "_canonical_orig": "其他香辛料调味品",
       "id": "r0143",
       "big_category_id": "seasonings",
-      "subcategory_id": "seasonings-other_spice_seasonings"
+      "subcategory_id": "seasonings-other_spice_seasonings",
+      "bulletin_no_orig": "网店商铺名称：菜老包（凤凰城店）\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：菜老包（凤凰城店）\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -5305,11 +5331,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：中天食品工厂\n网店网址：拼多多（手机App）",
+      "bulletin_no": "山东-2026-6期",
       "inst": "山东省食品药品检验研究院",
       "id": "r0166",
       "big_category_id": "cereal_products",
-      "subcategory_id": "cereal_products-dried_noodles"
+      "subcategory_id": "cereal_products-dried_noodles",
+      "bulletin_no_orig": "网店商铺名称：中天食品工厂\n网店网址：拼多多（手机App）",
+      "sample_channel": "网店商铺名称：中天食品工厂\n网店网址：拼多多（手机App）"
     },
     {
       "source": "山东",
@@ -10036,11 +10064,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：好食光菏泽特产\n网店网址：淘宝（手机App）",
+      "bulletin_no": "山东-2026-4期",
       "inst": "枣庄市食品药品检验检测中心",
       "id": "r0314",
       "big_category_id": "aquatic_products_processed",
-      "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed"
+      "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
+      "bulletin_no_orig": "网店商铺名称：好食光菏泽特产\n网店网址：淘宝（手机App）",
+      "sample_channel": "网店商铺名称：好食光菏泽特产\n网店网址：淘宝（手机App）"
     },
     {
       "source": "山东",
@@ -10139,11 +10169,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：她他生鲜（金水店）\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-4期",
       "inst": "梅里埃检测技术（青岛）有限公司",
       "id": "r0317",
       "big_category_id": "fruits",
-      "subcategory_id": "fruits-papaya"
+      "subcategory_id": "fruits-papaya",
+      "bulletin_no_orig": "网店商铺名称：她他生鲜（金水店）\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：她他生鲜（金水店）\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -10201,11 +10233,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：船家味道\n网店\n网址：美团（手机App）",
+      "bulletin_no": "山东-2026-4期",
       "inst": "山东省食品药品检验研究院",
       "id": "r0319",
       "big_category_id": "restaurant_food",
-      "subcategory_id": "restaurant_food-other_restaurant_food"
+      "subcategory_id": "restaurant_food-other_restaurant_food",
+      "bulletin_no_orig": "网店商铺名称：船家味道\n网店\n网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：船家味道\n网店\n网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -10423,11 +10457,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：果真好水果超市（王台路店）\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-4期",
       "inst": "中维安全检测认证集团有限公司",
       "id": "r0326",
       "big_category_id": "fruits",
-      "subcategory_id": "fruits-mango"
+      "subcategory_id": "fruits-mango",
+      "bulletin_no_orig": "网店商铺名称：果真好水果超市（王台路店）\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：果真好水果超市（王台路店）\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -10516,12 +10552,14 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：泰山土特产特色小店\n网店网址：淘宝（手机App）",
+      "bulletin_no": "山东-2026-4期",
       "inst": "山东省食品药品检验研究院",
       "_canonical_orig": "其他水产制品",
       "id": "r0329",
       "big_category_id": "aquatic_products_processed",
-      "subcategory_id": "aquatic_products_processed-dried_aquatic_products"
+      "subcategory_id": "aquatic_products_processed-dried_aquatic_products",
+      "bulletin_no_orig": "网店商铺名称：泰山土特产特色小店\n网店网址：淘宝（手机App）",
+      "sample_channel": "网店商铺名称：泰山土特产特色小店\n网店网址：淘宝（手机App）"
     },
     {
       "source": "山东",
@@ -10618,12 +10656,14 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：花成蜜就食品官方旗舰店\n网店网址：拼多多（手机App）",
+      "bulletin_no": "山东-2026-4期",
       "inst": "山东省食品药品检验研究院",
       "id": "r0332",
       "big_category_id": "confectionery",
       "subcategory_id": "confectionery-preserved_fruit_candied",
-      "_canonical_orig": "蜜饯类、凉果类、果脯类、话化类、果糕类"
+      "_canonical_orig": "蜜饯类、凉果类、果脯类、话化类、果糕类",
+      "bulletin_no_orig": "网店商铺名称：花成蜜就食品官方旗舰店\n网店网址：拼多多（手机App）",
+      "sample_channel": "网店商铺名称：花成蜜就食品官方旗舰店\n网店网址：拼多多（手机App）"
     },
     {
       "source": "山东",
@@ -11005,11 +11045,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "1.网店商铺名称：优品生鲜（菏泽国贸中心店）\n网店网址：美团（手机App）\n2.异议不认可",
+      "bulletin_no": "山东-2026-2期",
       "inst": "济宁市食品药品检验检测研究院",
       "id": "r0343",
       "big_category_id": "fruits",
-      "subcategory_id": "fruits-longan"
+      "subcategory_id": "fruits-longan",
+      "bulletin_no_orig": "1.网店商铺名称：优品生鲜（菏泽国贸中心店）\n网店网址：美团（手机App）\n2.异议不认可",
+      "sample_channel": "网店商铺名称：优品生鲜（菏泽国贸中心店）\n网店网址：美团（手机App）\n2.异议不认可"
     },
     {
       "source": "山东",
@@ -11078,11 +11120,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：银座商城（济宁鱼台店）\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-2期",
       "inst": "青岛谱尼测试有限公司",
       "id": "r0345",
       "big_category_id": "vegetables",
-      "subcategory_id": "vegetables-yam"
+      "subcategory_id": "vegetables-yam",
+      "bulletin_no_orig": "网店商铺名称：银座商城（济宁鱼台店）\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：银座商城（济宁鱼台店）\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -11204,11 +11248,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：鲜果时光\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-2期",
       "inst": "合肥海关技术中心",
       "id": "r0349",
       "big_category_id": "fruits",
-      "subcategory_id": "fruits-lychee"
+      "subcategory_id": "fruits-lychee",
+      "bulletin_no_orig": "网店商铺名称：鲜果时光\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：鲜果时光\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -11237,12 +11283,14 @@
           "_limit_normalized_orig": "≤0.005mg/L\n复检结果：亚硝酸盐（以NO₂⁻计)"
         }
       ],
-      "bulletin_no": "1.网店商铺名称：鲁山山泉天然弱碱性泉水\n网店网址：抖音（手机App）\n2.复检不合格",
+      "bulletin_no": "山东-2026-2期",
       "inst": "初检机构：青岛市华测检测技术有限公司\n复检机构：青岛海关技术中心",
       "id": "r0350",
       "big_category_id": "beverages",
       "subcategory_id": "beverages-natural_mineral_water",
-      "_food_name_canonical_orig": "其他类饮用水"
+      "_food_name_canonical_orig": "其他类饮用水",
+      "bulletin_no_orig": "1.网店商铺名称：鲁山山泉天然弱碱性泉水\n网店网址：抖音（手机App）\n2.复检不合格",
+      "sample_channel": "网店商铺名称：鲁山山泉天然弱碱性泉水\n网店网址：抖音（手机App）\n2.复检不合格"
     },
     {
       "source": "山东",
@@ -11310,12 +11358,14 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：志诺食品专营店\n网店网址：拼多多（手机App）",
+      "bulletin_no": "山东-2026-2期",
       "inst": "青岛顺昌检测评价有限公司",
       "_canonical_orig": "饼干",
       "id": "r0352",
       "big_category_id": "biscuits",
-      "subcategory_id": "biscuits-biscuits"
+      "subcategory_id": "biscuits-biscuits",
+      "bulletin_no_orig": "网店商铺名称：志诺食品专营店\n网店网址：拼多多（手机App）",
+      "sample_channel": "网店商铺名称：志诺食品专营店\n网店网址：拼多多（手机App）"
     },
     {
       "source": "山东",
@@ -11404,11 +11454,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：龙贵超市（共青团店）\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-2期",
       "inst": "鲁健检测科技有限公司",
       "id": "r0355",
       "big_category_id": "vegetables",
-      "subcategory_id": "vegetables-celery"
+      "subcategory_id": "vegetables-celery",
+      "bulletin_no_orig": "网店商铺名称：龙贵超市（共青团店）\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：龙贵超市（共青团店）\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -11528,11 +11580,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：朝阳糁馆（育才路店）\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-2期",
       "inst": "泰安市食品药品检验检测研究院（泰安市纤维检验所）",
       "id": "r0359",
       "big_category_id": "restaurant_food",
-      "subcategory_id": "restaurant_food-fried_dough_sticks_self_made"
+      "subcategory_id": "restaurant_food-fried_dough_sticks_self_made",
+      "bulletin_no_orig": "网店商铺名称：朝阳糁馆（育才路店）\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：朝阳糁馆（育才路店）\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -11665,7 +11719,7 @@
           "_limit_normalized_orig": "不得使用\n复检结果：山梨酸及其钾盐(以山梨酸计)"
         }
       ],
-      "bulletin_no": "1.网店商铺名称：永大食品专营店\n网店网址：拼多多（手机App）\n2.复检不合格",
+      "bulletin_no": "山东-2026-2期",
       "inst": "初检机构：山东省食品药品检验研究院\n复检机构：山东省产品质量检验研究院/国家加工食品质量检验检测中心（山东）",
       "_canonical_orig": "其他谷物粉类制成品",
       "id": "r0363",
@@ -11674,7 +11728,9 @@
       "_sub_category_orig": "糕点-糕点",
       "_subcategory_id_orig": "pastries-pastries",
       "_big_category_orig": "糕点",
-      "_big_category_id_orig": "pastries"
+      "_big_category_id_orig": "pastries",
+      "bulletin_no_orig": "1.网店商铺名称：永大食品专营店\n网店网址：拼多多（手机App）\n2.复检不合格",
+      "sample_channel": "网店商铺名称：永大食品专营店\n网店网址：拼多多（手机App）\n2.复检不合格"
     },
     {
       "source": "山东",
@@ -11929,11 +11985,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：菜好齐（善意缘金科店）\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-2期",
       "inst": "深圳市计量质量检测研究院",
       "id": "r0371",
       "big_category_id": "fresh_eggs",
-      "subcategory_id": "fresh_eggs-chicken_eggs"
+      "subcategory_id": "fresh_eggs-chicken_eggs",
+      "bulletin_no_orig": "网店商铺名称：菜好齐（善意缘金科店）\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：菜好齐（善意缘金科店）\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -12183,11 +12241,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：爱多客生活超市（西环店）\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-3期",
       "inst": "青岛谱尼测试有限公司",
       "id": "r0379",
       "big_category_id": "vegetables",
-      "subcategory_id": "vegetables-ginger"
+      "subcategory_id": "vegetables-ginger",
+      "bulletin_no_orig": "网店商铺名称：爱多客生活超市（西环店）\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：爱多客生活超市（西环店）\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -12435,11 +12495,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：大润发（滕州店）\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-3期",
       "inst": "山东省食品药品检验研究院",
       "id": "r0387",
       "big_category_id": "fruits",
-      "subcategory_id": "fruits-mango"
+      "subcategory_id": "fruits-mango",
+      "bulletin_no_orig": "网店商铺名称：大润发（滕州店）\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：大润发（滕州店）\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -12560,12 +12622,14 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：品枣园\n网店网址：淘宝网",
+      "bulletin_no": "山东-2026-3期",
       "inst": "烟台市食品药品检验检测中心",
       "_canonical_orig": "糕点",
       "id": "r0391",
       "big_category_id": "pastries",
-      "subcategory_id": "pastries-pastries"
+      "subcategory_id": "pastries-pastries",
+      "bulletin_no_orig": "网店商铺名称：品枣园\n网店网址：淘宝网",
+      "sample_channel": "网店商铺名称：品枣园\n网店网址：淘宝网"
     },
     {
       "source": "山东",
@@ -12717,12 +12781,14 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：菜老包（凤凰城店）\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-6期",
       "inst": "青岛谱尼测试有限公司",
       "_canonical_orig": "其他香辛料调味品",
       "id": "r0396",
       "big_category_id": "seasonings",
-      "subcategory_id": "seasonings-other_spice_seasonings"
+      "subcategory_id": "seasonings-other_spice_seasonings",
+      "bulletin_no_orig": "网店商铺名称：菜老包（凤凰城店）\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：菜老包（凤凰城店）\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -12749,11 +12815,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：金融中心餐厅\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-3期",
       "inst": "临沂市食品药品检验检测中心",
       "id": "r0397",
       "big_category_id": "restaurant_food",
-      "subcategory_id": "restaurant_food-steamed_bun_self_made"
+      "subcategory_id": "restaurant_food-steamed_bun_self_made",
+      "bulletin_no_orig": "网店商铺名称：金融中心餐厅\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：金融中心餐厅\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -13048,11 +13116,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：菜农场（水泊中路店）\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-2期",
       "inst": "青岛谱尼测试有限公司",
       "id": "r0406",
       "big_category_id": "vegetables",
-      "subcategory_id": "vegetables-yam"
+      "subcategory_id": "vegetables-yam",
+      "bulletin_no_orig": "网店商铺名称：菜农场（水泊中路店）\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：菜农场（水泊中路店）\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -13203,12 +13273,14 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：菜人觐见(新城便民中心店)\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-1期",
       "inst": "方圆标志检验检测（山东）有限公司",
       "_canonical_orig": "蔬菜干制品",
       "id": "r0411",
       "big_category_id": "seasonings",
-      "subcategory_id": "seasonings-other_spice_seasonings"
+      "subcategory_id": "seasonings-other_spice_seasonings",
+      "bulletin_no_orig": "网店商铺名称：菜人觐见(新城便民中心店)\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：菜人觐见(新城便民中心店)\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -13266,11 +13338,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：菜鲜森（果蔬·生鲜·火锅）\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-1期",
       "inst": "青岛市食品药品检验研究院",
       "id": "r0413",
       "big_category_id": "meat_poultry_offal",
-      "subcategory_id": "meat_poultry_offal-mutton"
+      "subcategory_id": "meat_poultry_offal-mutton",
+      "bulletin_no_orig": "网店商铺名称：菜鲜森（果蔬·生鲜·火锅）\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：菜鲜森（果蔬·生鲜·火锅）\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -13453,12 +13527,14 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：九如食品6\n网店网址：拼多多（手机App）",
+      "bulletin_no": "山东-2026-1期",
       "inst": "青岛海关技术中心",
       "_canonical_orig": "熏煮香肠火腿制品",
       "id": "r0419",
       "big_category_id": "meat_products_processed",
-      "subcategory_id": "meat_products_processed-cooked_meat"
+      "subcategory_id": "meat_products_processed-cooked_meat",
+      "bulletin_no_orig": "网店商铺名称：九如食品6\n网店网址：拼多多（手机App）",
+      "sample_channel": "网店商铺名称：九如食品6\n网店网址：拼多多（手机App）"
     },
     {
       "source": "山东",
@@ -13548,11 +13624,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：银座商城（济宁嘉祥店）\n网店网址：淘宝（手机App）",
+      "bulletin_no": "山东-2026-2期",
       "inst": "枣庄市食品药品检验检测中心",
       "id": "r0422",
       "big_category_id": "vegetables",
-      "subcategory_id": "vegetables-ginger"
+      "subcategory_id": "vegetables-ginger",
+      "bulletin_no_orig": "网店商铺名称：银座商城（济宁嘉祥店）\n网店网址：淘宝（手机App）",
+      "sample_channel": "网店商铺名称：银座商城（济宁嘉祥店）\n网店网址：淘宝（手机App）"
     },
     {
       "source": "山东",
@@ -13684,11 +13762,13 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "网店商铺名称：无虑优品（博山店）\n网店网址：美团（手机App）",
+      "bulletin_no": "山东-2026-1期",
       "inst": "青岛市华测检测技术有限公司",
       "id": "r0426",
       "big_category_id": "fruits",
-      "subcategory_id": "fruits-lychee"
+      "subcategory_id": "fruits-lychee",
+      "bulletin_no_orig": "网店商铺名称：无虑优品（博山店）\n网店网址：美团（手机App）",
+      "sample_channel": "网店商铺名称：无虑优品（博山店）\n网店网址：美团（手机App）"
     },
     {
       "source": "山东",
@@ -13746,12 +13826,14 @@
           "table_id": null
         }
       ],
-      "bulletin_no": "1.网店商铺名称：菜阿婆（恒大绿洲店）\n网店网址：美团（手机App）\n2.异议不认可",
+      "bulletin_no": "山东-2026-1期",
       "inst": "深圳市计量质量检测研究院",
       "_canonical_orig": "柑、橘",
       "id": "r0428",
       "big_category_id": "fruits",
-      "subcategory_id": "fruits-citrus"
+      "subcategory_id": "fruits-citrus",
+      "bulletin_no_orig": "1.网店商铺名称：菜阿婆（恒大绿洲店）\n网店网址：美团（手机App）\n2.异议不认可",
+      "sample_channel": "网店商铺名称：菜阿婆（恒大绿洲店）\n网店网址：美团（手机App）\n2.异议不认可"
     },
     {
       "source": "山东",
