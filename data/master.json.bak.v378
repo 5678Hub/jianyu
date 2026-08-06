@@ -1,13 +1,13 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-06 12:44:04+08:00",
+    "last_updated": "2026-08-06 11:52:25+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
     "origin": "jianyu 食品安全抽检风险查询",
     "record_count": 712,
-    "by_canonical_count": 371,
+    "by_canonical_count": 367,
     "by_category_count": 31,
     "by_item_count": 154,
     "project_weight_count": 45,
@@ -36,8 +36,8 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-06 12:44:04+08:00",
-    "data_version": "2026.08.06.1244"
+    "index_rebuilt": "2026-08-06 11:52:25+08:00",
+    "data_version": "2026.08.06.1152"
   },
   "records": [
     {
@@ -1133,7 +1133,7 @@
     {
       "source": "山东",
       "food_name_raw": "云雾绿茶",
-      "food_name_canonical": "云雾绿茶",
+      "food_name_canonical": "绿茶、红茶、乌龙茶、黄茶、白茶、黑茶、花茶、袋泡茶、紧压茶",
       "big_category": "茶叶及相关制品",
       "sub_category": "茶叶及相关制品-茶叶",
       "category": "饮料-茶饮料",
@@ -1147,22 +1147,19 @@
         {
           "item": "乙酰甲胺磷",
           "result": "0.17mg/kg",
-          "limit": "≤0.05mg/kg",
-          "limit_normalized": "≤0.05mg/kg",
+          "limit": "≤0.05mg/kg\n复检结果：乙酰甲胺磷",
+          "limit_normalized": "≤0.05mg/kg\n复检结果：乙酰甲胺磷",
           "result_normalized": "0.17mg/kg",
           "big_category_id": "tea_related_products",
           "subcategory_id": "tea_related_products-tea",
-          "table_id": null,
-          "_limit_orig": "≤0.05mg/kg\n复检结果：乙酰甲胺磷",
-          "_limit_normalized_orig": "≤0.05mg/kg\n复检结果：乙酰甲胺磷"
+          "table_id": null
         }
       ],
       "bulletin_no": "2026.07.08",
       "inst": "2026年第17期",
       "id": "r0036",
       "big_category_id": "tea_related_products",
-      "subcategory_id": "tea_related_products-tea",
-      "_food_name_canonical_orig": "绿茶、红茶、乌龙茶、黄茶、白茶、黑茶、花茶、袋泡茶、紧压茶"
+      "subcategory_id": "tea_related_products-tea"
     },
     {
       "source": "山东",
@@ -1244,14 +1241,12 @@
         {
           "item": "氧乐果",
           "result": "0.19mg/kg",
-          "limit": "≤0.02mg/kg",
-          "limit_normalized": "≤0.02mg/kg",
+          "limit": "≤0.02mg/kg复检结果：氧乐果",
+          "limit_normalized": "≤0.02mg/kg复检结果：氧乐果",
           "result_normalized": "0.19mg/kg",
           "big_category_id": "vegetables",
           "subcategory_id": "vegetables-celery",
-          "table_id": null,
-          "_limit_orig": "≤0.02mg/kg复检结果：氧乐果",
-          "_limit_normalized_orig": "≤0.02mg/kg复检结果：氧乐果"
+          "table_id": null
         }
       ],
       "bulletin_no": "2026.07.08",
@@ -1821,14 +1816,12 @@
         {
           "item": "过氧化值",
           "result": "0.30g/100g",
-          "limit": "≤0.25g/100g",
-          "limit_normalized": "≤0.25g/100g",
+          "limit": "≤0.25g/100g\n复检结果：过氧化值",
+          "limit_normalized": "≤0.25g/100g\n复检结果：过氧化值",
           "result_normalized": "0.30g/100g",
           "big_category_id": "seasonings",
           "subcategory_id": "seasonings-spice_seasoning_oil",
-          "table_id": null,
-          "_limit_orig": "≤0.25g/100g\n复检结果：过氧化值",
-          "_limit_normalized_orig": "≤0.25g/100g\n复检结果：过氧化值"
+          "table_id": null
         }
       ],
       "bulletin_no": "复检不合格",
@@ -2107,7 +2100,7 @@
     {
       "source": "山东",
       "food_name_raw": "葡式蛋挞皮（速冻食品）",
-      "food_name_canonical": "葡式蛋挞皮",
+      "food_name_canonical": "速冻面米生制品",
       "big_category": "速冻食品",
       "sub_category": "速冻食品-速冻面米食品",
       "category": "速冻食品",
@@ -2121,21 +2114,18 @@
         {
           "item": "过氧化值(以脂肪计)",
           "result": "0.71g/100g",
-          "limit": "≤0.25g/100g",
-          "limit_normalized": "≤0.25g/100g",
+          "limit": "≤0.25g/100g\n复检结果：过氧化值(以脂肪计)",
+          "limit_normalized": "≤0.25g/100g\n复检结果：过氧化值(以脂肪计)",
           "result_normalized": "0.71g/100g",
           "big_category_id": "frozen_food",
           "subcategory_id": "frozen_food-frozen_dough_rice_food",
-          "table_id": null,
-          "_limit_orig": "≤0.25g/100g\n复检结果：过氧化值(以脂肪计)",
-          "_limit_normalized_orig": "≤0.25g/100g\n复检结果：过氧化值(以脂肪计)"
+          "table_id": null
         }
       ],
       "bulletin_no": "复检不合格",
       "id": "r0066",
       "big_category_id": "frozen_food",
-      "subcategory_id": "frozen_food-frozen_dough_rice_food",
-      "_food_name_canonical_orig": "速冻面米生制品"
+      "subcategory_id": "frozen_food-frozen_dough_rice_food"
     },
     {
       "source": "山东",
@@ -2459,14 +2449,12 @@
         {
           "item": "防腐剂混合使用时各自用量占其最大使用量的比例之和",
           "result": "1.08",
-          "limit": "≤1",
-          "limit_normalized": "≤1",
+          "limit": "≤1\n复检结果：防腐剂混合使用时各自用量占其最大使用量的比例之和",
+          "limit_normalized": "≤1\n复检结果：防腐剂混合使用时各自用量占其最大使用量的比例之和",
           "result_normalized": "1.08",
           "big_category_id": "pastries",
           "subcategory_id": "pastries-pastries",
-          "table_id": null,
-          "_limit_orig": "≤1\n复检结果：防腐剂混合使用时各自用量占其最大使用量的比例之和",
-          "_limit_normalized_orig": "≤1\n复检结果：防腐剂混合使用时各自用量占其最大使用量的比例之和"
+          "table_id": null
         }
       ],
       "bulletin_no": "复检不合格",
@@ -3994,14 +3982,12 @@
         {
           "item": "阿维菌素",
           "result": "0.23mg/kg",
-          "limit": "≤0.05mg/kg",
-          "limit_normalized": "≤0.05mg/kg",
+          "limit": "≤0.05mg/kg\n复检结果：阿维菌素",
+          "limit_normalized": "≤0.05mg/kg\n复检结果：阿维菌素",
           "result_normalized": "0.23mg/kg",
           "big_category_id": "vegetables",
           "subcategory_id": "vegetables-leek",
-          "table_id": null,
-          "_limit_orig": "≤0.05mg/kg\n复检结果：阿维菌素",
-          "_limit_normalized_orig": "≤0.05mg/kg\n复检结果：阿维菌素"
+          "table_id": null
         }
       ],
       "bulletin_no": "山东-2026-9期",
@@ -4147,14 +4133,12 @@
         {
           "item": "赤藓红",
           "result": "0.120g/kg",
-          "limit": "≤0.05g/kg",
-          "limit_normalized": "≤0.05g/kg",
+          "limit": "≤0.05g/kg 复检结果：赤藓红",
+          "limit_normalized": "≤0.05g/kg 复检结果：赤藓红",
           "result_normalized": "0.120g/kg",
           "big_category_id": "confectionery",
           "subcategory_id": "confectionery-candy",
-          "table_id": null,
-          "_limit_orig": "≤0.05g/kg 复检结果：赤藓红",
-          "_limit_normalized_orig": "≤0.05g/kg 复检结果：赤藓红"
+          "table_id": null
         }
       ],
       "bulletin_no": "山东-2026-9期",
@@ -4359,14 +4343,12 @@
         {
           "item": "山梨酸及其钾盐(以山梨酸计)",
           "result": "1.52g/kg",
-          "limit": "不得使用",
-          "limit_normalized": "不得使用",
+          "limit": "不得使用 复检结果：山梨酸及其钾盐(以山梨酸计)",
+          "limit_normalized": "不得使用 复检结果：山梨酸及其钾盐(以山梨酸计)",
           "result_normalized": "1.52g/kg",
           "big_category_id": "frozen_food",
           "subcategory_id": "frozen_food-frozen_animal_aquatic_products",
-          "table_id": null,
-          "_limit_orig": "不得使用 复检结果：山梨酸及其钾盐(以山梨酸计)",
-          "_limit_normalized_orig": "不得使用 复检结果：山梨酸及其钾盐(以山梨酸计)"
+          "table_id": null
         }
       ],
       "bulletin_no": "山东-2026-9期",
@@ -4678,14 +4660,12 @@
         {
           "item": "过氧化值(以脂肪计)",
           "result": "0.29g/100g",
-          "limit": "≤0.25g/100g",
-          "limit_normalized": "≤0.25g/100g",
+          "limit": "≤0.25g/100g\n复检结果：过氧化值(以脂肪计)",
+          "limit_normalized": "≤0.25g/100g\n复检结果：过氧化值(以脂肪计)",
           "result_normalized": "0.29g/100g",
           "big_category_id": "pastries",
           "subcategory_id": "pastries-pastries",
-          "table_id": null,
-          "_limit_orig": "≤0.25g/100g\n复检结果：过氧化值(以脂肪计)",
-          "_limit_normalized_orig": "≤0.25g/100g\n复检结果：过氧化值(以脂肪计)"
+          "table_id": null
         }
       ],
       "bulletin_no": "复检不合格",
@@ -5085,14 +5065,12 @@
         {
           "item": "吡唑醚菌酯",
           "result": "0.066mg/kg",
-          "limit": "≤0.05mg/kg",
-          "limit_normalized": "≤0.05mg/kg",
+          "limit": "≤0.05mg/kg\n初检结果：吡唑醚菌酯",
+          "limit_normalized": "≤0.05mg/kg\n初检结果：吡唑醚菌酯",
           "result_normalized": "0.066mg/kg",
           "big_category_id": "fruits",
           "subcategory_id": "fruits-mango",
-          "table_id": null,
-          "_limit_orig": "≤0.05mg/kg\n初检结果：吡唑醚菌酯",
-          "_limit_normalized_orig": "≤0.05mg/kg\n初检结果：吡唑醚菌酯"
+          "table_id": null
         }
       ],
       "bulletin_no": "复检不合格",
@@ -6722,7 +6700,7 @@
     {
       "source": "山东",
       "food_name_raw": "黑木耳（蔬菜制品）",
-      "food_name_canonical": "黑木耳",
+      "food_name_canonical": "干制食用菌",
       "big_category": "蔬菜制品",
       "sub_category": "蔬菜制品-蔬菜干制品",
       "category": "蔬菜制品-其他蔬菜制品",
@@ -6736,21 +6714,18 @@
         {
           "item": "镉(以Cd计)(干重计)",
           "result": "0.696mg/kg",
-          "limit": "≤0.5mg/kg",
-          "limit_normalized": "≤0.5mg/kg",
+          "limit": "≤0.5mg/kg复检结果：镉(以Cd计)(干重计)",
+          "limit_normalized": "≤0.5mg/kg复检结果：镉(以Cd计)(干重计)",
           "result_normalized": "0.696mg/kg",
           "big_category_id": "vegetable_products_processed",
           "subcategory_id": "vegetable_products_processed-dried_vegetable_products",
-          "table_id": null,
-          "_limit_orig": "≤0.5mg/kg复检结果：镉(以Cd计)(干重计)",
-          "_limit_normalized_orig": "≤0.5mg/kg复检结果：镉(以Cd计)(干重计)"
+          "table_id": null
         }
       ],
       "bulletin_no": "",
       "id": "r0211",
       "big_category_id": "vegetable_products_processed",
-      "subcategory_id": "vegetable_products_processed-dried_vegetable_products",
-      "_food_name_canonical_orig": "干制食用菌"
+      "subcategory_id": "vegetable_products_processed-dried_vegetable_products"
     },
     {
       "source": "山东",
@@ -8767,14 +8742,12 @@
         {
           "item": "黄曲霉毒素B₁",
           "result": "63.8µg/kg",
-          "limit": "≤20µg/kg",
-          "limit_normalized": "≤20µg/kg",
+          "limit": "≤20µg/kg复检结果：黄曲霉毒素B₁",
+          "limit_normalized": "≤20µg/kg复检结果：黄曲霉毒素B₁",
           "result_normalized": "63.8µg/kg",
           "big_category_id": "raw_dried_seeds_nuts",
           "subcategory_id": "raw_dried_seeds_nuts-raw_dried_seeds_nuts",
-          "table_id": null,
-          "_limit_orig": "≤20µg/kg复检结果：黄曲霉毒素B₁",
-          "_limit_normalized_orig": "≤20µg/kg复检结果：黄曲霉毒素B₁"
+          "table_id": null
         }
       ],
       "bulletin_no": "山东-2026-10期",
@@ -8979,14 +8952,12 @@
         {
           "item": "脱氢乙酸及其钠盐（以脱氢乙酸计)",
           "result": "0.0740g/kg",
-          "limit": "不得使用",
-          "limit_normalized": "不得使用",
+          "limit": "不得使用复检结果：脱氢乙酸及其钠盐（以脱氢乙酸计)",
+          "limit_normalized": "不得使用复检结果：脱氢乙酸及其钠盐（以脱氢乙酸计)",
           "result_normalized": "0.0740g/kg",
           "big_category_id": "cereal_products",
           "subcategory_id": "cereal_products-other_cereal_powder_products",
-          "table_id": null,
-          "_limit_orig": "不得使用复检结果：脱氢乙酸及其钠盐（以脱氢乙酸计)",
-          "_limit_normalized_orig": "不得使用复检结果：脱氢乙酸及其钠盐（以脱氢乙酸计)"
+          "table_id": null
         }
       ],
       "bulletin_no": "山东-2026-10期",
@@ -9216,7 +9187,7 @@
     {
       "source": "山东",
       "food_name_raw": "香葱麻花（烧烤味）",
-      "food_name_canonical": "香葱麻花",
+      "food_name_canonical": "含油型膨化食品和非含油型膨化食品",
       "big_category": "餐饮食品",
       "sub_category": "餐饮食品-自制油炸面制品",
       "category": "餐饮食品-自制油炸面制品",
@@ -9230,21 +9201,18 @@
         {
           "item": "过氧化值(以脂肪计)",
           "result": "0.31g/100g",
-          "limit": "≤0.25g/100g",
-          "limit_normalized": "≤0.25g/100g",
+          "limit": "≤0.25g/100g复检结果：过氧化值(以脂肪计)",
+          "limit_normalized": "≤0.25g/100g复检结果：过氧化值(以脂肪计)",
           "result_normalized": "0.31g/100g",
           "big_category_id": "restaurant_food",
           "subcategory_id": "restaurant_food-self_made_fried_dough_products",
-          "table_id": null,
-          "_limit_orig": "≤0.25g/100g复检结果：过氧化值(以脂肪计)",
-          "_limit_normalized_orig": "≤0.25g/100g复检结果：过氧化值(以脂肪计)"
+          "table_id": null
         }
       ],
       "bulletin_no": "山东-2026-14期",
       "id": "r0289",
       "big_category_id": "restaurant_food",
-      "subcategory_id": "restaurant_food-self_made_fried_dough_products",
-      "_food_name_canonical_orig": "含油型膨化食品和非含油型膨化食品"
+      "subcategory_id": "restaurant_food-self_made_fried_dough_products"
     },
     {
       "source": "山东",
@@ -9957,14 +9925,12 @@
         {
           "item": "镉(以Cd计)",
           "result": "0.183mg/kg",
-          "limit": "≤0.1mg/kg",
-          "limit_normalized": "≤0.1mg/kg",
+          "limit": "≤0.1mg/kg\n复检结果：镉(以Cd计)",
+          "limit_normalized": "≤0.1mg/kg\n复检结果：镉(以Cd计)",
           "result_normalized": "0.183mg/kg",
           "big_category_id": "aquatic_products",
           "subcategory_id": "aquatic_products-marine_fish",
-          "table_id": null,
-          "_limit_orig": "≤0.1mg/kg\n复检结果：镉(以Cd计)",
-          "_limit_normalized_orig": "≤0.1mg/kg\n复检结果：镉(以Cd计)"
+          "table_id": null
         }
       ],
       "bulletin_no": "山东-2026-14期",
@@ -11205,7 +11171,7 @@
     {
       "source": "山东",
       "food_name_raw": "天然深层山泉水",
-      "food_name_canonical": "饮用天然矿泉水",
+      "food_name_canonical": "其他类饮用水",
       "big_category": "饮料",
       "sub_category": "饮料-饮用天然矿泉水",
       "category": "饮料-包装饮用水",
@@ -11219,22 +11185,19 @@
         {
           "item": "亚硝酸盐（以NO₂⁻计)",
           "result": "0.0090mg/L",
-          "limit": "≤0.005mg/L",
-          "limit_normalized": "≤0.005mg/L",
+          "limit": "≤0.005mg/L\n复检结果：亚硝酸盐（以NO₂⁻计)",
+          "limit_normalized": "≤0.005mg/L\n复检结果：亚硝酸盐（以NO₂⁻计)",
           "result_normalized": "0.0090mg/L",
           "big_category_id": "beverages",
           "subcategory_id": "beverages-natural_mineral_water",
-          "table_id": null,
-          "_limit_orig": "≤0.005mg/L\n复检结果：亚硝酸盐（以NO₂⁻计)",
-          "_limit_normalized_orig": "≤0.005mg/L\n复检结果：亚硝酸盐（以NO₂⁻计)"
+          "table_id": null
         }
       ],
       "bulletin_no": "1.网店商铺名称：鲁山山泉天然弱碱性泉水\n网店网址：抖音（手机App）\n2.复检不合格",
       "inst": "初检机构：青岛市华测检测技术有限公司\n复检机构：青岛海关技术中心",
       "id": "r0350",
       "big_category_id": "beverages",
-      "subcategory_id": "beverages-natural_mineral_water",
-      "_food_name_canonical_orig": "其他类饮用水"
+      "subcategory_id": "beverages-natural_mineral_water"
     },
     {
       "source": "山东",
@@ -11634,8 +11597,8 @@
       "source": "山东",
       "food_name_raw": "煎饼（玉米味）",
       "food_name_canonical": "煎饼",
-      "big_category": "粮食加工品",
-      "sub_category": "粮食加工品-其他谷物粉类制成品",
+      "big_category": "糕点",
+      "sub_category": "糕点-糕点",
       "category": "糕点",
       "sampler_name": "泰安永大食品有限公司",
       "sampler_addr": "山东省泰安市岱岳区粥店街道光彩大市场四区",
@@ -11647,26 +11610,20 @@
         {
           "item": "山梨酸及其钾盐(以山梨酸计)",
           "result": "0.670g/kg",
-          "limit": "不得使用",
-          "limit_normalized": "不得使用",
+          "limit": "不得使用\n复检结果：山梨酸及其钾盐(以山梨酸计)",
+          "limit_normalized": "不得使用\n复检结果：山梨酸及其钾盐(以山梨酸计)",
           "result_normalized": "0.670g/kg",
-          "big_category_id": "cereal_products",
-          "subcategory_id": "cereal_products-other_cereal_powder_products",
-          "table_id": null,
-          "_limit_orig": "不得使用\n复检结果：山梨酸及其钾盐(以山梨酸计)",
-          "_limit_normalized_orig": "不得使用\n复检结果：山梨酸及其钾盐(以山梨酸计)"
+          "big_category_id": "pastries",
+          "subcategory_id": "pastries-pastries",
+          "table_id": null
         }
       ],
       "bulletin_no": "1.网店商铺名称：永大食品专营店\n网店网址：拼多多（手机App）\n2.复检不合格",
       "inst": "初检机构：山东省食品药品检验研究院\n复检机构：山东省产品质量检验研究院/国家加工食品质量检验检测中心（山东）",
       "_canonical_orig": "其他谷物粉类制成品",
       "id": "r0363",
-      "big_category_id": "cereal_products",
-      "subcategory_id": "cereal_products-other_cereal_powder_products",
-      "_sub_category_orig": "糕点-糕点",
-      "_subcategory_id_orig": "pastries-pastries",
-      "_big_category_orig": "糕点",
-      "_big_category_id_orig": "pastries"
+      "big_category_id": "pastries",
+      "subcategory_id": "pastries-pastries"
     },
     {
       "source": "山东",
@@ -11944,14 +11901,12 @@
         {
           "item": "铝的残留量(以即食海蜇中Al计)",
           "result": "1.04x10³mg/kg",
-          "limit": "≤500mg/kg",
-          "limit_normalized": "≤500mg/kg",
+          "limit": "≤500mg/kg\n复检结果：铝的残留量(以即食海蜇中Al计)",
+          "limit_normalized": "≤500mg/kg\n复检结果：铝的残留量(以即食海蜇中Al计)",
           "result_normalized": "1.04x10³mg/kg",
           "big_category_id": "aquatic_products_processed",
           "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
-          "table_id": null,
-          "_limit_orig": "≤500mg/kg\n复检结果：铝的残留量(以即食海蜇中Al计)",
-          "_limit_normalized_orig": "≤500mg/kg\n复检结果：铝的残留量(以即食海蜇中Al计)"
+          "table_id": null
         }
       ],
       "bulletin_no": "复检不合格",
@@ -12288,14 +12243,12 @@
         {
           "item": "过氧化值（以脂肪计)",
           "result": "0.80g/100g",
-          "limit": "≤0.25g/100g",
-          "limit_normalized": "≤0.25g/100g",
+          "limit": "≤0.25g/100g\n复检结果：过氧化值（以脂肪计)",
+          "limit_normalized": "≤0.25g/100g\n复检结果：过氧化值（以脂肪计)",
           "result_normalized": "0.80g/100g",
           "big_category_id": "pastries",
           "subcategory_id": "pastries-pastries",
-          "table_id": null,
-          "_limit_orig": "≤0.25g/100g\n复检结果：过氧化值（以脂肪计)",
-          "_limit_normalized_orig": "≤0.25g/100g\n复检结果：过氧化值（以脂肪计)"
+          "table_id": null
         }
       ],
       "bulletin_no": "复检不合格",
@@ -14118,7 +14071,7 @@
     {
       "source": "山东",
       "food_name_raw": "糖姜片",
-      "food_name_canonical": "糖姜片",
+      "food_name_canonical": "蜜饯类、凉果类、果脯类、话化类、果糕类",
       "big_category": "糖果制品",
       "sub_category": "糖果制品-果脯蜜饯",
       "category": "糖果制品-果脯蜜饯",
@@ -14132,21 +14085,18 @@
         {
           "item": "二氧化硫残留量",
           "result": "0.419g/kg",
-          "limit": "≤0.35g/kg",
-          "limit_normalized": "≤0.35g/kg",
+          "limit": "≤0.35g/kg复检结果：二氧化硫残留量",
+          "limit_normalized": "≤0.35g/kg复检结果：二氧化硫残留量",
           "result_normalized": "0.419g/kg",
           "big_category_id": "confectionery",
           "subcategory_id": "confectionery-preserved_fruit_candied",
-          "table_id": null,
-          "_limit_orig": "≤0.35g/kg复检结果：二氧化硫残留量",
-          "_limit_normalized_orig": "≤0.35g/kg复检结果：二氧化硫残留量"
+          "table_id": null
         }
       ],
       "bulletin_no": "山东-2026-13期-你点我检",
       "id": "r0441",
       "big_category_id": "confectionery",
-      "subcategory_id": "confectionery-preserved_fruit_candied",
-      "_food_name_canonical_orig": "蜜饯类、凉果类、果脯类、话化类、果糕类"
+      "subcategory_id": "confectionery-preserved_fruit_candied"
     },
     {
       "source": "山东",
@@ -23755,16 +23705,18 @@
         "四季豆"
       ]
     },
-    "云雾绿茶": {
+    "绿茶、红茶、乌龙茶、黄茶、白茶、黑茶、花茶、袋泡茶、紧压茶": {
       "ids": [
-        "r0036"
+        "r0036",
+        "r0089"
       ],
-      "count": 1,
+      "count": 2,
       "big_categories": [
         "茶叶及相关制品"
       ],
       "food_names": [
-        "云雾绿茶"
+        "云雾绿茶",
+        "碧螺春二号"
       ]
     },
     "100%石榴汁": {
@@ -24076,9 +24028,10 @@
         "r0192",
         "r0244",
         "r0296",
-        "r0330"
+        "r0330",
+        "r0350"
       ],
-      "count": 8,
+      "count": 9,
       "big_categories": [
         "饮料"
       ],
@@ -24086,6 +24039,7 @@
         "包装饮用水",
         "圣公源泉桶装饮用水",
         "天然山泉水",
+        "天然深层山泉水",
         "平利山泉水",
         "桶装饮用水",
         "饮用天然水",
@@ -24107,11 +24061,12 @@
         "小磨香油"
       ]
     },
-    "葡式蛋挞皮": {
+    "速冻面米生制品": {
       "ids": [
-        "r0066"
+        "r0066",
+        "r0144"
       ],
-      "count": 1,
+      "count": 2,
       "big_categories": [
         "速冻食品"
       ],
@@ -24189,9 +24144,10 @@
         "r0072",
         "r0223",
         "r0332",
-        "r0417"
+        "r0417",
+        "r0441"
       ],
-      "count": 4,
+      "count": 5,
       "big_categories": [
         "水果制品",
         "糖果制品"
@@ -24200,6 +24156,7 @@
         "山楂片（干片）",
         "无核蜜枣（果脯类）",
         "玫瑰蜜酱（蜜饯）（蜜饯类）",
+        "糖姜片",
         "雪丽球（蜜饯（果糕类））"
       ]
     },
@@ -24328,18 +24285,6 @@
       ],
       "food_names": [
         "自消毒餐盘"
-      ]
-    },
-    "绿茶、红茶、乌龙茶、黄茶、白茶、黑茶、花茶、袋泡茶、紧压茶": {
-      "ids": [
-        "r0089"
-      ],
-      "count": 1,
-      "big_categories": [
-        "茶叶及相关制品"
-      ],
-      "food_names": [
-        "碧螺春二号"
       ]
     },
     "白不老豆角": {
@@ -24687,18 +24632,6 @@
         "馒头"
       ]
     },
-    "速冻面米生制品": {
-      "ids": [
-        "r0144"
-      ],
-      "count": 1,
-      "big_categories": [
-        "速冻食品"
-      ],
-      "food_names": [
-        "葡式蛋挞皮（速冻食品）"
-      ]
-    },
     "鲜面条": {
       "ids": [
         "r0145",
@@ -25038,7 +24971,7 @@
         "自消毒盘子"
       ]
     },
-    "黑木耳": {
+    "干制食用菌": {
       "ids": [
         "r0211"
       ],
@@ -25654,7 +25587,7 @@
         "圆碗（直径17.5cm）"
       ]
     },
-    "香葱麻花": {
+    "含油型膨化食品和非含油型膨化食品": {
       "ids": [
         "r0289"
       ],
@@ -26069,18 +26002,6 @@
         "巧和风（黑松露巧克力味夹心福团）"
       ]
     },
-    "饮用天然矿泉水": {
-      "ids": [
-        "r0350"
-      ],
-      "count": 1,
-      "big_categories": [
-        "饮料"
-      ],
-      "food_names": [
-        "天然深层山泉水"
-      ]
-    },
     "桑葚": {
       "ids": [
         "r0353",
@@ -26138,7 +26059,7 @@
       ],
       "count": 1,
       "big_categories": [
-        "粮食加工品"
+        "糕点"
       ],
       "food_names": [
         "煎饼（玉米味）"
@@ -26506,18 +26427,6 @@
       ],
       "food_names": [
         "小白嘴山药"
-      ]
-    },
-    "糖姜片": {
-      "ids": [
-        "r0441"
-      ],
-      "count": 1,
-      "big_categories": [
-        "糖果制品"
-      ],
-      "food_names": [
-        "糖姜片"
       ]
     },
     "水仙芒": {
@@ -28644,7 +28553,6 @@
         "r0250",
         "r0281",
         "r0305",
-        "r0363",
         "r0375",
         "r0561",
         "r0607",
@@ -28656,13 +28564,12 @@
         "r0670",
         "r0681"
       ],
-      "count": 20,
+      "count": 19,
       "foods": [
         "冷面（生湿面制品）",
         "包子",
         "多彩蝴蝶面（粮食加工品）",
         "桑叶挂面（花色挂面）",
-        "煎饼（玉米味）",
         "碱水面（凉面）",
         "碱面",
         "碱面（挂面）",
@@ -28917,6 +28824,7 @@
         "r0340",
         "r0348",
         "r0361",
+        "r0363",
         "r0383",
         "r0389",
         "r0391",
@@ -28929,7 +28837,7 @@
         "r0690",
         "r0700"
       ],
-      "count": 28,
+      "count": 29,
       "foods": [
         "五仁月饼",
         "元宝蛋糕",
@@ -28945,6 +28853,7 @@
         "武大煎饼（香酥花生味）",
         "江米条（油炸类）",
         "焦饼（原味）",
+        "煎饼（玉米味）",
         "白糕",
         "红豆奶皮烧饼",
         "老蛋糕",
@@ -33384,16 +33293,18 @@
           "四季豆"
         ]
       },
-      "云雾绿茶": {
+      "绿茶、红茶、乌龙茶、黄茶、白茶、黑茶、花茶、袋泡茶、紧压茶": {
         "ids": [
-          "r0036"
+          "r0036",
+          "r0089"
         ],
-        "count": 1,
+        "count": 2,
         "big_categories": [
           "茶叶及相关制品"
         ],
         "food_names": [
-          "云雾绿茶"
+          "云雾绿茶",
+          "碧螺春二号"
         ]
       },
       "100%石榴汁": {
@@ -33705,9 +33616,10 @@
           "r0192",
           "r0244",
           "r0296",
-          "r0330"
+          "r0330",
+          "r0350"
         ],
-        "count": 8,
+        "count": 9,
         "big_categories": [
           "饮料"
         ],
@@ -33715,6 +33627,7 @@
           "包装饮用水",
           "圣公源泉桶装饮用水",
           "天然山泉水",
+          "天然深层山泉水",
           "平利山泉水",
           "桶装饮用水",
           "饮用天然水",
@@ -33736,11 +33649,12 @@
           "小磨香油"
         ]
       },
-      "葡式蛋挞皮": {
+      "速冻面米生制品": {
         "ids": [
-          "r0066"
+          "r0066",
+          "r0144"
         ],
-        "count": 1,
+        "count": 2,
         "big_categories": [
           "速冻食品"
         ],
@@ -33818,9 +33732,10 @@
           "r0072",
           "r0223",
           "r0332",
-          "r0417"
+          "r0417",
+          "r0441"
         ],
-        "count": 4,
+        "count": 5,
         "big_categories": [
           "水果制品",
           "糖果制品"
@@ -33829,6 +33744,7 @@
           "山楂片（干片）",
           "无核蜜枣（果脯类）",
           "玫瑰蜜酱（蜜饯）（蜜饯类）",
+          "糖姜片",
           "雪丽球（蜜饯（果糕类））"
         ]
       },
@@ -33957,18 +33873,6 @@
         ],
         "food_names": [
           "自消毒餐盘"
-        ]
-      },
-      "绿茶、红茶、乌龙茶、黄茶、白茶、黑茶、花茶、袋泡茶、紧压茶": {
-        "ids": [
-          "r0089"
-        ],
-        "count": 1,
-        "big_categories": [
-          "茶叶及相关制品"
-        ],
-        "food_names": [
-          "碧螺春二号"
         ]
       },
       "白不老豆角": {
@@ -34316,18 +34220,6 @@
           "馒头"
         ]
       },
-      "速冻面米生制品": {
-        "ids": [
-          "r0144"
-        ],
-        "count": 1,
-        "big_categories": [
-          "速冻食品"
-        ],
-        "food_names": [
-          "葡式蛋挞皮（速冻食品）"
-        ]
-      },
       "鲜面条": {
         "ids": [
           "r0145",
@@ -34667,7 +34559,7 @@
           "自消毒盘子"
         ]
       },
-      "黑木耳": {
+      "干制食用菌": {
         "ids": [
           "r0211"
         ],
@@ -35283,7 +35175,7 @@
           "圆碗（直径17.5cm）"
         ]
       },
-      "香葱麻花": {
+      "含油型膨化食品和非含油型膨化食品": {
         "ids": [
           "r0289"
         ],
@@ -35698,18 +35590,6 @@
           "巧和风（黑松露巧克力味夹心福团）"
         ]
       },
-      "饮用天然矿泉水": {
-        "ids": [
-          "r0350"
-        ],
-        "count": 1,
-        "big_categories": [
-          "饮料"
-        ],
-        "food_names": [
-          "天然深层山泉水"
-        ]
-      },
       "桑葚": {
         "ids": [
           "r0353",
@@ -35767,7 +35647,7 @@
         ],
         "count": 1,
         "big_categories": [
-          "粮食加工品"
+          "糕点"
         ],
         "food_names": [
           "煎饼（玉米味）"
@@ -36135,18 +36015,6 @@
         ],
         "food_names": [
           "小白嘴山药"
-        ]
-      },
-      "糖姜片": {
-        "ids": [
-          "r0441"
-        ],
-        "count": 1,
-        "big_categories": [
-          "糖果制品"
-        ],
-        "food_names": [
-          "糖姜片"
         ]
       },
       "水仙芒": {
@@ -38273,7 +38141,6 @@
           "r0250",
           "r0281",
           "r0305",
-          "r0363",
           "r0375",
           "r0561",
           "r0607",
@@ -38285,13 +38152,12 @@
           "r0670",
           "r0681"
         ],
-        "count": 20,
+        "count": 19,
         "foods": [
           "冷面（生湿面制品）",
           "包子",
           "多彩蝴蝶面（粮食加工品）",
           "桑叶挂面（花色挂面）",
-          "煎饼（玉米味）",
           "碱水面（凉面）",
           "碱面",
           "碱面（挂面）",
@@ -38546,6 +38412,7 @@
           "r0340",
           "r0348",
           "r0361",
+          "r0363",
           "r0383",
           "r0389",
           "r0391",
@@ -38558,7 +38425,7 @@
           "r0690",
           "r0700"
         ],
-        "count": 28,
+        "count": 29,
         "foods": [
           "五仁月饼",
           "元宝蛋糕",
@@ -38574,6 +38441,7 @@
           "武大煎饼（香酥花生味）",
           "江米条（油炸类）",
           "焦饼（原味）",
+          "煎饼（玉米味）",
           "白糕",
           "红豆奶皮烧饼",
           "老蛋糕",
