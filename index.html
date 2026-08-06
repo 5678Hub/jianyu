@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>jianyu · 食品抽检风险查询</title>
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='44' font-family='Arial,sans-serif' font-size='30' font-weight='600' fill='white' text-anchor='middle'>JY</text></svg>">
-<link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#1a365d">
 <style>
 :root {
@@ -51,7 +50,7 @@ header.brand .ver { font-size: 11px; color: var(--c-text-2); padding: 5px 12px; 
 .section-title { font-size: 13px; font-weight: 600; color: var(--c-text-1); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
 .section-title .hint { font-size: 12px; color: var(--c-text-3); font-weight: normal; }
 
-input[type="text"] { width: 100%; padding: 10px 14px; border: 1px solid var(--c-border-strong); border-radius: var(--r-sm); font-size: 14px; outline: none; transition: border-color 0.15s, box-shadow 0.15s; background: #fafbfc; color: var(--c-text-1); }
+input[type="text"] { width: 100%; padding: 12px 14px; border: 1px solid var(--c-border-strong); border-radius: var(--r-sm); font-size: 14px; outline: none; transition: border-color 0.15s, box-shadow 0.15s; background: #fafbfc; color: var(--c-text-1); }
 input[type="text"]:focus { border-color: var(--c-primary-2); background: white; box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.1); }
 .input-row { display: flex; gap: 8px; align-items: center; }
 .input-row input { flex: 1; }
@@ -60,19 +59,14 @@ button:hover { background: var(--c-primary-soft); border-color: var(--c-primary-
 button.primary { background: var(--c-primary-2); color: white; border-color: var(--c-primary-2); }
 button.primary:hover { background: var(--c-primary); border-color: var(--c-primary); }
 
-.cat-search { margin-bottom: 12px; }
 .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; max-height: 360px; overflow-y: auto; padding: 4px; }
-.cat-card { padding: 10px 12px; background: #fafbfc; border: 1px solid var(--c-border); border-radius: var(--r-sm); cursor: pointer; transition: all 0.15s; font-size: 13px; line-height: 1.35; color: var(--c-text-1); }
+.cat-card { padding: 10px 12px; background: #fafbfc; border: 1px solid var(--c-border); border-radius: var(--r-sm); cursor: pointer; transition: all 0.15s; font-size: 13px; line-height: 1.35; color: var(--c-text-1); user-select: none; }
 .cat-card:hover { background: var(--c-primary-soft); border-color: var(--c-primary-2); transform: translateY(-1px); }
 .cat-card.selected { background: var(--c-primary-soft); border-color: var(--c-primary-2); box-shadow: 0 0 0 2px rgba(44, 82, 130, 0.15); color: var(--c-primary); font-weight: 500; }
-.cat-card.disabled { opacity: 0.4; cursor: not-allowed; background: #f5f5f5; }
 .cat-card .cat-no { color: var(--c-text-3); font-size: 11px; margin-right: 4px; }
 .cat-card.selected .cat-no { color: var(--c-primary-2); }
 
 .empty-tip { color: var(--c-text-3); font-size: 12px; padding: 8px 0; }
-
-.result-empty { background: var(--c-surface); border-radius: var(--r-md); padding: 32px 20px; text-align: center; color: var(--c-text-3); font-size: 14px; border: 1px solid var(--c-border); }
-.result-empty .icon { font-size: 36px; margin-bottom: 10px; opacity: 0.4; }
 
 .card { background: var(--c-surface); border-radius: var(--r-md); padding: 18px 22px; margin-bottom: 12px; border: 1px solid var(--c-border); box-shadow: var(--shadow-soft); }
 .card-title { font-size: 13px; font-weight: 600; color: var(--c-text-1); margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
@@ -86,54 +80,41 @@ button.primary:hover { background: var(--c-primary); border-color: var(--c-prima
 .risk-cat { background: var(--c-accent-soft); color: var(--c-accent); }
 
 .risk-block { display: flex; align-items: center; gap: 14px; padding: 16px 20px; border-radius: var(--r-md); margin-bottom: 14px; border-left: 4px solid transparent; }
-.risk-block.risk-high, .card.risk-high-block { border-left-color: var(--c-high); }
-.risk-block.risk-mid-high, .card.risk-mid-high-block { border-left-color: var(--c-mid); }
-.risk-block.risk-mid, .card.risk-mid-block { border-left-color: var(--c-warn); }
-.risk-block.risk-low, .card.risk-low-block { border-left-color: #1565c0; }
-.risk-block.risk-none, .card.risk-none-block { border-left-color: var(--c-ok); }
+.risk-block.risk-high { border-left-color: var(--c-high); background: var(--c-high-soft); }
+.risk-block.risk-mid-high { border-left-color: var(--c-mid); background: var(--c-mid-soft); }
+.risk-block.risk-mid { border-left-color: var(--c-warn); background: var(--c-warn-soft); }
+.risk-block.risk-low { border-left-color: #1565c0; background: #e3f2fd; }
+.risk-block.risk-none { border-left-color: var(--c-ok); background: var(--c-ok-soft); }
 .risk-block .emoji { font-size: 30px; }
 .risk-block .label { font-size: 18px; font-weight: 600; }
 .risk-block .score { font-size: 12px; opacity: 0.75; margin-top: 2px; }
+.risk-block .desc { font-size: 12px; color: var(--c-text-2); margin-top: 4px; }
 
 .meta-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
 .meta-tag { background: #f0f3f6; padding: 4px 10px; border-radius: 14px; font-size: 12px; color: var(--c-text-2); }
 .meta-tag strong { color: var(--c-text-1); }
+.meta-tag.must { background: var(--c-high-soft); color: var(--c-high); }
+.meta-tag.warn { background: var(--c-mid-soft); color: var(--c-mid); }
 
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
 th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--c-border); }
 th { background: #fafbfc; color: var(--c-text-2); font-weight: 600; font-size: 12px; }
-tr.detail-row { background: #fafbfc; font-size: 12px; }
-tr.detail-row td { padding: 6px 10px; color: var(--c-text-2); }
 .bad { color: var(--c-high); font-weight: 600; }
 .muted { color: var(--c-text-3); }
 
 ul.checklist { list-style: none; }
-ul.checklist li { padding: 6px 0; padding-left: 18px; position: relative; font-size: 13px; }
+ul.checklist li { padding: 6px 0; padding-left: 22px; position: relative; font-size: 13px; }
 ul.checklist li::before { content: "□"; position: absolute; left: 0; color: var(--c-text-2); }
 ul.checklist li.must::before { content: "⛔"; color: var(--c-high); }
 ul.checklist li.warn::before { content: "⚠"; color: var(--c-mid); }
-ul.checklist li strong { color: var(--c-high); }
 
 .tip-source { font-size: 12px; color: var(--c-text-2); background: #f0f4f8; padding: 8px 12px; border-left: 3px solid #5d8aa8; border-radius: 4px; margin-bottom: 14px; line-height: 1.6; }
 .tip-block { margin-bottom: 14px; padding: 10px 0; border-top: 1px dashed #e0e0e0; }
 .tip-block:first-of-type { border-top: none; }
 .tip-block-title { font-size: 13px; font-weight: 600; color: var(--c-text-1); margin-bottom: 8px; }
-.tip-std-row { margin-top: 8px; font-size: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
-.tip-std-label { color: var(--c-text-2); font-weight: 600; margin-right: 4px; }
 .tip-freq { display: inline-block; margin-left: 8px; padding: 1px 6px; background: var(--c-mid-soft); color: var(--c-mid); border-radius: 3px; font-size: 11px; font-weight: 600; }
 .tip-sev { display: inline-block; margin-left: 4px; padding: 1px 6px; border-radius: 3px; font-size: 11px; font-weight: 600; color: #fff; background: var(--c-high); }
 ul.checklist li.warn .tip-sev { background: var(--c-mid); }
-
-.cat-checkbox { display: inline-block; margin-right: 6px; font-size: 14px; vertical-align: middle; }
-
-.risk-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
-.risk-badge.risk-high { background: var(--c-high); color: #fff; }
-.risk-badge.risk-mid-high { background: var(--c-mid); color: #fff; }
-.risk-badge.risk-mid { background: var(--c-warn); color: #fff; }
-.risk-badge.risk-low { background: var(--c-ok); color: #fff; }
-.risk-badge.risk-none { background: #bdc3c7; color: #fff; }
-
-.tip-cats { display: inline-block; margin-left: 4px; padding: 1px 6px; border-radius: 3px; font-size: 10px; background: #ecf0f1; color: var(--c-text-2); }
 
 .gb-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .gb-chip { background: var(--c-primary-soft); color: var(--c-primary); padding: 3px 8px; border-radius: 10px; font-size: 12px; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
@@ -141,23 +122,8 @@ ul.checklist li.warn .tip-sev { background: var(--c-mid); }
 .actions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
 .actions button { font-size: 12px; padding: 6px 12px; }
 
-.summary-row { display: grid; grid-template-columns: 1.4fr 1.6fr 0.6fr 0.7fr 0.7fr 28px; align-items: center; gap: 10px; padding: 10px 12px; background: #fafbfc; border: 1px solid var(--c-border); border-radius: var(--r-sm); cursor: pointer; transition: all 0.15s; font-size: 13px; }
-.summary-row:hover { background: var(--c-primary-soft); border-color: var(--c-primary-2); }
-.summary-row.open { background: #fff; border-color: var(--c-primary-2); box-shadow: 0 0 0 2px rgba(44, 82, 130, 0.1); }
-.summary-row .sev { padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; text-align: center; }
-.summary-row .sev.sev-high { background: var(--c-high-soft); color: var(--c-high); }
-.summary-row .sev.sev-mid { background: var(--c-mid-soft); color: var(--c-mid); }
-.summary-row .sev.sev-low { background: #e3f2fd; color: #1565c0; }
-.summary-row .arrow { color: var(--c-text-2); font-size: 14px; text-align: right; transition: transform 0.15s; }
-.summary-row.open .arrow { transform: rotate(90deg); color: var(--c-primary-2); }
-.detail-block { margin-top: 6px; padding: 8px 12px 12px 24px; background: #fafbfc; border: 1px solid var(--c-border); border-top: none; border-radius: 0 0 var(--r-sm) var(--r-sm); }
-.detail-block table { background: white; border-radius: 6px; }
-.result-toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; padding: 10px 14px; background: #f0f3f6; border-radius: var(--r-sm); font-size: 12px; color: var(--c-text-2); }
-.result-toolbar .crumb { color: var(--c-text-1); font-weight: 600; }
-.result-toolbar .crumb .key { color: var(--c-text-2); font-weight: normal; }
-
 .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
-.dashboard-cell { background: #fafbfc; padding: 12px 14px; border-radius: var(--r-sm); border-left: 3px solid var(--c-border-strong); font-size: 12px; transition: all 0.15s; }
+.dashboard-cell { background: #fafbfc; padding: 12px 14px; border-radius: var(--r-sm); border-left: 3px solid var(--c-border-strong); font-size: 12px; transition: all 0.15s; cursor: pointer; }
 .dashboard-cell:hover { background: white; border-left-color: var(--c-primary-2); transform: translateY(-1px); box-shadow: var(--shadow-soft); }
 .dashboard-cell .cat-name { font-weight: 600; color: var(--c-text-1); font-size: 13px; margin-bottom: 4px; }
 .dashboard-cell .cat-stats { color: var(--c-text-2); }
@@ -169,6 +135,19 @@ ul.checklist li.warn .tip-sev { background: var(--c-mid); }
 
 footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--c-border); font-size: 11px; color: var(--c-text-3); }
 
+.record-row { display: grid; grid-template-columns: 1.4fr 1.2fr 0.6fr 0.6fr 0.7fr; align-items: center; gap: 8px; padding: 10px 12px; background: #fafbfc; border: 1px solid var(--c-border); border-radius: var(--r-sm); font-size: 13px; margin-bottom: 4px; }
+.record-row .bad { color: var(--c-high); }
+.record-row .sev { padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; text-align: center; }
+.record-row .sev.high { background: var(--c-high-soft); color: var(--c-high); }
+.record-row .sev.mid { background: var(--c-mid-soft); color: var(--c-mid); }
+.record-row .sev.low { background: #e3f2fd; color: #1565c0; }
+
+.summary-block { background: #fafbfc; padding: 8px 12px; margin-bottom: 4px; border-left: 3px solid var(--c-border-strong); font-size: 12px; }
+.summary-block.high { border-left-color: var(--c-high); background: var(--c-high-soft); }
+.summary-block.mid { border-left-color: var(--c-mid); background: var(--c-mid-soft); }
+.summary-block .sum-title { font-weight: 600; color: var(--c-text-1); }
+.summary-block .sum-detail { color: var(--c-text-2); font-size: 11px; margin-top: 2px; }
+
 @media (max-width: 600px) {
   body { padding: 14px 10px; }
   .section { padding: 14px 14px; }
@@ -178,6 +157,8 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
   .risk-block .emoji { font-size: 26px; }
   .risk-block .label { font-size: 16px; }
   header.brand .ver { display: none; }
+  .record-row { grid-template-columns: 1.6fr 1fr 0.5fr; }
+  .record-row .hide-on-mobile { display: none; }
 }
 </style>
 </head>
@@ -190,50 +171,36 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
     <div class="brand-title"><span class="zh">食品抽检风险查询</span></div>
     <div class="subtitle" id="subtitle">加载中…</div>
   </div>
-  <div class="ver">v3.7.20 · 2026</div>
+  <div class="ver">v4.0 · 2026</div>
 </header>
 
+<!-- 主搜索框（核心：单输入框） -->
 <section class="section">
   <div class="section-title">
-    食品名 <span class="hint">（可单独查，留空则按已选类别查）</span>
+    🔍 输入食品名查询 <span class="hint" style="margin-left:auto;">支持模糊匹配 · 输完无需操作，自动出结果</span>
   </div>
   <div class="input-row">
-    <input type="text" id="foodInput" placeholder="如：鸡蛋、桂圆、虾爬子、小笼包…（自由输入，无需从列表选）" autocomplete="off">
-    <button onclick="clearFood()">清空</button>
+    <input type="text" id="qInput" placeholder="例如：鸡蛋、桂圆、虾爬子、铁棍山药、饼干…（自由输入）" autocomplete="off" autofocus>
+    <button class="primary" onclick="forceSearch()">查询</button>
+    <button onclick="clearSearch()">清空</button>
   </div>
-  <div class="input-row" style="margin-top:6px;">
-    <input type="text" id="prodInput" placeholder="或按标称生产单位查（如：双汇、雨润、蒙牛、庆云县…）—— 可与食品名同时填写" autocomplete="off" style="border-color:#8e44ad;">
-    <button onclick="clearProd()">清空</button>
-  </div>
+  <div class="empty-tip" style="margin-top:8px;">💡 <strong>模糊匹配：</strong>输入"山药"可命中"铁棍山药"；输入"饼干"可命中所有饼干类。如需更精确，可点选下方类别卡片缩窄范围。</div>
 </section>
 
+<!-- 类别（可选筛选，不强制） -->
 <section class="section">
   <div class="section-title">
-    类别 <span class="hint" id="catHint">（可单独查，留空则按已输入食品名查）</span>
-    <button onclick="toggleMultiMode()" id="multiModeBtn" style="margin-left:auto;font-size:12px;padding:4px 10px;border:1px solid #3498db;background:#fff;color:#3498db;border-radius:4px;cursor:pointer;">📌 多选对比</button>
+    📂 类别筛选 <span class="hint" style="margin-left:auto;">（可选 · 不选也能查）</span>
     <button onclick="clearCategory()" style="margin-left:8px;font-size:12px;">清空已选</button>
   </div>
-  <div id="multiHint" style="display:none;font-size:12px;color:#2980b9;background:#ebf5fb;padding:6px 12px;border-radius:4px;margin-bottom:8px;">
-    ✨ 多选模式：勾选多个类别后 → 合并看综合风险 + 共同不合格项目 + 综合索证建议（适合横向比较同类目供应商）
-  </div>
-  <input type="text" id="catSearch" class="cat-search" placeholder="🔍 过滤 39 大类（输入关键字）" autocomplete="off">
   <div class="cat-grid" id="catGrid"></div>
 </section>
 
-<section class="section" id="subcatSection" style="display:none;">
-  <div class="section-title">
-    细类 <span class="hint" id="subcatHint">（按 2026 实施细则二级分类）</span>
-    <button onclick="clearSubcategory()" id="clearSubBtn" style="margin-left:auto;font-size:12px;display:none;">清空细类</button>
-  </div>
-  <input type="text" id="subcatSearch" class="cat-search" placeholder="🔍 过滤细类" autocomplete="off" style="display:none;">
-  <div class="cat-grid" id="subcatGrid"></div>
-  <div class="empty-tip" id="noSubcatTip" style="display:none;">本大类在 2026 实施细则中不分细类</div>
-</section>
-
-<div id="result"></div>
+<!-- 结果区 -->
+<section id="result"></section>
 
 <footer class="brand-foot">
-  © 2026 jianyu · 食品抽检风险查询工作台 · 数据源：山东/辽宁/重庆抽检公告
+  数据源：山东 / 辽宁 / 重庆 抽检公告 + GB 2763/2762/2716/29921 + 2026 实施细则 39 大类
 </footer>
 
 </div>
@@ -241,1752 +208,504 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
 <div class="toast" id="toast"></div>
 
 <script>
-const DATA_BASE = 'data/';
+// ============ v4.0.0 最终版 · 核心目标：输入名称直接出结果 ============
+// 状态：去除所有复杂状态机
+// 流程：1) 加载数据 → 2) 输入即查 → 3) 模糊匹配 records → 4) 渲染风险等级 + 明细 + 自检项目
 
-let state = {
-  foodName: '',
-  prodName: '',          // 标称生产单位（可与食品名同时填写，AND 交集）
-  category: '',
-  subcategory: '',
-  multiSelect: false,    // 多选模式开关
-  selectedCats: [],      // 多选模式下的已选类别数组
-  master: null,
-  categoryMap: null,
-  synonyms: null,
-  gbChecklist: null,
-  categories2026: null,
-  categoriesFull: null,  // 旧版细类骨架
-  subcatChecklist: null, // 2026 细则官方检验项目表（255 张）
-  subcatAliases: null,   // 品名→官方细类映射
-  gbAvailableCats: new Set(),
+const state = {
+  records: [],
+  categoryMap: {},      // {大细类: [aliases]}  用于 lookupCategory
+  subcatToItems: {},    // {aliases: {食品名: {big_category, subcategory}}}
+  subcatChecklist: {},  // {categories: {大类: [{name, items: [...]}]}}
+  categories: [],       // [{no, name}]  39 大类
+  q: '',                // 当前查询词
+  selectedCategory: '', // 用户主动点选的类别（可选）
 };
-
-const $ = (sel) => document.querySelector(sel);
-const $$ = (sel) => document.querySelectorAll(sel);
-
-function escapeHtml(s) {
-  if (s == null) return '';
-  return String(s)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
 
 // ============ 数据加载 ============
 async function loadData() {
   try {
-    const [master, categoryMap, synonyms, gbChecklist, categories2026, subcatChecklist, subcatAliases, categoryIds, subcategoryIds, tableIds] = await Promise.all([
-      fetch(DATA_BASE + 'master.json').then(r => r.json()),
-      fetch(DATA_BASE + 'category_map.json').then(r => r.json()),
-      fetch(DATA_BASE + 'synonyms.json').then(r => r.json()),
-      fetch(DATA_BASE + 'current_period/gb_checklist.json').then(r => r.json()),
-      fetch(DATA_BASE + 'categories_2026.json').then(r => r.json()),
-      fetch(DATA_BASE + 'current_period/gb_checklist_subcat.json').then(r => r.json()),
-      fetch(DATA_BASE + 'subcat_to_items.json').then(r => r.json()),
-      fetch(DATA_BASE + 'category_ids.json').then(r => r.json()),
-      fetch(DATA_BASE + 'subcategory_ids.json').then(r => r.json()),
-      fetch(DATA_BASE + 'table_ids.json').then(r => r.json()),
+    const [master, cm, subcatItems, subcatChecklist, categories] = await Promise.all([
+      fetch('data/master.json').then(r => r.json()),
+      fetch('data/category_map.json').then(r => r.json()),
+      fetch('data/subcat_to_items.json').then(r => r.json()),
+      fetch('data/current_period/gb_checklist_subcat.json').then(r => r.json()),
+      fetch('data/categories_2026.json').then(r => r.json()),
     ]);
-    state.master = master;
-    state.categoryMap = categoryMap;
-    state.synonyms = synonyms;
-    state.gbChecklist = gbChecklist;
-    state.categories2026 = categories2026;
-    state.subcatChecklist = subcatChecklist;
-    state.subcatAliases = subcatAliases;
-    state.categoryIds = categoryIds;
-    state.subcategoryIds = subcategoryIds;
-    state.tableIds = tableIds;
-    // ⚠️ schema v1.1：索引只存 record_id，需要 map 才能 lookup
-    state.idToRecord = Object.fromEntries((master.records || []).map(r => [r.id, r]));
-    // ⚠️ schema v1.2：用 id 排序分类（让有共同词根的相邻）
-    state.bigIdOrder = new Map();
-    (categoryIds.categories || []).forEach((c, idx) => state.bigIdOrder.set(c.name, idx));
-    state.gbAvailableCats = new Set(
-      (categories2026.categories || []).filter(c => c.available).map(c => c.name)
-    );
-    document.getElementById('subtitle').textContent =
-      `${master.records.length} 条不合格记录 · ${Object.keys(master.by_canonical || {}).length} 个规范食品名 · 数据源：2026 实施细则 + 山东/辽宁/重庆抽检公告`;
-    renderCats();
-    renderSubcats();
-    render();
-  } catch (e) {
-    console.error('加载失败:', e);
-    document.getElementById('subtitle').innerHTML = '<span style="color:#c62828">数据加载失败</span>';
-  }
-}
-
-// ============ 多选模式切换 ============
-function toggleMultiMode() {
-  state.multiSelect = !state.multiSelect;
-  const btn = document.getElementById('multiModeBtn');
-  const hint = document.getElementById('multiHint');
-  if (state.multiSelect) {
-    // 进入多选：把当前单选（若有）转入 selectedCats
-    if (state.category) state.selectedCats = [state.category];
-    btn.textContent = '✕ 退出多选';
-    btn.style.background = '#3498db';
-    btn.style.color = '#fff';
-    hint.style.display = 'block';
-  } else {
-    // 退出多选：保留第一个作单选
-    state.category = state.selectedCats[0] || '';
-    state.selectedCats = [];
-    btn.textContent = '📌 多选对比';
-    btn.style.background = '#fff';
-    btn.style.color = '#3498db';
-    hint.style.display = 'none';
-  }
-  renderCats();
-  renderSubcats();
-  render();
-}
-
-// ============ 类别网格渲染 ============
-function renderCats() {
-  const grid = document.getElementById('catGrid');
-  const cats = state.categories2026?.categories || [];
-  // ⚠️ 顺序与国抽细则目录一致：categories_2026.json 数组本身就是按 GB 章节号（一/二/.../三十九）排的，
-  //    直接用原数组顺序即可，不要按 category_ids.json code 重排（两者不对齐反而会乱跳）
-  const sorted = cats;
-  grid.innerHTML = sorted.map((c, idx) => {
-    const cls = c.available ? '' : 'disabled';
-    // 多选 vs 单选 的选中状态判定
-    const selected = state.multiSelect
-      ? (state.selectedCats.includes(c.name) ? 'selected' : '')
-      : (state.category === c.name ? 'selected' : '');
-    const subCount = (state.subcatChecklist?.categories?.[c.name] || []).length;
-    const subHint = subCount > 0 ? ` <span style="color:#3498db;font-size:11px;">(${subCount} 细类)</span>` : '';
-    const checkBox = state.multiSelect ? `<span class="cat-checkbox">${selected ? '☑' : '☐'}</span>` : '';
-    // ⚠️ schema v1.2：title 显示分类 id（鼠标悬停可见）
-    const catId = (state.categoryIds?.by_name || {})[c.name] || '';
-    const titleAttr = catId ? ` title="分类 ID: ${catId}"` : '';
-    return `<div class="cat-card ${cls} ${selected}" data-cat="${c.name}"${titleAttr}>
-      ${checkBox}<span class="cat-no">${c.no}</span>${c.name}${subHint}
-    </div>`;
-  }).join('');
-  
-  // 绑定点击
-  grid.querySelectorAll('.cat-card').forEach(card => {
-    card.addEventListener('click', () => {
-      if (card.classList.contains('disabled')) return;
-      const cat = card.dataset.cat;
-      if (state.multiSelect) {
-        // 多选模式：toggle add/remove
-        if (state.selectedCats.includes(cat)) {
-          state.selectedCats = state.selectedCats.filter(c => c !== cat);
-        } else {
-          state.selectedCats = [...state.selectedCats, cat];
-        }
-        state.category = state.selectedCats[0] || '';  // 同步给单选兼容字段
-        renderCats();
-        renderSubcats();
-        render();
-      } else {
-        state.category = (state.category === cat) ? '' : cat;  // 点已选 = 取消
-        state.subcategory = '';  // 切换大类时清空细类
-        renderCats();
-        renderSubcats();
-        render();
-      }
+    state.records = master.records || [];
+    state.categoryMap = cm || {};
+    state.subcatToItems = (subcatItems && subcatItems.aliases) || {};
+    state.subcatChecklist = subcatChecklist || {};
+    state.categories = (categories && categories.categories) || [];
+    console.log('[v4.0] 数据加载完成', {
+      records: state.records.length,
+      categories: state.categories.length,
+      subcats: Object.keys(state.subcatToItems).length,
     });
-  });
+    document.getElementById('subtitle').textContent =
+      `${state.records.length} 条不合格记录 · 39 大类 · 山东/辽宁/重庆抽检公告 + 2026 实施细则`;
+    renderCategoryGrid();
+    renderDashboard();
+  } catch (e) {
+    console.error('[v4.0] 数据加载失败', e);
+    document.getElementById('result').innerHTML = `
+      <div class="card" style="border-left:4px solid var(--c-high);background:var(--c-high-soft);">
+        <div class="card-title">⚠️ 数据加载失败</div>
+        <div style="color:var(--c-text-2);font-size:13px;">${e.message}<br><br>
+        请检查网络 / GitHub Pages 部署 / 浏览器控制台报错。</div>
+      </div>
+    `;
+  }
 }
 
-// ============ 细类网格渲染 ============
-function renderSubcats() {
-  const section = document.getElementById('subcatSection');
-  const grid = document.getElementById('subcatGrid');
-  const noTip = document.getElementById('noSubcatTip');
-  const search = document.getElementById('subcatSearch');
-  const clearBtn = document.getElementById('clearSubBtn');
-  const hint = document.getElementById('subcatHint');
-
-  // 多选模式下隐藏细类（细类是单选大类才有意义）
-  if (state.multiSelect) {
-    section.style.display = 'none';
-    return;
-  }
-
-  if (!state.category || !state.subcatChecklist) {
-    section.style.display = 'none';
-    return;
-  }
-  section.style.display = 'block';
-  
-  const subs = state.subcatChecklist.categories?.[state.category] || [];
-  if (subs.length === 0) {
-    grid.innerHTML = '';
-    noTip.style.display = 'block';
-    search.style.display = 'none';
-    clearBtn.style.display = 'none';
-    hint.textContent = `（${state.category} 不分细类）`;
-    return;
-  }
-  
-  noTip.style.display = 'none';
-  search.style.display = 'block';
-  clearBtn.style.display = state.subcategory ? 'block' : 'none';
-  hint.textContent = `（${state.category} 下 ${subs.length} 张官方检验项目表，可选可不选）`;
-  
-  grid.innerHTML = subs.map(s => `
-    <div class="cat-card ${state.subcategory === s.name ? 'selected' : ''}" data-sub="${s.name}">
-      <span class="cat-no">表 ${s.table_no}</span>${s.name} <span style="color:#7f8c8d;font-size:11px;">(${s.items.length} 项)</span>
+// ============ 类别网格 ============
+function renderCategoryGrid() {
+  const grid = document.getElementById('catGrid');
+  grid.innerHTML = state.categories.map(c => `
+    <div class="cat-card" data-cat="${c.name}" onclick="selectCategory('${c.name}')">
+      <span class="cat-no">${c.no || ''}</span>${c.name}
     </div>
   `).join('');
-  
-  // 绑定点击
-  grid.querySelectorAll('.cat-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const sub = card.dataset.sub;
-      state.subcategory = (state.subcategory === sub) ? '' : sub;
-      renderSubcats();
-      render();
-    });
-  });
 }
 
-// ============ 细类过滤 ============
-function setupSubcatFilter() {
-  const search = document.getElementById('subcatSearch');
-  search.addEventListener('input', () => {
-    const kw = search.value.trim().toLowerCase();
-    $$('#subcatGrid .cat-card').forEach(card => {
-      const txt = card.textContent.toLowerCase();
-      card.style.display = (!kw || txt.includes(kw)) ? '' : 'none';
-    });
+function selectCategory(cat) {
+  state.selectedCategory = state.selectedCategory === cat ? '' : cat;
+  document.querySelectorAll('.cat-card').forEach(el => {
+    el.classList.toggle('selected', el.dataset.cat === state.selectedCategory);
   });
+  search();
 }
 
-// ============ 类别过滤 ============
-function setupCatFilter() {
-  const search = document.getElementById('catSearch');
-  search.addEventListener('input', () => {
-    const kw = search.value.trim().toLowerCase();
-    $$('#catGrid .cat-card').forEach(card => {
-      const txt = card.textContent.toLowerCase();
-      card.style.display = (!kw || txt.includes(kw)) ? '' : 'none';
-    });
-  });
+function clearCategory() {
+  state.selectedCategory = '';
+  document.querySelectorAll('.cat-card').forEach(el => el.classList.remove('selected'));
+  search();
 }
 
-// ============ 查询：自动归类（仅当没指定类别时辅助用） ============
-function lookupCategory(foodName) {
-  if (!foodName) return null;
-  const cm = state.categoryMap || {};
-
-  // 1. 同义词精确匹配
-  const synExact = (state.synonyms?.rules || []).find(r => r.raw === foodName);
-  if (synExact?.canonical) {
-    for (const [cat, items] of Object.entries(cm)) {
-      if (cat.startsWith('_')) continue;
-      if (items.includes(synExact.canonical)) {
-        // 截掉细类后缀（如 "糖果制品-果脯蜜饯" -> "糖果制品"）
-        const bigCat = cat.split('-')[0];
-        return { category: bigCat, fullCategory: cat, canonical: synExact.canonical };
-      }
-    }
+// ============ 核心查询 ============
+function search() {
+  const q = state.q.trim();
+  if (!q) {
+    renderDashboard();
+    return;
   }
-
-  // 2. category_map 精确匹配
-  for (const [cat, items] of Object.entries(cm)) {
-    if (cat.startsWith('_')) continue;
-    if (items.includes(foodName)) {
-      const bigCat = cat.split('-')[0];
-      return { category: bigCat, fullCategory: cat, canonical: foodName };
-    }
+  // 1. 模糊查所有 records（raw + canonical 都查）
+  let hits = state.records.filter(r => {
+    const raw = r.food_name_raw || '';
+    const can = r.food_name_canonical || '';
+    return (q && (raw.includes(q) || can.includes(q)));
+  });
+  // 2. 若用户主动选了大类，缩窄
+  if (state.selectedCategory) {
+    hits = hits.filter(r => r.big_category === state.selectedCategory);
   }
-
-  // ⚠️ 去掉了子串匹配兜底（避免"油"→"小油菜"误归类）
-  return null;
+  renderResults(q, hits);
 }
 
-function lookupOfficialSubcat(foodName) {
-  if (!foodName || !state.subcatAliases?.aliases) return null;
-  const aliases = state.subcatAliases.aliases;
-  if (aliases[foodName]) return { ...aliases[foodName], alias: foodName };
-  const candidates = Object.entries(aliases)
-    .filter(([alias]) => alias.length >= 2 && foodName.includes(alias))
-    .sort((a,b) => b[0].length - a[0].length);
-  return candidates.length ? { ...candidates[0][1], alias: candidates[0][0] } : null;
+function forceSearch() {
+  state.q = document.getElementById('qInput').value.trim();
+  search();
 }
 
-function autoApplyOfficialSubcat(foodName) {
-  if (state.multiSelect || state.category || !foodName) return;
-  const hit = lookupOfficialSubcat(foodName);
-  if (!hit) return;
-  state.category = hit.big_category;
-  state.subcategory = hit.subcategory;
-  renderCats();
-  renderSubcats();
+function clearSearch() {
+  document.getElementById('qInput').value = '';
+  state.q = '';
+  state.selectedCategory = '';
+  document.querySelectorAll('.cat-card').forEach(el => el.classList.remove('selected'));
+  search();
+  document.getElementById('qInput').focus();
 }
 
-function renderOfficialTable(cat, sub) {
-  const all = state.subcatChecklist?.categories?.[cat] || [];
-  if (!all.length) return '';
-  const selected = sub ? all.filter(x => x.name === sub) : all;
-  if (!selected.length) return '';
-  return `
-    <div class="card">
-      <div class="card-title">📘 2026 抽检细则检验项目${sub ? ` · ${sub}` : ` · ${cat} 全部 ${selected.length} 张表`}</div>
-      <div class="tip-source">官方来源：《食品安全监督抽检实施细则（2026年版）》；这里显示的是法定抽检细类表，不是历史不合格项目。</div>
-      ${selected.map(t => `
-        <div class="tip-block">
-          <div class="tip-block-title">表 ${t.table_no} · ${t.table_name}（${t.items.length} 项）</div>
-          <div style="overflow-x:auto;"><table>
-            <thead><tr><th>序号</th><th>检验项目</th><th>依据法律法规或标准</th><th>检测方法</th></tr></thead>
-            <tbody>${t.items.map(i => `<tr><td>${i['序号']}</td><td><strong>${i['检验项目']}</strong></td><td>${i['依据法律法规或标准'] || '—'}</td><td>${i['检测方法'] || '—'}</td></tr>`).join('')}</tbody>
-          </table></div>
-        </div>
-      `).join('')}
-    </div>`;
-}
-
-// ============ 5 个状态的渲染 ============
-function render() {
+// ============ Dashboard（无输入时） ============
+function renderDashboard() {
   const result = document.getElementById('result');
-
-  // 触发状态：auto-render on input change
-  const food = state.foodName.trim();
-  const prod = state.prodName.trim();
-  // v3.7.18 修复：不再自动归类到类别/细类。用户输入食品名 → 直接查所有命中 records，
-  //   不要替他选大类 + 细类（之前 autoApplyOfficialSubcat 会强制覆盖 state.category，
-  //   一旦残留值对不上当前输入（如上次输"糕点"→这次输"鸡蛋"），records=0 → 显示"未检出"）。
-  //   如需按细则查询，让用户自己点选类别卡片。
-  // 多选模式用 selectedCats；单选用 category
-  const cats = state.multiSelect ? state.selectedCats : (state.category ? [state.category] : []);
-  const cat = state.multiSelect ? cats.join(' + ') : (state.category || '');
-  const sub = state.subcategory;
-
-  // 按生产单位查询（可与食品名/类别同时填写，AND 交集）
-  if (prod && food) {
-    // 食品名 + 生产单位 同时填写 → 复合查询（交集）
-    renderProdAndFood(result, prod, food);
-  } else if (prod) {
-  } else if (!food && cats.length === 0) {
-    renderDashboard(result);
-  } else if (food && cats.length === 0) {
-    renderFoodOnly(result, food);
-  } else if (!food && cats.length === 1) {
-    renderCategoryOnly(result, cats[0]);
-  } else if (!food && cats.length > 1) {
-    renderMultiCategoryOnly(result, cats);
-  } else if (food && cats.length === 1) {
-    renderCombined(result, food, cats[0]);
-  } else if (food && cats.length > 1) {
-    renderFoodMultiCategory(result, food, cats);
+  // 按大类统计
+  const byCat = {};
+  for (const r of state.records) {
+    const c = r.big_category || '未分类';
+    byCat[c] = (byCat[c] || 0) + 1;
   }
-
-  // 同步顶栏
-  if (prod) {
-    $('#catHint').textContent = `按标称生产单位查：${prod}`;
-  } else if (state.multiSelect) {
-    $('#catHint').textContent = cats.length > 0
-      ? `多选模式：已选 ${cats.length} 个类别（${cats.slice(0,3).join('、')}${cats.length>3?' 等':''})`
-      : '多选模式：点击类别卡片勾选 → 合并对比';
-  } else {
-    $('#catHint').textContent = cat ? `已选类别：${cat}` : '（可单独查，留空则按已输入食品名查）';
-  }
-
-  // 顶部插入"结果页"面包屑（仅在有查询条件时）
-  if (result.innerHTML && (food || cats.length > 0 || prod) && !result.innerHTML.includes('result-toolbar')) {
-    const countMatch = result.innerHTML.match(/(\d+)\s*条不合格记录/);
-    const catLabel = cats.length === 1 ? cats[0] : (cats.length > 1 ? `${cats.length}个类别` : '');
-    if (prod && food) {
-      result.innerHTML = renderToolbar(food, `🏭 ${prod}`, sub, countMatch ? countMatch[1] : 0) + result.innerHTML;
-    } else if (prod) {
-      result.innerHTML = renderToolbar(food, catLabel, sub, countMatch ? countMatch[1] : 0) + result.innerHTML;
-    }
-  }
-
-  // 绑定可展开行
-  bindExpandableRows();
-  bindProdRows();
-}
-
-// 按生产单位查询的可展开行（独立于通用 summary-row）
-function bindProdRows() {
-  document.querySelectorAll('.history-summary-row[data-toggle^="prod-"]').forEach(row => {
-    if (row._prodBound) return;
-    row._prodBound = true;
-    const targetId = row.getAttribute('data-toggle');
-    row.addEventListener('click', () => {
-      const detail = document.getElementById(targetId);
-      if (!detail) return;
-      const open = detail.style.display !== 'none';
-      detail.style.display = open ? 'none' : 'block';
-      row.classList.toggle('open', !open);
-    });
-  });
-}
-
-// 顶部工具条（结果页头部）
-function renderToolbar(food, cat, sub, recordCount) {
-  if (!food && !cat) return '';
-  const parts = [];
-  if (food) parts.push(`<span class="crumb"><span class="key">食品：</span>${food}</span>`);
-  if (cat) parts.push(`<span class="crumb"><span class="key">类别：</span>${cat}</span>`);
-  if (sub) parts.push(`<span class="crumb"><span class="key">细类：</span>${sub}</span>`);
-  return `
-    <div class="result-toolbar">
-      <span style="font-weight:600;color:#34495e;">📄 结果页</span>
-      ${parts.join('<span style="color:#bdc3c7;">·</span>')}
-      <span style="margin-left:auto;color:#7f8c8d;">${recordCount} 条不合格记录</span>
-    </div>
-  `;
-}
-
-// 可展开的汇总行：点击 → 展开 / 收起明细
-function bindExpandableRows() {
-  document.querySelectorAll('.summary-row').forEach(row => {
-    if (row._bound) return;
-    row._bound = true;
-    row.setAttribute('aria-expanded', 'false');
-    const toggle = () => {
-      // 明细块紧跟在汇总行后面，按相邻节点查找，避免多个卡片都从 idx=0 开始时串联到错误明细。
-      const detail = row.nextElementSibling && row.nextElementSibling.classList.contains('detail-block')
-        ? row.nextElementSibling
-        : null;
-      if (!detail) return;
-      const open = detail.style.display !== 'none';
-      detail.style.display = open ? 'none' : 'block';
-      row.classList.toggle('open', !open);
-      row.setAttribute('aria-expanded', String(!open));
-    };
-    row.addEventListener('click', toggle);
-    row.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        toggle();
-      }
-    });
-  });
-}
-
-// ============ 状态 1：Dashboard（都没输入） ============
-// ============ 按生产单位查询 ============
-function renderProdOnly(result, prodName) {
-  const master = state.master;
-  // 模糊匹配 prod_name（含"种养殖者/供货者"）
-  const q = prodName.toLowerCase();
-  const records = (master?.records || []).filter(r => {
-    const p = (r.prod_name || '').toLowerCase();
-    return p && p.includes(q);
-  });
-  const n = records.length;
-
-  // 聚合：按食品名/细类/项目 分组
-  const byItem = {};   // 项目 → {count, items:[], foods:Set}
-  const byFood = {};   // 食品名 → {count, items:Set, cats:Set}
-  const byCat = {};    // 大类 → {count, foods:Set, items:Set}
-  records.forEach(r => {
-    (r.failed_items || []).forEach(fi => {
-      const k = fi.item;
-      if (!byItem[k]) byItem[k] = {item: k, count: 0, foods: new Set(), cats: new Set()};
-      byItem[k].count++;
-      byItem[k].foods.add(r.food_name_raw);
-      byItem[k].cats.add(r.big_category || '');
-    });
-    const fk = r.food_name_raw;
-    if (!byFood[fk]) byFood[fk] = {food: fk, count: 0, items: new Set(), cats: new Set(), sampleUnits: new Set()};
-    byFood[fk].count++;
-    (r.failed_items || []).forEach(fi => byFood[fk].items.add(fi.item));
-    if (r.big_category) byFood[fk].cats.add(r.big_category);
-    if (r.sampler_name) byFood[fk].sampleUnits.add(r.sampler_name);
-    const ck = r.big_category || '其他';
-    if (!byCat[ck]) byCat[ck] = {cat: ck, count: 0, foods: new Set(), items: new Set()};
-    byCat[ck].count++;
-    byCat[ck].foods.add(r.food_name_raw);
-    (r.failed_items || []).forEach(fi => byCat[ck].items.add(fi.item));
-  });
-
-  const itemRows = Object.values(byItem).sort((a, b) => b.count - a.count);
-  const foodRows = Object.values(byFood).sort((a, b) => b.count - a.count);
-  const catRows = Object.values(byCat).sort((a, b) => b.count - a.count);
-  // 推断实际查询的单位名（首条记录的 prod_name）
-  const matchedName = records[0]?.prod_name || prodName;
-
-  // 风险等级：按总条数 + 不得检出项目数
-  const hasBan = itemRows.some(r => /不得检出|禁用/i.test(r.item));
-  let riskLabel, riskColor;
-  if (n === 0) {
-    riskLabel = '未检出'; riskColor = '#7f8c8d';
-  } else if (n >= 5 || hasBan) {
-    riskLabel = '🔴 高风险'; riskColor = '#c62828';
-  } else if (n >= 3) {
-    riskLabel = '🟠 中-高'; riskColor = '#ef6c00';
-  } else {
-    riskLabel = '🟡 中风险'; riskColor = '#f9a825';
-  }
-
+  const sorted = Object.entries(byCat).sort((a, b) => b[1] - a[1]);
   result.innerHTML = `
-    <div class="card">
-      <div class="card-title">🏭 标称生产单位查询：<span style="color:#8e44ad;">${escapeHtml(matchedName)}</span></div>
-      <div class="meta-row">
-        <span class="meta-tag" style="background:#f3e5f5;color:#6a1b9a;">综合风险 <strong style="color:${riskColor};">${riskLabel}</strong></span>
-        <span class="meta-tag">匹配记录 <strong>${n}</strong> 条</span>
-        <span class="meta-tag">涉及食品 <strong>${foodRows.length}</strong> 类</span>
-        <span class="meta-tag">涉及大类 <strong>${catRows.length}</strong> 类</span>
-      </div>
-      <div class="tip-source" style="background:#f3e5f5;border-left-color:#8e44ad;">
-        📊 数据来源：master.json（按 prod_name 模糊匹配）；本视图仅显示该标称生产单位的历史不合格记录（不含法定检验项目，法定项目按对应食品细类查）
-      </div>
+    <div class="card" style="text-align:center;padding:24px;">
+      <div style="font-size:15px;color:var(--c-text-1);font-weight:600;">📊 请在上方输入食品名开始查询</div>
+      <div class="empty-tip" style="margin-top:8px;">支持模糊匹配 · 例：<code>鸡蛋</code> / <code>饼干</code> / <code>山药</code></div>
     </div>
-
-    ${n === 0 ? `
-      <div class="card">
-        <div class="empty-tip">⚠️ 在 ${escapeHtml(prodName)} 中未找到匹配的不合格记录</div>
-        <div class="empty-tip" style="font-size:13px;color:#5d6d7e;">
-          提示：① 检查单位名是否有误（部分公告中标称是"种养殖者或供货者名称"）<br>
-          ② 山东/辽宁的"标称生产企业名称"经常是"/"（食用农产品类），这种情况只能查到加工食品类
-        </div>
-      </div>
-    ` : `
-      <div class="card">
-        <div class="card-title">📊 按不合格项目（${itemRows.length} 项 / ${n} 次）</div>
-        <ul class="checklist">
-          ${itemRows.slice(0, 15).map(r => `
-            <li class="warn">
-              <strong>${escapeHtml(r.item)}</strong> · ${r.count} 次 · 涉及 ${r.foods.size} 食品 / ${r.cats.size} 大类
-            </li>
-          `).join('')}
-        </ul>
-      </div>
-
-      <div class="card">
-        <div class="card-title">🥬 按食品名（${foodRows.length} 类 / ${n} 条）—— 点击展开不合格明细</div>
-        ${foodRows.map(fr => {
-          const histRows = records.filter(r => r.food_name_raw === fr.food);
-          const cat0 = histRows[0]?.big_category || '';
-          return `
-            <div class="tip-block">
-              <div class="tip-block-title">
-                <span class="history-summary-row" data-toggle="prod-${fr.food}" style="cursor:pointer;color:#8e44ad;">
-                  ▼ ${escapeHtml(fr.food)} <span class="tip-freq">${fr.count} 次</span> <span class="muted">${[...fr.cats].join('·')}</span>
-                </span>
-              </div>
-              <div class="detail-block" id="prod-${fr.food}" style="display:none; margin-top:8px;">
-                ${histRows.map(r => `
-                  <div style="padding:8px 12px;border-left:3px solid #8e44ad;background:#fafafa;margin-bottom:4px;font-size:13px;">
-                    <div><strong>${escapeHtml(r.food_name_raw)}</strong> · ${escapeHtml(r.big_category || '')} · ${escapeHtml(r.bulletin_no || '')}</div>
-                    <div style="color:#5d6d7e;margin-top:2px;">来源：${escapeHtml(r.source || '')} · 抽样单位：${escapeHtml(r.sampler_name || '')} · 日期：${escapeHtml(r.prod_date || '')}</div>
-                    <div style="margin-top:4px;">不合格：
-                      ${(r.failed_items || []).map(fi => `<span style="color:#c62828;font-weight:bold;">${escapeHtml(fi.item)}</span> ${escapeHtml(fi.result)} <span class="muted">${escapeHtml(fi.limit)}</span>`).join('；')}
-                    </div>
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-          `;
-        }).join('')}
-      </div>
-
-      <div class="card">
-        <div class="card-title">📂 按大类（${catRows.length} 类）</div>
-        <ul class="checklist">
-          ${catRows.map(r => `
-            <li class="${r.count >= 3 ? 'must' : ''}">
-              <strong>${escapeHtml(r.cat)}</strong> · ${r.count} 次 · 食品 ${r.foods.size} 类 · 项目 ${[...r.items].length} 项
-            </li>
-          `).join('')}
-        </ul>
-      </div>
-    `}
-  `;
-}
-
-function renderDashboard(result) {
-  const gb = state.gbChecklist;
-  const master = state.master;
-  const byCat = master.by_category || {};
-  const cats = state.categories2026?.categories || [];
-  
-  // 大类合规情况（按 records.big_category 精确匹配；不用 byCat[cat]——那是 dict 不是 list）
-  const catStats = cats.filter(c => c.available).map(c => {
-    const records = master.records.filter(r => r.big_category === c.name);
-    return { ...c, recordCount: records.length };
-  });
-
-  result.innerHTML = `
     <div class="card">
-      <div class="card-title">📊 全部数据总览（无查询条件）</div>
-      <div class="meta-row">
-        <span class="meta-tag">记录总数 <strong>${state.master.records.length}</strong></span>
-        <span class="meta-tag">规范食品名 <strong>${Object.keys(master.by_canonical || {}).length}</strong></span>
-        <span class="meta-tag">已覆盖大类 <strong>${Object.keys(byCat).length}</strong></span>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">📋 2026 实施细则 39 大类 × 当前数据覆盖</div>
+      <div class="card-title">📂 各大类历史不合格分布（${state.records.length} 条 / ${sorted.length} 大类）<span class="badge" style="background:var(--c-primary-soft);color:var(--c-primary);">点击卡片自动填充该类别</span></div>
       <div class="dashboard-grid">
-        ${catStats.map(s => `
-          <div class="dashboard-cell ${s.recordCount > 0 ? 'has-data' : ''}" data-cat="${s.name}" style="cursor:pointer;">
-            <div class="cat-name">${s.no} ${s.name}</div>
-            <div class="cat-stats">
-              ${s.recordCount > 0 ? `不合格 <span class="bad">${s.recordCount} 条</span>` : '无历史不合格'}
-            </div>
+        ${sorted.map(([c, n]) => `
+          <div class="dashboard-cell has-data" onclick="quickFill('${c}')">
+            <div class="cat-name">${c}</div>
+            <div class="cat-stats">不合格 <strong>${n}</strong> 条</div>
           </div>
         `).join('')}
       </div>
-      <div class="empty-tip" style="margin-top:10px">💡 点击任一大类卡片 → 只查该类别 | 在上方输入食品名 → 只查该食品 | 两者都做 → 复合查询</div>
     </div>
   `;
-  
-  // dashboard 单元格可点击 → 只查类别
-  result.querySelectorAll('.dashboard-cell').forEach(cell => {
-    cell.addEventListener('click', () => {
-      state.category = cell.dataset.cat;
-      state.subcategory = '';
-      state.foodName = '';
-      $('#foodInput').value = '';
-      renderCats();
-      renderSubcats();
-      render();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  // 绑定快速填充
+  document.querySelectorAll('.dashboard-cell').forEach(el => {
+    el.addEventListener('click', () => {
+      const cat = el.querySelector('.cat-name').textContent.trim();
+      state.selectedCategory = cat;
+      document.querySelectorAll('.cat-card').forEach(c => {
+        c.classList.toggle('selected', c.dataset.cat === cat);
+      });
+      document.getElementById('qInput').focus();
+      showToast(`已选类别「${cat}」— 现在输入食品名查询`);
     });
   });
 }
 
-// ============ 状态 1.5：食品名 + 生产单位 复合查询（AND 交集）============
-function renderProdAndFood(result, prodName, foodName) {
-  const master = state.master;
-  // AND：同时匹配生产单位 + 食品名
-  const pq = prodName.toLowerCase();
-  const fq = foodName.toLowerCase();
-  const records = (master?.records || []).filter(r => {
-    const p = (r.prod_name || '').toLowerCase();
-    const hasProd = p && p.includes(pq);
-    if (!hasProd) return false;
-    return (r.food_name_raw && r.food_name_raw.includes(fq))
-        || (r.food_name_canonical && r.food_name_canonical.includes(fq));
+function quickFill(cat) {
+  state.selectedCategory = cat;
+  document.querySelectorAll('.cat-card').forEach(c => {
+    c.classList.toggle('selected', c.dataset.cat === cat);
   });
-  const n = records.length;
+  document.getElementById('qInput').focus();
+  showToast(`已选类别「${cat}」— 现在输入食品名查询`);
+}
 
-  // 聚合（同 renderProdOnly）
-  const byItem = {};
-  const byFood = {};
-  records.forEach(r => {
-    (r.failed_items || []).forEach(fi => {
-      const k = fi.item;
-      if (!byItem[k]) byItem[k] = {item: k, count: 0, foods: new Set(), cats: new Set()};
-      byItem[k].count++;
-      byItem[k].foods.add(r.food_name_raw);
-      byItem[k].cats.add(r.big_category || '');
-    });
-    const fk = r.food_name_raw;
-    if (!byFood[fk]) byFood[fk] = {food: fk, count: 0, items: new Set()};
-    byFood[fk].count++;
-    (r.failed_items || []).forEach(fi => byFood[fk].items.add(fi.item));
-  });
-
-  const itemRows = Object.values(byItem).sort((a, b) => b.count - a.count);
-  const foodRows = Object.values(byFood).sort((a, b) => b.count - a.count);
-
-  let riskLabel, riskColor;
-  if (n === 0) { riskLabel = '未检出'; riskColor = '#7f8c8d'; }
-  else if (n >= 5 || itemRows.some(r => /不得检出|禁用/i.test(r.item))) { riskLabel = '🔴 高风险'; riskColor = '#c62828'; }
-  else if (n >= 3) { riskLabel = '🟠 中-高'; riskColor = '#ef6c00'; }
-  else { riskLabel = '🟡 中风险'; riskColor = '#f9a825'; }
+// ============ 结果渲染 ============
+function renderResults(q, hits) {
+  const result = document.getElementById('result');
+  // 风险等级
+  const risk = calcRisk(hits);
+  // 命中大类分布
+  const catsHit = {};
+  for (const r of hits) {
+    const c = r.big_category || '未分类';
+    catsHit[c] = (catsHit[c] || 0) + 1;
+  }
+  // 自动归类提示（食品名→类别映射）
+  const autoCat = lookupCategory(q);
 
   result.innerHTML = `
-    <div class="card">
-      <div class="card-title">🔍 复合查询：<span style="color:#8e44ad;">${escapeHtml(prodName)}</span> + <span style="color:#2980b9;">${escapeHtml(foodName)}</span></div>
-      <div class="meta-row">
-        <span class="meta-tag" style="background:#e8f5e9;color:#2e7d32;">综合风险 <strong style="color:${riskColor};">${riskLabel}</strong></span>
-        <span class="meta-tag">匹配记录 <strong>${n}</strong> 条</span>
-        <span class="meta-tag">涉及食品 <strong>${foodRows.length}</strong> 类</span>
-        <span class="meta-tag">不合格项目 <strong>${itemRows.length}</strong> 项</span>
-      </div>
-      <div class="tip-source" style="background:#e8f5e9;border-left-color:#2e7d32;">
-        📊 按「标称生产单位」AND「食品名」交集筛选；仅显示同时满足两个条件的不合格记录
-      </div>
-    </div>
-
-    ${n === 0 ? `
-      <div class="card">
-        <div class="empty-tip">⚠️ 「${escapeHtml(prodName)}」+「${escapeHtml(foodName)}」无交集记录</div>
-        <div class="empty-tip" style="font-size:13px;color:#5d6d7e;">
-          提示：试试只填其中一个，或检查单位名/食品名是否有误
+    ${renderRiskBlock(risk, q, hits.length)}
+    ${autoCat ? `
+      <div class="card" style="background:#fffde7;border-left:4px solid #f57f17;">
+        <div style="font-size:13px;color:#5d4037;">
+          💡 <strong>「${q}」按内置规则归类为：</strong>
+          ${autoCat.fullCategory}（规范名：<code>${autoCat.canonical}</code>）
+          ${state.selectedCategory && state.selectedCategory !== autoCat.category
+            ? `<br><span class="muted">⚠ 你已手动选「${state.selectedCategory}」，结果已按此筛选；如需看全部命中，<a href="#" onclick="state.selectedCategory='';document.querySelectorAll('.cat-card').forEach(c=>c.classList.remove('selected'));search();return false;" style="color:#1a365d;">点此清空类别</a></span>`
+            : ''}
         </div>
-      </div>` : `
-      ${renderItemsTable(records, `「${prodName}」×「${foodName}」复合查询结果`)}
+      </div>
+    ` : `
+      <div class="card" style="background:#fff8e1;border-left:4px solid #ffa000;">
+        <div style="font-size:13px;color:#5d4037;">
+          ⚠️ <strong>「${q}」未在已知分类表中找到</strong>。如结果不准，可<a href="#" onclick="document.getElementById('qInput').focus()" style="color:#1a365d;">换个名称</a>或<a href="#" onclick="document.querySelector('.cat-grid').scrollIntoView({behavior:'smooth'})" style="color:#1a365d;">点选类别</a>细化。
+        </div>
+      </div>
     `}
+    ${renderSummaryBlocks(q, hits)}
+    ${renderDetailTable(q, hits)}
+    ${renderSelfCheck(q, autoCat, hits)}
   `;
 }
 
-// ============ 状态 2：只输入食品名 ============
-function renderFoodOnly(result, food) {
-  const master = state.master;
-  const byCanon = master.by_canonical || {};
-  const inferred = lookupCategory(food);
-  const officialHit = lookupOfficialSubcat(food);
-  
-  // 查该食品名的所有记录（多类别 + 多别名）
-  // ⚠️ schema v1.1：by_canonical[k] = {ids, count, big_categories, food_names}
-  //    通过 state.idToRecord[id] 反查完整 record
-  let directMatches = [];
-  const canonKey = inferred?.canonical || food;
-  const indexEntry = byCanon[canonKey];
-  if (indexEntry && Array.isArray(indexEntry.ids)) {
-    directMatches = indexEntry.ids.map(id => state.idToRecord[id]).filter(Boolean);
-  } else if (Array.isArray(indexEntry)) {
-    // 向后兼容（万一有旧数据是 list）
-    directMatches = indexEntry;
+// ============ 风险等级计算 ============
+function calcRisk(records) {
+  if (!records || !records.length) {
+    return { level: 'none', label: '未检出', emoji: '⚪', score: 0, desc: '无历史不合格记录' };
   }
-  // 兜底：历史 ETL 偶有 canonical 写成细类名（如「牛蛙」→「其他水产品」），
-  //       by_canonical['牛蛙'] 只有 5 条但实际 records 中 raw 含「牛蛙」的有 9 条。
-  //       补扫 raw + canonical 模糊匹配，取并集（SetBy id 去重）。
-  const rawHits = master.records.filter(r =>
-    (r.food_name_raw && r.food_name_raw.includes(food)) ||
-    (r.food_name_canonical && r.food_name_canonical.includes(food))
-  );
-  if (rawHits.length) {
-    const m = new Map();
-    [...directMatches, ...rawHits].forEach(r => r && r.id && m.set(r.id, r));
-    directMatches = Array.from(m.values());
-  }
-  if (!directMatches.length) {
-    // 完全没匹配 → 至少返回空数组
-    directMatches = [];
-  }
-  
-  // 风险评估（简化版）
-  const risk = calcRisk(directMatches);
-  
-  // 自动归类提示
-  const inferredNote = inferred 
-    ? `<div class="card" style="background:#fffde7;border-left:4px solid #f57f17;">
-         <div style="font-size:13px;color:#5d4037;">
-           💡 <strong>「${food}」按内置分类规则自动归类为「${inferred.category}」</strong>（规范名：<code>${inferred.canonical}</code>）<br>
-           <span class="muted">如果归类不对，请在「类别」区域手动选择正确的大类。</span>
-         </div>
-       </div>` 
-    : `<div class="card" style="background:#fff8e1;border-left:4px solid #ffa000;">
-         <div style="font-size:13px;color:#5d4037;">
-           ⚠️ <strong>「${food}」未在已知分类表中找到</strong>。如需查看细则检验项目，请在「类别」区域选一个大类。
-         </div>
-       </div>`;
-  
-  // 2026 抽检细则表（按自动归类的大类/细类）
-  const bigCat = officialHit?.big_category || inferred?.category || '';
-  const officialSub = officialHit?.subcategory || '';
-  
-  // ⚠️ schema v1.2：从 records 反查 big_category_id / subcategory_id
-  const ids = (directMatches.length && state.idToRecord[directMatches[0].id])
-    ? {
-        big_id: state.idToRecord[directMatches[0].id].big_category_id,
-        sub_id: state.idToRecord[directMatches[0].id].subcategory_id,
-      }
-    : { big_id: '', sub_id: '' };
-  const idTag = (ids.big_id || ids.sub_id)
-    ? `<div class="card" style="background:#f5f7fa;border-left:3px solid #90a4ae;">
-         <div style="font-size:12px;color:#546e7a;font-family:monospace;">
-           <strong>分类 ID（schema v1.2）</strong>：
-           大类 <code>${ids.big_id || '?'}</code> ·
-           细类 <code>${ids.sub_id || '?'}</code>
-         </div>
-       </div>`
-    : '';
-
-  result.innerHTML = `
-    ${inferredNote}
-    ${idTag}
-    ${renderRiskBlock(risk, food, '', directMatches.length, inferred?.category)}
-
-    ${renderItemsTable(directMatches, `「${food}」历史不合格明细`)}
-
-    ${renderOfficialTable(bigCat, officialSub)}
-
-    ${renderTips(bigCat)}
-
-    <div class="card">
-      <div class="card-title">💡 下一步操作</div>
-      <div class="actions">
-        <button class="primary" onclick="document.getElementById('foodInput').focus()">修改食品名</button>
-        <span class="muted">或 · 滚到上方「类别」区域选个大类 → 复合查询（食品+类别）</span>
-      </div>
-    </div>
-  `;
-}
-
-// 把抽检细则中的细类表名（去掉编号前缀）映射到 master 中使用的 sub_category 后缀。
-// 例：表 6-6「碳酸饮料（汽水）」→ 「饮料-碳酸饮料」；表 11-2「速冻调理肉制品」→ 「速冻食品-速冻调理肉制品」。
-function buildSubcatKeyMap() {
-  const map = {};  // { '饮料-碳酸饮料': '碳酸饮料', '饮料-碳酸饮料（汽水）': '碳酸饮料（汽水）', ... }
-  const sc = state.subcatChecklist;
-  if (!sc?.categories) return map;
-  for (const [cat, tables] of Object.entries(sc.categories)) {
-    for (const t of tables || []) {
-      // 同一细类名对应一个 sub_category 命名：「{大类}-{细类名}」
-      const key = `${cat}-${t.name}`;
-      if (!map[key]) map[key] = [];
-      map[key].push(t.name);
-    }
-  }
-  return map;
-}
-
-// 把当前选中细类解析成可用于过滤 master.records.sub_category 的键集合（兼容旧「细类名 substring」兜底）
-function resolveSubcatFilterKeys(cat, subName) {
-  if (!cat || !subName) return null;
-  const map = buildSubcatKeyMap();
-  // 1) 精确：「大类-细类名」
-  const directKey = `${cat}-${subName}`;
-  if (map[directKey]) return [directKey];
-  // 2) 包含关系：subName 中是否带括号包裹别名（如「碳酸饮料（汽水）」→「碳酸饮料」）
-  //    解析表名：去掉前缀编号后，取括号内或前一段
-  const inner = subName.match(/^([^（(]+)[（(]([^)）]+)[)）]\s*$/);
-  if (inner) {
-    const short = inner[1].trim();
-    const candKey = `${cat}-${short}`;
-    if (map[candKey]) return [candKey, ...(map[directKey] || [])];
-  }
-  // 3) 兜底：subName 作为 sub_category 后缀（例 「碳酸饮料」 匹配 「饮料-碳酸饮料」）
-  const fallback = `${cat}-${subName.replace(/^[\d.\s、]+/, '').trim()}`;
-  return [fallback];
-}
-
-// 规范化食品/细类文本，用于跨分类字段匹配。
-function normalizeSubcatText(value) {
-  return String(value || '')
-    .replace(/[（(][^）)]*[）)]/g, '')
-    .replace(/[\s·、\-—_/]+/g, '')
-    .trim()
-    .toLowerCase();
-}
-
-// 从 category_map 找到与 2026 细则大类对应的规范食品名集合。
-// master 的 sub_category 有时只有「食用农产品-鲜蛋」这样的一级后缀，
-// 不能直接拿「鲜蛋-鸡蛋」去比，需要再用食品名映射兜底。
-function getCategoryFoodNames(cat) {
-  const names = new Set();
-  for (const [key, values] of Object.entries(state.categoryMap || {})) {
-    if (key === cat || key.endsWith(`-${cat}`)) {
-      (Array.isArray(values) ? values : []).forEach(v => names.add(String(v).trim()));
-    }
-  }
-  return [...names];
-}
-
-function matchesSubcategoryByFoodName(record, cat, subName) {
-  const recordNames = [record.food_name_raw, record.food_name_canonical]
-    .map(normalizeSubcatText)
-    .filter(Boolean);
-  if (!recordNames.length) return false;
-
-  const cleaned = String(subName || '').replace(/^[\d.\s、]+/, '').trim();
-  const shortName = cleaned.replace(/[（(][^）)]*[）)]\s*$/, '').trim();
-  const targets = [cleaned, shortName].map(normalizeSubcatText).filter(t => t.length >= 2);
-
-  // 直接同名：如「鲜蛋 → 鸡蛋」。
-  if (targets.some(target => recordNames.includes(target))) return true;
-
-  // 通过 category_map 的规范食品名匹配细类表名。
-  const categoryNames = getCategoryFoodNames(cat);
-  const matchedNames = categoryNames
-    .filter(name => {
-      const normalized = normalizeSubcatText(name);
-      return targets.some(target => normalized === target || normalized.includes(target) || target.includes(normalized));
-    })
-    .map(normalizeSubcatText);
-  if (matchedNames.some(name => recordNames.includes(name))) return true;
-
-  // 「其他禽蛋」不是一个具体食品名：匹配鸡蛋以外的禽蛋名称。
-  if (cat === '鲜蛋' && /^其他禽蛋/.test(cleaned)) {
-    return recordNames.some(name => /鸭蛋|鹅蛋|鹌鹑蛋|鸽蛋|火鸡蛋/.test(name));
-  }
-  return false;
-}
-
-// 细类过滤：优先按 sub_category 精确匹配；官方细类比 master 更细时，再按食品名映射兜底。
-function filterRecordsBySubcategory(records, cat, subName) {
-  if (!subName) return records;
-  const keys = resolveSubcatFilterKeys(cat, subName) || [];
-  if (!keys.length) return records;
-  return records.filter(r => {
-    const sc = (r.sub_category || r.category || '').split(/[-—]/).pop().trim();
-    // 同时检查 sub_category 完整键和末尾段。
-    const fullSc = r.sub_category || r.category || '';
-    if (keys.some(k => k === fullSc)) return true;
-    // 「碳酸饮料」+「饮料-碳酸饮料」。
-    if (sc && keys.some(k => k.endsWith(`-${sc}`))) return true;
-    // 「碳酸饮料（汽水）」→「碳酸饮料」尾巴。
-    const subShort = subName.replace(/[（(][^）)]*[）)]\s*$/, '').trim();
-    if (subShort && subShort === sc) return true;
-    // 典型场景：master 只有「食用农产品-鲜蛋」，细则选择的是「鸡蛋」。
-    return matchesSubcategoryByFoodName(r, cat, subName);
-  });
-}
-
-// ============ 状态 3：只选类别 ============
-function renderCategoryOnly(result, cat) {
-  const master = state.master;
-  // ⚠️ 不用 byCat[cat] —— 那是 dict 不是 records 列表
-  // 直接遍历 master.records，按 big_category 过滤
-  const allRecords = master.records.filter(r => r.big_category === cat);
-
-  // 细类过滤：先按 master 的 sub_category 匹配，再按食品名映射兜底
-  const sub = state.subcategory;
-  let records = allRecords;
-  let subFilterNote = '';
-  if (sub) {
-    const before = records.length;
-    records = filterRecordsBySubcategory(allRecords, cat, sub);
-    const subClean = sub.replace(/^[一二三四五六七八九十0-9.]+\s*/, '');
-    subFilterNote = `<span class="meta-tag" style="background:#e3f2fd;color:#1565c0;">已选细类：<strong>${sub}</strong> · 按细类字段/食品名映射匹配（${before} → ${records.length} 条）</span>`;
-  }
-  
-  // 该类别下的不合格项目 → 次数 聚合（用 extractFailed 适配）
-  const norm = extractFailed(records);
-  const itemCounts = {};
-  norm.forEach(r => {
-    itemCounts[r.item] = (itemCounts[r.item] || 0) + 1;
-  });
-  const topItems = Object.entries(itemCounts).sort((a,b) => b[1]-a[1]).slice(0, 10);
-  
-  // 该类别下的食品名
-  const foodCounts = {};
+  const items = {};
+  const provs = new Set();
+  let maxMultiple = 1;
+  let sampleFail = 0;
   records.forEach(r => {
-    const f = r.food_name_raw || r.food_name_canonical;
-    foodCounts[f] = (foodCounts[f] || 0) + 1;
+    const fi = (r.failed_items || [])[0] || {};
+    const it = fi.item || '（未列明项目）';
+    items[it] = (items[it] || 0) + 1;
+    if (r.source) provs.add(r.source);
+    if (fi._sample_plan && fi._verdict === 'fail') sampleFail++;
+    const det = parseNum(fi.result);
+    const lim = parseNum(fi.limit);
+    if (!isNaN(det) && !isNaN(lim) && lim > 0) {
+      const m = det / lim;
+      if (m > maxMultiple) maxMultiple = m;
+    }
   });
-  const topFoods = Object.entries(foodCounts).sort((a,b) => b[1]-a[1]).slice(0, 10);
-  
-  // 类别风险等级（按过滤后记录聚合）
-  const catRisk = calcRisk(records);
-  
-  result.innerHTML = `
-    ${renderRiskBlock(catRisk, '', sub ? `${cat} / ${sub}` : cat, records.length, cat)}
-    
-    ${subFilterNote ? `<div class="card" style="padding:10px 14px;"><div class="meta-row">${subFilterNote}</div></div>` : ''}
-    
-    ${records.length > 0 ? `
-      <div class="card">
-        <div class="card-title">📊 不合格品类 Top 10（点击查看单品）</div>
-        <table>
-          <thead><tr><th>食品名（同不合格明细）</th><th>次数</th></tr></thead>
-          <tbody>
-            ${topFoods.map(([f, n]) => `<tr style="cursor:pointer;" data-food="${f}"><td>${f}</td><td class="bad">${n}</td></tr>`).join('')}
-          </tbody>
-        </table>
-      </div>
-      
-      <div class="card">
-        <div class="card-title">⚠️ 高频不合格项目 Top 10</div>
-        <table>
-          <thead><tr><th>不合格项目</th><th>次数</th></tr></thead>
-          <tbody>
-            ${topItems.map(([i, n]) => `<tr><td>${i}</td><td class="bad">${n}</td></tr>`).join('')}
-          </tbody>
-        </table>
-        <div class="empty-tip" style="margin-top:8px;">下方“历史不合格项目”可逐项展开，查看每次抽检的具体内容。</div>
-      </div>
+  const totalItemCount = Object.values(items).reduce((a, b) => a + b, 0);
+  const itemRepeat = Math.max(...Object.values(items));
+  const crossProv = provs.size >= 2;
 
-      ${renderHistoricalItemsCard(records, `历史不合格项目（向供应商索取全项报告时重点核查，已发生过 ${records.length} 次）`)}
-    ` : `<div class="card"><div class="empty-tip">${sub ? `「${sub}」过滤后无历史不合格记录（试试清空细类）` : '本类别无历史不合格记录'}</div></div>`}
-    
-    ${renderOfficialTable(cat, sub)}
-    ${renderTips(cat, { includeHistory: false })}
-    
-    <div class="card">
-      <div class="card-title">💡 下一步操作</div>
-      <div class="actions">
-        <button onclick="state.category='';state.subcategory='';state.selectedCats=[];renderCats();renderSubcats();render();">清空类别</button>
-        ${sub ? `<button onclick="state.subcategory='';renderSubcats();render();">清空细类</button>` : ''}
-        <button class="primary" onclick="document.getElementById('foodInput').focus()">+ 输入食品名（复合查询）</button>
-      </div>
-    </div>
-  `;
-  
-  // 绑定食品名点击 → 切到复合查询
-  result.querySelectorAll('tr[data-food]').forEach(tr => {
-    tr.addEventListener('click', () => {
-      state.foodName = tr.dataset.food;
-      $('#foodInput').value = tr.dataset.food;
-      render();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  });
+  const score = itemRepeat * 5 + totalItemCount + (crossProv ? 30 : 0) + (maxMultiple > 2 ? 25 : 0) + (sampleFail > 0 ? 20 : 0);
+
+  let level, label, emoji, desc;
+  if (score >= 80 || itemRepeat >= 5) { level = 'high'; label = '高风险'; emoji = '🔴'; desc = `高频不合格项目 ≥5 次`; }
+  else if (score >= 40) { level = 'mid-high'; label = '中-高风险'; emoji = '🟠'; desc = '多次不合格 + 跨省份'; }
+  else if (score >= 15) { level = 'mid'; label = '中风险'; emoji = '🟡'; desc = '有不合格记录'; }
+  else { level = 'low'; label = '低风险'; emoji = '🔵'; desc = '仅个位数记录'; }
+
+  return { level, label, emoji, score, desc, itemRepeat, crossProv, totalItemCount, maxMultiple, provs: Array.from(provs) };
 }
 
-// ============ 状态 4：都输入（复合查询） ============
-function renderCombined(result, food, cat) {
-  const master = state.master;
-  // ⚠️ 不用 byCat[cat] —— 那是 dict 不是 records 列表
-  // 先按大类过滤（r.big_category === cat），再按食品名匹配
-  let records = master.records.filter(r => 
-    r.big_category === cat &&
-    ((r.food_name_raw && r.food_name_raw.includes(food)) ||
-     (r.food_name_canonical && r.food_name_canonical.includes(food)))
-  );
-  
-  const sub = state.subcategory;
-  let subFilterNote = '';
-  if (sub) {
-    const before = records.length;
-    records = filterRecordsBySubcategory(records, cat, sub);
-    subFilterNote = `<span class="meta-tag" style="background:#e3f2fd;color:#1565c0;">已选细类：<strong>${sub}</strong> · 按细类字段/食品名映射匹配（${before} → ${records.length} 条）</span>`;
-  }
-  
-  const risk = calcRisk(records);
-  const title = sub ? `${food} @ ${cat} / ${sub}` : `${food} @ ${cat}`;
-  
-  result.innerHTML = `
-    ${renderRiskBlock(risk, food, sub ? `${cat}/${sub}` : cat, records.length, cat)}
-    ${subFilterNote ? `<div class="card" style="padding:10px 14px;"><div class="meta-row">${subFilterNote}</div></div>` : ''}
-    ${renderItemsTable(records, `${title} 历史不合格明细`)}
-    ${renderOfficialTable(cat, sub)}
-    ${renderTips(cat)}
-    
-    <div class="card">
-      <div class="card-title">💡 下一步操作</div>
-      <div class="actions">
-        <button onclick="state.foodName='';document.getElementById('foodInput').value='';render();">只查「${cat}${sub ? '/' + sub : ''}」</button>
-        <button onclick="state.category='';state.subcategory='';state.selectedCats=[];renderCats();renderSubcats();render();">只查「${food}」</button>
-        ${sub ? `<button onclick="state.subcategory='';renderSubcats();render();">清空细类</button>` : ''}
-        <button class="primary" onclick="state.foodName='';state.category='';state.subcategory='';state.selectedCats=[];document.getElementById('foodInput').value='';renderCats();renderSubcats();render();">清空全部</button>
-      </div>
-    </div>
-  `;
-}
-
-// ============ 数据适配：从 master 记录抽取出"项目/标准/实测/单位" ============
-// master 真实结构：records[i].failed_items = [{item, result, limit}]（数组）
-// 旧代码 r.item / r.project / r.detected_value / r.multiple_of_limit 都是 undefined → 改用本适配层
-// 从字符串中抽取第一个数字（带可选小数），用于解析 "0.0926g/kg" / "≤0.05g/kg" / "281mg/kg" / "100mg/kg"
 function parseNum(s) {
   if (!s) return NaN;
   const m = String(s).match(/[\d.]+/);
   return m ? parseFloat(m[0]) : NaN;
 }
 
-// 归一化限值字符串：µ(U+00B5 微符号) 与 μ(U+03BC 希腊字母mu) 长得一样但编码不同，
-// 会导致同样的"≤100µg/kg"被拆成两组。按"项目+限值"分组前统一成 µ(U+00B5)。
-function normLimit(s) {
-  if (!s) return '';
-  return String(s).replace(/\u03BC/g, '\u00B5');
-}
-
-function extractFailed(records) {
-  return records.map(r => {
-    const fi = (r.failed_items && r.failed_items[0]) || {};
-    const limitRaw = fi.limit || '';
-    const limitNorm = normLimit(limitRaw);
-    // v3.7.13: 采样计划类 (_sample_plan=true) 直接判定, 不用 parseNum
-    const isSamplePlan = !!fi._sample_plan;
-    const sampleVerdict = fi._verdict; // pass | fail | unclear
-    return {
-      ...r,
-      item: fi.item || '（未列明项目）',
-      detected_value: fi.result || '',
-      limit_value: limitNorm,
-      // 解析后的数字（用于计算超标倍数）
-      detected_num: parseNum(fi.result),
-      limit_num: parseNum(limitNorm),
-      // 国标限值是否包含"不得检出"字样 → 用于严重度标记
-      banDetect: limitRaw.includes('不得检出'),
-      // v3.7.13: 采样计划标识 + 判定
-      _sample_plan: isSamplePlan,
-      _verdict: sampleVerdict,
-      _values: fi._values || [],
-      _count_in_m_M: fi['_count_in_(m,M]'] || 0,
-      _count_over_M: fi._count_>M || 0,
-    };
-  });
-}
-
-// ============ 风险评分 ============
-function calcRisk(records) {
-  if (!records || records.length === 0) {
-    return { level: 'none', label: '未检出', emoji: '⚪', score: 0 };
-  }
-
-  // 抽出适配后字段（保证 r.item / r.detected_value 一定有值）
-  const norm = extractFailed(records);
-  const items = {};
-  const provs = new Set();
-  let maxMultiple = 1;
-
-  norm.forEach(r => {
-    items[r.item] = (items[r.item] || 0) + 1;
-    if (r.source) provs.add(r.source);
-    // v3.7.13: 采样计划类按 _verdict 判定
-    if (r._sample_plan) {
-      if (r._verdict === 'fail') maxMultiple = Math.max(maxMultiple, 2.5);
-      else if (r._verdict === 'pass') maxMultiple = Math.max(maxMultiple, 0.8);
-    } else if (!isNaN(r.detected_num) && !isNaN(r.limit_num) && r.limit_num > 0) {
-      // 解析"0.0926g/kg"或"281mg/kg"——若超过限制倍数=实测/限制（粗算）
-      const mult = r.detected_num / r.limit_num;
-      if (mult > maxMultiple) maxMultiple = mult;
-    }
-  });
-
-  const totalItemCount = Object.values(items).reduce((a,b) => a+b, 0);
-  const itemRepeat = Math.max(...Object.values(items));
-  const crossProv = provs.size >= 2;
-
-  let score = itemRepeat * 5 + totalItemCount + (crossProv ? 30 : 0) + (maxMultiple > 2 ? 25 : 0);
-
-  let level, label, emoji;
-  if (score >= 80 || itemRepeat >= 5) { level = 'high'; label = '高'; emoji = '🔴'; }
-  else if (score >= 40) { level = 'mid-high'; label = '中-高'; emoji = '🟠'; }
-  else if (score >= 15) { level = 'mid'; label = '中'; emoji = '🟡'; }
-  else { level = 'low'; label = '低'; emoji = '🔵'; }
-
-  return { level, label, emoji, score, itemRepeat, crossProv, totalItemCount, maxMultiple, provs: Array.from(provs) };
-}
-
-// ============ UI 组件 ============
-function renderRiskBlock(risk, food, cat, recordCount, bigCat) {
-  const bg = {
-    'high': 'risk-high',
-    'mid-high': 'risk-mid-high',
-    'mid': 'risk-mid',
-    'low': 'risk-low',
-    'none': 'risk-low',
-    'cat': 'risk-cat',
-  }[risk.level === 'none' && cat ? 'cat' : risk.level];
-  
-  let title;
-  if (food && cat) title = `${food} @ ${cat}`;
-  else if (cat) title = cat;
-  else if (food) title = food;
-  else title = '';
-  
+function renderRiskBlock(risk, q, count) {
   return `
-    <div class="card">
-      <div class="risk-block ${bg}">
-        <div class="emoji">${risk.emoji}</div>
-        <div style="flex:1">
-          <div class="label">${risk.label}${cat ? '（类别风险）' : ''}</div>
-          <div class="score">
-            <strong>${title}</strong> · ${recordCount} 条不合格记录${risk.level !== 'none' ? ` · 得分 ${risk.score}` : ''}${risk.provs?.length ? ` · 涉及省份：${risk.provs.join('、')}` : ''}
-          </div>
-        </div>
+    <div class="risk-block risk-${risk.level}">
+      <div class="emoji">${risk.emoji}</div>
+      <div style="flex:1;">
+        <div class="label">${risk.label} · ${count} 条历史不合格记录</div>
+        <div class="score">查询词：<strong>${q}</strong>${risk.score ? ` · 评分 ${risk.score}` : ''}</div>
+        <div class="desc">${risk.desc}${risk.provs && risk.provs.length ? ` · 涉及 ${risk.provs.join('、')}` : ''}</div>
       </div>
     </div>
   `;
 }
 
-// 类别结果中的历史不合格项目：按项目汇总，点击项目行展开全部原始记录
-function renderHistoricalItemsCard(records, title) {
-  const norm = extractFailed(records);
-  if (!norm || norm.length === 0) return '';
-
-  const agg = {};
-  norm.forEach(r => {
-    const key = r.item || '（未列明项目）';
-    if (!agg[key]) {
-      agg[key] = {
-        item: key,
-        count: 0,
-        limits: new Set(),
-        banDetect: false,
-        maxMult: 1,
-        sampleItems: [],
-      };
-    }
-    const entry = agg[key];
-    entry.count++;
-    if (r.limit_value) entry.limits.add(r.limit_value);
-    entry.banDetect = entry.banDetect || r.banDetect;
-    // v3.7.13: 采样计划类按 _verdict 判定, 不用 parseNum 算倍数
-    if (r._sample_plan) {
-      if (r._verdict === 'fail') entry.maxMult = Math.max(entry.maxMult, 2.5);
-      else if (r._verdict === 'pass') entry.maxMult = Math.max(entry.maxMult, 0.8);
-    } else if (!isNaN(r.detected_num) && !isNaN(r.limit_num) && r.limit_num > 0) {
-      entry.maxMult = Math.max(entry.maxMult, r.detected_num / r.limit_num);
-    }
-    entry.sampleItems.push(r);
-  });
-
-  const rows = Object.values(agg).sort((a, b) => b.count - a.count || a.item.localeCompare(b.item));
-  const severity = (r) => {
-    if (r.banDetect) return { cls: 'sev-high', label: '不得检出' };
-    // v3.7.13: 采样计划类直接判定 (按 GB 4789.1)
-    const sampleRecord = r.sampleItems.find(x => x._sample_plan);
-    if (sampleRecord && sampleRecord._verdict) {
-      if (sampleRecord._verdict === 'fail') return { cls: 'sev-high', label: '不合格' };
-      if (sampleRecord._verdict === 'pass') return { cls: 'sev-low', label: '合格' };
-    }
-    if (r.maxMult >= 2) return { cls: 'sev-high', label: `${r.maxMult.toFixed(1)}× 超标` };
-    if (r.count >= 5) return { cls: 'sev-high', label: '高频' };
-    if (r.maxMult >= 1.2) return { cls: 'sev-mid', label: `${r.maxMult.toFixed(1)}× 超标` };
-    return { cls: 'sev-low', label: '超限值' };
-  };
-
-  return `
-    <div class="card history-card">
-      <div class="card-title">🔥 ${title}</div>
-      <div style="font-size:12px;color:#7f8c8d;margin:-4px 0 10px 0;">💡 点击任一不合格项目，可展开查看对应的抽检记录、实测值和限值。</div>
-      <div class="result-list">
-        ${rows.map((r, idx) => {
-          const s = severity(r);
-          const limits = [...r.limits].join(' / ') || '限值未列明';
-          const foodCount = new Set(r.sampleItems.map(x => x.food_name_raw || x.food_name_canonical)).size;
-          return `
-            <div class="summary-row history-summary-row" data-idx="${idx}" role="button" tabindex="0" aria-expanded="false">
-              <div><strong>${r.item}</strong></div>
-              <div class="muted" style="font-size:12px;">${limits}</div>
-              <div class="bad" style="font-weight:700;">${r.count} 次</div>
-              <div class="muted" style="font-size:12px;">涉及 ${foodCount} 个食品</div>
-              <div><span class="sev ${s.cls}">${s.label}</span></div>
-              <div class="arrow">▶</div>
-            </div>
-            <div class="detail-block" data-detail="${idx}" style="display:none;">
-              ${renderItemDetail(r.sampleItems, r.item, limits)}
-            </div>
-          `;
-        }).join('')}
-      </div>
-    </div>
-  `;
-}
-
-function renderItemsTable(records, title) {
-  // 先做数据适配（保证 r.item / r.detected_value / r.limit_value 都有值）
-  const norm = extractFailed(records);
-  if (!norm || norm.length === 0) {
-    return `<div class="card"><div class="empty-tip">📭 ${title}：无记录</div></div>`;
-  }
-
-  // 按"项目 + 限值"聚合（限值经 normLimit 兜底归一化 µ/μ）
-  const agg = {};
-  norm.forEach(r => {
-    const k = `${r.item}|${normLimit(r.limit_value)}`;
-    if (!agg[k]) {
-      agg[k] = {
-        item: r.item,
-        limit: r.limit_value || '',
-        count: 0,
-        banDetect: r.banDetect,
-        maxMult: 1,
-        sampleItems: [],
-      };
-    }
-    agg[k].count++;
-    if (!isNaN(r.detected_num) && !isNaN(r.limit_num) && r.limit_num > 0) {
-      const mult = r.detected_num / r.limit_num;
-      if (mult > agg[k].maxMult) agg[k].maxMult = mult;
-    }
-    agg[k].sampleItems.push(r);
-  });
-
-  const rows = Object.values(agg).sort((a, b) => b.count - a.count);
-
-  const sev = (r) => {
-    if (r.banDetect) return { cls: 'sev-high', label: '不得检出' };
-    if (r.maxMult >= 2) return { cls: 'sev-high', label: `${r.maxMult.toFixed(1)}×` };
-    if (r.count >= 5) return { cls: 'sev-high', label: '高频' };
-    if (r.maxMult >= 1.2) return { cls: 'sev-mid', label: `${r.maxMult.toFixed(1)}×` };
-    return { cls: 'sev-low', label: '轻微' };
-  };
-
-  return `
-    <div class="card">
-      <div class="card-title">📋 ${title}（按不合格项目汇总 · 共 ${rows.length} 项 · ${norm.length} 条记录）</div>
-      <div style="font-size:12px;color:#7f8c8d;margin:-4px 0 10px 0;">💡 点击任一行可展开 · 查看该项目所有不合格明细（食品/抽样单位/生产日期/实测值等）</div>
-      <div class="result-list">
-        ${rows.map((r, idx) => {
-          const s = sev(r);
-          return `
-            <div class="summary-row" data-idx="${idx}">
-              <div><strong>${r.item}</strong></div>
-              <div class="muted" style="font-size:12px;">${r.limit || '—'}</div>
-              <div class="bad" style="font-weight:700;">${r.count} 次</div>
-              <div class="muted" style="font-size:12px;">涉及 ${new Set(r.sampleItems.map(x => x.food_name_raw || x.food_name_canonical)).size} 个食品</div>
-              <div><span class="sev ${s.cls}">${s.label}</span></div>
-              <div class="arrow">▶</div>
-            </div>
-            <div class="detail-block" data-detail="${idx}" style="display:none;">
-              ${renderItemDetail(r.sampleItems, r.item, r.limit)}
-            </div>
-          `;
-        }).join('')}
-      </div>
-    </div>
-  `;
-}
-
-// 展开后的明细表（每条原始记录）
-function renderItemDetail(records, itemName, limit) {
-  if (!records.length) return '<div class="empty-tip">无明细</div>';
-  const sorted = [...records].sort((a, b) => {
-    const k = (a.source || '') + '|' + (a.food_name_raw || a.food_name_canonical || '') + '|' + (a.prod_date || '');
-    const j = (b.source || '') + '|' + (b.food_name_raw || b.food_name_canonical || '') + '|' + (b.prod_date || '');
-    return k.localeCompare(j);
-  });
-  return `
-    <div style="font-size:12px;color:#5d6d7e;margin-bottom:6px;">
-      <strong>${itemName}</strong> · 国标限值：<code>${limit || '—'}</code>
-    </div>
-    <table>
-      <thead><tr>
-        <th>来源</th>
-        <th>食品名</th>
-        <th>抽样单位</th>
-        <th>生产/购进日期</th>
-        <th>实测值</th>
-        <th>限值</th>
-        <th>超标</th>
-      </tr></thead>
-      <tbody>
-        ${sorted.map(r => {
-          // v3.7.13: 采样计划类直接显示判定结果, 不用数值倍数
-          let mult = '';
-          if (r._sample_plan) {
-            // 采样计划类 → 显示 "不合格" (按 GB 4789.1 三级采样方案判定)
-            if (r._verdict === 'fail') {
-              mult = '不合格';
-            } else if (r._verdict === 'pass') {
-              mult = '合格';
-            } else {
-              mult = '待判';
-            }
-          } else if (!isNaN(r.detected_num) && !isNaN(r.limit_num) && r.limit_num > 0) {
-            mult = (r.detected_num / r.limit_num).toFixed(2) + '×';
-          }
-          // 根据判定结果选样式
-          let sevClass = 'bad';
-          if (r._sample_plan && r._verdict === 'fail') sevClass = 'bad sev-high';
-          else if (r._sample_plan && r._verdict === 'pass') sevClass = 'ok';
-          return `
-            <tr>
-              <td><span class="meta-tag">${r.source || '—'}</span></td>
-              <td>${r.food_name_raw || r.food_name_canonical || '—'}</td>
-              <td class="muted" style="font-size:12px;">${r.sampler_name || '—'}</td>
-              <td class="muted" style="font-size:12px;">${r.prod_date || '—'}</td>
-              <td class="bad">${r.detected_value || '—'}</td>
-              <td class="muted">${r.limit_value || '—'}</td>
-              <td>${mult ? `<span class="${sevClass}" style="font-weight:700;">${mult}</span>` : '—'}</td>
-            </tr>
-          `;
-        }).join('')}
-      </tbody>
-    </table>
-  `;
-}
-
-function renderTips(cat, options = {}) {
-  if (!cat) return '';
-  const includeHistory = options.includeHistory !== false;
-
-  // 历史不合格项目：来自 master.json 中此大类的所有记录，按项目聚合
-  const histRecords = state.master.records.filter(r => r.big_category === cat);
-  const normHist = extractFailed(histRecords);
-  const histAgg = {};
-  normHist.forEach(r => {
-    const k = r.item;
-    if (!histAgg[k]) histAgg[k] = { item: r.item, count: 0, banDetect: r.banDetect, maxMult: 1, limits: new Set(), sampleItems: [] };
-    histAgg[k].count++;
-    histAgg[k].sampleItems.push(r);
-    if (r.limit_value) histAgg[k].limits.add(r.limit_value);
-    if (!isNaN(r.detected_num) && !isNaN(r.limit_num) && r.limit_num > 0) {
-      const mult = r.detected_num / r.limit_num;
-      if (mult > histAgg[k].maxMult) histAgg[k].maxMult = mult;
-    }
-  });
-  const histRows = Object.values(histAgg).sort((a, b) => b.count - a.count).slice(0, 6);
-
-  // 基础资质清单（任何类别都必备）
-  const baseDocs = [
-    { text: 'SC 证 / 营业执照（生产、销售资质）', src: '《食品生产许可管理办法》' },
-    { text: '每批出厂检验报告（厂家自检）', src: '《食品安全法》§52 出厂检验记录' },
-    { text: '近 6 个月第三方全项报告（重点核查下方项目）', src: '第三方 CMA 资质机构出具' },
-  ];
-
-  return `
-    <div class="card">
-      <div class="card-title">🛡️ 向供应商索证索票建议（按大类 ${cat}）</div>
-
-      ${includeHistory ? (histRows.length > 0 ? `
-        <div class="tip-block">
-          <div class="tip-block-title">🔥 历史不合格项目（向供应商索取全项报告时重点核查，已发生过 ${histRecords.length} 次）</div>
-          <div style="font-size:12px;color:#7f8c8d;margin:-4px 0 10px 0;">💡 点击任一项目行可展开，查看对应的食品、抽样单位、日期、实测值和限值。</div>
-          <div class="result-list">
-            ${histRows.map((r, idx) => {
-              // 严重度：不得检出 / 高倍数(≥2×) / 中倍数(1.2-2×) / 低倍数
-              let sev, cls;
-              if (r.banDetect) {
-                sev = '不得检出';
-                cls = 'sev-high';
-              } else if (r.maxMult >= 2) {
-                sev = `${r.maxMult.toFixed(1)}× 超标`;
-                cls = 'sev-high';
-              } else if (r.maxMult >= 1.2) {
-                sev = `${r.maxMult.toFixed(1)}× 超标`;
-                cls = 'sev-mid';
-              } else {
-                sev = '超限值';
-                cls = 'sev-low';
-              }
-              const limitTxt = [...r.limits].join(' / ') || '限值未列明';
-              const foodCount = new Set(r.sampleItems.map(x => x.food_name_raw || x.food_name_canonical)).size;
-              return `
-                <div class="summary-row history-summary-row" data-idx="${idx}" role="button" tabindex="0" aria-expanded="false">
-                  <div><strong>${r.item}</strong></div>
-                  <div class="muted" style="font-size:12px;">${limitTxt}</div>
-                  <div class="bad" style="font-weight:700;">${r.count} 次</div>
-                  <div class="muted" style="font-size:12px;">涉及 ${foodCount} 个食品</div>
-                  <div><span class="sev ${cls}">${sev}</span></div>
-                  <div class="arrow">▶</div>
-                </div>
-                <div class="detail-block" data-detail="${idx}" style="display:none;">
-                  ${renderItemDetail(r.sampleItems, r.item, limitTxt)}
-                </div>
-              `;
-            }).join('')}
-          </div>
-        </div>
-      ` : `
-        <div class="tip-block">
-          <div class="tip-block-title">🔥 历史不合格项目</div>
-          <div class="empty-tip">✓ 该类别暂无历史不合格记录，相对风险较低</div>
-        </div>
-      `) : ''}
-
-      <div class="tip-block">
-        <div class="tip-block-title">📑 基础资质清单（任何类别均需）</div>
-        <ul class="checklist">
-          ${baseDocs.map(d => `<li><strong>${d.text}</strong><br><span class="muted" style="font-size:11px;">依据：${d.src}</span></li>`).join('')}
-        </ul>
-      </div>
-    </div>
-  `;
-}
-
-// ============ 多选品类对比 ============
-function renderMultiCategoryOnly(result, cats) {
-  const master = state.master;
-
-  // 1. 合并所有类别的记录
-  const allRecords = master.records.filter(r => cats.includes(r.big_category));
-
-  // 2. 各类别独立统计
-  const catStats = cats.map(cat => {
-    const catRecs = allRecords.filter(r => r.big_category === cat);
-    const risk = calcRisk(catRecs);
-    const norm = extractFailed(catRecs);
-    const itemCounts = {};
-    norm.forEach(r => {
-      itemCounts[r.item] = (itemCounts[r.item] || 0) + 1;
-    });
-    const topItem = Object.entries(itemCounts).sort((a,b) => b[1]-a[1])[0];
-    return {
-      name: cat,
-      count: catRecs.length,
-      risk,
-      topItem: topItem ? `${topItem[0]} (${topItem[1]}次)` : '—',
-    };
-  });
-
-  // 3. 合并风险 = 取最高
-  const maxRisk = catStats.reduce((max, c) =>
-    c.risk.level > max.level ? c.risk : max, { level: 0 });
-
-  // 4. 多类别结果直接展示历史不合格明细。
-
-  result.innerHTML = `
-    ${renderRiskBlock(maxRisk, '', cats.join(' + '), allRecords.length, cats.join(' + '))}
-
-    <div class="card">
-      <div class="card-title">📊 多类别对比（${cats.length} 个类别 · 共 ${allRecords.length} 条不合格记录）</div>
-      <div class="meta-row">
-        <span class="meta-tag">综合风险 <strong>${maxRisk.label}</strong></span>
-        <span class="meta-tag">历史不合格记录 <strong>${allRecords.length}</strong> 条</span>
-      </div>
-      <table>
-        <thead><tr><th>类别</th><th>记录数</th><th>风险</th><th>高频不合格项目</th></tr></thead>
-        <tbody>
-          ${catStats.map(s => `
-            <tr>
-              <td><strong>${s.name}</strong></td>
-              <td class="bad">${s.count}</td>
-              <td><span class="risk-badge risk-${s.risk.cls}">${s.risk.label}</span></td>
-              <td>${s.topItem}</td>
-            </tr>
-          `).join('')}
-        </tbody>
-      </table>
-    </div>
-
-    ${renderItemsTable(allRecords, `合并不合格明细（${cats.length} 类聚合）`)}
-
-    ${renderMultiTips(cats)}
-  `;
-}
-
-// ============ 食品 + 多选类别 ============
-function renderFoodMultiCategory(result, food, cats) {
-  const master = state.master;
-  // 食品名精确匹配 + 大类在 cats 内
-  let records = master.records.filter(r => cats.includes(r.big_category));
-  records = records.filter(r =>
-    r.food_name_raw.includes(food) ||
-    (r.food_name_canonical && r.food_name_canonical.includes(food))
-  );
-
-  // 按类别聚合 + 共同不合格项目
-  const catStats = cats.map(cat => {
-    const catRecs = records.filter(r => r.big_category === cat);
-    return { name: cat, count: catRecs.length };
-  });
-
-  // 共同不合格项目
+// ============ 摘要块（按高频项目聚合） ============
+function renderSummaryBlocks(q, hits) {
+  if (!hits.length) return '';
   const itemCounts = {};
-  extractFailed(records).forEach(r => {
-    itemCounts[r.item] = (itemCounts[r.item] || 0) + 1;
+  hits.forEach(r => {
+    const fi = (r.failed_items || [])[0] || {};
+    const it = fi.item || '（未列明项目）';
+    if (!itemCounts[it]) itemCounts[it] = { count: 0, examples: [] };
+    itemCounts[it].count++;
+    if (itemCounts[it].examples.length < 2) {
+      itemCounts[it].examples.push({
+        name: r.food_name_raw || r.food_name_canonical,
+        prov: r.source,
+        result: fi.result,
+        limit: (fi.limit || '').replace(/\\u03bc/g, 'µ'),
+      });
+    }
   });
-  const topItems = Object.entries(itemCounts).sort((a,b) => b[1]-a[1]).slice(0, 8);
+  const top = Object.entries(itemCounts).sort((a, b) => b[1].count - a[1].count).slice(0, 5);
+  return `
+    <div class="card">
+      <div class="card-title">📌 不合格项目 Top 5${hits.length > 5 ? `（共 ${Object.keys(itemCounts).length} 类）` : ''}</div>
+      ${top.map(([it, info]) => {
+        const sev = info.count >= 5 ? 'high' : info.count >= 3 ? 'mid' : 'low';
+        return `
+          <div class="summary-block ${sev}">
+            <div class="sum-title">⛔ ${it} <span class="tip-freq">${info.count} 次</span></div>
+            <div class="sum-detail">
+              典型案例：${info.examples.map(e => `${e.name}（${e.prov || '?'}：${e.result} 超标 / 限值 ${e.limit}）`).join('；')}
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+}
 
-  // 综合风险
-  const risk = calcRisk(records);
-  const catsNotMatched = catStats.filter(s => s.count === 0);
-
-  result.innerHTML = `
-    ${renderRiskBlock(risk, food, cats.join(' + '), records.length, cats.join(' + '))}
-
-    ${catsNotMatched.length > 0 ? `
-      <div class="card" style="background:#fff8e1;border-left:4px solid #ffa000;">
-        <div style="font-size:13px;color:#5d4037;">
-          ⚠️ 「${food}」在以下类别中无匹配记录：<strong>${catsNotMatched.map(s=>s.name).join('、')}</strong>（仅显示有记录的 ${cats.length - catsNotMatched.length} 个类别）
-        </div>
-      </div>
-    ` : ''}
-
-    ${records.length > 0 ? `
+// ============ 详细明细表（可展开） ============
+function renderDetailTable(q, hits) {
+  if (!hits.length) {
+    return `
       <div class="card">
-        <div class="card-title">📊 食品「${food}」按类别分布（${records.length} 条记录）</div>
-        <table>
-          <thead><tr><th>类别</th><th>记录数</th></tr></thead>
-          <tbody>
-            ${catStats.filter(s => s.count > 0).map(s => `<tr><td>${s.name}</td><td class="bad">${s.count}</td></tr>`).join('')}
-          </tbody>
-        </table>
+        <div class="card-title">📋 历史不合格明细</div>
+        <div class="empty-tip">本查询范围内无历史不合格记录。</div>
       </div>
+    `;
+  }
+  // 默认展示前 10 条
+  const top = hits.slice(0, 10);
+  const more = hits.length - top.length;
+  return `
+    <div class="card">
+      <div class="card-title">📋 历史不合格明细（${hits.length} 条）
+        ${more > 0 ? `<button onclick="document.getElementById('moreRecords').style.display='block';this.style.display='none';" style="margin-left:auto;font-size:12px;">展开剩余 ${more} 条</button>` : ''}
+      </div>
+      ${top.map(r => {
+        const fi = (r.failed_items || [])[0] || {};
+        return `
+          <div class="record-row">
+            <div><strong>${r.food_name_raw || r.food_name_canonical}</strong></div>
+            <div class="hide-on-mobile">${fi.item || '—'}</div>
+            <div class="bad hide-on-mobile">${fi.result || '—'}</div>
+            <div class="hide-on-mobile">${(fi.limit || '—').replace(/\\u03bc/g, 'µ')}</div>
+            <div>${r.source || '?'}</div>
+          </div>
+        `;
+      }).join('')}
+      ${more > 0 ? `
+        <div id="moreRecords" style="display:none;">
+          ${hits.slice(10).map(r => {
+            const fi = (r.failed_items || [])[0] || {};
+            return `
+              <div class="record-row">
+                <div><strong>${r.food_name_raw || r.food_name_canonical}</strong></div>
+                <div class="hide-on-mobile">${fi.item || '—'}</div>
+                <div class="bad hide-on-mobile">${fi.result || '—'}</div>
+                <div class="hide-on-mobile">${(fi.limit || '—').replace(/\\u03bc/g, 'µ')}</div>
+                <div>${r.source || '?'}</div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      ` : ''}
+    </div>
+  `;
+}
 
-      ${renderItemsTable(records, `「${food}」跨 ${cats.length} 类别不合格明细`)}
+// ============ 自检项目建议 ============
+function renderSelfCheck(q, autoCat, hits) {
+  // 1) 食品名 → 细类 → 检验项目
+  let selfCheckItems = [];
+  const aliasHit = state.subcatToItems[q];
+  if (aliasHit) {
+    const big = aliasHit.big_category;
+    const sub = aliasHit.subcategory;
+    const tables = (state.subcatChecklist.categories || {})[big] || [];
+    const target = tables.find(t => t.name === sub);
+    if (target) {
+      selfCheckItems.push({
+        source: `${big} / ${sub}`,
+        items: target.items || [],
+      });
+    }
+  }
+  // 2) autoCat 兜底
+  if (!selfCheckItems.length && autoCat) {
+    const big = autoCat.category;
+    const tables = (state.subcatChecklist.categories || {})[big] || [];
+    if (tables.length) {
+      // 取第一个细类（或全表）
+      selfCheckItems.push({
+        source: `${big}（自动归类）`,
+        items: tables.flatMap(t => t.items || []).slice(0, 30),
+      });
+    }
+  }
+  // 3) 高频不合格项目转自检
+  const histItems = {};
+  hits.forEach(r => {
+    const fi = (r.failed_items || [])[0] || {};
+    const it = fi.item || '';
+    if (it) histItems[it] = (histItems[it] || 0) + 1;
+  });
+  const histTop = Object.entries(histItems).sort((a, b) => b[1] - a[1]).slice(0, 5);
 
-      ${topItems.length > 0 ? `
-        <div class="card">
-          <div class="card-title">🔥 跨类别共同不合格项目</div>
+  if (!selfCheckItems.length && !histTop.length) {
+    return `
+      <div class="card">
+        <div class="card-title">🔬 自检项目建议</div>
+        <div class="empty-tip">本查询未匹配到对应细类表，暂无标准自检项。如需看完整细则，请到「类别」区域选一个大类。</div>
+      </div>
+    `;
+  }
+  return `
+    <div class="card">
+      <div class="card-title">🔬 自检项目建议（向供应商索证时重点核查）</div>
+      ${selfCheckItems.length ? `
+        <div class="tip-block">
+          <div class="tip-block-title">📘 2026 实施细则法定检验项目</div>
+          <div class="tip-source">数据源：《食品安全监督抽检实施细则（2026 年版）》${selfCheckItems[0].source}</div>
           <ul class="checklist">
-            ${topItems.map(([item, count]) => `<li class="must">${item} <span class="tip-freq">${count} 次</span></li>`).join('')}
+            ${selfCheckItems[0].items.slice(0, 30).map(it => `
+              <li>
+                <strong>${it.检验项目 || it.item || it.name || '?'}</strong>
+                ${it.标准值 || it.limit || it.standard ? ` · <span class="muted">${it.标准值 || it.limit || it.standard}</span>` : ''}
+              </li>
+            `).join('')}
+          </ul>
+          ${selfCheckItems[0].items.length > 30 ? `<div class="empty-tip">… 还有 ${selfCheckItems[0].items.length - 30} 项</div>` : ''}
+        </div>
+      ` : ''}
+      ${histTop.length ? `
+        <div class="tip-block">
+          <div class="tip-block-title">⚠ 历史高频不合格项（必查）</div>
+          <ul class="checklist">
+            ${histTop.map(([it, n]) => `
+              <li class="must">
+                <strong>${it}</strong>
+                <span class="tip-freq">${n} 次</span>
+                <span class="tip-sev">必检</span>
+              </li>
+            `).join('')}
           </ul>
         </div>
       ` : ''}
-    ` : `
-      <div class="card">
-        <div class="empty-tip">⚠️ 「${food}」在所选 ${cats.length} 个类别中无不合格记录</div>
-      </div>
-    `}
-  `;
-}
-
-// ============ 多选版 索证索票建议 ============
-function renderMultiTips(cats) {
-  // 合并所有类别的历史不合格项目
-  const master = state.master;
-  const allHistRecs = master.records.filter(r => cats.includes(r.big_category));
-  const normHist = extractFailed(allHistRecs);
-  const histAgg = {};
-  normHist.forEach(r => {
-    if (!histAgg[r.item]) histAgg[r.item] = { item: r.item, count: 0, banDetect: r.banDetect, maxMult: 1, cats: new Set(), sampleItems: [] };
-    histAgg[r.item].count++;
-    histAgg[r.item].sampleItems.push(r);
-    // v3.7.13: 采样计划类按 _verdict 判定
-    if (r._sample_plan) {
-      if (r._verdict === 'fail') histAgg[r.item].maxMult = Math.max(histAgg[r.item].maxMult, 2.5);
-      else if (r._verdict === 'pass') histAgg[r.item].maxMult = Math.min(histAgg[r.item].maxMult, 0.8);
-    } else if (!isNaN(r.detected_num) && !isNaN(r.limit_num) && r.limit_num > 0) {
-      const mult = r.detected_num / r.limit_num;
-      if (mult > histAgg[r.item].maxMult) histAgg[r.item].maxMult = mult;
-    }
-    histAgg[r.item].cats.add(r.big_category);
-  });
-  const histRows = Object.values(histAgg).sort((a, b) => b.count - a.count).slice(0, 10);
-
-  const baseDocs = [
-    'SC 证 / 营业执照（生产、销售资质）',
-    '每批出厂检验报告（厂家自检）',
-    '近 6 个月第三方全项报告（重点核查下方项目）',
-  ];
-
-  return `
-    <div class="card">
-      <div class="card-title">🛡️ 向供应商索证索票建议（${cats.length} 类别合并 · ${cats.join(' + ')}）</div>
-
-
-      ${histRows.length > 0 ? `
-        <div class="tip-block">
-          <div class="tip-block-title">🔥 跨类别历史不合格项目（共 ${histRows.length} 项）</div>
-          <div style="font-size:12px;color:#7f8c8d;margin:-4px 0 10px 0;">💡 点击任一项目行可展开，查看对应的食品、抽样单位、日期、实测值和限值。</div>
-          <div class="result-list">
-            ${histRows.map((r, idx) => {
-              let sev, cls;
-              // v3.7.13: 采样计划类直接判定
-              const sampleInHist = r.sampleItems.find(x => x._sample_plan && x._verdict);
-              if (r.banDetect) { sev = '不得检出'; cls = 'sev-high'; }
-              else if (sampleInHist && sampleInHist._verdict === 'fail') { sev = '不合格'; cls = 'sev-high'; }
-              else if (sampleInHist && sampleInHist._verdict === 'pass') { sev = '合格'; cls = 'sev-low'; }
-              else if (r.maxMult >= 2) { sev = `${r.maxMult.toFixed(1)}× 超标`; cls = 'sev-high'; }
-              else if (r.maxMult >= 1.2) { sev = `${r.maxMult.toFixed(1)}× 超标`; cls = 'sev-mid'; }
-              else { sev = '超限值'; cls = 'sev-low'; }
-              return `
-                <div class="summary-row history-summary-row" data-idx="${idx}" role="button" tabindex="0" aria-expanded="false">
-                  <div><strong>${r.item}</strong></div>
-                  <div class="muted" style="font-size:12px;">涉及 ${[...r.cats].join('·')}</div>
-                  <div class="bad" style="font-weight:700;">${r.count} 次</div>
-                  <div><span class="sev ${cls}">${sev}</span></div>
-                  <div class="muted" style="font-size:12px;">${new Set(r.sampleItems.map(x => x.food_name_raw || x.food_name_canonical)).size} 个食品</div>
-                  <div class="arrow">▶</div>
-                </div>
-                <div class="detail-block" data-detail="${idx}" style="display:none;">
-                  ${renderItemDetail(r.sampleItems, r.item, '')}
-                </div>
-              `;
-            }).join('')}
-          </div>
-        </div>
-      ` : ''}
-
-      <div class="tip-block">
-        <div class="tip-block-title">📑 基础资质清单（任何类别均需）</div>
-        <ul class="checklist">
-          ${baseDocs.map(d => `<li>${d}</li>`).join('')}
-        </ul>
-      </div>
     </div>
   `;
 }
 
-// ============ 顶部交互 ============
-function clearFood() {
-  state.foodName = '';
-  $('#foodInput').value = '';
-  render();
-}
-function clearCategory() {
-  state.category = '';
-  state.subcategory = '';
-  state.selectedCats = [];
-  renderCats();
-  renderSubcats();
-  render();
-}
-function clearSubcategory() {
-  state.subcategory = '';
-  renderSubcats();
-  render();
-}
-function setupFoodInput() {
-  const input = document.getElementById('foodInput');
-  let debounce;
-  let isComposing = false;
-  // v3.7.18：IME 拼音输入法处理。中文输入法在打字过程中会触发 input 事件，
-  //   但此时 input.value 是"jidan"（拼音字母），不是最终中文"鸡蛋"，
-  //   会导致 0 条记录。拼音结束时才查。
-  input.addEventListener('compositionstart', () => { isComposing = true; });
-  input.addEventListener('compositionend', () => {
-    isComposing = false;
-    // 拼音结束 → 主动触发查询（绕过 debounce 和 input 事件）
-    const v = input.value.trim();
-    state.foodName = v;
-    if (v) {
-      state.category = '';
-      state.subcategory = '';
-      state.selectedCats = [];
+// ============ lookup 辅助 ============
+function lookupCategory(foodName) {
+  if (!foodName) return null;
+  const cm = state.categoryMap || {};
+  // 1. 精确匹配
+  for (const [cat, items] of Object.entries(cm)) {
+    if (cat.startsWith('_')) continue;
+    if (Array.isArray(items) && items.includes(foodName)) {
+      const bigCat = cat.split('-')[0];
+      return { category: bigCat, fullCategory: cat, canonical: foodName };
     }
-    renderCats();
-    renderSubcats();
-    render();
-  });
-  input.addEventListener('input', () => {
-    // 拼音过程中不触发查询（避免查"jidan"）
-    if (isComposing) return;
-    clearTimeout(debounce);
-    debounce = setTimeout(() => {
-      const v = input.value.trim();
-      state.foodName = v;
-      // v3.7.18：用户主动输入食品名 → 清掉残留的类别/细类（避免上次自动归类的值干扰本次查询）
-      if (v) {
-        state.category = '';
-        state.subcategory = '';
-        state.selectedCats = [];
-      }
-      // 不再互斥：食品名和生产单位可同时填写（AND 交集筛选）
-      renderCats();
-      renderSubcats();
-      render();
-    }, 250);
-  });
+  }
+  // 2. 别名映射 (subcat_to_items)
+  const sub = state.subcatToItems[foodName];
+  if (sub) {
+    return { category: sub.big_category, fullCategory: `${sub.big_category}-${sub.subcategory}`, canonical: sub.subcategory };
+  }
+  return null;
 }
 
-function setupProdInput() {
-  const input = document.getElementById('prodInput');
-  let debounce;
-  let isComposing = false;
-  // v3.7.18：IME 拼音处理（同 setupFoodInput）
-  input.addEventListener('compositionstart', () => { isComposing = true; });
-  input.addEventListener('compositionend', () => {
-    isComposing = false;
-    state.prodName = input.value.trim();
-    render();
-  });
-  input.addEventListener('input', () => {
-    if (isComposing) return;
-    clearTimeout(debounce);
-    debounce = setTimeout(() => {
-      state.prodName = input.value.trim();
-      // 不再互斥：生产单位和食品名可同时填写（AND 交集筛选）
-      render();
-    }, 250);
-  });
-}
-
-function clearProd() {
-  state.prodName = '';
-  const p = document.getElementById('prodInput');
-  if (p) p.value = '';
-  render();
-}
-
+// ============ Toast ============
 function showToast(msg) {
-  const t = $('#toast');
+  const t = document.getElementById('toast');
   t.textContent = msg;
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 1800);
 }
 
 // ============ 启动 ============
+let searchDebounce = null;
+let isComposing = false;
+
 document.addEventListener('DOMContentLoaded', () => {
-  setupFoodInput();
-  setupProdInput();
-  setupCatFilter();
-  setupSubcatFilter();
+  const input = document.getElementById('qInput');
+
+  // IME 拼音防护
+  input.addEventListener('compositionstart', () => { isComposing = true; });
+  input.addEventListener('compositionend', () => {
+    isComposing = false;
+    state.q = input.value.trim();
+    search();
+  });
+  // 实时查询（拼音过程中不查）
+  input.addEventListener('input', () => {
+    if (isComposing) return;
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(() => {
+      state.q = input.value.trim();
+      search();
+    }, 200);
+  });
+  // Enter / blur 立刻查
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      state.q = input.value.trim();
+      search();
+    }
+  });
+  input.addEventListener('blur', () => {
+    state.q = input.value.trim();
+    search();
+  });
+
   loadData();
-});
-</script>
-<script>
-  // v3.7.19 修复：本地版禁用 Service Worker（避免 sw.js 缓存旧 index.html）
-  // 同时强制 unregister 用户之前访问过 github 版时注册的 sw + 清空 cacheStorage
+
+  // 强制清理旧 Service Worker（v4.0 起不再注册新 SW）
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.getRegistrations().then(regs => {
-      regs.forEach(reg => {
-        console.log('[v3.7.19] 注销旧 SW:', reg.scope);
-        reg.unregister();
-      });
+      regs.forEach(reg => reg.unregister());
     });
     if (window.caches) {
-      caches.keys().then(keys => keys.forEach(k => {
-        console.log('[v3.7.19] 清理 cache:', k);
-        caches.delete(k);
-      }));
+      caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
     }
   }
+});
 </script>
 </body>
 </html>
