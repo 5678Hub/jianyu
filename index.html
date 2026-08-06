@@ -148,21 +148,29 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
 .summary-block .sum-title { font-weight: 600; color: var(--c-text-1); }
 .summary-block .sum-detail { color: var(--c-text-2); font-size: 11px; margin-top: 2px; }
 
-/* v4.0.1 详细明细（全字段展开） */
-.record-detail { background: #fff; border: 1px solid var(--c-border); border-left: 4px solid var(--c-high); border-radius: var(--r-sm); padding: 0; margin-bottom: 10px; overflow: hidden; }
-.record-detail .rd-head { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: linear-gradient(90deg, var(--c-high-soft), transparent); border-bottom: 1px solid var(--c-border); font-size: 14px; }
-.record-detail .rd-head .rd-no { background: var(--c-high); color: #fff; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
-.record-detail .rd-head strong { font-size: 15px; color: var(--c-text-1); }
-.record-detail .rd-head code { background: #fff3e0; padding: 1px 6px; border-radius: 3px; font-size: 11px; color: #5d4037; }
-.record-detail .rd-head .rd-source { margin-left: auto; background: #e3f2fd; color: #1565c0; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; }
-.record-detail .rd-body { padding: 12px 14px; }
-.record-detail .rd-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px 16px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed var(--c-border); }
+/* v4.0.2 详细明细（点击展开） */
+.rd-list { display: flex; flex-direction: column; gap: 6px; }
+.record-detail { background: #fff; border: 1px solid var(--c-border); border-left: 4px solid var(--c-high); border-radius: var(--r-sm); overflow: hidden; transition: all 0.15s; }
+.record-detail:hover { border-left-color: var(--c-mid); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.record-detail[open] { border-left-color: var(--c-high); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.record-detail > summary.rd-summary { list-style: none; cursor: pointer; padding: 10px 14px; display: flex; align-items: center; gap: 10px; font-size: 14px; user-select: none; background: linear-gradient(90deg, var(--c-high-soft) 0%, transparent 60%); transition: background 0.15s; }
+.record-detail > summary.rd-summary:hover { background: linear-gradient(90deg, var(--c-mid-soft) 0%, transparent 70%); }
+.record-detail > summary::-webkit-details-marker { display: none; }
+.record-detail .rd-no { background: var(--c-high); color: #fff; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+.record-detail > summary.rd-summary strong { font-size: 15px; color: var(--c-text-1); flex-shrink: 0; }
+.record-detail .rd-canon { background: #fff3e0; padding: 1px 6px; border-radius: 3px; font-size: 11px; color: #5d4037; font-family: 'SF Mono', Consolas, monospace; flex-shrink: 0; }
+.record-detail .rd-prod-tag { font-size: 12px; color: var(--c-text-2); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.record-detail .rd-source { background: #e3f2fd; color: #1565c0; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; flex-shrink: 0; }
+.record-detail .rd-toggle { color: var(--c-text-3); font-size: 12px; transition: transform 0.2s; flex-shrink: 0; }
+.record-detail[open] .rd-toggle { transform: rotate(90deg); }
+.record-detail .rd-body { padding: 14px; border-top: 1px dashed var(--c-border); background: #fafbfc; }
+.record-detail .rd-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px 16px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed var(--c-border); }
 .record-detail .rd-grid > div { display: flex; flex-direction: column; gap: 2px; font-size: 12px; }
 .record-detail .rd-key { color: var(--c-text-3); font-size: 11px; }
 .record-detail .rd-val { color: var(--c-text-1); font-weight: 500; }
 .record-detail .rd-val.bad { color: var(--c-high); font-weight: 700; }
 .record-detail .rd-items { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
-.record-detail .rd-item { display: grid; grid-template-columns: 1.5fr 1fr 1fr auto; gap: 10px; padding: 8px 12px; background: #fafbfc; border-radius: var(--r-sm); font-size: 12px; align-items: center; border-left: 3px solid var(--c-border-strong); }
+.record-detail .rd-item { display: grid; grid-template-columns: 1.5fr 1fr 1fr auto; gap: 10px; padding: 8px 12px; background: #fff; border-radius: var(--r-sm); font-size: 12px; align-items: center; border-left: 3px solid var(--c-border-strong); }
 .record-detail .rd-item.fail { border-left-color: var(--c-high); background: var(--c-high-soft); }
 .record-detail .rd-item.pass { border-left-color: #4caf50; background: #e8f5e9; }
 .record-detail .rd-item .it-name { font-weight: 600; color: var(--c-text-1); }
@@ -174,8 +182,8 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
 .record-detail .rd-prod .rd-key { display: inline-block; min-width: 90px; color: var(--c-text-3); font-size: 11px; margin-right: 6px; }
 @media (max-width: 600px) {
   .record-detail .rd-item { grid-template-columns: 1fr; gap: 4px; }
-  .record-detail .rd-head { flex-wrap: wrap; }
-  .record-detail .rd-head .rd-source { margin-left: 0; }
+  .record-detail > summary.rd-summary { flex-wrap: wrap; }
+  .record-detail .rd-prod-tag { width: 100%; flex-basis: 100%; }
 }
 
 @media (max-width: 600px) {
@@ -201,20 +209,21 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
     <div class="brand-title"><span class="zh">食品抽检风险查询</span></div>
     <div class="subtitle" id="subtitle">加载中…</div>
   </div>
-  <div class="ver">v4.0.1 · 2026</div>
+  <div class="ver">v4.0.2 · 2026</div>
 </header>
 
 <!-- 主搜索框（核心：单输入框） -->
 <section class="section">
   <div class="section-title">
-    🔍 输入食品名查询 <span class="hint" style="margin-left:auto;">支持模糊匹配 · 输完无需操作，自动出结果</span>
+    🔍 输入查询 <span class="hint" style="margin-left:auto;">食品名 + 生产单位 · 双字段 AND 交集 · 输完自动查</span>
   </div>
   <div class="input-row">
-    <input type="text" id="qInput" placeholder="例如：鸡蛋、桂圆、虾爬子、铁棍山药、饼干…（自由输入）" autocomplete="off" autofocus>
+    <input type="text" id="qInput" placeholder="食品名：例如 鸡蛋、桂圆、虾爬子、铁棍山药、饼干…" autocomplete="off" autofocus>
+    <input type="text" id="pInput" placeholder="生产单位（厂家）：例如 XX 食品厂、XX 养殖场…" autocomplete="off">
     <button class="primary" onclick="forceSearch()">查询</button>
     <button onclick="clearSearch()">清空</button>
   </div>
-  <div class="empty-tip" style="margin-top:8px;">💡 <strong>模糊匹配：</strong>输入"山药"可命中"铁棍山药"；输入"饼干"可命中所有饼干类。如需更精确，可点选下方类别卡片缩窄范围。</div>
+  <div class="empty-tip" style="margin-top:8px;">💡 <strong>模糊匹配：</strong>输入"山药"命中"铁棍山药"；输入"饼干"命中所有饼干类。<strong>厂家查询：</strong>输入"XX 食品厂"只看该厂所有不合格记录；食品名 + 厂家同时填写 → 交集筛选。</div>
 </section>
 
 <!-- 类别（可选筛选，不强制） -->
@@ -315,31 +324,45 @@ function clearCategory() {
 // ============ 核心查询 ============
 function search() {
   const q = state.q.trim();
-  if (!q) {
+  const p = (state.p || '').trim();
+  if (!q && !p) {
     renderDashboard();
     return;
   }
-  // 1. 模糊查所有 records（raw + canonical 都查）
+  // 1. 食品名模糊查（raw + canonical 都查）
   let hits = state.records.filter(r => {
+    if (!q) return true; // 仅厂家查时不过滤食品名
     const raw = r.food_name_raw || '';
     const can = r.food_name_canonical || '';
-    return (q && (raw.includes(q) || can.includes(q)));
+    return raw.includes(q) || can.includes(q);
   });
-  // 2. 若用户主动选了大类，缩窄
+  // 2. 生产单位模糊查（prod_name + prod_addr）
+  if (p) {
+    hits = hits.filter(r => {
+      const pn = r.prod_name || '';
+      const pa = r.prod_addr || '';
+      return pn.includes(p) || pa.includes(p);
+    });
+  }
+  // 3. 若用户主动选了大类，缩窄
   if (state.selectedCategory) {
     hits = hits.filter(r => r.big_category === state.selectedCategory);
   }
-  renderResults(q, hits);
+  const label = [q, p].filter(Boolean).join(' @ ');
+  renderResults(label || '全部', hits, { q, p });
 }
 
 function forceSearch() {
   state.q = document.getElementById('qInput').value.trim();
+  state.p = document.getElementById('pInput').value.trim();
   search();
 }
 
 function clearSearch() {
   document.getElementById('qInput').value = '';
+  document.getElementById('pInput').value = '';
   state.q = '';
+  state.p = '';
   state.selectedCategory = '';
   document.querySelectorAll('.cat-card').forEach(el => el.classList.remove('selected'));
   search();
@@ -397,8 +420,11 @@ function quickFill(cat) {
 }
 
 // ============ 结果渲染 ============
-function renderResults(q, hits) {
+function renderResults(q, hits, ctx) {
   const result = document.getElementById('result');
+  ctx = ctx || { q: q, p: '' };
+  const foodQ = ctx.q || q;
+  const prodQ = ctx.p || '';
   // 风险等级
   const risk = calcRisk(hits);
   // 命中大类分布
@@ -408,30 +434,43 @@ function renderResults(q, hits) {
     catsHit[c] = (catsHit[c] || 0) + 1;
   }
   // 自动归类提示（食品名→类别映射）
-  const autoCat = lookupCategory(q);
+  const autoCat = foodQ ? lookupCategory(foodQ) : null;
+  // 查询条件回显
+  const echoLine = `
+    <div class="card" style="background:#e3f2fd;border-left:4px solid #1976d2;padding:10px 14px;">
+      <div style="font-size:12px;color:#0d47a1;">
+        🔎 <strong>查询条件：</strong>
+        ${foodQ ? `食品名 = <code>${foodQ}</code>` : ''}
+        ${prodQ ? ` · 生产单位含 <code>${prodQ}</code>` : ''}
+        ${state.selectedCategory ? ` · 类别 = <code>${state.selectedCategory}</code>` : ''}
+        → <strong>${hits.length}</strong> 条命中
+      </div>
+    </div>
+  `;
 
   result.innerHTML = `
-    ${renderRiskBlock(risk, q, hits.length)}
-    ${autoCat ? `
+    ${renderRiskBlock(risk, foodQ || prodQ, hits.length)}
+    ${echoLine}
+    ${foodQ && autoCat ? `
       <div class="card" style="background:#fffde7;border-left:4px solid #f57f17;">
         <div style="font-size:13px;color:#5d4037;">
-          💡 <strong>「${q}」按内置规则归类为：</strong>
+          💡 <strong>「${foodQ}」按内置规则归类为：</strong>
           ${autoCat.fullCategory}（规范名：<code>${autoCat.canonical}</code>）
           ${state.selectedCategory && state.selectedCategory !== autoCat.category
             ? `<br><span class="muted">⚠ 你已手动选「${state.selectedCategory}」，结果已按此筛选；如需看全部命中，<a href="#" onclick="state.selectedCategory='';document.querySelectorAll('.cat-card').forEach(c=>c.classList.remove('selected'));search();return false;" style="color:#1a365d;">点此清空类别</a></span>`
             : ''}
         </div>
       </div>
-    ` : `
+    ` : foodQ && !autoCat ? `
       <div class="card" style="background:#fff8e1;border-left:4px solid #ffa000;">
         <div style="font-size:13px;color:#5d4037;">
-          ⚠️ <strong>「${q}」未在已知分类表中找到</strong>。如结果不准，可<a href="#" onclick="document.getElementById('qInput').focus()" style="color:#1a365d;">换个名称</a>或<a href="#" onclick="document.querySelector('.cat-grid').scrollIntoView({behavior:'smooth'})" style="color:#1a365d;">点选类别</a>细化。
+          ⚠️ <strong>「${foodQ}」未在已知分类表中找到</strong>。如结果不准，可<a href="#" onclick="document.getElementById('qInput').focus()" style="color:#1a365d;">换个名称</a>或<a href="#" onclick="document.querySelector('.cat-grid').scrollIntoView({behavior:'smooth'})" style="color:#1a365d;">点选类别</a>细化。
         </div>
       </div>
-    `}
-    ${renderSummaryBlocks(q, hits)}
-    ${renderDetailTable(q, hits)}
-    ${renderSelfCheck(q, autoCat, hits)}
+    ` : ''}
+    ${renderSummaryBlocks(foodQ, hits)}
+    ${renderDetailTable(foodQ, hits, ctx)}
+    ${renderSelfCheck(foodQ, autoCat, hits)}
   `;
 }
 
@@ -528,8 +567,8 @@ function renderSummaryBlocks(q, hits) {
   `;
 }
 
-// ============ 详细明细表（全部字段默认展开） ============
-function renderDetailTable(q, hits) {
+// ============ 详细明细表（点击展开明细） ============
+function renderDetailTable(q, hits, ctx) {
   if (!hits.length) {
     return `
       <div class="card">
@@ -538,25 +577,32 @@ function renderDetailTable(q, hits) {
       </div>
     `;
   }
-  const toggleLimit = 20;
+  const toggleLimit = 50;
   const top = hits.slice(0, toggleLimit);
   const more = hits.length - top.length;
   const renderOne = (r, idx) => {
     const items = r.failed_items || [];
     const canonical = r.food_name_canonical || '';
     const raw = r.food_name_raw || '';
-    const nameDiff = canonical && canonical !== raw ? `（规范名：<code>${canonical}</code>）` : '';
+    const nameDiff = canonical && canonical !== raw ? `<code>${canonical}</code>` : canonical;
     const subShort = (r.sub_category || '').split('-').slice(-1)[0] || '';
+    const prodName = r.prod_name || '';
+    const itemNames = items.slice(0, 3).map(it => it.item || '').filter(Boolean).join('、');
+    const moreItems = items.length > 3 ? ` 等 ${items.length} 项` : '';
+    // summary 显示：编号 + 食品名 + 主要不合格项 + 来源
     return `
-      <div class="record-detail">
-        <div class="rd-head">
+      <details class="record-detail">
+        <summary class="rd-summary">
           <span class="rd-no">#${idx + 1}</span>
-          <strong>${raw || canonical}</strong>${nameDiff}
+          <strong>${raw || canonical}</strong>
+          ${nameDiff ? `<span class="rd-canon">${nameDiff}</span>` : ''}
+          <span class="rd-prod-tag">${prodName ? '🏭 ' + prodName.slice(0, 24) + (prodName.length > 24 ? '…' : '') : '（未公示厂家）'}</span>
           <span class="rd-source">${r.source || '?'}</span>
-        </div>
+          <span class="rd-toggle">▶</span>
+        </summary>
         <div class="rd-body">
           <div class="rd-grid">
-            <div><span class="rd-key">不合格项目</span><span class="rd-val bad">${items.length} 项</span></div>
+            <div><span class="rd-key">不合格项目</span><span class="rd-val bad">${items.length} 项${itemNames ? ' · ' + itemNames + moreItems : ''}</span></div>
             <div><span class="rd-key">生产日期</span><span class="rd-val">${r.prod_date || '—'}</span></div>
             <div><span class="rd-key">公告编号</span><span class="rd-val">${r.bulletin_no || '—'}</span></div>
             <div><span class="rd-key">细类</span><span class="rd-val">${subShort || '—'}</span></div>
@@ -575,18 +621,22 @@ function renderDetailTable(q, hits) {
           ${r.prod_name ? `<div class="rd-prod"><span class="rd-key">标称生产单位</span>${r.prod_name}${r.prod_addr ? `（${r.prod_addr}）` : ''}</div>` : ''}
           ${r.sampler_name ? `<div class="rd-prod"><span class="rd-key">抽样单位</span>${r.sampler_name}${r.sampler_addr ? `（${r.sampler_addr}）` : ''}</div>` : ''}
         </div>
-      </div>
+      </details>
     `;
   };
   return `
     <div class="card">
-      <div class="card-title">📋 历史不合格明细（${hits.length} 条）
-        ${more > 0 ? `<button onclick="document.getElementById('moreRecords').style.display='block';this.style.display='none';" style="margin-left:auto;font-size:12px;">展开剩余 ${more} 条</button>` : '<span style="margin-left:auto;font-size:12px;color:#666;">已全部展开</span>'}
+      <div class="card-title">📋 历史不合格明细（${hits.length} 条 · <span class="muted" style="font-weight:normal;">点击任意行展开具体内容</span>）
+        ${more > 0 ? `<button onclick="document.getElementById('moreRecords').style.display='block';this.style.display='none';" style="margin-left:auto;font-size:12px;">展开剩余 ${more} 条</button>` : ''}
       </div>
-      ${top.map((r, i) => renderOne(r, i)).join('')}
+      <div class="rd-list">
+        ${top.map((r, i) => renderOne(r, i)).join('')}
+      </div>
       ${more > 0 ? `
         <div id="moreRecords" style="display:none;">
-          ${hits.slice(toggleLimit).map((r, i) => renderOne(r, toggleLimit + i)).join('')}
+          <div class="rd-list">
+            ${hits.slice(toggleLimit).map((r, i) => renderOne(r, toggleLimit + i)).join('')}
+          </div>
         </div>
       ` : ''}
     </div>
@@ -709,6 +759,7 @@ let isComposing = false;
 
 document.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('qInput');
+  const pInput = document.getElementById('pInput');
 
   // IME 拼音防护
   input.addEventListener('compositionstart', () => { isComposing = true; });
@@ -737,6 +788,29 @@ document.addEventListener('DOMContentLoaded', () => {
   input.addEventListener('blur', () => {
     state.q = input.value.trim();
     search();
+  });
+
+  // 生产单位输入框 — 同样 IME 防护 + 实时查询
+  pInput.addEventListener('compositionstart', () => { isComposing = true; });
+  pInput.addEventListener('compositionend', () => {
+    isComposing = false;
+    state.p = pInput.value.trim();
+    search();
+  });
+  pInput.addEventListener('input', () => {
+    if (isComposing) return;
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(() => {
+      state.p = pInput.value.trim();
+      search();
+    }, 200);
+  });
+  pInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      state.p = pInput.value.trim();
+      search();
+    }
   });
 
   loadData();
