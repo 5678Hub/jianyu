@@ -1116,7 +1116,7 @@ function renderCategoryOnly(result, cat) {
       <div class="card">
         <div class="card-title">📊 不合格品类 Top 10（点击查看单品）</div>
         <table>
-          <thead><tr><th>规范食品名</th><th>次数</th></tr></thead>
+          <thead><tr><th>食品名（同不合格明细）</th><th>次数</th></tr></thead>
           <tbody>
             ${topFoods.map(([f, n]) => `<tr style="cursor:pointer;" data-food="${f}"><td>${f}</td><td class="bad">${n}</td></tr>`).join('')}
           </tbody>
