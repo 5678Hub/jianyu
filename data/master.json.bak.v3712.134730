@@ -1,7 +1,7 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-06 13:49:45+08:00",
+    "last_updated": "2026-08-06 13:40:24+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
@@ -9,7 +9,7 @@
     "record_count": 712,
     "by_canonical_count": 376,
     "by_category_count": 31,
-    "by_item_count": 127,
+    "by_item_count": 132,
     "project_weight_count": 45,
     "description": "历史不合格明细主库，含 records 和预建索引",
     "record_schema": {
@@ -36,8 +36,8 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-06 13:49:45+08:00",
-    "data_version": "2026.08.06.1349",
+    "index_rebuilt": "2026-08-06 13:40:24+08:00",
+    "data_version": "2026.08.06.1340",
     "calibrate_v9": "r0342/r0346 即食海带丝 → 水产制品-其他水产制品 / 表22-9",
     "calibrate_v10": "17 条 n=,c=,m=,M= 微生物采样计划 fail_raw 重新解析"
   },
@@ -3297,8 +3297,6 @@
           "table_id": null,
           "_sample_plan": true,
           "_unit": "CFU/g",
-          "_sample_m": "10⁴",
-          "_sample_M": "10⁵CFU/g",
           "_sample_n": 5,
           "_sample_c": 2
         }
@@ -21515,8 +21513,6 @@
           "table_id": null,
           "_sample_plan": true,
           "_unit": "CFU/g",
-          "_sample_m": "10",
-          "_sample_M": "100CFU/g",
           "_sample_n": 5,
           "_sample_c": 2
         }
@@ -22265,8 +22261,6 @@
           "table_id": null,
           "_sample_plan": true,
           "_unit": "CFU/g",
-          "_sample_m": "10000",
-          "_sample_M": "100000CFU/g",
           "_sample_n": 5,
           "_sample_c": 2
         }
@@ -23236,8 +23230,6 @@
           "table_id": null,
           "_sample_plan": true,
           "_unit": "CFU/g",
-          "_sample_m": "10000",
-          "_sample_M": "100000CFU/g",
           "_sample_n": 5,
           "_sample_c": 2
         }
@@ -23531,8 +23523,6 @@
           "table_id": null,
           "_sample_plan": true,
           "_unit": "CFU/mL",
-          "_sample_m": "5000",
-          "_sample_M": "50000CFU/mL",
           "_sample_n": 5,
           "_sample_c": 2
         }
@@ -29689,11 +29679,16 @@
         "饮用纯净水"
       ],
       "items": [
+        "0CFU/250mL",
+        "138CFU/250mL",
+        "2CFU/250mL",
+        "300CFU/250mL",
         "二氧化碳气容量",
         "二氧化碳气容量(20℃)",
         "亚硝酸盐(以NO₂⁻计)",
         "亚硝酸盐（以NO₂⁻计)",
         "山梨酸及其钾盐（以山梨酸计)",
+        "未检出CFU/250mL",
         "溴酸盐",
         "电导率[(25±1)℃]",
         "苋菜红",
@@ -31663,6 +31658,18 @@
         "饮料"
       ]
     },
+    "0CFU/250mL": {
+      "ids": [
+        "r0064"
+      ],
+      "count": 1,
+      "foods": [
+        "桶装饮用水"
+      ],
+      "big_categories": [
+        "饮料"
+      ]
+    },
     "酸价(以KOH计)": {
       "ids": [
         "r0065",
@@ -31741,6 +31748,20 @@
       ],
       "big_categories": [
         "水果制品"
+      ]
+    },
+    "未检出CFU/250mL": {
+      "ids": [
+        "r0074",
+        "r0122"
+      ],
+      "count": 2,
+      "foods": [
+        "岚泉山水（饮用纯净水）",
+        "平利山泉水"
+      ],
+      "big_categories": [
+        "饮料"
       ]
     },
     "毒死蜱": {
@@ -32292,6 +32313,18 @@
         "特殊膳食食品"
       ]
     },
+    "2CFU/250mL": {
+      "ids": [
+        "r0244"
+      ],
+      "count": 1,
+      "foods": [
+        "圣公源泉桶装饮用水"
+      ],
+      "big_categories": [
+        "饮料"
+      ]
+    },
     "纽甜": {
       "ids": [
         "r0245",
@@ -32333,6 +32366,18 @@
       "big_categories": [
         "速冻食品",
         "餐饮食品"
+      ]
+    },
+    "300CFU/250mL": {
+      "ids": [
+        "r0260"
+      ],
+      "count": 1,
+      "foods": [
+        "农井坊纯净水"
+      ],
+      "big_categories": [
+        "饮料"
       ]
     },
     "金霉素": {
@@ -32445,6 +32490,18 @@
       ],
       "big_categories": [
         "鲜蛋"
+      ]
+    },
+    "138CFU/250mL": {
+      "ids": [
+        "r0330"
+      ],
+      "count": 1,
+      "foods": [
+        "饮用天然泉水"
+      ],
+      "big_categories": [
+        "饮料"
       ]
     },
     "阴离子合成洗涤剂（以十二烷基苯磺酸钠计)": {
@@ -39001,11 +39058,16 @@
           "饮用纯净水"
         ],
         "items": [
+          "0CFU/250mL",
+          "138CFU/250mL",
+          "2CFU/250mL",
+          "300CFU/250mL",
           "二氧化碳气容量",
           "二氧化碳气容量(20℃)",
           "亚硝酸盐(以NO₂⁻计)",
           "亚硝酸盐（以NO₂⁻计)",
           "山梨酸及其钾盐（以山梨酸计)",
+          "未检出CFU/250mL",
           "溴酸盐",
           "电导率[(25±1)℃]",
           "苋菜红",
@@ -40975,6 +41037,18 @@
           "饮料"
         ]
       },
+      "0CFU/250mL": {
+        "ids": [
+          "r0064"
+        ],
+        "count": 1,
+        "foods": [
+          "桶装饮用水"
+        ],
+        "big_categories": [
+          "饮料"
+        ]
+      },
       "酸价(以KOH计)": {
         "ids": [
           "r0065",
@@ -41053,6 +41127,20 @@
         ],
         "big_categories": [
           "水果制品"
+        ]
+      },
+      "未检出CFU/250mL": {
+        "ids": [
+          "r0074",
+          "r0122"
+        ],
+        "count": 2,
+        "foods": [
+          "岚泉山水（饮用纯净水）",
+          "平利山泉水"
+        ],
+        "big_categories": [
+          "饮料"
         ]
       },
       "毒死蜱": {
@@ -41604,6 +41692,18 @@
           "特殊膳食食品"
         ]
       },
+      "2CFU/250mL": {
+        "ids": [
+          "r0244"
+        ],
+        "count": 1,
+        "foods": [
+          "圣公源泉桶装饮用水"
+        ],
+        "big_categories": [
+          "饮料"
+        ]
+      },
       "纽甜": {
         "ids": [
           "r0245",
@@ -41645,6 +41745,18 @@
         "big_categories": [
           "速冻食品",
           "餐饮食品"
+        ]
+      },
+      "300CFU/250mL": {
+        "ids": [
+          "r0260"
+        ],
+        "count": 1,
+        "foods": [
+          "农井坊纯净水"
+        ],
+        "big_categories": [
+          "饮料"
         ]
       },
       "金霉素": {
@@ -41757,6 +41869,18 @@
         ],
         "big_categories": [
           "鲜蛋"
+        ]
+      },
+      "138CFU/250mL": {
+        "ids": [
+          "r0330"
+        ],
+        "count": 1,
+        "foods": [
+          "饮用天然泉水"
+        ],
+        "big_categories": [
+          "饮料"
         ]
       },
       "阴离子合成洗涤剂（以十二烷基苯磺酸钠计)": {
