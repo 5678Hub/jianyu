@@ -1,7 +1,7 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-06 13:30:17+08:00",
+    "last_updated": "2026-08-06 13:12:31+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
@@ -36,9 +36,8 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-06 13:30:17+08:00",
-    "data_version": "2026.08.06.1330",
-    "calibrate_v9": "r0342/r0346 即食海带丝 → 水产制品-其他水产制品 / 表22-9"
+    "index_rebuilt": "2026-08-06 13:12:31+08:00",
+    "data_version": "2026.08.06.1312"
   },
   "records": [
     {
@@ -10994,7 +10993,7 @@
       "food_name_raw": "即食海带丝（水产制品）",
       "food_name_canonical": "即食海带丝",
       "big_category": "水产制品",
-      "sub_category": "水产制品-其他水产制品",
+      "sub_category": "水产制品-干制水产品",
       "category": "水产制品-其他水产制品",
       "sampler_name": "费县葛曼曼百货超市",
       "sampler_addr": "山东省临沂市费县费城街道办事处幸福路路南费县国税局对过沿街",
@@ -11010,8 +11009,8 @@
           "limit_normalized": "不得使用",
           "result_normalized": "0.168g/kg",
           "big_category_id": "aquatic_products_processed",
-          "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
-          "table_id": "gb2026-aquatic_products_processed-22-9"
+          "subcategory_id": "aquatic_products_processed-dried_aquatic_products",
+          "table_id": null
         }
       ],
       "bulletin_no": "异议不认可",
@@ -11019,7 +11018,7 @@
       "_canonical_orig": "其他水产制品",
       "id": "r0342",
       "big_category_id": "aquatic_products_processed",
-      "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed"
+      "subcategory_id": "aquatic_products_processed-dried_aquatic_products"
     },
     {
       "source": "山东",
@@ -11134,7 +11133,7 @@
       "food_name_raw": "即食海带丝（水产制品）",
       "food_name_canonical": "即食海带丝",
       "big_category": "水产制品",
-      "sub_category": "水产制品-其他水产制品",
+      "sub_category": "水产制品-干制水产品",
       "category": "水产制品-其他水产制品",
       "sampler_name": "平邑县泰沂商业有限公司",
       "sampler_addr": "山东省临沂市平邑县城区浚河路中段",
@@ -11150,8 +11149,8 @@
           "limit_normalized": "不得使用",
           "result_normalized": "0.161g/kg",
           "big_category_id": "aquatic_products_processed",
-          "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
-          "table_id": "gb2026-aquatic_products_processed-22-9"
+          "subcategory_id": "aquatic_products_processed-dried_aquatic_products",
+          "table_id": null
         }
       ],
       "bulletin_no": "异议不认可",
@@ -11159,7 +11158,7 @@
       "_canonical_orig": "其他水产制品",
       "id": "r0346",
       "big_category_id": "aquatic_products_processed",
-      "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed"
+      "subcategory_id": "aquatic_products_processed-dried_aquatic_products"
     },
     {
       "source": "山东",

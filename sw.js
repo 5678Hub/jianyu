@@ -1,6 +1,6 @@
 // jianyu service worker —— 网络优先，离线回退缓存
 // ⚠️ DATA_VERSION 由 scripts/rebuild_index.py 自动维护，请勿手改
-const DATA_VERSION = '2026.08.06.1312';
+const DATA_VERSION = '2026.08.06.1330';
 const CACHE = `jianyu-cache-${DATA_VERSION}`;
 
 self.addEventListener('install', (event) => {
