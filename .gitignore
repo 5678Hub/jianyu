@@ -3,3 +3,5 @@ serve.py
 *.ps1
 start-jianyu.bat
 .workbuddy/
+__pycache__/
+*.pyc

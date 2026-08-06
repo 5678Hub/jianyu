@@ -293,6 +293,8 @@ async function loadData() {
     state.categories2026 = categories2026;
     state.subcatChecklist = subcatChecklist;
     state.subcatAliases = subcatAliases;
+    // ⚠️ schema v1.1：索引只存 record_id，需要 map 才能 lookup
+    state.idToRecord = Object.fromEntries((master.records || []).map(r => [r.id, r]));
     state.gbAvailableCats = new Set(
       (categories2026.categories || []).filter(c => c.available).map(c => c.name)
     );
@@ -905,15 +907,20 @@ function renderFoodOnly(result, food) {
   const officialHit = lookupOfficialSubcat(food);
   
   // 查该食品名的所有记录（多类别 + 多别名）
+  // ⚠️ schema v1.1：by_canonical[k] = {ids, count, big_categories, food_names}
+  //    通过 state.idToRecord[id] 反查完整 record
   let directMatches = [];
   const canonKey = inferred?.canonical || food;
-  if (byCanon[canonKey]) {
-    // by_canonical 在 v2 是 dict of dict，records 存在 .records 字段
-    directMatches = byCanon[canonKey].records || (Array.isArray(byCanon[canonKey]) ? byCanon[canonKey] : []);
+  const indexEntry = byCanon[canonKey];
+  if (indexEntry && Array.isArray(indexEntry.ids)) {
+    directMatches = indexEntry.ids.map(id => state.idToRecord[id]).filter(Boolean);
+  } else if (Array.isArray(indexEntry)) {
+    // 向后兼容（万一有旧数据是 list）
+    directMatches = indexEntry;
   }
   if (!directMatches.length) {
     // 模糊匹配：扫所有 records
-    directMatches = master.records.filter(r => 
+    directMatches = master.records.filter(r =>
       (r.food_name_raw && r.food_name_raw.includes(food)) ||
       (r.food_name_canonical && r.food_name_canonical.includes(food))
     );
