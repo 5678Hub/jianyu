@@ -1,5 +1,4 @@
 {
-  "source": "食品安全监督抽检实施细则（2026年版）",
   "aliases": {
     "小麦粉": {
       "big_category": "粮食加工品",
@@ -3800,5 +3799,17 @@
       "big_category": "水果类",
       "subcategory": "龙眼"
     }
+  },
+  "_meta": {
+    "schema_version": "1.0",
+    "last_updated": "2026-08-06 09:06:10+08:00",
+    "encoding": "UTF-8",
+    "bom": false,
+    "source": "食品安全监督抽检实施细则（2026年版）",
+    "origin": "jianyu 食品安全抽检风险查询",
+    "alias_count": 847,
+    "description": "食品名别名 → 规范食品名 映射（用于搜索匹配）",
+    "schema": "{aliases: dict[别名] -> 规范名}",
+    "misnamed_field_warning": "文件名 subcat_to_items 易误导——实际是品名→规范名映射，不是细类→项目映射"
   }
 }

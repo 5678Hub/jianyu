@@ -11123,5 +11123,21 @@
       "table_name": "其他籽类检验项目",
       "aliases": []
     }
-  ]
+  ],
+  "_meta": {
+    "schema_version": "1.0",
+    "last_updated": "2026-08-06 09:06:10+08:00",
+    "encoding": "UTF-8",
+    "bom": false,
+    "source": "食品安全监督抽检实施细则（2026年版）",
+    "origin": "jianyu 食品安全抽检风险查询",
+    "source_file": "食品安全监测抽检实施细则（2026年版）.pdf",
+    "structure": "大类→细类/表→检验项目（依据法律法规或标准、检测方法）",
+    "table_count": 162,
+    "category_count": 37,
+    "status": "superseded",
+    "superseded_by": "current_period/gb_checklist_subcat.json",
+    "deprecation_note": "内容与 current_period/gb_checklist_subcat.json 重复（PDF 解析早期版本）。前端使用 gb_checklist_subcat.json。建议删除。",
+    "description": "PDF 解析早期版（已由 gb_checklist_subcat.json 取代）"
+  }
 }

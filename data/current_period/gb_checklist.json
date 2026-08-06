@@ -1,7 +1,4 @@
 {
-  "_period": "2026年第8期",
-  "_note": "某地市场监督管理局抽检公告附件1 - 本次检验项目（参考性文件；2026 抽检细则 PDF 已全面覆盖更细颗粒度）",
-  "_source_file": "（2026年第8期）.doc",
   "categories": {
     "粮食加工品": {
       "抽检依据_GB": [
@@ -301,22 +298,16 @@
     }
   },
   "_meta": {
-    "updated_at": "2026-08-04",
-    "total_categories": 23,
-    "added_by": "build_gb_full.py - heuristic补全",
-    "note": "原 12 大类来自公告附件 1 真实数据；新增 11 大类为启发式推断（基于同类目迁移 + GB 2760/2761/2762/2763/31650 目录 + 历史不合格聚合），置信度 _conf",
-    "removed_heuristic": [
-      "水果类",
-      "水产品",
-      "畜禽肉及副产品",
-      "鲜蛋",
-      "豆类",
-      "生干坚果与籽类食品",
-      "酒类",
-      "糕点",
-      "糖果制品",
-      "蜂产品"
-    ],
-    "keep_only": "本期国检抽检项目（来源：2026 实施细则 + 公告附件 1）"
+    "schema_version": "1.0",
+    "last_updated": "2026-08-06 09:06:10+08:00",
+    "encoding": "UTF-8",
+    "bom": false,
+    "source": "（2026年第8期）.doc（本期公告）",
+    "origin": "jianyu 食品安全抽检风险查询",
+    "period": "2026年第8期",
+    "note": "某地市场监督管理局抽检公告附件1 - 本次检验项目（参考性文件；2026 抽检细则 PDF 已全面覆盖更细颗粒度）",
+    "category_count": 13,
+    "description": "本期国抽公告附件1检验项目",
+    "schema": "{categories: dict[big_category] -> [tables]}"
   }
 }

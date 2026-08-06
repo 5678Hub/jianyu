@@ -277,13 +277,12 @@ function escapeHtml(s) {
 // ============ 数据加载 ============
 async function loadData() {
   try {
-    const [master, categoryMap, synonyms, gbChecklist, categories2026, categoriesFull, subcatChecklist, subcatAliases] = await Promise.all([
+    const [master, categoryMap, synonyms, gbChecklist, categories2026, subcatChecklist, subcatAliases] = await Promise.all([
       fetch(DATA_BASE + 'master.json').then(r => r.json()),
       fetch(DATA_BASE + 'category_map.json').then(r => r.json()),
       fetch(DATA_BASE + 'synonyms.json').then(r => r.json()),
       fetch(DATA_BASE + 'current_period/gb_checklist.json').then(r => r.json()),
       fetch(DATA_BASE + 'categories_2026.json').then(r => r.json()),
-      fetch(DATA_BASE + 'categories_2026_full.json').then(r => r.json()),
       fetch(DATA_BASE + 'current_period/gb_checklist_subcat.json').then(r => r.json()),
       fetch(DATA_BASE + 'subcat_to_items.json').then(r => r.json()),
     ]);
@@ -292,7 +291,6 @@ async function loadData() {
     state.synonyms = synonyms;
     state.gbChecklist = gbChecklist;
     state.categories2026 = categories2026;
-    state.categoriesFull = categoriesFull;
     state.subcatChecklist = subcatChecklist;
     state.subcatAliases = subcatAliases;
     state.gbAvailableCats = new Set(

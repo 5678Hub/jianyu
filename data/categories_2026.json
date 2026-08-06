@@ -1,6 +1,4 @@
 {
-  "_source": "《食品安全监督抽检实施细则（2026年版）》目录",
-  "_note": "三十一餐饮食品 + 三十三~三十九食用农产品系列",
   "categories": [
     {
       "no": "一",
@@ -197,5 +195,22 @@
       "name": "生干坚果与籽类食品",
       "available": true
     }
-  ]
+  ],
+  "_meta": {
+    "schema_version": "1.0",
+    "last_updated": "2026-08-06 09:06:10+08:00",
+    "encoding": "UTF-8",
+    "bom": false,
+    "source": "《食品安全监督抽检实施细则（2026年版）》目录",
+    "origin": "jianyu 食品安全抽检风险查询",
+    "note": "三十一餐饮食品 + 三十三~三十九食用农产品系列",
+    "category_count": 39,
+    "available_count": 38,
+    "description": "大类骨架（39 大类，不含细类），前端用作大类卡片",
+    "category_schema": {
+      "no": "str  中文编号（一/二/...）",
+      "name": "str  大类名",
+      "available": "bool  前端是否展示"
+    }
+  }
 }

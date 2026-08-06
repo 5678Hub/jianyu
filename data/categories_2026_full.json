@@ -1,5 +1,4 @@
 {
-  "_source": "《食品安全监督抽检实施细则（2026年版）》",
   "categories": [
     {
       "no": "一",
@@ -610,5 +609,25 @@
       "available": false,
       "subcategories": []
     }
-  ]
+  ],
+  "_meta": {
+    "schema_version": "1.0",
+    "last_updated": "2026-08-06 09:06:10+08:00",
+    "encoding": "UTF-8",
+    "bom": false,
+    "source": "《食品安全监督抽检实施细则（2026年版）》",
+    "origin": "jianyu 食品安全抽检风险查询",
+    "category_count": 38,
+    "with_subcategories_count": 16,
+    "total_subcategory_count": 73,
+    "status": "legacy",
+    "deprecation_note": "前端未引用此文件（前端用 categories_2026.json 取大类骨架，gb_checklist_subcat.json 取细类+检验项目）。保留供历史兼容/迁移参考。",
+    "description": "大类 + 细类 展开版（含 subcategories），legacy",
+    "category_schema": {
+      "no": "str  中文编号",
+      "name": "str  大类名",
+      "available": "bool",
+      "subcategories": "list[{code, no, name}]  细类"
+    }
+  }
 }

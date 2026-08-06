@@ -1,5 +1,4 @@
 {
-  "source": "食品安全监督抽检实施细则（2026年版）",
   "table_count": 253,
   "categories": {
     "粮食加工品": [
@@ -13468,5 +13467,23 @@
       }
     ]
   },
-  "category_count": 38
+  "category_count": 38,
+  "_meta": {
+    "schema_version": "1.0",
+    "last_updated": "2026-08-06 09:06:10+08:00",
+    "encoding": "UTF-8",
+    "bom": false,
+    "source": "食品安全监督抽检实施细则（2026年版）",
+    "origin": "jianyu 食品安全抽检风险查询",
+    "category_count": 38,
+    "table_count": 253,
+    "description": "细类 + 检验项目 权威数据（PDF 解析），前端实际驱动\"X 细类\"角标和细类列表",
+    "schema": "{categories: dict[大类] -> [tables], table: {name, table_no, table_name, items, notes}}",
+    "item_schema": {
+      "序号": "int",
+      "检验项目": "str",
+      "依据法律法规或标准": "str",
+      "检测方法": "str"
+    }
+  }
 }
