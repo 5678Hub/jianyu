@@ -1,7 +1,7 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-06 14:08:26+08:00",
+    "last_updated": "2026-08-06 13:49:45+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
@@ -36,8 +36,8 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-06 14:08:26+08:00",
-    "data_version": "2026.08.06.1408",
+    "index_rebuilt": "2026-08-06 13:49:45+08:00",
+    "data_version": "2026.08.06.1349",
     "calibrate_v9": "r0342/r0346 即食海带丝 → 水产制品-其他水产制品 / 表22-9",
     "calibrate_v10": "17 条 n=,c=,m=,M= 微生物采样计划 fail_raw 重新解析"
   },
@@ -1687,9 +1687,9 @@
             380000.0
           ],
           "_count_in_(m,M]": 2,
-          "_count_>M": 2,
+          "_count_>M": 0,
           "_count_≤m": 3,
-          "_verdict": "fail",
+          "_verdict": "pass",
           "_verdict_rule": "GB 4789.1 三级采样方案 (n=5, c=2, m=3×10⁴, M=10⁵)"
         }
       ],
@@ -1879,7 +1879,7 @@
             100000.0
           ],
           "_count_in_(m,M]": 5,
-          "_count_>M": 4,
+          "_count_>M": 0,
           "_count_≤m": 0,
           "_verdict": "fail",
           "_verdict_rule": "GB 4789.1 三级采样方案 (n=5, c=2, m=5×10⁴, M=10⁵)"
@@ -2602,7 +2602,7 @@
             70.0
           ],
           "_count_in_(m,M]": 4,
-          "_count_>M": 2,
+          "_count_>M": 0,
           "_count_≤m": 1,
           "_verdict": "fail",
           "_verdict_rule": "GB 4789.1 三级采样方案 (n=5, c=2, m=50, M=10²)"
@@ -3372,19 +3372,7 @@
           "_sample_m": "10⁴",
           "_sample_M": "10⁵CFU/g",
           "_sample_n": 5,
-          "_sample_c": 2,
-          "_values": [
-            2300000.0,
-            2700000.0,
-            2900000.0,
-            2800000.0,
-            2800000.0
-          ],
-          "_count_in_(m,M]": 5,
-          "_count_>M": 5,
-          "_count_≤m": 0,
-          "_verdict": "fail",
-          "_verdict_rule": "GB 4789.1 三级采样方案 (n=5, c=2, m=10⁴, M=10⁵CFU/g)"
+          "_sample_c": 2
         }
       ],
       "bulletin_no": "山东-2026-19期",
@@ -4674,12 +4662,12 @@
             94000.0,
             74000.0,
             68000.0,
-            61000.0,
+            6.0,
             65000.0
           ],
-          "_count_in_(m,M]": 5,
+          "_count_in_(m,M]": 4,
           "_count_>M": 0,
-          "_count_≤m": 0,
+          "_count_≤m": 1,
           "_verdict": "fail",
           "_verdict_rule": "GB 4789.1 三级采样方案 (n=5, c=2, m=30000, M=100000)"
         }
@@ -5473,13 +5461,13 @@
           "_values": [
             1300000.0,
             1200000.0,
-            810000.0,
+            8.0,
             1200000.0,
             960000.0
           ],
-          "_count_in_(m,M]": 5,
-          "_count_>M": 5,
-          "_count_≤m": 0,
+          "_count_in_(m,M]": 4,
+          "_count_>M": 0,
+          "_count_≤m": 1,
           "_verdict": "fail",
           "_verdict_rule": "GB 4789.1 三级采样方案 (n=5, c=2, m=3×10⁴, M=10⁵)"
         }
@@ -5737,7 +5725,7 @@
             190.0
           ],
           "_count_in_(m,M]": 5,
-          "_count_>M": 5,
+          "_count_>M": 0,
           "_count_≤m": 0,
           "_verdict": "fail",
           "_verdict_rule": "GB 4789.1 三级采样方案 (n=5, c=2, m=10, M=10²)"
@@ -5932,19 +5920,7 @@
           "_sample_m": "10⁴",
           "_sample_M": "10⁵",
           "_sample_n": 5,
-          "_sample_c": 1,
-          "_values": [
-            75000.0,
-            3900.0,
-            1500.0,
-            17000.0,
-            1700.0
-          ],
-          "_count_in_(m,M]": 2,
-          "_count_>M": 0,
-          "_count_≤m": 3,
-          "_verdict": "fail",
-          "_verdict_rule": "GB 4789.1 三级采样方案 (n=5, c=1, m=10⁴, M=10⁵)"
+          "_sample_c": 1
         }
       ],
       "bulletin_no": "山东-2026-16期",
@@ -7596,19 +7572,7 @@
           "_unit": "CFU/25g",
           "_sample_m": "0/25g",
           "_sample_n": 5,
-          "_sample_c": 0,
-          "_values": [
-            1.0,
-            1.0,
-            1.0,
-            1.0,
-            1.0
-          ],
-          "_count_in_(m,M]": 5,
-          "_count_>M": 0,
-          "_count_≤m": 0,
-          "_verdict": "fail",
-          "_verdict_rule": "GB 4789.1 三级采样方案 (n=5, c=0, m=0/25g, M=无)"
+          "_sample_c": 0
         }
       ],
       "bulletin_no": "2026.07.29",
@@ -11095,13 +11059,13 @@
             140000.0,
             90.0,
             4000000.0,
-            110.0,
+            1.0,
             90.0
           ],
           "_count_in_(m,M]": 2,
-          "_count_>M": 2,
+          "_count_>M": 0,
           "_count_≤m": 3,
-          "_verdict": "fail",
+          "_verdict": "pass",
           "_verdict_rule": "GB 4789.1 三级采样方案 (n=5, c=2, m=3×10⁴, M=10⁵)"
         }
       ],
@@ -21800,12 +21764,12 @@
             0.0,
             10.0,
             60.0,
-            140.0
+            1.4
           ],
-          "_count_in_(m,M]": 2,
-          "_count_>M": 1,
-          "_count_≤m": 3,
-          "_verdict": "fail",
+          "_count_in_(m,M]": 1,
+          "_count_>M": 0,
+          "_count_≤m": 4,
+          "_verdict": "pass",
           "_verdict_rule": "GB 4789.1 三级采样方案 (n=5, c=2, m=10, M=100CFU/g)"
         }
       ],
@@ -22558,16 +22522,16 @@
           "_sample_n": 5,
           "_sample_c": 2,
           "_values": [
-            200000.0,
-            120000.0,
-            79000.0,
-            270000.0,
-            400000.0
+            2.0,
+            1.2,
+            7.9,
+            2.7,
+            4.0
           ],
-          "_count_in_(m,M]": 5,
-          "_count_>M": 4,
-          "_count_≤m": 0,
-          "_verdict": "fail",
+          "_count_in_(m,M]": 0,
+          "_count_>M": 0,
+          "_count_≤m": 5,
+          "_verdict": "pass",
           "_verdict_rule": "GB 4789.1 三级采样方案 (n=5, c=2, m=10000, M=100000CFU/g)"
         }
       ],
@@ -23541,16 +23505,16 @@
           "_sample_n": 5,
           "_sample_c": 2,
           "_values": [
-            1300.0,
-            68000.0,
-            34000.0,
-            240000.0,
-            12000.0
+            1.3,
+            6.8,
+            3.4,
+            2.4,
+            1.2
           ],
-          "_count_in_(m,M]": 4,
-          "_count_>M": 1,
-          "_count_≤m": 1,
-          "_verdict": "fail",
+          "_count_in_(m,M]": 0,
+          "_count_>M": 0,
+          "_count_≤m": 5,
+          "_verdict": "pass",
           "_verdict_rule": "GB 4789.1 三级采样方案 (n=5, c=2, m=10000, M=100000CFU/g)"
         }
       ],
@@ -23848,16 +23812,16 @@
           "_sample_n": 5,
           "_sample_c": 2,
           "_values": [
-            940000.0,
-            640000.0,
-            800000.0,
-            600000.0,
-            12000.0
+            9.4,
+            6.4,
+            8.0,
+            6.0,
+            1.2
           ],
-          "_count_in_(m,M]": 5,
-          "_count_>M": 4,
-          "_count_≤m": 0,
-          "_verdict": "fail",
+          "_count_in_(m,M]": 0,
+          "_count_>M": 0,
+          "_count_≤m": 5,
+          "_verdict": "pass",
           "_verdict_rule": "GB 4789.1 三级采样方案 (n=5, c=2, m=5000, M=50000CFU/mL)"
         }
       ],
