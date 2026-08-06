@@ -190,7 +190,7 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
     <div class="brand-title"><span class="zh">食品抽检风险查询</span></div>
     <div class="subtitle" id="subtitle">加载中…</div>
   </div>
-  <div class="ver">v3.4 · 2026</div>
+  <div class="ver">v3.7.15 · 2026</div>
 </header>
 
 <section class="section">
@@ -1882,7 +1882,17 @@ function clearSubcategory() {
 function setupFoodInput() {
   const input = document.getElementById('foodInput');
   let debounce;
+  let isComposing = false; // v3.7.15: IME 拼音过程标记 (修复 "牛蛙" 输入变 "niuw" 误查 bug)
+  input.addEventListener('compositionstart', () => { isComposing = true; });
+  input.addEventListener('compositionend', () => {
+    isComposing = false;
+    // 拼音结束时主动触发一次查询（绕过 debounce）
+    clearTimeout(debounce);
+    state.foodName = input.value.trim();
+    render();
+  });
   input.addEventListener('input', () => {
+    if (isComposing) return; // 拼音过程中不查
     clearTimeout(debounce);
     debounce = setTimeout(() => {
       state.foodName = input.value.trim();
@@ -1895,7 +1905,16 @@ function setupFoodInput() {
 function setupProdInput() {
   const input = document.getElementById('prodInput');
   let debounce;
+  let isComposing = false; // v3.7.15: 同 foodInput
+  input.addEventListener('compositionstart', () => { isComposing = true; });
+  input.addEventListener('compositionend', () => {
+    isComposing = false;
+    clearTimeout(debounce);
+    state.prodName = input.value.trim();
+    render();
+  });
   input.addEventListener('input', () => {
+    if (isComposing) return;
     clearTimeout(debounce);
     debounce = setTimeout(() => {
       state.prodName = input.value.trim();
