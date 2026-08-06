@@ -210,7 +210,7 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
     <div class="brand-title"><span class="zh">食品抽检风险查询</span></div>
     <div class="subtitle" id="subtitle">加载中…</div>
   </div>
-  <div class="ver">v4.0.3 · 2026</div>
+  <div class="ver">v4.0.4 · 2026</div>
 </header>
 
 <!-- 主搜索框（核心：单输入框） -->
@@ -436,6 +436,8 @@ function renderResults(q, hits, ctx) {
   }
   // 自动归类提示（食品名→类别映射）
   const autoCat = foodQ ? lookupCategory(foodQ) : null;
+  // v4.0.4 分类归属（lookupCategory 没命中时从 hits 反推）
+  const inferred = !autoCat && hits.length ? inferCategoryFromHits(hits) : null;
   // 查询条件回显
   const echoLine = `
     <div class="card" style="background:#e3f2fd;border-left:4px solid #1976d2;padding:10px 14px;">
@@ -462,10 +464,19 @@ function renderResults(q, hits, ctx) {
             : ''}
         </div>
       </div>
+    ` : foodQ && !autoCat && inferred ? `
+      <div class="card" style="background:#e8f5e9;border-left:4px solid #4caf50;">
+        <div style="font-size:13px;color:#1b5e20;">
+          📍 <strong>分类归属（按命中记录反推）：</strong>
+          <strong style="color:#1a365d;">大类</strong> = <code>${inferred.category}</code>（${inferred.bigCount}/${inferred.total} 条命中）
+          <strong style="color:#1a365d;">细类</strong> = <code>${inferred.subFull}</code>（${inferred.subCount}/${inferred.total} 条命中）
+          <br><span class="muted" style="font-size:11px;">「${foodQ}」未在已知食品名分类表中精确命中，但命中 ${inferred.total} 条历史不合格记录，自动按记录实际归属反推类别。如需精确归类，可在「类别」区域手动点选。</span>
+        </div>
+      </div>
     ` : foodQ && !autoCat ? `
       <div class="card" style="background:#fff8e1;border-left:4px solid #ffa000;">
         <div style="font-size:13px;color:#5d4037;">
-          ⚠️ <strong>「${foodQ}」未在已知分类表中找到</strong>。如结果不准，可<a href="#" onclick="document.getElementById('qInput').focus()" style="color:#1a365d;">换个名称</a>或<a href="#" onclick="document.querySelector('.cat-grid').scrollIntoView({behavior:'smooth'})" style="color:#1a365d;">点选类别</a>细化。
+          ⚠️ <strong>「${foodQ}」未在已知分类表中找到</strong>，且无历史命中记录。可<a href="#" onclick="document.getElementById('qInput').focus()" style="color:#1a365d;">换个名称</a>或<a href="#" onclick="document.querySelector('.cat-grid').scrollIntoView({behavior:'smooth'})" style="color:#1a365d;">点选类别</a>细化。
         </div>
       </div>
     ` : ''}
@@ -742,12 +753,54 @@ function lookupCategory(foodName) {
       return { category: bigCat, fullCategory: cat, canonical: foodName };
     }
   }
-  // 2. 别名映射 (subcat_to_items)
+  // 2. substring 模糊匹配（食品名在类别别名里出现）
+  let best = null;
+  for (const [cat, items] of Object.entries(cm)) {
+    if (cat.startsWith('_')) continue;
+    if (!Array.isArray(items)) continue;
+    for (const it of items) {
+      if (typeof it === 'string' && (it.includes(foodName) || foodName.includes(it))) {
+        const bigCat = cat.split('-')[0];
+        if (!best || it.length > best.matchLen) {
+          best = { category: bigCat, fullCategory: cat, canonical: it, matchLen: it.length };
+        }
+      }
+    }
+  }
+  if (best) return best;
+  // 3. 别名映射 (subcat_to_items)
   const sub = state.subcatToItems[foodName];
   if (sub) {
     return { category: sub.big_category, fullCategory: `${sub.big_category}-${sub.subcategory}`, canonical: sub.subcategory };
   }
   return null;
+}
+
+// ============ 从 hits 反推分类（未在分类表命中时用） ============
+function inferCategoryFromHits(hits) {
+  if (!hits || !hits.length) return null;
+  const bigMap = {};
+  const subMap = {};
+  for (const r of hits) {
+    const big = r.big_category || '未分类';
+    const sub = (r.sub_category || '').split('-').slice(-1)[0] || '未分类';
+    bigMap[big] = (bigMap[big] || 0) + 1;
+    const k = `${big} / ${sub}`;
+    subMap[k] = (subMap[k] || 0) + 1;
+  }
+  // 大类：取条数最多的
+  const topBig = Object.entries(bigMap).sort((a, b) => b[1] - a[1])[0];
+  // 细类：取条数最多的
+  const topSub = Object.entries(subMap).sort((a, b) => b[1] - a[1])[0];
+  return {
+    category: topBig[0],
+    fullCategory: topBig[0],
+    canonical: topSub[0].split(' / ').slice(-1)[0],
+    bigCount: topBig[1],
+    subCount: topSub[1],
+    subFull: topSub[0],
+    total: hits.length,
+  };
 }
 
 // ============ Toast ============
