@@ -190,7 +190,7 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
     <div class="brand-title"><span class="zh">食品抽检风险查询</span></div>
     <div class="subtitle" id="subtitle">加载中…</div>
   </div>
-  <div class="ver">v3.7.18 · 2026</div>
+  <div class="ver">v3.7.19 · 2026</div>
 </header>
 
 <section class="section">
@@ -1885,7 +1885,28 @@ function clearSubcategory() {
 function setupFoodInput() {
   const input = document.getElementById('foodInput');
   let debounce;
+  let isComposing = false;
+  // v3.7.18：IME 拼音输入法处理。中文输入法在打字过程中会触发 input 事件，
+  //   但此时 input.value 是"jidan"（拼音字母），不是最终中文"鸡蛋"，
+  //   会导致 0 条记录。拼音结束时才查。
+  input.addEventListener('compositionstart', () => { isComposing = true; });
+  input.addEventListener('compositionend', () => {
+    isComposing = false;
+    // 拼音结束 → 主动触发查询（绕过 debounce 和 input 事件）
+    const v = input.value.trim();
+    state.foodName = v;
+    if (v) {
+      state.category = '';
+      state.subcategory = '';
+      state.selectedCats = [];
+    }
+    renderCats();
+    renderSubcats();
+    render();
+  });
   input.addEventListener('input', () => {
+    // 拼音过程中不触发查询（避免查"jidan"）
+    if (isComposing) return;
     clearTimeout(debounce);
     debounce = setTimeout(() => {
       const v = input.value.trim();
@@ -1907,7 +1928,16 @@ function setupFoodInput() {
 function setupProdInput() {
   const input = document.getElementById('prodInput');
   let debounce;
+  let isComposing = false;
+  // v3.7.18：IME 拼音处理（同 setupFoodInput）
+  input.addEventListener('compositionstart', () => { isComposing = true; });
+  input.addEventListener('compositionend', () => {
+    isComposing = false;
+    state.prodName = input.value.trim();
+    render();
+  });
   input.addEventListener('input', () => {
+    if (isComposing) return;
     clearTimeout(debounce);
     debounce = setTimeout(() => {
       state.prodName = input.value.trim();
