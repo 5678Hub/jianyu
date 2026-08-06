@@ -1,7 +1,7 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-06 11:51:02+08:00",
+    "last_updated": "2026-08-06 11:52:25+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
@@ -36,8 +36,8 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-06 11:51:02+08:00",
-    "data_version": "2026.08.06.1151"
+    "index_rebuilt": "2026-08-06 11:52:25+08:00",
+    "data_version": "2026.08.06.1152"
   },
   "records": [
     {
@@ -177,8 +177,9 @@
         {
           "item": "二氧化硫残留量",
           "result": "0.0926g/kg",
-          "limit": "≤0.05g/kg复检结果：二氧化硫残留量",
-          "limit_normalized": "≤0.05g/kg复检结果：二氧化硫残留量",
+          "limit": "≤0.05g/kg",
+          "_limit_orig": "≤0.05g/kg复检结果：二氧化硫残留量",
+          "limit_normalized": "≤0.05g/kg",
           "result_normalized": "0.0926g/kg",
           "big_category_id": "fruits",
           "subcategory_id": "fruits-longan",
@@ -327,8 +328,9 @@
         {
           "item": "过氧化值(以脂肪计)",
           "result": "0.29g/100g",
-          "limit": "≤0.25g/100g复检结果:过氧化值(以脂肪计)",
-          "limit_normalized": "≤0.25g/100g复检结果:过氧化值(以脂肪计)",
+          "limit": "≤0.25g/100g",
+          "_limit_orig": "≤0.25g/100g复检结果:过氧化值(以脂肪计)",
+          "limit_normalized": "≤0.25g/100g",
           "result_normalized": "0.29g/100g",
           "big_category_id": "pastries",
           "subcategory_id": "pastries-pastries",
@@ -539,9 +541,10 @@
         {
           "item": "黄曲霉毒素B₁",
           "result": "71.1μg/kg",
-          "limit": "≤20μg/kg\n复检结果：黄曲霉毒素B₁",
-          "limit_raw": "≤20μg/kg\n复检结果：黄曲霉毒素B₁",
-          "limit_normalized": "≤20µg/kg\n复检结果：黄曲霉毒素B₁",
+          "limit": "≤20μg/kg",
+          "_limit_orig": "≤20μg/kg\n复检结果：黄曲霉毒素B₁",
+          "limit_raw": "≤20μg/kg",
+          "limit_normalized": "≤20µg/kg",
           "result_raw": "71.1μg/kg",
           "result_normalized": "71.1µg/kg",
           "big_category_id": "roasted_seeds_nuts",
@@ -1749,8 +1752,9 @@
         {
           "item": "日落黄",
           "result": "0.00461g/kg",
-          "limit": "不得使用\n复检结果：0.00430g/kg",
-          "limit_normalized": "不得使用\n复检结果：0.00430g/kg",
+          "limit": "不得使用",
+          "_limit_orig": "不得使用\n复检结果：0.00430g/kg",
+          "limit_normalized": "不得使用",
           "result_normalized": "0.00461g/kg",
           "big_category_id": "cereal_products",
           "subcategory_id": "cereal_products-other_cereal_powder_products",
@@ -4008,8 +4012,9 @@
         {
           "item": "蛋白质",
           "result": "未检出（氮的检出限：0.008g/100g）",
-          "limit": "≥0.5%\n复检结果：蛋白质",
-          "limit_normalized": "≥0.5%\n复检结果：蛋白质",
+          "limit": "≥0.5%",
+          "_limit_orig": "≥0.5%\n复检结果：蛋白质",
+          "limit_normalized": "≥0.5%",
           "result_normalized": "未检出（氮的检出限：0.008g/100g）",
           "big_category_id": "beverages",
           "subcategory_id": "beverages-other_beverages",
@@ -4436,8 +4441,9 @@
         {
           "item": "防腐剂混合使用时各自用量占其最大使用量的比例之和",
           "result": "1.26",
-          "limit": "≤1\n复检结果：防腐剂混合使用时各自用量占其最大使用量的比例之和",
-          "limit_normalized": "≤1\n复检结果：防腐剂混合使用时各自用量占其最大使用量的比例之和",
+          "limit": "≤1",
+          "_limit_orig": "≤1\n复检结果：防腐剂混合使用时各自用量占其最大使用量的比例之和",
+          "limit_normalized": "≤1",
           "result_normalized": "1.26",
           "big_category_id": "vegetable_products_processed",
           "subcategory_id": "vegetable_products_processed-pickled_vegetables",
