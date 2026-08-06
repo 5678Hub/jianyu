@@ -99,7 +99,7 @@ def do_push(auto_yes=False):
     meta = get_master_meta()
     schema_version = meta.get('schema_version', '?')
     data_version = meta.get('data_version', '?')
-    record_count = meta.get('record_count', len(meta.get('records', []))) if isinstance(meta.get('record_count'), int) else '?'
+    record_count = meta.get('record_count', '?')
 
     print(f'   schema_version: {schema_version}')
     print(f'   data_version:   {data_version}')
@@ -110,9 +110,9 @@ def do_push(auto_yes=False):
         print('ℹ️ 无文件改动，跳过 commit + push')
         return False
 
-    # 2. 显示待提交文件
-    r = git('status', '--short', check=False)
-    print(f'\n待提交：\n{r.stdout}')
+    # 2. 显示待提交文件 + 改动统计
+    r = subprocess.run(['git', 'diff', '--stat'], cwd=ROOT, capture_output=True, text=True)
+    print(f'\n待提交改动：\n{r.stdout}')
 
     # 3. 用户确认
     if not auto_yes and not confirm('确认 commit + push？'):
@@ -122,10 +122,15 @@ def do_push(auto_yes=False):
     # 4. git add -A
     git('add', '-A')
 
-    # 5. commit
-    msg = f'build: schema {schema_version} data_version {data_version}'
-    git('commit', '-m', msg)
-    print(f'✅ committed: {msg}')
+    # 5. 生成 commit message（schema_version + data_version + 摘要）
+    title = f'build: schema {schema_version} · data {data_version}'
+    body = (
+        f'records: {record_count}\n'
+        f'\n'
+        f'自动生成 by scripts/build_all.py'
+    )
+    git('commit', '-m', title, '-m', body)
+    print(f'✅ committed: {title}')
 
     # 6. push
     r = subprocess.run(['git', 'push', 'origin', 'main'], cwd=ROOT, capture_output=True, text=True)
