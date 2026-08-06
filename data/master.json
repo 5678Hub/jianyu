@@ -1,7 +1,7 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-06 10:38:51+08:00",
+    "last_updated": "2026-08-06 11:05:24+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
@@ -36,8 +36,8 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-06 10:38:51+08:00",
-    "data_version": "2026.08.06.1038"
+    "index_rebuilt": "2026-08-06 11:05:24+08:00",
+    "data_version": "2026.08.06.1105"
   },
   "records": [
     {
