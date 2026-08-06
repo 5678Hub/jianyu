@@ -5,8 +5,8 @@
     "description": "jianyu 全部细类（master + GB 检验项目表）→ 稳定英文 slug ID；manual = 人工指定；auto = pypinyin 生成",
     "count": 282,
     "sources": {
-      "master": 115,
-      "gb_checklist": 167
+      "master": 116,
+      "gb_checklist": 166
     },
     "slug_kinds": {
       "manual": 153,
@@ -45,6 +45,14 @@
       "name": "干制水产品",
       "source": "master",
       "slug_kind": "manual"
+    },
+    {
+      "id": "aquatic_products_processed-sheng_shi_dong_wu_xing_shui_chan_pin",
+      "big_category_id": "aquatic_products_processed",
+      "big_category_name": "水产制品",
+      "name": "生食动物性水产品",
+      "source": "master",
+      "slug_kind": "auto"
     },
     {
       "id": "aquatic_products-other_aquatic_products",
@@ -1703,14 +1711,6 @@
       "slug_kind": "auto"
     },
     {
-      "id": "aquatic_products_processed-sheng_shi_dong_wu_xing_shui_chan_pin",
-      "big_category_id": "aquatic_products_processed",
-      "big_category_name": "水产制品",
-      "name": "生食动物性水产品",
-      "source": "gb_checklist",
-      "slug_kind": "auto"
-    },
-    {
       "id": "starch_products-other_starch_products",
       "big_category_id": "starch_products",
       "big_category_name": "淀粉及淀粉制品",
@@ -2276,6 +2276,7 @@
     "方便食品|||其他方便食品": "convenient_food-other_convenient_food",
     "水产制品|||其他水产制品": "aquatic_products_processed-other_aquatic_products_processed",
     "水产制品|||干制水产品": "aquatic_products_processed-dried_aquatic_products",
+    "水产制品|||生食动物性水产品": "aquatic_products_processed-sheng_shi_dong_wu_xing_shui_chan_pin",
     "水产品|||其他水产品": "aquatic_products-other_aquatic_products",
     "水产品|||海水虾": "aquatic_products-sea_shrimp",
     "水产品|||海水鱼": "aquatic_products-marine_fish",
@@ -2483,7 +2484,6 @@
     "水产制品|||其他盐渍水产品": "aquatic_products_processed-qi_ta_yan_zi_shui_chan_pin",
     "水产制品|||预制鱼糜制品": "aquatic_products_processed-yu_zhi_yu_mi_zhi_pin",
     "水产制品|||熟制动物性水产制品": "aquatic_products_processed-shu_zhi_dong_wu_xing_shui_chan_zhi_pin",
-    "水产制品|||生食动物性水产品": "aquatic_products_processed-sheng_shi_dong_wu_xing_shui_chan_pin",
     "淀粉及淀粉制品|||其他淀粉制品": "starch_products-other_starch_products",
     "淀粉及淀粉制品|||淀粉糖": "starch_products-dian_fen_tang",
     "糕点|||面包": "pastries-mian_bao",

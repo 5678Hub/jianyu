@@ -1,13 +1,13 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-06 12:44:04+08:00",
+    "last_updated": "2026-08-06 12:51:15+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
     "origin": "jianyu 食品安全抽检风险查询",
     "record_count": 712,
-    "by_canonical_count": 371,
+    "by_canonical_count": 372,
     "by_category_count": 31,
     "by_item_count": 154,
     "project_weight_count": 45,
@@ -36,8 +36,8 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-06 12:44:04+08:00",
-    "data_version": "2026.08.06.1244"
+    "index_rebuilt": "2026-08-06 12:51:15+08:00",
+    "data_version": "2026.08.06.1251"
   },
   "records": [
     {
@@ -11930,9 +11930,9 @@
     {
       "source": "山东",
       "food_name_raw": "海蜇丝（即食海蜇）",
-      "food_name_canonical": "生食动物性水产品",
+      "food_name_canonical": "海蜇丝",
       "big_category": "水产制品",
-      "sub_category": "水产制品-其他水产制品",
+      "sub_category": "水产制品-生食动物性水产品",
       "category": "水产制品-其他水产制品",
       "sampler_name": "金乡龙贵购物广场有限公司龙贵超市",
       "sampler_addr": "金乡县中心街58号负一层",
@@ -11948,7 +11948,7 @@
           "limit_normalized": "≤500mg/kg",
           "result_normalized": "1.04x10³mg/kg",
           "big_category_id": "aquatic_products_processed",
-          "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
+          "subcategory_id": "aquatic_products_processed-sheng_shi_dong_wu_xing_shui_chan_pin",
           "table_id": null,
           "_limit_orig": "≤500mg/kg\n复检结果：铝的残留量(以即食海蜇中Al计)",
           "_limit_normalized_orig": "≤500mg/kg\n复检结果：铝的残留量(以即食海蜇中Al计)"
@@ -11958,7 +11958,10 @@
       "inst": "初检机构;鲁健检测科技有限公司\n复检机构：青岛海关技术中心",
       "id": "r0372",
       "big_category_id": "aquatic_products_processed",
-      "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed"
+      "subcategory_id": "aquatic_products_processed-sheng_shi_dong_wu_xing_shui_chan_pin",
+      "_food_name_canonical_orig": "生食动物性水产品",
+      "_sub_category_orig": "水产制品-其他水产制品",
+      "_subcategory_id_orig": "aquatic_products_processed-other_aquatic_products_processed"
     },
     {
       "source": "山东",
@@ -23978,15 +23981,13 @@
     },
     "生食动物性水产品": {
       "ids": [
-        "r0056",
-        "r0372"
+        "r0056"
       ],
-      "count": 2,
+      "count": 1,
       "big_categories": [
         "水产制品"
       ],
       "food_names": [
-        "海蜇丝（即食海蜇）",
         "野生海蜇头"
       ]
     },
@@ -26200,6 +26201,18 @@
       ],
       "food_names": [
         "铁杆山药"
+      ]
+    },
+    "海蜇丝": {
+      "ids": [
+        "r0372"
+      ],
+      "count": 1,
+      "big_categories": [
+        "水产制品"
+      ],
+      "food_names": [
+        "海蜇丝（即食海蜇）"
       ]
     },
     "西红柿": {
@@ -33607,15 +33620,13 @@
       },
       "生食动物性水产品": {
         "ids": [
-          "r0056",
-          "r0372"
+          "r0056"
         ],
-        "count": 2,
+        "count": 1,
         "big_categories": [
           "水产制品"
         ],
         "food_names": [
-          "海蜇丝（即食海蜇）",
           "野生海蜇头"
         ]
       },
@@ -35829,6 +35840,18 @@
         ],
         "food_names": [
           "铁杆山药"
+        ]
+      },
+      "海蜇丝": {
+        "ids": [
+          "r0372"
+        ],
+        "count": 1,
+        "big_categories": [
+          "水产制品"
+        ],
+        "food_names": [
+          "海蜇丝（即食海蜇）"
         ]
       },
       "西红柿": {
