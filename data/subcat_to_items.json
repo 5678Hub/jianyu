@@ -5588,9 +5588,9 @@
     },
     "营养果蔬面": {
       "big_category": "粮食加工品",
-      "subcategory": "其他谷物粉类制成品",
+      "subcategory": "挂面",
       "big_category_id": "cereal_products",
-      "subcategory_id": "cereal_products-other_cereal_powder_products",
+      "subcategory_id": "cereal_products-dried_noodles",
       "table_id": null
     },
     "肌酸粉": {

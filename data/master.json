@@ -1,7 +1,7 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-06 11:28:59+08:00",
+    "last_updated": "2026-08-06 11:37:19+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
@@ -36,8 +36,8 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-06 11:28:59+08:00",
-    "data_version": "2026.08.06.1128"
+    "index_rebuilt": "2026-08-06 11:37:19+08:00",
+    "data_version": "2026.08.06.1137"
   },
   "records": [
     {
@@ -6956,8 +6956,8 @@
       "food_name_raw": "营养果蔬面",
       "food_name_canonical": "营养果蔬面",
       "big_category": "粮食加工品",
-      "sub_category": "粮食加工品-其他谷物粉类制成品",
-      "category": "方便食品",
+      "sub_category": "粮食加工品-挂面",
+      "category": "粮食加工品-挂面",
       "sampler_name": "单县众信土特产店",
       "sampler_addr": "山东省菏泽市单县东城办事处段楼行政村大黄庄村12号",
       "prod_date": "2025-07-18",
@@ -6972,7 +6972,7 @@
           "limit_normalized": "不得使用",
           "result_normalized": "0.00625g/kg",
           "big_category_id": "cereal_products",
-          "subcategory_id": "cereal_products-other_cereal_powder_products",
+          "subcategory_id": "cereal_products-dried_noodles",
           "table_id": null
         },
         {
@@ -6982,15 +6982,15 @@
           "limit_normalized": "不得使用",
           "result_normalized": "0.00165g/kg",
           "big_category_id": "cereal_products",
-          "subcategory_id": "cereal_products-other_cereal_powder_products",
+          "subcategory_id": "cereal_products-dried_noodles",
           "table_id": null
         }
       ],
       "bulletin_no": "山东-2026-15期",
       "_canonical_orig": "其他谷物粉类制成品",
+      "subcategory_id": "cereal_products-dried_noodles",
       "id": "r0219",
-      "big_category_id": "cereal_products",
-      "subcategory_id": "cereal_products-other_cereal_powder_products"
+      "big_category_id": "cereal_products"
     },
     {
       "source": "山东",
