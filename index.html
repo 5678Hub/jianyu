@@ -344,13 +344,14 @@ function clearCategory() {
 function search() {
   const q = state.q.trim();
   const p = (state.p || '').trim();
-  if (!q && !p) {
+  // 名称和厂家都为空时：仅当未选类别，才回到 dashboard
+  if (!q && !p && !state.selectedCategory) {
     renderDashboard();
     return;
   }
   // 1. 食品名模糊查（raw + canonical 都查）
   let hits = state.records.filter(r => {
-    if (!q) return true; // 仅厂家查时不过滤食品名
+    if (!q) return true; // 仅厂家/类别查时不过滤食品名
     const raw = r.food_name_raw || '';
     const can = r.food_name_canonical || '';
     return raw.includes(q) || can.includes(q);
@@ -367,8 +368,10 @@ function search() {
   if (state.selectedCategory) {
     hits = hits.filter(r => r.big_category === state.selectedCategory);
   }
+  // 名称+厂家都为空但选了类别：标签上写"全部（仅类别）"提示用户可继续输入名称细化
   const label = [q, p].filter(Boolean).join(' @ ');
-  renderResults(label || '全部', hits, { q, p });
+  const ctxLabel = (label || '全部') + (!label && state.selectedCategory ? '（仅类别）' : '');
+  renderResults(ctxLabel, hits, { q, p });
 }
 
 function forceSearch() {
