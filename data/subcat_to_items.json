@@ -6786,11 +6786,12 @@
       "table_id": null
     },
     "五香花生": {
-      "big_category": "生干坚果与籽类食品",
-      "subcategory": "生干坚果与籽类食品-生干坚果与籽类食品",
-      "big_category_id": "raw_dried_seeds_nuts",
-      "subcategory_id": "",
-      "table_id": null
+      "big_category": "炒货食品及坚果制品",
+      "subcategory": "炒货食品及坚果制品",
+      "table_no": "18-1",
+      "big_category_id": "roasted_seeds_nuts",
+      "subcategory_id": "roasted_seeds_nuts-roasted_seeds_nuts",
+      "table_id": "gb2026-roasted_seeds_nuts-18-1"
     },
     "老汽水": {
       "big_category": "饮料",
@@ -6898,11 +6899,12 @@
       "table_id": null
     },
     "麻辣花生": {
-      "big_category": "生干坚果与籽类食品",
-      "subcategory": "生干坚果与籽类食品-生干坚果与籽类食品",
-      "big_category_id": "raw_dried_seeds_nuts",
-      "subcategory_id": "",
-      "table_id": null
+      "big_category": "炒货食品及坚果制品",
+      "subcategory": "炒货食品及坚果制品",
+      "table_no": "18-1",
+      "big_category_id": "roasted_seeds_nuts",
+      "subcategory_id": "roasted_seeds_nuts-roasted_seeds_nuts",
+      "table_id": "gb2026-roasted_seeds_nuts-18-1"
     },
     "拌驴肉": {
       "big_category": "餐饮食品",

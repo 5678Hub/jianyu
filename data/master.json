@@ -1,14 +1,14 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-09 10:18:02+08:00",
+    "last_updated": "2026-08-09 10:35:35+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
     "origin": "jianyu 食品安全抽检风险查询",
     "record_count": 948,
     "by_canonical_count": 505,
-    "by_category_count": 33,
+    "by_category_count": 32,
     "by_item_count": 139,
     "project_weight_count": 45,
     "description": "历史不合格明细主库，含 records 和预建索引",
@@ -36,10 +36,10 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-09 10:18:02+08:00",
+    "index_rebuilt": "2026-08-09 10:35:35+08:00",
     "calibrate_v9": "r0342/r0346 即食海带丝 → 水产制品-其他水产制品 / 表22-9",
     "calibrate_v10": "17 条 n=,c=,m=,M= 微生物采样计划 fail_raw 重新解析",
-    "data_version": "2026.08.09.1018"
+    "data_version": "2026.08.09.1035"
   },
   "records": [
     {
@@ -9145,9 +9145,9 @@
       "source": "山东",
       "food_name_raw": "五香花生",
       "food_name_canonical": "五香花生",
-      "big_category": "生干坚果与籽类食品",
-      "sub_category": "生干坚果与籽类食品-生干坚果与籽类食品",
-      "category": "食用农产品-生干坚果与籽类食品",
+      "big_category": "炒货食品及坚果制品",
+      "sub_category": "炒货食品及坚果制品-炒货食品及坚果制品",
+      "category": "炒货食品及坚果制品-炒货食品及坚果制品",
       "sampler_name": "平邑县乐广购生活超市",
       "sampler_addr": "山东省临沂市平邑县平邑街道东贺庄小学东北500米",
       "prod_date": "2025-09-28",
@@ -9163,15 +9163,16 @@
           "_limit_normalized_orig": null,
           "limit_normalized": "≤20µg/kg",
           "result_normalized": "63.8µg/kg",
-          "big_category_id": "raw_dried_seeds_nuts",
-          "subcategory_id": "raw_dried_seeds_nuts-raw_dried_seeds_nuts",
+          "big_category_id": "roasted_seeds_nuts",
+          "subcategory_id": "roasted_seeds_nuts-roasted_seeds_nuts",
           "table_id": null
         }
       ],
       "bulletin_no": "山东-2026-10期",
       "id": "r0274",
-      "big_category_id": "raw_dried_seeds_nuts",
-      "subcategory_id": "raw_dried_seeds_nuts-raw_dried_seeds_nuts"
+      "big_category_id": "roasted_seeds_nuts",
+      "subcategory_id": "roasted_seeds_nuts-roasted_seeds_nuts",
+      "table_no": "18-1"
     },
     {
       "source": "山东",
@@ -10583,9 +10584,9 @@
       "source": "山东",
       "food_name_raw": "麻辣花生",
       "food_name_canonical": "其他炒货食品及坚果制品",
-      "big_category": "生干坚果与籽类食品",
-      "sub_category": "生干坚果与籽类食品-生干坚果与籽类食品",
-      "category": "食用农产品-生干坚果与籽类食品",
+      "big_category": "炒货食品及坚果制品",
+      "sub_category": "炒货食品及坚果制品-炒货食品及坚果制品",
+      "category": "炒货食品及坚果制品-炒货食品及坚果制品",
       "sampler_name": "文登区鹏君商行",
       "sampler_addr": "山东省威海市文登区天福街道办事处香山路17-12、17-13、17-14、17-15号",
       "prod_date": "2025-04-14",
@@ -10599,16 +10600,17 @@
           "limit": "≤0.50g/100g",
           "limit_normalized": "≤0.50g/100g",
           "result_normalized": "0.82g/100g",
-          "big_category_id": "raw_dried_seeds_nuts",
-          "subcategory_id": "raw_dried_seeds_nuts-raw_dried_seeds_nuts",
+          "big_category_id": "roasted_seeds_nuts",
+          "subcategory_id": "roasted_seeds_nuts-roasted_seeds_nuts",
           "table_id": null
         }
       ],
       "bulletin_no": "山东-2026-4期",
       "inst": "山东世通检测认证有限公司",
       "id": "r0318",
-      "big_category_id": "raw_dried_seeds_nuts",
-      "subcategory_id": "raw_dried_seeds_nuts-raw_dried_seeds_nuts"
+      "big_category_id": "roasted_seeds_nuts",
+      "subcategory_id": "roasted_seeds_nuts-roasted_seeds_nuts",
+      "table_no": "18-1"
     },
     {
       "source": "山东",
@@ -33029,8 +33031,7 @@
       ],
       "count": 4,
       "big_categories": [
-        "炒货食品及坚果制品",
-        "生干坚果与籽类食品"
+        "炒货食品及坚果制品"
       ],
       "food_names": [
         "奶香花生米（烘炒类）",
@@ -34661,7 +34662,7 @@
       ],
       "count": 1,
       "big_categories": [
-        "生干坚果与籽类食品"
+        "炒货食品及坚果制品"
       ],
       "food_names": [
         "五香花生"
@@ -40180,6 +40181,8 @@
         "r0104",
         "r0169",
         "r0251",
+        "r0274",
+        "r0318",
         "r0356",
         "r0621",
         "r0662",
@@ -40205,8 +40208,9 @@
         "r0927",
         "r0938"
       ],
-      "count": 29,
+      "count": 31,
       "foods": [
+        "五香花生",
         "南瓜籽仁",
         "原味瓜子",
         "原味葵花籽（大粒）",
@@ -40232,12 +40236,14 @@
         "藤椒大白仁（油炸类）",
         "雪糖花生（烘炒类）",
         "香酥青豆",
+        "麻辣花生",
         "麻辣花生仁（油炸类）"
       ],
       "items": [
         "二氧化硫残留量",
         "大肠菌群",
         "过氧化值(以脂肪计)",
+        "过氧化值（以脂肪计)",
         "过氧化值（以脂肪计）",
         "酸价（以脂肪计）（KOH）",
         "霉菌",
@@ -40828,21 +40834,6 @@
         "二氧化硫残留量",
         "山梨酸及其钾盐（以山梨酸计）",
         "霉菌"
-      ]
-    },
-    "生干坚果与籽类食品": {
-      "ids": [
-        "r0274",
-        "r0318"
-      ],
-      "count": 2,
-      "foods": [
-        "五香花生",
-        "麻辣花生"
-      ],
-      "items": [
-        "过氧化值（以脂肪计)",
-        "黄曲霉毒素B₁"
       ]
     },
     "豆类": {
@@ -41765,7 +41756,6 @@
       ],
       "big_categories": [
         "炒货食品及坚果制品",
-        "生干坚果与籽类食品",
         "食用油、油脂及其制品",
         "餐饮食品"
       ]
@@ -43453,7 +43443,7 @@
         "麻辣花生"
       ],
       "big_categories": [
-        "生干坚果与籽类食品",
+        "炒货食品及坚果制品",
         "糕点"
       ]
     },
@@ -45026,8 +45016,7 @@
         ],
         "count": 4,
         "big_categories": [
-          "炒货食品及坚果制品",
-          "生干坚果与籽类食品"
+          "炒货食品及坚果制品"
         ],
         "food_names": [
           "奶香花生米（烘炒类）",
@@ -46658,7 +46647,7 @@
         ],
         "count": 1,
         "big_categories": [
-          "生干坚果与籽类食品"
+          "炒货食品及坚果制品"
         ],
         "food_names": [
           "五香花生"
@@ -52177,6 +52166,8 @@
           "r0104",
           "r0169",
           "r0251",
+          "r0274",
+          "r0318",
           "r0356",
           "r0621",
           "r0662",
@@ -52202,8 +52193,9 @@
           "r0927",
           "r0938"
         ],
-        "count": 29,
+        "count": 31,
         "foods": [
+          "五香花生",
           "南瓜籽仁",
           "原味瓜子",
           "原味葵花籽（大粒）",
@@ -52229,12 +52221,14 @@
           "藤椒大白仁（油炸类）",
           "雪糖花生（烘炒类）",
           "香酥青豆",
+          "麻辣花生",
           "麻辣花生仁（油炸类）"
         ],
         "items": [
           "二氧化硫残留量",
           "大肠菌群",
           "过氧化值(以脂肪计)",
+          "过氧化值（以脂肪计)",
           "过氧化值（以脂肪计）",
           "酸价（以脂肪计）（KOH）",
           "霉菌",
@@ -52825,21 +52819,6 @@
           "二氧化硫残留量",
           "山梨酸及其钾盐（以山梨酸计）",
           "霉菌"
-        ]
-      },
-      "生干坚果与籽类食品": {
-        "ids": [
-          "r0274",
-          "r0318"
-        ],
-        "count": 2,
-        "foods": [
-          "五香花生",
-          "麻辣花生"
-        ],
-        "items": [
-          "过氧化值（以脂肪计)",
-          "黄曲霉毒素B₁"
         ]
       },
       "豆类": {
@@ -53762,7 +53741,6 @@
         ],
         "big_categories": [
           "炒货食品及坚果制品",
-          "生干坚果与籽类食品",
           "食用油、油脂及其制品",
           "餐饮食品"
         ]
@@ -55450,7 +55428,7 @@
           "麻辣花生"
         ],
         "big_categories": [
-          "生干坚果与籽类食品",
+          "炒货食品及坚果制品",
           "糕点"
         ]
       },

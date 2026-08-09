@@ -3,13 +3,13 @@
     "schema_version": "1.0",
     "last_updated": "2026-08-06 10:10:00+08:00",
     "description": "jianyu 全部细类（master + GB 检验项目表）→ 稳定英文 slug ID；manual = 人工指定；auto = pypinyin 生成",
-    "count": 297,
+    "count": 296,
     "sources": {
-      "master": 138,
+      "master": 137,
       "gb_checklist": 159
     },
     "slug_kinds": {
-      "manual": 153,
+      "manual": 152,
       "auto": 144
     }
   },
@@ -267,14 +267,6 @@
       "big_category_id": "special_dietary_food",
       "big_category_name": "特殊膳食食品",
       "name": "营养补充品",
-      "source": "master",
-      "slug_kind": "manual"
-    },
-    {
-      "id": "raw_dried_seeds_nuts-raw_dried_seeds_nuts",
-      "big_category_id": "raw_dried_seeds_nuts",
-      "big_category_name": "生干坚果与籽类食品",
-      "name": "生干坚果与籽类食品",
       "source": "master",
       "slug_kind": "manual"
     },
@@ -2424,7 +2416,6 @@
     "炒货食品及坚果制品|||花生制品": "roasted_seeds_nuts-peanut_products",
     "特殊膳食食品|||特殊膳食食品": "special_dietary_food-te_shu_shan_shi_shi_pin",
     "特殊膳食食品|||营养补充品": "special_dietary_food-nutritional_supplement",
-    "生干坚果与籽类食品|||生干坚果与籽类食品": "raw_dried_seeds_nuts-raw_dried_seeds_nuts",
     "畜禽肉及副产品|||其他畜肉": "meat_poultry_offal-other_livestock_meat",
     "畜禽肉及副产品|||牛肉": "meat_poultry_offal-beef",
     "畜禽肉及副产品|||猪肝": "meat_poultry_offal-pork_liver",
