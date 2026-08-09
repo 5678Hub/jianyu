@@ -16,7 +16,8 @@ build_all.py 做的事：
   5. enrich subcat_to_items.json (注入 *_id)
   6. 同步 sw.js DATA_VERSION
   7. 跑 validate.py
-  8. （可选）git commit + push 触发 GitHub Pages 自动部署
+  8. 生成离线单文件版（桌面 jianyu-offline.html，给伙伴用）
+  9. （可选）git commit + push 触发 GitHub Pages 自动部署
 
 ⚠️ 本脚本假设上游 JSON 已经存在；本脚本只做"派生产物生成 + 注入 id"
 ⚠️ 禁止手工修改生成物（master.json / gb_checklist_subcat.json 的 *_id 字段等）
@@ -180,6 +181,10 @@ def main():
     if r.returncode != 0:
         print('\n❌ validate.py 失败，build 终止')
         sys.exit(1)
+
+    # 自动生成离线单文件版（给伙伴用，不依赖网络）
+    step('📦 生成离线单文件版（桌面 jianyu-offline.html）')
+    run_script('build_offline.py')
 
     print('\n' + '=' * 60)
     print('✅ build_all.py 完成')
