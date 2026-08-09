@@ -44,6 +44,8 @@ header.brand .brand-text { flex: 1; min-width: 0; }
 header.brand .brand-title { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
 header.brand .brand-title .zh { font-size: 18px; font-weight: 600; color: var(--c-text-1); letter-spacing: 0.3px; }
 header.brand .subtitle { font-size: 12px; color: var(--c-text-2); margin-top: 6px; }
+header.brand .data-snapshot { font-size: 11px; color: var(--c-text-3); margin-top: 4px; padding: 4px 8px; background: var(--c-bg-2, #f1f5f9); border-radius: 4px; display: inline-block; }
+header.brand .data-snapshot.stale { background: #fee; color: #b91c1c; border: 1px solid #fca5a5; }
 header.brand .ver { font-size: 11px; color: var(--c-text-2); padding: 5px 12px; background: var(--c-primary-soft); border-radius: 14px; font-weight: 500; letter-spacing: 0.3px; flex-shrink: 0; }
 
 .section { background: var(--c-surface); border-radius: var(--r-md); padding: 18px 22px; margin-bottom: 14px; border: 1px solid var(--c-border); box-shadow: var(--shadow-soft); }
@@ -302,6 +304,25 @@ async function loadData() {
     });
     document.getElementById('subtitle').textContent =
       `${state.records.length} 条不合格记录 · 39 大类 · 山东/辽宁/重庆抽检公告 + 2026 实施细则`;
+
+    // 数据快照时间显示（用于离线版提醒同事找新版）
+    const meta = master._meta || {};
+    const lastUpdated = meta.last_updated || '';
+    const snapshot = lastUpdated ? lastUpdated.slice(0, 10) : '?';
+    const ageDays = lastUpdated
+      ? Math.floor((Date.now() - new Date(lastUpdated).getTime()) / 86400000)
+      : null;
+    const subtitle = document.querySelector('header.brand .subtitle');
+    if (subtitle && ageDays !== null) {
+      // 离线版：超过 60 天标红提示过期
+      const stale = ageDays > 60;
+      const tsEl = document.createElement('div');
+      tsEl.className = 'data-snapshot' + (stale ? ' stale' : '');
+      tsEl.innerHTML = stale
+        ? `📅 数据快照 <strong>${snapshot}</strong>（已 ${ageDays} 天，建议找建宇拿最新版）`
+        : `📅 数据快照 ${snapshot}（${ageDays} 天前）`;
+      subtitle.after(tsEl);
+    }
     renderCategoryGrid();
     renderDashboard();
   } catch (e) {
