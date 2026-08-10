@@ -1,5 +1,5 @@
 {
-  "table_count": 253,
+  "table_count": 254,
   "categories": {
     "粮食加工品": [
       {
@@ -12972,6 +12972,20 @@
         "table_id": "gb2026-fruits-36-2"
       },
       {
+        "name": "梨",
+        "table_no": "表36-3",
+        "table_name": "梨检验项目",
+        "items": [],
+        "notes": [
+          "待补：GB 实施细则 2026 表 36-3 梨检验项目（PDF 二次抽取）"
+        ],
+        "_todo": "梨检验项目待补：常见残留限量（克百威、毒死蜱、氧乐果、吡虫啉、苯醚甲环唑、多菌灵等 GB 2763 项）",
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-pear",
+        "table_id": "gb2026-fruits-36-3"
+      },
+      {
         "name": "枣",
         "table_no": "表36-4",
         "table_name": "枣",
@@ -14501,6 +14515,7 @@
       "name": "str  细类名（中文）",
       "page": "int  PDF 页码",
       "items": "list  检验项目 [{序号, 检验项目, 依据法律法规或标准, 检测方法, 注脚}]"
-    }
+    },
+    "last_modified": "2026-08-10 added pear (表36-3)"
   }
 }

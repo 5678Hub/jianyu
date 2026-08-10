@@ -1,7 +1,7 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-10 17:29:50+08:00",
+    "last_updated": "2026-08-10 19:02:24+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
@@ -36,10 +36,10 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-10 17:29:50+08:00",
+    "index_rebuilt": "2026-08-10 19:02:24+08:00",
     "calibrate_v9": "r0342/r0346 即食海带丝 → 水产制品-其他水产制品 / 表22-9",
     "calibrate_v10": "17 条 n=,c=,m=,M= 微生物采样计划 fail_raw 重新解析",
-    "data_version": "2026.08.10.1729"
+    "data_version": "2026.08.10.1902"
   },
   "records": [
     {
@@ -33023,9 +33023,9 @@
       "food_name_raw": "库尔勒香梨（梨子）",
       "food_name_canonical": "库尔勒香梨（梨子）",
       "big_category": "水果类",
-      "sub_category": "水果类-番木瓜",
-      "category": "水果类-番木瓜",
-      "table_no": "36-23",
+      "sub_category": "水果类-梨",
+      "category": "水果类-梨",
+      "table_no": "表36-3",
       "sampler_name": "和县诚信志远水果店",
       "sampler_addr": "安徽省马鞍山市和县历阳镇历阳中路13号楼3-4号",
       "prod_name": "",
@@ -33042,7 +33042,7 @@
           "limit_normalized": "≤0.2mg/kg",
           "result_normalized": "0.38mg/kg",
           "big_category_id": "fruits",
-          "subcategory_id": "fruits-papaya",
+          "subcategory_id": "fruits-pear",
           "table_id": null
         }
       ],
@@ -33051,7 +33051,7 @@
       "bulletin_kind": "常规",
       "id": "r0970",
       "big_category_id": "fruits",
-      "subcategory_id": "fruits-papaya"
+      "subcategory_id": "fruits-pear"
     },
     {
       "source": "安徽",

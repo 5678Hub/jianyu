@@ -588,8 +588,14 @@
     {
       "no": "三十六",
       "name": "水果类",
-      "available": false,
-      "subcategories": []
+      "available": true,
+      "subcategories": [
+        {
+          "code": "36.1",
+          "no": 1,
+          "name": "梨"
+        }
+      ]
     },
     {
       "no": "三十七",

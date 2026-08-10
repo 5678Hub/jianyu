@@ -9111,11 +9111,12 @@
     },
     "库尔勒香梨（梨子）": {
       "big_category": "水果类",
-      "subcategory": "番木瓜",
-      "table_no": "36-23",
+      "subcategory": "梨",
+      "table_no": "表36-3",
+      "_note": "原归 36-23 番木瓜兜底；按 GB 实施细则 2026 表 36-3 梨精确归类 (2026-08-10)",
       "big_category_id": "fruits",
-      "subcategory_id": "fruits-papaya",
-      "table_id": "gb2026-fruits-36-23"
+      "subcategory_id": "fruits-pear",
+      "table_id": "gb2026-fruits-36-3"
     },
     "台芒": {
       "big_category": "水果类",
@@ -10364,6 +10365,22 @@
       "big_category_id": "cocoa_coffee_products",
       "subcategory_id": "cocoa_coffee_products-cocoa_products",
       "table_id": "gb2026-cocoa_coffee_products-20-2"
+    },
+    "雪花梨": {
+      "big_category": "水果类",
+      "subcategory": "梨",
+      "table_no": "表36-3",
+      "big_category_id": "fruits",
+      "subcategory_id": "fruits-pear",
+      "table_id": "gb2026-fruits-36-3"
+    },
+    "鸭梨": {
+      "big_category": "水果类",
+      "subcategory": "梨",
+      "table_no": "表36-3",
+      "big_category_id": "fruits",
+      "subcategory_id": "fruits-pear",
+      "table_id": "gb2026-fruits-36-3"
     }
   },
   "_meta": {
@@ -10373,7 +10390,7 @@
     "bom": false,
     "source": "食品安全监督抽检实施细则（2026年版）",
     "origin": "jianyu 食品安全抽检风险查询",
-    "alias_count": 1390,
+    "alias_count": 1392,
     "description": "食品名/别名 → 大类+细类+表号的反向索引；含 big_category_id / subcategory_id / table_id 字段",
     "schema": "{aliases: dict[别名] -> 规范名}",
     "misnamed_field_warning": "文件名 subcat_to_items 易误导——实际是品名→规范名映射，不是细类→项目映射",
@@ -10386,6 +10403,7 @@
       "big_category_id": "str  稳定英文 slug 大类 ID",
       "subcategory_id": "str  稳定英文 slug 细类 ID",
       "table_id": "str  稳定 table_id（见 table_ids.json）"
-    }
+    },
+    "last_modified": "2026-08-10 added pear subcategory + 4 aliases"
   }
 }
