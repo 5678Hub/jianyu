@@ -1,7 +1,7 @@
 {
   "_meta": {
     "schema_version": "1.2",
-    "last_updated": "2026-08-10 19:13:21+08:00",
+    "last_updated": "2026-08-10 20:45:01+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "山东/辽宁/重庆 28+8 期抽检公告汇总",
@@ -36,10 +36,10 @@
       "by_category": "dict[big_category]     -> {ids: list[record_id], count, foods, items}",
       "by_item": "dict[item_name]        -> {ids: list[record_id], count, foods, big_categories}"
     },
-    "index_rebuilt": "2026-08-10 19:13:21+08:00",
+    "index_rebuilt": "2026-08-10 20:45:01+08:00",
     "calibrate_v9": "r0342/r0346 即食海带丝 → 水产制品-其他水产制品 / 表22-9",
     "calibrate_v10": "17 条 n=,c=,m=,M= 微生物采样计划 fail_raw 重新解析",
-    "data_version": "2026.08.10.1913"
+    "data_version": "2026.08.10.2045"
   },
   "records": [
     {
@@ -2304,7 +2304,8 @@
       "inst": "山东省食品药品检验研究院",
       "id": "r0068",
       "big_category_id": "fruits",
-      "subcategory_id": "fruits-pear"
+      "subcategory_id": "fruits-pear",
+      "table_no": "表36-3"
     },
     {
       "source": "山东",
@@ -3569,7 +3570,8 @@
       "bulletin_no": "山东-2026-19期",
       "id": "r0105",
       "big_category_id": "fruits",
-      "subcategory_id": "fruits-pear"
+      "subcategory_id": "fruits-pear",
+      "table_no": "表36-3"
     },
     {
       "source": "山东",
@@ -9688,7 +9690,8 @@
       "bulletin_no": "山东-2026-14期",
       "id": "r0290",
       "big_category_id": "fruits",
-      "subcategory_id": "fruits-pear"
+      "subcategory_id": "fruits-pear",
+      "table_no": "表36-3"
     },
     {
       "source": "山东",
@@ -15038,7 +15041,8 @@
       "inst": "梨",
       "id": "r0450",
       "big_category_id": "fruits",
-      "subcategory_id": "fruits-pear"
+      "subcategory_id": "fruits-pear",
+      "table_no": "表36-3"
     },
     {
       "source": "山东",

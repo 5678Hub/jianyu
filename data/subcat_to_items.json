@@ -1883,7 +1883,8 @@
       "subcategory": "火龙果",
       "table_no": "36-18",
       "big_category_id": "fruits",
-      "table_id": null
+      "table_id": "gb2026-fruits-36-18",
+      "subcategory_id": "fruits-pitaya"
     },
     "荔枝": {
       "big_category": "水果类",

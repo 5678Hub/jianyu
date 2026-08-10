@@ -594,6 +594,12 @@
           "code": "36.1",
           "no": 1,
           "name": "梨"
+        },
+        {
+          "code": "36.18",
+          "table_no": "36-18",
+          "name": "火龙果",
+          "kind": "specific_fruit"
         }
       ]
     },

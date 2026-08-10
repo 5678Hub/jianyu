@@ -4,7 +4,7 @@
     "last_updated": "2026-08-06 09:55:00+08:00",
     "description": "253 张 GB 2026 检验项目表 → 稳定 table_id。跨大类续编（19-2 / 19-3 / 33-8）加 sub_name 区分；continuation_of 指向同 table_no 的第一张",
     "standard_version": "gb2026",
-    "count": 254
+    "count": 255
   },
   "tables": [
     {
@@ -2738,6 +2738,20 @@
       "source_file": "data/current_period/gb_checklist_subcat.json"
     },
     {
+      "id": "gb2026-fruits-36-18",
+      "table_no": "表36-18",
+      "table_no_normalized": "36-18",
+      "table_name": "火龙果检验项目",
+      "subcategory_name": "火龙果",
+      "big_category_id": "fruits",
+      "big_category_name": "水果类",
+      "standard_version": "gb2026",
+      "page": null,
+      "item_count": 6,
+      "continuation_of": null,
+      "source_file": "data/current_period/gb_checklist_subcat.json"
+    },
+    {
       "id": "gb2026-fruits-36-19",
       "table_no": "表36-19",
       "table_no_normalized": "36-19",
@@ -3756,6 +3770,7 @@
     "表36-15": "gb2026-fruits-36-15",
     "表36-16": "gb2026-fruits-36-16",
     "表36-17": "gb2026-fruits-36-17",
+    "表36-18": "gb2026-fruits-36-18",
     "表36-19": "gb2026-fruits-36-19",
     "表36-2": "gb2026-fruits-36-2",
     "表36-20": "gb2026-fruits-36-20",
