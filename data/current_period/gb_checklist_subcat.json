@@ -68,7 +68,11 @@
             "检测方法": "GB/T 22325"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "cereal_products",
+        "big_category_name": "粮食加工品",
+        "subcategory_id": "cereal_products-wheat_flour",
+        "table_id": "gb2026-cereal_products-1-1"
       },
       {
         "name": "大米",
@@ -112,7 +116,11 @@
             "检测方法": "GB 5009.96"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "cereal_products",
+        "big_category_name": "粮食加工品",
+        "subcategory_id": "cereal_products-rice",
+        "table_id": "gb2026-cereal_products-1-2"
       },
       {
         "name": "挂面",
@@ -144,7 +152,11 @@
             "检测方法": "GB 5009.35"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "cereal_products",
+        "big_category_name": "粮食加工品",
+        "subcategory_id": "cereal_products-dried_noodles",
+        "table_id": "gb2026-cereal_products-1-3"
       },
       {
         "name": "谷物加工品",
@@ -188,7 +200,11 @@
             "检测方法": "GB 5009.96"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "cereal_products",
+        "big_category_name": "粮食加工品",
+        "subcategory_id": "cereal_products-gu_wu_jia_gong_pin",
+        "table_id": "gb2026-cereal_products-1-4"
       },
       {
         "name": "玉米粉(片、渣)",
@@ -232,7 +248,11 @@
             "检测方法": "GB 5009.96"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "cereal_products",
+        "big_category_name": "粮食加工品",
+        "subcategory_id": "cereal_products-yu_mi_fen",
+        "table_id": "gb2026-cereal_products-1-5"
       },
       {
         "name": "米粉",
@@ -270,7 +290,11 @@
             "检测方法": "GB 5009.34"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "cereal_products",
+        "big_category_name": "粮食加工品",
+        "subcategory_id": "cereal_products-rice_noodles",
+        "table_id": "gb2026-cereal_products-1-6"
       },
       {
         "name": "其他谷物碾磨加工品",
@@ -314,7 +338,11 @@
             "检测方法": "GB 5009.96"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "cereal_products",
+        "big_category_name": "粮食加工品",
+        "subcategory_id": "cereal_products-qi_ta_gu_wu_nian_mo_jia_gong_pin",
+        "table_id": "gb2026-cereal_products-1-7"
       },
       {
         "name": "生湿面制品",
@@ -352,7 +380,11 @@
             "检测方法": "GB 5009.28"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "cereal_products",
+        "big_category_name": "粮食加工品",
+        "subcategory_id": "cereal_products-fresh_noodle_products",
+        "table_id": "gb2026-cereal_products-1-8"
       },
       {
         "name": "发酵面制品",
@@ -390,7 +422,11 @@
             "检测方法": "GB 5009.28"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "cereal_products",
+        "big_category_name": "粮食加工品",
+        "subcategory_id": "cereal_products-fermented_dough_products",
+        "table_id": "gb2026-cereal_products-1-9"
       },
       {
         "name": "米粉制品",
@@ -422,7 +458,11 @@
             "检测方法": "GB 5009.28"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "cereal_products",
+        "big_category_name": "粮食加工品",
+        "subcategory_id": "cereal_products-mi_fen_zhi_pin",
+        "table_id": "gb2026-cereal_products-1-10"
       },
       {
         "name": "其他谷物粉类制成品",
@@ -460,7 +500,11 @@
             "检测方法": "GB 5009.28"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "cereal_products",
+        "big_category_name": "粮食加工品",
+        "subcategory_id": "cereal_products-other_cereal_powder_products",
+        "table_id": "gb2026-cereal_products-1-11"
       }
     ],
     "调味品": [
@@ -543,7 +587,11 @@
         ],
         "notes": [
           "a. 对羟基苯甲酸酯类及其钠盐项目仅包括对羟基苯甲酸甲酯钠、对羟基苯甲酸乙酯及其钠盐。"
-        ]
+        ],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-soy_sauce",
+        "table_id": "gb2026-seasonings-3-1"
       },
       {
         "name": "食醋",
@@ -633,7 +681,11 @@
           "a. 限产品明示标准和质量要求有限量规定时检测。",
           "b. 零添加产品需考虑发酵本底值。",
           "c. 对羟基苯甲酸酯类及其钠盐项目仅包括对羟基苯甲酸甲酯钠、对羟基苯甲酸乙酯及其钠盐。"
-        ]
+        ],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-vinegar",
+        "table_id": "gb2026-seasonings-3-2"
       },
       {
         "name": "酿造酱",
@@ -715,7 +767,11 @@
         "notes": [
           "a. GB 2718仅适用于以谷物和（或）豆类为主要原料经发酵而制成的酿造酱，其他酿造酱（如以辣椒、蚕豆等为原料经发酵而制成的豆瓣酱等），限产品明示标准和质量要求有限量规定时检测。",
           "b. 限预包装或非定量包装食品检测。"
-        ]
+        ],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-brewed_paste",
+        "table_id": "gb2026-seasonings-3-3"
       },
       {
         "name": "调味料酒",
@@ -769,7 +825,11 @@
         "notes": [
           "a. 限产品明示标准和质量要求有限量规定时检测。",
           "b. 需考虑发酵本底值。"
-        ]
+        ],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-cooking_wine",
+        "table_id": "gb2026-seasonings-3-4"
       },
       {
         "name": "香辛料调味油",
@@ -794,7 +854,11 @@
         ],
         "notes": [
           "a. 限产品明示标准和质量要求有限量规定时检测。"
-        ]
+        ],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-spice_seasoning_oil",
+        "table_id": "gb2026-seasonings-3-5"
       },
       {
         "name": "辣椒、花椒、辣椒粉、花椒粉",
@@ -854,7 +918,11 @@
         ],
         "notes": [
           "a. 辣椒、辣椒粉按SN/T 2430检测，花椒、花椒粉按BJS 201905检测。"
-        ]
+        ],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-chili_pepper_sichuan_pepper_powder",
+        "table_id": "gb2026-seasonings-3-6"
       },
       {
         "name": "其他香辛料调味品",
@@ -922,7 +990,11 @@
         "notes": [
           "a. 限产品明示标准和质量要求有限量规定时检测。",
           "b. 限产品明示标准和质量要求有限量规定时检测。"
-        ]
+        ],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-other_spice_seasonings",
+        "table_id": "gb2026-seasonings-3-7"
       },
       {
         "name": "鸡粉、鸡精调味料",
@@ -996,7 +1068,11 @@
         ],
         "notes": [
           "a. 限产品明示标准和质量要求有限量规定时检测。"
-        ]
+        ],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-ji_fen_ji_jing_tiao_wei_liao",
+        "table_id": "gb2026-seasonings-3-8"
       },
       {
         "name": "其他固体调味料",
@@ -1110,7 +1186,11 @@
             "注脚": null
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-qi_ta_gu_ti_tiao_wei_liao",
+        "table_id": "gb2026-seasonings-3-9"
       },
       {
         "name": "蛋黄酱、沙拉酱",
@@ -1126,7 +1206,11 @@
             "注脚": null
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-dan_huang_jiang_sha_la_jiang",
+        "table_id": "gb2026-seasonings-3-10"
       },
       {
         "name": "坚果与籽类的泥（酱）",
@@ -1166,7 +1250,11 @@
         "notes": [
           "a. 限产品明示标准和质量要求有限量规定时检测。",
           "b. 限花生制品检测。"
-        ]
+        ],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-jian_guo_yu_zi_lei_de_ni",
+        "table_id": "gb2026-seasonings-3-11"
       },
       {
         "name": "辣椒酱",
@@ -1217,7 +1305,11 @@
             "注脚": null
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-la_jiao_jiang",
+        "table_id": "gb2026-seasonings-3-12"
       },
       {
         "name": "火锅底料、麻辣烫底料",
@@ -1282,7 +1374,11 @@
             "注脚": null
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-huo_guo_di_liao_ma_la_tang_di_liao",
+        "table_id": "gb2026-seasonings-3-13"
       },
       {
         "name": "其他半固体调味料",
@@ -1375,7 +1471,11 @@
             "注脚": null
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-qi_ta_ban_gu_ti_tiao_wei_liao",
+        "table_id": "gb2026-seasonings-3-14"
       },
       {
         "name": "蚝油、虾油、鱼露",
@@ -1428,7 +1528,11 @@
         ],
         "notes": [
           "a. 限产品明示标准和质量要求有限量规定时检测。"
-        ]
+        ],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-hao_you_xia_you_yu_lu",
+        "table_id": "gb2026-seasonings-3-15"
       },
       {
         "name": "其他液体调味料",
@@ -1486,7 +1590,11 @@
             "注脚": null
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-qi_ta_ye_ti_tiao_wei_liao",
+        "table_id": "gb2026-seasonings-3-16"
       },
       {
         "name": "味精",
@@ -1502,7 +1610,11 @@
             "注脚": null
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-wei_jing",
+        "table_id": "gb2026-seasonings-3-17"
       },
       {
         "name": "普通食用盐",
@@ -1567,7 +1679,11 @@
             "注脚": null
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-edible_salt",
+        "table_id": "gb2026-seasonings-3-18"
       },
       {
         "name": "低钠食用盐",
@@ -1632,7 +1748,11 @@
             "注脚": null
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-di_na_shi_yong_yan",
+        "table_id": "gb2026-seasonings-3-19"
       },
       {
         "name": "风味食用盐",
@@ -1683,7 +1803,11 @@
             "注脚": null
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-feng_wei_shi_yong_yan",
+        "table_id": "gb2026-seasonings-3-20"
       },
       {
         "name": "特殊工艺食用盐",
@@ -1699,7 +1823,11 @@
             "注脚": null
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-te_shu_gong_yi_shi_yong_yan",
+        "table_id": "gb2026-seasonings-3-21"
       },
       {
         "name": "食品生产加工用盐",
@@ -1752,7 +1880,11 @@
         ],
         "notes": [
           "a. 限产品明示标准和质量要求有限量规定时检测。"
-        ]
+        ],
+        "big_category_id": "seasonings",
+        "big_category_name": "调味品",
+        "subcategory_id": "seasonings-shi_pin_sheng_chan_jia_gong_yong_yan",
+        "table_id": "gb2026-seasonings-3-22"
       }
     ],
     "肉制品": [
@@ -1828,7 +1960,11 @@
             "检测方法": "GB 4789.10"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_products_processed",
+        "big_category_name": "肉制品",
+        "subcategory_id": "meat_products_processed-tiao_li_rou_zhi_pin",
+        "table_id": "gb2026-meat_products_processed-4-1"
       },
       {
         "name": "腌腊肉制品",
@@ -1896,7 +2032,11 @@
             "检测方法": "GB 4789.3"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_products_processed",
+        "big_category_name": "肉制品",
+        "subcategory_id": "meat_products_processed-cured_meat",
+        "table_id": "gb2026-meat_products_processed-4-2"
       },
       {
         "name": "发酵肉制品",
@@ -1958,7 +2098,11 @@
             "检测方法": "GB 4789.3"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_products_processed",
+        "big_category_name": "肉制品",
+        "subcategory_id": "meat_products_processed-fa_jiao_rou_zhi_pin",
+        "table_id": "gb2026-meat_products_processed-4-3"
       },
       {
         "name": "酱卤肉制品",
@@ -2014,7 +2158,11 @@
             "检测方法": "GB 4789.10"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_products_processed",
+        "big_category_name": "肉制品",
+        "subcategory_id": "meat_products_processed-sauced_meat",
+        "table_id": "gb2026-meat_products_processed-4-4"
       },
       {
         "name": "油炸肉制品",
@@ -2064,7 +2212,11 @@
             "检测方法": "GB 4789.3"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_products_processed",
+        "big_category_name": "肉制品",
+        "subcategory_id": "meat_products_processed-you_zha_rou_zhi_pin",
+        "table_id": "gb2026-meat_products_processed-4-5"
       },
       {
         "name": "熟肉干制品",
@@ -2114,7 +2266,11 @@
             "检测方法": "GB 4789.2"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_products_processed",
+        "big_category_name": "肉制品",
+        "subcategory_id": "meat_products_processed-cooked_dried_meat",
+        "table_id": "gb2026-meat_products_processed-4-6"
       },
       {
         "name": "熏烧烤肉制品",
@@ -2164,7 +2320,11 @@
             "检测方法": "GB 4789.4"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_products_processed",
+        "big_category_name": "肉制品",
+        "subcategory_id": "meat_products_processed-smoked_roasted_meat",
+        "table_id": "gb2026-meat_products_processed-4-7"
       },
       {
         "name": "熏煮香肠火腿制品",
@@ -2214,7 +2374,11 @@
             "检测方法": "GB 4789.4"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_products_processed",
+        "big_category_name": "肉制品",
+        "subcategory_id": "meat_products_processed-smoked_sausage_ham",
+        "table_id": "gb2026-meat_products_processed-4-8"
       }
     ],
     "方便食品": [
@@ -2272,7 +2436,11 @@
             "检测方法": "GB 4789.3"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "convenient_food",
+        "big_category_name": "方便食品",
+        "subcategory_id": "convenient_food-you_zha_mian_fei_you_zha_mian",
+        "table_id": "gb2026-convenient_food-7-1"
       },
       {
         "name": "方便米粉(米线)",
@@ -2316,7 +2484,11 @@
             "检测方法": "GB 4789.3"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "convenient_food",
+        "big_category_name": "方便食品",
+        "subcategory_id": "convenient_food-fang_bian_mi_fen",
+        "table_id": "gb2026-convenient_food-7-2"
       },
       {
         "name": "方便粉丝",
@@ -2348,7 +2520,11 @@
             "检测方法": "GB 5009.28"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "convenient_food",
+        "big_category_name": "方便食品",
+        "subcategory_id": "convenient_food-fang_bian_fen_si",
+        "table_id": "gb2026-convenient_food-7-3"
       },
       {
         "name": "其他方便面",
@@ -2386,7 +2562,11 @@
             "检测方法": "GB 4789.2"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "convenient_food",
+        "big_category_name": "方便食品",
+        "subcategory_id": "convenient_food-qi_ta_fang_bian_mian",
+        "table_id": "gb2026-convenient_food-7-4"
       },
       {
         "name": "调味面制品",
@@ -2436,7 +2616,11 @@
             "检测方法": "GB 4789.3"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "convenient_food",
+        "big_category_name": "方便食品",
+        "subcategory_id": "convenient_food-seasoned_dough_products",
+        "table_id": "gb2026-convenient_food-7-5"
       },
       {
         "name": "冲调类方便食品",
@@ -2474,7 +2658,11 @@
             "检测方法": "GB 4789.3"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "convenient_food",
+        "big_category_name": "方便食品",
+        "subcategory_id": "convenient_food-chong_diao_lei_fang_bian_shi_pin",
+        "table_id": "gb2026-convenient_food-7-6"
       },
       {
         "name": "主食类方便食品",
@@ -2524,7 +2712,11 @@
             "检测方法": "GB 4789.10"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "convenient_food",
+        "big_category_name": "方便食品",
+        "subcategory_id": "convenient_food-zhu_shi_lei_fang_bian_shi_pin",
+        "table_id": "gb2026-convenient_food-7-7"
       },
       {
         "name": "其他类方便食品",
@@ -2562,7 +2754,11 @@
             "检测方法": "GB 4789.3"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "convenient_food",
+        "big_category_name": "方便食品",
+        "subcategory_id": "convenient_food-qi_ta_lei_fang_bian_shi_pin",
+        "table_id": "gb2026-convenient_food-7-8"
       }
     ],
     "罐头": [
@@ -2608,7 +2804,11 @@
             "检测方法": "GB 4789.2"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "canned_food",
+        "big_category_name": "罐头",
+        "subcategory_id": "canned_food-chu_qin_rou_lei_guan_tou",
+        "table_id": "gb2026-canned_food-9-1"
       },
       {
         "name": "水产动物类罐头",
@@ -2664,7 +2864,11 @@
             "检测方法": "GB 4789.26"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "canned_food",
+        "big_category_name": "罐头",
+        "subcategory_id": "canned_food-shui_chan_dong_wu_lei_guan_tou",
+        "table_id": "gb2026-canned_food-9-2"
       },
       {
         "name": "水果类罐头",
@@ -2714,7 +2918,11 @@
             "检测方法": "GB 4789.26"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "canned_food",
+        "big_category_name": "罐头",
+        "subcategory_id": "canned_food-shui_guo_lei_guan_tou",
+        "table_id": "gb2026-canned_food-9-3"
       },
       {
         "name": "蔬菜类罐头",
@@ -2758,7 +2966,11 @@
             "检测方法": "GB 4789.26"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "canned_food",
+        "big_category_name": "罐头",
+        "subcategory_id": "canned_food-shu_cai_lei_guan_tou",
+        "table_id": "gb2026-canned_food-9-4"
       },
       {
         "name": "食用菌罐头",
@@ -2808,7 +3020,11 @@
             "检测方法": "GB 4789.26"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "canned_food",
+        "big_category_name": "罐头",
+        "subcategory_id": "canned_food-shi_yong_jun_guan_tou",
+        "table_id": "gb2026-canned_food-9-5"
       },
       {
         "name": "其他罐头",
@@ -2846,7 +3062,11 @@
             "检测方法": "GB 4789.26"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "canned_food",
+        "big_category_name": "罐头",
+        "subcategory_id": "canned_food-other_canned_food",
+        "table_id": "gb2026-canned_food-9-6"
       }
     ],
     "酒类": [
@@ -2892,7 +3112,11 @@
             "检测方法": "GB 5009.225"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "alcoholic_beverages",
+        "big_category_name": "酒类",
+        "subcategory_id": "alcoholic_beverages-baijiu",
+        "table_id": "gb2026-alcoholic_beverages-15-1"
       },
       {
         "name": "黄酒",
@@ -2936,7 +3160,11 @@
             "检测方法": "GB 4789.3"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "alcoholic_beverages",
+        "big_category_name": "酒类",
+        "subcategory_id": "alcoholic_beverages-huangjiu",
+        "table_id": "gb2026-alcoholic_beverages-15-2"
       },
       {
         "name": "啤酒",
@@ -2974,7 +3202,11 @@
             "检测方法": "GB 4789.3"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "alcoholic_beverages",
+        "big_category_name": "酒类",
+        "subcategory_id": "alcoholic_beverages-beer",
+        "table_id": "gb2026-alcoholic_beverages-15-3"
       },
       {
         "name": "葡萄酒",
@@ -3018,7 +3250,11 @@
             "检测方法": "GB 4789.3"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "alcoholic_beverages",
+        "big_category_name": "酒类",
+        "subcategory_id": "alcoholic_beverages-grape_wine",
+        "table_id": "gb2026-alcoholic_beverages-15-4"
       },
       {
         "name": "果酒(发酵型)",
@@ -3062,7 +3298,11 @@
             "检测方法": "GB 4789.3"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "alcoholic_beverages",
+        "big_category_name": "酒类",
+        "subcategory_id": "alcoholic_beverages-guo_jiu",
+        "table_id": "gb2026-alcoholic_beverages-15-5"
       },
       {
         "name": "以蒸馏酒及食用酒精为酒基的配制酒",
@@ -3124,7 +3364,11 @@
             "检测方法": "GB 4789.3"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "alcoholic_beverages",
+        "big_category_name": "酒类",
+        "subcategory_id": "alcoholic_beverages-distilled_alcohol_based_blended_liquor",
+        "table_id": "gb2026-alcoholic_beverages-15-6"
       },
       {
         "name": "以发酵酒为酒基的配制酒",
@@ -3168,7 +3412,11 @@
             "检测方法": "GB 4789.3"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "alcoholic_beverages",
+        "big_category_name": "酒类",
+        "subcategory_id": "alcoholic_beverages-yi_fa_jiao_jiu_wei_jiu_ji_de_pei_zhi_jiu",
+        "table_id": "gb2026-alcoholic_beverages-15-7"
       },
       {
         "name": "其他蒸馏酒",
@@ -3206,7 +3454,11 @@
             "检测方法": "GB 5009.28"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "alcoholic_beverages",
+        "big_category_name": "酒类",
+        "subcategory_id": "alcoholic_beverages-other_distilled_liquor",
+        "table_id": "gb2026-alcoholic_beverages-15-8"
       },
       {
         "name": "其他发酵酒",
@@ -3250,7 +3502,11 @@
             "检测方法": "GB 4789.3"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "alcoholic_beverages",
+        "big_category_name": "酒类",
+        "subcategory_id": "alcoholic_beverages-other_fermented_liquor",
+        "table_id": "gb2026-alcoholic_beverages-15-9"
       }
     ],
     "蛋制品": [
@@ -3305,7 +3561,11 @@
         ],
         "notes": [
           "注：a. 除糟蛋外的产品检测。 b. 限即食再制蛋产品检测。 c. 除以罐头食品加工工艺生产外的产品检测。 d. 限即食类预包装食品及预先包装但需要计量称重的即食产品检测。"
-        ]
+        ],
+        "big_category_id": "egg_products",
+        "big_category_name": "蛋制品",
+        "subcategory_id": "egg_products-reconstituted_eggs",
+        "table_id": "gb2026-egg_products-19-1"
       },
       {
         "name": "干蛋制品",
@@ -3337,7 +3597,11 @@
         ],
         "notes": [
           "a. 限即食类预包装食品及预先包装但需要计量称重的即食产品检测。"
-        ]
+        ],
+        "big_category_id": "egg_products",
+        "big_category_name": "蛋制品",
+        "subcategory_id": "egg_products-dry_egg_products",
+        "table_id": "gb2026-egg_products-19-2-dry_egg_products"
       },
       {
         "name": "冰蛋制品",
@@ -3369,7 +3633,11 @@
         ],
         "notes": [
           "a. 限即食类预包装食品及预先包装但需要计量称重的即食产品检测。"
-        ]
+        ],
+        "big_category_id": "egg_products",
+        "big_category_name": "蛋制品",
+        "subcategory_id": "egg_products-frozen_egg_products",
+        "table_id": "gb2026-egg_products-19-2-frozen_egg_products"
       },
       {
         "name": "液蛋制品",
@@ -3431,7 +3699,11 @@
           "a. 全蛋液、蛋黄液、蛋白液等液蛋制品按GB 2749判定。",
           "b. 限即食类预包装食品及预先包装但需要计量称重的即食产品检测，其他产品当明示标准和质量要求有规定时检测。",
           "c. 除以罐头食品加工工艺生产外的产品检测。"
-        ]
+        ],
+        "big_category_id": "egg_products",
+        "big_category_name": "蛋制品",
+        "subcategory_id": "egg_products-liquid_egg_products",
+        "table_id": "gb2026-egg_products-19-3-liquid_egg_products"
       },
       {
         "name": "热凝固蛋制品",
@@ -3493,7 +3765,11 @@
           "a. 全蛋液、蛋黄液、蛋白液等液蛋制品按GB 2749判定。",
           "b. 限即食类预包装食品及预先包装但需要计量称重的即食产品检测，其他产品当明示标准和质量要求有规定时检测。",
           "c. 除以罐头食品加工工艺生产外的产品检测。"
-        ]
+        ],
+        "big_category_id": "egg_products",
+        "big_category_name": "蛋制品",
+        "subcategory_id": "egg_products-heat_coagulated_egg_products",
+        "table_id": "gb2026-egg_products-19-3-heat_coagulated_egg_products"
       },
       {
         "name": "其他蛋制品",
@@ -3555,7 +3831,11 @@
           "a. 全蛋液、蛋黄液、蛋白液等液蛋制品按GB 2749判定。",
           "b. 限即食类预包装食品及预先包装但需要计量称重的即食产品检测，其他产品当明示标准和质量要求有规定时检测。",
           "c. 除以罐头食品加工工艺生产外的产品检测。"
-        ]
+        ],
+        "big_category_id": "egg_products",
+        "big_category_name": "蛋制品",
+        "subcategory_id": "egg_products-other_egg_products",
+        "table_id": "gb2026-egg_products-19-3-other_egg_products"
       }
     ],
     "食用油、油脂及其制品": [
@@ -3613,7 +3893,11 @@
             "检测方法": "BJS 201708"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "edible_oils",
+        "big_category_name": "食用油、油脂及其制品",
+        "subcategory_id": "edible_oils-edible_vegetable_oil",
+        "table_id": "gb2026-edible_oils-2-1"
       },
       {
         "name": "食用动物油脂",
@@ -3627,7 +3911,11 @@
             "检测方法": "GB 5009.229"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "edible_oils",
+        "big_category_name": "食用油、油脂及其制品",
+        "subcategory_id": "edible_oils-shi_yong_dong_wu_you_zhi",
+        "table_id": "gb2026-edible_oils-2-2"
       },
       {
         "name": "食用油脂制品",
@@ -3659,7 +3947,11 @@
             "检测方法": "GB 4789.15"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "edible_oils",
+        "big_category_name": "食用油、油脂及其制品",
+        "subcategory_id": "edible_oils-shi_yong_you_zhi_zhi_pin",
+        "table_id": "gb2026-edible_oils-2-3"
       }
     ],
     "乳制品": [
@@ -3723,7 +4015,11 @@
             "检测方法": "GB 4789.26"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "dairy_products",
+        "big_category_name": "乳制品",
+        "subcategory_id": "dairy_products-ye_ti_ru",
+        "table_id": "gb2026-dairy_products-5-1"
       },
       {
         "name": "液体乳（巴氏杀菌乳）",
@@ -3761,7 +4057,11 @@
             "检测方法": "GB 5009.24"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "dairy_products",
+        "big_category_name": "乳制品",
+        "subcategory_id": "dairy_products__液体乳（巴氏杀菌乳）",
+        "table_id": "gb2026-dairy_products-5-2"
       },
       {
         "name": "液体乳（调制乳）",
@@ -3799,7 +4099,11 @@
             "检测方法": "GB 4789.3 平板计数 法"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "dairy_products",
+        "big_category_name": "乳制品",
+        "subcategory_id": "dairy_products__液体乳（调制乳）",
+        "table_id": "gb2026-dairy_products-5-3"
       },
       {
         "name": "液体乳（发酵乳）",
@@ -3849,7 +4153,11 @@
             "检测方法": "GB 4789.3 平板计数 法"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "dairy_products",
+        "big_category_name": "乳制品",
+        "subcategory_id": "dairy_products__液体乳（发酵乳）",
+        "table_id": "gb2026-dairy_products-5-4"
       },
       {
         "name": "液体乳（高温杀菌乳）",
@@ -3941,7 +4249,11 @@
             "检测方法": "GB 4789.15"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "dairy_products",
+        "big_category_name": "乳制品",
+        "subcategory_id": "dairy_products__液体乳（高温杀菌乳）",
+        "table_id": "gb2026-dairy_products-5-5"
       },
       {
         "name": "乳粉（全脂、脱脂、部分脱脂）和调制乳粉",
@@ -3967,7 +4279,11 @@
             "检测方法": "GB 5009.239"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "dairy_products",
+        "big_category_name": "乳制品",
+        "subcategory_id": "dairy_products-ru_fen_he_tiao_zhi_ru_fen",
+        "table_id": "gb2026-dairy_products-5-6"
       },
       {
         "name": "乳清粉和乳清蛋白粉",
@@ -3987,7 +4303,11 @@
             "检测方法": "GB/T 22388"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "dairy_products",
+        "big_category_name": "乳制品",
+        "subcategory_id": "dairy_products-ru_qing_fen_he_ru_qing_dan_bai_fen",
+        "table_id": "gb2026-dairy_products-5-7"
       },
       {
         "name": "其他乳制品（浓缩乳制品）",
@@ -4025,7 +4345,11 @@
             "检测方法": "GB 4789.3"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "dairy_products",
+        "big_category_name": "乳制品",
+        "subcategory_id": "dairy_products-qi_ta_ru_zhi_pin",
+        "table_id": "gb2026-dairy_products-5-8"
       },
       {
         "name": "其他乳制品（奶油）",
@@ -4087,7 +4411,11 @@
             "检测方法": "GB 4789.15"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "dairy_products",
+        "big_category_name": "乳制品",
+        "subcategory_id": "dairy_products__其他乳制品（奶油）",
+        "table_id": "gb2026-dairy_products-5-9"
       },
       {
         "name": "其他乳制品（奶片、奶条等固态成型产品）",
@@ -4137,7 +4465,11 @@
             "检测方法": "GB 4789.15"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "dairy_products",
+        "big_category_name": "乳制品",
+        "subcategory_id": "dairy_products__其他乳制品（奶片、奶条等固态成型产品）",
+        "table_id": "gb2026-dairy_products-5-11"
       }
     ],
     "饮料": [
@@ -4213,7 +4545,11 @@
             "检测方法": "GB 8538"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "beverages",
+        "big_category_name": "饮料",
+        "subcategory_id": "beverages-natural_mineral_water",
+        "table_id": "gb2026-beverages-6-1"
       },
       {
         "name": "其他类饮用水",
@@ -4287,7 +4623,11 @@
             "检测方法": "GB 8538"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "beverages",
+        "big_category_name": "饮料",
+        "subcategory_id": "beverages-qi_ta_lei_yin_yong_shui",
+        "table_id": "gb2026-beverages-6-3"
       },
       {
         "name": "果蔬汁类及其饮料",
@@ -4337,7 +4677,11 @@
             "检测方法": "/"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "beverages",
+        "big_category_name": "饮料",
+        "subcategory_id": "beverages-fruit_vegetable_juice_beverages",
+        "table_id": "gb2026-beverages-6-4"
       },
       {
         "name": "蛋白饮料",
@@ -4417,7 +4761,11 @@
             "检测方法": "GB 4789.15"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "beverages",
+        "big_category_name": "饮料",
+        "subcategory_id": "beverages-dan_bai_yin_liao",
+        "table_id": "gb2026-beverages-6-5"
       },
       {
         "name": "碳酸饮料（汽水）",
@@ -4485,7 +4833,11 @@
             "检测方法": "GB 4789.15"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "beverages",
+        "big_category_name": "饮料",
+        "subcategory_id": "beverages-tan_suan_yin_liao",
+        "table_id": "gb2026-beverages-6-6"
       },
       {
         "name": "茶饮料",
@@ -4535,7 +4887,11 @@
             "检测方法": "GB 4789.2"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "beverages",
+        "big_category_name": "饮料",
+        "subcategory_id": "beverages-tea_beverages",
+        "table_id": "gb2026-beverages-6-7"
       },
       {
         "name": "固体饮料",
@@ -4561,7 +4917,11 @@
             "检测方法": "BJS 202405"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "beverages",
+        "big_category_name": "饮料",
+        "subcategory_id": "beverages-solid_beverages",
+        "table_id": "gb2026-beverages-6-8"
       },
       {
         "name": "其他饮料",
@@ -4605,7 +4965,11 @@
             "检测方法": "GB 5009.140"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "beverages",
+        "big_category_name": "饮料",
+        "subcategory_id": "beverages-other_beverages",
+        "table_id": "gb2026-beverages-6-9"
       }
     ],
     "饼干": [
@@ -4633,7 +4997,11 @@
             "检测方法": "GB 5009.28"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "biscuits",
+        "big_category_name": "饼干",
+        "subcategory_id": "biscuits-biscuits",
+        "table_id": "gb2026-biscuits-8-1"
       }
     ],
     "冷冻饮品": [
@@ -4709,7 +5077,11 @@
             "检测方法": "GB 4789.30"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "frozen_drinks",
+        "big_category_name": "冷冻饮品",
+        "subcategory_id": "frozen_drinks-frozen_drinks_placeholder",
+        "table_id": "gb2026-frozen_drinks-10-1"
       }
     ],
     "速冻食品": [
@@ -4767,7 +5139,11 @@
             "检测方法": "GB 4789.4"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "frozen_food",
+        "big_category_name": "速冻食品",
+        "subcategory_id": "frozen_food-frozen_dough_rice_food",
+        "table_id": "gb2026-frozen_food-11-1"
       },
       {
         "name": "速冻调理肉制品",
@@ -4853,7 +5229,11 @@
             "检测方法": "GB 4789.30"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "frozen_food",
+        "big_category_name": "速冻食品",
+        "subcategory_id": "frozen_food-su_dong_tiao_li_rou_zhi_pin",
+        "table_id": "gb2026-frozen_food-11-2"
       },
       {
         "name": "速冻调制水产制品",
@@ -4909,7 +5289,11 @@
             "检测方法": "GB 4789.7"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "frozen_food",
+        "big_category_name": "速冻食品",
+        "subcategory_id": "frozen_food-su_dong_tiao_zhi_shui_chan_zhi_pin",
+        "table_id": "gb2026-frozen_food-11-3"
       },
       {
         "name": "速冻谷物食品",
@@ -4929,7 +5313,11 @@
             "检测方法": "GB 5009.22"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "frozen_food",
+        "big_category_name": "速冻食品",
+        "subcategory_id": "frozen_food-su_dong_gu_wu_shi_pin",
+        "table_id": "gb2026-frozen_food-11-4"
       },
       {
         "name": "速冻蔬菜制品",
@@ -4955,7 +5343,11 @@
             "检测方法": "GB 5009.28"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "frozen_food",
+        "big_category_name": "速冻食品",
+        "subcategory_id": "frozen_food-frozen_vegetable_products",
+        "table_id": "gb2026-frozen_food-11-5"
       },
       {
         "name": "速冻水果制品",
@@ -4999,7 +5391,11 @@
             "检测方法": "GB 4789.4"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "frozen_food",
+        "big_category_name": "速冻食品",
+        "subcategory_id": "frozen_food-su_dong_shui_guo_zhi_pin",
+        "table_id": "gb2026-frozen_food-11-6"
       }
     ],
     "薯类和膨化食品": [
@@ -5039,7 +5435,11 @@
             "检测方法": "GB 5009.28"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "puffed_food",
+        "big_category_name": "薯类和膨化食品",
+        "subcategory_id": "puffed_food-puffed_food",
+        "table_id": "gb2026-puffed_food-12-1"
       },
       {
         "name": "干制薯类",
@@ -5059,7 +5459,11 @@
             "检测方法": "GB 5009.227"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "puffed_food",
+        "big_category_name": "薯类和膨化食品",
+        "subcategory_id": "puffed_food-gan_zhi_shu_lei",
+        "table_id": "gb2026-puffed_food-12-2"
       },
       {
         "name": "冷冻薯类",
@@ -5103,7 +5507,11 @@
             "检测方法": "GB 4789.10"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "puffed_food",
+        "big_category_name": "薯类和膨化食品",
+        "subcategory_id": "puffed_food-leng_dong_shu_lei",
+        "table_id": "gb2026-puffed_food-12-3"
       },
       {
         "name": "薯泥（酱）类",
@@ -5117,7 +5525,11 @@
             "检测方法": "GB 5009.12"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "puffed_food",
+        "big_category_name": "薯类和膨化食品",
+        "subcategory_id": "puffed_food-shu_ni_lei",
+        "table_id": "gb2026-puffed_food-12-4"
       },
       {
         "name": "薯粉类",
@@ -5161,7 +5573,11 @@
             "检测方法": "GB 4789.10"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "puffed_food",
+        "big_category_name": "薯类和膨化食品",
+        "subcategory_id": "puffed_food-shu_fen_lei",
+        "table_id": "gb2026-puffed_food-12-5"
       },
       {
         "name": "其他薯类食品",
@@ -5187,7 +5603,11 @@
             "检测方法": "GB 4789.10"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "puffed_food",
+        "big_category_name": "薯类和膨化食品",
+        "subcategory_id": "puffed_food-qi_ta_shu_lei_shi_pin",
+        "table_id": "gb2026-puffed_food-12-6"
       }
     ],
     "糖果制品": [
@@ -5245,7 +5665,11 @@
             "检测方法": "GB 4789.3"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "confectionery",
+        "big_category_name": "糖果制品",
+        "subcategory_id": "confectionery-candy",
+        "table_id": "gb2026-confectionery-13-1"
       },
       {
         "name": "巧克力及巧克力制品、代可可脂巧克力及代可可脂巧克力制品",
@@ -5265,7 +5689,11 @@
             "检测方法": "GB 4789.4"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "confectionery",
+        "big_category_name": "糖果制品",
+        "subcategory_id": "confectionery-qiao_ke_li_ji_qiao_ke_li_zhi_pin_dai_ke_ke_zhi_qiao_ke_li_ji_dai_ke_ke_zhi_qiao_ke_li_zhi_pin",
+        "table_id": "gb2026-confectionery-13-2"
       },
       {
         "name": "果冻",
@@ -5333,7 +5761,11 @@
             "检测方法": "GB 5009.35"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "confectionery",
+        "big_category_name": "糖果制品",
+        "subcategory_id": "confectionery-jelly",
+        "table_id": "gb2026-confectionery-13-3"
       }
     ],
     "茶叶及相关制品": [
@@ -5415,7 +5847,11 @@
             "检测方法": "GB 23200.13 GB 23200.113 GB 23200.121"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "tea_related_products",
+        "big_category_name": "茶叶及相关制品",
+        "subcategory_id": "tea_related_products-tea",
+        "table_id": "gb2026-tea_related_products-14-1"
       },
       {
         "name": "含茶制品",
@@ -5435,7 +5871,11 @@
             "检测方法": "GB 4789.2"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "tea_related_products",
+        "big_category_name": "茶叶及相关制品",
+        "subcategory_id": "tea_related_products-han_cha_zhi_pin",
+        "table_id": "gb2026-tea_related_products-14-2"
       },
       {
         "name": "代用茶",
@@ -5497,7 +5937,11 @@
             "检测方法": "GB 4789.15"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "tea_related_products",
+        "big_category_name": "茶叶及相关制品",
+        "subcategory_id": "tea_related_products-herbal_tea",
+        "table_id": "gb2026-tea_related_products-14-3"
       }
     ],
     "蔬菜制品": [
@@ -5597,7 +6041,11 @@
             "检测方法": "GB 4789.3 平板计数法"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetable_products_processed",
+        "big_category_name": "蔬菜制品",
+        "subcategory_id": "vegetable_products_processed-pickled_vegetables",
+        "table_id": "gb2026-vegetable_products_processed-16-1"
       },
       {
         "name": "蔬菜干制品",
@@ -5611,7 +6059,11 @@
             "检测方法": "GB 5009.12"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetable_products_processed",
+        "big_category_name": "蔬菜制品",
+        "subcategory_id": "vegetable_products_processed-dried_vegetable_products",
+        "table_id": "gb2026-vegetable_products_processed-16-2"
       },
       {
         "name": "其他蔬菜制品",
@@ -5643,7 +6095,11 @@
             "检测方法": "GB 5009.35"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetable_products_processed",
+        "big_category_name": "蔬菜制品",
+        "subcategory_id": "vegetable_products_processed-other_vegetable_products",
+        "table_id": "gb2026-vegetable_products_processed-16-3"
       },
       {
         "name": "干制食用菌",
@@ -5681,7 +6137,11 @@
             "检测方法": "GB 5009.34"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetable_products_processed",
+        "big_category_name": "蔬菜制品",
+        "subcategory_id": "vegetable_products_processed-gan_zhi_shi_yong_jun",
+        "table_id": "gb2026-vegetable_products_processed-16-4"
       },
       {
         "name": "腌渍食用菌",
@@ -5713,7 +6173,11 @@
             "检测方法": "GB 5009.11"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetable_products_processed",
+        "big_category_name": "蔬菜制品",
+        "subcategory_id": "vegetable_products_processed-yan_zi_shi_yong_jun",
+        "table_id": "gb2026-vegetable_products_processed-16-5"
       }
     ],
     "水果制品": [
@@ -5813,7 +6277,11 @@
             "检测方法": "GB 4789.15"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruit_products_processed",
+        "big_category_name": "水果制品",
+        "subcategory_id": "fruit_products_processed-candied_fruit",
+        "table_id": "gb2026-fruit_products_processed-17-1"
       },
       {
         "name": "水果干制品",
@@ -5911,7 +6379,11 @@
             "检测方法": "GB 4789.15"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruit_products_processed",
+        "big_category_name": "水果制品",
+        "subcategory_id": "fruit_products_processed-shui_guo_gan_zhi_pin",
+        "table_id": "gb2026-fruit_products_processed-17-2"
       },
       {
         "name": "果酱",
@@ -5955,7 +6427,11 @@
             "检测方法": "GB 4789.26"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruit_products_processed",
+        "big_category_name": "水果制品",
+        "subcategory_id": "fruit_products_processed-guo_jiang",
+        "table_id": "gb2026-fruit_products_processed-17-3"
       }
     ],
     "炒货食品及坚果制品": [
@@ -5983,7 +6459,11 @@
             "检测方法": "GB 5009.12"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "roasted_seeds_nuts",
+        "big_category_name": "炒货食品及坚果制品",
+        "subcategory_id": "roasted_seeds_nuts-roasted_seeds_nuts",
+        "table_id": "gb2026-roasted_seeds_nuts-18-1"
       }
     ],
     "可可及焙烤咖啡产品": [
@@ -6011,7 +6491,11 @@
             "检测方法": "GB 5009.96"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "cocoa_coffee_products",
+        "big_category_name": "可可及焙烤咖啡产品",
+        "subcategory_id": "cocoa_coffee_products-bei_chao_ka_fei",
+        "table_id": "gb2026-cocoa_coffee_products-20-1"
       },
       {
         "name": "可可制品",
@@ -6031,7 +6515,11 @@
             "检测方法": "GB 4789.4"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "cocoa_coffee_products",
+        "big_category_name": "可可及焙烤咖啡产品",
+        "subcategory_id": "cocoa_coffee_products-cocoa_products",
+        "table_id": "gb2026-cocoa_coffee_products-20-2"
       }
     ],
     "食糖": [
@@ -6047,7 +6535,11 @@
             "检测方法": "GB/T 35887"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "sugar",
+        "big_category_name": "食糖",
+        "subcategory_id": "sugar-bai_sha_tang_jing_you_sha_tang",
+        "table_id": "gb2026-sugar-21-1"
       },
       {
         "name": "绵白糖",
@@ -6085,7 +6577,11 @@
             "检测方法": "GB 13104"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "sugar",
+        "big_category_name": "食糖",
+        "subcategory_id": "sugar-soft_white_sugar",
+        "table_id": "gb2026-sugar-21-2"
       },
       {
         "name": "赤砂糖",
@@ -6129,7 +6625,11 @@
             "检测方法": "GB 13104"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "sugar",
+        "big_category_name": "食糖",
+        "subcategory_id": "sugar-brown_sugar",
+        "table_id": "gb2026-sugar-21-3"
       },
       {
         "name": "红糖",
@@ -6149,7 +6649,11 @@
             "检测方法": "GB 5009.35"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "sugar",
+        "big_category_name": "食糖",
+        "subcategory_id": "sugar-hong_tang",
+        "table_id": "gb2026-sugar-21-4"
       },
       {
         "name": "冰糖",
@@ -6193,7 +6697,11 @@
             "检测方法": "GB 5009.35"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "sugar",
+        "big_category_name": "食糖",
+        "subcategory_id": "sugar-rock_sugar",
+        "table_id": "gb2026-sugar-21-5"
       },
       {
         "name": "冰片糖",
@@ -6207,7 +6715,11 @@
             "检测方法": "GB 5009.35"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "sugar",
+        "big_category_name": "食糖",
+        "subcategory_id": "sugar-bing_pian_tang",
+        "table_id": "gb2026-sugar-21-6"
       },
       {
         "name": "方糖",
@@ -6251,7 +6763,11 @@
             "检测方法": "GB 5009.35"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "sugar",
+        "big_category_name": "食糖",
+        "subcategory_id": "sugar-fang_tang",
+        "table_id": "gb2026-sugar-21-7"
       },
       {
         "name": "其他糖",
@@ -6331,7 +6847,11 @@
             "检测方法": "GB 4789.15"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "sugar",
+        "big_category_name": "食糖",
+        "subcategory_id": "sugar-qi_ta_tang",
+        "table_id": "gb2026-sugar-21-8"
       }
     ],
     "水产制品": [
@@ -6359,7 +6879,11 @@
             "检测方法": "GB 4789.3"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "aquatic_products_processed",
+        "big_category_name": "水产制品",
+        "subcategory_id": "aquatic_products_processed-zao_lei_gan_zhi_pin",
+        "table_id": "gb2026-aquatic_products_processed-22-1"
       },
       {
         "name": "预制动物性水产干制品",
@@ -6385,7 +6909,11 @@
             "检测方法": "GB 5009.15"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "aquatic_products_processed",
+        "big_category_name": "水产制品",
+        "subcategory_id": "aquatic_products_processed-yu_zhi_dong_wu_xing_shui_chan_gan_zhi_pin",
+        "table_id": "gb2026-aquatic_products_processed-22-2"
       },
       {
         "name": "盐渍鱼",
@@ -6411,7 +6939,11 @@
             "检测方法": "GB 5009.35"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "aquatic_products_processed",
+        "big_category_name": "水产制品",
+        "subcategory_id": "aquatic_products_processed-yan_zi_yu",
+        "table_id": "gb2026-aquatic_products_processed-22-3"
       },
       {
         "name": "盐渍藻",
@@ -6449,7 +6981,11 @@
             "检测方法": "GB 5009.28"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "aquatic_products_processed",
+        "big_category_name": "水产制品",
+        "subcategory_id": "aquatic_products_processed-yan_zi_zao",
+        "table_id": "gb2026-aquatic_products_processed-22-4"
       },
       {
         "name": "其他盐渍水产品",
@@ -6475,7 +7011,11 @@
             "检测方法": "GB 5009.28"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "aquatic_products_processed",
+        "big_category_name": "水产制品",
+        "subcategory_id": "aquatic_products_processed-qi_ta_yan_zi_shui_chan_pin",
+        "table_id": "gb2026-aquatic_products_processed-22-5"
       },
       {
         "name": "预制鱼糜制品",
@@ -6495,7 +7035,11 @@
             "检测方法": "GB 5009.28"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "aquatic_products_processed",
+        "big_category_name": "水产制品",
+        "subcategory_id": "aquatic_products_processed-yu_zhi_yu_mi_zhi_pin",
+        "table_id": "gb2026-aquatic_products_processed-22-6"
       },
       {
         "name": "熟制动物性水产制品",
@@ -6521,7 +7065,11 @@
             "检测方法": "GB 5009.35"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "aquatic_products_processed",
+        "big_category_name": "水产制品",
+        "subcategory_id": "aquatic_products_processed-shu_zhi_dong_wu_xing_shui_chan_zhi_pin",
+        "table_id": "gb2026-aquatic_products_processed-22-7"
       },
       {
         "name": "生食动物性水产品",
@@ -6583,7 +7131,11 @@
             "检测方法": "GB 4789.30"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "aquatic_products_processed",
+        "big_category_name": "水产制品",
+        "subcategory_id": "aquatic_products_processed-sheng_shi_dong_wu_xing_shui_chan_pin",
+        "table_id": "gb2026-aquatic_products_processed-22-8"
       },
       {
         "name": "其他水产制品",
@@ -6645,7 +7197,11 @@
             "检测方法": "GB 4789.2"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "aquatic_products_processed",
+        "big_category_name": "水产制品",
+        "subcategory_id": "aquatic_products_processed-other_aquatic_products_processed",
+        "table_id": "gb2026-aquatic_products_processed-22-9"
       }
     ],
     "淀粉及淀粉制品": [
@@ -6685,7 +7241,11 @@
             "检测方法": "GB/T 22251"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "starch_products",
+        "big_category_name": "淀粉及淀粉制品",
+        "subcategory_id": "starch_products-starch",
+        "table_id": "gb2026-starch_products-23-1"
       },
       {
         "name": "粉丝粉条",
@@ -6735,7 +7295,11 @@
             "检测方法": "GB 5009.35"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "starch_products",
+        "big_category_name": "淀粉及淀粉制品",
+        "subcategory_id": "starch_products-vermicelli",
+        "table_id": "gb2026-starch_products-23-2"
       },
       {
         "name": "其他淀粉制品",
@@ -6749,7 +7313,11 @@
             "检测方法": "GB 5009.28"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "starch_products",
+        "big_category_name": "淀粉及淀粉制品",
+        "subcategory_id": "starch_products-other_starch_products",
+        "table_id": "gb2026-starch_products-23-3"
       },
       {
         "name": "淀粉糖",
@@ -6823,7 +7391,11 @@
             "检测方法": "GB/T 20882.5 GB/T 20883"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "starch_products",
+        "big_category_name": "淀粉及淀粉制品",
+        "subcategory_id": "starch_products-dian_fen_tang",
+        "table_id": "gb2026-starch_products-23-4"
       }
     ],
     "糕点": [
@@ -6839,7 +7411,11 @@
             "检测方法": "GB 5009.229"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "pastries",
+        "big_category_name": "糕点",
+        "subcategory_id": "pastries-mian_bao",
+        "table_id": "gb2026-pastries-24-1"
       },
       {
         "name": "月饼",
@@ -6949,7 +7525,11 @@
             "检测方法": "GB 4789.15"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "pastries",
+        "big_category_name": "糕点",
+        "subcategory_id": "pastries-mooncake",
+        "table_id": "gb2026-pastries-24-2"
       },
       {
         "name": "粽子",
@@ -7029,7 +7609,11 @@
             "检测方法": ""
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "pastries",
+        "big_category_name": "糕点",
+        "subcategory_id": "pastries-zong_zi",
+        "table_id": "gb2026-pastries-24-3"
       },
       {
         "name": "糕点",
@@ -7169,7 +7753,11 @@
             "检测方法": "GB 4789.15"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "pastries",
+        "big_category_name": "糕点",
+        "subcategory_id": "pastries-pastries",
+        "table_id": "gb2026-pastries-24-4"
       }
     ],
     "豆制品": [
@@ -7233,7 +7821,11 @@
             "检测方法": "GB 4789.3 平板计数法"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "soy_products",
+        "big_category_name": "豆制品",
+        "subcategory_id": "soy_products-fermented_soy_products",
+        "table_id": "gb2026-soy_products-25-1"
       },
       {
         "name": "非发酵性豆制品（腐竹、油皮及其再制品）",
@@ -7289,7 +7881,11 @@
             "检测方法": "GB 5009.35"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "soy_products",
+        "big_category_name": "豆制品",
+        "subcategory_id": "soy_products__非发酵性豆制品（腐竹、油皮及其再制品）",
+        "table_id": "gb2026-soy_products-25-2"
       },
       {
         "name": "非发酵性豆制品（豆干、豆腐、豆皮等）",
@@ -7375,7 +7971,11 @@
             "检测方法": "GB 4789.10"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "soy_products",
+        "big_category_name": "豆制品",
+        "subcategory_id": "soy_products-fei_fa_jiao_xing_dou_zhi_pin",
+        "table_id": "gb2026-soy_products-25-3"
       },
       {
         "name": "其他豆制品",
@@ -7437,7 +8037,11 @@
             "检测方法": "GB 4789.3 平板计数法"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "soy_products",
+        "big_category_name": "豆制品",
+        "subcategory_id": "soy_products-other_soy_products",
+        "table_id": "gb2026-soy_products-25-4"
       }
     ],
     "蜂产品": [
@@ -7459,7 +8063,11 @@
             "检测方法": "GB 5009.8"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "bee_products",
+        "big_category_name": "蜂产品",
+        "subcategory_id": "bee_products-honey",
+        "table_id": "gb2026-bee_products-26-1"
       },
       {
         "name": "蜂王浆（含蜂王浆冻干品）",
@@ -7491,7 +8099,11 @@
             "检测方法": "GB/T 21167"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "bee_products",
+        "big_category_name": "蜂产品",
+        "subcategory_id": "bee_products-feng_wang_jiang",
+        "table_id": "gb2026-bee_products-26-2"
       },
       {
         "name": "蜂花粉",
@@ -7523,7 +8135,11 @@
             "检测方法": "GB 4789.15"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "bee_products",
+        "big_category_name": "蜂产品",
+        "subcategory_id": "bee_products-bee_pollen",
+        "table_id": "gb2026-bee_products-26-3"
       },
       {
         "name": "蜂产品制品",
@@ -7543,7 +8159,11 @@
             "检测方法": "GB 5009.35"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "bee_products",
+        "big_category_name": "蜂产品",
+        "subcategory_id": "bee_products-feng_chan_pin_zhi_pin",
+        "table_id": "gb2026-bee_products-26-4"
       }
     ],
     "保健食品": [
@@ -7715,7 +8335,11 @@
             "检测方法": ""
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "health_food",
+        "big_category_name": "保健食品",
+        "subcategory_id": "health_food-health_food",
+        "table_id": "gb2026-health_food-27-1"
       }
     ],
     "特殊膳食食品": [
@@ -7809,7 +8433,11 @@
             "检测方法": "GB 5009.82"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "special_dietary_food",
+        "big_category_name": "特殊膳食食品",
+        "subcategory_id": "special_dietary_food-infant_cereal_assist_food",
+        "table_id": "gb2026-special_dietary_food-28-1"
       },
       {
         "name": "婴幼儿罐装辅助食品",
@@ -7871,7 +8499,11 @@
             "检测方法": "GB 5009.33"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "special_dietary_food",
+        "big_category_name": "特殊膳食食品",
+        "subcategory_id": "special_dietary_food-ying_you_er_guan_zhuang_fu_zhu_shi_pin",
+        "table_id": "gb2026-special_dietary_food-28-2"
       },
       {
         "name": "辅食营养补充品",
@@ -7939,7 +8571,11 @@
             "检测方法": "GB 5009.89"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "special_dietary_food",
+        "big_category_name": "特殊膳食食品",
+        "subcategory_id": "special_dietary_food-complementary_food_supplement",
+        "table_id": "gb2026-special_dietary_food-28-3"
       },
       {
         "name": "孕妇及乳母营养补充品",
@@ -8085,7 +8721,11 @@
             "检测方法": "GB 4789.10平板计数法"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "special_dietary_food",
+        "big_category_name": "特殊膳食食品",
+        "subcategory_id": "special_dietary_food-yun_fu_ji_ru_mu_ying_yang_bu_chong_pin",
+        "table_id": "gb2026-special_dietary_food-28-4"
       },
       {
         "name": "运动营养食品",
@@ -8279,7 +8919,11 @@
             "检测方法": "GB 5009.12"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "special_dietary_food",
+        "big_category_name": "特殊膳食食品",
+        "subcategory_id": "special_dietary_food-sports_nutrition_food",
+        "table_id": "gb2026-special_dietary_food-28-5"
       }
     ],
     "特殊医学用途配方食品": [
@@ -8421,7 +9065,11 @@
             "检测方法": "GB 5009.259"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fsmp",
+        "big_category_name": "特殊医学用途配方食品",
+        "subcategory_id": "fsmp-fsmp_infant_formula",
+        "table_id": "gb2026-fsmp-29-1"
       },
       {
         "name": "全营养配方食品",
@@ -8555,7 +9203,11 @@
             "检测方法": "GB 5009.299"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fsmp",
+        "big_category_name": "特殊医学用途配方食品",
+        "subcategory_id": "fsmp-quan_ying_yang_pei_fang_shi_pin",
+        "table_id": "gb2026-fsmp-29-2"
       },
       {
         "name": "非全营养配方食品",
@@ -8683,7 +9335,11 @@
             "检测方法": "GB 4789.26"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fsmp",
+        "big_category_name": "特殊医学用途配方食品",
+        "subcategory_id": "fsmp-fei_quan_ying_yang_pei_fang_shi_pin",
+        "table_id": "gb2026-fsmp-29-3"
       },
       {
         "name": "特定全营养配方食品",
@@ -8769,7 +9425,11 @@
             "检测方法": "企业标准/注册的产品 技术要求"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fsmp",
+        "big_category_name": "特殊医学用途配方食品",
+        "subcategory_id": "fsmp-te_ding_quan_ying_yang_pei_fang_shi_pin",
+        "table_id": "gb2026-fsmp-29-4"
       }
     ],
     "婴幼儿配方食品": [
@@ -8821,7 +9481,11 @@
             "检测方法": "GB 10767-2021"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "infant_formula",
+        "big_category_name": "婴幼儿配方食品",
+        "subcategory_id": "infant_formula-you_er_pei_fang_shi_pin",
+        "table_id": "gb2026-infant_formula-30-3"
       }
     ],
     "餐饮食品": [
@@ -8873,7 +9537,11 @@
             "检测方法": "GB 5009.35"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "restaurant_food",
+        "big_category_name": "餐饮食品",
+        "subcategory_id": "restaurant_food-steamed_bun_self_made",
+        "table_id": "gb2026-restaurant_food-31-1"
       },
       {
         "name": "包子（自制）",
@@ -8911,7 +9579,11 @@
             "检测方法": "GB 5009.97"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "restaurant_food",
+        "big_category_name": "餐饮食品",
+        "subcategory_id": "restaurant_food-bao_zi",
+        "table_id": "gb2026-restaurant_food-31-2"
       },
       {
         "name": "油饼油条（自制）a",
@@ -8925,7 +9597,11 @@
             "检测方法": "GB 5009.182"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "restaurant_food",
+        "big_category_name": "餐饮食品",
+        "subcategory_id": "restaurant_food-you_bing_you_tiao_a",
+        "table_id": "gb2026-restaurant_food-31-3"
       },
       {
         "name": "凉皮（自制）a",
@@ -8945,7 +9621,11 @@
             "检测方法": "GB 5009.35"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "restaurant_food",
+        "big_category_name": "餐饮食品",
+        "subcategory_id": "restaurant_food-liang_pi_a",
+        "table_id": "gb2026-restaurant_food-31-4"
       },
       {
         "name": "肉冻皮冻（自制）",
@@ -8959,7 +9639,11 @@
             "检测方法": "GB 5009.123"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "restaurant_food",
+        "big_category_name": "餐饮食品",
+        "subcategory_id": "restaurant_food-rou_dong_pi_dong",
+        "table_id": "gb2026-restaurant_food-31-5"
       },
       {
         "name": "熏烧烤肉类（自制）a",
@@ -8985,7 +9669,11 @@
             "检测方法": "GB 5009.12"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "restaurant_food",
+        "big_category_name": "餐饮食品",
+        "subcategory_id": "restaurant_food-xun_shao_kao_rou_lei_a",
+        "table_id": "gb2026-restaurant_food-31-6"
       },
       {
         "name": "火锅麻辣烫底料（自制）",
@@ -9017,7 +9705,11 @@
             "检测方法": "BJS 201802"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "restaurant_food",
+        "big_category_name": "餐饮食品",
+        "subcategory_id": "restaurant_food-huo_guo_ma_la_tang_di_liao",
+        "table_id": "gb2026-restaurant_food-31-7"
       },
       {
         "name": "生食动物性水产品（自制）",
@@ -9031,7 +9723,11 @@
             "检测方法": "GB 5009.182"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "restaurant_food",
+        "big_category_name": "餐饮食品",
+        "subcategory_id": "restaurant_food-sheng_shi_dong_wu_xing_shui_chan_pin",
+        "table_id": "gb2026-restaurant_food-31-8"
       },
       {
         "name": "花生制品（自制）a",
@@ -9063,7 +9759,11 @@
             "检测方法": "GB 5009.121"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "restaurant_food",
+        "big_category_name": "餐饮食品",
+        "subcategory_id": "restaurant_food-hua_sheng_zhi_pin_a",
+        "table_id": "gb2026-restaurant_food-31-9"
       },
       {
         "name": "糕点（自制）",
@@ -9107,7 +9807,11 @@
             "检测方法": "/"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "restaurant_food",
+        "big_category_name": "餐饮食品",
+        "subcategory_id": "restaurant_food-gao_dian",
+        "table_id": "gb2026-restaurant_food-31-10"
       },
       {
         "name": "煎炸过程用油a",
@@ -9127,7 +9831,11 @@
             "检测方法": "GB 5009.229"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "restaurant_food",
+        "big_category_name": "餐饮食品",
+        "subcategory_id": "restaurant_food-jian_zha_guo_cheng_yong_you_a",
+        "table_id": "gb2026-restaurant_food-31-11"
       },
       {
         "name": "粉丝粉条（自制）",
@@ -9147,7 +9855,11 @@
             "检测方法": "GB 5009.121"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "restaurant_food",
+        "big_category_name": "餐饮食品",
+        "subcategory_id": "restaurant_food-vermicelli_self_made",
+        "table_id": "gb2026-restaurant_food-31-12"
       },
       {
         "name": "复用餐饮具（餐馆自行消毒）a",
@@ -9161,7 +9873,11 @@
             "检测方法": "GB 5009.121"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "restaurant_food",
+        "big_category_name": "餐饮食品",
+        "subcategory_id": "restaurant_food-fu_yong_can_yin_ju_a",
+        "table_id": "gb2026-restaurant_food-31-14"
       },
       {
         "name": "复用餐饮具（集中清洗消毒服务单位消毒）",
@@ -9181,7 +9897,11 @@
             "检测方法": "GB 14934 附录B"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "restaurant_food",
+        "big_category_name": "餐饮食品",
+        "subcategory_id": "restaurant_food-fu_yong_can_yin_ju",
+        "table_id": "gb2026-restaurant_food-31-15"
       },
       {
         "name": "除上述类别的餐饮加工自制食品a",
@@ -9201,7 +9921,11 @@
             "检测方法": "GB 14934 附录B"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "restaurant_food",
+        "big_category_name": "餐饮食品",
+        "subcategory_id": "restaurant_food-chu_shang_shu_lei_bie_de_can_yin_jia_gong_zi_zhi_shi_pin_a",
+        "table_id": "gb2026-restaurant_food-31-16"
       }
     ],
     "畜禽肉及副产品": [
@@ -9289,7 +10013,11 @@
             "检测方法": "GB/T 21316"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_poultry_offal",
+        "big_category_name": "畜禽肉及副产品",
+        "subcategory_id": "meat_poultry_offal-pork",
+        "table_id": "gb2026-meat_poultry_offal-33-1"
       },
       {
         "name": "牛肉",
@@ -9417,7 +10145,11 @@
             "检测方法": "GB 31658.17"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_poultry_offal",
+        "big_category_name": "畜禽肉及副产品",
+        "subcategory_id": "meat_poultry_offal-beef",
+        "table_id": "gb2026-meat_poultry_offal-33-2"
       },
       {
         "name": "羊肉",
@@ -9437,7 +10169,11 @@
             "检测方法": "GB 31658.17"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_poultry_offal",
+        "big_category_name": "畜禽肉及副产品",
+        "subcategory_id": "meat_poultry_offal-mutton",
+        "table_id": "gb2026-meat_poultry_offal-33-3"
       },
       {
         "name": "其他畜肉",
@@ -9517,7 +10253,11 @@
             "检测方法": "GB 31658.17"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_poultry_offal",
+        "big_category_name": "畜禽肉及副产品",
+        "subcategory_id": "meat_poultry_offal-other_livestock_meat",
+        "table_id": "gb2026-meat_poultry_offal-33-4"
       },
       {
         "name": "鸭肉",
@@ -9645,7 +10385,11 @@
             "检测方法": "GB 31658.17"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_poultry_offal",
+        "big_category_name": "畜禽肉及副产品",
+        "subcategory_id": "meat_poultry_offal-ya_rou",
+        "table_id": "gb2026-meat_poultry_offal-33-6"
       },
       {
         "name": "其他禽肉",
@@ -9701,7 +10445,11 @@
             "检测方法": "SN/T 1928"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_poultry_offal",
+        "big_category_name": "畜禽肉及副产品",
+        "subcategory_id": "meat_poultry_offal-other_poultry",
+        "table_id": "gb2026-meat_poultry_offal-33-7"
       },
       {
         "name": "猪肝",
@@ -9775,7 +10523,11 @@
             "检测方法": "GB 31658.12"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_poultry_offal",
+        "big_category_name": "畜禽肉及副产品",
+        "subcategory_id": "meat_poultry_offal-pork_liver",
+        "table_id": "gb2026-meat_poultry_offal-33-8-pork_liver"
       },
       {
         "name": "牛肝",
@@ -9837,7 +10589,11 @@
             "检测方法": "SN/T 2190"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_poultry_offal",
+        "big_category_name": "畜禽肉及副产品",
+        "subcategory_id": "meat_poultry_offal-niu_gan",
+        "table_id": "gb2026-meat_poultry_offal-33-9"
       },
       {
         "name": "羊肝",
@@ -9863,7 +10619,11 @@
             "检测方法": "GB 31658.22"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_poultry_offal",
+        "big_category_name": "畜禽肉及副产品",
+        "subcategory_id": "meat_poultry_offal-yang_gan",
+        "table_id": "gb2026-meat_poultry_offal-33-10"
       },
       {
         "name": "猪肾",
@@ -9901,7 +10661,11 @@
             "检测方法": "GB 31658.22"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_poultry_offal",
+        "big_category_name": "畜禽肉及副产品",
+        "subcategory_id": "meat_poultry_offal-zhu_shen",
+        "table_id": "gb2026-meat_poultry_offal-33-11"
       },
       {
         "name": "牛肾",
@@ -9927,7 +10691,11 @@
             "检测方法": "GB/T 21316"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_poultry_offal",
+        "big_category_name": "畜禽肉及副产品",
+        "subcategory_id": "meat_poultry_offal-niu_shen",
+        "table_id": "gb2026-meat_poultry_offal-33-12"
       },
       {
         "name": "羊肾",
@@ -9965,7 +10733,11 @@
             "检测方法": "GB 31658.17"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_poultry_offal",
+        "big_category_name": "畜禽肉及副产品",
+        "subcategory_id": "meat_poultry_offal-yang_shen",
+        "table_id": "gb2026-meat_poultry_offal-33-13"
       },
       {
         "name": "其他畜副产品",
@@ -10009,7 +10781,11 @@
             "检测方法": "SN/T 1924"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_poultry_offal",
+        "big_category_name": "畜禽肉及副产品",
+        "subcategory_id": "meat_poultry_offal-qi_ta_chu_fu_chan_pin",
+        "table_id": "gb2026-meat_poultry_offal-33-14"
       },
       {
         "name": "鸡肝",
@@ -10053,7 +10829,11 @@
             "检测方法": "GB 31658.12"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_poultry_offal",
+        "big_category_name": "畜禽肉及副产品",
+        "subcategory_id": "meat_poultry_offal-ji_gan",
+        "table_id": "gb2026-meat_poultry_offal-33-15"
       },
       {
         "name": "其他禽副产品",
@@ -10085,7 +10865,11 @@
             "检测方法": "GB/T 20366"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "meat_poultry_offal",
+        "big_category_name": "畜禽肉及副产品",
+        "subcategory_id": "meat_poultry_offal-qi_ta_qin_fu_chan_pin",
+        "table_id": "gb2026-meat_poultry_offal-33-16"
       }
     ],
     "蔬菜": [
@@ -10125,7 +10909,11 @@
             "检测方法": "GB 5009.34"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-bean_sprouts",
+        "table_id": "gb2026-vegetables-34-2"
       },
       {
         "name": "鲜食用菌",
@@ -10169,7 +10957,11 @@
             "检测方法": "GB 23200.8 GB 23200.113 GB/T 5009.146 NY/T 761"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-xian_shi_yong_jun",
+        "table_id": "gb2026-vegetables-34-3"
       },
       {
         "name": "韭菜",
@@ -10249,7 +11041,11 @@
             "检测方法": "GB 23200.113"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-leek",
+        "table_id": "gb2026-vegetables-34-4"
       },
       {
         "name": "葱",
@@ -10323,7 +11119,11 @@
             "检测方法": "GB 23200.113 GB 23200.116 GB 23200.121 GB/T 5009.103 GB/T 5009.145"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-green_onion",
+        "table_id": "gb2026-vegetables-34-5"
       },
       {
         "name": "大白菜",
@@ -10397,7 +11197,11 @@
             "检测方法": "GB 23200.113 GB 23200.121 NY/T 761 NY/T 1379"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-da_bai_cai",
+        "table_id": "gb2026-vegetables-34-7"
       },
       {
         "name": "普通白菜（小白菜、小油菜、青菜）",
@@ -10471,7 +11275,11 @@
             "检测方法": "GB 23200.113 GB 23200.116 GB 23200.121 GB/T 5009.103 GB/T 5009.145"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-bok_choy",
+        "table_id": "gb2026-vegetables-34-8"
       },
       {
         "name": "芹菜",
@@ -10551,7 +11359,11 @@
             "检测方法": "GB 23200.113 GB 23200.116 GB 23200.121 GB/T 5009.103 GB/T 5009.145"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-celery",
+        "table_id": "gb2026-vegetables-34-9"
       },
       {
         "name": "油麦菜",
@@ -10625,7 +11437,11 @@
             "检测方法": "GB 23200.113 GB 23200.116 GB 23200.121 GB/T 5009.103 GB/T 5009.145"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-you_mai_cai",
+        "table_id": "gb2026-vegetables-34-10"
       },
       {
         "name": "茄子",
@@ -10711,7 +11527,11 @@
             "检测方法": "GB 23200.113 GB 23200.116 GB 23200.121 GB/T 5009.103 GB/T 5009.145"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-eggplant",
+        "table_id": "gb2026-vegetables-34-11"
       },
       {
         "name": "辣椒",
@@ -10791,7 +11611,11 @@
             "检测方法": "GB 23200.113 GB 23200.116 GB 23200.121 GB/T 5009.103 GB/T 5009.145"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-chili_pepper",
+        "table_id": "gb2026-vegetables-34-12"
       },
       {
         "name": "甜椒",
@@ -10859,7 +11683,11 @@
             "检测方法": "GB 23200.113 GB 23200.116 GB 23200.121 GB/T 5009.103 GB/T 5009.145"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-sweet_pepper",
+        "table_id": "gb2026-vegetables-34-13"
       },
       {
         "name": "黄瓜",
@@ -10927,7 +11755,11 @@
             "检测方法": "GB 23200.113 GB 23200.121 NY/T 761 NY/T 1379"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-cucumber",
+        "table_id": "gb2026-vegetables-34-14"
       },
       {
         "name": "豇豆",
@@ -10995,7 +11827,11 @@
             "检测方法": "GB 23200.112 GB 23200.113 GB 23200.121 NY/T 761"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-cowpea",
+        "table_id": "gb2026-vegetables-34-15"
       },
       {
         "name": "菜豆",
@@ -11063,7 +11899,11 @@
             "检测方法": "GB 23200.113 GB 23200.116 GB 23200.121 GB/T 5009.103 GB/T 5009.145"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-string_bean",
+        "table_id": "gb2026-vegetables-34-16"
       },
       {
         "name": "食荚豌豆",
@@ -11149,7 +11989,11 @@
             "检测方法": "GB 23200.113 GB 23200.116 GB 23200.121 GB/T 5009.103 GB/T 5009.145"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-snow_pea",
+        "table_id": "gb2026-vegetables-34-17"
       },
       {
         "name": "马铃薯",
@@ -11175,7 +12019,11 @@
             "检测方法": "GB 23200.113 GB 23200.116 GB 23200.121 GB/T 5009.103 GB/T 5009.145"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-potato",
+        "table_id": "gb2026-vegetables-34-18"
       },
       {
         "name": "甘薯",
@@ -11237,7 +12085,11 @@
             "检测方法": "GB 5009.34"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-sweet_potato",
+        "table_id": "gb2026-vegetables-34-19"
       },
       {
         "name": "山药",
@@ -11305,7 +12157,11 @@
             "检测方法": "GB 23200.8 GB 23200.113 GB 23200.116 GB 23200.121 GB/T 14553 NY/T 761"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-yam",
+        "table_id": "gb2026-vegetables-34-20"
       },
       {
         "name": "胡萝卜",
@@ -11367,7 +12223,11 @@
             "检测方法": "GB 23200.8 GB 23200.39 GB 23200.121"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-carrot",
+        "table_id": "gb2026-vegetables-34-21"
       },
       {
         "name": "萝卜",
@@ -11381,7 +12241,11 @@
             "检测方法": "GB 23200.121 GB/T 5009.102 GB/T 20769"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-radish",
+        "table_id": "gb2026-vegetables-34-22"
       },
       {
         "name": "姜",
@@ -11437,7 +12301,11 @@
             "检测方法": "GB 23200.113 GB 23200.121 NY/T 761 NY/T 1379"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-ginger",
+        "table_id": "gb2026-vegetables-34-23"
       },
       {
         "name": "净菜",
@@ -11517,7 +12385,11 @@
             "检测方法": "GB 5009.34"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "vegetables",
+        "big_category_name": "蔬菜",
+        "subcategory_id": "vegetables-jing_cai",
+        "table_id": "gb2026-vegetables-34-24"
       }
     ],
     "水产品": [
@@ -11617,7 +12489,11 @@
             "检测方法": "GB 31656.22"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "aquatic_products",
+        "big_category_name": "水产品",
+        "subcategory_id": "aquatic_products-freshwater_fish",
+        "table_id": "gb2026-aquatic_products-35-1"
       },
       {
         "name": "淡水虾",
@@ -11643,7 +12519,11 @@
             "检测方法": "GB 31656.24"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "aquatic_products",
+        "big_category_name": "水产品",
+        "subcategory_id": "aquatic_products-freshwater_shrimp",
+        "table_id": "gb2026-aquatic_products-35-2"
       },
       {
         "name": "淡水蟹",
@@ -11717,7 +12597,11 @@
             "检测方法": "GB 31656.24"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "aquatic_products",
+        "big_category_name": "水产品",
+        "subcategory_id": "aquatic_products-freshwater_crab",
+        "table_id": "gb2026-aquatic_products-35-3"
       },
       {
         "name": "海水鱼",
@@ -11755,7 +12639,11 @@
             "检测方法": "GB 31656.13"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "aquatic_products",
+        "big_category_name": "水产品",
+        "subcategory_id": "aquatic_products-marine_fish",
+        "table_id": "gb2026-aquatic_products-33-44"
       },
       {
         "name": "海水虾",
@@ -11877,7 +12765,11 @@
             "检测方法": "GB 31656.24"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "aquatic_products",
+        "big_category_name": "水产品",
+        "subcategory_id": "aquatic_products-sea_shrimp",
+        "table_id": "gb2026-aquatic_products-35-5"
       },
       {
         "name": "海水蟹",
@@ -11933,7 +12825,11 @@
             "检测方法": "GB 31656.24"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "aquatic_products",
+        "big_category_name": "水产品",
+        "subcategory_id": "aquatic_products-sea_crab",
+        "table_id": "gb2026-aquatic_products-35-6"
       },
       {
         "name": "贝类",
@@ -11983,7 +12879,11 @@
             "检测方法": "GB 31656.24"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "aquatic_products",
+        "big_category_name": "水产品",
+        "subcategory_id": "aquatic_products-shellfish",
+        "table_id": "gb2026-aquatic_products-35-7"
       },
       {
         "name": "其他水产品",
@@ -12021,7 +12921,11 @@
             "检测方法": "农业部1077号公告-1-2008"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "aquatic_products",
+        "big_category_name": "水产品",
+        "subcategory_id": "aquatic_products-other_aquatic_products",
+        "table_id": "gb2026-aquatic_products-33-8-other_aquatic_products"
       }
     ],
     "水果类": [
@@ -12061,7 +12965,11 @@
             "检测方法": "GB 23200.113 NY/T 761"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-ping_guo",
+        "table_id": "gb2026-fruits-36-2"
       },
       {
         "name": "枣",
@@ -12087,7 +12995,11 @@
             "检测方法": "GB 23200.19 GB 23200.20 GB 23200.121 NY/T 1379"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-zao",
+        "table_id": "gb2026-fruits-36-4"
       },
       {
         "name": "桃",
@@ -12119,7 +13031,11 @@
             "检测方法": "GB 5009.28"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-tao",
+        "table_id": "gb2026-fruits-36-5"
       },
       {
         "name": "油桃",
@@ -12193,7 +13109,11 @@
             "检测方法": "GB/T 20769 GB 23200.121"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-you_tao",
+        "table_id": "gb2026-fruits-36-6"
       },
       {
         "name": "柑、橘",
@@ -12237,7 +13157,11 @@
             "检测方法": "GB 23200.39 GB 23200.121"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-mandarin_orange",
+        "table_id": "gb2026-fruits-36-7"
       },
       {
         "name": "柚",
@@ -12311,7 +13235,11 @@
             "检测方法": "GB 23200.8"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-you",
+        "table_id": "gb2026-fruits-36-8"
       },
       {
         "name": "柠檬",
@@ -12367,7 +13295,11 @@
             "检测方法": "GB 23200.39 GB 23200.121"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-ning_meng",
+        "table_id": "gb2026-fruits-36-9"
       },
       {
         "name": "橙",
@@ -12417,7 +13349,11 @@
             "检测方法": "GB 23200.8 GB 23200.113 GB 23200.116 GB 23200.121 NY/T 761 SN/T 2158"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-cheng",
+        "table_id": "gb2026-fruits-36-10"
       },
       {
         "name": "葡萄",
@@ -12485,7 +13421,11 @@
             "检测方法": "GB 23200.113 GB 23200.116 GB 23200.121 GB/T 5009.103 GB/T 5009.145"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-pu_tao",
+        "table_id": "gb2026-fruits-36-11"
       },
       {
         "name": "草莓",
@@ -12559,7 +13499,11 @@
             "检测方法": "GB 23200.8 GB 23200.113 GB 23200.121 GB/T 20769"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-cao_mei",
+        "table_id": "gb2026-fruits-36-12"
       },
       {
         "name": "猕猴桃",
@@ -12615,7 +13559,11 @@
             "检测方法": "GB 23200.113 GB 23200.116 GB 23200.121 GB/T 5009.103 GB/T 5009.145"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-mi_hou_tao",
+        "table_id": "gb2026-fruits-36-13"
       },
       {
         "name": "桑葚",
@@ -12677,7 +13625,11 @@
             "检测方法": "GB 5009.247"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-mulberry",
+        "table_id": "gb2026-fruits-36-14"
       },
       {
         "name": "西番莲（百香果）",
@@ -12721,7 +13673,11 @@
             "检测方法": "GB 23200.113 GB 23200.116 GB 23200.121 GB/T 5009.103"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-xi_fan_lian",
+        "table_id": "gb2026-fruits-36-15"
       },
       {
         "name": "香蕉",
@@ -12795,7 +13751,11 @@
             "检测方法": "GB 23200.113 GB 23200.121 NY/T 761 NY/T 1379"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-banana",
+        "table_id": "gb2026-fruits-36-16"
       },
       {
         "name": "芒果",
@@ -12869,7 +13829,11 @@
             "检测方法": "GB 23200.8 GB 23200.113 GB/T 5009.146 NY/T 761"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-mango",
+        "table_id": "gb2026-fruits-36-17"
       },
       {
         "name": "荔枝",
@@ -12913,7 +13877,11 @@
             "检测方法": "NY/T 1456"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-lychee",
+        "table_id": "gb2026-fruits-36-19"
       },
       {
         "name": "杨梅",
@@ -12993,7 +13961,11 @@
             "检测方法": "GB 23200.113 GB 23200.121 NY/T 761 SN/T 0217"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-yang_mei",
+        "table_id": "gb2026-fruits-36-20"
       },
       {
         "name": "龙眼",
@@ -13043,7 +14015,11 @@
             "检测方法": "GB 5009.247"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-longan",
+        "table_id": "gb2026-fruits-36-21"
       },
       {
         "name": "橄榄",
@@ -13081,7 +14057,11 @@
             "检测方法": "GB 23200.121 SN/T 1982"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-gan_lan",
+        "table_id": "gb2026-fruits-36-22"
       },
       {
         "name": "番木瓜",
@@ -13107,7 +14087,11 @@
             "检测方法": "GB 23200.113 GB 23200.116 GB 23200.121 GB/T 5009.103 GB/T 5009.145"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-papaya",
+        "table_id": "gb2026-fruits-36-23"
       },
       {
         "name": "西瓜",
@@ -13145,7 +14129,11 @@
             "检测方法": "GB 23200.113 GB 23200.121 NY/T 761 NY/T 1379"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-xi_gua",
+        "table_id": "gb2026-fruits-36-24"
       },
       {
         "name": "甜瓜类",
@@ -13189,7 +14177,11 @@
             "检测方法": "GB 23200.8 GB 23200.113 GB/T 5009.146 NY/T 761"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fruits",
+        "big_category_name": "水果类",
+        "subcategory_id": "fruits-tian_gua_lei",
+        "table_id": "gb2026-fruits-36-25"
       }
     ],
     "鲜蛋": [
@@ -13259,7 +14251,11 @@
             "检测方法": "GB/T 21312"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fresh_eggs",
+        "big_category_name": "鲜蛋",
+        "subcategory_id": "fresh_eggs-chicken_eggs",
+        "table_id": "gb2026-fresh_eggs-33-71"
       },
       {
         "name": "其他禽蛋",
@@ -13327,7 +14323,11 @@
             "检测方法": "SN/T 2318"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "fresh_eggs",
+        "big_category_name": "鲜蛋",
+        "subcategory_id": "fresh_eggs-qi_ta_qin_dan",
+        "table_id": "gb2026-fresh_eggs-33-72"
       }
     ],
     "豆类": [
@@ -13379,7 +14379,11 @@
             "检测方法": "GB 23200.121 GB 23200.39 GB 23200.9"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "beans",
+        "big_category_name": "豆类",
+        "subcategory_id": "beans-beans_placeholder",
+        "table_id": "gb2026-beans-38-1"
       }
     ],
     "生干坚果与籽类食品": [
@@ -13413,7 +14417,11 @@
             "检测方法": "参照GB/T 20769"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "raw_dried_seeds_nuts",
+        "big_category_name": "生干坚果与籽类食品",
+        "subcategory_id": "raw_dried_seeds_nuts-sheng_gan_jian_guo",
+        "table_id": "gb2026-raw_dried_seeds_nuts-39-1"
       },
       {
         "name": "其他籽类",
@@ -13463,27 +14471,36 @@
             "检测方法": "GB 23200.39 GB 23200.121"
           }
         ],
-        "notes": []
+        "notes": [],
+        "big_category_id": "raw_dried_seeds_nuts",
+        "big_category_name": "生干坚果与籽类食品",
+        "subcategory_id": "raw_dried_seeds_nuts-qi_ta_zi_lei",
+        "table_id": "gb2026-raw_dried_seeds_nuts-39-3"
       }
     ]
   },
   "category_count": 38,
   "_meta": {
-    "schema_version": "1.0",
-    "last_updated": "2026-08-06 09:06:10+08:00",
+    "schema_version": "1.1",
+    "last_updated": "2026-08-06 10:05:00+08:00",
     "encoding": "UTF-8",
     "bom": false,
     "source": "食品安全监督抽检实施细则（2026年版）",
     "origin": "jianyu 食品安全抽检风险查询",
     "category_count": 38,
     "table_count": 253,
-    "description": "细类 + 检验项目 权威数据（PDF 解析），前端实际驱动\"X 细类\"角标和细类列表",
+    "description": "GB 2026 食品安全监督抽检实施细则 38 大类 / 253 张检验项目表；每条 sub 含 *_id 字段（big_category_id / subcategory_id / table_id）",
     "schema": "{categories: dict[大类] -> [tables], table: {name, table_no, table_name, items, notes}}",
     "item_schema": {
-      "序号": "int",
-      "检验项目": "str",
-      "依据法律法规或标准": "str",
-      "检测方法": "str"
+      "subcategory_id": "str  稳定英文 slug ID",
+      "big_category_id": "str  稳定英文 slug ID",
+      "big_category_name": "str  大类中文名（展示用）",
+      "table_id": "str  稳定 table_id（见 table_ids.json）",
+      "table_no": "str  PDF 原始编号（展示用）",
+      "table_name": "str  表名",
+      "name": "str  细类名（中文）",
+      "page": "int  PDF 页码",
+      "items": "list  检验项目 [{序号, 检验项目, 依据法律法规或标准, 检测方法, 注脚}]"
     }
   }
 }
