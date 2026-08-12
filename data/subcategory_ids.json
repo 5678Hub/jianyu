@@ -3,14 +3,14 @@
     "schema_version": "1.0",
     "last_updated": "2026-08-06 10:10:00+08:00",
     "description": "jianyu 全部细类（master + GB 检验项目表）→ 稳定英文 slug ID；manual = 人工指定；auto = pypinyin 生成",
-    "count": 320,
+    "count": 321,
     "sources": {
       "master": 180,
-      "gb_checklist": 140
+      "gb_checklist": 141
     },
     "slug_kinds": {
       "manual": 153,
-      "auto": 167
+      "auto": 168
     }
   },
   "subcategories": [
@@ -2567,6 +2567,14 @@
       "slug_kind": "auto"
     },
     {
+      "id": "raw_dried_seeds_nuts-hua_sheng",
+      "big_category_id": "raw_dried_seeds_nuts",
+      "big_category_name": "生干坚果与籽类食品",
+      "name": "花生",
+      "source": "gb_checklist",
+      "slug_kind": "auto"
+    },
+    {
       "id": "raw_dried_seeds_nuts-qi_ta_zi_lei",
       "big_category_id": "raw_dried_seeds_nuts",
       "big_category_name": "生干坚果与籽类食品",
@@ -2895,6 +2903,7 @@
     "鲜蛋|||其他禽蛋": "fresh_eggs-qi_ta_qin_dan",
     "豆类|||豆类": "beans-beans_placeholder",
     "生干坚果与籽类食品|||生干坚果": "raw_dried_seeds_nuts-sheng_gan_jian_guo",
+    "生干坚果与籽类食品|||花生": "raw_dried_seeds_nuts-hua_sheng",
     "生干坚果与籽类食品|||其他籽类": "raw_dried_seeds_nuts-qi_ta_zi_lei"
   }
 }

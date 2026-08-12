@@ -408,7 +408,7 @@
       "subcategory": "其他乳制品（干酪、再制干酪、干酪制品）",
       "table_no": "5-10",
       "big_category_id": "dairy_products",
-      "table_id": null
+      "table_id": "gb2026-dairy_products-5-10"
     },
     "其他乳制品（奶片、奶条等固态成型产品）": {
       "big_category": "乳制品",
@@ -1960,7 +1960,8 @@
       "subcategory": "花生",
       "table_no": "39-2",
       "big_category_id": "raw_dried_seeds_nuts",
-      "table_id": null
+      "table_id": "gb2026-raw_dried_seeds_nuts-39-2",
+      "subcategory_id": "raw_dried_seeds_nuts-hua_sheng"
     },
     "其他籽类": {
       "big_category": "生干坚果与籽类食品",
