@@ -4706,7 +4706,7 @@
           "sub": "肉食性鱼类",
           "food": "肉食性鱼类",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.17",
           "remark": "以Hg计。金枪鱼、金目鲷、枪鱼、鲨鱼除外。对于制定甲基汞限量的食品可先测定总汞,当总汞含量不超过甲基汞限量值时,可判定符合限量要求而不必测定甲基汞；否则,需测定甲基汞含量再作判定。"
@@ -4721,7 +4721,7 @@
           "sub": "肉食性鱼类制品",
           "food": "肉食性鱼类制品",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.17",
           "remark": "以Hg计。仅限肉食性鱼类制品(金枪鱼、金目鲷、枪鱼、鲨鱼制品除外)。对于制定甲基汞限量的食品可先测定总汞,当总汞含量不超过甲基汞限量值时,可判定符合限量要求而不必测定甲基汞；否则,需测定甲基汞含量再作判定。"
@@ -5246,7 +5246,7 @@
           "sub": "松茸",
           "food": "松茸",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.15",
           "remark": "以Cd计。"
@@ -5261,7 +5261,7 @@
           "sub": "牛肝菌",
           "food": "牛肝菌",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.15",
           "remark": "以Cd计。"
@@ -5276,7 +5276,7 @@
           "sub": "鸡枞",
           "food": "鸡枞",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.15",
           "remark": "以Cd计。"
@@ -5291,7 +5291,7 @@
           "sub": "多汁乳菇",
           "food": "多汁乳菇",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.15",
           "remark": "以Cd计。"
@@ -5306,7 +5306,7 @@
           "sub": "松露",
           "food": "松露",
           "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.15",
           "remark": "以Cd计。"
@@ -5321,7 +5321,7 @@
           "sub": "姬松茸",
           "food": "姬松茸",
           "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.15",
           "remark": "以Cd计。"
@@ -5396,7 +5396,7 @@
           "sub": "松茸制品、牛肝菌制品、鸡枞制品、多汁乳菇制品",
           "food": "松茸制品、牛肝菌制品、鸡枞制品、多汁乳菇制品",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.15",
           "remark": "以Cd计。仅限松茸制品、牛肝菌制品、鸡枞制品、多汁乳菇制品。"
@@ -5411,7 +5411,7 @@
           "sub": "松露制品",
           "food": "松露制品",
           "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.15",
           "remark": "以Cd计。仅限松露制品。"
@@ -5426,7 +5426,7 @@
           "sub": "姬松茸制品",
           "food": "姬松茸制品",
           "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.15",
           "remark": "以Cd计。仅限姬松茸制品。"
@@ -5520,7 +5520,7 @@
           "sub": "肉类",
           "food": "畜禽肾脏",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.15",
           "remark": "以Cd计。仅限畜禽肾脏。"
@@ -5567,7 +5567,7 @@
           "sub": "肉制品",
           "food": "肾脏制品",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.15",
           "remark": "以Cd计。仅限肾脏制品。"
@@ -5616,7 +5616,7 @@
           "sub": "鲜、冻水产动物",
           "food": "海蟹、虾蛄",
           "limit": "≤3.0mg/kg",
-          "limit_value": 3.0,
+          "limit_value": 3,
           "unit": "mg/kg",
           "method": "GB5009.15",
           "remark": "以Cd计。仅限海蟹、虾蛄。"
@@ -5632,7 +5632,7 @@
           "sub": "鲜、冻水产动物",
           "food": "双壳贝类",
           "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.15",
           "remark": "以Cd计。去除内脏。"
@@ -5648,7 +5648,7 @@
           "sub": "鲜、冻水产动物",
           "food": "腹足类",
           "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.15",
           "remark": "以Cd计。去除内脏。"
@@ -5664,7 +5664,7 @@
           "sub": "鲜、冻水产动物",
           "food": "头足类",
           "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.15",
           "remark": "以Cd计。去除内脏。"
@@ -5680,7 +5680,7 @@
           "sub": "鲜、冻水产动物",
           "food": "棘皮类",
           "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.15",
           "remark": "以Cd计。去除内脏。"
@@ -5809,21 +5809,6 @@
           "unit": "mg/kg",
           "method": "GB5009.15",
           "remark": "以Cd计。"
-        },
-        {
-          "path": "坚果及籽类:花生",
-          "parts": [
-            "坚果及籽类",
-            "花生"
-          ],
-          "big": "坚果及籽类",
-          "sub": "花生",
-          "food": "花生",
-          "limit": "≤0.5mg/kg",
-          "limit_value": 0.5,
-          "unit": "mg/kg",
-          "method": "GB5009.15",
-          "remark": "以Cd计。仅限花生。"
         }
       ]
     },
@@ -6255,7 +6240,7 @@
           "sub": "牛肝菌",
           "food": "牛肝菌",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。"
@@ -6270,7 +6255,7 @@
           "sub": "松茸",
           "food": "松茸",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。"
@@ -6285,7 +6270,7 @@
           "sub": "松露",
           "food": "松露",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。"
@@ -6300,7 +6285,7 @@
           "sub": "青头菌",
           "food": "青头菌",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。"
@@ -6315,7 +6300,7 @@
           "sub": "鸡枞",
           "food": "鸡枞",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。"
@@ -6330,7 +6315,7 @@
           "sub": "鸡油菌",
           "food": "鸡油菌",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。"
@@ -6345,7 +6330,7 @@
           "sub": "多汁乳菇",
           "food": "多汁乳菇",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。"
@@ -6360,7 +6345,7 @@
           "sub": "牛肝菌﹑松茸﹑松露﹑青头菌、鸡枞﹑鸡油菌、多汁乳菇的制品",
           "food": "牛肝菌﹑松茸﹑松露﹑青头菌、鸡枞﹑鸡油菌、多汁乳菇的制品",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。仅限牛肝菌﹑松茸﹑松露﹑青头菌、鸡枞﹑鸡油菌、多汁乳菇的制品。"
@@ -6375,7 +6360,7 @@
           "sub": "木耳",
           "food": "木耳",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。干重计。"
@@ -6390,7 +6375,7 @@
           "sub": "银耳",
           "food": "银耳",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。干重计。"
@@ -6405,7 +6390,7 @@
           "sub": "木耳制品、银耳制品",
           "food": "木耳制品、银耳制品",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。干重计。仅限木耳制品、银耳制品。"
@@ -6482,7 +6467,7 @@
           "sub": "新鲜藻类",
           "food": "螺旋藻",
           "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。干重计。"
@@ -6497,7 +6482,7 @@
           "sub": "藻类制品",
           "food": "藻类制品",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。螺旋藻制品除外。"
@@ -6513,7 +6498,7 @@
           "sub": "藻类制品",
           "food": "螺旋藻制品",
           "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。干重计。仅限螺旋藻制品。"
@@ -6619,7 +6604,7 @@
           "sub": "鲜、冻水产动物",
           "food": "鲜、冻水产动物",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。去除内脏。鱼类、甲壳类、双壳贝类除外。"
@@ -6682,7 +6667,7 @@
           "sub": "水产制品",
           "food": "水产制品",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。鱼类制品、海蜇制品除外。"
@@ -6714,7 +6699,7 @@
           "sub": "水产制品",
           "food": "海蜇制品",
           "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。仅限海蜇制品。"
@@ -6845,7 +6830,7 @@
           "sub": "调味品",
           "food": "调味品",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。香辛料类除外。"
@@ -6875,7 +6860,7 @@
           "sub": "花椒﹑桂皮、多种香辛料混合的香辛料",
           "food": "花椒﹑桂皮、多种香辛料混合的香辛料",
           "limit": "≤3.0mg/kg",
-          "limit_value": 3.0,
+          "limit_value": 3,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。仅限花椒﹑桂皮(肉桂)、多种香辛料混合的香辛料。"
@@ -7056,7 +7041,7 @@
           "sub": "固体饮料",
           "food": "固体饮料",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。"
@@ -7237,7 +7222,7 @@
           "sub": "茶叶",
           "food": "茶叶",
           "limit": "≤5.0mg/kg",
-          "limit_value": 5.0,
+          "limit_value": 5,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。"
@@ -7252,7 +7237,7 @@
           "sub": "干菊花",
           "food": "干菊花",
           "limit": "≤5.0mg/kg",
-          "limit_value": 5.0,
+          "limit_value": 5,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。"
@@ -7267,7 +7252,7 @@
           "sub": "苦丁茶",
           "food": "苦丁茶",
           "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。"
@@ -7314,7 +7299,7 @@
           "sub": "蜂产品",
           "food": "油菜花粉",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.12",
           "remark": "以Pb计。仅限油菜花粉。"
@@ -7384,21 +7369,6 @@
           "remark": "以Pb计。"
         },
         {
-          "path": "坚果及籽类:生咖啡豆及烘焙咖啡豆",
-          "parts": [
-            "坚果及籽类",
-            "生咖啡豆及烘焙咖啡豆"
-          ],
-          "big": "坚果及籽类",
-          "sub": "生咖啡豆及烘焙咖啡豆",
-          "food": "生咖啡豆及烘焙咖啡豆",
-          "limit": "≤0.5mg/kg",
-          "limit_value": 0.5,
-          "unit": "mg/kg",
-          "method": "GB5009.12",
-          "remark": "以Pb计。仅限生咖啡豆及烘焙咖啡豆。"
-        },
-        {
           "path": "特殊膳食用食品:婴幼儿配方食品",
           "parts": [
             "特殊膳食用食品",
@@ -7454,7 +7424,7 @@
           "sub": "固态调味品",
           "food": "固态调味品",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.191",
           "remark": "仅限于添加酸水解植物蛋白的产品。仅限固态调味品。"
@@ -7480,7 +7450,7 @@
           "sub": "水产动物及其制品",
           "food": "水产动物及其制品",
           "limit": "≤20μg/kg",
-          "limit_value": 20.0,
+          "limit_value": 20,
           "unit": "μg/kg",
           "method": "GB5009.190",
           "remark": "多氯联苯以 PCB 28、PCB 52、PCB 101、PCB 118、PCB 138、PCB 153和 PCB 180总和计。"
@@ -7495,7 +7465,7 @@
           "sub": "水产动物油脂",
           "food": "水产动物油脂",
           "limit": "≤200μg/kg",
-          "limit_value": 200.0,
+          "limit_value": 200,
           "unit": "μg/kg",
           "method": "GB5009.190",
           "remark": "多氯联苯以 PCB 28、PCB 52、PCB 101、PCB 118、PCB 138、PCB 153和 PCB 180总和计。仅限水产动物油脂。"
@@ -7522,7 +7492,7 @@
           "sub": "肉制品",
           "food": "肉制品",
           "limit": "≤3.0μg/kg",
-          "limit_value": 3.0,
+          "limit_value": 3,
           "unit": "μg/kg",
           "method": "GB5009.26",
           "remark": "肉类罐头除外。"
@@ -7537,7 +7507,7 @@
           "sub": "水产制品",
           "food": "水产制品",
           "limit": "≤4.0μg/kg",
-          "limit_value": 4.0,
+          "limit_value": 4,
           "unit": "μg/kg",
           "method": "GB5009.26",
           "remark": "水产品罐头除外。"
@@ -7552,7 +7522,7 @@
           "sub": "干制水产品",
           "food": "干制水产品",
           "limit": "≤4.0μg/kg",
-          "limit_value": 4.0,
+          "limit_value": 4,
           "unit": "μg/kg",
           "method": "GB5009.26",
           "remark": "仅限干制水产品。"
@@ -7579,7 +7549,7 @@
           "sub": "稻谷",
           "food": "稻谷",
           "limit": "≤2.0μg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "μg/kg",
           "method": "GB5009.27",
           "remark": "稻谷以糙米计。"
@@ -7594,7 +7564,7 @@
           "sub": "糙米",
           "food": "糙米",
           "limit": "≤2.0μg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "μg/kg",
           "method": "GB5009.27",
           "remark": ""
@@ -7609,7 +7579,7 @@
           "sub": "大米",
           "food": "大米",
           "limit": "≤2.0μg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "μg/kg",
           "method": "GB5009.27",
           "remark": ""
@@ -7624,7 +7594,7 @@
           "sub": "小麦",
           "food": "小麦",
           "limit": "≤2.0μg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "μg/kg",
           "method": "GB5009.27",
           "remark": ""
@@ -7639,7 +7609,7 @@
           "sub": "小麦粉",
           "food": "小麦粉",
           "limit": "≤2.0μg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "μg/kg",
           "method": "GB5009.27",
           "remark": ""
@@ -7654,7 +7624,7 @@
           "sub": "玉米",
           "food": "玉米",
           "limit": "≤2.0μg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "μg/kg",
           "method": "GB5009.27",
           "remark": ""
@@ -7669,7 +7639,7 @@
           "sub": "玉米粉、玉米糁",
           "food": "玉米粉、玉米糁",
           "limit": "≤2.0μg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "μg/kg",
           "method": "GB5009.27",
           "remark": ""
@@ -7684,7 +7654,7 @@
           "sub": "熏、烧、烤肉类",
           "food": "熏、烧、烤肉类",
           "limit": "≤5.0μg/kg",
-          "limit_value": 5.0,
+          "limit_value": 5,
           "unit": "μg/kg",
           "method": "GB5009.27",
           "remark": ""
@@ -7699,7 +7669,7 @@
           "sub": "熏、烤水产品",
           "food": "熏、烤水产品",
           "limit": "≤5.0μg/kg",
-          "limit_value": 5.0,
+          "limit_value": 5,
           "unit": "μg/kg",
           "method": "GB5009.27",
           "remark": ""
@@ -7714,7 +7684,7 @@
           "sub": "稀奶油、奶油、无水奶油",
           "food": "稀奶油、奶油、无水奶油",
           "limit": "≤10μg/kg",
-          "limit_value": 10.0,
+          "limit_value": 10,
           "unit": "μg/kg",
           "method": "GB5009.27",
           "remark": ""
@@ -7728,7 +7698,7 @@
           "sub": "油脂及其制品",
           "food": "油脂及其制品",
           "limit": "≤10μg/kg",
-          "limit_value": 10.0,
+          "limit_value": 10,
           "unit": "μg/kg",
           "method": "GB5009.27",
           "remark": ""
@@ -7767,34 +7737,84 @@
       ],
       "rows": [
         {
-          "path": "特殊膳食用食品:辅食营养补充品",
+          "path": "饮料类:包装饮用水:饮用天然矿泉水",
           "parts": [
-            "特殊膳食用食品",
-            "辅食营养补充品"
+            "饮料类",
+            "包装饮用水",
+            "饮用天然矿泉水"
           ],
-          "big": "特殊膳食用食品",
-          "sub": "辅食营养补充品",
-          "food": "辅食营养补充品",
-          "limit": "≤100mg/kg",
-          "limit_value": 100.0,
-          "unit": "mg/kg",
-          "method": "GB5009.33",
-          "remark": "以NaNO3计。不适合于添加蔬菜和水果的产品。仅限辅食营养补充品。"
+          "big": "饮料类",
+          "sub": "包装饮用水",
+          "food": "饮用天然矿泉水",
+          "limit": "≤45mg/L",
+          "limit_value": 45,
+          "unit": "mg/L",
+          "method": "GB8538",
+          "remark": "以NO3-计。"
         },
         {
-          "path": "特殊膳食用食品:特殊医学用途配方食品(特殊医学用途婴儿配方食品涉及的品种除外)",
+          "path": "特殊膳食用食品:婴幼儿配方食品:婴儿配方食品",
           "parts": [
             "特殊膳食用食品",
-            "特殊医学用途配方食品"
+            "婴幼儿配方食品",
+            "婴儿配方食品"
           ],
           "big": "特殊膳食用食品",
-          "sub": "特殊医学用途配方食品",
-          "food": "特殊医学用途配方食品",
+          "sub": "婴幼儿配方食品",
+          "food": "婴儿配方食品",
           "limit": "≤100mg/kg",
-          "limit_value": 100.0,
+          "limit_value": 100,
           "unit": "mg/kg",
           "method": "GB5009.33",
-          "remark": "以NaNO3计。以固态产品计。不适合于添加蔬菜和水果的产品。"
+          "remark": "以NaNO3计。液态婴幼儿配方食品根据8:1的比例折算其限量。不适合于添加蔬菜和水果的产品。以固态产品计。"
+        },
+        {
+          "path": "特殊膳食用食品:婴幼儿配方食品:较大婴儿配方食品",
+          "parts": [
+            "特殊膳食用食品",
+            "婴幼儿配方食品",
+            "较大婴儿配方食品"
+          ],
+          "big": "特殊膳食用食品",
+          "sub": "婴幼儿配方食品",
+          "food": "较大婴儿配方食品",
+          "limit": "≤100mg/kg",
+          "limit_value": 100,
+          "unit": "mg/kg",
+          "method": "GB5009.33",
+          "remark": "以NaNO3计。液态婴幼儿配方食品根据8:1的比例折算其限量。以固态产品计。不适合于添加蔬菜和水果的产品。"
+        },
+        {
+          "path": "特殊膳食用食品:婴幼儿配方食品:幼儿配方食品",
+          "parts": [
+            "特殊膳食用食品",
+            "婴幼儿配方食品",
+            "幼儿配方食品"
+          ],
+          "big": "特殊膳食用食品",
+          "sub": "婴幼儿配方食品",
+          "food": "幼儿配方食品",
+          "limit": "≤100mg/kg",
+          "limit_value": 100,
+          "unit": "mg/kg",
+          "method": "GB5009.33",
+          "remark": "以NaNO3计。液态婴幼儿配方食品根据8:1的比例折算其限量。以固态产品计。不适合于添加蔬菜和水果的产品。"
+        },
+        {
+          "path": "特殊膳食用食品:婴幼儿配方食品:特殊医学用途婴儿配方食品",
+          "parts": [
+            "特殊膳食用食品",
+            "婴幼儿配方食品",
+            "特殊医学用途婴儿配方食品"
+          ],
+          "big": "特殊膳食用食品",
+          "sub": "婴幼儿配方食品",
+          "food": "特殊医学用途婴儿配方食品",
+          "limit": "≤100mg/kg",
+          "limit_value": 100,
+          "unit": "mg/kg",
+          "method": "GB5009.33",
+          "remark": "以NaNO3计。液态婴幼儿配方食品根据8:1的比例折算其限量。以固态产品计。"
         },
         {
           "path": "特殊膳食用食品:婴幼儿辅助食品:婴幼儿谷类辅助食品",
@@ -7807,7 +7827,7 @@
           "sub": "婴幼儿辅助食品",
           "food": "婴幼儿谷类辅助食品",
           "limit": "≤100mg/kg",
-          "limit_value": 100.0,
+          "limit_value": 100,
           "unit": "mg/kg",
           "method": "GB5009.33",
           "remark": "以NaNO3计。不适合于添加蔬菜和水果的产品。"
@@ -7823,90 +7843,25 @@
           "sub": "婴幼儿辅助食品",
           "food": "婴幼儿罐装辅助食品",
           "limit": "≤200mg/kg",
-          "limit_value": 200.0,
+          "limit_value": 200,
           "unit": "mg/kg",
           "method": "GB5009.33",
           "remark": "以NaNO3计。不适合于添加蔬菜和水果的产品。"
         },
         {
-          "path": "特殊膳食用食品:婴幼儿配方食品:较大婴儿配方食品",
+          "path": "特殊膳食用食品:辅食营养补充品",
           "parts": [
             "特殊膳食用食品",
-            "婴幼儿配方食品",
-            "较大婴儿配方食品"
+            "辅食营养补充品"
           ],
           "big": "特殊膳食用食品",
-          "sub": "婴幼儿配方食品",
-          "food": "较大婴儿配方食品",
+          "sub": "辅食营养补充品",
+          "food": "辅食营养补充品",
           "limit": "≤100mg/kg",
-          "limit_value": 100.0,
+          "limit_value": 100,
           "unit": "mg/kg",
           "method": "GB5009.33",
-          "remark": "以NaNO3计。液态婴幼儿配方食品根据8:1的比例折算其限量。以固态产品计。不适合于添加蔬菜和水果的产品。"
-        },
-        {
-          "path": "饮料类:包装饮用水:饮用天然矿泉水",
-          "parts": [
-            "饮料类",
-            "包装饮用水",
-            "饮用天然矿泉水"
-          ],
-          "big": "饮料类",
-          "sub": "包装饮用水",
-          "food": "饮用天然矿泉水",
-          "limit": "≤45mg/L",
-          "limit_value": 45.0,
-          "unit": "mg/L",
-          "method": "GB8538",
-          "remark": "以NO3-计。"
-        },
-        {
-          "path": "特殊膳食用食品:婴幼儿配方食品:特殊医学用途婴儿配方食品",
-          "parts": [
-            "特殊膳食用食品",
-            "婴幼儿配方食品",
-            "特殊医学用途婴儿配方食品"
-          ],
-          "big": "特殊膳食用食品",
-          "sub": "婴幼儿配方食品",
-          "food": "特殊医学用途婴儿配方食品",
-          "limit": "≤100mg/kg",
-          "limit_value": 100.0,
-          "unit": "mg/kg",
-          "method": "GB5009.33",
-          "remark": "以NaNO3计。液态婴幼儿配方食品根据8:1的比例折算其限量。以固态产品计。"
-        },
-        {
-          "path": "特殊膳食用食品:婴幼儿配方食品:婴儿配方食品",
-          "parts": [
-            "特殊膳食用食品",
-            "婴幼儿配方食品",
-            "婴儿配方食品"
-          ],
-          "big": "特殊膳食用食品",
-          "sub": "婴幼儿配方食品",
-          "food": "婴儿配方食品",
-          "limit": "≤100mg/kg",
-          "limit_value": 100.0,
-          "unit": "mg/kg",
-          "method": "GB5009.33",
-          "remark": "以NaNO3计。液态婴幼儿配方食品根据8:1的比例折算其限量。不适合于添加蔬菜和水果的产品。以固态产品计。"
-        },
-        {
-          "path": "特殊膳食用食品:婴幼儿配方食品:幼儿配方食品",
-          "parts": [
-            "特殊膳食用食品",
-            "婴幼儿配方食品",
-            "幼儿配方食品"
-          ],
-          "big": "特殊膳食用食品",
-          "sub": "婴幼儿配方食品",
-          "food": "幼儿配方食品",
-          "limit": "≤100mg/kg",
-          "limit_value": 100.0,
-          "unit": "mg/kg",
-          "method": "GB5009.33",
-          "remark": "以NaNO3计。液态婴幼儿配方食品根据8:1的比例折算其限量。以固态产品计。不适合于添加蔬菜和水果的产品。"
+          "remark": "以NaNO3计。不适合于添加蔬菜和水果的产品。仅限辅食营养补充品。"
         },
         {
           "path": "特殊膳食用食品:孕妇及乳母营养补充食品",
@@ -7918,10 +7873,25 @@
           "sub": "孕妇及乳母营养补充食品",
           "food": "孕妇及乳母营养补充食品",
           "limit": "≤100mg/kg",
-          "limit_value": 100.0,
+          "limit_value": 100,
           "unit": "mg/kg",
           "method": "GB5009.33",
           "remark": "以NaNO3计。不适合于添加蔬菜和水果的产品。仅限孕妇及乳母营养补充食品。"
+        },
+        {
+          "path": "特殊膳食用食品:特殊医学用途配方食品(特殊医学用途婴儿配方食品涉及的品种除外)",
+          "parts": [
+            "特殊膳食用食品",
+            "特殊医学用途配方食品"
+          ],
+          "big": "特殊膳食用食品",
+          "sub": "特殊医学用途配方食品",
+          "food": "特殊医学用途配方食品",
+          "limit": "≤100mg/kg",
+          "limit_value": 100,
+          "unit": "mg/kg",
+          "method": "GB5009.33",
+          "remark": "以NaNO3计。以固态产品计。不适合于添加蔬菜和水果的产品。"
         }
       ]
     },
@@ -7957,52 +7927,6 @@
       ],
       "rows": [
         {
-          "path": "特殊膳食用食品:辅食营养补充品",
-          "parts": [
-            "特殊膳食用食品",
-            "辅食营养补充品"
-          ],
-          "big": "特殊膳食用食品",
-          "sub": "辅食营养补充品",
-          "food": "辅食营养补充品",
-          "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
-          "unit": "mg/kg",
-          "method": "GB5009.33",
-          "remark": "以NaNO2计。仅适用于乳基产品。仅限辅食营养补充品。"
-        },
-        {
-          "path": "特殊膳食用食品:特殊医学用途配方食品(特殊医学用途婴儿配方食品涉及的品种除外)",
-          "parts": [
-            "特殊膳食用食品",
-            "特殊医学用途配方食品"
-          ],
-          "big": "特殊膳食用食品",
-          "sub": "特殊医学用途配方食品",
-          "food": "特殊医学用途配方食品",
-          "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
-          "unit": "mg/kg",
-          "method": "GB5009.33",
-          "remark": "以NaNO2计。以固态产品计。仅适用于乳基产品(不含豆类成分)。"
-        },
-        {
-          "path": "特殊膳食用食品:婴幼儿辅助食品:婴幼儿谷类辅助食品",
-          "parts": [
-            "特殊膳食用食品",
-            "婴幼儿辅助食品",
-            "婴幼儿谷类辅助食品"
-          ],
-          "big": "特殊膳食用食品",
-          "sub": "婴幼儿辅助食品",
-          "food": "婴幼儿谷类辅助食品",
-          "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
-          "unit": "mg/kg",
-          "method": "GB5009.33",
-          "remark": "以NaNO2计。不适合于添加豆类的产品。"
-        },
-        {
           "path": "蔬菜及其制品:蔬菜制品:酱腌菜",
           "parts": [
             "蔬菜及其制品",
@@ -8013,7 +7937,7 @@
           "sub": "蔬菜制品",
           "food": "酱腌菜",
           "limit": "≤20mg/kg",
-          "limit_value": 20.0,
+          "limit_value": 20,
           "unit": "mg/kg",
           "method": "GB5009.33",
           "remark": "以NaNO2计。"
@@ -8043,7 +7967,7 @@
           "sub": "乳粉和调制乳粉",
           "food": "乳粉和调制乳粉",
           "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.33",
           "remark": "以NaNO2计。"
@@ -8080,20 +8004,20 @@
           "remark": "以NO2-计。"
         },
         {
-          "path": "特殊膳食用食品:婴幼儿辅助食品:婴幼儿罐装辅助食品",
+          "path": "特殊膳食用食品:婴幼儿配方食品:婴儿配方食品",
           "parts": [
             "特殊膳食用食品",
-            "婴幼儿辅助食品",
-            "婴幼儿罐装辅助食品"
+            "婴幼儿配方食品",
+            "婴儿配方食品"
           ],
           "big": "特殊膳食用食品",
-          "sub": "婴幼儿辅助食品",
-          "food": "婴幼儿罐装辅助食品",
-          "limit": "≤4.0mg/kg",
-          "limit_value": 4.0,
+          "sub": "婴幼儿配方食品",
+          "food": "婴儿配方食品",
+          "limit": "≤2.0mg/kg",
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.33",
-          "remark": "以NaNO2计。不适合于添加豆类的产品。"
+          "remark": "以NaNO2计。液态婴幼儿配方食品根据8:1的比例折算其限量。以固态产品计。仅适用于乳基产品。"
         },
         {
           "path": "特殊膳食用食品:婴幼儿配方食品:较大婴儿配方食品",
@@ -8106,39 +8030,7 @@
           "sub": "婴幼儿配方食品",
           "food": "较大婴儿配方食品",
           "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
-          "unit": "mg/kg",
-          "method": "GB5009.33",
-          "remark": "以NaNO2计。液态婴幼儿配方食品根据8:1的比例折算其限量。以固态产品计。仅适用于乳基产品。"
-        },
-        {
-          "path": "特殊膳食用食品:婴幼儿配方食品:特殊医学用途婴儿配方食品",
-          "parts": [
-            "特殊膳食用食品",
-            "婴幼儿配方食品",
-            "特殊医学用途婴儿配方食品"
-          ],
-          "big": "特殊膳食用食品",
-          "sub": "婴幼儿配方食品",
-          "food": "特殊医学用途婴儿配方食品",
-          "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
-          "unit": "mg/kg",
-          "method": "GB5009.33",
-          "remark": "以NaNO2计。液态婴幼儿配方食品根据8:1的比例折算其限量。以固态产品计。"
-        },
-        {
-          "path": "特殊膳食用食品:婴幼儿配方食品:婴儿配方食品",
-          "parts": [
-            "特殊膳食用食品",
-            "婴幼儿配方食品",
-            "婴儿配方食品"
-          ],
-          "big": "特殊膳食用食品",
-          "sub": "婴幼儿配方食品",
-          "food": "婴儿配方食品",
-          "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.33",
           "remark": "以NaNO2计。液态婴幼儿配方食品根据8:1的比例折算其限量。以固态产品计。仅适用于乳基产品。"
@@ -8154,10 +8046,73 @@
           "sub": "婴幼儿配方食品",
           "food": "幼儿配方食品",
           "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.33",
           "remark": "以NaNO2计。液态婴幼儿配方食品根据8:1的比例折算其限量。以固态产品计。仅适用于乳基产品。"
+        },
+        {
+          "path": "特殊膳食用食品:婴幼儿配方食品:特殊医学用途婴儿配方食品",
+          "parts": [
+            "特殊膳食用食品",
+            "婴幼儿配方食品",
+            "特殊医学用途婴儿配方食品"
+          ],
+          "big": "特殊膳食用食品",
+          "sub": "婴幼儿配方食品",
+          "food": "特殊医学用途婴儿配方食品",
+          "limit": "≤2.0mg/kg",
+          "limit_value": 2,
+          "unit": "mg/kg",
+          "method": "GB5009.33",
+          "remark": "以NaNO2计。液态婴幼儿配方食品根据8:1的比例折算其限量。以固态产品计。"
+        },
+        {
+          "path": "特殊膳食用食品:婴幼儿辅助食品:婴幼儿谷类辅助食品",
+          "parts": [
+            "特殊膳食用食品",
+            "婴幼儿辅助食品",
+            "婴幼儿谷类辅助食品"
+          ],
+          "big": "特殊膳食用食品",
+          "sub": "婴幼儿辅助食品",
+          "food": "婴幼儿谷类辅助食品",
+          "limit": "≤2.0mg/kg",
+          "limit_value": 2,
+          "unit": "mg/kg",
+          "method": "GB5009.33",
+          "remark": "以NaNO2计。不适合于添加豆类的产品。"
+        },
+        {
+          "path": "特殊膳食用食品:婴幼儿辅助食品:婴幼儿罐装辅助食品",
+          "parts": [
+            "特殊膳食用食品",
+            "婴幼儿辅助食品",
+            "婴幼儿罐装辅助食品"
+          ],
+          "big": "特殊膳食用食品",
+          "sub": "婴幼儿辅助食品",
+          "food": "婴幼儿罐装辅助食品",
+          "limit": "≤4.0mg/kg",
+          "limit_value": 4,
+          "unit": "mg/kg",
+          "method": "GB5009.33",
+          "remark": "以NaNO2计。不适合于添加豆类的产品。"
+        },
+        {
+          "path": "特殊膳食用食品:辅食营养补充品",
+          "parts": [
+            "特殊膳食用食品",
+            "辅食营养补充品"
+          ],
+          "big": "特殊膳食用食品",
+          "sub": "辅食营养补充品",
+          "food": "辅食营养补充品",
+          "limit": "≤2.0mg/kg",
+          "limit_value": 2,
+          "unit": "mg/kg",
+          "method": "GB5009.33",
+          "remark": "以NaNO2计。仅适用于乳基产品。仅限辅食营养补充品。"
         },
         {
           "path": "特殊膳食用食品:孕妇及乳母营养补充食品",
@@ -8169,10 +8124,25 @@
           "sub": "孕妇及乳母营养补充食品",
           "food": "孕妇及乳母营养补充食品",
           "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.33",
           "remark": "以NaNO2计。不适合于添加豆类的产品。仅限孕妇及乳母营养补充食品。"
+        },
+        {
+          "path": "特殊膳食用食品:特殊医学用途配方食品(特殊医学用途婴儿配方食品涉及的品种除外)",
+          "parts": [
+            "特殊膳食用食品",
+            "特殊医学用途配方食品"
+          ],
+          "big": "特殊膳食用食品",
+          "sub": "特殊医学用途配方食品",
+          "food": "特殊医学用途配方食品",
+          "limit": "≤2.0mg/kg",
+          "limit_value": 2,
+          "unit": "mg/kg",
+          "method": "GB5009.33",
+          "remark": "以NaNO2计。以固态产品计。仅适用于乳基产品(不含豆类成分)。"
         },
         {
           "path": "其他类:食用燕窝",
@@ -8184,7 +8154,7 @@
           "sub": "食用燕窝",
           "food": "食用燕窝",
           "limit": "≤30mg/kg",
-          "limit_value": 30.0,
+          "limit_value": 30,
           "unit": "mg/kg",
           "method": "GB5009.33",
           "remark": "以NaNO2计。"
@@ -8216,7 +8186,7 @@
           "sub": "谷物",
           "food": "谷物",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.123",
           "remark": "以Cr计。稻谷以糙米计。"
@@ -8231,7 +8201,7 @@
           "sub": "谷物碾磨加工品",
           "food": "谷物碾磨加工品",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.123",
           "remark": "以Cr计。"
@@ -8261,7 +8231,7 @@
           "sub": "豆类",
           "food": "豆类",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.123",
           "remark": "以Cr计。"
@@ -8275,7 +8245,7 @@
           "sub": "肉及肉制品",
           "food": "肉及肉制品",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.123",
           "remark": "以Cr计。"
@@ -8289,7 +8259,7 @@
           "sub": "水产动物及其制品",
           "food": "水产动物及其制品",
           "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.123",
           "remark": "以Cr计。"
@@ -8379,7 +8349,7 @@
           "sub": "乳粉和调制乳粉",
           "food": "乳粉和调制乳粉",
           "limit": "≤2.0mg/kg",
-          "limit_value": 2.0,
+          "limit_value": 2,
           "unit": "mg/kg",
           "method": "GB5009.123",
           "remark": "以Cr计。"
@@ -8406,7 +8376,7 @@
           "sub": "氢化植物油",
           "food": "氢化植物油",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.138",
           "remark": "以Ni计。"
@@ -8421,7 +8391,7 @@
           "sub": "含氢化和部分氢化油脂的油脂制品",
           "food": "含氢化和部分氢化油脂的油脂制品",
           "limit": "≤1.0mg/kg",
-          "limit_value": 1.0,
+          "limit_value": 1,
           "unit": "mg/kg",
           "method": "GB5009.138",
           "remark": "以Ni计。"
@@ -8453,7 +8423,7 @@
           "sub": "婴幼儿辅助食品",
           "food": "婴幼儿辅助食品",
           "limit": "≤50mg/kg",
-          "limit_value": 50.0,
+          "limit_value": 50,
           "unit": "mg/kg",
           "method": "GB5009.16",
           "remark": "以Sn计。仅限于采用镀锡薄钢板容器包装的食品。"
@@ -8467,7 +8437,7 @@
           "sub": "食品",
           "food": "食品",
           "limit": "≤250mg/kg",
-          "limit_value": 250.0,
+          "limit_value": 250,
           "unit": "mg/kg",
           "method": "GB5009.16",
           "remark": "以Sn计。仅限于采用镀锡薄钢板容器包装的食品。"
@@ -8481,7 +8451,7 @@
           "sub": "饮料类",
           "food": "饮料类",
           "limit": "≤150mg/kg",
-          "limit_value": 150.0,
+          "limit_value": 150,
           "unit": "mg/kg",
           "method": "GB5009.16",
           "remark": "以Sn计。仅限于采用镀锡薄钢板容器包装的食品。"
@@ -8496,7 +8466,7 @@
           "sub": "婴幼儿配方食品",
           "food": "婴幼儿配方食品",
           "limit": "≤50mg/kg",
-          "limit_value": 50.0,
+          "limit_value": 50,
           "unit": "mg/kg",
           "method": "GB5009.16",
           "remark": "以Sn计。仅限于采用镀锡薄钢板容器包装的食品。"
