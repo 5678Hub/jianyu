@@ -28,24 +28,14 @@
           "limit": "0.2",
           "remark": "",
           "category_matched_by": "谷物",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "谷物及其制品(不包括焙烤制品)",
+          "limits": [
             {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "谷物",
-              "matched_keyword": "谷物"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "麦片",
-              "matched_keyword": "麦片"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "面筋",
-              "matched_keyword": "面筋"
+              "label": "限量(以 Pb 计)",
+              "value": "0.2"
             }
-          ],
-          "category_a1": "谷物及其制品(不包括焙烤制品)"
+          ]
         },
         {
           "category": "谷物及其制品",
@@ -53,19 +43,14 @@
           "limit": "0.5",
           "remark": "",
           "category_matched_by": "麦片",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "谷物及其制品(不包括焙烤制品)",
+          "limits": [
             {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "麦片",
-              "matched_keyword": "麦片"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "面筋",
-              "matched_keyword": "面筋"
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
             }
-          ],
-          "category_a1": "谷物及其制品(不包括焙烤制品)"
+          ]
         },
         {
           "category": "豆类及其制品",
@@ -73,29 +58,14 @@
           "limit": "0.1",
           "remark": "",
           "category_matched_by": "豆类",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)",
+          "limits": [
             {
-              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
-              "sub": "新鲜蔬菜(未经加工的、经表面处理的、去皮或预切的、冷冻的蔬菜)",
-              "matched_keyword": "新鲜蔬菜"
-            },
-            {
-              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
-              "sub": "芸薹类蔬菜",
-              "matched_keyword": "芸薹类蔬菜"
-            },
-            {
-              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
-              "sub": "叶菜蔬菜(包括芸薹类叶菜)",
-              "matched_keyword": "叶菜蔬菜"
-            },
-            {
-              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
-              "sub": "豆类蔬菜",
-              "matched_keyword": "豆类蔬菜"
+              "label": "限量(以 Pb 计)",
+              "value": "0.1"
             }
-          ],
-          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)"
+          ]
         },
         {
           "category": "蔬菜及其制品",
@@ -109,7 +79,13 @@
               "matched_keyword": "叶菜蔬菜"
             }
           ],
-          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)"
+          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.3"
+            }
+          ]
         },
         {
           "category": "豆类及其制品",
@@ -117,43 +93,28 @@
           "limit": "0.2",
           "remark": "",
           "category_matched_by": "豆类",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)",
+          "limits": [
             {
-              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
-              "sub": "芸薹类蔬菜",
-              "matched_keyword": "芸薹类蔬菜"
-            },
-            {
-              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
-              "sub": "豆类蔬菜",
-              "matched_keyword": "豆类蔬菜"
+              "label": "限量(以 Pb 计)",
+              "value": "0.2"
             }
-          ],
-          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)"
+          ]
         },
         {
           "category": "蔬菜及其制品",
           "food": "蔬菜制品、酱腌菜、干制蔬菜除外(、)",
           "limit": "0.3",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)",
+          "limits": [
             {
-              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
-              "sub": "蔬菜制品",
-              "matched_keyword": "蔬菜制品"
-            },
-            {
-              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
-              "sub": "酱腌菜",
-              "matched_keyword": "酱腌菜"
-            },
-            {
-              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
-              "sub": "干制蔬菜",
-              "matched_keyword": "干制蔬菜"
+              "label": "限量(以 Pb 计)",
+              "value": "0.3"
             }
-          ],
-          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)"
+          ]
         },
         {
           "category": "蔬菜及其制品",
@@ -167,7 +128,13 @@
               "matched_keyword": "酱腌菜"
             }
           ],
-          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)"
+          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
+            }
+          ]
         },
         {
           "category": "蔬菜及其制品",
@@ -181,28 +148,40 @@
               "matched_keyword": "干制蔬菜"
             }
           ],
-          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)"
+          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.8"
+            }
+          ]
         },
         {
           "category": "水果及其制品",
           "food": "新鲜水果、蔓越莓、醋栗除外",
           "limit": "0.1",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "水果及其制品",
+          "limits": [
             {
-              "big": "水果及其制品",
-              "sub": "新鲜水果(未经加工的、经表面处理的、去皮或预切的、冷冻的水果)",
-              "matched_keyword": "新鲜水果"
+              "label": "限量(以 Pb 计)",
+              "value": "0.1"
             }
-          ],
-          "category_a1": "水果及其制品"
+          ]
         },
         {
           "category": "水果及其制品",
           "food": "蔓越莓、醋栗、",
           "limit": "0.2",
           "remark": "",
-          "subcategories": []
+          "subcategories": [],
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.2"
+            }
+          ]
         },
         {
           "category": "调味品",
@@ -210,24 +189,14 @@
           "limit": "0.2",
           "remark": "",
           "category_matched_by": "酱",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "水果及其制品",
+          "limits": [
             {
-              "big": "水果及其制品",
-              "sub": "水果制品",
-              "matched_keyword": "水果制品"
-            },
-            {
-              "big": "水果及其制品",
-              "sub": "蜜饯(包括果丹皮)",
-              "matched_keyword": "蜜饯"
-            },
-            {
-              "big": "水果及其制品",
-              "sub": "水果干类",
-              "matched_keyword": "水果干类"
+              "label": "限量(以 Pb 计)",
+              "value": "0.2"
             }
-          ],
-          "category_a1": "水果及其制品"
+          ]
         },
         {
           "category": "调味品",
@@ -235,7 +204,13 @@
           "limit": "0.4",
           "remark": "",
           "category_matched_by": "酱",
-          "subcategories": []
+          "subcategories": [],
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.4"
+            }
+          ]
         },
         {
           "category": "糖、糖果、蜂蜜等",
@@ -250,7 +225,13 @@
               "matched_keyword": "蜜饯"
             }
           ],
-          "category_a1": "水果及其制品"
+          "category_a1": "水果及其制品",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.8"
+            }
+          ]
         },
         {
           "category": "食用菌及其制品",
@@ -258,19 +239,14 @@
           "limit": "0.5",
           "remark": "",
           "category_matched_by": "食用菌",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "食用菌及其制品",
+          "limits": [
             {
-              "big": "食用菌及其制品",
-              "sub": "牛肝菌(美味牛肝菌 Boletus bainiugan、兰茂牛肝菌 Lanmaoa asiatica)",
-              "matched_keyword": "牛肝菌"
-            },
-            {
-              "big": "食用菌及其制品",
-              "sub": "木耳(毛木耳 Auricularia cornea、黑木耳 Auricularia heimuer)",
-              "matched_keyword": "木耳"
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
             }
-          ],
-          "category_a1": "食用菌及其制品"
+          ]
         },
         {
           "category": "食用菌及其制品",
@@ -278,7 +254,13 @@
           "limit": "0.3",
           "remark": "",
           "category_matched_by": "食用菌",
-          "subcategories": []
+          "subcategories": [],
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.3"
+            }
+          ]
         },
         {
           "category": "食用菌及其制品",
@@ -286,14 +268,14 @@
           "limit": "1.0",
           "remark": "",
           "category_matched_by": "食用菌",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "食用菌及其制品",
+          "limits": [
             {
-              "big": "食用菌及其制品",
-              "sub": "牛肝菌(美味牛肝菌 Boletus bainiugan、兰茂牛肝菌 Lanmaoa asiatica)",
-              "matched_keyword": "牛肝菌"
+              "label": "限量(以 Pb 计)",
+              "value": "1.0"
             }
-          ],
-          "category_a1": "食用菌及其制品"
+          ]
         },
         {
           "category": "食用菌及其制品",
@@ -301,14 +283,14 @@
           "limit": "1.0",
           "remark": "",
           "category_matched_by": "木耳",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "食用菌及其制品",
+          "limits": [
             {
-              "big": "食用菌及其制品",
-              "sub": "木耳(毛木耳 Auricularia cornea、黑木耳 Auricularia heimuer)",
-              "matched_keyword": "木耳"
+              "label": "限量(以 Pb 计)",
+              "value": "1.0"
             }
-          ],
-          "category_a1": "食用菌及其制品"
+          ]
         },
         {
           "category": "豆类及其制品",
@@ -316,19 +298,14 @@
           "limit": "0.3",
           "remark": "",
           "category_matched_by": "豆浆",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "豆类及其制品",
+          "limits": [
             {
-              "big": "豆类及其制品",
-              "sub": "豆类制品",
-              "matched_keyword": "豆类制品"
-            },
-            {
-              "big": "豆类及其制品",
-              "sub": "非发酵豆制品(豆浆、豆腐类、豆干类、腐竹类、熟制豆类、大豆蛋白膨化食品、大豆素肉等)",
-              "matched_keyword": "豆浆"
+              "label": "限量(以 Pb 计)",
+              "value": "0.3"
             }
-          ],
-          "category_a1": "豆类及其制品"
+          ]
         },
         {
           "category": "豆类及其制品",
@@ -343,73 +320,69 @@
               "matched_keyword": "豆浆"
             }
           ],
-          "category_a1": "豆类及其制品"
+          "category_a1": "豆类及其制品",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.05"
+            }
+          ]
         },
         {
           "category": "藻类及其制品",
           "food": "新鲜藻类、螺旋藻除外()",
           "limit": "0.5",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "藻类及其制品",
+          "limits": [
             {
-              "big": "藻类及其制品",
-              "sub": "新鲜藻类(未经加工的、经表面处理的、预切的、冷冻的藻类)",
-              "matched_keyword": "新鲜藻类"
-            },
-            {
-              "big": "藻类及其制品",
-              "sub": "螺旋藻",
-              "matched_keyword": "螺旋藻"
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
             }
-          ],
-          "category_a1": "藻类及其制品"
+          ]
         },
         {
           "category": "藻类及其制品",
           "food": "螺旋藻干重计",
           "limit": "2.0",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "藻类及其制品",
+          "limits": [
             {
-              "big": "藻类及其制品",
-              "sub": "螺旋藻",
-              "matched_keyword": "螺旋藻"
+              "label": "限量(以 Pb 计)",
+              "value": "2.0"
             }
-          ],
-          "category_a1": "藻类及其制品"
+          ]
         },
         {
           "category": "藻类及其制品",
           "food": "藻类制品、螺旋藻制品除外",
           "limit": "1.0",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "藻类及其制品",
+          "limits": [
             {
-              "big": "藻类及其制品",
-              "sub": "藻类制品",
-              "matched_keyword": "藻类制品"
-            },
-            {
-              "big": "藻类及其制品",
-              "sub": "螺旋藻",
-              "matched_keyword": "螺旋藻"
+              "label": "限量(以 Pb 计)",
+              "value": "1.0"
             }
-          ],
-          "category_a1": "藻类及其制品"
+          ]
         },
         {
           "category": "藻类及其制品",
           "food": "螺旋藻制品干重计",
           "limit": "2.0",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "藻类及其制品",
+          "limits": [
             {
-              "big": "藻类及其制品",
-              "sub": "螺旋藻",
-              "matched_keyword": "螺旋藻"
+              "label": "限量(以 Pb 计)",
+              "value": "2.0"
             }
-          ],
-          "category_a1": "藻类及其制品"
+          ]
         },
         {
           "category": "咖啡",
@@ -417,7 +390,13 @@
           "limit": "0.2",
           "remark": "",
           "category_matched_by": "咖啡",
-          "subcategories": []
+          "subcategories": [],
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.2"
+            }
+          ]
         },
         {
           "category": "咖啡",
@@ -425,26 +404,27 @@
           "limit": "0.5",
           "remark": "",
           "category_matched_by": "咖啡",
-          "subcategories": []
+          "subcategories": [],
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
+            }
+          ]
         },
         {
           "category": "肉及肉制品",
           "food": "肉类、畜禽内脏除外()",
           "limit": "0.2",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "肉及肉制品",
+          "limits": [
             {
-              "big": "肉及肉制品",
-              "sub": "肉类(生鲜肉、冷却肉、冷冻肉等)",
-              "matched_keyword": "肉类"
-            },
-            {
-              "big": "肉及肉制品",
-              "sub": "畜禽内脏(肝、肾、肺、肠等)",
-              "matched_keyword": "畜禽内脏"
+              "label": "限量(以 Pb 计)",
+              "value": "0.2"
             }
-          ],
-          "category_a1": "肉及肉制品"
+          ]
         },
         {
           "category": "肉及肉制品",
@@ -458,64 +438,55 @@
               "matched_keyword": "畜禽内脏"
             }
           ],
-          "category_a1": "肉及肉制品"
+          "category_a1": "肉及肉制品",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
+            }
+          ]
         },
         {
           "category": "肉及肉制品",
           "food": "肉制品、畜禽内脏制品除外",
           "limit": "0.3",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "肉及肉制品",
+          "limits": [
             {
-              "big": "肉及肉制品",
-              "sub": "肉制品(包括内脏制品、血制品)",
-              "matched_keyword": "肉制品"
-            },
-            {
-              "big": "肉及肉制品",
-              "sub": "畜禽内脏(肝、肾、肺、肠等)",
-              "matched_keyword": "畜禽内脏"
+              "label": "限量(以 Pb 计)",
+              "value": "0.3"
             }
-          ],
-          "category_a1": "肉及肉制品"
+          ]
         },
         {
           "category": "肉及肉制品",
           "food": "畜禽内脏制品",
           "limit": "0.5",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "肉及肉制品",
+          "limits": [
             {
-              "big": "肉及肉制品",
-              "sub": "畜禽内脏(肝、肾、肺、肠等)",
-              "matched_keyword": "畜禽内脏"
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
             }
-          ],
-          "category_a1": "肉及肉制品"
+          ]
         },
         {
           "category": "水产动物及其制品",
           "food": "鲜、冻水产动物、鱼类、甲壳类、双壳贝类除外去除内脏、(、、)",
           "limit": "1.0",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "水产动物及其制品",
+          "limits": [
             {
-              "big": "水产动物及其制品",
-              "sub": "鱼类",
-              "matched_keyword": "鱼类"
-            },
-            {
-              "big": "水产动物及其制品",
-              "sub": "甲壳类(虾类、蟹类等)",
-              "matched_keyword": "甲壳类"
-            },
-            {
-              "big": "水产动物及其制品",
-              "sub": "双壳贝类",
-              "matched_keyword": "双壳贝类"
+              "label": "限量(以 Pb 计)",
+              "value": "1.0"
             }
-          ],
-          "category_a1": "水产动物及其制品"
+          ]
         },
         {
           "category": "水产动物及其制品",
@@ -523,24 +494,14 @@
           "limit": "1.0",
           "remark": "",
           "category_matched_by": "鱼",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "水产动物及其制品",
+          "limits": [
             {
-              "big": "水产动物及其制品",
-              "sub": "水产制品",
-              "matched_keyword": "水产制品"
-            },
-            {
-              "big": "水产动物及其制品",
-              "sub": "鱼类",
-              "matched_keyword": "鱼类"
-            },
-            {
-              "big": "水产动物及其制品",
-              "sub": "其他水产制品",
-              "matched_keyword": "海蜇制品"
+              "label": "限量(以 Pb 计)",
+              "value": "1.0"
             }
-          ],
-          "category_a1": "水产动物及其制品"
+          ]
         },
         {
           "category": "水产动物及其制品",
@@ -548,28 +509,28 @@
           "limit": "0.5",
           "remark": "",
           "category_matched_by": "鱼",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "水产动物及其制品",
+          "limits": [
             {
-              "big": "水产动物及其制品",
-              "sub": "鱼类",
-              "matched_keyword": "鱼类"
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
             }
-          ],
-          "category_a1": "水产动物及其制品"
+          ]
         },
         {
           "category": "双壳贝类",
           "food": "海蜇制品",
           "limit": "2.0",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "水产动物及其制品",
+          "limits": [
             {
-              "big": "水产动物及其制品",
-              "sub": "其他水产制品",
-              "matched_keyword": "海蜇制品"
+              "label": "限量(以 Pb 计)",
+              "value": "2.0"
             }
-          ],
-          "category_a1": "水产动物及其制品"
+          ]
         },
         {
           "category": "乳及乳制品",
@@ -577,34 +538,14 @@
           "limit": "0.2",
           "remark": "",
           "category_matched_by": "巴氏杀菌乳",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "乳及乳制品",
+          "limits": [
             {
-              "big": "乳及乳制品",
-              "sub": "生乳",
-              "matched_keyword": "生乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "巴氏杀菌乳",
-              "matched_keyword": "巴氏杀菌乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "灭菌乳",
-              "matched_keyword": "灭菌乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "调制乳",
-              "matched_keyword": "调制乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "发酵乳",
-              "matched_keyword": "发酵乳"
+              "label": "限量(以 Pb 计)",
+              "value": "0.2"
             }
-          ],
-          "category_a1": "乳及乳制品"
+          ]
         },
         {
           "category": "乳及乳制品",
@@ -612,24 +553,14 @@
           "limit": "0.02",
           "remark": "",
           "category_matched_by": "巴氏杀菌乳",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "乳及乳制品",
+          "limits": [
             {
-              "big": "乳及乳制品",
-              "sub": "生乳",
-              "matched_keyword": "生乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "巴氏杀菌乳",
-              "matched_keyword": "巴氏杀菌乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "灭菌乳",
-              "matched_keyword": "灭菌乳"
+              "label": "限量(以 Pb 计)",
+              "value": "0.02"
             }
-          ],
-          "category_a1": "乳及乳制品"
+          ]
         },
         {
           "category": "乳及乳制品",
@@ -637,19 +568,14 @@
           "limit": "0.04",
           "remark": "",
           "category_matched_by": "发酵乳",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "乳及乳制品",
+          "limits": [
             {
-              "big": "乳及乳制品",
-              "sub": "调制乳",
-              "matched_keyword": "调制乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "发酵乳",
-              "matched_keyword": "发酵乳"
+              "label": "限量(以 Pb 计)",
+              "value": "0.04"
             }
-          ],
-          "category_a1": "乳及乳制品"
+          ]
         },
         {
           "category": "调味品",
@@ -657,14 +583,14 @@
           "limit": "1.0",
           "remark": "",
           "category_matched_by": "调味",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "调味品",
+          "limits": [
             {
-              "big": "调味品",
-              "sub": "香辛料类",
-              "matched_keyword": "香辛料类"
+              "label": "限量(以 Pb 计)",
+              "value": "1.0"
             }
-          ],
-          "category_a1": "调味品"
+          ]
         },
         {
           "category": "调味品",
@@ -672,14 +598,14 @@
           "limit": "1.5",
           "remark": "",
           "category_matched_by": "花椒",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "调味品",
+          "limits": [
             {
-              "big": "调味品",
-              "sub": "香辛料类",
-              "matched_keyword": "香辛料类"
+              "label": "限量(以 Pb 计)",
+              "value": "1.5"
             }
-          ],
-          "category_a1": "调味品"
+          ]
         },
         {
           "category": "调味品",
@@ -687,14 +613,14 @@
           "limit": "3.0",
           "remark": "",
           "category_matched_by": "花椒",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "调味品",
+          "limits": [
             {
-              "big": "调味品",
-              "sub": "香辛料类",
-              "matched_keyword": "花椒"
+              "label": "限量(以 Pb 计)",
+              "value": "3.0"
             }
-          ],
-          "category_a1": "调味品"
+          ]
         },
         {
           "category": "糖、糖果、蜂蜜等",
@@ -702,14 +628,14 @@
           "limit": "0.5",
           "remark": "",
           "category_matched_by": "糖",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "食糖及淀粉糖",
+          "limits": [
             {
-              "big": "食糖及淀粉糖",
-              "sub": "淀粉糖(食用葡萄糖、低聚异麦芽糖、果葡糖浆、麦芽糖、麦芽糊精、葡萄糖浆等)",
-              "matched_keyword": "淀粉糖"
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
             }
-          ],
-          "category_a1": "食糖及淀粉糖"
+          ]
         },
         {
           "category": "淀粉及淀粉制品",
@@ -723,7 +649,13 @@
               "matched_keyword": "食用淀粉"
             }
           ],
-          "category_a1": "淀粉及淀粉制品(包括谷物、豆类和块根植物提取的淀粉)"
+          "category_a1": "淀粉及淀粉制品(包括谷物、豆类和块根植物提取的淀粉)",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.2"
+            }
+          ]
         },
         {
           "category": "淀粉及淀粉制品",
@@ -737,7 +669,13 @@
               "matched_keyword": "淀粉制品"
             }
           ],
-          "category_a1": "淀粉及淀粉制品(包括谷物、豆类和块根植物提取的淀粉)"
+          "category_a1": "淀粉及淀粉制品(包括谷物、豆类和块根植物提取的淀粉)",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
+            }
+          ]
         },
         {
           "category": "焙烤食品",
@@ -752,7 +690,13 @@
               "matched_keyword": "焙烤食品"
             }
           ],
-          "category_a1": "焙烤食品"
+          "category_a1": "焙烤食品",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
+            }
+          ]
         },
         {
           "category": "饮料类",
@@ -760,29 +704,14 @@
           "limit": "0.3",
           "remark": "",
           "category_matched_by": "饮料",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "饮料类",
+          "limits": [
             {
-              "big": "饮料类",
-              "sub": "包装饮用水",
-              "matched_keyword": "包装饮用水"
-            },
-            {
-              "big": "饮料类",
-              "sub": "含乳饮料(发酵型含乳饮料、配制型含乳饮料、乳酸菌饮料等)",
-              "matched_keyword": "含乳饮料"
-            },
-            {
-              "big": "饮料类",
-              "sub": "果蔬汁类及其饮料(苹果汁、苹果醋饮料、山楂汁、山楂醋饮料等)",
-              "matched_keyword": "果蔬汁类及其饮料"
-            },
-            {
-              "big": "饮料类",
-              "sub": "固体饮料(包括速溶咖啡、研磨咖啡、烘焙咖啡)",
-              "matched_keyword": "固体饮料"
+              "label": "限量(以 Pb 计)",
+              "value": "0.3"
             }
-          ],
-          "category_a1": "饮料类"
+          ]
         },
         {
           "category": "饮料类",
@@ -797,7 +726,13 @@
               "matched_keyword": "包装饮用水"
             }
           ],
-          "category_a1": "饮料类"
+          "category_a1": "饮料类",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.01mg/L"
+            }
+          ]
         },
         {
           "category": "饮料类",
@@ -812,7 +747,13 @@
               "matched_keyword": "含乳饮料"
             }
           ],
-          "category_a1": "饮料类"
+          "category_a1": "饮料类",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.05"
+            }
+          ]
         },
         {
           "category": "饮料类",
@@ -820,19 +761,14 @@
           "limit": "0.03",
           "remark": "",
           "category_matched_by": "饮料",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "饮料类",
+          "limits": [
             {
-              "big": "饮料类",
-              "sub": "果蔬汁类及其饮料(苹果汁、苹果醋饮料、山楂汁、山楂醋饮料等)",
-              "matched_keyword": "果蔬汁类及其饮料"
-            },
-            {
-              "big": "饮料类",
-              "sub": "浓缩果蔬汁(浆)",
-              "matched_keyword": "浓缩果蔬汁"
+              "label": "限量(以 Pb 计)",
+              "value": "0.03"
             }
-          ],
-          "category_a1": "饮料类"
+          ]
         },
         {
           "category": "饮料类",
@@ -840,33 +776,28 @@
           "limit": "0.05",
           "remark": "",
           "category_matched_by": "饮料",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "饮料类",
+          "limits": [
             {
-              "big": "饮料类",
-              "sub": "果蔬汁类及其饮料(苹果汁、苹果醋饮料、山楂汁、山楂醋饮料等)",
-              "matched_keyword": "果蔬汁类及其饮料"
-            },
-            {
-              "big": "饮料类",
-              "sub": "果蔬汁类及其饮料",
-              "matched_keyword": "葡萄汁"
+              "label": "限量(以 Pb 计)",
+              "value": "0.05"
             }
-          ],
-          "category_a1": "饮料类"
+          ]
         },
         {
           "category": "淀粉及淀粉制品",
           "food": "葡萄汁",
           "limit": "0.04",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "饮料类",
+          "limits": [
             {
-              "big": "饮料类",
-              "sub": "果蔬汁类及其饮料",
-              "matched_keyword": "葡萄汁"
+              "label": "限量(以 Pb 计)",
+              "value": "0.04"
             }
-          ],
-          "category_a1": "饮料类"
+          ]
         },
         {
           "category": "饮料类",
@@ -874,14 +805,14 @@
           "limit": "0.5",
           "remark": "",
           "category_matched_by": "果蔬汁",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "饮料类",
+          "limits": [
             {
-              "big": "饮料类",
-              "sub": "浓缩果蔬汁(浆)",
-              "matched_keyword": "浓缩果蔬汁"
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
             }
-          ],
-          "category_a1": "饮料类"
+          ]
         },
         {
           "category": "饮料类",
@@ -896,7 +827,13 @@
               "matched_keyword": "固体饮料"
             }
           ],
-          "category_a1": "饮料类"
+          "category_a1": "饮料类",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "1.0"
+            }
+          ]
         },
         {
           "category": "酒类",
@@ -904,19 +841,14 @@
           "limit": "0.2",
           "remark": "",
           "category_matched_by": "白酒",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "酒类",
+          "limits": [
             {
-              "big": "酒类",
-              "sub": "蒸馏酒(白酒、白兰地、威士忌、伏特加、朗姆酒等)",
-              "matched_keyword": "白酒"
-            },
-            {
-              "big": "酒类",
-              "sub": "发酵酒(葡萄酒、黄酒、果酒、啤酒等)",
-              "matched_keyword": "黄酒"
+              "label": "限量(以 Pb 计)",
+              "value": "0.2"
             }
-          ],
-          "category_a1": "酒类"
+          ]
         },
         {
           "category": "酒类",
@@ -924,19 +856,14 @@
           "limit": "0.5",
           "remark": "",
           "category_matched_by": "白酒",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "酒类",
+          "limits": [
             {
-              "big": "酒类",
-              "sub": "蒸馏酒(白酒、白兰地、威士忌、伏特加、朗姆酒等)",
-              "matched_keyword": "白酒"
-            },
-            {
-              "big": "酒类",
-              "sub": "发酵酒(葡萄酒、黄酒、果酒、啤酒等)",
-              "matched_keyword": "黄酒"
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
             }
-          ],
-          "category_a1": "酒类"
+          ]
         },
         {
           "category": "糖、糖果、蜂蜜等",
@@ -944,14 +871,14 @@
           "limit": "0.5",
           "remark": "",
           "category_matched_by": "糖",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "可可制品、巧克力和巧克力制品以及糖果",
+          "limits": [
             {
-              "big": "可可制品、巧克力和巧克力制品以及糖果",
-              "sub": "糖果(包括胶基糖果)",
-              "matched_keyword": "糖果"
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
             }
-          ],
-          "category_a1": "可可制品、巧克力和巧克力制品以及糖果"
+          ]
         },
         {
           "category": "糖、糖果、蜂蜜等",
@@ -959,14 +886,14 @@
           "limit": "0.3",
           "remark": "",
           "category_matched_by": "冷冻饮品",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "其他类(除上述食品以外的食品)",
+          "limits": [
             {
-              "big": "其他类(除上述食品以外的食品)",
-              "sub": "其他",
-              "matched_keyword": "冷冻饮品"
+              "label": "限量(以 Pb 计)",
+              "value": "0.3"
             }
-          ],
-          "category_a1": "其他类(除上述食品以外的食品)"
+          ]
         },
         {
           "category": "婴幼儿配方食品",
@@ -974,14 +901,14 @@
           "limit": "0.08",
           "remark": "",
           "category_matched_by": "婴幼儿配方食品",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "婴幼儿配方食品",
+          "limits": [
             {
-              "big": "婴幼儿配方食品",
-              "sub": "婴儿配方食品",
-              "matched_keyword": "婴幼儿配方食品"
+              "label": "限量(以 Pb 计)",
+              "value": "0.08"
             }
-          ],
-          "category_a1": "婴幼儿配方食品"
+          ]
         },
         {
           "category": "婴幼儿辅助食品",
@@ -989,14 +916,14 @@
           "limit": "0.2",
           "remark": "",
           "category_matched_by": "婴幼儿辅助食品",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "婴幼儿辅助食品",
+          "limits": [
             {
-              "big": "婴幼儿辅助食品",
-              "sub": "婴幼儿谷类辅助食品",
-              "matched_keyword": "婴幼儿辅助食品"
+              "label": "限量(以 Pb 计)",
+              "value": "0.2"
             }
-          ],
-          "category_a1": "婴幼儿辅助食品"
+          ]
         },
         {
           "category": "特殊医学用途配方食品",
@@ -1004,26 +931,27 @@
           "limit": "100.5",
           "remark": "",
           "category_matched_by": "特殊医学用途",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "特殊医学用途配方食品",
+          "limits": [
             {
-              "big": "特殊医学用途配方食品",
-              "sub": "特殊医学用途配方食品(1 岁以上人群)",
-              "matched_keyword": "特殊医学用途配方食品"
-            },
-            {
-              "big": "婴幼儿配方食品",
-              "sub": "特殊医学用途婴儿配方食品",
-              "matched_keyword": "特殊医学用途婴儿配方食品"
+              "label": "限量(以 Pb 计)",
+              "value": "100.5"
             }
-          ],
-          "category_a1": "特殊医学用途配方食品"
+          ]
         },
         {
           "category": "特殊膳食用食品",
           "food": "岁岁人群的产品以固态产品计",
           "limit": "1",
           "remark": "",
-          "subcategories": []
+          "subcategories": [],
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "1"
+            }
+          ]
         },
         {
           "category": "特殊膳食用食品",
@@ -1037,40 +965,41 @@
               "matched_keyword": "辅食营养补充品"
             }
           ],
-          "category_a1": "特殊膳食用食品"
+          "category_a1": "特殊膳食用食品",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
+            }
+          ]
         },
         {
           "category": "特殊膳食用食品",
           "food": "运动营养食品固态、半固态或粉状、",
           "limit": "0.5",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "特殊膳食用食品",
+          "limits": [
             {
-              "big": "特殊膳食用食品",
-              "sub": "运动营养食品",
-              "matched_keyword": "运动营养食品"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "粉",
-              "matched_keyword": "粉"
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
             }
-          ],
-          "category_a1": "特殊膳食用食品"
+          ]
         },
         {
           "category": "特殊膳食用食品",
           "food": "液态",
           "limit": "0.05",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "饮料类",
+          "limits": [
             {
-              "big": "饮料类",
-              "sub": "其他饮料",
-              "matched_keyword": "液态"
+              "label": "限量(以 Pb 计)",
+              "value": "0.05"
             }
-          ],
-          "category_a1": "饮料类"
+          ]
         },
         {
           "category": "特殊膳食用食品",
@@ -1084,7 +1013,13 @@
               "matched_keyword": "孕妇及乳母营养补充食品"
             }
           ],
-          "category_a1": "特殊膳食用食品"
+          "category_a1": "特殊膳食用食品",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
+            }
+          ]
         },
         {
           "category": "糖、糖果、蜂蜜等",
@@ -1099,7 +1034,13 @@
               "matched_keyword": "果冻"
             }
           ],
-          "category_a1": "其他类(除上述食品以外的食品)"
+          "category_a1": "其他类(除上述食品以外的食品)",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.4"
+            }
+          ]
         },
         {
           "category": "其他类",
@@ -1111,9 +1052,20 @@
               "big": "其他类(除上述食品以外的食品)",
               "sub": "膨化食品",
               "matched_keyword": "膨化食品"
+            },
+            {
+              "big": "豆类及其制品",
+              "sub": "非发酵豆制品(豆浆、豆腐类、豆干类、腐竹类、熟制豆类、大豆蛋白膨化食品、大豆素肉等)",
+              "matched_keyword": "膨化食品"
             }
           ],
-          "category_a1": "其他类(除上述食品以外的食品)"
+          "category_a1": "其他类(除上述食品以外的食品)",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
+            }
+          ]
         },
         {
           "category": "茶叶",
@@ -1128,7 +1080,13 @@
               "matched_keyword": "茶叶"
             }
           ],
-          "category_a1": "其他类(除上述食品以外的食品)"
+          "category_a1": "其他类(除上述食品以外的食品)",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "5.0"
+            }
+          ]
         },
         {
           "category": "其他类",
@@ -1142,7 +1100,13 @@
               "matched_keyword": "干菊花"
             }
           ],
-          "category_a1": "其他类(除上述食品以外的食品)"
+          "category_a1": "其他类(除上述食品以外的食品)",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "5.0"
+            }
+          ]
         },
         {
           "category": "其他类",
@@ -1156,7 +1120,13 @@
               "matched_keyword": "苦丁茶"
             }
           ],
-          "category_a1": "其他类(除上述食品以外的食品)"
+          "category_a1": "其他类(除上述食品以外的食品)",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "2.0"
+            }
+          ]
         },
         {
           "category": "糖、糖果、蜂蜜等",
@@ -1171,7 +1141,13 @@
               "matched_keyword": "蜂蜜"
             }
           ],
-          "category_a1": "其他类(除上述食品以外的食品)"
+          "category_a1": "其他类(除上述食品以外的食品)",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
+            }
+          ]
         },
         {
           "category": "蔬菜及其制品",
@@ -1179,14 +1155,14 @@
           "limit": "0.5",
           "remark": "",
           "category_matched_by": "菜花",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "其他类(除上述食品以外的食品)",
+          "limits": [
             {
-              "big": "其他类(除上述食品以外的食品)",
-              "sub": "花粉",
-              "matched_keyword": "花粉"
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
             }
-          ],
-          "category_a1": "其他类(除上述食品以外的食品)"
+          ]
         },
         {
           "category": "蔬菜及其制品",
@@ -1194,28 +1170,28 @@
           "limit": "1.0",
           "remark": "",
           "category_matched_by": "菜花",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "其他类(除上述食品以外的食品)",
+          "limits": [
             {
-              "big": "其他类(除上述食品以外的食品)",
-              "sub": "花粉",
-              "matched_keyword": "花粉"
+              "label": "限量(以 Pb 计)",
+              "value": "1.0"
             }
-          ],
-          "category_a1": "其他类(除上述食品以外的食品)"
+          ]
         },
         {
           "category": "其他类",
           "food": "松花粉",
           "limit": "1.5",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "其他类(除上述食品以外的食品)",
+          "limits": [
             {
-              "big": "其他类(除上述食品以外的食品)",
-              "sub": "花粉",
-              "matched_keyword": "花粉"
+              "label": "限量(以 Pb 计)",
+              "value": "1.5"
             }
-          ],
-          "category_a1": "其他类(除上述食品以外的食品)"
+          ]
         },
         {
           "category": "蔬菜及其制品",
@@ -1223,24 +1199,14 @@
           "limit": "8",
           "remark": "",
           "category_matched_by": "蔬菜",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "调味品",
+          "limits": [
             {
-              "big": "调味品",
-              "sub": "香辛料类",
-              "matched_keyword": "新鲜香辛料"
-            },
-            {
-              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
-              "sub": "新鲜蔬菜(未经加工的、经表面处理的、去皮或预切的、冷冻的蔬菜)",
-              "matched_keyword": "新鲜蔬菜"
-            },
-            {
-              "big": "水果及其制品",
-              "sub": "新鲜水果(未经加工的、经表面处理的、去皮或预切的、冷冻的水果)",
-              "matched_keyword": "新鲜水果"
+              "label": "限量(以 Pb 计)",
+              "value": "8"
             }
-          ],
-          "category_a1": "调味品"
+          ]
         }
       ],
       "footnotes": [
@@ -1271,6 +1237,12 @@
           "method": "按 GB 5009.12 规定的方法测定",
           "is_default": true
         }
+      ],
+      "limits_columns": [
+        {
+          "label": "限量(以 Pb 计)",
+          "basis": "Pb"
+        }
       ]
     },
     {
@@ -1285,77 +1257,42 @@
           "food": "谷物、稻谷a除外()",
           "limit": "0.1",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "谷物及其制品(不包括焙烤制品)",
+          "limits": [
             {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "谷物",
-              "matched_keyword": "谷物"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "稻谷",
-              "matched_keyword": "稻谷"
+              "label": "限量(以 Cd 计)",
+              "value": "0.1"
             }
-          ],
-          "category_a1": "谷物及其制品(不包括焙烤制品)"
+          ]
         },
         {
           "category": "谷物及其制品",
           "food": "谷物碾磨加工品、糙米、大米、粉、除外[、()]",
           "limit": "0.1",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "谷物及其制品(不包括焙烤制品)",
+          "limits": [
             {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "谷物碾磨加工品",
-              "matched_keyword": "谷物碾磨加工品"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "糙米(包括色稻米)",
-              "matched_keyword": "糙米"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "大米",
-              "matched_keyword": "大米"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "粉",
-              "matched_keyword": "粉"
+              "label": "限量(以 Cd 计)",
+              "value": "0.1"
             }
-          ],
-          "category_a1": "谷物及其制品(不包括焙烤制品)"
+          ]
         },
         {
           "category": "谷物及其制品",
           "food": "稻谷a、糙米、大米、粉、()",
           "limit": "0.2",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "谷物及其制品(不包括焙烤制品)",
+          "limits": [
             {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "稻谷",
-              "matched_keyword": "稻谷"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "糙米(包括色稻米)",
-              "matched_keyword": "糙米"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "大米",
-              "matched_keyword": "大米"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "粉",
-              "matched_keyword": "粉"
+              "label": "限量(以 Cd 计)",
+              "value": "0.2"
             }
-          ],
-          "category_a1": "谷物及其制品(不包括焙烤制品)"
+          ]
         },
         {
           "category": "豆类及其制品",
@@ -1363,34 +1300,14 @@
           "limit": "0.05",
           "remark": "",
           "category_matched_by": "豆类",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)",
+          "limits": [
             {
-              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
-              "sub": "新鲜蔬菜(未经加工的、经表面处理的、去皮或预切的、冷冻的蔬菜)",
-              "matched_keyword": "新鲜蔬菜"
-            },
-            {
-              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
-              "sub": "叶菜蔬菜(包括芸薹类叶菜)",
-              "matched_keyword": "叶菜蔬菜"
-            },
-            {
-              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
-              "sub": "豆类蔬菜",
-              "matched_keyword": "豆类蔬菜"
-            },
-            {
-              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
-              "sub": "块根和块茎蔬菜(薯类、胡萝卜、萝卜、生姜等)",
-              "matched_keyword": "块根和块茎蔬菜"
-            },
-            {
-              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
-              "sub": "茎类蔬菜",
-              "matched_keyword": "茎类蔬菜"
+              "label": "限量(以 Cd 计)",
+              "value": "0.05"
             }
-          ],
-          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)"
+          ]
         },
         {
           "category": "蔬菜及其制品",
@@ -1404,7 +1321,13 @@
               "matched_keyword": "叶菜蔬菜"
             }
           ],
-          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)"
+          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)",
+          "limits": [
+            {
+              "label": "限量(以 Cd 计)",
+              "value": "0.2"
+            }
+          ]
         },
         {
           "category": "豆类及其制品",
@@ -1412,31 +1335,27 @@
           "limit": "0.1",
           "remark": "",
           "category_matched_by": "豆类",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)",
+          "limits": [
             {
-              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
-              "sub": "豆类蔬菜",
-              "matched_keyword": "豆类蔬菜"
-            },
-            {
-              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
-              "sub": "块根和块茎蔬菜(薯类、胡萝卜、萝卜、生姜等)",
-              "matched_keyword": "块根和块茎蔬菜"
-            },
-            {
-              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
-              "sub": "茎类蔬菜",
-              "matched_keyword": "茎类蔬菜"
+              "label": "限量(以 Cd 计)",
+              "value": "0.1"
             }
-          ],
-          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)"
+          ]
         },
         {
           "category": "蔬菜及其制品",
           "food": "芹菜、黄花菜、",
           "limit": "0.2",
           "remark": "",
-          "subcategories": []
+          "subcategories": [],
+          "limits": [
+            {
+              "label": "限量(以 Cd 计)",
+              "value": "0.2"
+            }
+          ]
         },
         {
           "category": "水果及其制品",
@@ -1448,9 +1367,20 @@
               "big": "水果及其制品",
               "sub": "新鲜水果(未经加工的、经表面处理的、去皮或预切的、冷冻的水果)",
               "matched_keyword": "新鲜水果"
+            },
+            {
+              "big": "水果及其制品",
+              "sub": "其他新鲜水果(包括甘蔗)",
+              "matched_keyword": "新鲜水果"
             }
           ],
-          "category_a1": "水果及其制品"
+          "category_a1": "水果及其制品",
+          "limits": [
+            {
+              "label": "限量(以 Cd 计)",
+              "value": "0.05"
+            }
+          ]
         },
         {
           "category": "食用菌及其制品",
@@ -1458,19 +1388,14 @@
           "limit": "0.2",
           "remark": "",
           "category_matched_by": "食用菌",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "食用菌及其制品",
+          "limits": [
             {
-              "big": "食用菌及其制品",
-              "sub": "牛肝菌(美味牛肝菌 Boletus bainiugan、兰茂牛肝菌 Lanmaoa asiatica)",
-              "matched_keyword": "牛肝菌"
-            },
-            {
-              "big": "食用菌及其制品",
-              "sub": "木耳(毛木耳 Auricularia cornea、黑木耳 Auricularia heimuer)",
-              "matched_keyword": "木耳"
+              "label": "限量(以 Cd 计)",
+              "value": "0.2"
             }
-          ],
-          "category_a1": "食用菌及其制品"
+          ]
         },
         {
           "category": "食用菌及其制品",
@@ -1478,7 +1403,13 @@
           "limit": "0.6",
           "remark": "",
           "category_matched_by": "食用菌",
-          "subcategories": []
+          "subcategories": [],
+          "limits": [
+            {
+              "label": "限量(以 Cd 计)",
+              "value": "0.6"
+            }
+          ]
         },
         {
           "category": "食用菌及其制品",
@@ -1486,14 +1417,14 @@
           "limit": "1.0",
           "remark": "",
           "category_matched_by": "食用菌",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "食用菌及其制品",
+          "limits": [
             {
-              "big": "食用菌及其制品",
-              "sub": "牛肝菌(美味牛肝菌 Boletus bainiugan、兰茂牛肝菌 Lanmaoa asiatica)",
-              "matched_keyword": "牛肝菌"
+              "label": "限量(以 Cd 计)",
+              "value": "1.0"
             }
-          ],
-          "category_a1": "食用菌及其制品"
+          ]
         },
         {
           "category": "食用菌及其制品",
@@ -1501,7 +1432,13 @@
           "limit": "2.0",
           "remark": "",
           "category_matched_by": "食用菌",
-          "subcategories": []
+          "subcategories": [],
+          "limits": [
+            {
+              "label": "限量(以 Cd 计)",
+              "value": "2.0"
+            }
+          ]
         },
         {
           "category": "食用菌及其制品",
@@ -1509,21 +1446,33 @@
           "limit": "0.5",
           "remark": "",
           "category_matched_by": "木耳",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "食用菌及其制品",
+          "limits": [
             {
-              "big": "食用菌及其制品",
-              "sub": "木耳(毛木耳 Auricularia cornea、黑木耳 Auricularia heimuer)",
-              "matched_keyword": "木耳"
+              "label": "限量(以 Cd 计)",
+              "value": "0.5"
             }
-          ],
-          "category_a1": "食用菌及其制品"
+          ]
         },
         {
           "category": "坚果及籽类",
           "food": "花生",
           "limit": "0.5",
           "remark": "",
-          "subcategories": []
+          "subcategories": [
+            {
+              "big": "坚果及籽类",
+              "sub": "坚果及籽类的泥、酱(花生酱等)",
+              "matched_keyword": "花生"
+            }
+          ],
+          "limits": [
+            {
+              "label": "限量(以 Cd 计)",
+              "value": "0.5"
+            }
+          ]
         },
         {
           "category": "肉及肉制品",
@@ -1531,19 +1480,14 @@
           "limit": "0.1",
           "remark": "",
           "category_matched_by": "肉制品",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "肉及肉制品",
+          "limits": [
             {
-              "big": "肉及肉制品",
-              "sub": "肉制品(包括内脏制品、血制品)",
-              "matched_keyword": "肉制品"
-            },
-            {
-              "big": "肉及肉制品",
-              "sub": "畜禽内脏(肝、肾、肺、肠等)",
-              "matched_keyword": "畜禽内脏"
+              "label": "限量(以 Cd 计)",
+              "value": "0.1"
             }
-          ],
-          "category_a1": "肉及肉制品"
+          ]
         },
         {
           "category": "水产动物及其制品",
@@ -1551,14 +1495,14 @@
           "limit": "0.5",
           "remark": "",
           "category_matched_by": "虾",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "水产动物及其制品",
+          "limits": [
             {
-              "big": "水产动物及其制品",
-              "sub": "甲壳类(虾类、蟹类等)",
-              "matched_keyword": "甲壳类"
+              "label": "限量(以 Cd 计)",
+              "value": "0.5"
             }
-          ],
-          "category_a1": "水产动物及其制品"
+          ]
         },
         {
           "category": "水产动物及其制品",
@@ -1566,7 +1510,13 @@
           "limit": "3.0",
           "remark": "",
           "category_matched_by": "虾",
-          "subcategories": []
+          "subcategories": [],
+          "limits": [
+            {
+              "label": "限量(以 Cd 计)",
+              "value": "3.0"
+            }
+          ]
         },
         {
           "category": "水产动物及其制品",
@@ -1574,29 +1524,14 @@
           "limit": "2.0",
           "remark": "",
           "category_matched_by": "贝",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "水产动物及其制品",
+          "limits": [
             {
-              "big": "水产动物及其制品",
-              "sub": "双壳贝类",
-              "matched_keyword": "双壳贝类"
-            },
-            {
-              "big": "水产动物及其制品",
-              "sub": "腹足类",
-              "matched_keyword": "腹足类"
-            },
-            {
-              "big": "水产动物及其制品",
-              "sub": "头足类",
-              "matched_keyword": "头足类"
-            },
-            {
-              "big": "水产动物及其制品",
-              "sub": "棘皮类",
-              "matched_keyword": "棘皮类"
+              "label": "限量(以 Cd 计)",
+              "value": "2.0"
             }
-          ],
-          "category_a1": "水产动物及其制品"
+          ]
         },
         {
           "category": "水产动物及其制品",
@@ -1604,14 +1539,14 @@
           "limit": "0.2",
           "remark": "",
           "category_matched_by": "鱼",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "水产动物及其制品",
+          "limits": [
             {
-              "big": "水产动物及其制品",
-              "sub": "水产制品",
-              "matched_keyword": "水产制品"
+              "label": "限量(以 Cd 计)",
+              "value": "0.2"
             }
-          ],
-          "category_a1": "水产动物及其制品"
+          ]
         },
         {
           "category": "水产动物及其制品",
@@ -1619,14 +1554,14 @@
           "limit": "0.1",
           "remark": "",
           "category_matched_by": "鱼",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "水产动物及其制品",
+          "limits": [
             {
-              "big": "水产动物及其制品",
-              "sub": "鱼类",
-              "matched_keyword": "鱼类"
+              "label": "限量(以 Cd 计)",
+              "value": "0.1"
             }
-          ],
-          "category_a1": "水产动物及其制品"
+          ]
         },
         {
           "category": "调味品",
@@ -1640,26 +1575,27 @@
               "matched_keyword": "食用盐"
             }
           ],
-          "category_a1": "调味品"
+          "category_a1": "调味品",
+          "limits": [
+            {
+              "label": "限量(以 Cd 计)",
+              "value": "0.5"
+            }
+          ]
         },
         {
           "category": "饮料类",
           "food": "包装饮用水、饮用天然矿泉水除外()",
           "limit": "0.005mg/L",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "饮料类",
+          "limits": [
             {
-              "big": "饮料类",
-              "sub": "包装饮用水",
-              "matched_keyword": "包装饮用水"
-            },
-            {
-              "big": "饮料类",
-              "sub": "饮用天然矿泉水",
-              "matched_keyword": "饮用天然矿泉水"
+              "label": "限量(以 Cd 计)",
+              "value": "0.005mg/L"
             }
-          ],
-          "category_a1": "饮料类"
+          ]
         },
         {
           "category": "饮料类",
@@ -1673,7 +1609,13 @@
               "matched_keyword": "饮用天然矿泉水"
             }
           ],
-          "category_a1": "饮料类"
+          "category_a1": "饮料类",
+          "limits": [
+            {
+              "label": "限量(以 Cd 计)",
+              "value": "0.003mg/L"
+            }
+          ]
         },
         {
           "category": "婴幼儿辅助食品",
@@ -1688,14 +1630,26 @@
               "matched_keyword": "婴幼儿谷类辅助食品"
             }
           ],
-          "category_a1": "婴幼儿辅助食品"
+          "category_a1": "婴幼儿辅助食品",
+          "limits": [
+            {
+              "label": "限量(以 Cd 计)",
+              "value": "0.06"
+            }
+          ]
         },
         {
           "category": "特殊膳食用食品",
           "food": "汞",
           "limit": "43",
           "remark": "",
-          "subcategories": []
+          "subcategories": [],
+          "limits": [
+            {
+              "label": "限量(以 Cd 计)",
+              "value": "43"
+            }
+          ]
         }
       ],
       "footnotes": [
@@ -1709,6 +1663,12 @@
           "apply": "全部食品",
           "method": "按 GB 5009.15 规定的方法测定",
           "is_default": true
+        }
+      ],
+      "limits_columns": [
+        {
+          "label": "限量(以 Cd 计)",
+          "basis": "Cd"
         }
       ]
     },
@@ -1725,13 +1685,7 @@
           "limit": "—",
           "remark": "",
           "category_matched_by": "鱼",
-          "subcategories": [
-            {
-              "big": "水产动物及其制品",
-              "sub": "肉食性鱼类(金枪鱼、金目鲷、枪鱼、鲨鱼等)",
-              "matched_keyword": "肉食性鱼类"
-            }
-          ],
+          "subcategories": [],
           "category_a1": "水产动物及其制品"
         },
         {
@@ -1740,18 +1694,7 @@
           "limit": "—",
           "remark": "",
           "category_matched_by": "鱼",
-          "subcategories": [
-            {
-              "big": "水产动物及其制品",
-              "sub": "肉食性鱼类(金枪鱼、金目鲷、枪鱼、鲨鱼等)",
-              "matched_keyword": "肉食性鱼类"
-            },
-            {
-              "big": "水产动物及其制品",
-              "sub": "鱼类",
-              "matched_keyword": "鱼类"
-            }
-          ],
+          "subcategories": [],
           "category_a1": "水产动物及其制品"
         },
         {
@@ -1759,44 +1702,14 @@
           "food": "稻谷b、糙米、大米、粉、玉米、玉米粉、玉米糁、渣、小麦、小麦粉、()、、、()、、",
           "limit": "0.02",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "谷物及其制品(不包括焙烤制品)",
+          "limits": [
             {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "稻谷",
-              "matched_keyword": "稻谷"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "糙米(包括色稻米)",
-              "matched_keyword": "糙米"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "大米",
-              "matched_keyword": "大米"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "粉",
-              "matched_keyword": "粉"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "玉米",
-              "matched_keyword": "玉米"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "小麦",
-              "matched_keyword": "小麦"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "小麦粉(包括食用麸皮)",
-              "matched_keyword": "小麦粉"
+              "label": "限量(以 Hg 计)",
+              "value": "0.02"
             }
-          ],
-          "category_a1": "谷物及其制品(不包括焙烤制品)"
+          ]
         },
         {
           "category": "蔬菜及其制品",
@@ -1808,73 +1721,34 @@
               "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
               "sub": "新鲜蔬菜(未经加工的、经表面处理的、去皮或预切的、冷冻的蔬菜)",
               "matched_keyword": "新鲜蔬菜"
-            }
-          ],
-          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)"
-        },
-        {
-          "category": "食用菌及其制品",
-          "food": "食用菌及其制品、木耳及其制品、银耳及其制品除外(、)",
-          "limit": "—",
-          "remark": "",
-          "category_matched_by": "食用菌",
-          "subcategories": [
+            },
             {
-              "big": "食用菌及其制品",
-              "sub": "木耳(毛木耳 Auricularia cornea、黑木耳 Auricularia heimuer)",
-              "matched_keyword": "木耳"
+              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
+              "sub": "其他新鲜蔬菜(瓜果类、鳞茎类和水生类、芽菜类、竹笋、黄花菜等多年生蔬菜)",
+              "matched_keyword": "新鲜蔬菜"
             }
           ],
-          "category_a1": "食用菌及其制品"
-        },
-        {
-          "category": "食用菌及其制品",
-          "food": "木耳及其制品、银耳及其制品干重计、",
-          "limit": "—",
-          "remark": "",
-          "category_matched_by": "木耳",
-          "subcategories": [
+          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)",
+          "limits": [
             {
-              "big": "食用菌及其制品",
-              "sub": "木耳(毛木耳 Auricularia cornea、黑木耳 Auricularia heimuer)",
-              "matched_keyword": "木耳"
+              "label": "限量(以 Hg 计)",
+              "value": "0.01"
             }
-          ],
-          "category_a1": "食用菌及其制品"
+          ]
         },
         {
           "category": "乳及乳制品",
           "food": "生乳、巴氏杀菌乳、灭菌乳、调制乳、发酵乳、、、、",
           "limit": "0.01",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "乳及乳制品",
+          "limits": [
             {
-              "big": "乳及乳制品",
-              "sub": "生乳",
-              "matched_keyword": "生乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "巴氏杀菌乳",
-              "matched_keyword": "巴氏杀菌乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "灭菌乳",
-              "matched_keyword": "灭菌乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "调制乳",
-              "matched_keyword": "调制乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "发酵乳",
-              "matched_keyword": "发酵乳"
+              "label": "限量(以 Hg 计)",
+              "value": "0.01"
             }
-          ],
-          "category_a1": "乳及乳制品"
+          ]
         },
         {
           "category": "蛋及蛋制品",
@@ -1888,7 +1762,13 @@
               "matched_keyword": "鲜蛋"
             }
           ],
-          "category_a1": "蛋及蛋制品"
+          "category_a1": "蛋及蛋制品",
+          "limits": [
+            {
+              "label": "限量(以 Hg 计)",
+              "value": "0.05"
+            }
+          ]
         },
         {
           "category": "调味品",
@@ -1902,7 +1782,13 @@
               "matched_keyword": "食用盐"
             }
           ],
-          "category_a1": "调味品"
+          "category_a1": "调味品",
+          "limits": [
+            {
+              "label": "限量(以 Hg 计)",
+              "value": "0.1"
+            }
+          ]
         },
         {
           "category": "饮料类",
@@ -1916,7 +1802,13 @@
               "matched_keyword": "饮用天然矿泉水"
             }
           ],
-          "category_a1": "饮料类"
+          "category_a1": "饮料类",
+          "limits": [
+            {
+              "label": "限量(以 Hg 计)",
+              "value": "0.001mg/L"
+            }
+          ]
         },
         {
           "category": "婴幼儿辅助食品",
@@ -1931,21 +1823,26 @@
               "matched_keyword": "婴幼儿罐装辅助食品"
             }
           ],
-          "category_a1": "婴幼儿辅助食品"
-        },
-        {
-          "category": "特殊膳食用食品",
-          "food": ":“",
-          "limit": "—",
-          "remark": "",
-          "subcategories": []
+          "category_a1": "婴幼儿辅助食品",
+          "limits": [
+            {
+              "label": "限量(以 Hg 计)",
+              "value": "0.02"
+            }
+          ]
         },
         {
           "category": "特殊膳食用食品",
           "food": "测定。",
           "limit": "44",
           "remark": "",
-          "subcategories": []
+          "subcategories": [],
+          "limits": [
+            {
+              "label": "限量(以 Hg 计)",
+              "value": "44"
+            }
+          ]
         }
       ],
       "footnotes": [
@@ -1972,6 +1869,12 @@
           "method": "按 GB 5009.17 规定的方法测定",
           "is_default": true
         }
+      ],
+      "limits_columns": [
+        {
+          "label": "限量(以 Hg 计)",
+          "basis": "Hg"
+        }
       ]
     },
     {
@@ -1982,441 +1885,670 @@
       "inspection_method": "包装饮用水按 GB 8538 规定的方法测定,其他食品按 GB 5009.11 规定的方法测定。",
       "items": [
         {
+          "sub": "谷物(稻谷除外)",
+          "big": "谷物及其制品(不包括焙烤制品)",
           "category": "谷物及其制品",
-          "food": "谷物、稻谷、除外(b)",
-          "limit": "—",
-          "remark": "",
-          "subcategories": [
+          "food": "谷物(稻谷除外)",
+          "limits": [
             {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "谷物",
-              "matched_keyword": "谷物"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "稻谷",
-              "matched_keyword": "稻谷"
+              "label": "总砷",
+              "value": "0.5"
             }
           ],
-          "category_a1": "谷物及其制品(不包括焙烤制品)"
+          "limit": "0.5",
+          "limit_raw": "0.5",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "谷物及其制品(不包括焙烤制品)",
+          "subcategories": []
         },
         {
+          "sub": "稻谷",
+          "big": "谷物及其制品(不包括焙烤制品)",
           "category": "谷物及其制品",
           "food": "稻谷",
-          "limit": "—",
-          "remark": "",
+          "limits": [
+            {
+              "label": "无机砷",
+              "value": "0.35"
+            }
+          ],
+          "limit": "0.35",
+          "limit_raw": "0.35",
+          "unit": "mg/kg",
+          "remark": "稻谷以糙米计",
+          "footnotes": [
+            "b"
+          ],
+          "category_a1": "谷物及其制品(不包括焙烤制品)",
           "subcategories": [
             {
               "big": "谷物及其制品(不包括焙烤制品)",
               "sub": "稻谷",
               "matched_keyword": "稻谷"
             }
-          ],
-          "category_a1": "谷物及其制品(不包括焙烤制品)"
+          ]
         },
         {
+          "sub": "谷物碾磨加工品(糙米、大米(粉)除外)",
+          "big": "谷物及其制品(不包括焙烤制品)",
           "category": "谷物及其制品",
-          "food": "谷物碾磨加工品、糙米、大米、粉、除外[、()]",
-          "limit": "0.5",
-          "remark": "",
-          "subcategories": [
+          "food": "谷物碾磨加工品(糙米、大米(粉)除外)",
+          "limits": [
             {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "谷物碾磨加工品",
-              "matched_keyword": "谷物碾磨加工品"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "糙米(包括色稻米)",
-              "matched_keyword": "糙米"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "大米",
-              "matched_keyword": "大米"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "粉",
-              "matched_keyword": "粉"
+              "label": "总砷",
+              "value": "0.5"
             }
           ],
-          "category_a1": "谷物及其制品(不包括焙烤制品)"
+          "limit": "0.5",
+          "limit_raw": "0.5",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "谷物及其制品(不包括焙烤制品)",
+          "subcategories": []
         },
         {
+          "sub": "糙米",
+          "big": "谷物及其制品(不包括焙烤制品)",
           "category": "谷物及其制品",
           "food": "糙米",
-          "limit": "—",
+          "limits": [
+            {
+              "label": "无机砷",
+              "value": "0.35"
+            }
+          ],
+          "limit": "0.35",
+          "limit_raw": "0.35",
+          "unit": "mg/kg",
           "remark": "",
+          "footnotes": [],
+          "category_a1": "谷物及其制品(不包括焙烤制品)",
           "subcategories": [
             {
               "big": "谷物及其制品(不包括焙烤制品)",
               "sub": "糙米(包括色稻米)",
               "matched_keyword": "糙米"
             }
-          ],
-          "category_a1": "谷物及其制品(不包括焙烤制品)"
+          ]
         },
         {
+          "sub": "大米(粉)",
+          "big": "谷物及其制品(不包括焙烤制品)",
           "category": "谷物及其制品",
-          "food": "大米、粉()",
-          "limit": "—",
-          "remark": "",
-          "subcategories": [
+          "food": "大米(粉)",
+          "limits": [
             {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "大米",
-              "matched_keyword": "大米"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "粉",
-              "matched_keyword": "粉"
+              "label": "无机砷",
+              "value": "0.2"
             }
           ],
-          "category_a1": "谷物及其制品(不包括焙烤制品)"
+          "limit": "0.2",
+          "limit_raw": "0.2",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "谷物及其制品(不包括焙烤制品)",
+          "subcategories": []
         },
         {
+          "sub": "水产动物及其制品(鱼类及其制品除外)",
+          "big": "水产动物及其制品",
           "category": "水产动物及其制品",
-          "food": "水产动物及其制品、鱼类及其制品除外()",
-          "limit": "—",
-          "remark": "",
-          "category_matched_by": "鱼",
-          "subcategories": [
+          "food": "水产动物及其制品(鱼类及其制品除外)",
+          "limits": [
             {
-              "big": "水产动物及其制品",
-              "sub": "鱼类",
-              "matched_keyword": "鱼类"
+              "label": "无机砷",
+              "value": "0.5"
             }
           ],
-          "category_a1": "水产动物及其制品"
+          "limit": "0.5",
+          "limit_raw": "0.5",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "水产动物及其制品",
+          "subcategories": []
         },
         {
+          "sub": "鱼类及其制品",
+          "big": "水产动物及其制品",
+          "category": "水产动物及其制品",
+          "food": "鱼类及其制品",
+          "limits": [
+            {
+              "label": "无机砷",
+              "value": "0.1"
+            }
+          ],
+          "limit": "0.1",
+          "limit_raw": "0.1",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "水产动物及其制品",
+          "subcategories": []
+        },
+        {
+          "sub": "新鲜蔬菜",
+          "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
           "category": "蔬菜及其制品",
           "food": "新鲜蔬菜",
+          "limits": [
+            {
+              "label": "总砷",
+              "value": "0.5"
+            }
+          ],
           "limit": "0.5",
+          "limit_raw": "0.5",
+          "unit": "mg/kg",
           "remark": "",
+          "footnotes": [],
+          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)",
           "subcategories": [
             {
               "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
               "sub": "新鲜蔬菜(未经加工的、经表面处理的、去皮或预切的、冷冻的蔬菜)",
               "matched_keyword": "新鲜蔬菜"
-            }
-          ],
-          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)"
-        },
-        {
-          "category": "食用菌及其制品",
-          "food": "食用菌及其制品、松茸及其制品、木耳及其制品、银耳及其制品除外(、、)",
-          "limit": "—",
-          "remark": "",
-          "category_matched_by": "食用菌",
-          "subcategories": [
+            },
             {
-              "big": "食用菌及其制品",
-              "sub": "木耳(毛木耳 Auricularia cornea、黑木耳 Auricularia heimuer)",
-              "matched_keyword": "木耳"
+              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
+              "sub": "其他新鲜蔬菜(瓜果类、鳞茎类和水生类、芽菜类、竹笋、黄花菜等多年生蔬菜)",
+              "matched_keyword": "新鲜蔬菜"
             }
-          ],
-          "category_a1": "食用菌及其制品"
+          ]
         },
         {
+          "sub": "食用菌及其制品(松茸、木耳、银耳及其制品除外)",
+          "big": "食用菌及其制品",
           "category": "食用菌及其制品",
-          "food": "木耳及其制品、银耳及其制品干重计、",
-          "limit": "—",
-          "remark": "",
-          "category_matched_by": "木耳",
-          "subcategories": [
+          "food": "食用菌及其制品(松茸、木耳、银耳及其制品除外)",
+          "limits": [
             {
-              "big": "食用菌及其制品",
-              "sub": "木耳(毛木耳 Auricularia cornea、黑木耳 Auricularia heimuer)",
-              "matched_keyword": "木耳"
+              "label": "无机砷",
+              "value": "0.5"
             }
           ],
-          "category_a1": "食用菌及其制品"
+          "limit": "0.5",
+          "limit_raw": "0.5",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "食用菌及其制品",
+          "subcategories": []
         },
         {
+          "sub": "松茸及其制品",
+          "big": "食用菌及其制品",
+          "category": "食用菌及其制品",
+          "food": "松茸及其制品",
+          "limits": [
+            {
+              "label": "无机砷",
+              "value": "0.8"
+            }
+          ],
+          "limit": "0.8",
+          "limit_raw": "0.8",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "食用菌及其制品",
+          "subcategories": []
+        },
+        {
+          "sub": "木耳及其制品、银耳及其制品(干重计)",
+          "big": "食用菌及其制品",
+          "category": "食用菌及其制品",
+          "food": "木耳及其制品、银耳及其制品(干重计)",
+          "limits": [
+            {
+              "label": "无机砷",
+              "value": "0.5"
+            }
+          ],
+          "limit": "0.5",
+          "limit_raw": "0.5",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "食用菌及其制品",
+          "subcategories": []
+        },
+        {
+          "sub": "肉及肉制品",
+          "big": "肉及肉制品",
+          "category": "肉及肉制品",
+          "food": "肉及肉制品",
+          "limits": [
+            {
+              "label": "总砷",
+              "value": "0.5"
+            }
+          ],
+          "limit": "0.5",
+          "limit_raw": "0.5",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "肉及肉制品",
+          "subcategories": []
+        },
+        {
+          "sub": "生乳、巴氏杀菌乳、灭菌乳、调制乳、发酵乳",
+          "big": "乳及乳制品",
           "category": "乳及乳制品",
-          "food": "生乳、巴氏杀菌乳、灭菌乳、调制乳、发酵乳、、、、",
-          "limit": "—",
-          "remark": "",
-          "subcategories": [
+          "food": "生乳、巴氏杀菌乳、灭菌乳、调制乳、发酵乳",
+          "limits": [
             {
-              "big": "乳及乳制品",
-              "sub": "生乳",
-              "matched_keyword": "生乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "巴氏杀菌乳",
-              "matched_keyword": "巴氏杀菌乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "灭菌乳",
-              "matched_keyword": "灭菌乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "调制乳",
-              "matched_keyword": "调制乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "发酵乳",
-              "matched_keyword": "发酵乳"
+              "label": "总砷",
+              "value": "0.1"
             }
           ],
-          "category_a1": "乳及乳制品"
+          "limit": "0.1",
+          "limit_raw": "0.1",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "乳及乳制品",
+          "subcategories": []
         },
         {
+          "sub": "乳粉和调制乳粉",
+          "big": "乳及乳制品",
           "category": "乳及乳制品",
           "food": "乳粉和调制乳粉",
+          "limits": [
+            {
+              "label": "总砷",
+              "value": "0.5"
+            }
+          ],
           "limit": "0.5",
+          "limit_raw": "0.5",
+          "unit": "mg/kg",
           "remark": "",
+          "footnotes": [],
+          "category_a1": "乳及乳制品",
           "subcategories": [
             {
               "big": "乳及乳制品",
               "sub": "乳粉和调制乳粉",
               "matched_keyword": "乳粉和调制乳粉"
             }
-          ],
-          "category_a1": "乳及乳制品"
+          ]
         },
         {
-          "category": "食用油、油脂及其制品",
-          "food": "油脂及其制品、鱼油及其制品、磷虾油及其制品除外(、)",
+          "sub": "油脂及其制品(鱼油、磷虾油及其制品除外)",
+          "big": "油脂及其制品",
+          "category": "油脂及其制品",
+          "food": "油脂及其制品(鱼油、磷虾油及其制品除外)",
+          "limits": [
+            {
+              "label": "总砷",
+              "value": "0.1"
+            }
+          ],
           "limit": "0.1",
+          "limit_raw": "0.1",
+          "unit": "mg/kg",
           "remark": "",
-          "category_matched_by": "油脂",
+          "footnotes": [],
+          "category_a1": "油脂及其制品",
           "subcategories": []
         },
         {
-          "category": "水产动物及其制品",
-          "food": "调味品、水产调味品、复合调味料和香辛料类除外(、)",
-          "limit": "0.5",
-          "remark": "",
-          "category_matched_by": "水产",
-          "subcategories": [
+          "sub": "鱼油及其制品、磷虾油及其制品",
+          "big": "油脂及其制品",
+          "category": "油脂及其制品",
+          "food": "鱼油及其制品、磷虾油及其制品",
+          "limits": [
             {
-              "big": "调味品",
-              "sub": "水产调味品",
-              "matched_keyword": "水产调味品"
-            },
-            {
-              "big": "调味品",
-              "sub": "复合调味料(调味料酒、固体汤料、鸡精、鸡粉、蛋黄酱、沙拉酱、调味清汁等)",
-              "matched_keyword": "复合调味料"
+              "label": "无机砷",
+              "value": "0.1"
             }
           ],
-          "category_a1": "调味品"
+          "limit": "0.1",
+          "limit_raw": "0.1",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "油脂及其制品",
+          "subcategories": []
         },
         {
-          "category": "水产动物及其制品",
-          "food": "水产调味品、鱼类调味品除外()",
-          "limit": "—",
-          "remark": "",
-          "category_matched_by": "鱼",
-          "subcategories": [
+          "sub": "调味品(水产调味品、复合调味料和香辛料类除外)",
+          "big": "调味料",
+          "category": "调味料",
+          "food": "调味品(水产调味品、复合调味料和香辛料类除外)",
+          "limits": [
             {
-              "big": "调味品",
-              "sub": "水产调味品",
-              "matched_keyword": "水产调味品"
-            },
+              "label": "总砷",
+              "value": "0.5"
+            }
+          ],
+          "limit": "0.5",
+          "limit_raw": "0.5",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "调味料",
+          "subcategories": []
+        },
+        {
+          "sub": "水产调味品(鱼类调味品除外)",
+          "big": "调味料",
+          "category": "调味料",
+          "food": "水产调味品(鱼类调味品除外)",
+          "limits": [
+            {
+              "label": "无机砷",
+              "value": "0.5"
+            }
+          ],
+          "limit": "0.5",
+          "limit_raw": "0.5",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "调味料",
+          "subcategories": []
+        },
+        {
+          "sub": "鱼类调味品",
+          "big": "调味料",
+          "category": "调味料",
+          "food": "鱼类调味品",
+          "limits": [
+            {
+              "label": "无机砷",
+              "value": "0.1"
+            }
+          ],
+          "limit": "0.1",
+          "limit_raw": "0.1",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "调味料",
+          "subcategories": [
             {
               "big": "调味品",
               "sub": "鱼类调味品(鱼露等)",
               "matched_keyword": "鱼类调味品"
             }
-          ],
-          "category_a1": "调味品"
+          ]
         },
         {
-          "category": "调味品",
+          "sub": "复合调味料",
+          "big": "调味料",
+          "category": "调味料",
           "food": "复合调味料",
-          "limit": "—",
+          "limits": [
+            {
+              "label": "无机砷",
+              "value": "0.1"
+            }
+          ],
+          "limit": "0.1",
+          "limit_raw": "0.1",
+          "unit": "mg/kg",
           "remark": "",
-          "category_matched_by": "调味料",
+          "footnotes": [],
+          "category_a1": "调味料",
           "subcategories": [
             {
               "big": "调味品",
               "sub": "复合调味料(调味料酒、固体汤料、鸡精、鸡粉、蛋黄酱、沙拉酱、调味清汁等)",
               "matched_keyword": "复合调味料"
             }
-          ],
-          "category_a1": "调味品"
+          ]
         },
         {
-          "category": "糖、糖果、蜂蜜等",
+          "sub": "食糖及淀粉糖",
+          "big": "食糖及淀粉糖(蜂蜜除外)",
+          "category": "食糖及淀粉糖",
           "food": "食糖及淀粉糖",
-          "limit": "0.5",
-          "remark": "",
-          "category_matched_by": "糖",
-          "subcategories": [
+          "limits": [
             {
-              "big": "食糖及淀粉糖",
-              "sub": "淀粉糖(食用葡萄糖、低聚异麦芽糖、果葡糖浆、麦芽糖、麦芽糊精、葡萄糖浆等)",
-              "matched_keyword": "淀粉糖"
+              "label": "总砷",
+              "value": "0.5"
             }
           ],
-          "category_a1": "食糖及淀粉糖"
+          "limit": "0.5",
+          "limit_raw": "0.5",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "食糖及淀粉糖(蜂蜜除外)",
+          "subcategories": []
         },
         {
+          "sub": "包装饮用水",
+          "big": "饮料类",
           "category": "饮料类",
           "food": "包装饮用水",
-          "limit": "0.01mg/L",
+          "limits": [
+            {
+              "label": "总砷",
+              "value": "0.01"
+            }
+          ],
+          "limit": "0.01",
+          "limit_raw": "0.01",
+          "unit": "mg/L",
           "remark": "",
+          "footnotes": [],
+          "category_a1": "饮料类",
           "subcategories": [
             {
               "big": "饮料类",
               "sub": "包装饮用水",
               "matched_keyword": "包装饮用水"
             }
-          ],
-          "category_a1": "饮料类"
+          ]
         },
         {
-          "category": "糖、糖果、蜂蜜等",
-          "food": "可可制品、巧克力和巧克力制品以及糖果、可可制品、巧克力和巧克力制品、",
+          "sub": "可可制品、巧克力和巧克力制品",
+          "big": "可可制品、巧克力和巧克力制品以及糖果",
+          "category": "可可制品、巧克力和巧克力制品以及糖果",
+          "food": "可可制品、巧克力和巧克力制品",
+          "limits": [
+            {
+              "label": "总砷",
+              "value": "0.5"
+            }
+          ],
           "limit": "0.5",
+          "limit_raw": "0.5",
+          "unit": "mg/kg",
           "remark": "",
-          "category_matched_by": "糖",
+          "footnotes": [],
+          "category_a1": "可可制品、巧克力和巧克力制品以及糖果",
           "subcategories": [
             {
               "big": "可可制品、巧克力和巧克力制品以及糖果",
-              "sub": "糖果(包括胶基糖果)",
-              "matched_keyword": "糖果"
+              "sub": "可可制品、巧克力和巧克力制品(包括代可可脂巧克力及制品)",
+              "matched_keyword": "可可制品、巧克力和巧克力制品"
             }
-          ],
-          "category_a1": "可可制品、巧克力和巧克力制品以及糖果"
+          ]
         },
         {
+          "sub": "婴幼儿谷类辅助食品(添加藻类的产品除外)",
+          "big": "婴幼儿辅助食品",
           "category": "婴幼儿辅助食品",
-          "food": "婴幼儿辅助食品婴幼儿谷类辅助食品、添加藻类的产品除外()",
-          "limit": "—",
-          "remark": "",
-          "category_matched_by": "婴幼儿辅助食品",
-          "subcategories": [
+          "food": "婴幼儿谷类辅助食品(添加藻类的产品除外)",
+          "limits": [
             {
-              "big": "婴幼儿辅助食品",
-              "sub": "婴幼儿谷类辅助食品",
-              "matched_keyword": "婴幼儿谷类辅助食品"
+              "label": "无机砷",
+              "value": "0.2"
             }
           ],
-          "category_a1": "婴幼儿辅助食品"
+          "limit": "0.2",
+          "limit_raw": "0.2",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "婴幼儿辅助食品",
+          "subcategories": []
         },
         {
+          "sub": "添加藻类的产品",
+          "big": "藻类及其制品",
           "category": "藻类及其制品",
           "food": "添加藻类的产品",
-          "limit": "—",
-          "remark": "",
-          "category_matched_by": "藻类",
-          "subcategories": []
-        },
-        {
-          "category": "婴幼儿辅助食品",
-          "food": "婴幼儿罐装辅助食品、以水产及动物肝脏为原料的产品除外()",
-          "limit": "—",
-          "remark": "",
-          "category_matched_by": "婴幼儿罐装辅助食品",
-          "subcategories": [
+          "limits": [
             {
-              "big": "婴幼儿辅助食品",
-              "sub": "婴幼儿罐装辅助食品",
-              "matched_keyword": "婴幼儿罐装辅助食品"
+              "label": "无机砷",
+              "value": "0.3"
             }
           ],
-          "category_a1": "婴幼儿辅助食品"
-        },
-        {
-          "category": "水产动物及其制品",
-          "food": "以水产及动物肝脏为原料的产品",
-          "limit": "—",
+          "limit": "0.3",
+          "limit_raw": "0.3",
+          "unit": "mg/kg",
           "remark": "",
-          "category_matched_by": "水产",
+          "footnotes": [],
+          "category_a1": "藻类及其制品",
           "subcategories": []
         },
         {
+          "sub": "婴幼儿罐装辅助食品(以水产及动物肝脏为原料的产品除外)",
+          "big": "婴幼儿辅助食品",
+          "category": "婴幼儿辅助食品",
+          "food": "婴幼儿罐装辅助食品(以水产及动物肝脏为原料的产品除外)",
+          "limits": [
+            {
+              "label": "无机砷",
+              "value": "0.1"
+            }
+          ],
+          "limit": "0.1",
+          "limit_raw": "0.1",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "婴幼儿辅助食品",
+          "subcategories": []
+        },
+        {
+          "sub": "以水产及动物肝脏为原料的产品",
+          "big": "水产动物及其制品",
+          "category": "水产动物及其制品",
+          "food": "以水产及动物肝脏为原料的产品",
+          "limits": [
+            {
+              "label": "无机砷",
+              "value": "0.3"
+            }
+          ],
+          "limit": "0.3",
+          "limit_raw": "0.3",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "水产动物及其制品",
+          "subcategories": []
+        },
+        {
+          "sub": "辅食营养补充品",
+          "big": "特殊膳食用食品",
           "category": "特殊膳食用食品",
           "food": "辅食营养补充品",
-          "limit": "—",
+          "limits": [
+            {
+              "label": "总砷",
+              "value": "0.5"
+            }
+          ],
+          "limit": "0.5",
+          "limit_raw": "0.5",
+          "unit": "mg/kg",
           "remark": "",
+          "footnotes": [],
+          "category_a1": "特殊膳食用食品",
           "subcategories": [
             {
               "big": "特殊膳食用食品",
               "sub": "辅食营养补充品",
               "matched_keyword": "辅食营养补充品"
             }
-          ],
-          "category_a1": "特殊膳食用食品"
+          ]
         },
         {
+          "sub": "运动营养食品(固态、半固态或粉状)",
+          "big": "特殊膳食用食品",
           "category": "特殊膳食用食品",
-          "food": "运动营养食品固态、半固态或粉状、",
+          "food": "运动营养食品(固态、半固态或粉状)",
+          "limits": [
+            {
+              "label": "总砷",
+              "value": "0.5"
+            }
+          ],
           "limit": "0.5",
+          "limit_raw": "0.5",
+          "unit": "mg/kg",
           "remark": "",
-          "subcategories": [
-            {
-              "big": "特殊膳食用食品",
-              "sub": "运动营养食品",
-              "matched_keyword": "运动营养食品"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "粉",
-              "matched_keyword": "粉"
-            }
-          ],
-          "category_a1": "特殊膳食用食品"
+          "footnotes": [],
+          "category_a1": "特殊膳食用食品",
+          "subcategories": []
         },
         {
+          "sub": "运动营养食品(液态)",
+          "big": "特殊膳食用食品",
           "category": "特殊膳食用食品",
-          "food": "液态",
-          "limit": "0.2",
-          "remark": "",
-          "subcategories": [
+          "food": "运动营养食品(液态)",
+          "limits": [
             {
-              "big": "饮料类",
-              "sub": "其他饮料",
-              "matched_keyword": "液态"
+              "label": "总砷",
+              "value": "0.2"
             }
           ],
-          "category_a1": "饮料类"
+          "limit": "0.2",
+          "limit_raw": "0.2",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "特殊膳食用食品",
+          "subcategories": []
         },
         {
+          "sub": "孕妇及乳母营养补充食品",
+          "big": "特殊膳食用食品",
           "category": "特殊膳食用食品",
           "food": "孕妇及乳母营养补充食品",
+          "limits": [
+            {
+              "label": "总砷",
+              "value": "0.5"
+            }
+          ],
           "limit": "0.5",
+          "limit_raw": "0.5",
+          "unit": "mg/kg",
           "remark": "",
+          "footnotes": [],
+          "category_a1": "特殊膳食用食品",
           "subcategories": [
             {
               "big": "特殊膳食用食品",
               "sub": "孕妇及乳母营养补充食品",
               "matched_keyword": "孕妇及乳母营养补充食品"
             }
-          ],
-          "category_a1": "特殊膳食用食品"
-        },
-        {
-          "category": "特殊膳食用食品",
-          "food": ":“",
-          "limit": "—",
-          "remark": "",
-          "subcategories": []
+          ]
         }
       ],
       "footnotes": [
         {
           "mark": "a",
-          "text": ""
-        },
-        {
-          "mark": "a",
-          "text": "、对于制定无机砷限量的食品可先测定其总砷、当总砷含量不超过无机砷限量值时、可判定符合限量要求而不"
+          "text": "对于制定无机砷限量的食品可先测定其总砷,当总砷含量不超过无机砷限量值时,可判定符合限量要求而不必测定无机砷;否则,需测定无机砷含量再作判定。"
         },
         {
           "mark": "b",
-          "text": "。"
+          "text": "稻谷以糙米计。"
         }
       ],
       "inspection_method_rules": [
@@ -2428,6 +2560,16 @@
           "apply": "其他食品",
           "method": "按 GB 5009.11 规定的方法测定",
           "is_default": true
+        }
+      ],
+      "limits_columns": [
+        {
+          "label": "总砷",
+          "basis": "以 As 计"
+        },
+        {
+          "label": "无机�",
+          "basis": "以 As 计"
         }
       ]
     },
@@ -2444,19 +2586,14 @@
           "limit": "250",
           "remark": "",
           "category_matched_by": "婴幼儿配方食品",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "婴幼儿配方食品",
+          "limits": [
             {
-              "big": "婴幼儿配方食品",
-              "sub": "婴儿配方食品",
-              "matched_keyword": "婴幼儿配方食品"
-            },
-            {
-              "big": "婴幼儿辅助食品",
-              "sub": "婴幼儿谷类辅助食品",
-              "matched_keyword": "婴幼儿辅助食品"
+              "label": "限量(以 Sn 计)",
+              "value": "250"
             }
-          ],
-          "category_a1": "婴幼儿配方食品"
+          ]
         },
         {
           "category": "婴幼儿配方食品",
@@ -2464,26 +2601,27 @@
           "limit": "50",
           "remark": "",
           "category_matched_by": "婴幼儿配方食品",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "婴幼儿配方食品",
+          "limits": [
             {
-              "big": "婴幼儿配方食品",
-              "sub": "婴儿配方食品",
-              "matched_keyword": "婴幼儿配方食品"
-            },
-            {
-              "big": "婴幼儿辅助食品",
-              "sub": "婴幼儿谷类辅助食品",
-              "matched_keyword": "婴幼儿辅助食品"
+              "label": "限量(以 Sn 计)",
+              "value": "50"
             }
-          ],
-          "category_a1": "婴幼儿配方食品"
+          ]
         },
         {
           "category": "饮料类",
           "food": "镍",
           "limit": "46",
           "remark": "",
-          "subcategories": []
+          "subcategories": [],
+          "limits": [
+            {
+              "label": "限量(以 Sn 计)",
+              "value": "46"
+            }
+          ]
         }
       ],
       "footnotes": [
@@ -2497,6 +2635,12 @@
           "apply": "全部食品",
           "method": "按 GB 5009.16 规定的方法测定",
           "is_default": true
+        }
+      ],
+      "limits_columns": [
+        {
+          "label": "限量(以 Sn 计)",
+          "basis": "Sn"
         }
       ]
     },
@@ -2513,19 +2657,14 @@
           "limit": "1.0",
           "remark": "",
           "category_matched_by": "植物油",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "油脂及其制品",
+          "limits": [
             {
-              "big": "油脂及其制品",
-              "sub": "氢化植物油",
-              "matched_keyword": "氢化植物油"
-            },
-            {
-              "big": "油脂及其制品",
-              "sub": "油脂制品",
-              "matched_keyword": "油脂制品"
+              "label": "限量(以 Ni 计)",
+              "value": "1.0"
             }
-          ],
-          "category_a1": "油脂及其制品"
+          ]
         }
       ],
       "footnotes": [],
@@ -2534,6 +2673,12 @@
           "apply": "全部食品",
           "method": "按 GB 5009.138 规定的方法测定",
           "is_default": true
+        }
+      ],
+      "limits_columns": [
+        {
+          "label": "限量(以 Ni 计)",
+          "basis": "Ni"
         }
       ]
     },
@@ -2554,9 +2699,45 @@
               "big": "谷物及其制品(不包括焙烤制品)",
               "sub": "谷物",
               "matched_keyword": "谷物"
+            },
+            {
+              "big": "谷物及其制品(不包括焙烤制品)",
+              "sub": "其他谷物",
+              "matched_keyword": "谷物"
+            },
+            {
+              "big": "谷物及其制品(不包括焙烤制品)",
+              "sub": "谷物碾磨加工品",
+              "matched_keyword": "谷物"
+            },
+            {
+              "big": "谷物及其制品(不包括焙烤制品)",
+              "sub": "其他谷物碾磨加工品",
+              "matched_keyword": "谷物"
+            },
+            {
+              "big": "谷物及其制品(不包括焙烤制品)",
+              "sub": "谷物制品",
+              "matched_keyword": "谷物"
+            },
+            {
+              "big": "谷物及其制品(不包括焙烤制品)",
+              "sub": "其他谷物制品(带馅料面米制品、粥类罐头等)",
+              "matched_keyword": "谷物"
+            },
+            {
+              "big": "坚果及籽类",
+              "sub": "生干坚果及籽类(不包括谷物种子和豆类,包括咖啡豆、可可豆)",
+              "matched_keyword": "谷物"
             }
           ],
-          "category_a1": "谷物及其制品(不包括焙烤制品)"
+          "category_a1": "谷物及其制品(不包括焙烤制品)",
+          "limits": [
+            {
+              "label": "限量(以 Cr 计)",
+              "value": "1.0"
+            }
+          ]
         },
         {
           "category": "谷物及其制品",
@@ -2568,9 +2749,20 @@
               "big": "谷物及其制品(不包括焙烤制品)",
               "sub": "谷物碾磨加工品",
               "matched_keyword": "谷物碾磨加工品"
+            },
+            {
+              "big": "谷物及其制品(不包括焙烤制品)",
+              "sub": "其他谷物碾磨加工品",
+              "matched_keyword": "谷物碾磨加工品"
             }
           ],
-          "category_a1": "谷物及其制品(不包括焙烤制品)"
+          "category_a1": "谷物及其制品(不包括焙烤制品)",
+          "limits": [
+            {
+              "label": "限量(以 Cr 计)",
+              "value": "1.0"
+            }
+          ]
         },
         {
           "category": "蔬菜及其制品",
@@ -2582,43 +2774,34 @@
               "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
               "sub": "新鲜蔬菜(未经加工的、经表面处理的、去皮或预切的、冷冻的蔬菜)",
               "matched_keyword": "新鲜蔬菜"
+            },
+            {
+              "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
+              "sub": "其他新鲜蔬菜(瓜果类、鳞茎类和水生类、芽菜类、竹笋、黄花菜等多年生蔬菜)",
+              "matched_keyword": "新鲜蔬菜"
             }
           ],
-          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)"
+          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)",
+          "limits": [
+            {
+              "label": "限量(以 Cr 计)",
+              "value": "0.5"
+            }
+          ]
         },
         {
           "category": "乳及乳制品",
           "food": "生乳、巴氏杀菌乳、灭菌乳、调制乳、发酵乳、、、、",
           "limit": "0.3",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "乳及乳制品",
+          "limits": [
             {
-              "big": "乳及乳制品",
-              "sub": "生乳",
-              "matched_keyword": "生乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "巴氏杀菌乳",
-              "matched_keyword": "巴氏杀菌乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "灭菌乳",
-              "matched_keyword": "灭菌乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "调制乳",
-              "matched_keyword": "调制乳"
-            },
-            {
-              "big": "乳及乳制品",
-              "sub": "发酵乳",
-              "matched_keyword": "发酵乳"
+              "label": "限量(以 Cr 计)",
+              "value": "0.3"
             }
-          ],
-          "category_a1": "乳及乳制品"
+          ]
         },
         {
           "category": "乳及乳制品",
@@ -2632,7 +2815,13 @@
               "matched_keyword": "乳粉和调制乳粉"
             }
           ],
-          "category_a1": "乳及乳制品"
+          "category_a1": "乳及乳制品",
+          "limits": [
+            {
+              "label": "限量(以 Cr 计)",
+              "value": "2.0"
+            }
+          ]
         }
       ],
       "footnotes": [
@@ -2647,6 +2836,12 @@
           "method": "按 GB 5009.123 规定的方法测定",
           "is_default": true
         }
+      ],
+      "limits_columns": [
+        {
+          "label": "限量(以 Cr 计)",
+          "basis": "Cr"
+        }
       ]
     },
     {
@@ -2657,138 +2852,391 @@
       "inspection_method": "饮料类按 GB 8538 规定的方法测定,其他食品按 GB 5009.33 规定的方法测定。",
       "items": [
         {
+          "sub": "酱腌菜",
+          "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
           "category": "蔬菜及其制品",
           "food": "酱腌菜",
-          "limit_no2": "20",
-          "limit_no3": "—",
+          "limits": [
+            {
+              "label": "亚硝酸盐(以 NaNO2 计)",
+              "value": "20"
+            }
+          ],
+          "limit": "20",
+          "limit_raw": "20",
+          "unit": "mg/kg",
           "remark": "",
+          "footnotes": [],
+          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)",
           "subcategories": [
             {
               "big": "蔬菜及其制品(包括薯类,不包括食用菌)",
               "sub": "酱腌菜",
               "matched_keyword": "酱腌菜"
             }
-          ],
-          "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)"
+          ]
         },
         {
+          "sub": "生乳",
+          "big": "乳及乳制品",
           "category": "乳及乳制品",
           "food": "生乳",
-          "limit_no2": "0.4",
-          "limit_no3": "—",
+          "limits": [
+            {
+              "label": "亚硝酸盐(以 NaNO2 计)",
+              "value": "0.4"
+            }
+          ],
+          "limit": "0.4",
+          "limit_raw": "0.4",
+          "unit": "mg/kg",
           "remark": "",
+          "footnotes": [],
+          "category_a1": "乳及乳制品",
           "subcategories": [
             {
               "big": "乳及乳制品",
               "sub": "生乳",
               "matched_keyword": "生乳"
             }
-          ],
-          "category_a1": "乳及乳制品"
+          ]
         },
         {
+          "sub": "乳粉和调制乳粉",
+          "big": "乳及乳制品",
           "category": "乳及乳制品",
           "food": "乳粉和调制乳粉",
-          "limit_no2": "—",
-          "limit_no3": "—",
+          "limits": [
+            {
+              "label": "亚硝酸盐(以 NaNO2 计)",
+              "value": "2.0"
+            }
+          ],
+          "limit": "2.0",
+          "limit_raw": "2.0",
+          "unit": "mg/kg",
           "remark": "",
+          "footnotes": [],
+          "category_a1": "乳及乳制品",
           "subcategories": [
             {
               "big": "乳及乳制品",
               "sub": "乳粉和调制乳粉",
               "matched_keyword": "乳粉和调制乳粉"
             }
-          ],
-          "category_a1": "乳及乳制品"
+          ]
         },
         {
+          "sub": "包装饮用水(饮用天然矿泉水除外)",
+          "big": "饮料类",
           "category": "饮料类",
-          "food": "包装饮用水、饮用天然矿泉水除外以计-()",
-          "limit_no2": "0.1mg/L",
-          "limit_no3": "—",
-          "remark": "NO2",
-          "subcategories": [
+          "food": "包装饮用水(饮用天然矿泉水除外)",
+          "limits": [
             {
-              "big": "饮料类",
-              "sub": "包装饮用水",
-              "matched_keyword": "包装饮用水"
+              "label": "亚硝酸盐(以 NaNO2 计)",
+              "value": "0.1"
+            }
+          ],
+          "limit": "0.1",
+          "limit_raw": "0.1",
+          "unit": "mg/L",
+          "remark": "以 NO2- 计",
+          "footnotes": [],
+          "category_a1": "饮料类",
+          "subcategories": []
+        },
+        {
+          "sub": "饮用天然矿泉水",
+          "big": "饮料类",
+          "category": "饮料类",
+          "food": "饮用天然矿泉水",
+          "limits": [
+            {
+              "label": "亚硝酸盐(以 NaNO2 计)",
+              "value": "0.1"
             },
+            {
+              "label": "硝酸盐(以 NaNO3 计)",
+              "value": "45"
+            }
+          ],
+          "limit": "0.1",
+          "limit_raw": "0.1",
+          "unit": "mg/L",
+          "remark": "以 NO2-/NO3- 计",
+          "footnotes": [],
+          "category_a1": "饮料类",
+          "subcategories": [
             {
               "big": "饮料类",
               "sub": "饮用天然矿泉水",
               "matched_keyword": "饮用天然矿泉水"
             }
-          ],
-          "category_a1": "饮料类"
+          ]
         },
         {
-          "category": "饮料类",
-          "food": "NO",
-          "limit_no2": "2",
-          "limit_no3": "3",
-          "remark": "",
+          "sub": "婴儿配方食品、较大婴儿配方食品、幼儿配方食品",
+          "big": "婴幼儿配方食品",
+          "category": "婴幼儿配方食品",
+          "food": "婴儿配方食品、较大婴儿配方食品、幼儿配方食品",
+          "limits": [
+            {
+              "label": "亚硝酸盐(以 NaNO2 计)",
+              "value": "2.0"
+            },
+            {
+              "label": "硝酸盐(以 NaNO3 计)",
+              "value": "100"
+            }
+          ],
+          "limit": "2.0",
+          "limit_raw": "2.0",
+          "unit": "mg/kg",
+          "remark": "以固态产品计",
+          "footnotes": [
+            "a",
+            "b",
+            "c"
+          ],
+          "category_a1": "婴幼儿配方食品",
           "subcategories": []
         },
         {
+          "sub": "特殊医学用途婴儿配方食品",
+          "big": "婴幼儿配方食品",
           "category": "婴幼儿配方食品",
-          "food": "婴幼儿配方食品a婴儿配方食品、较大婴儿配方食品、幼儿配方食品以固态产品计以固态产品计、、b()c()",
-          "limit_no2": "2.0100",
-          "limit_no3": "—",
-          "remark": "",
-          "category_matched_by": "婴幼儿配方食品",
-          "subcategories": [
+          "food": "特殊医学用途婴儿配方食品",
+          "limits": [
             {
-              "big": "婴幼儿配方食品",
-              "sub": "婴儿配方食品",
-              "matched_keyword": "婴幼儿配方食品"
+              "label": "亚硝酸盐(以 NaNO2 计)",
+              "value": "2.0"
             },
             {
-              "big": "婴幼儿配方食品",
-              "sub": "较大婴儿配方食品",
-              "matched_keyword": "较大婴儿配方食品"
-            },
-            {
-              "big": "婴幼儿配方食品",
-              "sub": "幼儿配方食品",
-              "matched_keyword": "幼儿配方食品"
+              "label": "硝酸盐(以 NaNO3 计)",
+              "value": "100"
             }
           ],
-          "category_a1": "婴幼儿配方食品"
-        },
-        {
-          "category": "特殊医学用途配方食品",
-          "food": "特殊医学用途婴儿配方食品以固态产品计以固态产品计",
-          "limit_no2": "2.0",
-          "limit_no3": "100",
-          "remark": "",
-          "category_matched_by": "特殊医学用途",
+          "limit": "2.0",
+          "limit_raw": "2.0",
+          "unit": "mg/kg",
+          "remark": "以固态产品计",
+          "footnotes": [],
+          "category_a1": "婴幼儿配方食品",
           "subcategories": [
             {
               "big": "婴幼儿配方食品",
               "sub": "特殊医学用途婴儿配方食品",
               "matched_keyword": "特殊医学用途婴儿配方食品"
+            },
+            {
+              "big": "特殊医学用途配方食品",
+              "sub": "特殊医学用途婴儿配方食品",
+              "matched_keyword": "特殊医学用途婴儿配方食品"
             }
-          ],
-          "category_a1": "婴幼儿配方食品"
+          ]
         },
         {
+          "sub": "婴幼儿谷类辅助食品",
+          "big": "婴幼儿辅助食品",
           "category": "婴幼儿辅助食品",
-          "food": "婴幼儿辅助食品婴幼儿谷类辅助食品",
-          "limit_no2": "2.0",
-          "limit_no3": "100",
+          "food": "婴幼儿谷类辅助食品",
+          "limits": [
+            {
+              "label": "亚硝酸盐(以 NaNO2 计)",
+              "value": "2.0"
+            },
+            {
+              "label": "硝酸盐(以 NaNO3 计)",
+              "value": "100"
+            }
+          ],
+          "limit": "2.0",
+          "limit_raw": "2.0",
+          "unit": "mg/kg",
           "remark": "",
-          "category_matched_by": "婴幼儿辅助食品",
+          "footnotes": [
+            "c",
+            "d"
+          ],
+          "category_a1": "婴幼儿辅助食品",
           "subcategories": [
             {
               "big": "婴幼儿辅助食品",
               "sub": "婴幼儿谷类辅助食品",
               "matched_keyword": "婴幼儿谷类辅助食品"
             }
+          ]
+        },
+        {
+          "sub": "婴幼儿罐装辅助食品",
+          "big": "婴幼儿辅助食品",
+          "category": "婴幼儿辅助食品",
+          "food": "婴幼儿罐装辅助食品",
+          "limits": [
+            {
+              "label": "亚硝酸盐(以 NaNO2 计)",
+              "value": "4.0"
+            },
+            {
+              "label": "硝酸盐(以 NaNO3 计)",
+              "value": "200"
+            }
           ],
-          "category_a1": "婴幼儿辅助食品"
+          "limit": "4.0",
+          "limit_raw": "4.0",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [
+            "c",
+            "d"
+          ],
+          "category_a1": "婴幼儿辅助食品",
+          "subcategories": [
+            {
+              "big": "婴幼儿辅助食品",
+              "sub": "婴幼儿罐装辅助食品",
+              "matched_keyword": "婴幼儿罐装辅助食品"
+            }
+          ]
+        },
+        {
+          "sub": "特殊医学用途配方食品(特殊医学用途婴儿配方食品涉及的品种除外)",
+          "big": "特殊膳食用食品",
+          "category": "特殊膳食用食品",
+          "food": "特殊医学用途配方食品(特殊医学用途婴儿配方食品涉及的品种除外)",
+          "limits": [
+            {
+              "label": "亚硝酸盐(以 NaNO2 计)",
+              "value": "2.0"
+            },
+            {
+              "label": "硝酸盐(以 NaNO3 计)",
+              "value": "100"
+            }
+          ],
+          "limit": "2.0",
+          "limit_raw": "2.0",
+          "unit": "mg/kg",
+          "remark": "以固态产品计",
+          "footnotes": [
+            "c",
+            "e"
+          ],
+          "category_a1": "特殊膳食用食品",
+          "subcategories": []
+        },
+        {
+          "sub": "辅食营养补充品",
+          "big": "特殊膳食用食品",
+          "category": "特殊膳食用食品",
+          "food": "辅食营养补充品",
+          "limits": [
+            {
+              "label": "亚硝酸盐(以 NaNO2 计)",
+              "value": "2.0"
+            },
+            {
+              "label": "硝酸盐(以 NaNO3 计)",
+              "value": "100"
+            }
+          ],
+          "limit": "2.0",
+          "limit_raw": "2.0",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [
+            "b",
+            "c"
+          ],
+          "category_a1": "特殊膳食用食品",
+          "subcategories": [
+            {
+              "big": "特殊膳食用食品",
+              "sub": "辅食营养补充品",
+              "matched_keyword": "辅食营养补充品"
+            }
+          ]
+        },
+        {
+          "sub": "孕妇及乳母营养补充食品",
+          "big": "特殊膳食用食品",
+          "category": "特殊膳食用食品",
+          "food": "孕妇及乳母营养补充食品",
+          "limits": [
+            {
+              "label": "亚硝酸盐(以 NaNO2 计)",
+              "value": "2.0"
+            },
+            {
+              "label": "硝酸盐(以 NaNO3 计)",
+              "value": "100"
+            }
+          ],
+          "limit": "2.0",
+          "limit_raw": "2.0",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [
+            "c",
+            "d"
+          ],
+          "category_a1": "特殊膳食用食品",
+          "subcategories": [
+            {
+              "big": "特殊膳食用食品",
+              "sub": "孕妇及乳母营养补充食品",
+              "matched_keyword": "孕妇及乳母营养补充食品"
+            }
+          ]
+        },
+        {
+          "sub": "食用燕窝",
+          "big": "其他类(除上述食品以外的食品)",
+          "category": "其他类",
+          "food": "食用燕窝",
+          "limits": [
+            {
+              "label": "亚硝酸盐(以 NaNO2 计)",
+              "value": "30"
+            }
+          ],
+          "limit": "30",
+          "limit_raw": "30",
+          "unit": "mg/kg",
+          "remark": "",
+          "footnotes": [],
+          "category_a1": "其他类(除上述食品以外的食品)",
+          "subcategories": [
+            {
+              "big": "其他类(除上述食品以外的食品)",
+              "sub": "食用燕窝",
+              "matched_keyword": "食用燕窝"
+            }
+          ]
         }
       ],
-      "footnotes": [],
+      "footnotes": [
+        {
+          "mark": "a",
+          "text": "液态婴幼儿配方食品根据 8:1 的比例折算其限量。"
+        },
+        {
+          "mark": "b",
+          "text": "仅适用于乳基产品。"
+        },
+        {
+          "mark": "c",
+          "text": "不适用于添加蔬菜和水果的产品。"
+        },
+        {
+          "mark": "d",
+          "text": "不适用于添加豆类的产品。"
+        },
+        {
+          "mark": "e",
+          "text": "仅适用于乳基产品,不含豆类成分。"
+        }
+      ],
       "inspection_method_rules": [
         {
           "apply": "饮料类",
@@ -2798,6 +3246,16 @@
           "apply": "其他食品",
           "method": "按 GB 5009.33 规定的方法测定",
           "is_default": true
+        }
+      ],
+      "limits_columns": [
+        {
+          "label": "亚硝酸盐(以 NaNO2 计)",
+          "basis": "NaNO2"
+        },
+        {
+          "label": "硝酸盐(以 NaNO3 计)",
+          "basis": "NaNO3"
         }
       ]
     },
@@ -2813,65 +3271,53 @@
           "food": "稻谷、糙米、大米、粉、小麦、小麦粉、玉米、玉米粉、玉米糁、渣",
           "limit": "2.0",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "谷物及其制品(不包括焙烤制品)",
+          "limits": [
             {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "稻谷",
-              "matched_keyword": "稻谷"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "糙米(包括色稻米)",
-              "matched_keyword": "糙米"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "大米",
-              "matched_keyword": "大米"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "粉",
-              "matched_keyword": "粉"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "小麦",
-              "matched_keyword": "小麦"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "小麦粉(包括食用麸皮)",
-              "matched_keyword": "小麦粉"
-            },
-            {
-              "big": "谷物及其制品(不包括焙烤制品)",
-              "sub": "玉米",
-              "matched_keyword": "玉米"
+              "label": "限量(以 BaP 计)",
+              "value": "2.0"
             }
-          ],
-          "category_a1": "谷物及其制品(不包括焙烤制品)"
+          ]
         },
         {
           "category": "水产动物及其制品",
           "food": "熏、烤水产品、",
           "limit": "5.0",
           "remark": "",
-          "subcategories": []
+          "subcategories": [],
+          "limits": [
+            {
+              "label": "限量(以 BaP 计)",
+              "value": "5.0"
+            }
+          ]
         },
         {
           "category": "乳及乳制品",
           "food": "稀奶油、奶油、无水奶油、、",
           "limit": "10",
           "remark": "",
-          "subcategories": []
+          "subcategories": [],
+          "limits": [
+            {
+              "label": "限量(以 BaP 计)",
+              "value": "10"
+            }
+          ]
         },
         {
           "category": "油脂及其制品",
           "food": ".、.-",
           "limit": "10",
           "remark": "",
-          "subcategories": []
+          "subcategories": [],
+          "limits": [
+            {
+              "label": "限量(以 BaP 计)",
+              "value": "10"
+            }
+          ]
         }
       ],
       "footnotes": [
@@ -2890,6 +3336,12 @@
           "method": "按 GB 5009.27 规定的方法测定",
           "is_default": true
         }
+      ],
+      "limits_columns": [
+        {
+          "label": "限量(以 BaP 计)",
+          "basis": ""
+        }
       ]
     },
     {
@@ -2904,38 +3356,28 @@
           "food": "肉制品、肉类罐头除外()",
           "limit": "3.0",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "肉及肉制品",
+          "limits": [
             {
-              "big": "肉及肉制品",
-              "sub": "肉制品(包括内脏制品、血制品)",
-              "matched_keyword": "肉制品"
-            },
-            {
-              "big": "肉及肉制品",
-              "sub": "肉类罐头",
-              "matched_keyword": "肉类罐头"
+              "label": "限量(以 NDMA 计)",
+              "value": "3.0"
             }
-          ],
-          "category_a1": "肉及肉制品"
+          ]
         },
         {
           "category": "水产动物及其制品",
           "food": "水产制品、水产品罐头除外()",
           "limit": "4.0",
           "remark": "",
-          "subcategories": [
+          "subcategories": [],
+          "category_a1": "水产动物及其制品",
+          "limits": [
             {
-              "big": "水产动物及其制品",
-              "sub": "水产制品",
-              "matched_keyword": "水产制品"
-            },
-            {
-              "big": "水产动物及其制品",
-              "sub": "水产品罐头",
-              "matched_keyword": "水产品罐头"
+              "label": "限量(以 NDMA 计)",
+              "value": "4.0"
             }
-          ],
-          "category_a1": "水产动物及其制品"
+          ]
         }
       ],
       "footnotes": [],
@@ -2944,6 +3386,12 @@
           "apply": "全部食品",
           "method": "按 GB 5009.26 规定的方法测定",
           "is_default": true
+        }
+      ],
+      "limits_columns": [
+        {
+          "label": "限量(以 NDMA 计)",
+          "basis": "NDMA"
         }
       ]
     },
@@ -2964,24 +3412,16 @@
             {
               "big": "油脂及其制品",
               "sub": "动物油脂(猪油、牛油、鱼油、磷虾油等)",
-              "matched_keyword": "动物油脂"
+              "matched_keyword": "水产动物油脂"
             }
           ],
-          "category_a1": "油脂及其制品"
-        },
-        {
-          "category": "油脂及其制品",
-          "food": "多氯联苯以和的总和计PCB",
-          "limit": "28",
-          "remark": "",
-          "subcategories": []
-        },
-        {
-          "category": "油脂及其制品",
-          "food": "-",
-          "limit": "1",
-          "remark": "",
-          "subcategories": []
+          "category_a1": "油脂及其制品",
+          "limits": [
+            {
+              "label": "限量(以 PCBs 计)",
+              "value": "200"
+            }
+          ]
         }
       ],
       "footnotes": [
@@ -2999,6 +3439,12 @@
           "apply": "全部食品",
           "method": "按 GB 5009.190 规定的方法测定",
           "is_default": true
+        }
+      ],
+      "limits_columns": [
+        {
+          "label": "限量(以 PCBs 计)",
+          "basis": "PCB"
         }
       ]
     },
@@ -3018,7 +3464,13 @@
           "remark": "仅限于添加酸水解植物蛋白的产品",
           "category_matched_by": "调味料",
           "category_a1": "调味料",
-          "subcategories": []
+          "subcategories": [],
+          "limits": [
+            {
+              "label": "限量(以 3-MCPD 计)",
+              "value": "0.4"
+            }
+          ]
         },
         {
           "category": "固态调味料",
@@ -3029,7 +3481,19 @@
           "remark": "仅限于添加酸水解植物蛋白的产品",
           "category_matched_by": "调味料",
           "category_a1": "调味料",
-          "subcategories": []
+          "subcategories": [
+            {
+              "big": "调味品",
+              "sub": "其他调味品",
+              "matched_keyword": "固态调味料"
+            }
+          ],
+          "limits": [
+            {
+              "label": "限量(以 3-MCPD 计)",
+              "value": "1.0"
+            }
+          ]
         }
       ],
       "footnotes": [
@@ -3043,6 +3507,12 @@
           "apply": "全部食品",
           "method": "按 GB 5009.191 规定的方法测定",
           "is_default": true
+        }
+      ],
+      "limits_columns": [
+        {
+          "label": "限量(以 3-MCPD 计)",
+          "basis": "3-MCPD"
         }
       ]
     }

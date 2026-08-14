@@ -257,6 +257,8 @@ table.lvl td.contaminant-cell { font-weight: 600; color: var(--c-primary); white
 table.lvl td.symbol { color: var(--c-text-3); font-size: 11px; }
 table.lvl td.food-cell { color: var(--c-text-2); font-size: 12px; }
 table.lvl td.limit-cell { font-weight: 600; color: var(--c-high); white-space: nowrap; font-family: "SF Mono", Consolas, monospace; }
+table.lvl td.limit-cell .limit-label { font-size: 10px; color: var(--c-text-3); font-weight: 400; display: block; }
+table.lvl td.limit-cell .limit-main { font-weight: 600; color: var(--c-high); }
 table.lvl td.unit-cell { font-size: 11px; color: var(--c-text-3); white-space: nowrap; }
 table.lvl td.method-cell { font-size: 11.5px; color: var(--c-text-2); }
 table.lvl td.remark-cell { font-size: 11.5px; color: var(--c-text-2); font-style: italic; }
@@ -620,8 +622,17 @@ function renderLimitTable(items, isSelf) {
   html += '<th>污染物中文名称</th><th>元素符号</th><th>食品中文名称</th><th>限量要求</th><th>单位</th><th>检验方法</th><th>备注</th>';
   html += '</tr></thead><tbody>';
   items.forEach(it => {
-    const limit = it.limit || (it.limit_no2 && it.limit_no3 ? `NO₂:${it.limit_no2} / NO₃:${it.limit_no3}` : it.limit_no2 || '');
-    // 智能匹配检验方法:基于当前选中的食品/大类
+    // 多列限量合并显示
+    let limitHtml;
+    if (it.limits && Array.isArray(it.limits) && it.limits.length > 0) {
+      if (it.limits.length === 1) {
+        limitHtml = `<span class="limit-main">${escapeHTML(it.limits[0].value)}</span>`;
+      } else {
+        limitHtml = it.limits.map(l => `<div><span class="limit-label">${escapeHTML(l.label)}</span> <span class="limit-main">${escapeHTML(l.value)}</span></div>`).join('');
+      }
+    } else {
+      limitHtml = `<span class="limit-main">${escapeHTML(it.limit || '—')}</span>`;
+    }
     const ctxFood = isSelf ? sub : (it._viaSub || it.food || '');
     const ctxBig = it._big_a1 || big;
     const method = pickMethod(it._rules, ctxFood, ctxBig) || it._inspection_method || '';
@@ -630,7 +641,7 @@ function renderLimitTable(items, isSelf) {
     html += `<td class="symbol">${escapeHTML(it._symbol || '')}</td>`;
     const foodName = isSelf ? (it.food || sub) : (it._viaSub ? `${it._viaSub}:` + (it.food || '') : (it.food || ''));
     html += `<td class="food-cell">${escapeHTML(foodName)}</td>`;
-    html += `<td class="limit-cell">${escapeHTML(limit || '—')}</td>`;
+    html += `<td class="limit-cell">${limitHtml}</td>`;
     html += `<td class="unit-cell">${escapeHTML(it._unit || '')}</td>`;
     html += `<td class="method-cell">${escapeHTML(method)}</td>`;
     html += `<td class="remark-cell">${escapeHTML(it.remark || '')}</td>`;
@@ -872,15 +883,25 @@ function renderKeywordResults() {
   html += '<th>食品大类(附录 A.1)</th><th>细类</th><th>食品名称 / 适用范围</th><th>限量值</th><th>单位</th><th>备注</th>';
   html += '</tr></thead><tbody>';
   items.forEach(it => {
-    const limit = it.limit || (it.limit_no2 && it.limit_no3 ? `NO₂:${it.limit_no2} / NO₃:${it.limit_no3}` : it.limit_no2 || '');
+    // 多列限量合并显示
+    let limitHtml;
+    if (it.limits && Array.isArray(it.limits) && it.limits.length > 0) {
+      if (it.limits.length === 1) {
+        limitHtml = escapeHTML(it.limits[0].value);
+      } else {
+        limitHtml = it.limits.map(l => `<div style="font-size:10px;color:var(--c-text-3);font-weight:400;">${escapeHTML(l.label)} ${escapeHTML(l.value)}</div>`).join('');
+      }
+    } else {
+      limitHtml = escapeHTML(it.limit || '—');
+    }
     const bigCat = it.category_a1 || it.category || '';
     const subs = (it.subcategories || []).map(s => s.sub).join(' / ');
     html += '<tr>';
-    if (isAll) html += `<td class="contaminant">${it._contaminant}<br><span style="font-size:10px;color:var(--c-text-3);font-weight:normal;">${it._symbol}</span></td>`;
+    if (isAll) html += `<td class="contaminant">${escapeHTML(it._contaminant)}<br><span style="font-size:10px;color:var(--c-text-3);font-weight:normal;">${escapeHTML(it._symbol || '')}</span></td>`;
     html += `<td class="category">${escapeHTML(bigCat)}</td>`;
     html += `<td class="subcategory">${escapeHTML(subs)}</td>`;
     html += `<td class="food">${escapeHTML(it.food || '')}</td>`;
-    html += `<td class="limit">${escapeHTML(limit || '—')}</td>`;
+    html += `<td class="limit">${limitHtml}</td>`;
     html += `<td class="unit">${escapeHTML(it._unit || '')}</td>`;
     html += `<td class="remark">${escapeHTML(it.remark || '')}</td>`;
     html += '</tr>';
@@ -930,7 +951,18 @@ function buildExportRows() {
     if (isAll) { row.push(it._contaminant, it._symbol); }
     const big = it.category_a1 || it.category || '';
     const subs = (it.subcategories || []).map(s => s.sub).join(' / ');
-    row.push(big, subs, it.food || '', it.limit || `NO₂:${it.limit_no2} / NO₃:${it.limit_no3}`, it._unit || '', it.remark || '');
+    // 多列限量合并
+    let limitStr;
+    if (it.limits && Array.isArray(it.limits) && it.limits.length > 0) {
+      if (it.limits.length === 1) {
+        limitStr = it.limits[0].value;
+      } else {
+        limitStr = it.limits.map(l => `${l.label}:${l.value}`).join(' | ');
+      }
+    } else {
+      limitStr = it.limit || '';
+    }
+    row.push(big, subs, it.food || '', limitStr, it._unit || '', it.remark || '');
     rows.push(row);
   });
   const seenFn = new Map();
