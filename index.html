@@ -233,6 +233,21 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
   <div class="ver">v4.0.4 · 2026</div>
 </header>
 
+<!-- 模块入口(扩展工具) -->
+<style>
+.module-bar { display:flex; gap:8px; flex-wrap:wrap; align-items:center; background:var(--c-surface); border:1px solid var(--c-border); border-radius:var(--r-md); padding:10px 14px; margin-bottom:14px; box-shadow:var(--shadow-soft); }
+.module-bar .mb-label { font-size:12px; color:var(--c-text-3); margin-right:4px; }
+.module-bar a { display:inline-flex; align-items:center; gap:5px; padding:5px 12px; border-radius:14px; font-size:12px; text-decoration:none; border:1px solid var(--c-border); color:var(--c-text-2); background:#fafbfc; transition:all 0.15s; }
+.module-bar a:hover { background:var(--c-primary-soft); border-color:var(--c-primary-2); color:var(--c-primary); }
+.module-bar a.new { background:var(--c-warn-soft); border-color:#f5c567; color:var(--c-warn); font-weight:500; }
+.module-bar a.new::after { content:'NEW'; font-size:9px; background:var(--c-warn); color:white; padding:1px 5px; border-radius:6px; margin-left:3px; font-weight:600; letter-spacing:0.3px; }
+</style>
+<div class="module-bar">
+  <span class="mb-label">📚 数据库模块：</span>
+  <a class="new" href="./gb2762.html">🧪 GB 2762-2025 污染物限量查询</a>
+  <a href="https://5678hub.github.io/jianyu/" style="opacity:0.55;">更多模块建设中…</a>
+</div>
+
 <!-- 主搜索框（核心：单输入框） -->
 <section class="section">
   <div class="section-title">

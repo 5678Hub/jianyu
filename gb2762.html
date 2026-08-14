@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>GB 2762-2025 食品中污染物限量查询 · jianyu</title>
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='44' font-family='Arial,sans-serif' font-size='26' font-weight='600' fill='white' text-anchor='middle'>Pb</text></svg>">
+<meta name="theme-color" content="#1a365d">
+<style>
+:root {
+  --c-bg: #f6f8fb;
+  --c-surface: #ffffff;
+  --c-border: #e6ebf1;
+  --c-border-strong: #d0d7e0;
+  --c-text-1: #1a2332;
+  --c-text-2: #5d6d7e;
+  --c-text-3: #95a5a6;
+  --c-primary: #1a365d;
+  --c-primary-2: #2c5282;
+  --c-primary-soft: #ebf2fa;
+  --c-accent: #8e44ad;
+  --c-accent-soft: #f5edf7;
+  --c-high: #c62828;
+  --c-high-soft: #ffebee;
+  --c-mid: #e65100;
+  --c-mid-soft: #fff3e0;
+  --c-warn: #f57f17;
+  --c-warn-soft: #fffde7;
+  --c-ok: #2e7d32;
+  --c-ok-soft: #e8f5e9;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --shadow-soft: 0 1px 2px rgba(20, 30, 50, 0.04), 0 0 1px rgba(20, 30, 50, 0.06);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--c-bg); }
+body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif; color: var(--c-text-1); padding: 24px 16px; line-height: 1.6; font-size: 14px; -webkit-font-smoothing: antialiased; }
+.container { max-width: 1180px; margin: 0 auto; }
+
+header.brand { display: flex; align-items: center; gap: 14px; padding: 6px 4px 20px; border-bottom: 1px solid var(--c-border); margin-bottom: 22px; }
+header.brand .logo { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--c-primary-2), var(--c-primary)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 16px; letter-spacing: -0.5px; box-shadow: var(--shadow-soft); flex-shrink: 0; }
+header.brand .brand-text { flex: 1; min-width: 0; }
+header.brand .brand-title { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+header.brand .brand-title .zh { font-size: 18px; font-weight: 600; color: var(--c-text-1); letter-spacing: 0.3px; }
+header.brand .brand-title .en { font-size: 13px; color: var(--c-text-3); font-weight: 500; }
+header.brand .subtitle { font-size: 12px; color: var(--c-text-2); margin-top: 6px; }
+header.brand .ver { font-size: 11px; color: var(--c-text-2); padding: 5px 12px; background: var(--c-primary-soft); border-radius: 14px; font-weight: 500; letter-spacing: 0.3px; flex-shrink: 0; }
+header.brand .back { font-size: 12px; color: var(--c-text-2); padding: 5px 12px; border: 1px solid var(--c-border-strong); border-radius: 14px; text-decoration: none; }
+header.brand .back:hover { background: var(--c-primary-soft); border-color: var(--c-primary-2); color: var(--c-primary); }
+
+.section { background: var(--c-surface); border-radius: var(--r-md); padding: 18px 22px; margin-bottom: 14px; border: 1px solid var(--c-border); box-shadow: var(--shadow-soft); }
+.section-title { font-size: 13px; font-weight: 600; color: var(--c-text-1); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.section-title .hint { font-size: 12px; color: var(--c-text-3); font-weight: normal; }
+
+input[type="text"] { width: 100%; padding: 12px 14px; border: 1px solid var(--c-border-strong); border-radius: var(--r-sm); font-size: 14px; outline: none; transition: border-color 0.15s, box-shadow 0.15s; background: #fafbfc; color: var(--c-text-1); }
+input[type="text"]:focus { border-color: var(--c-primary-2); background: white; box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.1); }
+.input-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.input-row input { flex: 1; min-width: 220px; }
+button { background: white; border: 1px solid var(--c-border-strong); border-radius: var(--r-sm); padding: 9px 16px; font-size: 13px; cursor: pointer; color: var(--c-text-2); transition: all 0.15s; font-family: inherit; }
+button:hover { background: var(--c-primary-soft); border-color: var(--c-primary-2); color: var(--c-primary); }
+button.primary { background: var(--c-primary-2); color: white; border-color: var(--c-primary-2); }
+button.primary:hover { background: var(--c-primary); border-color: var(--c-primary); }
+button.export { background: var(--c-ok-soft); border-color: var(--c-ok); color: var(--c-ok); }
+button.export:hover { background: #d9ebd9; }
+
+.tab-row { display: flex; gap: 6px; flex-wrap: wrap; padding: 4px 0; }
+.tab { padding: 6px 14px; border-radius: 14px; border: 1px solid var(--c-border); background: #fafbfc; cursor: pointer; font-size: 12px; color: var(--c-text-2); transition: all 0.15s; user-select: none; }
+.tab:hover { border-color: var(--c-primary-2); color: var(--c-primary); }
+.tab.active { background: var(--c-primary-2); color: white; border-color: var(--c-primary-2); font-weight: 500; }
+.tab .count { margin-left: 4px; opacity: 0.7; font-size: 11px; }
+
+.summary { display: flex; gap: 14px; flex-wrap: wrap; padding: 8px 0; }
+.summary-card { padding: 10px 14px; border-radius: var(--r-sm); background: var(--c-primary-soft); border: 1px solid var(--c-border); min-width: 130px; }
+.summary-card .label { font-size: 11px; color: var(--c-text-3); }
+.summary-card .num { font-size: 22px; font-weight: 600; color: var(--c-primary); margin-top: 2px; }
+.summary-card.warn { background: var(--c-warn-soft); }
+.summary-card.warn .num { color: var(--c-warn); }
+
+table.results { width: 100%; border-collapse: collapse; font-size: 13px; }
+table.results th { background: #f4f7fa; padding: 10px 12px; text-align: left; font-weight: 600; color: var(--c-text-1); border-bottom: 1px solid var(--c-border-strong); position: sticky; top: 0; font-size: 12px; }
+table.results td { padding: 9px 12px; border-bottom: 1px solid var(--c-border); color: var(--c-text-1); }
+table.results tr:hover td { background: #fafbfc; }
+table.results td.contaminant { font-weight: 600; color: var(--c-primary); white-space: nowrap; }
+table.results td.category { color: var(--c-text-2); font-size: 12px; white-space: nowrap; }
+table.results td.food { color: var(--c-text-1); }
+table.results td.limit { font-weight: 600; color: var(--c-high); white-space: nowrap; font-family: "SF Mono", Consolas, monospace; }
+table.results td.unit { font-size: 11px; color: var(--c-text-3); white-space: nowrap; }
+table.results td.remark { font-size: 12px; color: var(--c-text-2); font-style: italic; }
+
+.empty-tip { color: var(--c-text-3); font-size: 13px; padding: 24px 0; text-align: center; }
+.empty-tip .emoji { font-size: 36px; display: block; margin-bottom: 6px; opacity: 0.4; }
+
+.footnote-block { background: #fffbea; border: 1px solid #f7e4a8; border-radius: var(--r-sm); padding: 10px 14px; margin-top: 12px; font-size: 12px; color: var(--c-text-2); }
+.footnote-block .fn-title { font-weight: 600; color: var(--c-warn); margin-bottom: 6px; font-size: 12px; }
+.footnote-block .fn-item { padding: 2px 0; }
+.footnote-block .fn-mark { display: inline-block; width: 18px; height: 18px; line-height: 18px; text-align: center; background: var(--c-warn); color: white; border-radius: 50%; font-size: 11px; margin-right: 6px; font-weight: 600; }
+
+.method-block { background: var(--c-primary-soft); border: 1px solid #d3dfee; border-radius: var(--r-sm); padding: 10px 14px; margin-top: 10px; font-size: 12px; color: var(--c-text-2); }
+.method-block .m-title { font-weight: 600; color: var(--c-primary); margin-bottom: 4px; }
+
+@media (max-width: 720px) {
+  .container { padding: 0 4px; }
+  .section { padding: 14px 14px; }
+  table.results { font-size: 12px; }
+  table.results th, table.results td { padding: 7px 8px; }
+  .input-row input { min-width: 100%; }
+  header.brand { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="brand">
+  <div class="logo">Pb</div>
+  <div class="brand-text">
+    <div class="brand-title"><span class="zh">GB 2762-2025 食品中污染物限量查询</span><span class="en" id="standardEn">Contaminant Limits in Food</span></div>
+    <div class="subtitle" id="subtitle">加载中…</div>
+  </div>
+  <a class="back" href="./">← 返回 jianyu 主平台</a>
+  <div class="ver" id="verTag">v1.0</div>
+</header>
+
+<section class="section">
+  <div class="section-title">🔍 关键词查询 <span class="hint" style="margin-left:auto;">支持食品名 / 大类 / 污染物名 / 脚注内容 模糊搜索 · 多关键词空格分隔即 AND</span></div>
+  <div class="input-row">
+    <input type="text" id="qInput" placeholder="例如：铅、谷物、蔬菜、酱腌菜、苯并…实时过滤" autocomplete="off" autofocus>
+    <button class="primary" onclick="forceSearch()">查询</button>
+    <button onclick="clearSearch()">清空</button>
+  </div>
+  <div class="tab-row" id="contaminantTabs" style="margin-top: 14px;">
+    <!-- JS 渲染 -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    📊 查询结果
+    <span class="hint" id="resultHint" style="margin-left:auto;">—</span>
+    <button class="export" onclick="exportCSV()">⬇ 导出 CSV</button>
+    <button class="export" onclick="exportXLSX()">⬇ 导出 Excel</button>
+  </div>
+  <div id="resultsWrap">
+    <div class="empty-tip"><span class="emoji">🔍</span>输入关键词查询，或点击上方污染物切换</div>
+  </div>
+  <div id="footnotesWrap"></div>
+</section>
+
+<footer style="text-align:center; color:var(--c-text-3); font-size:11px; padding: 20px 0 10px;">
+  数据源：GB 2762-2025《食品安全国家标准 食品中污染物限量》
+  <br>本工具仅供食品行业风险评估参考，不替代官方标准全文
+</footer>
+
+</div>
+
+<script>
+const DATA_URL = './data/gb2762/gb2762_2025.json';
+let DATA = null;
+let currentFilter = 'all';  // 'all' 或 污染物 table_no
+let currentQuery = '';
+
+// 加载数据
+async function loadData() {
+  try {
+    const res = await fetch(DATA_URL);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    DATA = await res.json();
+    renderTabs();
+    updateSubtitle();
+    renderResults();
+  } catch (e) {
+    document.getElementById('subtitle').textContent = '❌ 加载失败：' + e.message;
+    console.error(e);
+  }
+}
+
+function updateSubtitle() {
+  const std = DATA.standard;
+  const total = DATA.contaminants.reduce((s, c) => s + c.items.length, 0);
+  document.getElementById('subtitle').textContent =
+    `${std.code} · 发布 ${std.publish_date} · 实施 ${std.implement_date} · 12 种污染物 · ${total} 条限量指标`;
+  document.getElementById('verTag').textContent = `${total} 条`;
+}
+
+// 渲染污染物 tabs
+function renderTabs() {
+  const wrap = document.getElementById('contaminantTabs');
+  const tabs = [{ no: 'all', name: '全部污染物', symbol: '', count: DATA.contaminants.reduce((s,c)=>s+c.items.length,0) }];
+  DATA.contaminants.forEach(c => {
+    tabs.push({ no: c.table_no, name: c.contaminant, symbol: c.symbol, count: c.items.length });
+  });
+  wrap.innerHTML = tabs.map(t => {
+    const cls = currentFilter == t.no ? 'tab active' : 'tab';
+    const label = t.symbol ? `${t.name} (${t.symbol})` : t.name;
+    return `<div class="${cls}" data-no="${t.no}" onclick="setFilter(${t.no})">${label}<span class="count">${t.count}</span></div>`;
+  }).join('');
+}
+
+function setFilter(no) {
+  currentFilter = no;
+  renderTabs();
+  renderResults();
+}
+
+// 查询过滤
+function getFilteredItems() {
+  let items = [];
+  if (currentFilter === 'all') {
+    DATA.contaminants.forEach(c => {
+      c.items.forEach(it => items.push({ ...it, _contaminant: c.contaminant, _symbol: c.symbol, _unit: c.unit, _table_no: c.table_no, _footnotes: c.footnotes, _inspection_method: c.inspection_method }));
+    });
+  } else {
+    const c = DATA.contaminants.find(x => x.table_no == currentFilter);
+    if (c) {
+      c.items.forEach(it => items.push({ ...it, _contaminant: c.contaminant, _symbol: c.symbol, _unit: c.unit, _table_no: c.table_no, _footnotes: c.footnotes, _inspection_method: c.inspection_method }));
+    }
+  }
+  if (!currentQuery.trim()) return items;
+  const keywords = currentQuery.trim().toLowerCase().split(/\s+/);
+  return items.filter(it => {
+    const haystack = [
+      it._contaminant, it._symbol, it.category, it.food, it.remark,
+      it.limit, it.limit_raw,
+      it._footnotes ? it._footnotes.map(f => f.text).join(' ') : '',
+      it._inspection_method || ''
+    ].join(' ').toLowerCase();
+    return keywords.every(kw => haystack.includes(kw));
+  });
+}
+
+// 渲染结果
+function renderResults() {
+  const items = getFilteredItems();
+  const wrap = document.getElementById('resultsWrap');
+  const hint = document.getElementById('resultHint');
+  hint.textContent = `共 ${items.length} 条记录` + (currentFilter !== 'all' ? ` · ${DATA.contaminants.find(c=>c.table_no==currentFilter).contaminant}` : '');
+  if (items.length === 0) {
+    wrap.innerHTML = '<div class="empty-tip"><span class="emoji">📭</span>未匹配到记录</div>';
+    document.getElementById('footnotesWrap').innerHTML = '';
+    return;
+  }
+  const isAll = currentFilter === 'all';
+  let html = '<table class="results"><thead><tr>';
+  if (isAll) html += '<th>污染物</th>';
+  html += '<th>食品大类</th><th>食品名称 / 适用范围</th><th>限量值</th><th>单位</th><th>备注</th>';
+  html += '</tr></thead><tbody>';
+  items.forEach(it => {
+    const limit = it.limit || (it.limit_no2 && it.limit_no3 ? `NO₂:${it.limit_no2} / NO₃:${it.limit_no3}` : it.limit_no2 || '');
+    html += '<tr>';
+    if (isAll) html += `<td class="contaminant">${it._contaminant}<br><span style="font-size:10px;color:var(--c-text-3);font-weight:normal;">${it._symbol}</span></td>`;
+    html += `<td class="category">${escapeHTML(it.category || '')}</td>`;
+    html += `<td class="food">${escapeHTML(it.food || '')}</td>`;
+    html += `<td class="limit">${escapeHTML(limit || '—')}</td>`;
+    html += `<td class="unit">${escapeHTML(it._unit || '')}</td>`;
+    html += `<td class="remark">${escapeHTML(it.remark || '')}</td>`;
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  wrap.innerHTML = html;
+
+  // 脚注 + 检验方法
+  const fnWrap = document.getElementById('footnotesWrap');
+  let fhtml = '';
+  const seenFn = new Map();
+  items.forEach(it => {
+    if (it._footnotes) {
+      it._footnotes.forEach(f => {
+        if (f.text && !seenFn.has(f.mark + '|' + f.text)) {
+          seenFn.set(f.mark + '|' + f.text, f);
+        }
+      });
+    }
+  });
+  if (seenFn.size > 0) {
+    fhtml += '<div class="footnote-block"><div class="fn-title">脚注说明</div>';
+    seenFn.forEach(f => {
+      fhtml += `<div class="fn-item"><span class="fn-mark">${f.mark}</span>${escapeHTML(f.text)}</div>`;
+    });
+    fhtml += '</div>';
+  }
+  // 检验方法(只显示当前污染物对应)
+  const methods = new Set();
+  items.forEach(it => { if (it._inspection_method) methods.add(it._inspection_method); });
+  if (methods.size > 0) {
+    fhtml += '<div class="method-block"><div class="m-title">📋 检验方法</div>';
+    methods.forEach(m => { fhtml += `<div style="margin: 2px 0;">${escapeHTML(m)}</div>`; });
+    fhtml += '</div>';
+  }
+  fnWrap.innerHTML = fhtml;
+}
+
+// HTML 转义
+function escapeHTML(s) {
+  if (s === undefined || s === null) return '';
+  return String(s).replace(/[<>&"']/g, c => ({ '<':'<', '>':'>', '&':'&', '"':'"', "'":'&#39;' }[c]));
+}
+
+// 实时查询
+let searchTimer = null;
+document.addEventListener('DOMContentLoaded', () => {
+  loadData();
+  document.getElementById('qInput').addEventListener('input', e => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      currentQuery = e.target.value;
+      renderResults();
+    }, 200);
+  });
+});
+
+function forceSearch() {
+  currentQuery = document.getElementById('qInput').value;
+  renderResults();
+}
+
+function clearSearch() {
+  document.getElementById('qInput').value = '';
+  currentQuery = '';
+  renderResults();
+}
+
+// ========== 导出 ==========
+function buildExportRows() {
+  const items = getFilteredItems();
+  const isAll = currentFilter === 'all';
+  const headers = [];
+  if (isAll) headers.push('污染物', '元素符号');
+  headers.push('食品大类', '食品名称', '限量值', '单位', '备注');
+  const rows = [headers];
+  items.forEach(it => {
+    const row = [];
+    if (isAll) { row.push(it._contaminant, it._symbol); }
+    row.push(it.category || '', it.food || '', it.limit || `NO₂:${it.limit_no2} / NO₃:${it.limit_no3}`, it._unit || '', it.remark || '');
+    rows.push(row);
+  });
+  // 加脚注(单列)
+  const seenFn = new Map();
+  items.forEach(it => {
+    if (it._footnotes) it._footnotes.forEach(f => {
+      if (f.text && !seenFn.has(f.mark + '|' + f.text)) seenFn.set(f.mark + '|' + f.text, f);
+    });
+  });
+  if (seenFn.size > 0) {
+    rows.push([]);
+    rows.push(['脚注说明']);
+    seenFn.forEach(f => rows.push([f.mark, f.text]));
+  }
+  // 检验方法
+  const methods = new Set();
+  items.forEach(it => { if (it._inspection_method) methods.add(it._inspection_method); });
+  if (methods.size > 0) {
+    rows.push([]);
+    rows.push(['检验方法']);
+    methods.forEach(m => rows.push([m]));
+  }
+  return rows;
+}
+
+function exportCSV() {
+  const rows = buildExportRows();
+  const csv = rows.map(r => r.map(cell => {
+    const s = String(cell || '');
+    if (s.includes(',') || s.includes('"') || s.includes('\n')) {
+      return '"' + s.replace(/"/g, '""') + '"';
+    }
+    return s;
+  }).join(',')).join('\n');
+  // 加 BOM 让 Excel 识别 UTF-8
+  const bom = '\uFEFF';
+  const blob = new Blob([bom + csv], { type: 'text/csv;charset=utf-8' });
+  const ts = new Date().toISOString().slice(0,10);
+  const fname = `GB2762-2025_${currentFilter === 'all' ? '全部' : DATA.contaminants.find(c=>c.table_no==currentFilter).contaminant}_${ts}.csv`;
+  downloadBlob(blob, fname);
+}
+
+function exportXLSX() {
+  // 尝试用 SheetJS,失败则降级 CSV
+  if (typeof XLSX === 'undefined') {
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';
+    s.onload = () => doExportXLSX();
+    s.onerror = () => { alert('Excel 导出库加载失败，已自动切换为 CSV 格式'); exportCSV(); };
+    document.head.appendChild(s);
+  } else {
+    doExportXLSX();
+  }
+}
+
+function doExportXLSX() {
+  try {
+    const rows = buildExportRows();
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.aoa_to_sheet(rows);
+    // 列宽
+    ws['!cols'] = [
+      { wch: 16 }, { wch: 10 }, { wch: 22 }, { wch: 50 }, { wch: 14 }, { wch: 10 }, { wch: 30 }
+    ];
+    XLSX.utils.book_append_sheet(wb, ws, '污染物限量');
+    const ts = new Date().toISOString().slice(0,10);
+    const fname = `GB2762-2025_${currentFilter === 'all' ? '全部' : DATA.contaminants.find(c=>c.table_no==currentFilter).contaminant}_${ts}.xlsx`;
+    XLSX.writeFile(wb, fname);
+  } catch (e) {
+    alert('Excel 导出失败：' + e.message + '\n已降级为 CSV');
+    exportCSV();
+  }
+}
+
+function downloadBlob(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>
