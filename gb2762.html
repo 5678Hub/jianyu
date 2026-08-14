@@ -70,6 +70,78 @@ button.export:hover { background: #d9ebd9; }
 .tab.active { background: var(--c-primary-2); color: white; border-color: var(--c-primary-2); font-weight: 500; }
 .tab .count { margin-left: 4px; opacity: 0.7; font-size: 11px; }
 
+/* 产品类型筛选 */
+.filter-toggle {
+  padding: 6px 14px;
+  font-size: 13px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border-strong);
+  color: var(--c-primary);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all .15s;
+}
+.filter-toggle:hover {
+  background: var(--c-primary-soft);
+  border-color: var(--c-primary);
+}
+.filter-toggle.active {
+  background: var(--c-primary-soft);
+  border-color: var(--c-primary);
+  color: var(--c-primary);
+  font-weight: 600;
+}
+.cat-panel {
+  margin-top: 10px;
+  padding: 14px 16px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.04);
+}
+.cat-panel-tip {
+  font-size: 12px;
+  color: var(--c-text-3);
+  margin-bottom: 10px;
+}
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 6px;
+}
+.cat-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  background: var(--c-bg);
+  font-size: 12px;
+  color: var(--c-text-1);
+  cursor: pointer;
+  user-select: none;
+  transition: all .15s;
+}
+.cat-chip:hover {
+  border-color: var(--c-primary);
+  background: var(--c-primary-soft);
+}
+.cat-chip.selected {
+  background: var(--c-primary);
+  color: #fff;
+  border-color: var(--c-primary);
+  font-weight: 500;
+}
+.cat-chip.selected .cat-chip-count {
+  color: rgba(255,255,255,.85);
+}
+.cat-chip-count {
+  font-size: 11px;
+  color: var(--c-text-3);
+  margin-left: 4px;
+}
+
 .summary { display: flex; gap: 14px; flex-wrap: wrap; padding: 8px 0; }
 .summary-card { padding: 10px 14px; border-radius: var(--r-sm); background: var(--c-primary-soft); border: 1px solid var(--c-border); min-width: 130px; }
 .summary-card .label { font-size: 11px; color: var(--c-text-3); }
@@ -132,6 +204,18 @@ table.results td.remark { font-size: 12px; color: var(--c-text-2); font-style: i
   <div class="tab-row" id="contaminantTabs" style="margin-top: 14px;">
     <!-- JS 渲染 -->
   </div>
+  <div style="margin-top: 10px;">
+    <button class="filter-toggle" onclick="toggleCategoryPanel()">
+      🏷️ 产品类型筛选（<span id="catSelectedCount">0</span>/22 类 已选）<span id="catToggleIcon">▼</span>
+    </button>
+    <button onclick="clearCategoryFilter()" style="margin-left:6px;font-size:12px;">清空筛选</button>
+    <div id="categoryPanel" class="cat-panel" style="display:none;">
+      <div class="cat-panel-tip">按 GB 2762-2025 标准的 22 大类食品分类体系 · 多选即 OR · 跨污染物筛选</div>
+      <div class="cat-grid" id="catGrid">
+        <!-- JS 渲染 -->
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="section">
@@ -167,6 +251,7 @@ async function loadData() {
     if (!res.ok) throw new Error('HTTP ' + res.status);
     DATA = await res.json();
     renderTabs();
+    renderCategoryPanel();
     updateSubtitle();
     renderResults();
   } catch (e) {
@@ -181,6 +266,60 @@ function updateSubtitle() {
   document.getElementById('subtitle').textContent =
     `${std.code} · 发布 ${std.publish_date} · 实施 ${std.implement_date} · 12 种污染物 · ${total} 条限量指标`;
   document.getElementById('verTag').textContent = `${total} 条`;
+}
+
+// 22 大类食品分类（GB 2762-2025）
+const CATEGORY_22 = [
+  '谷物及其制品','蔬菜及其制品','食用菌及其制品','藻类及其制品',
+  '豆类及其制品','坚果及籽类','肉及肉制品','水产动物及其制品',
+  '蛋及蛋制品','乳及乳制品','饮料类','酒类',
+  '调味品','特殊膳食用食品','特殊医学用途配方食品','婴幼儿配方食品',
+  '婴幼儿辅助食品','食用油、油脂及其制品','焙烤食品','茶叶',
+  '咖啡','糖、糖果、蜂蜜等'
+];
+let selectedCategories = new Set();
+let categoryPanelOpen = false;
+
+function toggleCategoryPanel() {
+  categoryPanelOpen = !categoryPanelOpen;
+  document.getElementById('categoryPanel').style.display = categoryPanelOpen ? 'block' : 'none';
+  document.getElementById('catToggleIcon').textContent = categoryPanelOpen ? '▲' : '▼';
+}
+
+function clearCategoryFilter() {
+  selectedCategories.clear();
+  renderCategoryPanel();
+  renderResults();
+}
+
+function renderCategoryPanel() {
+  // 计算每个 category 的实际条目数（基于当前污染物筛选）
+  const counts = {};
+  CATEGORY_22.forEach(c => counts[c] = 0);
+  DATA.contaminants.forEach(c => {
+    if (currentFilter !== 'all' && c.table_no != currentFilter) return;
+    c.items.forEach(it => {
+      if (it.category && counts.hasOwnProperty(it.category)) counts[it.category]++;
+    });
+  });
+  // 按固定顺序渲染
+  const grid = document.getElementById('catGrid');
+  grid.innerHTML = CATEGORY_22.map(c => {
+    const sel = selectedCategories.has(c);
+    return `<div class="cat-chip${sel ? ' selected' : ''}" onclick="toggleCategory('${c}')">
+      <span>${c}</span><span class="cat-chip-count">${counts[c]}</span>
+    </div>`;
+  }).join('');
+  document.getElementById('catSelectedCount').textContent = selectedCategories.size;
+  const btn = document.querySelector('.filter-toggle');
+  if (btn) btn.classList.toggle('active', selectedCategories.size > 0);
+}
+
+function toggleCategory(c) {
+  if (selectedCategories.has(c)) selectedCategories.delete(c);
+  else selectedCategories.add(c);
+  renderCategoryPanel();
+  renderResults();
 }
 
 // 渲染污染物 tabs
@@ -200,6 +339,7 @@ function renderTabs() {
 function setFilter(no) {
   currentFilter = no;
   renderTabs();
+  renderCategoryPanel();
   renderResults();
 }
 
@@ -215,6 +355,10 @@ function getFilteredItems() {
     if (c) {
       c.items.forEach(it => items.push({ ...it, _contaminant: c.contaminant, _symbol: c.symbol, _unit: c.unit, _table_no: c.table_no, _footnotes: c.footnotes, _inspection_method: c.inspection_method }));
     }
+  }
+  // 产品类型多选过滤
+  if (selectedCategories.size > 0) {
+    items = items.filter(it => it.category && selectedCategories.has(it.category));
   }
   if (!currentQuery.trim()) return items;
   const keywords = currentQuery.trim().toLowerCase().split(/\s+/);
@@ -234,7 +378,9 @@ function renderResults() {
   const items = getFilteredItems();
   const wrap = document.getElementById('resultsWrap');
   const hint = document.getElementById('resultHint');
-  hint.textContent = `共 ${items.length} 条记录` + (currentFilter !== 'all' ? ` · ${DATA.contaminants.find(c=>c.table_no==currentFilter).contaminant}` : '');
+  hint.textContent = `共 ${items.length} 条记录`
+    + (currentFilter !== 'all' ? ` · ${DATA.contaminants.find(c=>c.table_no==currentFilter).contaminant}` : '')
+    + (selectedCategories.size > 0 ? ` · 已选 ${selectedCategories.size} 个产品类型` : '');
   if (items.length === 0) {
     wrap.innerHTML = '<div class="empty-tip"><span class="emoji">📭</span>未匹配到记录</div>';
     document.getElementById('footnotesWrap').innerHTML = '';

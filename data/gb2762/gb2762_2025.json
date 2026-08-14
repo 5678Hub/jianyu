@@ -23,22 +23,25 @@
       "inspection_method": "包装饮用水按规定的方法测定、其他食品按规定的方法测定",
       "items": [
         {
-          "category": "",
+          "category": "谷物及其制品",
           "food": "谷物及其制品、麦片、面筋、粥类罐头、带馅、料、面米制品除外",
           "limit": "0.2",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "谷物"
         },
         {
-          "category": "",
+          "category": "谷物及其制品",
           "food": "麦片、面筋、粥类罐头、带馅、料、面米制品、、、()",
           "limit": "0.5",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "麦片"
         },
         {
-          "category": "蔬菜及其制品",
+          "category": "豆类及其制品",
           "food": "新鲜蔬菜、芸薹类蔬菜、叶菜蔬菜、豆类蔬菜、生姜、薯类除外(、、、、)",
           "limit": "0.1",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "豆类"
         },
         {
           "category": "蔬菜及其制品",
@@ -47,10 +50,11 @@
           "remark": ""
         },
         {
-          "category": "蔬菜及其制品",
+          "category": "豆类及其制品",
           "food": "芸薹类蔬菜、豆类蔬菜、生姜、薯类、、、",
           "limit": "0.2",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "豆类"
         },
         {
           "category": "蔬菜及其制品",
@@ -83,58 +87,67 @@
           "remark": ""
         },
         {
-          "category": "水果及其制品",
+          "category": "调味品",
           "food": "水果制品、果酱、泥、蜜饯、水果干类除外[()、、]",
           "limit": "0.2",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "酱"
         },
         {
-          "category": "水果及其制品",
+          "category": "调味品",
           "food": "果酱、泥()",
           "limit": "0.4",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "酱"
         },
         {
-          "category": "水果及其制品",
+          "category": "糖、糖果、蜂蜜等",
           "food": "蜜饯",
           "limit": "0.8",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "蜜饯"
         },
         {
-          "category": "水果干类",
+          "category": "食用菌及其制品",
           "food": "食用菌及其制品、双孢菇、平菇、香菇、榛蘑、牛肝菌、松茸、松露、青头菌、鸡枞、鸡油菌、多汁(、、、、、、、、、、乳菇、木耳、银耳及以上食用菌的制品除外",
           "limit": "0.5",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "食用菌"
         },
         {
-          "category": "水果干类",
+          "category": "食用菌及其制品",
           "food": "、、)双孢菇、平菇、香菇、榛蘑及以上食用菌的制品、、、",
           "limit": "0.3",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "食用菌"
         },
         {
-          "category": "水果干类",
+          "category": "食用菌及其制品",
           "food": "牛肝菌、松茸、松露、青头菌、鸡枞、鸡油菌、多汁乳菇及以上食用菌的制品、、、、、、",
           "limit": "1.0",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "食用菌"
         },
         {
-          "category": "水果干类",
+          "category": "食用菌及其制品",
           "food": "木耳及其制品、银耳及其制品干重计、",
           "limit": "1.0",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "木耳"
         },
         {
-          "category": "豆类",
+          "category": "豆类及其制品",
           "food": "豆类制品、豆浆除外()",
           "limit": "0.3",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "豆浆"
         },
         {
-          "category": "豆类",
+          "category": "豆类及其制品",
           "food": "豆浆",
           "limit": "0.05",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "豆浆"
         },
         {
           "category": "藻类及其制品",
@@ -161,16 +174,18 @@
           "remark": ""
         },
         {
-          "category": "藻类及其制品",
+          "category": "咖啡",
           "food": "坚果及籽类、生咖啡豆及烘焙咖啡豆除外()",
           "limit": "0.2",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "咖啡"
         },
         {
-          "category": "藻类及其制品",
+          "category": "咖啡",
           "food": "生咖啡豆及烘焙咖啡豆",
           "limit": "0.5",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "咖啡"
         },
         {
           "category": "肉及肉制品",
@@ -203,16 +218,18 @@
           "remark": ""
         },
         {
-          "category": "双壳贝类",
+          "category": "水产动物及其制品",
           "food": "水产制品、鱼类制品、海蜇制品除外(、)",
           "limit": "1.0",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "鱼"
         },
         {
-          "category": "双壳贝类",
+          "category": "水产动物及其制品",
           "food": "鱼类制品",
           "limit": "0.5",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "鱼"
         },
         {
           "category": "双壳贝类",
@@ -221,46 +238,53 @@
           "remark": ""
         },
         {
-          "category": "双壳贝类",
+          "category": "乳及乳制品",
           "food": "乳及乳制品、生乳、巴氏杀菌乳、灭菌乳、调制乳、发酵乳除外(、、、、)",
           "limit": "0.2",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "巴氏杀菌乳"
         },
         {
-          "category": "双壳贝类",
+          "category": "乳及乳制品",
           "food": "生乳、巴氏杀菌乳、灭菌乳、、",
           "limit": "0.02",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "巴氏杀菌乳"
         },
         {
-          "category": "双壳贝类",
+          "category": "乳及乳制品",
           "food": "调制乳、发酵乳、",
           "limit": "0.04",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "发酵乳"
         },
         {
-          "category": "油脂及其制品",
+          "category": "调味品",
           "food": "调味品、香辛料类除外()",
           "limit": "1.0",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "调味"
         },
         {
-          "category": "油脂及其制品",
+          "category": "调味品",
           "food": "香辛料类、花椒、桂皮、肉桂、多种香辛料混合的香辛料除外[、()、]",
           "limit": "1.5",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "花椒"
         },
         {
-          "category": "油脂及其制品",
+          "category": "调味品",
           "food": "花椒、桂皮、肉桂、多种香辛料混合的香辛料、()、",
           "limit": "3.0",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "花椒"
         },
         {
-          "category": "油脂及其制品",
+          "category": "糖、糖果、蜂蜜等",
           "food": "食糖及淀粉糖",
           "limit": "0.5",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "糖"
         },
         {
           "category": "淀粉及淀粉制品",
@@ -275,40 +299,46 @@
           "remark": ""
         },
         {
-          "category": "淀粉及淀粉制品",
+          "category": "焙烤食品",
           "food": "焙烤食品",
           "limit": "0.5",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "焙烤"
         },
         {
-          "category": "淀粉及淀粉制品",
+          "category": "饮料类",
           "food": "饮料类、包装饮用水、含乳饮料、果蔬汁类及其饮料、固体饮料除外(、、、)",
           "limit": "0.3",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "饮料"
         },
         {
-          "category": "淀粉及淀粉制品",
+          "category": "饮料类",
           "food": "包装饮用水",
           "limit": "0.01mg/L",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "包装饮用水"
         },
         {
-          "category": "淀粉及淀粉制品",
+          "category": "饮料类",
           "food": "含乳饮料",
           "limit": "0.05",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "饮料"
         },
         {
-          "category": "淀粉及淀粉制品",
+          "category": "饮料类",
           "food": "果蔬汁类及其饮料、含浆果及小粒水果的果蔬汁类及其饮料、浓缩果蔬汁、浆、除外[、()]",
           "limit": "0.03",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "饮料"
         },
         {
-          "category": "淀粉及淀粉制品",
+          "category": "饮料类",
           "food": "含浆果及小粒水果的果蔬汁类及其饮料、葡萄汁除外",
           "limit": "0.05",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "饮料"
         },
         {
           "category": "淀粉及淀粉制品",
@@ -317,58 +347,67 @@
           "remark": ""
         },
         {
-          "category": "淀粉及淀粉制品",
+          "category": "饮料类",
           "food": "浓缩果蔬汁、浆()",
           "limit": "0.5",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "果蔬汁"
         },
         {
-          "category": "淀粉及淀粉制品",
+          "category": "饮料类",
           "food": "固体饮料",
           "limit": "1.0",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "饮料"
         },
         {
-          "category": "淀粉及淀粉制品",
+          "category": "酒类",
           "food": "酒类、白酒、黄酒除外(、)",
           "limit": "0.2",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "白酒"
         },
         {
-          "category": "淀粉及淀粉制品",
+          "category": "酒类",
           "food": "白酒、黄酒、",
           "limit": "0.5",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "白酒"
         },
         {
-          "category": "淀粉及淀粉制品",
+          "category": "糖、糖果、蜂蜜等",
           "food": "可可制品、巧克力和巧克力制品以及糖果、",
           "limit": "0.5",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "糖"
         },
         {
-          "category": "淀粉及淀粉制品",
+          "category": "糖、糖果、蜂蜜等",
           "food": "冷冻饮品",
           "limit": "0.3",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "冷冻饮品"
         },
         {
-          "category": "特殊膳食用食品",
+          "category": "婴幼儿配方食品",
           "food": "婴幼儿配方食品以固态产品计",
           "limit": "0.08",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "婴幼儿配方食品"
         },
         {
-          "category": "特殊膳食用食品",
+          "category": "婴幼儿辅助食品",
           "food": "婴幼儿辅助食品",
           "limit": "0.2",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "婴幼儿辅助食品"
         },
         {
-          "category": "特殊膳食用食品",
+          "category": "特殊医学用途配方食品",
           "food": "特殊医学用途配方食品、特殊医学用途婴儿配方食品涉及的品种除外岁以上人群的产品以固态产品计",
           "limit": "100.5",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "特殊医学用途"
         },
         {
           "category": "特殊膳食用食品",
@@ -401,10 +440,11 @@
           "remark": ""
         },
         {
-          "category": "其他类",
+          "category": "糖、糖果、蜂蜜等",
           "food": "果冻",
           "limit": "0.4",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "果冻"
         },
         {
           "category": "其他类",
@@ -413,10 +453,11 @@
           "remark": ""
         },
         {
-          "category": "其他类",
+          "category": "茶叶",
           "food": "茶叶",
           "limit": "5.0",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "茶叶"
         },
         {
           "category": "其他类",
@@ -431,22 +472,25 @@
           "remark": ""
         },
         {
-          "category": "其他类",
+          "category": "糖、糖果、蜂蜜等",
           "food": "蜂蜜",
           "limit": "0.5",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "蜂蜜"
         },
         {
-          "category": "其他类",
+          "category": "蔬菜及其制品",
           "food": "花粉、油菜花粉、松花粉除外(、)",
           "limit": "0.5",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "菜花"
         },
         {
-          "category": "其他类",
+          "category": "蔬菜及其制品",
           "food": "油菜花粉",
           "limit": "1.0",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "菜花"
         },
         {
           "category": "其他类",
@@ -455,10 +499,11 @@
           "remark": ""
         },
         {
-          "category": "其他类",
+          "category": "蔬菜及其制品",
           "food": "稻谷以糙米计新鲜香辛料、如姜、葱、蒜等、应按对应的新鲜蔬菜、或新鲜水果、类别执行",
           "limit": "8",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "蔬菜"
         }
       ],
       "footnotes": [
@@ -506,10 +551,11 @@
           "remark": ""
         },
         {
-          "category": "蔬菜及其制品",
+          "category": "豆类及其制品",
           "food": "新鲜蔬菜、叶菜蔬菜、豆类蔬菜、块根和块茎蔬菜、茎类蔬菜、黄花菜除外",
           "limit": "0.05",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "豆类"
         },
         {
           "category": "蔬菜及其制品",
@@ -518,10 +564,11 @@
           "remark": ""
         },
         {
-          "category": "蔬菜及其制品",
+          "category": "豆类及其制品",
           "food": "豆类蔬菜、块根和块茎蔬菜、茎类蔬菜、芹菜除外、、()",
           "limit": "0.1",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "豆类"
         },
         {
           "category": "蔬菜及其制品",
@@ -536,34 +583,39 @@
           "remark": ""
         },
         {
-          "category": "水果及其制品",
+          "category": "食用菌及其制品",
           "food": "食用菌及其制品、香菇、羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑、松茸、牛肝菌、鸡枞、多汁乳(、、、、、、、、、菇、松露、姬松茸、木耳、银耳及以上食用菌的制品除外",
           "limit": "0.2",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "食用菌"
         },
         {
-          "category": "香菇及其制品",
+          "category": "食用菌及其制品",
           "food": "羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑及以上食用菌的制品、、、、",
           "limit": "0.6",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "食用菌"
         },
         {
-          "category": "香菇及其制品",
+          "category": "食用菌及其制品",
           "food": "松茸、牛肝菌、鸡枞、多汁乳菇及以上食用菌的制品、、、",
           "limit": "1.0",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "食用菌"
         },
         {
-          "category": "香菇及其制品",
+          "category": "食用菌及其制品",
           "food": "松露、姬松茸及以上食用菌的制品、",
           "limit": "2.0",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "食用菌"
         },
         {
-          "category": "香菇及其制品",
+          "category": "食用菌及其制品",
           "food": "木耳及其制品、银耳及其制品干重计、",
           "limit": "0.5",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "木耳"
         },
         {
           "category": "坚果及籽类",
@@ -572,40 +624,46 @@
           "remark": ""
         },
         {
-          "category": "坚果及籽类",
+          "category": "肉及肉制品",
           "food": "肉及肉制品、畜禽内脏及其制品除外()",
           "limit": "0.1",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "肉制品"
         },
         {
-          "category": "鱼类",
+          "category": "水产动物及其制品",
           "food": "甲壳类、海蟹、虾蛄除外(、)",
           "limit": "0.5",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "虾"
         },
         {
-          "category": "鱼类",
+          "category": "水产动物及其制品",
           "food": "海蟹、虾蛄、",
           "limit": "3.0",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "虾"
         },
         {
-          "category": "鱼类",
+          "category": "水产动物及其制品",
           "food": "双壳贝类、腹足类、头足类、棘皮类去除内脏、、、",
           "limit": "2.0",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "贝"
         },
         {
-          "category": "鱼类",
+          "category": "水产动物及其制品",
           "food": "水产制品鱼类罐头",
           "limit": "0.2",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "鱼"
         },
         {
-          "category": "鱼类",
+          "category": "水产动物及其制品",
           "food": "其他鱼类制品",
           "limit": "0.1",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "鱼"
         },
         {
           "category": "调味品",
@@ -626,10 +684,11 @@
           "remark": ""
         },
         {
-          "category": "特殊膳食用食品",
+          "category": "婴幼儿辅助食品",
           "food": "婴幼儿谷类辅助食品",
           "limit": "0.06",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "婴幼儿谷类辅助食品"
         },
         {
           "category": "特殊膳食用食品",
@@ -653,16 +712,18 @@
       "inspection_method": "饮用天然矿泉水按规定的方法测定、其他食品按规定的方法",
       "items": [
         {
-          "category": "",
+          "category": "水产动物及其制品",
           "food": "Hg总汞甲基汞a水产动物及其制品、肉食性鱼类及其制品除外()",
           "limit": "—",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "鱼"
         },
         {
-          "category": "",
+          "category": "水产动物及其制品",
           "food": "肉食性鱼类及其制品、金枪鱼、金目鲷、枪鱼、鲨鱼及以上鱼类的制品除外(、、、)",
           "limit": "—",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "鱼"
         },
         {
           "category": "谷物及其制品",
@@ -677,16 +738,18 @@
           "remark": ""
         },
         {
-          "category": "蔬菜及其制品",
+          "category": "食用菌及其制品",
           "food": "食用菌及其制品、木耳及其制品、银耳及其制品除外(、)",
           "limit": "—",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "食用菌"
         },
         {
-          "category": "蔬菜及其制品",
+          "category": "食用菌及其制品",
           "food": "木耳及其制品、银耳及其制品干重计、",
           "limit": "—",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "木耳"
         },
         {
           "category": "乳及乳制品",
@@ -713,10 +776,11 @@
           "remark": ""
         },
         {
-          "category": "特殊膳食用食品",
+          "category": "婴幼儿辅助食品",
           "food": "婴幼儿罐装辅助食品",
           "limit": "0.02",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "婴幼儿罐装辅助食品"
         },
         {
           "category": "特殊膳食用食品",
@@ -784,10 +848,11 @@
           "remark": ""
         },
         {
-          "category": "谷物及其制品",
+          "category": "水产动物及其制品",
           "food": "水产动物及其制品、鱼类及其制品除外()",
           "limit": "—",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "鱼"
         },
         {
           "category": "蔬菜及其制品",
@@ -796,16 +861,18 @@
           "remark": ""
         },
         {
-          "category": "蔬菜及其制品",
+          "category": "食用菌及其制品",
           "food": "食用菌及其制品、松茸及其制品、木耳及其制品、银耳及其制品除外(、、)",
           "limit": "—",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "食用菌"
         },
         {
-          "category": "松茸及其制品",
+          "category": "食用菌及其制品",
           "food": "木耳及其制品、银耳及其制品干重计、",
           "limit": "—",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "木耳"
         },
         {
           "category": "乳及乳制品",
@@ -820,34 +887,39 @@
           "remark": ""
         },
         {
-          "category": "乳及乳制品",
+          "category": "食用油、油脂及其制品",
           "food": "油脂及其制品、鱼油及其制品、磷虾油及其制品除外(、)",
           "limit": "0.1",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "油脂"
         },
         {
-          "category": "鱼油及其制品、磷虾油及其制品",
+          "category": "水产动物及其制品",
           "food": "调味品、水产调味品、复合调味料和香辛料类除外(、)",
           "limit": "0.5",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "水产"
         },
         {
-          "category": "鱼油及其制品、磷虾油及其制品",
+          "category": "水产动物及其制品",
           "food": "水产调味品、鱼类调味品除外()",
           "limit": "—",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "鱼"
         },
         {
-          "category": "鱼类调味品",
+          "category": "调味品",
           "food": "复合调味料",
           "limit": "—",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "调味料"
         },
         {
-          "category": "鱼类调味品",
+          "category": "糖、糖果、蜂蜜等",
           "food": "食糖及淀粉糖",
           "limit": "0.5",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "糖"
         },
         {
           "category": "饮料类",
@@ -856,34 +928,39 @@
           "remark": ""
         },
         {
-          "category": "饮料类",
+          "category": "糖、糖果、蜂蜜等",
           "food": "可可制品、巧克力和巧克力制品以及糖果、可可制品、巧克力和巧克力制品、",
           "limit": "0.5",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "糖"
         },
         {
-          "category": "特殊膳食用食品",
+          "category": "婴幼儿辅助食品",
           "food": "婴幼儿辅助食品婴幼儿谷类辅助食品、添加藻类的产品除外()",
           "limit": "—",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "婴幼儿辅助食品"
         },
         {
-          "category": "特殊膳食用食品",
+          "category": "藻类及其制品",
           "food": "添加藻类的产品",
           "limit": "—",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "藻类"
         },
         {
-          "category": "特殊膳食用食品",
+          "category": "婴幼儿辅助食品",
           "food": "婴幼儿罐装辅助食品、以水产及动物肝脏为原料的产品除外()",
           "limit": "—",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "婴幼儿罐装辅助食品"
         },
         {
-          "category": "特殊膳食用食品",
+          "category": "水产动物及其制品",
           "food": "以水产及动物肝脏为原料的产品",
           "limit": "—",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "水产"
         },
         {
           "category": "特殊膳食用食品",
@@ -939,16 +1016,18 @@
       "inspection_method": "按规定的方法测定",
       "items": [
         {
-          "category": "",
+          "category": "婴幼儿配方食品",
           "food": "(食品、饮料类、婴幼儿配方食品、婴幼儿辅助食品除外(、、)",
           "limit": "250",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "婴幼儿配方食品"
         },
         {
-          "category": "饮料类",
+          "category": "婴幼儿配方食品",
           "food": "婴幼儿配方食品、婴幼儿辅助食品、",
           "limit": "50",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "婴幼儿配方食品"
         },
         {
           "category": "饮料类",
@@ -972,10 +1051,11 @@
       "inspection_method": "按规定的方法测定",
       "items": [
         {
-          "category": "油脂及其制品",
+          "category": "食用油、油脂及其制品",
           "food": "氢化植物油、含氢化和、或、部分氢化油脂的油脂制品、()",
           "limit": "1.0",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "植物油"
         }
       ],
       "footnotes": []
@@ -1068,25 +1148,28 @@
           "remark": ""
         },
         {
-          "category": "特殊膳食用食品",
+          "category": "婴幼儿配方食品",
           "food": "婴幼儿配方食品a婴儿配方食品、较大婴儿配方食品、幼儿配方食品以固态产品计以固态产品计、、b()c()",
           "limit_no2": "2.0100",
           "limit_no3": "—",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "婴幼儿配方食品"
         },
         {
-          "category": "特殊膳食用食品",
+          "category": "特殊医学用途配方食品",
           "food": "特殊医学用途婴儿配方食品以固态产品计以固态产品计",
           "limit_no2": "2.0",
           "limit_no3": "100",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "特殊医学用途"
         },
         {
-          "category": "特殊膳食用食品",
+          "category": "婴幼儿辅助食品",
           "food": "婴幼儿辅助食品婴幼儿谷类辅助食品",
           "limit_no2": "2.0",
           "limit_no3": "100",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "婴幼儿辅助食品"
         }
       ],
       "footnotes": []
@@ -1164,10 +1247,11 @@
       "inspection_method": "按规定的方法测定",
       "items": [
         {
-          "category": "油脂及其制品",
+          "category": "食用油、油脂及其制品",
           "food": "水产动物油脂",
           "limit": "200",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "动物油"
         },
         {
           "category": "油脂及其制品",
@@ -1201,10 +1285,11 @@
       "inspection_method": "按规定的方法测定",
       "items": [
         {
-          "category": "",
+          "category": "调味品",
           "food": ",()a调味品、固态调味品除外",
           "limit": "0.4",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "调味"
         },
         {
           "category": "固态调味品",
@@ -1213,46 +1298,53 @@
           "remark": ""
         },
         {
-          "category": "水果干类",
+          "category": "食用菌及其制品",
           "food": "水果及其醋、油或盐渍水果、制品果酱、泥蜜饯、包括果丹皮发酵的水果制品煮熟的或油炸的水果水果甜品其他水果制品新鲜蔬菜、未经加工的、经表面处理的、去皮或预切的、冷冻的蔬菜芸薹类蔬菜叶菜蔬菜、包括芸薹类叶菜豆类蔬菜块根和块茎蔬菜、例如、薯类、胡萝卜、萝卜、生姜等茎类蔬菜蔬菜及其制品、包括其他新鲜蔬菜、包括瓜果类、鳞茎类和水生类、芽菜类、竹笋、黄花菜等多年生蔬菜(薯类、不包、蔬菜制品,括食用菌)蔬菜罐头干制蔬菜酱腌菜蔬菜泥、酱经水煮或油炸的蔬菜其他蔬菜制品新鲜食用菌、未经加工的、经表面处理的、预切的、冷冻的食用菌双孢菇Agaricusbisporus(J.E.Lange)Imbach平菇Pleurotusostreatus(Jacq.)P.Kumm香菇Lentinulaedodes食用菌(Berk.)Pegler榛蘑Armillariamellea及其制品(Vahl.)P.Kumm牛肝菌、美味牛肝菌Boletusbainiugan兰茂牛肝菌Lanmaoaasiatic[Dentinger;G.Wu&Zhu茶褐新生牛肝菌Sutoriusbrunneissimus远东邹盖牛肝菌L.Yang;(W.F.Chiu)G.Wu&ZhuL.Yang;Rugiboletusextremiorientalis(Lj.N.Vassiljeva)G.Wu&ZhuL.Yang]松茸Tricholomamatsutake(S.Ito&S.Imai)Singe",
           "limit": "13",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "食用菌"
         },
         {
-          "category": "水果干类",
+          "category": "食用菌及其制品",
           "food": ".()()松露Tuber青头菌Russulavirescens(Schaeff.)Fr.鸡枞Termitomyces鸡油菌Cantharellus多汁乳菇Lactariusvolemus羊肚菌MorchellaimportunaM.Kuo,O'Donnell&T.J.Volk獐头菌Sarcodonimbricatus(L.)P.Karst.食用菌姬松茸AgaricusblazeiMurrill及其制品木耳、毛木耳Auriculariacornea黑木耳Auriculariaheimuer(Ehrenb.;F.Wu,B.K.Cui&Y.C.Dai)银耳TremellafuciformisBerk.其他新鲜食用菌食用菌制品食用菌罐头腌渍食用菌、例如、酱渍、盐渍、糖醋渍食用菌等经水煮或油炸的食用菌其他食用菌制品谷物稻谷玉米小麦大麦、包括青稞其他谷物、例如、粟、谷子、高粱、黑麦、燕麦、荞麦等[:()、、、、]谷物碾磨加工品糙米、包括色稻米大米、粉小麦粉、包括食用麸皮玉米粉、玉米糁、渣谷物及其、()制品、不麦片(包括焙烤其他谷物碾磨加工品、例如、小米、高粱米、大麦米、黍米等制品)谷物制品大米制品、例如米粉、米线等小麦粉制品生湿面制品、例如、面条、饺子皮、馄饨皮、烧麦皮等生干面制品发酵面制品面糊、例如、用于鱼和禽肉的拖面糊、裹粉、煎炸粉(:)、、面筋其他小麦粉制品玉米制品、例如、玉米面条、玉米片等其他谷物制品、例如、带馅、料、面米制品、粥类罐头等",
           "limit": "14",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "食用菌"
         },
         {
-          "category": "发酵肉制品类",
+          "category": "肉及肉制品",
           "food": "熟肉干制品、例如、肉干、肉松等其他熟肉制品",
           "limit": "15",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "肉制品"
         },
         {
-          "category": "棘皮类",
+          "category": "乳及乳制品",
           "food": "其他鲜、冻水产动物、水产制品水产品罐头鱼糜制品、例如、鱼丸等腌制水产品鱼子制品熏、烤水产品、发酵水产品其他水产制品生乳巴氏杀菌乳灭菌乳调制乳发酵乳乳及浓缩乳制品乳制品稀奶油、奶油、无水奶油、、乳粉和调制乳粉乳清粉和乳清蛋白粉干酪再制干酪其他乳制品、例如、酪蛋白等鲜蛋蛋制品卤蛋蛋及糟蛋蛋制品皮蛋咸蛋其他蛋制品",
           "limit": "16",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "乳粉"
         },
         {
-          "category": "其他调味品",
+          "category": "咖啡",
           "food": "包装饮用水饮用天然矿泉水饮用纯净水其他类饮用水果蔬汁类及其饮料、例如、苹果汁、苹果醋饮料、山楂汁、山楂醋饮料等果蔬汁、浆浓缩果蔬汁、浆果蔬汁、浆、类饮料蛋白饮料含乳饮料、例如、发酵型含乳饮料、配制型含乳饮料、乳酸菌饮料等饮料类植物蛋白饮料复合蛋白饮料其他蛋白饮料碳酸饮料茶饮料咖啡类饮料植物饮料风味饮料固体饮料、包括速溶咖啡、研磨咖啡、烘焙咖啡[、()]特殊用途饮料其他饮料",
           "limit": "17",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "咖啡"
         },
         {
-          "category": "物、豆类",
+          "category": "特殊医学用途配方食品",
           "food": "、和块根植淀粉制品、包括虾味片物提取的()淀粉)面包糕点、包括月饼焙烤食品饼干其他焙烤食品可、可、制可可制品、巧克力和巧克力制品、包括代可可脂巧克力及制品品、巧克、()、力和巧克力制品以糖果、包括胶基糖果及糖果()冰淇淋雪糕雪泥冷冻饮品、冰棍甜味冰食用冰其他冷冻饮品婴幼儿配方食品婴儿配方食品较大婴儿配方食品幼儿配方食品特殊膳食特殊医学用途婴儿配方食品用食品婴幼儿辅助食品婴幼儿谷类辅助食品婴幼儿罐装辅助食品特殊医学用途配方食品、特殊医学用途婴儿配方食品涉及的品种除外其他特殊膳食用食品、例如、辅食营养补充品、运动营养食品、孕妇及乳母营养补充食品等",
           "limit": "18",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "特殊医学用途"
         },
         {
-          "category": "其他类",
+          "category": "茶叶",
           "food": "花粉除上述食(品以外的茶叶食品)干菊花苦丁茶食用燕窝",
           "limit": "19",
-          "remark": ""
+          "remark": "",
+          "category_matched_by": "茶叶"
         }
       ],
       "footnotes": [
