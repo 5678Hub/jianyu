@@ -956,61 +956,47 @@ function renderTreeDetail() {
 
   // 找节点对应的 items
   const pk = pathKey(path);
-  const selfItems = idx.has(pk) ? idx.get(pk).map(x => ({ ...x, _viaSub: nodeName })) : [];
 
-  // 同级(兄弟节点)items
-  const siblingItems = [];
-  function findParentAndSiblings(nodes, parent) {
-    for (const n of nodes) {
-      if (n.name === path[parent.length]) {
-        if (n.children) {
-          n.children.forEach(c => {
-            if (pathKey(parent.concat([c.name])) !== pk) {
-              const cpk = pathKey(parent.concat([c.name]));
-              if (idx.has(cpk)) {
-                idx.get(cpk).forEach(it => siblingItems.push({ ...it, _viaSub: c.name }));
-              }
-            }
-          });
-        }
-        return true;
+  // === 本级 / 最近有数据的上一级 ===
+  // 沿 path 向上找第一个 idx 命中的节点(优先自身,其次父、祖父…)
+  let primaryKey = pk, primaryName = nodeName, primaryLevel = '本级';
+  if (!idx.has(pk) && path.length > 1) {
+    for (let i = path.length - 2; i >= 0; i--) {
+      const pkUp = pathKey(path.slice(0, i + 1));
+      if (idx.has(pkUp)) {
+        primaryKey = pkUp;
+        primaryName = path[i];
+        primaryLevel = '上一级';
+        break;
       }
-      if (n.children && findParentAndSiblings(n.children, parent.concat([n.name]))) return true;
+    }
+  }
+  const primaryItems = idx.has(primaryKey)
+    ? idx.get(primaryKey).map(x => ({ ...x, _viaSub: primaryName }))
+    : [];
+
+  // === 一级最上级:整个 L1 大类下的所有命中 items(扣除 primaryItems 已展示) ===
+  const bigItems = [];
+  function collectL1(ns, parentPath) {
+    ns.forEach(c => {
+      const cpk = pathKey(parentPath.concat([c.name]));
+      if (idx.has(cpk)) idx.get(cpk).forEach(it => bigItems.push({ ...it, _viaSub: c.name }));
+      if (c.children) collectL1(c.children, parentPath.concat([c.name]));
+    });
+  }
+  function findL1Root(nodes) {
+    for (const n of nodes) {
+      if (n.name === bigName) { collectL1(n.children || [], [n.name]); return true; }
+      if (n.children && findL1Root(n.children)) return true;
     }
     return false;
   }
-  if (path.length > 1) findParentAndSiblings(tree, []);
-
-  // 父级(L1):把所有 path[0] 节点下的 items 合并(本节点和兄弟之外的)
-  const directL1Items = [];
-  function collectL1(nodes) {
-    for (const n of nodes) {
-      if (n.name === bigName) {
-        function recur(ns) {
-          ns.forEach(c => {
-            const cpk = pathKey([bigName].concat(path.slice(1, path.length - 1)).concat([c.name]).slice(0, path.length));
-            // 简化:把 n.children 全部展开收集
-            const dpk = pathKey([bigName, c.name]);
-            if (idx.has(dpk)) idx.get(dpk).forEach(it => directL1Items.push({ ...it, _viaSub: c.name }));
-            if (c.children) recur(c.children);
-          });
-        }
-        recur(n.children || []);
-        return true;
-      }
-      if (n.children && collectL1(n.children)) return true;
-    }
-    return false;
+  findL1Root(tree);
+  function itemKey(it) {
+    return (it._table_no || '') + '|' + (it.food || '') + '|' + ((it.limits && it.limits[0] && it.limits[0].value) || it.limit || '') + '|' + (it._viaSub || '');
   }
-  // 简化:父级展示 = 把整个 L1 子树命中且不在 self+sibling 的 items
-  collectL1(tree);
-  const seen = new Set();
-  const filteredDirect = directL1Items.filter(it => {
-    const k = it._table_no + '|' + (it.food || '') + '|' + (it.limit || '') + '|' + (it._viaSub || '');
-    if (seen.has(k)) return false;
-    seen.add(k);
-    return true;
-  });
+  const primKey = new Set(primaryItems.map(itemKey));
+  const bigOther = bigItems.filter(it => !primKey.has(itemKey(it)));
 
   // 卡片
   const emoji = pickEmoji(nodeName);
@@ -1021,15 +1007,18 @@ function renderTreeDetail() {
       <div class="name-en">GB 2762-2025 · ${escapeHTML(bigName)} · 第 ${path.length} 级</div>
     </div>
     <div class="meta">
-      <div class="meta-card"><div class="label">适用污染物</div><div class="num">${selfItems.length}</div></div>
+      <div class="meta-card"><div class="label">适用污染物</div><div class="num">${primaryItems.length}</div></div>
       <div class="meta-card"><div class="label">所属大类</div><div class="num" style="font-size:13px;">${escapeHTML(bigName)}</div></div>
     </div>
   </div>`;
 
   const levels = [];
-  if (selfItems.length > 0) levels.push({ tag: '本级', label: `${nodeName} 的污染物限量要求`, isSelf: true, items: selfItems });
-  if (siblingItems.length > 0 && path.length > 1) levels.push({ tag: '同级', label: `${bigName} 同级细类的限量要求`, isSelf: false, items: siblingItems });
-  if (filteredDirect.length > 0 && path.length > 1) levels.push({ tag: '上级', label: `${bigName} 大类的其他限量`, isSelf: false, items: filteredDirect });
+  if (primaryItems.length > 0) {
+    levels.push({ tag: primaryLevel, label: `${primaryName} 的污染物限量要求`, isSelf: primaryLevel === '本级', items: primaryItems });
+  }
+  if (bigOther.length > 0 && path.length > 0) {
+    levels.push({ tag: '一级最上级', label: `${bigName} 大类的其他限量`, isSelf: false, items: bigOther });
+  }
 
   if (levels.length === 0) {
     html += `<div class="tree-empty"><span class="emoji">📭</span><div>该食品暂无污染物限量记录</div><div class="hint-text">可能未在 GB 2762-2025 中单独规定<br>适用 GB 2762 通用原则</div></div>`;
@@ -1048,7 +1037,7 @@ function renderTreeDetail() {
   }
 
   tc.innerHTML = html;
-  fn.innerHTML = renderFootnotesFor(selfItems, nodeName, bigName);
+  fn.innerHTML = renderFootnotesFor(primaryItems, primaryName, bigName);
 }
 
 function pickEmoji(name) {
