@@ -1283,6 +1283,53 @@ function getContamOrderIndex(aid) {
   return i < 0 ? 999 : i;
 }
 
+// ========== A.1 树 DFS 索引:用"path → 序"映射,保证限量行按官方层级顺序展示 ==========
+// 背景:rows 抓取顺序与官方表单顺序不一定一致(例如表 8 亚硝酸盐中"特殊膳食用食品"被前置)
+// 解决:row.parts 短名拼成最长前缀,在 A.1 索引中找最深匹配节点;深度越大排序越靠后(子级排在父级之后)
+let _a1PathIndex = null;
+function shortName(n) { return (n || '').split('（')[0].split('(')[0].trim(); }
+function buildA1PathIndex() {
+  if (_a1PathIndex) return _a1PathIndex;
+  const idx = new Map();
+  let ord = 0;
+  function walk(node, pathArr) {
+    const sn = shortName(node.name);
+    const np = pathArr.concat([sn]);
+    idx.set(np.join('/'), ord++);
+    if (node.children) for (const c of node.children) walk(c, np);
+  }
+  const tree = (DATA && DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
+  for (const root of tree) walk(root, []);
+  _a1PathIndex = idx;
+  return idx;
+}
+function a1OrderOf(row) {
+  const idx = buildA1PathIndex();
+  const parts = (row.parts || []).map(shortName).filter(Boolean);
+  if (parts.length === 0) return Number.MAX_SAFE_INTEGER;
+  // 从深到浅尝试拼前缀(L4 → L3 → L2 → L1)
+  let bestOrd = -1, bestDepth = 0;
+  for (let d = Math.min(parts.length, 4); d >= 1; d--) {
+    const k = parts.slice(0, d).join('/');
+    if (idx.has(k)) { bestOrd = idx.get(k); bestDepth = d; break; }
+  }
+  if (bestOrd < 0) {
+    // fallback:row.food 出现在 L1 子树任意节点名中(子串匹配)
+    const food = parts[parts.length - 1];
+    if (food) {
+      for (const [k, v] of idx.entries()) {
+        if (k === food || k.endsWith('/' + food)) { bestOrd = v; break; }
+      }
+    }
+  }
+  if (bestOrd < 0) {
+    // 兜底:排在数据集中最后
+    return Number.MAX_SAFE_INTEGER - 1;
+  }
+  // 编码: ord * 1000 + (10 - 深度),让同节点按深度递增,深度越大越靠后
+  return bestOrd * 1000 + (10 - bestDepth);
+}
+
 function renderContamList() {
   const wrap = document.getElementById('contamList');
   if (!wrap) return;
@@ -1344,6 +1391,9 @@ function renderContamDetail() {
       return tokens.every(tk => hay.includes(tk));
     });
   }
+
+  // 按 A.1 附录层级顺序排(等同于官方表单中"食品类别(名称)"从上到下、从左到右的顺序)
+  rows = [...rows].sort((x, y) => a1OrderOf(x) - a1OrderOf(y));
 
   if (hintEl) hintEl.textContent = contamSearchKw ? `已筛 "${contamSearchKw}" · ${rows.length}/${a.rows.length} 条` : `${rows.length} 条限量`;
 
