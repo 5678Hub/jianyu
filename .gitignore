@@ -7,3 +7,9 @@ __pycache__/
 *.pyc
 # 单文件离线版（build_offline.py 自动生成，给伙伴发桌面版用，不进仓库）
 jianyu-offline.html
+
+# Excel 锁文件
+~*.xlsx
+~*.xls
+~*.docx
+~*.pptx

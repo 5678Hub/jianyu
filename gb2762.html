@@ -159,6 +159,46 @@ table.results td.remark { font-size: 12px; color: var(--c-text-2); font-style: i
   border-bottom: 1px solid var(--c-border);
   display: flex; align-items: center; gap: 6px;
 }
+.tree-side h3 .tree-toggle {
+  margin-left: auto;
+  width: 22px; height: 22px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--c-border-strong); border-radius: 6px;
+  background: var(--c-bg); color: var(--c-text-2);
+  cursor: pointer; font-size: 11px; transition: all .15s;
+}
+.tree-side h3 .tree-toggle:hover { background: var(--c-primary-soft); border-color: var(--c-primary); color: var(--c-primary); }
+
+.tree-toolbar { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+.tree-toolbar button {
+  font-size: 11px; padding: 4px 9px; border-radius: 5px;
+  background: var(--c-bg); border: 1px solid var(--c-border);
+  color: var(--c-text-2); cursor: pointer; transition: all .12s;
+}
+.tree-toolbar button:hover { background: var(--c-primary-soft); color: var(--c-primary); border-color: var(--c-primary); }
+.tree-toolbar .summary { font-size: 11px; color: var(--c-text-3); margin-left: auto; align-self: center; }
+
+/* 折叠态:仅保留一个 36px 宽的窄条 */
+.tree-view.side-collapsed { grid-template-columns: 36px 1fr; gap: 8px; }
+.tree-side.collapsed { padding: 12px 4px; }
+.tree-side.collapsed h3 { display: none; }
+.tree-side.collapsed .tree-toolbar,
+.tree-side.collapsed .tree-search,
+.tree-side.collapsed #treeList { display: none; }
+.tree-side.collapsed .tree-collapsed-rail {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+.tree-collapsed-rail { display: none; }
+.tree-collapsed-rail button {
+  width: 28px; height: 28px; padding: 0;
+  border: 1px solid var(--c-border-strong); border-radius: 6px;
+  background: white; color: var(--c-primary);
+  font-size: 12px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .15s;
+}
+.tree-collapsed-rail button:hover { background: var(--c-primary-soft); border-color: var(--c-primary); }
+.tree-collapsed-rail .rail-icon { font-size: 16px; }
 .tree-search { margin-bottom: 8px; position: relative; }
 .tree-search input { padding: 7px 10px; font-size: 12px; }
 .tree-search .clear-btn {
@@ -319,13 +359,25 @@ table.lvl td.remark-cell { font-size: 11.5px; color: var(--c-text-2); font-style
 
 <!-- ============== 模式 A:按食品类别浏览 ============== -->
 <div id="modeTree">
-  <div class="tree-view">
-    <aside class="tree-side">
-      <h3>📂 食品分类目录</h3>
+  <div class="tree-view" id="treeView">
+    <aside class="tree-side" id="treeSide">
+      <h3>
+        <span>📂 食品分类目录</span>
+        <span class="tree-toggle" id="treeToggle" title="折叠 / 展开左侧" onclick="toggleSidePanel()">◀</span>
+      </h3>
+      <div class="tree-toolbar" id="treeToolbar">
+        <button onclick="expandAllTree()" title="展开所有 24 个大类">⇕ 全部展开</button>
+        <button onclick="collapseAllTree()" title="只保留 24 个大类(折叠所有子节点)">⇕ 全部收起</button>
+        <span class="summary" id="treeSummary">—</span>
+      </div>
       <div class="tree-search">
         <input type="text" id="treeSearchInput" placeholder="搜索食品名,例如 玉米、稻谷" autocomplete="off">
       </div>
       <div id="treeList"></div>
+      <div class="tree-collapsed-rail">
+        <button onclick="toggleSidePanel()" title="展开目录">▶</button>
+        <button onclick="expandAllTree()" title="全部展开">⇕</button>
+      </div>
     </aside>
     <div class="tree-detail">
       <div class="breadcrumb" id="breadcrumb">— 请在左侧选择食品 —</div>
@@ -406,6 +458,55 @@ let categoryPanelOpen = false;
 // 树形浏览模式状态
 let treeSelected = null; // {path: [name1, name2, ...]}  当前选中节点的全路径
 let expandedPaths = new Set(); // 已展开的节点路径(序列化字符串)
+let sideCollapsed = false;     // 左侧面板是否折叠
+
+function toggleSidePanel() {
+  sideCollapsed = !sideCollapsed;
+  const side = document.getElementById('treeSide');
+  const view = document.getElementById('treeView');
+  const toggle = document.getElementById('treeToggle');
+  if (sideCollapsed) {
+    side.classList.add('collapsed');
+    view.classList.add('side-collapsed');
+    toggle.textContent = '▶';
+    toggle.title = '展开左侧目录';
+  } else {
+    side.classList.remove('collapsed');
+    view.classList.remove('side-collapsed');
+    toggle.textContent = '◀';
+    toggle.title = '折叠左侧目录';
+  }
+  try { localStorage.setItem('jianyu_sideCollapsed', sideCollapsed ? '1' : '0'); } catch (e) {}
+}
+
+function expandAllTree() {
+  const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
+  function walk(nodes) {
+    nodes.forEach(n => {
+      expandedPaths.add(pathKey(n.path));
+      if (n.children && n.children.length) walk(n.children);
+    });
+  }
+  walk(tree);
+  renderTree(document.getElementById('treeSearchInput').value);
+}
+
+function collapseAllTree() {
+  // 只保留 L1(24 大类)处于展开状态,其余收起
+  const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
+  expandedPaths = new Set();
+  tree.forEach(n => expandedPaths.add(pathKey(n.path)));
+  renderTree(document.getElementById('treeSearchInput').value);
+}
+
+function refreshTreeSummary() {
+  const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
+  const flat = flattenTree(tree);
+  const total = flat.length;
+  const l1Count = tree.length;
+  const sum = document.getElementById('treeSummary');
+  if (sum) sum.textContent = `共 ${l1Count} 大类 / ${total} 项`;
+}
 
 // ========== 数据加载 ==========
 const DATA_URLS = [
@@ -426,6 +527,7 @@ async function loadData() {
       renderTabs();
       renderCategoryPanel();
       renderTree();
+      refreshTreeSummary();
       renderKeywordResults();
       return;
     } catch (e) {
@@ -438,6 +540,22 @@ async function loadData() {
     tried.join('<br>') + '</span>';
   console.error('All data sources failed:', tried);
 }
+
+// 恢复左侧面板折叠状态
+try {
+  if (localStorage.getItem('jianyu_sideCollapsed') === '1') {
+    sideCollapsed = true;
+    const side = document.getElementById('treeSide');
+    const view = document.getElementById('treeView');
+    const toggle = document.getElementById('treeToggle');
+    if (side && view && toggle) {
+      side.classList.add('collapsed');
+      view.classList.add('side-collapsed');
+      toggle.textContent = '▶';
+      toggle.title = '展开左侧目录';
+    }
+  }
+} catch (e) {}
 
 function updateSubtitle() {
   const std = DATA.standard;
