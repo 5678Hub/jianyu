@@ -185,10 +185,14 @@ table.results td.remark { font-size: 12px; color: var(--c-text-2); font-style: i
   top: 8px;
 }
 .tree-side h3 {
-  font-size: 13px; color: var(--c-primary); font-weight: 600;
-  margin-bottom: 10px; padding-bottom: 8px;
+  font-size: 16px; color: var(--c-text-1); font-weight: 700;
+  margin-bottom: 6px; padding-bottom: 8px;
   border-bottom: 1px solid var(--c-border);
   display: flex; align-items: center; gap: 6px;
+}
+.tree-side .tree-subtitle {
+  font-size: 11.5px; color: var(--c-text-3);
+  margin-bottom: 10px; line-height: 1.5;
 }
 .tree-side h3 .tree-toggle {
   margin-left: auto;
@@ -239,46 +243,43 @@ table.results td.remark { font-size: 12px; color: var(--c-text-2); font-style: i
 }
 
 .tree-node {
-  display: flex; align-items: center; gap: 4px;
-  padding: 5px 6px 5px 4px;
-  border-radius: 5px;
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 9px 8px 9px 4px;
+  border-radius: 7px;
   cursor: pointer; user-select: none;
-  font-size: 12px; color: var(--c-text-1);
-  transition: background .12s, color .12s;
+  color: var(--c-text-1);
+  transition: background .12s;
   border: 1px solid transparent;
-  line-height: 1.4;
 }
-.tree-node:hover { background: var(--c-primary-soft); color: var(--c-primary); }
-.tree-node.selected { background: var(--c-tree-sel); border-color: var(--c-tree-sel-border); color: var(--c-text-1); font-weight: 500; }
-.tree-node.selected .tn-count { color: var(--c-tree-sel-border); font-weight: 600; }
+.tree-node:hover { background: #f6f8fb; }
+.tree-node.selected { background: var(--c-tree-sel); border-color: var(--c-tree-sel-border); }
+.tree-node.selected .tn-row1 { font-weight: 600; }
+
+.tn-row1 { display: flex; align-items: center; gap: 6px; font-size: 14px; }
+.tn-row2 { font-size: 11.5px; color: var(--c-text-3); padding-left: 22px; line-height: 1.4; }
+.tn-row2 .dot { margin: 0 4px; opacity: 0.5; }
+.tree-node.selected .tn-row2 { color: var(--c-text-2); }
 
 .tn-arrow {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 14px; height: 14px; flex-shrink: 0;
-  font-size: 9px; color: var(--c-text-3);
-  transition: transform .15s;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: #eef2f6; color: var(--c-text-2); flex-shrink: 0;
+  font-size: 10px; line-height: 1; font-weight: 700;
+  transition: all .15s;
 }
-.tn-arrow.has { cursor: pointer; }
-.tn-arrow.has:hover { color: var(--c-primary); }
-.tn-arrow.open { transform: rotate(90deg); }
-.tn-arrow.empty { color: var(--c-border-strong); }
+.tn-arrow.has { cursor: pointer; background: #e6eef5; color: var(--c-primary); }
+.tn-arrow.has:hover { background: var(--c-primary); color: white; }
+.tn-arrow.empty { cursor: default; opacity: 0.7; }
 
 .tn-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.tn-count { font-size: 10px; color: var(--c-text-3); padding: 1px 6px; background: var(--c-bg); border-radius: 8px; flex-shrink: 0; }
-.tn-count.zero { opacity: 0.4; }
 
-/* 层级颜色标记 */
-.tree-node.depth-1 { font-weight: 600; color: var(--c-primary); margin-top: 4px; }
+/* 层级颜色/缩进 */
+.tree-node.depth-1 { margin-top: 6px; }
 .tree-node.depth-1:first-child { margin-top: 0; }
-.tree-node.depth-1 .tn-name::before {
-  content: '📂'; margin-right: 4px; opacity: 0.7;
-}
-.tree-node.depth-2 { font-weight: 500; color: var(--c-text-1); }
-.tree-node.depth-2 .tn-name::before { content: '└'; opacity: 0.4; margin-right: 4px; font-size: 10px; }
-.tree-node.depth-3 { color: var(--c-text-2); }
-.tree-node.depth-3 .tn-name::before { content: '·'; opacity: 0.5; margin-right: 4px; }
-.tree-node.depth-4 { color: var(--c-text-3); font-size: 11.5px; }
-.tree-node.depth-4 .tn-name::before { content: '·'; opacity: 0.3; margin-right: 4px; }
+.tree-node.depth-1 .tn-row1 { font-weight: 700; color: var(--c-text-1); }
+.tree-node.depth-2 .tn-row1 { font-weight: 600; }
+.tree-node.depth-3 .tn-row1 { font-weight: 500; color: var(--c-text-2); }
+.tree-node.depth-4 .tn-row1 { font-weight: 400; color: var(--c-text-2); font-size: 13px; }
 
 .tree-detail { min-width: 0; }
 .breadcrumb { font-size: 12px; color: var(--c-text-2); margin-bottom: 12px; }
@@ -394,9 +395,10 @@ table.lvl td.remark-cell { font-size: 11.5px; color: var(--c-text-2); font-style
   <div class="tree-view" id="treeView">
     <aside class="tree-side" id="treeSide">
       <h3>
-        <span>📂 食品分类目录</span>
+        <span>食品分类目录</span>
         <span class="tree-toggle" id="treeToggle" title="折叠左侧目录" onclick="toggleSidePanel()"><span class="arrow">◀</span><span class="label">折叠</span></span>
       </h3>
+      <div class="tree-subtitle">点击分类或具体食品名称即可查看对应限量</div>
       <div class="tree-toolbar" id="treeToolbar">
         <button onclick="expandAllTree()" title="展开所有 24 个大类">⇕ 全部展开</button>
         <button onclick="collapseAllTree()" title="只保留 24 个大类(折叠所有子节点)">⇕ 全部收起</button>
@@ -770,21 +772,31 @@ function matchItemToPaths(item, tree) {
 
 // 统计某个 path 节点(及其子树)的 item 总数
 function countForPath(path) {
+  const s = statsForPath(path);
+  return s.limits;
+}
+
+// 返回 {items, limits}:items = 子树下具体食品数(去重 path),limits = 限量条数总和
+function statsForPath(path) {
   const idx = buildItemIndex();
   const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
   const targetKey = pathKey(path);
+  let items = 0, limits = 0;
   // 1) 直接命中
-  let direct = idx.has(targetKey) ? idx.get(targetKey).length : 0;
+  if (idx.has(targetKey)) {
+    items += 1;
+    limits += idx.get(targetKey).length;
+  }
   // 2) 子树命中
-  let sub = 0;
   function walk(nodes) {
-    let total = 0;
     nodes.forEach(n => {
       const pk = pathKey(path.concat([n.name]));
-      if (idx.has(pk)) total += idx.get(pk).length;
-      if (n.children) total += walk(n.children);
+      if (idx.has(pk)) {
+        items += 1;
+        limits += idx.get(pk).length;
+      }
+      if (n.children) walk(n.children);
     });
-    return total;
   }
   const findNode = (nodes) => {
     for (const n of nodes) {
@@ -797,8 +809,8 @@ function countForPath(path) {
     return null;
   };
   const node = findNode(tree);
-  if (node && node.children) sub = walk(node.children);
-  return direct + sub;
+  if (node && node.children) walk(node.children);
+  return { items, limits };
 }
 
 // 递归展平树节点
@@ -852,21 +864,28 @@ function renderTree(filterKw) {
     const pk = pathKey(n.path);
     const isOpen = showAll || expandedPaths.has(pk);
     const isSelected = treeSelected && pathKey(treeSelected.path) === pk;
-    const cnt = countForPath(n.path);
-    const cntClass = cnt === 0 ? 'zero' : '';
+    const stats = statsForPath(n.path);
+    const isLeaf = !n.hasChildren;
     const arrowCls = n.hasChildren ? 'has' : 'empty';
-    const arrowCh = n.hasChildren ? (isOpen ? '▼' : '▶') : '·';
+    const arrowCh = n.hasChildren ? (isOpen ? '−' : '+') : '·';
     const arrowOnClick = n.hasChildren
       ? `event.stopPropagation(); toggleTreeNode(${jsonInAttr(n.path)});`
       : '';
-    const indent = (n.depth - 1) * 12;
+    const indent = (n.depth - 1) * 14;
+    // 格式化数字:加千分位
+    const fmt = (n) => (n || 0).toLocaleString('en-US');
+    const statsLine = isLeaf
+      ? `<div class="tn-row2">${fmt(stats.limits)} 条限量</div>`
+      : `<div class="tn-row2">${fmt(stats.items)} 个食品项 <span class="dot">·</span> ${fmt(stats.limits)} 条限量</div>`;
     html += `<div class="tree-node depth-${Math.min(n.depth,4)}${isSelected ? ' selected' : ''}"
               style="padding-left:${4 + indent}px;"
               data-pk="${escapeAttr(pk)}"
               onclick="selectTreeNode(${jsonInAttr(n.path)})">
-      <span class="tn-arrow ${arrowCls}${isOpen ? ' open' : ''}" onclick="${arrowOnClick}">${arrowCh}</span>
-      <span class="tn-name" title="${escapeAttr(n.name)}">${escapeHTML(n.name)}</span>
-      <span class="tn-count ${cntClass}">${cnt}</span>
+      <div class="tn-row1">
+        <span class="tn-arrow ${arrowCls}" onclick="${arrowOnClick}">${arrowCh}</span>
+        <span class="tn-name" title="${escapeAttr(n.name)}">${escapeHTML(n.name)}</span>
+      </div>
+      ${statsLine}
     </div>`;
   });
   wrap.innerHTML = html;
