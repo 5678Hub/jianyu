@@ -653,9 +653,9 @@ function switchMode(mode) {
   }
   if (mode === 'contaminant') {
     if (typeof selectedContam === 'undefined' || selectedContam === null) {
-      // 默认选中第一个污染物
-      const first = (DATA && DATA.contaminants && DATA.contaminants[0]) || null;
-      selectedContam = first ? first.contaminant : null;
+      // 默认选中第一个污染物(aid=1 总汞)
+      const first = (DATA && DATA.additives && DATA.additives[0]) || null;
+      selectedContam = first ? first.aid : null;
     }
     renderContamList();
     renderContamDetail();
@@ -1254,23 +1254,24 @@ function setFilter(no) {
 }
 
 // ========== 模式 C:按污染物浏览(foodvip.net 风格) ==========
+// 数据源: DATA.additives(15 个 aid,从 foodvip.net 抓取的标准限量)
 let contamSearchKw = '';
 
 function renderContamList() {
   const wrap = document.getElementById('contamList');
   if (!wrap) return;
-  if (!DATA || !DATA.contaminants) { wrap.innerHTML = '<div style="padding:14px;color:var(--c-text-3);font-size:12px;">数据加载中…</div>'; return; }
-  wrap.innerHTML = DATA.contaminants.map(c => {
-    const sel = c.contaminant === selectedContam;
-    return `<div class="contam-list-item${sel ? ' selected' : ''}" data-name="${escapeAttr(c.contaminant)}" onclick="selectContam('${escapeAttr(c.contaminant)}')">
-      <div>${escapeHTML(c.contaminant)}</div>
-      <span class="contam-count">${c.items.length} 条限量</span>
+  if (!DATA || !DATA.additives) { wrap.innerHTML = '<div style="padding:14px;color:var(--c-text-3);font-size:12px;">数据加载中…</div>'; return; }
+  wrap.innerHTML = DATA.additives.map(a => {
+    const sel = a.aid === selectedContam;
+    return `<div class="contam-list-item${sel ? ' selected' : ''}" data-aid="${a.aid}" onclick="selectContam(${a.aid})">
+      <div>${escapeHTML(a.name)}${a.symbol ? ' <span style="color:#999;font-size:11px;">(' + escapeHTML(a.symbol) + ')</span>' : ''}</div>
+      <span class="contam-count">${a.rows.length} 条限量</span>
     </div>`;
   }).join('');
 }
 
-function selectContam(name) {
-  selectedContam = name;
+function selectContam(aid) {
+  selectedContam = aid;
   // 清掉搜索框内容
   const inp = document.getElementById('contamSearchInput');
   if (inp) { inp.value = ''; contamSearchKw = ''; }
@@ -1285,14 +1286,14 @@ function onContamSearch() {
 }
 
 function renderContamDetail() {
-  const c = DATA && DATA.contaminants && DATA.contaminants.find(x => x.contaminant === selectedContam);
+  const a = DATA && DATA.additives && DATA.additives.find(x => x.aid === selectedContam);
   const nameEl = document.getElementById('contamDetailName');
   const metaEl = document.getElementById('contamDetailMeta');
   const tableEl = document.getElementById('contamTableWrap');
   const fnEl = document.getElementById('contamFootnotes');
   const hintEl = document.getElementById('contamHint');
 
-  if (!c) {
+  if (!a) {
     if (nameEl) nameEl.textContent = '— 请选择左侧污染物 —';
     if (metaEl) metaEl.textContent = '';
     if (tableEl) tableEl.innerHTML = '<div class="empty-tip"><span class="emoji">📭</span>暂无数据</div>';
@@ -1301,77 +1302,64 @@ function renderContamDetail() {
     return;
   }
 
-  nameEl.textContent = `${c.contaminant}${c.symbol ? ' (' + c.symbol + ')' : ''}`;
-  metaEl.textContent = `GB 2762-2025 · 表 ${c.table_no} · 共 ${c.items.length} 条限量`;
+  nameEl.textContent = `${a.name}${a.symbol ? ' (' + a.symbol + ')' : ''}`;
+  metaEl.textContent = `GB 2762-2025 · 表 ${a.table_no} · 共 ${a.rows.length} 条限量 · 方法 ${a.method_default}`;
 
-  // 关键词过滤(在当前污染物内再筛食品名/类别/脚注)
-  let items = c.items;
+  // 关键词过滤
+  let rows = a.rows;
   if (contamSearchKw) {
     const tokens = contamSearchKw.split(/\s+/).filter(Boolean);
-    items = items.filter(it => {
-      const subs = (it.subcategories || []).map(s => s.big + ' ' + s.sub).join(' ');
-      const fns = (c.footnotes || []).map(f => f.text).join(' ');
-      const hay = [it.food || '', it.category || '', it.category_a1 || '', subs, it.remark || '', fns, c.inspection_method || ''].join(' ').toLowerCase();
+    rows = rows.filter(r => {
+      const fns = (a.footnotes || []).map(f => f.text).join(' ');
+      const hay = [r.food || '', r.big || '', r.sub || '', r.path || '', r.remark || '', fns, a.method_notes || ''].join(' ').toLowerCase();
       return tokens.every(tk => hay.includes(tk));
     });
   }
 
-  if (hintEl) hintEl.textContent = contamSearchKw ? `已筛 "${contamSearchKw}" · ${items.length}/${c.items.length} 条` : `${items.length} 条限量`;
+  if (hintEl) hintEl.textContent = contamSearchKw ? `已筛 "${contamSearchKw}" · ${rows.length}/${a.rows.length} 条` : `${rows.length} 条限量`;
 
-  if (items.length === 0) {
+  if (rows.length === 0) {
     tableEl.innerHTML = '<div class="empty-tip"><span class="emoji">🔍</span>当前关键词下无匹配</div>';
     fnEl.innerHTML = '';
     return;
   }
 
-  // 渲染限量表
-  let html = '<table><thead><tr><th>食品大类(A.1)</th><th>细类</th><th>食品名称 / 适用范围</th><th>限量值</th><th>单位</th><th>检验方法</th><th>备注</th></tr></thead><tbody>';
-  items.forEach(it => {
-    let limitHtml;
-    if (it.limits && Array.isArray(it.limits) && it.limits.length > 0) {
-      if (it.limits.length === 1) {
-        limitHtml = escapeHTML(it.limits[0].value);
-      } else {
-        limitHtml = it.limits.map(l => `<div style="font-size:10px;color:var(--c-text-3);font-weight:400;">${escapeHTML(l.label)}: ${escapeHTML(l.value)}</div>`).join('');
-      }
+  // 渲染限量表(食品大类(A.1) / 食品中文名称 / 限量要求 / 检验方法 / 备注)
+  let html = '<table><thead><tr><th>食品类别</th><th>食品中文名称</th><th>限量要求</th><th>检验方法</th><th>备注</th></tr></thead><tbody>';
+  rows.forEach(r => {
+    // path 拼成"大类:细类:食品名"形式
+    const pathParts = r.parts || [];
+    let pathDisplay;
+    if (pathParts.length >= 3) {
+      pathDisplay = pathParts.join(':');
+    } else if (pathParts.length === 2) {
+      pathDisplay = pathParts.join(':');
     } else {
-      limitHtml = escapeHTML(it.limit || '—');
+      pathDisplay = r.path || r.food || '';
     }
-    const ctxFood = it.food || '';
-    const ctxBig = it.category_a1 || it.category || '';
-    // 智能匹配检验方法
-    let method = c.inspection_method || '';
-    if (it.inspection_method_rules && Array.isArray(it.inspection_method_rules)) {
-      const pick = pickMethod(it.inspection_method_rules, ctxFood, ctxBig);
-      if (pick) method = pick;
-    }
-    const bigCat = it.category_a1 || it.category || '';
-    const subs = (it.subcategories || []).map(s => s.sub).join(' / ');
+    // 限量值(从字符串里提取单位)
+    let limitHtml = escapeHTML(r.limit || '—');
+    // 备注(原样显示,脚注 a/b 由污染物级 footnotes 块统一显示)
     html += '<tr>';
-    html += `<td>${escapeHTML(bigCat)}</td>`;
-    html += `<td>${escapeHTML(subs)}</td>`;
-    html += `<td class="food">${escapeHTML(it.food || '')}</td>`;
+    html += `<td>${escapeHTML(r.big || '')}</td>`;
+    html += `<td class="food">${escapeHTML(pathDisplay)}</td>`;
     html += `<td class="limit">${limitHtml}</td>`;
-    html += `<td>${escapeHTML(c.unit || '')}</td>`;
-    html += `<td>${escapeHTML(method)}</td>`;
-    html += `<td>${escapeHTML(it.remark || '')}</td>`;
+    html += `<td>${escapeHTML(r.method || a.method_default || '')}</td>`;
+    html += `<td>${escapeHTML(r.remark || '')}</td>`;
     html += '</tr>';
   });
   html += '</tbody></table>';
   tableEl.innerHTML = html;
 
-  // 脚注
+  // 脚注 + 检验方法说明
   let fhtml = '';
-  const seenFn = new Map();
-  items.forEach(it => {
-    if (c.footnotes) c.footnotes.forEach(f => {
-      if (f.text && !seenFn.has(f.mark + '|' + f.text)) seenFn.set(f.mark + '|' + f.text, f);
-    });
-  });
-  if (seenFn.size > 0) {
+  if (a.method_notes) {
+    fhtml += `<div class="footnote-block"><div class="fn-title">检验方法</div><div class="fn-item">${escapeHTML(a.method_notes)}</div></div>`;
+  }
+  if (a.footnotes && a.footnotes.length > 0) {
     fhtml += '<div class="footnote-block"><div class="fn-title">脚注说明</div>';
-    seenFn.forEach(f => {
-      fhtml += `<div class="fn-item"><span class="fn-mark">${f.mark}</span>${escapeHTML(f.text)}</div>`;
+    a.footnotes.forEach(f => {
+      fhtml += `<div class="fn-item"><span class="fn-mark">${escapeHTML(f.mark)}</span>${escapeHTML(f.text)}</div>`;
     });
     fhtml += '</div>';
   }
