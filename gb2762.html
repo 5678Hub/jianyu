@@ -408,27 +408,46 @@ let treeSelected = null; // {path: [name1, name2, ...]}  当前选中节点的�
 let expandedPaths = new Set(); // 已展开的节点路径(序列化字符串)
 
 // ========== 数据加载 ==========
+const DATA_URLS = [
+  // 本地服务器/同源(优先,速度快)
+  './data/gb2762/gb2762_2025.json',
+  // GitHub Pages 兜底(任何环境都能访问,只要有网)
+  'https://5678hub.github.io/jianyu/data/gb2762/gb2762_2025.json',
+];
 async function loadData() {
-  try {
-    const res = await fetch(DATA_URL);
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    DATA = await res.json();
-    updateSubtitle();
-    renderTabs();
-    renderCategoryPanel();
-    renderTree();
-    renderKeywordResults();
-  } catch (e) {
-    document.getElementById('subtitle').textContent = '❌ 加载失败:' + e.message;
-    console.error(e);
+  const tried = [];
+  for (const url of DATA_URLS) {
+    try {
+      const res = await fetch(url + '?t=' + Date.now());
+      if (!res.ok) { tried.push(`${url} → HTTP ${res.status}`); continue; }
+      DATA = await res.json();
+      DATA._dataSource = url;
+      updateSubtitle();
+      renderTabs();
+      renderCategoryPanel();
+      renderTree();
+      renderKeywordResults();
+      return;
+    } catch (e) {
+      tried.push(`${url} → ${e.message || e}`);
+    }
   }
+  document.getElementById('subtitle').innerHTML =
+    '❌ 加载失败:所有数据源均不可访问<br>' +
+    '<span style="font-size:11px;color:var(--c-text-3);font-weight:normal;">' +
+    tried.join('<br>') + '</span>';
+  console.error('All data sources failed:', tried);
 }
 
 function updateSubtitle() {
   const std = DATA.standard;
   const total = DATA.contaminants.reduce((s, c) => s + c.items.length, 0);
-  document.getElementById('subtitle').textContent =
-    `${std.code} · 发布 ${std.publish_date} · 实施 ${std.implement_date} · 12 种污染物 · ${total} 条限量指标`;
+  const bigCount = (DATA.appendix_a1.tree || []).length;
+  const src = DATA._dataSource || '';
+  const srcLabel = src.startsWith('http') ? 'GitHub' : '本地';
+  document.getElementById('subtitle').innerHTML =
+    `${std.code} · 发布 ${std.publish_date} · 实施 ${std.implement_date} · 12 种污染物 · ${total} 条限量 · 附录 A.1 含 ${bigCount} 大类 ` +
+    `<span style="color:var(--c-text-3);font-size:11px;">[${srcLabel}]</span>`;
   document.getElementById('verTag').textContent = `${total} 条`;
 }
 
