@@ -481,6 +481,12 @@ const FOOD_EMOJI = {
 function pathKey(path) { return path.map(s => s.replace(/\|/g, '||')).join('|'); }
 function pathAttr(path) { return path.map(s => s.replace(/"/g, '&quot;').replace(/'/g, '&#39;')).join(' › '); }
 
+// JSON 用于 HTML 双引号属性时,必须把内部的 " 转义成 &quot;
+// 否则浏览器解析属性时会被提前关闭,onclick 直接 SyntaxError
+function jsonInAttr(obj) {
+  return JSON.stringify(obj).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+}
+
 // 索引: path-key → {items: [], depth: n}
 let itemIndex = null;
 function buildItemIndex() {
@@ -654,13 +660,13 @@ function renderTree(filterKw) {
     const arrowCls = n.hasChildren ? 'has' : 'empty';
     const arrowCh = n.hasChildren ? (isOpen ? '▼' : '▶') : '·';
     const arrowOnClick = n.hasChildren
-      ? `event.stopPropagation(); toggleTreeNode(${JSON.stringify(n.path)});`
+      ? `event.stopPropagation(); toggleTreeNode(${jsonInAttr(n.path)});`
       : '';
     const indent = (n.depth - 1) * 12;
     html += `<div class="tree-node depth-${Math.min(n.depth,4)}${isSelected ? ' selected' : ''}"
               style="padding-left:${4 + indent}px;"
               data-pk="${escapeAttr(pk)}"
-              onclick="selectTreeNode(${JSON.stringify(n.path)})">
+              onclick="selectTreeNode(${jsonInAttr(n.path)})">
       <span class="tn-arrow ${arrowCls}${isOpen ? ' open' : ''}" onclick="${arrowOnClick}">${arrowCh}</span>
       <span class="tn-name" title="${escapeAttr(n.name)}">${escapeHTML(n.name)}</span>
       <span class="tn-count ${cntClass}">${cnt}</span>
@@ -711,7 +717,7 @@ function renderTreeDetail() {
     if (i === path.length - 1) {
       bcHtml += `<span class="sep">›</span><span class="current">${escapeHTML(p)}</span>`;
     } else {
-      bcHtml += `<span class="sep">›</span><a onclick="selectTreeNode(${JSON.stringify(pPath)})">${escapeHTML(p)}</a>`;
+      bcHtml += `<span class="sep">›</span><a onclick="selectTreeNode(${jsonInAttr(pPath)})">${escapeHTML(p)}</a>`;
     }
   });
   bc.innerHTML = bcHtml;
