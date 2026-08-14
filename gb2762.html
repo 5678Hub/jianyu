@@ -142,6 +142,69 @@ button.export:hover { background: #d9ebd9; }
   margin-left: 4px;
 }
 
+/* 二级细类 */
+.sub-cat-hint {
+  font-size: 12px;
+  color: var(--c-text-2);
+  margin-bottom: 10px;
+}
+.sub-cat-block {
+  margin-bottom: 10px;
+}
+.sub-cat-title {
+  font-size: 12px;
+  color: var(--c-primary);
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sub-cat-title-count {
+  font-size: 10px;
+  color: var(--c-text-3);
+  font-weight: 400;
+  margin-left: 4px;
+}
+.sub-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 5px;
+}
+.sub-cat-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 9px;
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  background: #fafbfc;
+  font-size: 11.5px;
+  color: var(--c-text-2);
+  cursor: pointer;
+  user-select: none;
+  transition: all .15s;
+}
+.sub-cat-chip:hover {
+  border-color: var(--c-accent);
+  background: var(--c-accent-soft);
+  color: var(--c-accent);
+}
+.sub-cat-chip.selected {
+  background: var(--c-accent);
+  color: #fff;
+  border-color: var(--c-accent);
+  font-weight: 500;
+}
+.sub-cat-chip.selected .cat-chip-count {
+  color: rgba(255,255,255,.85);
+}
+td.subcategory {
+  font-size: 11.5px;
+  color: var(--c-text-2);
+  line-height: 1.4;
+}
+
 .summary { display: flex; gap: 14px; flex-wrap: wrap; padding: 8px 0; }
 .summary-card { padding: 10px 14px; border-radius: var(--r-sm); background: var(--c-primary-soft); border: 1px solid var(--c-border); min-width: 130px; }
 .summary-card .label { font-size: 11px; color: var(--c-text-3); }
@@ -210,9 +273,12 @@ table.results td.remark { font-size: 12px; color: var(--c-text-2); font-style: i
     </button>
     <button onclick="clearCategoryFilter()" style="margin-left:6px;font-size:12px;">清空筛选</button>
     <div id="categoryPanel" class="cat-panel" style="display:none;">
-      <div class="cat-panel-tip">按 GB 2762-2025 标准的 22 大类食品分类体系 · 多选即 OR · 跨污染物筛选</div>
+      <div class="cat-panel-tip">按 GB 2762-2025 标准附录 A.1「食品类别(名称)说明」分类 · 大类多选即 OR · 选大类后可继续选细类 · 跨污染物筛选</div>
       <div class="cat-grid" id="catGrid">
-        <!-- JS 渲染 -->
+        <!-- JS 渲染 一级大类 -->
+      </div>
+      <div id="subCatWrap" style="display:none; margin-top:14px; padding-top:14px; border-top:1px dashed var(--c-border);">
+        <!-- JS 渲染 二级细类 -->
       </div>
     </div>
   </div>
@@ -268,16 +334,10 @@ function updateSubtitle() {
   document.getElementById('verTag').textContent = `${total} 条`;
 }
 
-// 22 大类食品分类（GB 2762-2025）
-const CATEGORY_22 = [
-  '谷物及其制品','蔬菜及其制品','食用菌及其制品','藻类及其制品',
-  '豆类及其制品','坚果及籽类','肉及肉制品','水产动物及其制品',
-  '蛋及蛋制品','乳及乳制品','饮料类','酒类',
-  '调味品','特殊膳食用食品','特殊医学用途配方食品','婴幼儿配方食品',
-  '婴幼儿辅助食品','食用油、油脂及其制品','焙烤食品','茶叶',
-  '咖啡','糖、糖果、蜂蜜等'
-];
-let selectedCategories = new Set();
+// 食品分类：按 GB 2762-2025 附录 A.1 食品类别(名称)说明(增强版含特殊人群 4 大类)
+// DATA.appendix_a1: {大类名: [细类名, ...]}
+let selectedBigCats = new Set();
+let selectedSubCats = new Set();
 let categoryPanelOpen = false;
 
 function toggleCategoryPanel() {
@@ -287,39 +347,103 @@ function toggleCategoryPanel() {
 }
 
 function clearCategoryFilter() {
-  selectedCategories.clear();
+  selectedBigCats.clear();
+  selectedSubCats.clear();
   renderCategoryPanel();
   renderResults();
 }
 
-function renderCategoryPanel() {
-  // 计算每个 category 的实际条目数（基于当前污染物筛选）
-  const counts = {};
-  CATEGORY_22.forEach(c => counts[c] = 0);
+function getCategoryData() {
+  return DATA.appendix_a1 || {};
+}
+
+function countItemsFor(big, sub) {
+  // 计算当前污染物 + 大类 + 细类筛选下的实际条目数
+  let n = 0;
   DATA.contaminants.forEach(c => {
     if (currentFilter !== 'all' && c.table_no != currentFilter) return;
     c.items.forEach(it => {
-      if (it.category && counts.hasOwnProperty(it.category)) counts[it.category]++;
+      if (big && (it.category_a1 || it.category) !== big) return;
+      if (sub) {
+        if (!it.subcategories) return;
+        const hit = it.subcategories.some(s => s.sub === sub);
+        if (!hit) return;
+      }
+      n++;
     });
   });
-  // 按固定顺序渲染
-  const grid = document.getElementById('catGrid');
-  grid.innerHTML = CATEGORY_22.map(c => {
-    const sel = selectedCategories.has(c);
-    return `<div class="cat-chip${sel ? ' selected' : ''}" onclick="toggleCategory('${c}')">
-      <span>${c}</span><span class="cat-chip-count">${counts[c]}</span>
-    </div>`;
-  }).join('');
-  document.getElementById('catSelectedCount').textContent = selectedCategories.size;
-  const btn = document.querySelector('.filter-toggle');
-  if (btn) btn.classList.toggle('active', selectedCategories.size > 0);
+  return n;
 }
 
-function toggleCategory(c) {
-  if (selectedCategories.has(c)) selectedCategories.delete(c);
-  else selectedCategories.add(c);
+function renderCategoryPanel() {
+  const A1 = getCategoryData();
+  const bigCats = Object.keys(A1);
+
+  // 一级大类按钮
+  const bigGrid = document.getElementById('catGrid');
+  bigGrid.innerHTML = bigCats.map(big => {
+    const sel = selectedBigCats.has(big);
+    const cnt = countItemsFor(big);
+    return `<div class="cat-chip${sel ? ' selected' : ''}" onclick="toggleBigCat('${escapeAttr(big)}')">
+      <span>${escapeHTML(big)}</span><span class="cat-chip-count">${cnt}</span>
+    </div>`;
+  }).join('');
+
+  // 二级细类面板（仅在已选大类时显示）
+  const subWrap = document.getElementById('subCatWrap');
+  if (selectedBigCats.size === 0) {
+    subWrap.style.display = 'none';
+    subWrap.innerHTML = '';
+  } else {
+    subWrap.style.display = 'block';
+    let html = '<div class="sub-cat-hint">已选大类下的细类（多选即 OR；不选则仅按大类过滤）</div>';
+    [...selectedBigCats].forEach(big => {
+      const subs = A1[big] || [];
+      html += `<div class="sub-cat-block">
+        <div class="sub-cat-title">📂 ${escapeHTML(big)} <span class="sub-cat-title-count">${subs.length} 类</span></div>
+        <div class="sub-cat-grid">`;
+      subs.forEach(sub => {
+        const sel = selectedSubCats.has(sub);
+        const cnt = countItemsFor(big, sub);
+        html += `<div class="sub-cat-chip${sel ? ' selected' : ''}" onclick="toggleSubCat('${escapeAttr(sub)}')">
+          <span>${escapeHTML(sub)}</span><span class="cat-chip-count">${cnt}</span>
+        </div>`;
+      });
+      html += '</div></div>';
+    });
+    subWrap.innerHTML = html;
+  }
+
+  // 已选计数
+  const totalSel = selectedBigCats.size + selectedSubCats.size;
+  document.getElementById('catSelectedCount').textContent = totalSel;
+  const btn = document.querySelector('.filter-toggle');
+  if (btn) btn.classList.toggle('active', totalSel > 0);
+}
+
+function toggleBigCat(big) {
+  if (selectedBigCats.has(big)) {
+    selectedBigCats.delete(big);
+    // 清除该大类下的细类选择
+    const A1 = getCategoryData();
+    const subs = A1[big] || [];
+    subs.forEach(s => selectedSubCats.delete(s));
+  } else {
+    selectedBigCats.add(big);
+  }
   renderCategoryPanel();
   renderResults();
+}
+
+function toggleSubCat(sub) {
+  if (selectedSubCats.has(sub)) selectedSubCats.delete(sub);
+  else selectedSubCats.add(sub);
+  renderCategoryPanel();
+  renderResults();
+}
+
+function escapeAttr(s) {
+  return String(s).replace(/'/g, "\\'").replace(/"/g, '&quot;');
 }
 
 // 渲染污染物 tabs
@@ -356,15 +480,29 @@ function getFilteredItems() {
       c.items.forEach(it => items.push({ ...it, _contaminant: c.contaminant, _symbol: c.symbol, _unit: c.unit, _table_no: c.table_no, _footnotes: c.footnotes, _inspection_method: c.inspection_method }));
     }
   }
-  // 产品类型多选过滤
-  if (selectedCategories.size > 0) {
-    items = items.filter(it => it.category && selectedCategories.has(it.category));
+  // 产品类型筛选: 大类 OR + 细类 OR + 关键词 AND
+  if (selectedBigCats.size > 0 || selectedSubCats.size > 0) {
+    items = items.filter(it => {
+      // 先按大类筛
+      if (selectedBigCats.size > 0) {
+        const bigHit = (it.category_a1 || it.category) && selectedBigCats.has(it.category_a1 || it.category);
+        if (!bigHit) return false;
+      }
+      // 再按细类筛（仅命中已选大类下）
+      if (selectedSubCats.size > 0) {
+        if (!it.subcategories || it.subcategories.length === 0) return false;
+        const subHit = it.subcategories.some(s => selectedSubCats.has(s.sub));
+        if (!subHit) return false;
+      }
+      return true;
+    });
   }
   if (!currentQuery.trim()) return items;
   const keywords = currentQuery.trim().toLowerCase().split(/\s+/);
   return items.filter(it => {
+    const subHaystack = it.subcategories ? it.subcategories.map(s => s.big + ' ' + s.sub).join(' ') : '';
     const haystack = [
-      it._contaminant, it._symbol, it.category, it.food, it.remark,
+      it._contaminant, it._symbol, it.category, it.category_a1, subHaystack, it.food, it.remark,
       it.limit, it.limit_raw,
       it._footnotes ? it._footnotes.map(f => f.text).join(' ') : '',
       it._inspection_method || ''
@@ -380,7 +518,8 @@ function renderResults() {
   const hint = document.getElementById('resultHint');
   hint.textContent = `共 ${items.length} 条记录`
     + (currentFilter !== 'all' ? ` · ${DATA.contaminants.find(c=>c.table_no==currentFilter).contaminant}` : '')
-    + (selectedCategories.size > 0 ? ` · 已选 ${selectedCategories.size} 个产品类型` : '');
+    + (selectedBigCats.size > 0 || selectedSubCats.size > 0
+        ? ` · 已选 ${selectedBigCats.size} 大类 / ${selectedSubCats.size} 细类` : '');
   if (items.length === 0) {
     wrap.innerHTML = '<div class="empty-tip"><span class="emoji">📭</span>未匹配到记录</div>';
     document.getElementById('footnotesWrap').innerHTML = '';
@@ -389,13 +528,16 @@ function renderResults() {
   const isAll = currentFilter === 'all';
   let html = '<table class="results"><thead><tr>';
   if (isAll) html += '<th>污染物</th>';
-  html += '<th>食品大类</th><th>食品名称 / 适用范围</th><th>限量值</th><th>单位</th><th>备注</th>';
+  html += '<th>食品大类（附录 A.1）</th><th>细类</th><th>食品名称 / 适用范围</th><th>限量值</th><th>单位</th><th>备注</th>';
   html += '</tr></thead><tbody>';
   items.forEach(it => {
     const limit = it.limit || (it.limit_no2 && it.limit_no3 ? `NO₂:${it.limit_no2} / NO₃:${it.limit_no3}` : it.limit_no2 || '');
+    const bigCat = it.category_a1 || it.category || '';
+    const subs = (it.subcategories || []).map(s => s.sub).join(' / ');
     html += '<tr>';
     if (isAll) html += `<td class="contaminant">${it._contaminant}<br><span style="font-size:10px;color:var(--c-text-3);font-weight:normal;">${it._symbol}</span></td>`;
-    html += `<td class="category">${escapeHTML(it.category || '')}</td>`;
+    html += `<td class="category">${escapeHTML(bigCat)}</td>`;
+    html += `<td class="subcategory">${escapeHTML(subs)}</td>`;
     html += `<td class="food">${escapeHTML(it.food || '')}</td>`;
     html += `<td class="limit">${escapeHTML(limit || '—')}</td>`;
     html += `<td class="unit">${escapeHTML(it._unit || '')}</td>`;
@@ -472,12 +614,14 @@ function buildExportRows() {
   const isAll = currentFilter === 'all';
   const headers = [];
   if (isAll) headers.push('污染物', '元素符号');
-  headers.push('食品大类', '食品名称', '限量值', '单位', '备注');
+  headers.push('食品大类(附录 A.1)', '细类', '食品名称', '限量值', '单位', '备注');
   const rows = [headers];
   items.forEach(it => {
     const row = [];
     if (isAll) { row.push(it._contaminant, it._symbol); }
-    row.push(it.category || '', it.food || '', it.limit || `NO₂:${it.limit_no2} / NO₃:${it.limit_no3}`, it._unit || '', it.remark || '');
+    const big = it.category_a1 || it.category || '';
+    const subs = (it.subcategories || []).map(s => s.sub).join(' / ');
+    row.push(big, subs, it.food || '', it.limit || `NO₂:${it.limit_no2} / NO₃:${it.limit_no3}`, it._unit || '', it.remark || '');
     rows.push(row);
   });
   // 加脚注(单列)
@@ -540,7 +684,7 @@ function doExportXLSX() {
     const ws = XLSX.utils.aoa_to_sheet(rows);
     // 列宽
     ws['!cols'] = [
-      { wch: 16 }, { wch: 10 }, { wch: 22 }, { wch: 50 }, { wch: 14 }, { wch: 10 }, { wch: 30 }
+      { wch: 16 }, { wch: 10 }, { wch: 28 }, { wch: 22 }, { wch: 50 }, { wch: 14 }, { wch: 10 }, { wch: 30 }
     ];
     XLSX.utils.book_append_sheet(wb, ws, '污染物限量');
     const ts = new Date().toISOString().slice(0,10);
