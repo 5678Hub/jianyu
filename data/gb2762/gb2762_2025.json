@@ -20,7 +20,7 @@
       "contaminant": "铅",
       "symbol": "Pb",
       "unit": "mg/kg",
-      "inspection_method": "包装饮用水按规定的方法测定、其他食品按规定的方法测定",
+      "inspection_method": "包装饮用水按 GB 8538 规定的方法测定,其他食品按 GB 5009.12 规定的方法测定。",
       "items": [
         {
           "category": "谷物及其制品",
@@ -1260,6 +1260,17 @@
           "mark": "c",
           "text": "、液态婴幼儿配方食品根据的比例折算其限量"
         }
+      ],
+      "inspection_method_rules": [
+        {
+          "apply": "包装饮用水",
+          "method": "按 GB 8538 规定的方法测定"
+        },
+        {
+          "apply": "其他食品",
+          "method": "按 GB 5009.12 规定的方法测定",
+          "is_default": true
+        }
       ]
     },
     {
@@ -1267,7 +1278,7 @@
       "contaminant": "镉",
       "symbol": "Cd",
       "unit": "mg/kg",
-      "inspection_method": "包装饮用水按规定的方法测定、其他食品按规定的方法测定",
+      "inspection_method": "食品按 GB 5009.15 规定的方法测定。",
       "items": [
         {
           "category": "谷物及其制品",
@@ -1692,6 +1703,13 @@
           "mark": "a",
           "text": "、稻谷以糙米计"
         }
+      ],
+      "inspection_method_rules": [
+        {
+          "apply": "全部食品",
+          "method": "按 GB 5009.15 规定的方法测定",
+          "is_default": true
+        }
       ]
     },
     {
@@ -1699,7 +1717,7 @@
       "contaminant": "汞",
       "symbol": "Hg",
       "unit": "mg/kg",
-      "inspection_method": "饮用天然矿泉水按规定的方法测定、其他食品按规定的方法",
+      "inspection_method": "饮用天然矿泉水按 GB 8538 规定的方法测定,其他食品按 GB 5009.17 规定的方法测定。",
       "items": [
         {
           "category": "水产动物及其制品",
@@ -1943,6 +1961,17 @@
           "mark": "b",
           "text": "、稻谷以糙米计"
         }
+      ],
+      "inspection_method_rules": [
+        {
+          "apply": "饮用天然矿泉水",
+          "method": "按 GB 8538 规定的方法测定"
+        },
+        {
+          "apply": "其他食品",
+          "method": "按 GB 5009.17 规定的方法测定",
+          "is_default": true
+        }
       ]
     },
     {
@@ -1950,7 +1979,7 @@
       "contaminant": "砷",
       "symbol": "As",
       "unit": "mg/kg",
-      "inspection_method": "包装饮用水按规定的方法测定、其他食品按规定的方法测定",
+      "inspection_method": "包装饮用水按 GB 8538 规定的方法测定,其他食品按 GB 5009.11 规定的方法测定。",
       "items": [
         {
           "category": "谷物及其制品",
@@ -2389,6 +2418,17 @@
           "mark": "b",
           "text": "。"
         }
+      ],
+      "inspection_method_rules": [
+        {
+          "apply": "包装饮用水",
+          "method": "按 GB 8538 规定的方法测定"
+        },
+        {
+          "apply": "其他食品",
+          "method": "按 GB 5009.11 规定的方法测定",
+          "is_default": true
+        }
       ]
     },
     {
@@ -2396,7 +2436,7 @@
       "contaminant": "锡",
       "symbol": "Sn",
       "unit": "mg/kg",
-      "inspection_method": "按规定的方法测定",
+      "inspection_method": "食品按 GB 5009.16 规定的方法测定。",
       "items": [
         {
           "category": "婴幼儿配方食品",
@@ -2451,6 +2491,13 @@
           "mark": "a",
           "text": ""
         }
+      ],
+      "inspection_method_rules": [
+        {
+          "apply": "全部食品",
+          "method": "按 GB 5009.16 规定的方法测定",
+          "is_default": true
+        }
       ]
     },
     {
@@ -2458,7 +2505,7 @@
       "contaminant": "镍",
       "symbol": "Ni",
       "unit": "mg/kg",
-      "inspection_method": "按规定的方法测定",
+      "inspection_method": "食品按 GB 5009.138 规定的方法测定。",
       "items": [
         {
           "category": "食用油、油脂及其制品",
@@ -2481,14 +2528,21 @@
           "category_a1": "油脂及其制品"
         }
       ],
-      "footnotes": []
+      "footnotes": [],
+      "inspection_method_rules": [
+        {
+          "apply": "全部食品",
+          "method": "按 GB 5009.138 规定的方法测定",
+          "is_default": true
+        }
+      ]
     },
     {
       "table_no": 7,
       "contaminant": "铬",
       "symbol": "Cr",
       "unit": "mg/kg",
-      "inspection_method": "按规定的方法测定",
+      "inspection_method": "食品按 GB 5009.123 规定的方法测定。",
       "items": [
         {
           "category": "谷物及其制品",
@@ -2586,6 +2640,13 @@
           "mark": "a",
           "text": "、稻谷以糙米计"
         }
+      ],
+      "inspection_method_rules": [
+        {
+          "apply": "全部食品",
+          "method": "按 GB 5009.123 规定的方法测定",
+          "is_default": true
+        }
       ]
     },
     {
@@ -2593,7 +2654,7 @@
       "contaminant": "亚硝酸盐和硝酸盐",
       "symbol": "NO₂/NO₃",
       "unit": "mg/kg",
-      "inspection_method": "",
+      "inspection_method": "饮料类按 GB 8538 规定的方法测定,其他食品按 GB 5009.33 规定的方法测定。",
       "items": [
         {
           "category": "蔬菜及其制品",
@@ -2727,14 +2788,25 @@
           "category_a1": "婴幼儿辅助食品"
         }
       ],
-      "footnotes": []
+      "footnotes": [],
+      "inspection_method_rules": [
+        {
+          "apply": "饮料类",
+          "method": "按 GB 8538 规定的方法测定"
+        },
+        {
+          "apply": "其他食品",
+          "method": "按 GB 5009.33 规定的方法测定",
+          "is_default": true
+        }
+      ]
     },
     {
       "table_no": 9,
       "contaminant": "苯并[a]芘",
       "symbol": "BaP",
       "unit": "μg/kg",
-      "inspection_method": "按规定的方法测定",
+      "inspection_method": "食品按 GB 5009.27 规定的方法测定。",
       "items": [
         {
           "category": "谷物及其制品",
@@ -2811,6 +2883,13 @@
           "mark": "a",
           "text": "。"
         }
+      ],
+      "inspection_method_rules": [
+        {
+          "apply": "全部食品",
+          "method": "按 GB 5009.27 规定的方法测定",
+          "is_default": true
+        }
       ]
     },
     {
@@ -2818,7 +2897,7 @@
       "contaminant": "N-二甲基亚硝胺",
       "symbol": "NDMA",
       "unit": "μg/kg",
-      "inspection_method": "",
+      "inspection_method": "食品按 GB 5009.26 规定的方法测定。",
       "items": [
         {
           "category": "肉及肉制品",
@@ -2859,14 +2938,21 @@
           "category_a1": "水产动物及其制品"
         }
       ],
-      "footnotes": []
+      "footnotes": [],
+      "inspection_method_rules": [
+        {
+          "apply": "全部食品",
+          "method": "按 GB 5009.26 规定的方法测定",
+          "is_default": true
+        }
+      ]
     },
     {
       "table_no": 11,
       "contaminant": "多氯联苯",
       "symbol": "PCBs",
       "unit": "μg/kg",
-      "inspection_method": "按规定的方法测定",
+      "inspection_method": "食品按 GB 5009.190 规定的方法测定。",
       "items": [
         {
           "category": "食用油、油脂及其制品",
@@ -2907,6 +2993,13 @@
           "mark": "a",
           "text": ""
         }
+      ],
+      "inspection_method_rules": [
+        {
+          "apply": "全部食品",
+          "method": "按 GB 5009.190 规定的方法测定",
+          "is_default": true
+        }
       ]
     },
     {
@@ -2914,7 +3007,7 @@
       "contaminant": "3-氯-1,2-丙二醇",
       "symbol": "3-MCPD",
       "unit": "mg/kg",
-      "inspection_method": "按规定的方法测定",
+      "inspection_method": "食品按 GB 5009.191 规定的方法测定。",
       "items": [
         {
           "category": "调味料",
@@ -2943,6 +3036,13 @@
         {
           "mark": "a",
           "text": "仅限于添加酸水解植物蛋白的产品"
+        }
+      ],
+      "inspection_method_rules": [
+        {
+          "apply": "全部食品",
+          "method": "按 GB 5009.191 规定的方法测定",
+          "is_default": true
         }
       ]
     }

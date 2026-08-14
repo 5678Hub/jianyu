@@ -450,7 +450,7 @@ function buildItemIndex() {
       const subs = it.subcategories || [];
       subs.forEach(s => {
         if (!itemIndex.has(s.sub)) itemIndex.set(s.sub, { big: s.big, items: [] });
-        itemIndex.get(s.sub).items.push({ ...it, _contaminant: c.contaminant, _symbol: c.symbol, _unit: c.unit, _table_no: c.table_no, _footnotes: c.footnotes, _inspection_method: c.inspection_method, _big_a1: s.big });
+        itemIndex.get(s.sub).items.push({ ...it, _contaminant: c.contaminant, _symbol: c.symbol, _unit: c.unit, _table_no: c.table_no, _footnotes: c.footnotes, _inspection_method: c.inspection_method, _rules: c.inspection_method_rules, _big_a1: s.big });
       });
     });
   });
@@ -602,13 +602,29 @@ function pickEmoji(name) {
   return '🥗';
 }
 
+function pickMethod(rules, currentFood, currentBig) {
+  if (!rules || rules.length === 0) return null;
+  // 先匹配 non-default rules:食品名或大类名命中 apply
+  for (const r of rules) {
+    if (r.is_default) continue;
+    if (currentFood && currentFood.includes(r.apply)) return r.method;
+    if (currentBig && currentBig.includes(r.apply)) return r.method;
+  }
+  // fallback 到 default
+  const def = rules.find(r => r.is_default);
+  return def ? def.method : (rules[0] && rules[0].method);
+}
+
 function renderLimitTable(items, isSelf) {
   let html = '<table class="lvl"><thead><tr>';
   html += '<th>污染物中文名称</th><th>元素符号</th><th>食品中文名称</th><th>限量要求</th><th>单位</th><th>检验方法</th><th>备注</th>';
   html += '</tr></thead><tbody>';
   items.forEach(it => {
     const limit = it.limit || (it.limit_no2 && it.limit_no3 ? `NO₂:${it.limit_no2} / NO₃:${it.limit_no3}` : it.limit_no2 || '');
-    const method = it._inspection_method || '';
+    // 智能匹配检验方法:基于当前选中的食品/大类
+    const ctxFood = isSelf ? sub : (it._viaSub || it.food || '');
+    const ctxBig = it._big_a1 || big;
+    const method = pickMethod(it._rules, ctxFood, ctxBig) || it._inspection_method || '';
     html += '<tr>';
     html += `<td class="contaminant-cell">${escapeHTML(it._contaminant)}</td>`;
     html += `<td class="symbol">${escapeHTML(it._symbol || '')}</td>`;
@@ -625,18 +641,36 @@ function renderLimitTable(items, isSelf) {
 }
 
 function renderFootnotesFor(items) {
+  // 脚注块(原逻辑不变)
   const seenFn = new Map();
   items.forEach(it => {
     if (it._footnotes) it._footnotes.forEach(f => {
       if (f.text && !seenFn.has(f.mark + '|' + f.text)) seenFn.set(f.mark + '|' + f.text, f);
     });
   });
-  if (seenFn.size === 0) return '';
-  let html = '<div class="footnote-block"><div class="fn-title">脚注说明</div>';
-  seenFn.forEach(f => {
-    html += `<div class="fn-item"><span class="fn-mark">${f.mark}</span>${escapeHTML(f.text)}</div>`;
+  let html = '';
+  if (seenFn.size > 0) {
+    html += '<div class="footnote-block"><div class="fn-title">脚注说明</div>';
+    seenFn.forEach(f => {
+      html += `<div class="fn-item"><span class="fn-mark">${f.mark}</span>${escapeHTML(f.text)}</div>`;
+    });
+    html += '</div>';
+  }
+  // 检验方法块:智能匹配当前食品的适用方法
+  const methodSet = new Set();
+  items.forEach(it => {
+    const m = pickMethod(it._rules, sub, big) || it._inspection_method;
+    if (m) methodSet.add(m);
   });
-  html += '</div>';
+  if (methodSet.size > 0) {
+    html += '<div class="method-block"><div class="m-title">📋 检验方法</div>';
+    methodSet.forEach(m => {
+      // 显示适用对象
+      const ctxLabel = sub || big;
+      html += `<div style="margin: 4px 0;"><span style="font-size:10px;color:var(--c-text-3);">适用:</span> ${escapeHTML(ctxLabel)} → ${escapeHTML(m)}</div>`;
+    });
+    html += '</div>';
+  }
   return html;
 }
 
@@ -783,12 +817,12 @@ function getFilteredItems() {
   let items = [];
   if (currentFilter === 'all') {
     DATA.contaminants.forEach(c => {
-      c.items.forEach(it => items.push({ ...it, _contaminant: c.contaminant, _symbol: c.symbol, _unit: c.unit, _table_no: c.table_no, _footnotes: c.footnotes, _inspection_method: c.inspection_method }));
+      c.items.forEach(it => items.push({ ...it, _contaminant: c.contaminant, _symbol: c.symbol, _unit: c.unit, _table_no: c.table_no, _footnotes: c.footnotes, _inspection_method: c.inspection_method, _rules: c.inspection_method_rules }));
     });
   } else {
     const c = DATA.contaminants.find(x => x.table_no == currentFilter);
     if (c) {
-      c.items.forEach(it => items.push({ ...it, _contaminant: c.contaminant, _symbol: c.symbol, _unit: c.unit, _table_no: c.table_no, _footnotes: c.footnotes, _inspection_method: c.inspection_method }));
+      c.items.forEach(it => items.push({ ...it, _contaminant: c.contaminant, _symbol: c.symbol, _unit: c.unit, _table_no: c.table_no, _footnotes: c.footnotes, _inspection_method: c.inspection_method, _rules: c.inspection_method_rules }));
     }
   }
   if (selectedBigCats.size > 0 || selectedSubCats.size > 0) {
