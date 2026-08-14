@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>工具箱 · jianyu 食品安全</title>
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231f8a4c'/><text x='32' y='44' font-family='Arial,sans-serif' font-size='26' font-weight='600' fill='white' text-anchor='middle'>食</text></svg>">
+<meta name="theme-color" content="#1f8a4c">
+<style>
+:root {
+  --c-bg: #f3f6f4;
+  --c-surface: #ffffff;
+  --c-border: #e3ebe5;
+  --c-border-strong: #d3ddd5;
+  --c-text-1: #1a2e25;
+  --c-text-2: #5a6e64;
+  --c-text-3: #9aa9a1;
+  --c-primary: #1f8a4c;
+  --c-primary-2: #2aa55d;
+  --c-primary-soft: #e6f4ec;
+  --c-warn: #f57f17;
+  --c-warn-soft: #fff8e1;
+  --c-disabled: #b5bfba;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --shadow-soft: 0 1px 3px rgba(20, 40, 30, 0.05), 0 0 1px rgba(20, 40, 30, 0.06);
+  --shadow-hover: 0 4px 14px rgba(31, 138, 76, 0.12), 0 0 1px rgba(20, 40, 30, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--c-bg); }
+body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif; color: var(--c-text-1); font-size: 14px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+
+.layout { display: flex; min-height: 100vh; }
+
+/* ====== 左侧栏 ====== */
+aside.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--c-surface);
+  border-right: 1px solid var(--c-border);
+  padding: 22px 16px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+.brand { display: flex; align-items: center; gap: 10px; padding: 4px 0 18px; border-bottom: 1px solid var(--c-border); margin-bottom: 18px; }
+.brand-logo { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, var(--c-primary-2), var(--c-primary)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 18px; box-shadow: var(--shadow-soft); flex-shrink: 0; }
+.brand-title { font-size: 17px; font-weight: 600; color: var(--c-text-1); line-height: 1.2; }
+.brand-subtitle { font-size: 11px; color: var(--c-text-3); margin-top: 2px; }
+
+.back-link {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 12px; margin-bottom: 16px;
+  font-size: 12px; color: var(--c-text-2);
+  background: var(--c-bg); border-radius: var(--r-sm);
+  border: 1px solid var(--c-border);
+  transition: all 0.15s;
+}
+.back-link:hover { background: var(--c-primary-soft); border-color: var(--c-primary-2); color: var(--c-primary); }
+
+.cat-title { font-size: 11px; color: var(--c-text-3); text-transform: uppercase; letter-spacing: 0.5px; margin: 14px 4px 8px; font-weight: 600; }
+
+.nav { display: flex; flex-direction: column; gap: 2px; }
+.nav-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 10px;
+  border-radius: var(--r-sm);
+  font-size: 13px;
+  color: var(--c-text-2);
+  cursor: pointer;
+  transition: all 0.15s;
+  border: 1px solid transparent;
+  user-select: none;
+}
+.nav-item:hover { background: var(--c-bg); color: var(--c-text-1); }
+.nav-item.active { background: var(--c-primary-soft); color: var(--c-primary); border-color: var(--c-primary); font-weight: 500; }
+.nav-item .icon { font-size: 14px; width: 16px; text-align: center; flex-shrink: 0; }
+.nav-item .count { margin-left: auto; background: var(--c-bg); color: var(--c-text-2); font-size: 11px; padding: 1px 7px; border-radius: 10px; font-weight: 500; }
+.nav-item.active .count { background: var(--c-primary); color: white; }
+
+/* ====== 主区 ====== */
+main.content {
+  flex: 1; padding: 28px 32px 60px;
+  min-width: 0;
+}
+
+.page-header { margin-bottom: 22px; }
+.page-header h1 { font-size: 22px; font-weight: 600; color: var(--c-text-1); }
+.page-header .desc { font-size: 13px; color: var(--c-text-2); margin-top: 6px; }
+.page-header .stats { display: inline-flex; gap: 14px; margin-top: 10px; font-size: 12px; color: var(--c-text-3); }
+.page-header .stats strong { color: var(--c-primary); font-weight: 600; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+
+.card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  padding: 18px 20px;
+  transition: all 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.card:hover:not(.disabled) { box-shadow: var(--shadow-hover); border-color: var(--c-primary-2); transform: translateY(-1px); }
+
+.card-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: var(--c-primary-soft);
+  color: var(--c-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.card-icon.other { background: #fdf2e9; color: #e65100; }
+.card-icon.ai { background: #f3e8f9; color: #8e44ad; }
+.card-icon.calc { background: #e3f2fd; color: #1565c0; }
+
+.card-title { font-size: 15px; font-weight: 600; color: var(--c-text-1); line-height: 1.35; display: flex; align-items: center; gap: 6px; }
+.card-title .new-tag { background: #ff5252; color: white; font-size: 9px; padding: 1px 5px; border-radius: 4px; font-weight: 600; letter-spacing: 0.3px; }
+.card-desc { font-size: 12px; color: var(--c-text-2); line-height: 1.55; flex: 1; }
+
+.card-foot { display: flex; align-items: center; justify-content: space-between; padding-top: 8px; margin-top: auto; }
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: var(--c-bg);
+  color: var(--c-text-2);
+  font-weight: 500;
+}
+.tag.t-standard { background: var(--c-primary-soft); color: var(--c-primary); }
+.tag.t-inspect { background: #fff3e0; color: #e65100; }
+.tag.t-ai { background: #f3e8f9; color: #8e44ad; }
+.tag.t-calc { background: #e3f2fd; color: #1565c0; }
+.tag.t-sop { background: var(--c-warn-soft); color: var(--c-warn); }
+
+.open-btn {
+  font-size: 12px; font-weight: 500;
+  padding: 5px 14px;
+  border-radius: 14px;
+  background: var(--c-text-1);
+  color: white;
+  display: inline-flex; align-items: center; gap: 4px;
+  transition: all 0.15s;
+}
+.card:hover:not(.disabled) .open-btn { background: var(--c-primary); }
+
+.card.disabled { opacity: 0.55; cursor: not-allowed; }
+.card.disabled .open-btn { background: var(--c-text-3); }
+.card.disabled .tag { background: var(--c-bg); color: var(--c-text-3); }
+
+.empty { text-align: center; color: var(--c-text-3); padding: 40px 0; font-size: 13px; }
+
+@media (max-width: 900px) {
+  .layout { flex-direction: column; }
+  aside.sidebar { width: 100%; height: auto; position: static; padding: 14px 16px; }
+  .nav { flex-direction: row; flex-wrap: wrap; gap: 4px; }
+  .nav-item .count { display: none; }
+  main.content { padding: 18px 16px 40px; }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <!-- 左侧栏 -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-logo">食</div>
+      <div>
+        <div class="brand-title">工具箱</div>
+        <div class="brand-subtitle">食品安全工具包</div>
+      </div>
+    </div>
+    <a class="back-link" href="./">← 返回主页</a>
+
+    <div class="cat-title">分类导航</div>
+    <nav class="nav" id="nav">
+      <div class="nav-item active" data-cat="all"><span class="icon">📦</span>全部工具 <span class="count">4</span></div>
+      <div class="nav-item" data-cat="standard"><span class="icon">📋</span>食品合规与标准 <span class="count">2</span></div>
+      <div class="nav-item" data-cat="inspect"><span class="icon">🔍</span>抽检与追溯 <span class="count">1</span></div>
+      <div class="nav-item" data-cat="soon"><span class="icon">🚧</span>即将上线 <span class="count">1</span></div>
+    </nav>
+  </aside>
+
+  <!-- 主区 -->
+  <main class="content">
+    <div class="page-header">
+      <h1 id="pageTitle">📦 全部工具</h1>
+      <div class="desc" id="pageDesc">jianyu 食品安全工具箱 · 一站式国家标准 / 抽检 / AI 辅助工具集合</div>
+      <div class="stats">
+        <span>共 <strong>4</strong> 个工具</span>
+        <span>·</span>
+        <span>持续更新中</span>
+      </div>
+    </div>
+
+    <div class="grid" id="grid">
+
+      <!-- 卡 1: GB 2762-2025 -->
+      <a class="card" data-cats="standard" href="./gb2762.html">
+        <div class="card-icon">🧪</div>
+        <div class="card-title">GB 2762-2025 食品中污染物限量查询 <span class="new-tag">NEW</span></div>
+        <div class="card-desc">12 种污染物（铅/镉/汞/砷/锡/镍/铬/亚硝酸盐/硝酸盐/苯并芘/N-二甲基亚硝胺/多氯联苯/3-MCPD）限量指标查询，支持关键词搜索与 Excel 导出。</div>
+        <div class="card-foot">
+          <span class="tag t-standard">食品合规与标准</span>
+          <span class="open-btn">打开 →</span>
+        </div>
+      </a>
+
+      <!-- 卡 2: GB 2760-2024 -->
+      <a class="card" data-cats="standard" href="../GB2760-2024/GB2760-2024_查询工具.html">
+        <div class="card-icon other">🧂</div>
+        <div class="card-title">GB 2760-2024 食品添加剂使用标准查询</div>
+        <div class="card-desc">根据 GB 2760-2024 食品添加剂使用标准整理，支持按食品类别 / 添加剂名称反查，含使用范围、最大使用量、备注等信息。</div>
+        <div class="card-foot">
+          <span class="tag t-standard">食品合规与标准</span>
+          <span class="open-btn">打开 →</span>
+        </div>
+      </a>
+
+      <!-- 卡 3: 抽检风险查询 -->
+      <a class="card" data-cats="inspect" href="./">
+        <div class="card-icon calc">🔍</div>
+        <div class="card-title">食品抽检风险查询（jianyu 主平台）</div>
+        <div class="card-desc">基于山东/辽宁/重庆抽检公告 + GB 2763/2762/2716/29921 + 2026 实施细则 39 大类，1191 条历史不合格记录，按食品名 + 类别双维度查询。</div>
+        <div class="card-foot">
+          <span class="tag t-inspect">抽检与追溯</span>
+          <span class="open-btn">打开 →</span>
+        </div>
+      </a>
+
+      <!-- 卡 4: 即将上线 -->
+      <div class="card disabled" data-cats="soon">
+        <div class="card-icon ai">🤖</div>
+        <div class="card-title">GB 2763-2026 农药残留限量查询</div>
+        <div class="card-desc">根据 GB 2763-2026 食品中农药最大残留限量标准整理，支持按食品类别 / 农药名称反查。即将上线。</div>
+        <div class="card-foot">
+          <span class="tag">即将上线</span>
+          <span class="open-btn">敬请期待</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script>
+const CATS = {
+  'all':       { title: '📦 全部工具',          desc: 'jianyu 食品安全工具箱 · 一站式国家标准 / 抽检 / AI 辅助工具集合' },
+  'standard':  { title: '📋 食品合规与标准',     desc: 'GB 国家标准限量与添加剂使用查询 · 用于合规审核与日常检索' },
+  'inspect':   { title: '🔍 抽检与追溯',        desc: '历史抽检不合格记录查询 · 按食品名 / 类别快速定位风险' },
+  'soon':      { title: '🚧 即将上线',          desc: '更多工具陆续开发中 · 欢迎提需求' },
+};
+
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+    const cat = item.dataset.cat;
+    const info = CATS[cat] || CATS.all;
+    document.getElementById('pageTitle').textContent = info.title;
+    document.getElementById('pageDesc').textContent = info.desc;
+    // 过滤卡片
+    document.querySelectorAll('.card').forEach(card => {
+      const cats = (card.dataset.cats || '').split(' ');
+      if (cat === 'all' || cats.includes(cat)) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
