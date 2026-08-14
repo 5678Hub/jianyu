@@ -973,7 +973,7 @@ function renderLimitTable(items, isSelf, nodeName, bigName) {
     } else {
       limitHtml = `<span class="limit-main">${escapeHTML(it.limit || '—')}</span>`;
     }
-    const ctxFood = nodeName || (it._viaSub || it.food || '');
+    const ctxFood = isSelf ? (nodeName || it.food || '') : (it._viaSub || nodeName || it.food || '');
     const ctxBig = bigName || '';
     const method = pickMethod(it._rules, ctxFood, ctxBig) || it._inspection_method || '';
     html += '<tr>';
@@ -1048,6 +1048,11 @@ function getCategoryData() {
   // 返回树形 + 拍扁的 L1 短名映射
   const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
   return tree;
+}
+
+// 短名(去括号内说明):用于大类/子类筛选 chip 与 item 比较 — 兼容全/半角括号
+function shortNameOf(s) {
+  return (s || '').split('（')[0].split('(')[0].trim();
 }
 
 // 把树节点拍扁为 [{name, fullName, shortName, depth, big, path}]
@@ -1132,9 +1137,9 @@ function renderCategoryPanel() {
 function toggleBigCat(big) {
   if (selectedBigCats.has(big)) {
     selectedBigCats.delete(big);
-    const A1 = getCategoryData();
-    const subs = A1[big] || [];
-    subs.forEach(s => selectedSubCats.delete(s));
+    // 取消大类时,清掉该 big 名下所有子类的选中(用短名)
+    const flat = flattenTreeForModeB(getCategoryData());
+    flat.filter(n => n.big === big).forEach(s => selectedSubCats.delete(s.shortName));
   } else {
     selectedBigCats.add(big);
   }
@@ -1181,15 +1186,17 @@ function getFilteredItems() {
       c.items.forEach(it => items.push({ ...it, _contaminant: c.contaminant, _symbol: c.symbol, _unit: c.unit, _table_no: c.table_no, _footnotes: c.footnotes, _inspection_method: c.inspection_method, _rules: c.inspection_method_rules }));
     }
   }
+  // 大类/子类筛选 — 用短名(去括号内说明)比对,避免 category_a1 带括号导致不匹配
   if (selectedBigCats.size > 0 || selectedSubCats.size > 0) {
     items = items.filter(it => {
       if (selectedBigCats.size > 0) {
-        const bigHit = (it.category_a1 || it.category) && selectedBigCats.has(it.category_a1 || it.category);
+        const itBigShort = shortNameOf(it.category_a1 || it.category || '');
+        const bigHit = itBigShort && selectedBigCats.has(itBigShort);
         if (!bigHit) return false;
       }
       if (selectedSubCats.size > 0) {
         if (!it.subcategories || it.subcategories.length === 0) return false;
-        const subHit = it.subcategories.some(s => selectedSubCats.has(s.sub));
+        const subHit = it.subcategories.some(s => selectedSubCats.has(shortNameOf(s.sub)));
         if (!subHit) return false;
       }
       return true;
