@@ -1257,14 +1257,43 @@ function setFilter(no) {
 // 数据源: DATA.additives(15 个 aid,从 foodvip.net 抓取的标准限量)
 let contamSearchKw = '';
 
+// 左侧污染物列表按官方 12 张表顺序排序
+// 表1 铅(4.1)→ 表2 镉(4.2)→ 表3 汞(4.3.1 总汞、4.3.2 甲基汞)→ 表4 砷(4.4.1 总砷、4.4.2 无机砷)
+// → 表5 锡(4.5)→ 表6 镍(4.6)→ 表7 铬(4.7)→ 表8 亚硝酸盐/硝酸盐(4.8.1、4.8.2)
+// → 表9 苯并[a]芘(4.9)→ 表10 N-二甲基亚硝胺(4.10)→ 表11 多氯联苯(4.11)→ 表12 3-MCPD(4.12)
+const CONTAM_ORDER = [
+  { aid: 4,  no: '4.1'   }, // 铅
+  { aid: 3,  no: '4.2'   }, // 镉
+  { aid: 1,  no: '4.3.1' }, // 总汞
+  { aid: 2,  no: '4.3.2' }, // 甲基汞
+  { aid: 14, no: '4.4.1' }, // 总砷
+  { aid: 15, no: '4.4.2' }, // 无机砷
+  { aid: 13, no: '4.5'   }, // 锡
+  { aid: 12, no: '4.6'   }, // 镍
+  { aid: 11, no: '4.7'   }, // 铬
+  { aid: 10, no: '4.8.1' }, // 亚硝酸盐
+  { aid: 9,  no: '4.8.2' }, // 硝酸盐
+  { aid: 8,  no: '4.9'   }, // 苯并[a]芘
+  { aid: 7,  no: '4.10'  }, // N-二甲基亚硝胺
+  { aid: 6,  no: '4.11'  }, // 多氯联苯
+  { aid: 5,  no: '4.12'  }  // 3-氯-1,2-丙二醇
+];
+function getContamOrderIndex(aid) {
+  const i = CONTAM_ORDER.findIndex(x => x.aid === aid);
+  return i < 0 ? 999 : i;
+}
+
 function renderContamList() {
   const wrap = document.getElementById('contamList');
   if (!wrap) return;
   if (!DATA || !DATA.additives) { wrap.innerHTML = '<div style="padding:14px;color:var(--c-text-3);font-size:12px;">数据加载中…</div>'; return; }
-  wrap.innerHTML = DATA.additives.map(a => {
+  const sorted = [...DATA.additives].sort((a, b) => getContamOrderIndex(a.aid) - getContamOrderIndex(b.aid));
+  wrap.innerHTML = sorted.map(a => {
+    const orderItem = CONTAM_ORDER.find(x => x.aid === a.aid);
+    const noTag = orderItem ? `<span style="color:#888;font-size:11px;font-weight:normal;margin-right:4px;">${orderItem.no}</span>` : '';
     const sel = a.aid === selectedContam;
     return `<div class="contam-list-item${sel ? ' selected' : ''}" data-aid="${a.aid}" onclick="selectContam(${a.aid})">
-      <div>${escapeHTML(a.name)}${a.symbol ? ' <span style="color:#999;font-size:11px;">(' + escapeHTML(a.symbol) + ')</span>' : ''}</div>
+      <div>${noTag}${escapeHTML(a.name)}${a.symbol ? ' <span style="color:#999;font-size:11px;">(' + escapeHTML(a.symbol) + ')</span>' : ''}</div>
       <span class="contam-count">${a.rows.length} 条限量</span>
     </div>`;
   }).join('');
