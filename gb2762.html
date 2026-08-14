@@ -262,9 +262,10 @@ table.results td.remark { font-size: 12px; color: var(--c-text-2); font-style: i
 
 .tn-arrow {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 16px; height: 16px; border-radius: 50%;
+  width: 20px; height: 20px; border-radius: 50%;
   background: #eef2f6; color: var(--c-text-2); flex-shrink: 0;
-  font-size: 10px; line-height: 1; font-weight: 700;
+  font-size: 16px; line-height: 1; font-weight: 700;
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", monospace;
   transition: all .15s;
 }
 .tn-arrow.has { cursor: pointer; background: #e6eef5; color: var(--c-primary); }
@@ -856,12 +857,27 @@ function renderTree(filterKw) {
     return;
   }
 
-  // 渲染:根据 expandedPaths + filterKw 决定显示
-  // 过滤模式下强制显示所有命中节点(无论是否展开)
+  // 渲染:默认只显示已展开父节点的子节点;过滤模式下强制显示命中节点链
   const showAll = !!kw;
+  // 展开的 pk 集合(用于决定子节点是否显示)
+  const openKeys = new Set();
+  if (showAll) {
+    // 过滤模式:把所有命中节点的祖先链加入 openKeys
+    nodes.forEach(n => {
+      for (let i = 1; i <= n.path.length; i++) {
+        openKeys.add(pathKey(n.path.slice(0, i)));
+      }
+    });
+  } else {
+    expandedPaths.forEach(pk => openKeys.add(pk));
+  }
   let html = '';
   nodes.forEach(n => {
     const pk = pathKey(n.path);
+    // 决定是否渲染:默认渲染所有 L1;L2+ 必须父链全部展开
+    const parentPath = n.path.slice(0, -1);
+    const parentOpen = parentPath.length === 0 || openKeys.has(pathKey(parentPath));
+    if (!showAll && !parentOpen) return; // 父节点未展开,不渲染
     const isOpen = showAll || expandedPaths.has(pk);
     const isSelected = treeSelected && pathKey(treeSelected.path) === pk;
     const stats = statsForPath(n.path);
