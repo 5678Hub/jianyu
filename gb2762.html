@@ -139,7 +139,7 @@ table.results td.remark { font-size: 12px; color: var(--c-text-2); font-style: i
 .method-block .m-title { font-weight: 600; color: var(--c-primary); margin-bottom: 4px; }
 
 /* ============= 树形浏览模式 ============= */
-.tree-view { display: grid; grid-template-columns: 260px 1fr; gap: 14px; align-items: flex-start; }
+.tree-view { display: grid; grid-template-columns: 280px 1fr; gap: 14px; align-items: flex-start; }
 @media (max-width: 880px) { .tree-view { grid-template-columns: 1fr; } }
 
 .tree-side {
@@ -148,7 +148,7 @@ table.results td.remark { font-size: 12px; color: var(--c-text-2); font-style: i
   border-radius: var(--r-md);
   padding: 14px 12px;
   box-shadow: var(--shadow-soft);
-  max-height: 75vh;
+  max-height: 78vh;
   overflow-y: auto;
   position: sticky;
   top: 8px;
@@ -159,40 +159,55 @@ table.results td.remark { font-size: 12px; color: var(--c-text-2); font-style: i
   border-bottom: 1px solid var(--c-border);
   display: flex; align-items: center; gap: 6px;
 }
-.tree-search { margin-bottom: 8px; }
+.tree-search { margin-bottom: 8px; position: relative; }
 .tree-search input { padding: 7px 10px; font-size: 12px; }
-
-.tree-big {
-  font-size: 12px; font-weight: 600; color: var(--c-text-1);
-  padding: 6px 8px; border-radius: 6px;
-  cursor: pointer; user-select: none;
-  display: flex; align-items: center; justify-content: space-between;
-  transition: background .12s;
+.tree-search .clear-btn {
+  position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+  border: none; background: transparent; color: var(--c-text-3);
+  cursor: pointer; padding: 2px 6px; font-size: 14px;
 }
-.tree-big:hover { background: var(--c-primary-soft); }
-.tree-big .toggle { font-size: 9px; color: var(--c-text-3); transition: transform .15s; display: inline-block; width: 12px; }
-.tree-big.open .toggle { transform: rotate(90deg); }
-.tree-big .count { font-size: 10px; color: var(--c-text-3); font-weight: 400; }
 
-.tree-subs {
-  display: none;
-  margin: 2px 0 4px 14px;
-  border-left: 1px dashed var(--c-border);
-  padding-left: 6px;
-}
-.tree-big.open + .tree-subs { display: block; }
-.tree-sub {
-  font-size: 11.5px; color: var(--c-text-2);
-  padding: 4px 8px; border-radius: 4px;
+.tree-node {
+  display: flex; align-items: center; gap: 4px;
+  padding: 5px 6px 5px 4px;
+  border-radius: 5px;
   cursor: pointer; user-select: none;
-  display: flex; align-items: center; justify-content: space-between;
-  transition: all .12s;
+  font-size: 12px; color: var(--c-text-1);
+  transition: background .12s, color .12s;
   border: 1px solid transparent;
+  line-height: 1.4;
 }
-.tree-sub:hover { background: var(--c-primary-soft); color: var(--c-primary); }
-.tree-sub.selected { background: var(--c-tree-sel); color: var(--c-text-1); border-color: var(--c-tree-sel-border); font-weight: 500; }
-.tree-sub.selected .count { color: var(--c-tree-sel-border); }
-.tree-sub .count { font-size: 10px; color: var(--c-text-3); }
+.tree-node:hover { background: var(--c-primary-soft); color: var(--c-primary); }
+.tree-node.selected { background: var(--c-tree-sel); border-color: var(--c-tree-sel-border); color: var(--c-text-1); font-weight: 500; }
+.tree-node.selected .tn-count { color: var(--c-tree-sel-border); font-weight: 600; }
+
+.tn-arrow {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 14px; height: 14px; flex-shrink: 0;
+  font-size: 9px; color: var(--c-text-3);
+  transition: transform .15s;
+}
+.tn-arrow.has { cursor: pointer; }
+.tn-arrow.has:hover { color: var(--c-primary); }
+.tn-arrow.open { transform: rotate(90deg); }
+.tn-arrow.empty { color: var(--c-border-strong); }
+
+.tn-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tn-count { font-size: 10px; color: var(--c-text-3); padding: 1px 6px; background: var(--c-bg); border-radius: 8px; flex-shrink: 0; }
+.tn-count.zero { opacity: 0.4; }
+
+/* 层级颜色标记 */
+.tree-node.depth-1 { font-weight: 600; color: var(--c-primary); margin-top: 4px; }
+.tree-node.depth-1:first-child { margin-top: 0; }
+.tree-node.depth-1 .tn-name::before {
+  content: '📂'; margin-right: 4px; opacity: 0.7;
+}
+.tree-node.depth-2 { font-weight: 500; color: var(--c-text-1); }
+.tree-node.depth-2 .tn-name::before { content: '└'; opacity: 0.4; margin-right: 4px; font-size: 10px; }
+.tree-node.depth-3 { color: var(--c-text-2); }
+.tree-node.depth-3 .tn-name::before { content: '·'; opacity: 0.5; margin-right: 4px; }
+.tree-node.depth-4 { color: var(--c-text-3); font-size: 11.5px; }
+.tree-node.depth-4 .tn-name::before { content: '·'; opacity: 0.3; margin-right: 4px; }
 
 .tree-detail { min-width: 0; }
 .breadcrumb { font-size: 12px; color: var(--c-text-2); margin-bottom: 12px; }
@@ -389,7 +404,8 @@ let selectedSubCats = new Set();
 let categoryPanelOpen = false;
 
 // 树形浏览模式状态
-let treeSelected = null; // {big, sub}
+let treeSelected = null; // {path: [name1, name2, ...]}  当前选中节点的全路径
+let expandedPaths = new Set(); // 已展开的节点路径(序列化字符串)
 
 // ========== 数据加载 ==========
 async function loadData() {
@@ -442,80 +458,212 @@ const FOOD_EMOJI = {
   '特殊膳食用食品': '🍼', '婴幼儿配方食品': '🍼',
 };
 
-// 索引: 细类名 → 该细类命中的所有 item + 命中污染物
+// 树工具:把 path 数组序列化用于 Set/Map key / data-attr
+function pathKey(path) { return path.map(s => s.replace(/\|/g, '||')).join('|'); }
+function pathAttr(path) { return path.map(s => s.replace(/"/g, '&quot;').replace(/'/g, '&#39;')).join(' › '); }
+
+// 索引: path-key → {items: [], depth: n}
 let itemIndex = null;
 function buildItemIndex() {
   if (itemIndex) return itemIndex;
-  itemIndex = new Map(); // sub 名 → {items:[], big:大类}
+  itemIndex = new Map();
+  // 先建好树节点全集(所有叶子节点的 path)
+  const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
+
+  // 收集每个 item 对应的 path
   DATA.contaminants.forEach(c => {
     c.items.forEach(it => {
-      const subs = it.subcategories || [];
-      subs.forEach(s => {
-        if (!itemIndex.has(s.sub)) itemIndex.set(s.sub, { big: s.big, items: [] });
-        itemIndex.get(s.sub).items.push({ ...it, _contaminant: c.contaminant, _symbol: c.symbol, _unit: c.unit, _table_no: c.table_no, _footnotes: c.footnotes, _inspection_method: c.inspection_method, _rules: c.inspection_method_rules, _big_a1: s.big });
+      const enriched = { ...it,
+        _contaminant: c.contaminant, _symbol: c.symbol, _unit: c.unit,
+        _table_no: c.table_no, _footnotes: c.footnotes,
+        _inspection_method: c.inspection_method, _rules: c.inspection_method_rules
+      };
+      // 把 item 推入它归属的所有 path-key
+      const paths = matchItemToPaths(it, tree);
+      paths.forEach(pk => {
+        if (!itemIndex.has(pk)) itemIndex.set(pk, []);
+        itemIndex.get(pk).push(enriched);
       });
     });
   });
   return itemIndex;
 }
 
-function countForSub(subName) {
-  const idx = buildItemIndex();
-  return idx.has(subName) ? idx.get(subName).items.length : 0;
+// 把一个 item 关联到 A.1 树的某些节点路径
+function matchItemToPaths(item, tree) {
+  const catA1 = item.category_a1 || item.category || '';
+  // 1) 用 category_a1 找 L1 节点(允许括号字符差异:全角/半角)
+  const norm = (s) => s.replace(/[()（）]/g, '').replace(/\s+/g, '').toLowerCase();
+  const catNorm = norm(catA1);
+
+  const matchedPaths = new Set();
+  // 递归遍历所有节点
+  function visit(nodes, path) {
+    nodes.forEach(n => {
+      const curPath = path.concat([n.name]);
+      const curNorm = norm(n.name);
+      // L1 全名匹配
+      if (path.length === 0 && curNorm === catNorm) {
+        matchedPaths.add(pathKey(curPath));
+      }
+      // 子节点路径包含 item 的食物关键字 → 关联
+      const food = (item.food || '').replace(/[、,，。;；:：（()）]/g, ' ');
+      const foodParts = food.split(/\s+/).filter(Boolean);
+      const subName = n.name.split('（')[0].split('(')[0].trim();
+      const subNorm = norm(subName);
+      const foodHay = norm(item.food || '');
+      // 直接子串
+      if (subNorm && subNorm.length >= 2 && (foodHay.includes(subNorm) || subNorm.includes(foodHay))) {
+        matchedPaths.add(pathKey(curPath));
+      }
+      // 食物 token 命中(如 "稻谷" 在 food 中)
+      for (const tok of foodParts) {
+        const tokClean = tok.replace(/[除外不包括不含]+/g, '').trim();
+        if (tokClean.length >= 2 && (n.name.includes(tokClean) || tokClean.includes(n.name))) {
+          matchedPaths.add(pathKey(curPath));
+        }
+      }
+      // 递归
+      if (n.children) visit(n.children, curPath);
+    });
+  }
+  visit(tree, []);
+  // 兜底:如果一个都没匹配上,关联到 L1(category_a1 决定)
+  if (matchedPaths.size === 0 && catNorm) {
+    function fallback(nodes, path) {
+      for (const n of nodes) {
+        const curPath = path.concat([n.name]);
+        if (path.length === 0 && norm(n.name) === catNorm) {
+          matchedPaths.add(pathKey(curPath));
+          return true;
+        }
+        if (n.children && fallback(n.children, curPath)) return true;
+      }
+      return false;
+    }
+    fallback(tree, []);
+  }
+  return [...matchedPaths];
 }
 
-function countForBig(bigName) {
+// 统计某个 path 节点(及其子树)的 item 总数
+function countForPath(path) {
   const idx = buildItemIndex();
-  let n = 0;
-  idx.forEach((v, k) => { if (v.big === bigName) n += v.items.length; });
-  return n;
+  const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
+  const targetKey = pathKey(path);
+  // 1) 直接命中
+  let direct = idx.has(targetKey) ? idx.get(targetKey).length : 0;
+  // 2) 子树命中
+  let sub = 0;
+  function walk(nodes) {
+    let total = 0;
+    nodes.forEach(n => {
+      const pk = pathKey(path.concat([n.name]));
+      if (idx.has(pk)) total += idx.get(pk).length;
+      if (n.children) total += walk(n.children);
+    });
+    return total;
+  }
+  const findNode = (nodes) => {
+    for (const n of nodes) {
+      if (pathKey(path.concat([n.name])) === targetKey) return n;
+      if (n.children) {
+        const r = findNode(n.children);
+        if (r) return r;
+      }
+    }
+    return null;
+  };
+  const node = findNode(tree);
+  if (node && node.children) sub = walk(node.children);
+  return direct + sub;
+}
+
+// 递归展平树节点
+function flattenTree(tree) {
+  const out = [];
+  function walk(nodes, path, depth) {
+    nodes.forEach(n => {
+      const p = path.concat([n.name]);
+      out.push({ name: n.name, path: p, depth, hasChildren: !!(n.children && n.children.length) });
+      if (n.children) walk(n.children, p, depth + 1);
+    });
+  }
+  walk(tree, [], 1);
+  return out;
 }
 
 function renderTree(filterKw) {
-  const A1 = DATA.appendix_a1 || {};
+  const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
   const wrap = document.getElementById('treeList');
-  let html = '';
-  Object.keys(A1).forEach(big => {
-    const subs = A1[big] || [];
-    let visibleSubs = subs;
-    if (filterKw && filterKw.trim()) {
-      const kw = filterKw.trim().toLowerCase();
-      visibleSubs = subs.filter(s => s.toLowerCase().includes(kw));
+  const kw = (filterKw || '').trim().toLowerCase();
+
+  let nodes = flattenTree(tree);
+  if (kw) {
+    // 同时匹配自身 + 任一祖先含 kw
+    const ancestors = new Map(); // name → set of ancestors' names
+    function buildAncestors(nodes, parents) {
+      nodes.forEach(n => {
+        ancestors.set(n.name, new Set(parents));
+        if (n.children) buildAncestors(n.children, parents.concat([n.name]));
+      });
     }
-    if (filterKw && visibleSubs.length === 0) return; // 过滤后该大类无可见细类,不渲染
-    const bigCnt = countForBig(big);
-    const visibleCount = filterKw ? visibleSubs.reduce((s, sub) => s + countForSub(sub), 0) : bigCnt;
-    html += `<div class="tree-big" data-big="${escapeAttr(big)}" onclick="toggleTreeBig(this, '${escapeAttr(big)}')">
-      <span><span class="toggle">▶</span> ${escapeHTML(big)}</span><span class="count">${visibleCount}</span>
-    </div>`;
-    html += `<div class="tree-subs" data-subs-for="${escapeAttr(big)}">`;
-    visibleSubs.forEach(sub => {
-      const cnt = countForSub(sub);
-      const sel = treeSelected && treeSelected.sub === sub ? ' selected' : '';
-      html += `<div class="tree-sub${sel}" data-sub="${escapeAttr(sub)}" data-big="${escapeAttr(big)}" onclick="selectTreeSub('${escapeAttr(big)}', '${escapeAttr(sub)}', this)">
-        <span>${escapeHTML(sub)}</span><span class="count">${cnt}</span>
-      </div>`;
+    buildAncestors(tree, []);
+    nodes = nodes.filter(n => {
+      if (n.name.toLowerCase().includes(kw)) return true;
+      const ans = ancestors.get(n.name) || new Set();
+      for (const a of ans) if (a.toLowerCase().includes(kw)) return true;
+      return false;
     });
-    html += '</div>';
+  }
+
+  if (nodes.length === 0) {
+    wrap.innerHTML = '<div style="font-size:12px;color:var(--c-text-3);padding:14px 8px;text-align:center;">无匹配食品</div>';
+    return;
+  }
+
+  // 渲染:根据 expandedPaths + filterKw 决定显示
+  // 过滤模式下强制显示所有命中节点(无论是否展开)
+  const showAll = !!kw;
+  let html = '';
+  nodes.forEach(n => {
+    const pk = pathKey(n.path);
+    const isOpen = showAll || expandedPaths.has(pk);
+    const isSelected = treeSelected && pathKey(treeSelected.path) === pk;
+    const cnt = countForPath(n.path);
+    const cntClass = cnt === 0 ? 'zero' : '';
+    const arrowCls = n.hasChildren ? 'has' : 'empty';
+    const arrowCh = n.hasChildren ? (isOpen ? '▼' : '▶') : '·';
+    const arrowOnClick = n.hasChildren
+      ? `event.stopPropagation(); toggleTreeNode(${JSON.stringify(n.path)});`
+      : '';
+    const indent = (n.depth - 1) * 12;
+    html += `<div class="tree-node depth-${Math.min(n.depth,4)}${isSelected ? ' selected' : ''}"
+              style="padding-left:${4 + indent}px;"
+              data-pk="${escapeAttr(pk)}"
+              onclick="selectTreeNode(${JSON.stringify(n.path)})">
+      <span class="tn-arrow ${arrowCls}${isOpen ? ' open' : ''}" onclick="${arrowOnClick}">${arrowCh}</span>
+      <span class="tn-name" title="${escapeAttr(n.name)}">${escapeHTML(n.name)}</span>
+      <span class="tn-count ${cntClass}">${cnt}</span>
+    </div>`;
   });
-  if (!html) html = '<div style="font-size:12px;color:var(--c-text-3);padding:14px 8px;">无匹配食品</div>';
   wrap.innerHTML = html;
 }
 
-function toggleTreeBig(el, big) {
-  el.classList.toggle('open');
-  const subs = document.querySelector(`[data-subs-for="${CSS.escape(big)}"]`);
-  if (subs) subs.style.display = el.classList.contains('open') ? 'block' : 'none';
+function toggleTreeNode(path) {
+  const pk = pathKey(path);
+  if (expandedPaths.has(pk)) expandedPaths.delete(pk);
+  else expandedPaths.add(pk);
+  renderTree(document.getElementById('treeSearchInput').value);
 }
 
-function selectTreeSub(big, sub, el) {
-  // 高亮选中
-  document.querySelectorAll('.tree-sub.selected').forEach(e => e.classList.remove('selected'));
-  if (el) el.classList.add('selected');
-  treeSelected = { big, sub };
-  // 自动展开父大类
-  const bigEl = document.querySelector(`[data-big="${CSS.escape(big)}"]`);
-  if (bigEl && !bigEl.classList.contains('open')) toggleTreeBig(bigEl, big);
+function selectTreeNode(path) {
+  treeSelected = { path: path.slice() };
+  // 自动展开所有祖先
+  for (let i = 1; i <= path.length; i++) {
+    expandedPaths.add(pathKey(path.slice(0, i)));
+  }
+  renderTree(document.getElementById('treeSearchInput').value);
   renderTreeDetail();
 }
 
@@ -532,69 +680,118 @@ function renderTreeDetail() {
     return;
   }
 
-  const { big, sub } = treeSelected;
-  const A1 = DATA.appendix_a1 || {};
-  const subs = A1[big] || [];
+  const path = treeSelected.path;
+  const nodeName = path[path.length - 1];
+  const bigName = path[0]; // L1
+  const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
 
-  // 面包屑:点击上级分类跳到对应位置
-  bc.innerHTML =
-    `<a onclick="treeSelected=null;renderTree();renderTreeDetail();">食品类别</a>` +
-    `<span class="sep">›</span>` +
-    `<a onclick="jumpToBig('${escapeAttr(big)}')">${escapeHTML(big)}</a>` +
-    (subs.length > 1 ? `<span class="sep">›</span><span class="current">${escapeHTML(sub)}</span>` : '');
+  // 面包屑
+  let bcHtml = `<a onclick="treeSelected=null;renderTree();renderTreeDetail();">食品类别</a>`;
+  path.forEach((p, i) => {
+    const pPath = path.slice(0, i + 1);
+    if (i === path.length - 1) {
+      bcHtml += `<span class="sep">›</span><span class="current">${escapeHTML(p)}</span>`;
+    } else {
+      bcHtml += `<span class="sep">›</span><a onclick="selectTreeNode(${JSON.stringify(pPath)})">${escapeHTML(p)}</a>`;
+    }
+  });
+  bc.innerHTML = bcHtml;
 
-  // 找该细类 + 父级 + 祖父级的所有限量
-  const levels = []; // [{label, isSelf, items:[]}]
+  // 找节点对应的 items
+  const pk = pathKey(path);
+  const selfItems = idx.has(pk) ? idx.get(pk).map(x => ({ ...x, _viaSub: nodeName })) : [];
 
-  // 本级
-  const selfItems = idx.has(sub) ? idx.get(sub).items : [];
-  levels.push({ tag: '本级', label: `${sub} 中污染物的限量要求`, isSelf: true, items: selfItems });
-
-  // 父级: 大类名(若子项数 > 1 表示有父级)
-  if (subs.length > 1) {
-    const parentItems = [];
-    idx.forEach((v, k) => {
-      if (v.big === big && k !== sub) {
-        v.items.forEach(it => parentItems.push({ ...it, _viaSub: k }));
+  // 同级(兄弟节点)items
+  const siblingItems = [];
+  function findParentAndSiblings(nodes, parent) {
+    for (const n of nodes) {
+      if (n.name === path[parent.length]) {
+        if (n.children) {
+          n.children.forEach(c => {
+            if (pathKey(parent.concat([c.name])) !== pk) {
+              const cpk = pathKey(parent.concat([c.name]));
+              if (idx.has(cpk)) {
+                idx.get(cpk).forEach(it => siblingItems.push({ ...it, _viaSub: c.name }));
+              }
+            }
+          });
+        }
+        return true;
       }
-    });
-    levels.push({ tag: '同级', label: `${big} 中其他细类的污染物限量要求`, isSelf: false, items: parentItems });
+      if (n.children && findParentAndSiblings(n.children, parent.concat([n.name]))) return true;
+    }
+    return false;
   }
+  if (path.length > 1) findParentAndSiblings(tree, []);
+
+  // 父级(L1):把所有 path[0] 节点下的 items 合并(本节点和兄弟之外的)
+  const directL1Items = [];
+  function collectL1(nodes) {
+    for (const n of nodes) {
+      if (n.name === bigName) {
+        function recur(ns) {
+          ns.forEach(c => {
+            const cpk = pathKey([bigName].concat(path.slice(1, path.length - 1)).concat([c.name]).slice(0, path.length));
+            // 简化:把 n.children 全部展开收集
+            const dpk = pathKey([bigName, c.name]);
+            if (idx.has(dpk)) idx.get(dpk).forEach(it => directL1Items.push({ ...it, _viaSub: c.name }));
+            if (c.children) recur(c.children);
+          });
+        }
+        recur(n.children || []);
+        return true;
+      }
+      if (n.children && collectL1(n.children)) return true;
+    }
+    return false;
+  }
+  // 简化:父级展示 = 把整个 L1 子树命中且不在 self+sibling 的 items
+  collectL1(tree);
+  const seen = new Set();
+  const filteredDirect = directL1Items.filter(it => {
+    const k = it._table_no + '|' + (it.food || '') + '|' + (it.limit || '') + '|' + (it._viaSub || '');
+    if (seen.has(k)) return false;
+    seen.add(k);
+    return true;
+  });
 
   // 卡片
-  const emoji = pickEmoji(sub);
+  const emoji = pickEmoji(nodeName);
   let html = `<div class="food-card">
     <div class="icon">${emoji}</div>
     <div>
-      <div class="name-cn">${escapeHTML(sub)}</div>
-      <div class="name-en">GB 2762-2025 · ${escapeHTML(big)}</div>
+      <div class="name-cn">${escapeHTML(nodeName)}</div>
+      <div class="name-en">GB 2762-2025 · ${escapeHTML(bigName)} · 第 ${path.length} 级</div>
     </div>
     <div class="meta">
       <div class="meta-card"><div class="label">适用污染物</div><div class="num">${selfItems.length}</div></div>
-      <div class="meta-card"><div class="label">所属大类</div><div class="num" style="font-size:13px;">${escapeHTML(big)}</div></div>
+      <div class="meta-card"><div class="label">所属大类</div><div class="num" style="font-size:13px;">${escapeHTML(bigName)}</div></div>
     </div>
   </div>`;
 
-  // 各级限量表
-  levels.forEach((lv, idx) => {
-    if (lv.items.length === 0) return;
-    const cls = lv.isSelf ? 'level-block self-level' : 'level-block';
-    html += `<div class="${cls}">
-      <div class="level-header">
-        <span>${escapeHTML(lv.label)}</span>
-        <span class="level-tag">${lv.tag}</span>
-        <span class="count-tag">${lv.items.length} 条</span>
-      </div>
-      ${renderLimitTable(lv.items, lv.isSelf)}
-    </div>`;
-  });
+  const levels = [];
+  if (selfItems.length > 0) levels.push({ tag: '本级', label: `${nodeName} 的污染物限量要求`, isSelf: true, items: selfItems });
+  if (siblingItems.length > 0 && path.length > 1) levels.push({ tag: '同级', label: `${bigName} 同级细类的限量要求`, isSelf: false, items: siblingItems });
+  if (filteredDirect.length > 0 && path.length > 1) levels.push({ tag: '上级', label: `${bigName} 大类的其他限量`, isSelf: false, items: filteredDirect });
 
-  if (levels.every(l => l.items.length === 0)) {
-    html += `<div class="tree-empty"><span class="emoji">📭</span><div>该食品暂无污染物限量记录</div></div>`;
+  if (levels.length === 0) {
+    html += `<div class="tree-empty"><span class="emoji">📭</span><div>该食品暂无污染物限量记录</div><div class="hint-text">可能未在 GB 2762-2025 中单独规定<br>适用 GB 2762 通用原则</div></div>`;
+  } else {
+    levels.forEach(lv => {
+      const cls = lv.isSelf ? 'level-block self-level' : 'level-block';
+      html += `<div class="${cls}">
+        <div class="level-header">
+          <span>${escapeHTML(lv.label)}</span>
+          <span class="level-tag">${lv.tag}</span>
+          <span class="count-tag">${lv.items.length} 条</span>
+        </div>
+        ${renderLimitTable(lv.items, lv.isSelf, nodeName, bigName)}
+      </div>`;
+    });
   }
 
   tc.innerHTML = html;
-  fn.innerHTML = renderFootnotesFor(selfItems);
+  fn.innerHTML = renderFootnotesFor(selfItems, nodeName, bigName);
 }
 
 function pickEmoji(name) {
@@ -617,7 +814,7 @@ function pickMethod(rules, currentFood, currentBig) {
   return def ? def.method : (rules[0] && rules[0].method);
 }
 
-function renderLimitTable(items, isSelf) {
+function renderLimitTable(items, isSelf, nodeName, bigName) {
   let html = '<table class="lvl"><thead><tr>';
   html += '<th>污染物中文名称</th><th>元素符号</th><th>食品中文名称</th><th>限量要求</th><th>单位</th><th>检验方法</th><th>备注</th>';
   html += '</tr></thead><tbody>';
@@ -633,13 +830,13 @@ function renderLimitTable(items, isSelf) {
     } else {
       limitHtml = `<span class="limit-main">${escapeHTML(it.limit || '—')}</span>`;
     }
-    const ctxFood = isSelf ? sub : (it._viaSub || it.food || '');
-    const ctxBig = it._big_a1 || big;
+    const ctxFood = nodeName || (it._viaSub || it.food || '');
+    const ctxBig = bigName || '';
     const method = pickMethod(it._rules, ctxFood, ctxBig) || it._inspection_method || '';
     html += '<tr>';
     html += `<td class="contaminant-cell">${escapeHTML(it._contaminant)}</td>`;
     html += `<td class="symbol">${escapeHTML(it._symbol || '')}</td>`;
-    const foodName = isSelf ? (it.food || sub) : (it._viaSub ? `${it._viaSub}:` + (it.food || '') : (it.food || ''));
+    const foodName = isSelf ? (it.food || nodeName) : (it._viaSub ? `${it._viaSub}:` + (it.food || '') : (it.food || ''));
     html += `<td class="food-cell">${escapeHTML(foodName)}</td>`;
     html += `<td class="limit-cell">${limitHtml}</td>`;
     html += `<td class="unit-cell">${escapeHTML(it._unit || '')}</td>`;
@@ -651,7 +848,7 @@ function renderLimitTable(items, isSelf) {
   return html;
 }
 
-function renderFootnotesFor(items) {
+function renderFootnotesFor(items, nodeName, bigName) {
   // 脚注块(原逻辑不变)
   const seenFn = new Map();
   items.forEach(it => {
@@ -670,14 +867,13 @@ function renderFootnotesFor(items) {
   // 检验方法块:智能匹配当前食品的适用方法
   const methodSet = new Set();
   items.forEach(it => {
-    const m = pickMethod(it._rules, sub, big) || it._inspection_method;
+    const m = pickMethod(it._rules, nodeName, bigName) || it._inspection_method;
     if (m) methodSet.add(m);
   });
   if (methodSet.size > 0) {
     html += '<div class="method-block"><div class="m-title">📋 检验方法</div>';
     methodSet.forEach(m => {
-      // 显示适用对象
-      const ctxLabel = sub || big;
+      const ctxLabel = nodeName || bigName;
       html += `<div style="margin: 4px 0;"><span style="font-size:10px;color:var(--c-text-3);">适用:</span> ${escapeHTML(ctxLabel)} → ${escapeHTML(m)}</div>`;
     });
     html += '</div>';
@@ -686,23 +882,8 @@ function renderFootnotesFor(items) {
 }
 
 function jumpToBig(big) {
-  // 展开该大类并选中第一个细类(若有)
-  const A1 = DATA.appendix_a1 || {};
-  const subs = A1[big] || [];
-  if (subs.length === 0) return;
-  const bigEl = document.querySelector(`[data-big="${CSS.escape(big)}"]`);
-  if (bigEl && !bigEl.classList.contains('open')) toggleTreeBig(bigEl, big);
-  // 选中第一个有数据的细类
-  for (const s of subs) {
-    if (countForSub(s) > 0) {
-      const subEl = document.querySelector(`[data-sub="${CSS.escape(s)}"]`);
-      selectTreeSub(big, s, subEl);
-      return;
-    }
-  }
-  // 没有数据则选第一个
-  const subEl = document.querySelector(`[data-sub="${CSS.escape(subs[0])}"]`);
-  selectTreeSub(big, subs[0], subEl);
+  // 直接跳到 L1 节点
+  selectTreeNode([big]);
 }
 
 // ========== 模式 B:关键词查询 (原有逻辑) ==========
@@ -721,19 +902,37 @@ function clearCategoryFilter() {
 }
 
 function getCategoryData() {
-  return DATA.appendix_a1 || {};
+  // 返回树形 + 拍扁的 L1 短名映射
+  const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
+  return tree;
 }
 
-function countItemsFor(big, sub) {
+// 把树节点拍扁为 [{name, fullName, shortName, depth, big, path}]
+function flattenTreeForModeB(tree) {
+  const out = [];
+  function walk(nodes, big, path, depth) {
+    nodes.forEach(n => {
+      const short = n.name.split('（')[0].split('(')[0].trim();
+      const p = path.concat([short]);
+      out.push({ name: n.name, shortName: short, depth, big: big || short, path: p });
+      if (n.children) walk(n.children, big || short, p, depth + 1);
+    });
+  }
+  walk(tree, '', [], 1);
+  return out;
+}
+
+function countItemsFor(bigShort, subShort) {
   let n = 0;
   DATA.contaminants.forEach(c => {
     if (currentFilter !== 'all' && c.table_no != currentFilter) return;
     c.items.forEach(it => {
-      if (big && (it.category_a1 || it.category) !== big) return;
-      if (sub) {
-        if (!it.subcategories) return;
-        const hit = it.subcategories.some(s => s.sub === sub);
-        if (!hit) return;
+      const itBigShort = (it.category_a1 || it.category || '').split('（')[0].split('(')[0].trim();
+      if (bigShort && itBigShort !== bigShort) return;
+      if (subShort) {
+        const food = it.food || '';
+        const subName = subShort;
+        if (!food.includes(subName) && !subName.includes(food.replace(/[除外不包括]+.*$/, ''))) return;
       }
       n++;
     });
@@ -742,8 +941,9 @@ function countItemsFor(big, sub) {
 }
 
 function renderCategoryPanel() {
-  const A1 = getCategoryData();
-  const bigCats = Object.keys(A1);
+  const tree = getCategoryData();
+  const flat = flattenTreeForModeB(tree);
+  const bigCats = tree.map(n => n.name.split('（')[0].split('(')[0].trim());
 
   const bigGrid = document.getElementById('catGrid');
   bigGrid.innerHTML = bigCats.map(big => {
@@ -762,15 +962,17 @@ function renderCategoryPanel() {
     subWrap.style.display = 'block';
     let html = '<div class="sub-cat-hint">已选大类下的细类(多选即 OR;不选则仅按大类过滤)</div>';
     [...selectedBigCats].forEach(big => {
-      const subs = A1[big] || [];
+      // 找属于该大类的所有节点
+      const subs = flat.filter(n => n.big === big);
       html += `<div class="sub-cat-block">
         <div class="sub-cat-title">📂 ${escapeHTML(big)} <span class="sub-cat-title-count">${subs.length} 类</span></div>
         <div class="sub-cat-grid">`;
-      subs.forEach(sub => {
-        const sel = selectedSubCats.has(sub);
-        const cnt = countItemsFor(big, sub);
-        html += `<div class="sub-cat-chip${sel ? ' selected' : ''}" onclick="toggleSubCat('${escapeAttr(sub)}')">
-          <span>${escapeHTML(sub)}</span><span class="cat-chip-count">${cnt}</span>
+      subs.forEach(s => {
+        const sel = selectedSubCats.has(s.shortName);
+        const cnt = countItemsFor(big, s.shortName);
+        const indent = '　'.repeat(Math.max(0, s.depth - 2));
+        html += `<div class="sub-cat-chip${sel ? ' selected' : ''}" onclick="toggleSubCat('${escapeAttr(s.shortName)}')">
+          <span>${indent}${escapeHTML(s.shortName)}</span><span class="cat-chip-count">${cnt}</span>
         </div>`;
       });
       html += '</div></div>';
