@@ -17,7 +17,7 @@ from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
 from collections import defaultdict
 
 JSON_PATH = "data/gb2762/gb2762_2025.json"
-TMP_PATH = "data/gb2762/_gb2762_2025_食品类别_v5.xlsx"
+TMP_PATH = "data/gb2762/_gb2762_2025_食品类别_v6.xlsx"
 OUT_PATH = "data/gb2762/gb2762_2025_食品类别.xlsx"
 
 
@@ -263,21 +263,27 @@ def gen_xlsx(data):
             # 限量字符串
             limit_str = it.get("limit", "")
             unit = tab["unit"]
-            if limit_str and limit_str != "—" and "mg/L" not in limit_str and "/L" not in limit_str:
+            if (
+                limit_str
+                and limit_str != "—"
+                and "mg/L" not in limit_str
+                and "/L" not in limit_str
+                and unit not in limit_str
+            ):
                 limit_str = f"{limit_str}{unit}"
             row = [
-                it.get("category", ""),
+                L1 or it.get("category", ""),
                 "" if L1 == cur_L1 else L1,
-                "" if L2 == cur_L2 or (cur_L1 and L1 != cur_L1) else L2,
-                "" if L3 == cur_L3 or (cur_L2 and L2 != cur_L2) else L3,
-                "" if L4 == cur_L4 or (cur_L3 and L3 != cur_L3) else L4,
+                "" if L2 == cur_L2 else L2,
+                "" if L3 == cur_L3 else L3,
+                "" if L4 == cur_L4 else L4,
                 it.get("food", ""),
                 limit_str,
                 tab["contaminant"],
                 tab.get("symbol", ""),
                 tab["unit"],
                 it.get("remark", "") or "",
-                tab.get("inspection_method", ""),
+                it.get("test_method") or it.get("inspection_method") or tab.get("inspection_method", ""),
             ]
             ws1.append(row)
             cur_L1, cur_L2, cur_L3, cur_L4 = L1, L2, L3, L4
@@ -294,7 +300,8 @@ def gen_xlsx(data):
     cat_sum = defaultdict(lambda: {"n": 0, "cn": set(), "foods": set()})
     for tab in data["contaminants"]:
         for it in tab["items"]:
-            c1 = it.get("category", "(空)")
+            # 优先 a1_l1,其次 category
+            c1 = it.get("a1_l1") or it.get("category", "") or "(空)"
             cat_sum[c1]["n"] += 1
             cat_sum[c1]["cn"].add(tab["contaminant"])
             cat_sum[c1]["foods"].add(it.get("food", ""))
@@ -356,18 +363,24 @@ def gen_xlsx(data):
 
             # 行1: 主污染物
             main_limit_str = main_value
-            if main_value and main_value != "—" and "mg/L" not in main_value and "/L" not in main_value:
+            if (
+                main_value
+                and main_value != "—"
+                and "mg/L" not in main_value
+                and "/L" not in main_value
+                and unit not in main_value
+            ):
                 main_limit_str = f"{main_value}{unit}"
             rows.append(
                 {
-                    "category": it.get("category", ""),
+                    "category": L1 or it.get("category", ""),
                     "L1": L1, "L2": L2, "L3": L3, "L4": L4,
                     "food": food,
                     "pollutant": main_pollutant,
                     "value": main_limit_str,
                     "unit": unit,
                     "remark": main_remark,
-                    "method": tab.get("inspection_method", ""),
+                    "method": it.get("test_method") or it.get("inspection_method") or tab.get("inspection_method", ""),
                     "pollutant_order": POLLUTANT_ORDER.get(main_pollutant, 99),
                     "food_order": it.get("food", ""),
                 }
@@ -375,18 +388,24 @@ def gen_xlsx(data):
             # 行2: 子污染物(如适用)
             if sub_pollutant and sub_value:
                 sub_limit_str = sub_value
-                if sub_value != "—" and "mg/L" not in sub_value and "/L" not in sub_value:
+                if (
+                    sub_value
+                    and sub_value != "—"
+                    and "mg/L" not in sub_value
+                    and "/L" not in sub_value
+                    and unit not in sub_value
+                ):
                     sub_limit_str = f"{sub_value}{unit}"
                 rows.append(
                     {
-                        "category": it.get("category", ""),
+                        "category": L1 or it.get("category", ""),
                         "L1": L1, "L2": L2, "L3": L3, "L4": L4,
                         "food": food,
                         "pollutant": sub_pollutant,
                         "value": sub_limit_str,
                         "unit": unit,
                         "remark": sub_remark,
-                        "method": tab.get("inspection_method", ""),
+                        "method": it.get("test_method") or it.get("inspection_method") or tab.get("inspection_method", ""),
                         "pollutant_order": POLLUTANT_ORDER.get(sub_pollutant, 99),
                         "food_order": it.get("food", ""),
                     }
@@ -405,9 +424,9 @@ def gen_xlsx(data):
             [
                 r["category"],
                 "" if r["L1"] == cur_L1 else r["L1"],
-                "" if r["L2"] == cur_L2 or (cur_L1 and r["L1"] != cur_L1) else r["L2"],
-                "" if r["L3"] == cur_L3 or (cur_L2 and r["L2"] != cur_L2) else r["L3"],
-                "" if r["L4"] == cur_L4 or (cur_L3 and r["L3"] != cur_L3) else r["L4"],
+                "" if r["L2"] == cur_L2 else r["L2"],
+                "" if r["L3"] == cur_L3 else r["L3"],
+                "" if r["L4"] == cur_L4 else r["L4"],
                 r["food"],
                 r["pollutant"],
                 r["value"],
@@ -435,10 +454,7 @@ def gen_xlsx(data):
 def main():
     with open(JSON_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
-    apply_a1_to_items(data)
-    with open(JSON_PATH, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-    print("已重新映射 A.1 4 级分类")
+    # A.1 4 级分类已由 expand_a1_full.py 写入,此处不再覆盖
     gen_xlsx(data)
 
 

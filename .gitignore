@@ -13,3 +13,4 @@ jianyu-offline.html
 ~*.xls
 ~*.docx
 ~*.pptx
+scripts/pdf_*raw.json
