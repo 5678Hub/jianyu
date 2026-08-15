@@ -929,8 +929,8 @@
         },
         {
           "category": "特殊医学用途配方食品",
-          "food": "特殊医学用途配方食品、特殊医学用途婴儿配方食品涉及的品种除外岁以上人群的产品以固态产品计",
-          "limit": "100.5",
+          "food": "特殊医学用途配方食品(特殊医学用途婴儿配方食品涉及的品种除外)10岁以上人群的产品以固态产品计",
+          "limit": "0.5",
           "remark": "",
           "category_matched_by": "特殊医学用途",
           "subcategories": [],
@@ -938,20 +938,22 @@
           "limits": [
             {
               "label": "限量(以 Pb 计)",
-              "value": "100.5"
+              "value": "0.5"
             }
           ]
         },
         {
-          "category": "特殊膳食用食品",
-          "food": "岁岁人群的产品以固态产品计",
-          "limit": "1",
+          "category": "特殊医学用途配方食品",
+          "food": "特殊医学用途配方食品(特殊医学用途婴儿配方食品涉及的品种除外)1~10岁人群的产品以固态产品计",
+          "limit": "0.15",
           "remark": "",
+          "category_matched_by": "特殊医学用途",
           "subcategories": [],
+          "category_a1": "特殊医学用途配方食品",
           "limits": [
             {
               "label": "限量(以 Pb 计)",
-              "value": "1"
+              "value": "0.15"
             }
           ]
         },
@@ -1616,19 +1618,6 @@
               "value": "0.06"
             }
           ]
-        },
-        {
-          "category": "特殊膳食用食品",
-          "food": "汞",
-          "limit": "43",
-          "remark": "",
-          "subcategories": [],
-          "limits": [
-            {
-              "label": "限量(以 Cd 计)",
-              "value": "43"
-            }
-          ]
         }
       ],
       "footnotes": [
@@ -1807,19 +1796,6 @@
             {
               "label": "限量(以 Hg 计)",
               "value": "0.02"
-            }
-          ]
-        },
-        {
-          "category": "特殊膳食用食品",
-          "food": "测定。",
-          "limit": "44",
-          "remark": "",
-          "subcategories": [],
-          "limits": [
-            {
-              "label": "限量(以 Hg 计)",
-              "value": "44"
             }
           ]
         }
@@ -2556,13 +2532,13 @@
       "inspection_method": "食品按 GB 5009.16 规定的方法测定。",
       "items": [
         {
-          "category": "婴幼儿配方食品",
-          "food": "(食品、饮料类、婴幼儿配方食品、婴幼儿辅助食品除外(、、)",
+          "category": "食品",
+          "food": "食品(饮料类、婴幼儿配方食品、婴幼儿辅助食品除外)",
           "limit": "250",
           "remark": "",
-          "category_matched_by": "婴幼儿配方食品",
+          "category_matched_by": "食品",
           "subcategories": [],
-          "category_a1": "婴幼儿配方食品",
+          "category_a1": "其他类(除上述食品以外的食品)",
           "limits": [
             {
               "label": "限量(以 Sn 计)",
@@ -2571,8 +2547,23 @@
           ]
         },
         {
+          "category": "饮料类",
+          "food": "饮料类",
+          "limit": "150",
+          "remark": "",
+          "category_matched_by": "饮料类",
+          "subcategories": [],
+          "category_a1": "饮料类",
+          "limits": [
+            {
+              "label": "限量(以 Sn 计)",
+              "value": "150"
+            }
+          ]
+        },
+        {
           "category": "婴幼儿配方食品",
-          "food": "婴幼儿配方食品、婴幼儿辅助食品、",
+          "food": "婴幼儿配方食品、婴幼儿辅助食品",
           "limit": "50",
           "remark": "",
           "category_matched_by": "婴幼儿配方食品",
@@ -2582,19 +2573,6 @@
             {
               "label": "限量(以 Sn 计)",
               "value": "50"
-            }
-          ]
-        },
-        {
-          "category": "饮料类",
-          "food": "镍",
-          "limit": "46",
-          "remark": "",
-          "subcategories": [],
-          "limits": [
-            {
-              "label": "限量(以 Sn 计)",
-              "value": "46"
             }
           ]
         }
