@@ -1649,15 +1649,6 @@
       "items": [
         {
           "category": "水产动物及其制品",
-          "food": "Hg总汞甲基汞a水产动物及其制品、肉食性鱼类及其制品除外()",
-          "limit": "—",
-          "remark": "",
-          "category_matched_by": "鱼",
-          "subcategories": [],
-          "category_a1": "水产动物及其制品"
-        },
-        {
-          "category": "水产动物及其制品",
           "food": "肉食性鱼类及其制品、金枪鱼、金目鲷、枪鱼、鲨鱼及以上鱼类的制品除外(、、、)",
           "limit": "—",
           "remark": "",
