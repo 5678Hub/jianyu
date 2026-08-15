@@ -975,28 +975,23 @@ function renderTreeDetail() {
     ? idx.get(primaryKey).map(x => ({ ...x, _viaSub: primaryName }))
     : [];
 
-  // === 一级最上级:整个 L1 大类下的所有命中 items(扣除 primaryItems 已展示) ===
-  const bigItems = [];
-  function collectL1(ns, parentPath) {
-    ns.forEach(c => {
-      const cpk = pathKey(parentPath.concat([c.name]));
-      if (idx.has(cpk)) idx.get(cpk).forEach(it => bigItems.push({ ...it, _viaSub: c.name }));
-      if (c.children) collectL1(c.children, parentPath.concat([c.name]));
-    });
-  }
-  function findL1Root(nodes) {
-    for (const n of nodes) {
-      if (n.name === bigName) { collectL1(n.children || [], [n.name]); return true; }
-      if (n.children && findL1Root(n.children)) return true;
+  // === 二级分类:path 倒数第二层(二级分类)下所有命中 items(扣除 primaryItems) ===
+  // 选中三级或更深时,展示其所属的二级分类(如:选"芸薹类蔬菜"→ 展示"新鲜蔬菜"下的其他限量)
+  // 选中 L1/L2 时,path 没有"倒数第二层",这块跳过
+  let bigOther = [];
+  let secondName = null; // 二级分类名(L2),仅用于本块标题
+  if (path.length >= 3) {
+    secondName = path[path.length - 2];
+    const l2Key = pathKey(path.slice(0, path.length - 1));
+    if (idx.has(l2Key)) {
+      idx.get(l2Key).forEach(it => bigOther.push({ ...it, _viaSub: secondName }));
     }
-    return false;
   }
-  findL1Root(tree);
   function itemKey(it) {
     return (it._table_no || '') + '|' + (it.food || '') + '|' + ((it.limits && it.limits[0] && it.limits[0].value) || it.limit || '') + '|' + (it._viaSub || '');
   }
   const primKey = new Set(primaryItems.map(itemKey));
-  const bigOther = bigItems.filter(it => !primKey.has(itemKey(it)));
+  bigOther = bigOther.filter(it => !primKey.has(itemKey(it)));
 
   // 卡片
   const emoji = pickEmoji(nodeName);
@@ -1016,8 +1011,8 @@ function renderTreeDetail() {
   if (primaryItems.length > 0) {
     levels.push({ tag: primaryLevel, label: `${primaryName} 的污染物限量要求`, isSelf: primaryLevel === '本级', items: primaryItems });
   }
-  if (bigOther.length > 0 && path.length > 0) {
-    levels.push({ tag: '一级最上级', label: `${bigName} 大类的其他限量`, isSelf: false, items: bigOther });
+  if (bigOther.length > 0 && secondName) {
+    levels.push({ tag: '二级分类', label: `${secondName} 的其他限量`, isSelf: false, items: bigOther });
   }
 
   if (levels.length === 0) {
