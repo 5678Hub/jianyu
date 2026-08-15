@@ -53,11 +53,11 @@
           ]
         },
         {
-          "category": "豆类及其制品",
-          "food": "新鲜蔬菜、芸薹类蔬菜、叶菜蔬菜、豆类蔬菜、生姜、薯类除外(、、、、)",
+          "category": "蔬菜及其制品",
+          "food": "新鲜蔬菜(芸薹类蔬菜、叶菜蔬菜、豆类蔬菜、生姜、薯类除外)",
           "limit": "0.1",
           "remark": "",
-          "category_matched_by": "豆类",
+          "category_matched_by": "蔬菜",
           "subcategories": [],
           "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)",
           "limits": [
@@ -88,11 +88,11 @@
           ]
         },
         {
-          "category": "豆类及其制品",
-          "food": "芸薹类蔬菜、豆类蔬菜、生姜、薯类、、、",
+          "category": "蔬菜及其制品",
+          "food": "芸薹类蔬菜、豆类蔬菜、生姜、薯类",
           "limit": "0.2",
           "remark": "",
-          "category_matched_by": "豆类",
+          "category_matched_by": "蔬菜",
           "subcategories": [],
           "category_a1": "蔬菜及其制品(包括薯类,不包括食用菌)",
           "limits": [
@@ -184,13 +184,13 @@
           ]
         },
         {
-          "category": "调味品",
-          "food": "水果制品、果酱、泥、蜜饯、水果干类除外[()、、]",
+          "category": "水果及其制品",
+          "food": "水果制品(果酱、泥、蜜饯、水果干类除外)",
           "limit": "0.2",
           "remark": "",
-          "category_matched_by": "酱",
+          "category_matched_by": "水果制品",
           "subcategories": [],
-          "category_a1": "水果及其制品",
+          "category_a1": "水果制品",
           "limits": [
             {
               "label": "限量(以 Pb 计)",
@@ -199,12 +199,13 @@
           ]
         },
         {
-          "category": "调味品",
-          "food": "果酱、泥()",
+          "category": "水果及其制品",
+          "food": "果酱(泥)",
           "limit": "0.4",
           "remark": "",
-          "category_matched_by": "酱",
+          "category_matched_by": "果酱",
           "subcategories": [],
+          "category_a1": "水果制品",
           "limits": [
             {
               "label": "限量(以 Pb 计)",
@@ -213,7 +214,7 @@
           ]
         },
         {
-          "category": "糖、糖果、蜂蜜等",
+          "category": "水果及其制品",
           "food": "蜜饯",
           "limit": "0.8",
           "remark": "",
@@ -225,11 +226,26 @@
               "matched_keyword": "蜜饯"
             }
           ],
-          "category_a1": "水果及其制品",
+          "category_a1": "水果制品",
           "limits": [
             {
               "label": "限量(以 Pb 计)",
               "value": "0.8"
+            }
+          ]
+        },
+        {
+          "category": "水果及其制品",
+          "food": "水果干类",
+          "limit": "0.5",
+          "remark": "",
+          "category_matched_by": "水果干类",
+          "subcategories": [],
+          "category_a1": "水果制品",
+          "limits": [
+            {
+              "label": "限量(以 Pb 计)",
+              "value": "0.5"
             }
           ]
         },
