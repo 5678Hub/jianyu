@@ -1194,21 +1194,6 @@
               "value": "1.5"
             }
           ]
-        },
-        {
-          "category": "蔬菜及其制品",
-          "food": "稻谷以糙米计新鲜香辛料、如姜、葱、蒜等、应按对应的新鲜蔬菜、或新鲜水果、类别执行",
-          "limit": "8",
-          "remark": "",
-          "category_matched_by": "蔬菜",
-          "subcategories": [],
-          "category_a1": "调味品",
-          "limits": [
-            {
-              "label": "限量(以 Pb 计)",
-              "value": "8"
-            }
-          ]
         }
       ],
       "footnotes": [
@@ -1218,7 +1203,7 @@
         },
         {
           "mark": "b",
-          "text": "稻谷以糙米计。"
+          "text": "新鲜香辛料(如姜、葱、蒜等)应按对应的新鲜蔬菜(或新鲜水果)类别执行。"
         }
       ],
       "inspection_method_rules": [
