@@ -715,50 +715,58 @@ function buildItemIndex() {
 }
 
 // 把一个 item 关联到 A.1 树的某些节点路径
+// 优先用 v6.1 的 a1_l1/l2/l3/l4 精确路径(由 gen_xlsx_full.py 渲染时填充)
 function matchItemToPaths(item, tree) {
-  const catA1 = item.category_a1 || item.category || '';
-  // 1) 用 category_a1 找 L1 节点(允许括号字符差异:全角/半角)
-  const norm = (s) => s.replace(/[()（）]/g, '').replace(/\s+/g, '').toLowerCase();
-  const catNorm = norm(catA1);
+  const norm = (s) => (s || '').replace(/[()（）]/g, '').replace(/\s+/g, '').toLowerCase();
+
+  // 1) 优先用 item.a1_l1/l2/l3/l4 精确路径
+  const a1Path = [item.a1_l1, item.a1_l2, item.a1_l3, item.a1_l4]
+    .filter(Boolean)
+    .filter((v, i, arr) => i === 0 || v !== arr[i - 1]); // 去掉连续重复
 
   const matchedPaths = new Set();
-  // 递归遍历所有节点
-  function visit(nodes, path) {
-    nodes.forEach(n => {
-      const curPath = path.concat([n.name]);
-      const curNorm = norm(n.name);
-      // L1 全名匹配
-      if (path.length === 0 && curNorm === catNorm) {
-        matchedPaths.add(pathKey(curPath));
-      }
-      // 子节点路径包含 item 的食物关键字 → 关联
-      const food = (item.food || '').replace(/[、,，。;；:：（()）]/g, ' ');
-      const foodParts = food.split(/\s+/).filter(Boolean);
-      const subName = n.name.split('（')[0].split('(')[0].trim();
-      const subNorm = norm(subName);
-      const foodHay = norm(item.food || '');
-      // 直接子串
-      if (subNorm && subNorm.length >= 2 && (foodHay.includes(subNorm) || subNorm.includes(foodHay))) {
-        matchedPaths.add(pathKey(curPath));
-      }
-      // 食物 token 命中(如 "稻谷" 在 food 中)
-      for (const tok of foodParts) {
-        const tokClean = tok.replace(/[除外不包括不含]+/g, '').trim();
-        if (tokClean.length >= 2 && (n.name.includes(tokClean) || tokClean.includes(n.name))) {
-          matchedPaths.add(pathKey(curPath));
+
+  if (a1Path.length > 0) {
+    // 递归遍历树,精确匹配 a1Path
+    function walkExact(nodes, path, idx) {
+      if (idx >= a1Path.length) return;
+      const target = norm(a1Path[idx]);
+      for (const n of nodes) {
+        if (norm(n.name) === target) {
+          const curPath = path.concat([n.name]);
+          if (idx === a1Path.length - 1) {
+            // 完全匹配 a1Path 的每一级 → 命中
+            matchedPaths.add(pathKey(curPath));
+          } else {
+            // 继续往下找下一级
+            if (n.children) walkExact(n.children, curPath, idx + 1);
+          }
         }
       }
-      // 递归
-      if (n.children) visit(n.children, curPath);
-    });
+    }
+    walkExact(tree, [], 0);
   }
-  visit(tree, []);
-  // 兜底:如果一个都没匹配上,关联到 L1(category_a1 决定)
-  if (matchedPaths.size === 0 && catNorm) {
+
+  // 2) 兜底:用 category_a1 找 L1 节点(老字段,兼容)
+  if (matchedPaths.size === 0) {
+    const catA1 = item.category_a1 || item.category || '';
+    const catNorm = norm(catA1);
+    if (catNorm) {
+      for (const n of tree) {
+        if (norm(n.name) === catNorm) {
+          matchedPaths.add(pathKey([n.name]));
+          break;
+        }
+      }
+    }
+  }
+
+  // 3) 都不行:关联到 food 匹配最深的节点(L1 兜底)
+  if (matchedPaths.size === 0) {
     function fallback(nodes, path) {
       for (const n of nodes) {
         const curPath = path.concat([n.name]);
-        if (path.length === 0 && norm(n.name) === catNorm) {
+        if (path.length === 0 && norm(n.name) === norm(a1Path[0] || '')) {
           matchedPaths.add(pathKey(curPath));
           return true;
         }
