@@ -656,9 +656,9 @@ function switchMode(mode) {
   }
   if (mode === 'contaminant') {
     if (typeof selectedContam === 'undefined' || selectedContam === null) {
-      // 默认选中第一个污染物(aid=1 总汞)
-      const first = (DATA && DATA.additives && DATA.additives[0]) || null;
-      selectedContam = first ? first.aid : null;
+      // 默认选中第一个污染物(表 1 铅)
+      const first = (DATA && DATA.contaminants && DATA.contaminants[0]) || null;
+      selectedContam = first ? String(first.table_no) : null;
     }
     renderContamList();
     renderContamDetail();
@@ -1272,33 +1272,29 @@ function setFilter(no) {
   renderKeywordResults();
 }
 
-// ========== 模式 C:按污染物浏览(foodvip.net 风格) ==========
-// 数据源: DATA.additives(15 个 aid,从 foodvip.net 抓取的标准限量)
+// ========== 模式 C:按污染物浏览 ==========
+// 数据源: DATA.contaminants(12 张表,251 条限量)— 与模式 A/B 同一份 JSON,避免双源
 let contamSearchKw = '';
 
 // 左侧污染物列表按官方 12 张表顺序排序
-// 表1 铅(4.1)→ 表2 镉(4.2)→ 表3 汞(4.3.1 总汞、4.3.2 甲基汞)→ 表4 砷(4.4.1 总砷、4.4.2 无机砷)
-// → 表5 锡(4.5)→ 表6 镍(4.6)→ 表7 铬(4.7)→ 表8 亚硝酸盐/硝酸盐(4.8.1、4.8.2)
-// → 表9 苯并[a]芘(4.9)→ 表10 N-二甲基亚硝胺(4.10)→ 表11 多氯联苯(4.11)→ 表12 3-MCPD(4.12)
+// 表1 铅(4.1)→ 表2 镉(4.2)→ 表3 总汞→ 表4 总砷→ 表5 锡→ 表6 镍→ 表7 铬
+// → 表8 亚硝酸盐→ 表9 苯并[a]芘→ 表10 N-二甲基亚硝胺→ 表11 多氯联苯→ 表12 3-MCPD
 const CONTAM_ORDER = [
-  { aid: 4,  no: '4.1'   }, // 铅
-  { aid: 3,  no: '4.2'   }, // 镉
-  { aid: 1,  no: '4.3.1' }, // 总汞
-  { aid: 2,  no: '4.3.2' }, // 甲基汞
-  { aid: 14, no: '4.4.1' }, // 总砷
-  { aid: 15, no: '4.4.2' }, // 无机砷
-  { aid: 13, no: '4.5'   }, // 锡
-  { aid: 12, no: '4.6'   }, // 镍
-  { aid: 11, no: '4.7'   }, // 铬
-  { aid: 10, no: '4.8.1' }, // 亚硝酸盐
-  { aid: 9,  no: '4.8.2' }, // 硝酸盐
-  { aid: 8,  no: '4.9'   }, // 苯并[a]芘
-  { aid: 7,  no: '4.10'  }, // N-二甲基亚硝胺
-  { aid: 6,  no: '4.11'  }, // 多氯联苯
-  { aid: 5,  no: '4.12'  }  // 3-氯-1,2-丙二醇
+  { table_no: '1',  no: '4.1'  }, // 铅
+  { table_no: '2',  no: '4.2'  }, // 镉
+  { table_no: '3',  no: '4.3'  }, // 总汞
+  { table_no: '4',  no: '4.4'  }, // 总砷
+  { table_no: '5',  no: '4.5'  }, // 锡
+  { table_no: '6',  no: '4.6'  }, // 镍
+  { table_no: '7',  no: '4.7'  }, // 铬
+  { table_no: '8',  no: '4.8'  }, // 亚硝酸盐
+  { table_no: '9',  no: '4.9'  }, // 苯并[a]芘
+  { table_no: '10', no: '4.10' }, // N-二甲基亚硝胺
+  { table_no: '11', no: '4.11' }, // 多氯联苯
+  { table_no: '12', no: '4.12' }, // 3-氯-1,2-丙二醇
 ];
-function getContamOrderIndex(aid) {
-  const i = CONTAM_ORDER.findIndex(x => x.aid === aid);
+function getContamOrderIndex(tableNo) {
+  const i = CONTAM_ORDER.findIndex(x => x.table_no === String(tableNo));
   return i < 0 ? 999 : i;
 }
 
@@ -1352,22 +1348,21 @@ function a1OrderOf(row) {
 function renderContamList() {
   const wrap = document.getElementById('contamList');
   if (!wrap) return;
-  if (!DATA || !DATA.additives) { wrap.innerHTML = '<div style="padding:14px;color:var(--c-text-3);font-size:12px;">数据加载中…</div>'; return; }
-  const sorted = [...DATA.additives].sort((a, b) => getContamOrderIndex(a.aid) - getContamOrderIndex(b.aid));
-  wrap.innerHTML = sorted.map(a => {
-    const orderItem = CONTAM_ORDER.find(x => x.aid === a.aid);
+  if (!DATA || !DATA.contaminants) { wrap.innerHTML = '<div style="padding:14px;color:var(--c-text-3);font-size:12px;">数据加载中…</div>'; return; }
+  const sorted = [...DATA.contaminants].sort((a, b) => getContamOrderIndex(a.table_no) - getContamOrderIndex(b.table_no));
+  wrap.innerHTML = sorted.map(c => {
+    const orderItem = CONTAM_ORDER.find(x => x.table_no === String(c.table_no));
     const noTag = orderItem ? `<span style="color:#888;font-size:11px;font-weight:normal;margin-right:4px;">${orderItem.no}</span>` : '';
-    const sel = a.aid === selectedContam;
-    return `<div class="contam-list-item${sel ? ' selected' : ''}" data-aid="${a.aid}" onclick="selectContam(${a.aid})">
-      <div>${noTag}${escapeHTML(a.name)}${a.symbol ? ' <span style="color:#999;font-size:11px;">(' + escapeHTML(a.symbol) + ')</span>' : ''}</div>
-      <span class="contam-count">${a.rows.length} 条限量</span>
+    const sel = String(c.table_no) === String(selectedContam);
+    return `<div class="contam-list-item${sel ? ' selected' : ''}" data-tn="${c.table_no}" onclick="selectContam('${c.table_no}')">
+      <div>${noTag}${escapeHTML(c.contaminant)}${c.symbol ? ' <span style="color:#999;font-size:11px;">(' + escapeHTML(c.symbol) + ')</span>' : ''}</div>
+      <span class="contam-count">${c.items.length} 条限量</span>
     </div>`;
   }).join('');
 }
 
-function selectContam(aid) {
-  selectedContam = aid;
-  // 清掉搜索框内容
+function selectContam(tableNo) {
+  selectedContam = String(tableNo);
   const inp = document.getElementById('contamSearchInput');
   if (inp) { inp.value = ''; contamSearchKw = ''; }
   renderContamList();
@@ -1380,15 +1375,38 @@ function onContamSearch() {
   renderContamDetail();
 }
 
+// 从 item.a1_l1/l2/l3/l4 派生 row(big/sub/path/parts) + 智能 method
+function contamRowFromItem(item, rules) {
+  const parts = [item.a1_l1, item.a1_l2, item.a1_l3, item.a1_l4].filter(Boolean).map(shortName);
+  const big = parts[0] || '';
+  const sub = parts[1] || big;
+  const path = parts.join(':');
+  // 智能方法:匹配 food 主名(括号前)或 L1 大类
+  const foodMain = shortName(item.food || '');
+  let method = '';
+  for (const r of (rules || [])) {
+    if (r.is_default) continue;
+    const a = r.apply || '';
+    if (a && (a === foodMain || a === big || foodMain.includes(a) || big.includes(a))) {
+      method = r.method || ''; break;
+    }
+  }
+  if (!method) {
+    const def = (rules || []).find(r => r.is_default);
+    method = def ? def.method : ((rules || [])[0] || {}).method || '';
+  }
+  return { path, parts, big, sub, food: item.food || '', limit: item.limit || '', method, remark: item.remark || '' };
+}
+
 function renderContamDetail() {
-  const a = DATA && DATA.additives && DATA.additives.find(x => x.aid === selectedContam);
+  const c = DATA && DATA.contaminants && DATA.contaminants.find(x => String(x.table_no) === String(selectedContam));
   const nameEl = document.getElementById('contamDetailName');
   const metaEl = document.getElementById('contamDetailMeta');
   const tableEl = document.getElementById('contamTableWrap');
   const fnEl = document.getElementById('contamFootnotes');
   const hintEl = document.getElementById('contamHint');
 
-  if (!a) {
+  if (!c) {
     if (nameEl) nameEl.textContent = '— 请选择左侧污染物 —';
     if (metaEl) metaEl.textContent = '';
     if (tableEl) tableEl.innerHTML = '<div class="empty-tip"><span class="emoji">📭</span>暂无数据</div>';
@@ -1397,25 +1415,26 @@ function renderContamDetail() {
     return;
   }
 
-  nameEl.textContent = `${a.name}${a.symbol ? ' (' + a.symbol + ')' : ''}`;
-  metaEl.textContent = `GB 2762-2025 · 表 ${a.table_no} · 共 ${a.rows.length} 条限量 · 方法 ${a.method_default}`;
+  // 派生 rows(等同 v6.1 additives 的派生逻辑)
+  const allRows = (c.items || []).map(it => contamRowFromItem(it, c.inspection_method_rules));
+  const footnotes = (c.footnotes || []).map(f => ({ mark: f.label || '', text: f.text || '' }));
+  const methodNotes = (c.inspection_method_rules || []).map(r => r.apply ? `${r.apply}: ${r.method}` : r.method).join(';\n');
+
+  nameEl.textContent = `${c.contaminant}${c.symbol ? ' (' + c.symbol + ')' : ''}`;
+  metaEl.textContent = `GB 2762-2025 · 表 ${c.table_no} · 共 ${allRows.length} 条限量 · 方法 ${(c.inspection_method || '').replace(/^按 /, '').replace(/ 规定的方法测定$/, '')}`;
 
   // 关键词过滤
-  let rows = a.rows;
+  let rows = allRows;
   if (contamSearchKw) {
     const tokens = contamSearchKw.split(/\s+/).filter(Boolean);
+    const fnsText = footnotes.map(f => f.text).join(' ');
     rows = rows.filter(r => {
-      const fns = (a.footnotes || []).map(f => f.text).join(' ');
-      const hay = [r.food || '', r.big || '', r.sub || '', r.path || '', r.remark || '', fns, a.method_notes || ''].join(' ').toLowerCase();
+      const hay = [r.food, r.big, r.sub, r.path, r.remark, fnsText, methodNotes].join(' ').toLowerCase();
       return tokens.every(tk => hay.includes(tk));
     });
   }
 
-  // rows 数组本身就是按官方表顺序排列的(从 foodvip.net 抓取时保留),直接用原序展示
-  // 此前用 A.1 DFS 排序会把"表内特殊顺序"打乱(例如表 7 铬官方谷物在前,但 A.1 中蔬菜在前)
-  rows = [...rows];
-
-  if (hintEl) hintEl.textContent = contamSearchKw ? `已筛 "${contamSearchKw}" · ${rows.length}/${a.rows.length} 条` : `${rows.length} 条限量`;
+  if (hintEl) hintEl.textContent = contamSearchKw ? `已筛 "${contamSearchKw}" · ${rows.length}/${allRows.length} 条` : `${rows.length} 条限量`;
 
   if (rows.length === 0) {
     tableEl.innerHTML = '<div class="empty-tip"><span class="emoji">🔍</span>当前关键词下无匹配</div>';
@@ -1426,24 +1445,12 @@ function renderContamDetail() {
   // 渲染限量表(食品大类(A.1) / 食品中文名称 / 限量要求 / 检验方法 / 备注)
   let html = '<table><thead><tr><th>食品类别</th><th>食品中文名称</th><th>限量要求</th><th>检验方法</th><th>备注</th></tr></thead><tbody>';
   rows.forEach(r => {
-    // path 拼成"大类:细类:食品名"形式
-    const pathParts = r.parts || [];
-    let pathDisplay;
-    if (pathParts.length >= 3) {
-      pathDisplay = pathParts.join(':');
-    } else if (pathParts.length === 2) {
-      pathDisplay = pathParts.join(':');
-    } else {
-      pathDisplay = r.path || r.food || '';
-    }
-    // 限量值(从字符串里提取单位)
-    let limitHtml = escapeHTML(r.limit || '—');
-    // 备注(原样显示,脚注 a/b 由污染物级 footnotes 块统一显示)
+    let pathDisplay = r.parts && r.parts.length >= 2 ? r.parts.join(':') : (r.path || r.food || '');
     html += '<tr>';
     html += `<td>${escapeHTML(r.big || '')}</td>`;
     html += `<td class="food">${escapeHTML(pathDisplay)}</td>`;
-    html += `<td class="limit">${limitHtml}</td>`;
-    html += `<td>${escapeHTML(r.method || a.method_default || '')}</td>`;
+    html += `<td class="limit">${escapeHTML(r.limit || '—')}</td>`;
+    html += `<td>${escapeHTML(r.method || '')}</td>`;
     html += `<td>${escapeHTML(r.remark || '')}</td>`;
     html += '</tr>';
   });
@@ -1452,12 +1459,12 @@ function renderContamDetail() {
 
   // 脚注 + 检验方法说明
   let fhtml = '';
-  if (a.method_notes) {
-    fhtml += `<div class="footnote-block"><div class="fn-title">检验方法</div><div class="fn-item">${escapeHTML(a.method_notes)}</div></div>`;
+  if (methodNotes) {
+    fhtml += `<div class="footnote-block"><div class="fn-title">检验方法</div><div class="fn-item">${escapeHTML(methodNotes)}</div></div>`;
   }
-  if (a.footnotes && a.footnotes.length > 0) {
+  if (footnotes.length > 0) {
     fhtml += '<div class="footnote-block"><div class="fn-title">脚注说明</div>';
-    a.footnotes.forEach(f => {
+    footnotes.forEach(f => {
       fhtml += `<div class="fn-item"><span class="fn-mark">${escapeHTML(f.mark)}</span>${escapeHTML(f.text)}</div>`;
     });
     fhtml += '</div>';
