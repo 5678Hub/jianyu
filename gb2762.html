@@ -634,7 +634,16 @@ try {
 
 function updateSubtitle() {
   const std = DATA.standard;
-  const total = DATA.contaminants.reduce((s, c) => s + c.items.length, 0);
+  // v8: 统计按 has_limit/sub_has_limit 过滤（与渲染一致，"—" 项不计入）
+  const total = DATA.contaminants.reduce((s, c) => {
+    return s + (c.items || []).filter(it => {
+      const ml = (it.limit_value || '').toString().trim();
+      const sl = (it.sub_value  || '').toString().trim();
+      const hm = (it.has_limit === true) || (ml && ml !== '—' && it.has_limit === undefined);
+      const hs = (it.sub_has_limit === true) || (sl && sl !== '—' && it.sub_has_limit === undefined);
+      return hm || hs;
+    }).length;
+  }, 0);
   const bigCount = (DATA.appendix_a1.tree || []).length;
   const src = DATA._dataSource || '';
   const srcLabel = src.startsWith('http') ? 'GitHub' : '本地';
@@ -1070,8 +1079,9 @@ function renderLimitTable(items, isSelf, nodeName, bigName) {
   let html = '<table class="lvl"><thead><tr>';
   html += '<th>污染物中文名称</th><th>元素符号</th><th>食品中文名称</th><th>限量要求</th><th>单位</th><th>检验方法</th><th>备注</th>';
   html += '</tr></thead><tbody>';
-  // v7: 把每个 item 拆成 1~2 行（main + sub 限量各自独立成行）
+  // v8: 把每个 item 拆成 0~2 行（main + sub 限量各自独立成行）
   // 表8 亚硝酸盐/硝酸盐双行、表4 总砷/无机砷双行都走这里
+  // 用 JSON 的 has_limit / sub_has_limit 字段精确判断：limit_value="—" 直接跳过（用户视角不显示未制定项）
   const expanded = [];
   items.forEach(it => {
     const mainVal = (it.limit_value || '').toString().trim();
@@ -1082,8 +1092,9 @@ function renderLimitTable(items, isSelf, nodeName, bigName) {
     const simpleLetter = (it.note || '').toString().trim();
     const noteLetter = mainLetter || subLetter || simpleLetter;
     it._noteLetter = noteLetter; // 缓存供渲染备注列
-    const hasMain = mainVal && mainVal !== '—';
-    const hasSub  = subVal  && subVal  !== '—';
+    // v8: 优先用 JSON has_limit 字段（兼容老数据时回退到 limit_value !== '—' 判断）
+    const hasMain = (it.has_limit === true) || (mainVal && mainVal !== '—' && it.has_limit === undefined);
+    const hasSub  = (it.sub_has_limit === true) || (subVal && subVal !== '—' && it.sub_has_limit === undefined);
     if (hasMain) {
       expanded.push({
         ...it,
@@ -1104,17 +1115,8 @@ function renderLimitTable(items, isSelf, nodeName, bigName) {
         _rowSymbol: it._symbol || ''
       });
     }
-    if (!hasMain && !hasSub) {
-      // 双"—" 的通类母项：单行展示，名称用主标，限量"—"，脚注用主脚注
-      expanded.push({
-        ...it,
-        _rowName: it.main_label || it.sub_label || it._contaminant || '—',
-        _rowLimit: '—',
-        _rowMod: '',
-        _rowRemark: it.main_remark || it.sub_remark || '',
-        _rowSymbol: it._symbol || ''
-      });
-    }
+    // 双"—" 的项（主副均未制定限量）直接跳过，不显示 — 行
+    // 旧逻辑会显示"—"行（通类母项），v8 改为：未制定的不出现
   });
 
   expanded.forEach(it => {
@@ -1322,9 +1324,17 @@ function toggleSubCat(sub) {
 
 function renderTabs() {
   const wrap = document.getElementById('contaminantTabs');
-  const tabs = [{ no: 'all', name: '全部污染物', symbol: '', count: DATA.contaminants.reduce((s,c)=>s+c.items.length,0) }];
+  // v8: tab 计数按 has_limit/sub_has_limit 过滤，与 getFilteredItems 行为一致
+  const filterCount = (items) => (items || []).filter(it => {
+    const ml = (it.limit_value || '').toString().trim();
+    const sl = (it.sub_value  || '').toString().trim();
+    const hm = (it.has_limit === true) || (ml && ml !== '—' && it.has_limit === undefined);
+    const hs = (it.sub_has_limit === true) || (sl && sl !== '—' && it.sub_has_limit === undefined);
+    return hm || hs;
+  }).length;
+  const tabs = [{ no: 'all', name: '全部污染物', symbol: '', count: DATA.contaminants.reduce((s,c)=>s+filterCount(c.items),0) }];
   DATA.contaminants.forEach(c => {
-    tabs.push({ no: c.table_no, name: c.contaminant, symbol: c.symbol, count: c.items.length });
+    tabs.push({ no: c.table_no, name: c.contaminant, symbol: c.symbol, count: filterCount(c.items) });
   });
   wrap.innerHTML = tabs.map(t => {
     const cls = currentFilter == t.no ? 'tab active' : 'tab';
@@ -1341,7 +1351,7 @@ function setFilter(no) {
 }
 
 // ========== 模式 C:按污染物浏览 ==========
-// 数据源: DATA.contaminants(12 张表,251 条限量)— 与模式 A/B 同一份 JSON,避免双源
+// 数据源: DATA.contaminants(12 张表,378 条总量;v8 渲染按 has_limit 过滤"—"后约 331 条)— 与模式 A/B 同一份 JSON,避免双源
 let contamSearchKw = '';
 
 // 左侧污染物列表按官方 12 张表顺序排序
@@ -1418,13 +1428,21 @@ function renderContamList() {
   if (!wrap) return;
   if (!DATA || !DATA.contaminants) { wrap.innerHTML = '<div style="padding:14px;color:var(--c-text-3);font-size:12px;">数据加载中…</div>'; return; }
   const sorted = [...DATA.contaminants].sort((a, b) => getContamOrderIndex(a.table_no) - getContamOrderIndex(b.table_no));
+  // v8: 计数按 has_limit/sub_has_limit 过滤，与实际渲染一致（侧栏与详情保持一致）
   wrap.innerHTML = sorted.map(c => {
     const orderItem = CONTAM_ORDER.find(x => x.table_no === String(c.table_no));
     const noTag = orderItem ? `<span style="color:#888;font-size:11px;font-weight:normal;margin-right:4px;">${orderItem.no}</span>` : '';
     const sel = String(c.table_no) === String(selectedContam);
+    const visibleCount = (c.items || []).filter(it => {
+      const ml = (it.limit_value || '').toString().trim();
+      const sl = (it.sub_value  || '').toString().trim();
+      const hm = (it.has_limit === true) || (ml && ml !== '—' && it.has_limit === undefined);
+      const hs = (it.sub_has_limit === true) || (sl && sl !== '—' && it.sub_has_limit === undefined);
+      return hm || hs;
+    }).length;
     return `<div class="contam-list-item${sel ? ' selected' : ''}" data-tn="${c.table_no}" onclick="selectContam('${c.table_no}')">
       <div>${noTag}${escapeHTML(c.contaminant)}${c.symbol ? ' <span style="color:#999;font-size:11px;">(' + escapeHTML(c.symbol) + ')</span>' : ''}</div>
-      <span class="contam-count">${c.items.length} 条限量</span>
+      <span class="contam-count">${visibleCount} 条限量</span>
     </div>`;
   }).join('');
 }
@@ -1484,7 +1502,15 @@ function renderContamDetail() {
   }
 
   // 派生 rows(等同 v6.1 additives 的派生逻辑)
-  const allRows = (c.items || []).map(it => contamRowFromItem(it, c.inspection_method_rules));
+  // v8: 先过滤掉未制定限量的项（has_limit=false 且 sub_has_limit=false）
+  const visibleItems = (c.items || []).filter(it => {
+    const mainLimit = (it.limit_value || '').toString().trim();
+    const subLimit  = (it.sub_value  || '').toString().trim();
+    const hasMain = (it.has_limit === true) || (mainLimit && mainLimit !== '—' && it.has_limit === undefined);
+    const hasSub  = (it.sub_has_limit === true) || (subLimit && subLimit !== '—' && it.sub_has_limit === undefined);
+    return hasMain || hasSub;
+  });
+  const allRows = visibleItems.map(it => contamRowFromItem(it, c.inspection_method_rules));
   const footnotes = (c.footnotes || []).map(f => ({ mark: f.label || '', text: f.text || '' }));
   const methodNotes = (c.inspection_method_rules || []).map(r => r.apply ? `${r.apply}: ${r.method}` : r.method).join(';\n');
 
@@ -1553,6 +1579,15 @@ function getFilteredItems() {
       c.items.forEach(it => items.push({ ...it, _contaminant: c.contaminant, _symbol: c.symbol, _unit: c.unit, _table_no: c.table_no, _footnotes: c.footnotes, _inspection_method: c.inspection_method, _rules: c.inspection_method_rules }));
     }
   }
+  // v8: 过滤未制定限量项（limit_value="—" 且 sub_value="—" 或无 sub_value）
+  // has_limit/sub_has_limit 都为 false 的项直接跳过
+  items = items.filter(it => {
+    const mainLimit = (it.limit_value || '').toString().trim();
+    const subLimit  = (it.sub_value  || '').toString().trim();
+    const hasMain = (it.has_limit === true) || (mainLimit && mainLimit !== '—' && it.has_limit === undefined);
+    const hasSub  = (it.sub_has_limit === true) || (subLimit && subLimit !== '—' && it.sub_has_limit === undefined);
+    return hasMain || hasSub; // 主副任一有值则保留
+  });
   // 大类/子类筛选 — 用短名(去括号内说明)比对,避免 category_a1 带括号导致不匹配
   if (selectedBigCats.size > 0 || selectedSubCats.size > 0) {
     items = items.filter(it => {
