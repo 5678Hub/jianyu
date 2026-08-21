@@ -121,10 +121,13 @@ def collect_footnotes(rows, existing_footnotes):
 
 def to_simple_json_item(row):
     letter, _ = parse_note(row["raw_note"])
+    limit_str = str(row["limit_value"]).strip()
+    has_limit = limit_str not in ("", "—", "-")
     return {
         "food": row["food"],
         "pollutant": row["pollutant"],
-        "limit_value": str(row["limit_value"]),
+        "limit_value": limit_str,
+        "has_limit": has_limit,
         "sub_value": "",
         "unit": row["unit"],
         "note": letter or "",  # 只存字母
@@ -149,12 +152,15 @@ def to_category_json_item(row):
 
     letter, _ = parse_note(row["raw_note"])
     limit_str = f'{row["limit_value"]} {row["unit"]}'.strip()
+    limit_val = str(row["limit_value"]).strip()
+    has_limit = limit_val not in ("", "—", "-")
 
     item = {
         "category": category or "",
         "food": row["food"],
         "limit": limit_str,
-        "limit_value": str(row["limit_value"]),
+        "limit_value": limit_val,
+        "has_limit": has_limit,
         "a1_l1": row["a1_l1"],
         "a1_l2": row["a1_l2"],
         "a1_l3": row["a1_l3"],
@@ -169,10 +175,13 @@ def to_category_json_item(row):
 
 def to_main_only_json_item(row, contaminant_name):
     letter, _ = parse_note(row["raw_note"])
+    limit_val = str(row["limit_value"]).strip()
+    has_limit = limit_val not in ("", "—", "-")
     return {
         "food": row["food"],
         "limit": f'{row["limit_value"]} {row["unit"]}'.strip(),
-        "limit_value": str(row["limit_value"]),
+        "limit_value": limit_val,
+        "has_limit": has_limit,
         "limit_modifier": row["modif"],
         "main_label": contaminant_name,
         "main_remark": "",  # 修饰不在 main_remark
@@ -211,16 +220,24 @@ def to_pair_json_item(rows_pair, contaminant_name):
     def fmt(row):
         return f'{row["limit_value"]} {row["unit"]}'.strip() if row else ""
 
+    def has_limit(row):
+        if not row:
+            return False
+        v = str(row["limit_value"]).strip()
+        return v not in ("", "—", "-")
+
     return {
         "food": main_row["food"],
         "limit": fmt(main_row),
         "limit_value": str(main_row["limit_value"]),
+        "has_limit": has_limit(main_row),
         "limit_modifier": main_row["modif"],
         "main_label": main_row["pollutant"] or "总砷",
         "main_remark": main_letter or "",
         "sub_label": sub_row["pollutant"] if sub_row else "无机砷 a",
         "sub_limit": fmt(sub_row) if sub_row else "—",
         "sub_value": str(sub_row["limit_value"]) if sub_row else "—",
+        "sub_has_limit": has_limit(sub_row),
         "sub_modifier": sub_row["modif"] if sub_row else "",
         "sub_remark": sub_letter or "",
         "remark": main_letter or "",
