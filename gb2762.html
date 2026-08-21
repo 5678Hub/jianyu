@@ -729,7 +729,14 @@ function buildItemIndex() {
 // 把一个 item 关联到 A.1 树的某些节点路径
 // 优先用 v6.1 的 a1_l1/l2/l3/l4 精确路径(由 gen_xlsx_full.py 渲染时填充)
 function matchItemToPaths(item, tree) {
-  const norm = (s) => (s || '').replace(/[()（）]/g, '').replace(/\s+/g, '').toLowerCase();
+  // 归一化:去掉括号+空白+大小写,并把半角冒号/逗号规范化为全角
+  // (兼容历史 xlsx 中偶尔出现的半角标点,避免与官方全角 A.1 树节点名匹配失败)
+  const norm = (s) => (s || '')
+    .replace(/[()（）]/g, '')
+    .replace(/:/g, '：')
+    .replace(/,/g, '，')
+    .replace(/\s+/g, '')
+    .toLowerCase();
 
   // 1) 优先用 item.a1_l1/l2/l3/l4 精确路径
   const a1Path = [item.a1_l1, item.a1_l2, item.a1_l3, item.a1_l4]
