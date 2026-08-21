@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>索证索票工具 · jianyu</title>
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='40' font-family='Arial,sans-serif' font-size='18' font-weight='600' fill='white' text-anchor='middle'>索证</text></svg>">
+<meta name="theme-color" content="#1a365d">
+<style>
+:root {
+  --c-bg: #f6f8fb;
+  --c-surface: #ffffff;
+  --c-border: #e6ebf1;
+  --c-border-strong: #d0d7e0;
+  --c-text-1: #1a2332;
+  --c-text-2: #5d6d7e;
+  --c-text-3: #95a5a6;
+  --c-primary: #1a365d;
+  --c-primary-2: #2c5282;
+  --c-primary-soft: #ebf2fa;
+  --c-accent: #8e44ad;
+  --c-accent-soft: #f5edf7;
+  --c-high: #c62828;
+  --c-high-soft: #ffebee;
+  --c-mid: #e65100;
+  --c-mid-soft: #fff3e0;
+  --c-warn: #f57f17;
+  --c-warn-soft: #fffde7;
+  --c-ok: #2e7d32;
+  --c-ok-soft: #e8f5e9;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --shadow-soft: 0 1px 2px rgba(20, 30, 50, 0.04), 0 0 1px rgba(20, 30, 50, 0.06);
+  --shadow-mid: 0 4px 12px rgba(20, 30, 50, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--c-bg); }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  color: var(--c-text-1); padding: 24px 16px; line-height: 1.6;
+  font-size: 14px; -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 1280px; margin: 0 auto; }
+
+header.brand {
+  display: flex; align-items: center; gap: 14px;
+  padding: 6px 4px 20px; border-bottom: 1px solid var(--c-border); margin-bottom: 18px;
+}
+header.brand .logo {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--c-primary-2), var(--c-primary));
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 600; font-size: 14px; letter-spacing: -0.5px;
+  box-shadow: var(--shadow-soft); flex-shrink: 0;
+}
+header.brand .brand-text { flex: 1; min-width: 0; }
+header.brand .brand-title { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+header.brand .brand-title .zh { font-size: 18px; font-weight: 600; color: var(--c-text-1); letter-spacing: 0.3px; }
+header.brand .brand-title .en { font-size: 13px; color: var(--c-text-3); font-weight: 500; }
+header.brand .subtitle { font-size: 12px; color: var(--c-text-2); margin-top: 6px; }
+header.brand .ver {
+  font-size: 11px; color: var(--c-primary); padding: 5px 12px;
+  background: var(--c-primary-soft); border-radius: 14px;
+  font-weight: 500; letter-spacing: 0.3px; flex-shrink: 0;
+}
+
+/* ── 工具栏 ── */
+.toolbar {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  padding: 14px 16px; background: var(--c-surface);
+  border: 1px solid var(--c-border); border-radius: var(--r-md);
+  margin-bottom: 16px; box-shadow: var(--shadow-soft);
+  align-items: center;
+}
+.toolbar input[type=search], .toolbar select {
+  font-family: inherit; font-size: 14px;
+  border: 1px solid var(--c-border-strong); border-radius: var(--r-sm);
+  padding: 8px 12px; background: var(--c-surface);
+  color: var(--c-text-1); outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.toolbar input[type=search] { flex: 1; min-width: 220px; }
+.toolbar input[type=search]:focus, .toolbar select:focus {
+  border-color: var(--c-primary-2);
+  box-shadow: 0 0 0 3px var(--c-primary-soft);
+}
+.toolbar .btn {
+  font-family: inherit; font-size: 13px; font-weight: 500;
+  border: 1px solid var(--c-border-strong); border-radius: var(--r-sm);
+  padding: 8px 14px; background: var(--c-surface); color: var(--c-text-1);
+  cursor: pointer; transition: all 0.15s;
+}
+.toolbar .btn:hover { background: var(--c-primary-soft); border-color: var(--c-primary-2); color: var(--c-primary); }
+.toolbar .btn.primary {
+  background: var(--c-primary); color: white; border-color: var(--c-primary);
+}
+.toolbar .btn.primary:hover { background: var(--c-primary-2); }
+.toolbar .btn-count {
+  margin-left: auto; font-size: 12px; color: var(--c-text-3);
+  padding-left: 12px; border-left: 1px dashed var(--c-border);
+}
+
+/* ── Tab ── */
+.tabs {
+  display: flex; gap: 4px; padding: 4px;
+  background: var(--c-surface); border: 1px solid var(--c-border);
+  border-radius: var(--r-md); margin-bottom: 16px; box-shadow: var(--shadow-soft);
+  overflow-x: auto;
+}
+.tab {
+  font-family: inherit; font-size: 13px; font-weight: 500;
+  border: none; background: transparent; color: var(--c-text-2);
+  padding: 9px 16px; border-radius: var(--r-sm);
+  cursor: pointer; transition: all 0.15s; white-space: nowrap;
+  display: flex; align-items: center; gap: 6px;
+}
+.tab:hover { background: var(--c-primary-soft); color: var(--c-primary); }
+.tab.active {
+  background: var(--c-primary); color: white;
+}
+.tab .badge {
+  font-size: 11px; padding: 1px 6px; border-radius: 8px;
+  background: rgba(255,255,255,0.25); font-weight: 500;
+}
+.tab:not(.active) .badge {
+  background: var(--c-primary-soft); color: var(--c-primary);
+}
+
+/* ── 表格 ── */
+.section {
+  background: var(--c-surface); border: 1px solid var(--c-border);
+  border-radius: var(--r-md); box-shadow: var(--shadow-soft);
+  overflow: hidden; margin-bottom: 16px;
+}
+.section-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 18px; border-bottom: 1px solid var(--c-border);
+  background: linear-gradient(180deg, var(--c-surface), #fafbfc);
+}
+.section-title {
+  font-size: 14px; font-weight: 600; color: var(--c-text-1);
+  display: flex; align-items: center; gap: 8px;
+}
+.section-title .ico { font-size: 16px; }
+.section-meta { font-size: 12px; color: var(--c-text-3); }
+
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table thead th {
+  background: var(--c-primary-soft); color: var(--c-primary);
+  font-weight: 600; text-align: left;
+  padding: 10px 14px; border-bottom: 1px solid var(--c-border-strong);
+  white-space: nowrap; position: sticky; top: 0; z-index: 1;
+}
+.data-table tbody td {
+  padding: 10px 14px; border-bottom: 1px solid var(--c-border);
+  vertical-align: top; word-break: break-word;
+}
+.data-table tbody tr:hover { background: #fafbfc; }
+.data-table tbody tr.expanded { background: var(--c-primary-soft); }
+.data-table .col-name { font-weight: 500; color: var(--c-text-1); }
+.data-table .col-scope { color: var(--c-text-2); }
+.data-table .col-channel {
+  display: inline-block; font-size: 11px; font-weight: 500;
+  padding: 2px 8px; border-radius: 10px;
+  background: var(--c-primary-soft); color: var(--c-primary);
+}
+.data-table .col-limit {
+  font-family: "SF Mono", Consolas, monospace; font-size: 12px;
+  color: var(--c-high); font-weight: 500;
+}
+.data-table .col-seq {
+  color: var(--c-text-3); font-family: "SF Mono", Consolas, monospace;
+  font-size: 12px; text-align: right;
+}
+.data-table .expand-btn {
+  background: none; border: 1px solid var(--c-border-strong);
+  border-radius: var(--r-sm); padding: 2px 10px; cursor: pointer;
+  font-size: 12px; color: var(--c-text-2);
+}
+.data-table .expand-btn:hover { background: var(--c-primary-soft); color: var(--c-primary); border-color: var(--c-primary-2); }
+
+/* ── 空态 ── */
+.empty {
+  padding: 60px 20px; text-align: center; color: var(--c-text-3); font-size: 13px;
+}
+
+/* ── Toast ── */
+.toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--c-text-1); color: white; padding: 10px 18px;
+  border-radius: var(--r-sm); font-size: 13px;
+  box-shadow: var(--shadow-mid); opacity: 0; pointer-events: none;
+  transition: all 0.25s; z-index: 100;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── 页脚 ── */
+footer {
+  margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--c-border);
+  font-size: 12px; color: var(--c-text-3); text-align: center;
+}
+
+@media (max-width: 720px) {
+  .toolbar { flex-direction: column; align-items: stretch; }
+  .toolbar input[type=search] { width: 100%; }
+  .toolbar .btn-count { margin-left: 0; padding-left: 0; border-left: none; padding-top: 4px; border-top: 1px dashed var(--c-border); }
+  .data-table thead th, .data-table tbody td { padding: 8px 10px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="brand">
+  <div class="logo">索证</div>
+  <div class="brand-text">
+    <div class="brand-title">
+      <span class="zh">索证索票工具</span>
+      <span class="en">Quality · 各类产品索证索票查询</span>
+    </div>
+    <div class="subtitle">从供应商处需索取的证照 / 票据 / 检验报告，按产品类别和采购途径归档</div>
+  </div>
+  <span class="ver">jianyu · v1.0</span>
+</header>
+
+<div class="toolbar">
+  <input id="search" type="search" placeholder="搜索项目 / 范围 / 采购途径 / 索证明细..." autocomplete="off">
+  <select id="catFilter">
+    <option value="">全部采购途径</option>
+  </select>
+  <select id="scopeFilter">
+    <option value="">全部范围</option>
+  </select>
+  <button class="btn" id="btnCopy">复制结果</button>
+  <button class="btn primary" id="btnExport">导出 Excel</button>
+  <span class="btn-count" id="counter">—</span>
+</div>
+
+<div class="tabs" id="tabs">
+  <button class="tab" data-tab="food">🥬 <span>食品类</span><span class="badge" id="cnt-food">0</span></button>
+  <button class="tab" data-tab="contact">📦 <span>食品接触类</span><span class="badge" id="cnt-contact">0</span></button>
+  <button class="tab" data-tab="plasticizer">🧪 <span>塑化剂</span><span class="badge" id="cnt-plasticizer">0</span></button>
+  <button class="tab" data-tab="non_gmo">🌱 <span>非转基因</span><span class="badge" id="cnt-non_gmo">0</span></button>
+</div>
+
+<!-- 食品类 / 食品接触类 — 相同结构 -->
+<section class="section" id="sec-food" hidden>
+  <div class="section-head">
+    <div class="section-title"><span class="ico">🥬</span><span id="title-food">食品类</span></div>
+    <div class="section-meta" id="meta-food"></div>
+  </div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width:60px">序号</th>
+        <th>项目</th>
+        <th style="width:140px">范围</th>
+        <th style="width:160px">采购途径</th>
+        <th>索证明细</th>
+        <th>备注</th>
+      </tr>
+    </thead>
+    <tbody id="tbl-food"></tbody>
+  </table>
+  <div class="empty" id="empty-food" hidden>无匹配结果</div>
+</section>
+
+<section class="section" id="sec-contact" hidden>
+  <div class="section-head">
+    <div class="section-title"><span class="ico">📦</span><span id="title-contact">食品接触类（非食品类）</span></div>
+    <div class="section-meta" id="meta-contact"></div>
+  </div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width:60px">序号</th>
+        <th>项目</th>
+        <th style="width:180px">范围</th>
+        <th style="width:160px">采购途径</th>
+        <th>索证明细</th>
+        <th>备注</th>
+      </tr>
+    </thead>
+    <tbody id="tbl-contact"></tbody>
+  </table>
+  <div class="empty" id="empty-contact" hidden>无匹配结果</div>
+</section>
+
+<!-- 塑化剂 -->
+<section class="section" id="sec-plasticizer" hidden>
+  <div class="section-head">
+    <div class="section-title"><span class="ico">🧪</span><span id="title-plasticizer">塑化剂（索证明细）</span></div>
+    <div class="section-meta" id="meta-plasticizer"></div>
+  </div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width:60px">序号</th>
+        <th style="width:240px">食品类别</th>
+        <th>产品明细</th>
+        <th style="width:140px">检验项目</th>
+        <th style="width:100px">限值</th>
+        <th>备注</th>
+      </tr>
+    </thead>
+    <tbody id="tbl-plasticizer"></tbody>
+  </table>
+  <div class="empty" id="empty-plasticizer" hidden>无匹配结果</div>
+</section>
+
+<!-- 非转基因 -->
+<section class="section" id="sec-non_gmo" hidden>
+  <div class="section-head">
+    <div class="section-title"><span class="ico">🌱</span><span id="title-non_gmo">非转基因产品索证明细</span></div>
+    <div class="section-meta" id="meta-non_gmo"></div>
+  </div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width:60px">序号</th>
+        <th>类别</th>
+        <th>产品明细</th>
+        <th>索要明细</th>
+      </tr>
+    </thead>
+    <tbody id="tbl-non_gmo"></tbody>
+  </table>
+  <div class="empty" id="empty-non_gmo" hidden>无匹配结果</div>
+</section>
+
+<footer>
+  数据来源：各类产品索证索票汇总.xlsx · 共 4 类 28 个项目 · jianyu 工具箱
+</footer>
+
+</div>
+
+<div class="toast" id="toast">已复制</div>
+
+<script>
+
+// ── 状态 ──
+let DATA = null;
+let currentTab = "food";
+let expanded = new Set();  // 展开的项目 key (catid + "/" + seq)
+
+const DATA_URLS = [
+  './data/suozhengsuopiao/suozhengsuopiao.json',
+  './data/suozhengsuopiao/suozhengsuopiao.json?v=' + Date.now(),
+];
+
+// ── 工具函数 ──
+function escapeHTML(s) {
+  if (s == null) return "";
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+function highlight(s, q) {
+  const safe = escapeHTML(s);
+  if (!q) return safe;
+  // 不区分大小写、整词匹配可能漏字，所以做"包含"匹配并加高亮
+  const re = new RegExp("(" + q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi");
+  return safe.replace(re, '<mark style="background:#fff59d;color:inherit;border-radius:2px;padding:0 2px">$1</mark>');
+}
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(() => t.classList.remove("show"), 1500);
+}
+
+async function loadData() {
+  for (const url of DATA_URLS) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) {
+        DATA = await res.json();
+        return true;
+      }
+    } catch (e) {
+      console.warn("加载失败", url, e);
+    }
+  }
+  return false;
+}
+
+// ── 渲染 ──
+function renderFoodOrContact(catId) {
+  const cat = DATA.categories.find(c => c.id === catId);
+  if (!cat) return;
+  const tbody = document.getElementById("tbl-" + catId);
+  const meta = document.getElementById("meta-" + catId);
+  const empty = document.getElementById("empty-" + catId);
+  const q = document.getElementById("search").value.trim();
+  const catFilter = document.getElementById("catFilter").value;
+  const scopeFilter = document.getElementById("scopeFilter").value;
+
+  // 展开所有明细行
+  const rows = [];
+  for (const it of cat.items) {
+    if (scopeFilter && it.scope !== scopeFilter) continue;
+    let anyMatch = false;
+    let itemMatches = [];
+    for (const req of it.requirements) {
+      if (catFilter && req.channel !== catFilter) continue;
+      const haystack = `${it.name} ${it.scope} ${req.channel} ${req.detail} ${req.remark}`;
+      const match = !q || haystack.toLowerCase().includes(q.toLowerCase());
+      if (match) {
+        itemMatches.push(req);
+        anyMatch = true;
+      }
+    }
+    // 当未输入关键字时全部显示；输入时只显示匹配行
+    if (!q && !catFilter && !scopeFilter) {
+      itemMatches = it.requirements;
+      anyMatch = true;
+    }
+    if (anyMatch && itemMatches.length > 0) {
+      rows.push({item: it, reqs: itemMatches});
+    }
+  }
+
+  meta.textContent = `${rows.length} / ${cat.items.length} 个项目`;
+  document.getElementById("cnt-" + catId).textContent = rows.length;
+  document.getElementById("counter").textContent = `${rows.length} 项匹配`;
+
+  if (rows.length === 0) {
+    tbody.innerHTML = "";
+    empty.hidden = false;
+    return;
+  }
+  empty.hidden = true;
+
+  tbody.innerHTML = rows.map(({item, reqs}) => reqs.map((req, i) => `
+    <tr>
+      <td class="col-seq">${i === 0 ? item.seq : ""}</td>
+      <td class="col-name">${i === 0 ? highlight(item.name, q) : ""}</td>
+      <td class="col-scope">${i === 0 ? highlight(item.scope, q) : ""}</td>
+      <td><span class="col-channel">${highlight(req.channel, q)}</span></td>
+      <td>${highlight(req.detail, q)}</td>
+      <td style="color:var(--c-text-2);font-size:12px">${highlight(req.remark, q)}</td>
+    </tr>
+  `).join("")).join("");
+}
+
+function renderPlasticizer() {
+  const cat = DATA.categories.find(c => c.id === "plasticizer");
+  const tbody = document.getElementById("tbl-plasticizer");
+  const meta = document.getElementById("meta-plasticizer");
+  const empty = document.getElementById("empty-plasticizer");
+  const q = document.getElementById("search").value.trim();
+
+  const rows = [];
+  for (const it of cat.items) {
+    const triples = q
+      ? it.triples.filter(t => {
+          const hay = `${it.category} ${t.product} ${t.item} ${t.limit} ${t.remark}`;
+          return hay.toLowerCase().includes(q.toLowerCase());
+        })
+      : it.triples;
+    if (triples.length > 0) rows.push({item: it, triples});
+  }
+
+  meta.textContent = `${rows.length} / ${cat.items.length} 个类别`;
+  document.getElementById("cnt-plasticizer").textContent = rows.length;
+
+  if (rows.length === 0) {
+    tbody.innerHTML = "";
+    empty.hidden = false;
+    return;
+  }
+  empty.hidden = true;
+
+  tbody.innerHTML = rows.map(({item, triples}) => triples.map((t, i) => `
+    <tr>
+      <td class="col-seq">${i === 0 ? item.seq : ""}</td>
+      <td class="col-name">${i === 0 ? highlight(item.category, q) : ""}</td>
+      <td style="color:var(--c-text-2);font-size:12px">${highlight(t.product, q)}</td>
+      <td><span class="col-channel">${highlight(t.item || "—", q)}</span></td>
+      <td class="col-limit">${highlight(t.limit || "—", q)}</td>
+      <td style="color:var(--c-text-2);font-size:12px">${highlight(t.remark, q)}</td>
+  </tr>
+  `).join("")).join("");
+}
+
+function renderNonGMO() {
+  const cat = DATA.categories.find(c => c.id === "non_gmo");
+  const tbody = document.getElementById("tbl-non_gmo");
+  const meta = document.getElementById("meta-non_gmo");
+  const empty = document.getElementById("empty-non_gmo");
+  const q = document.getElementById("search").value.trim();
+
+  const rows = [];
+  for (const it of cat.items) {
+    const products = q
+      ? it.products.filter(p => {
+          const hay = `${it.category} ${p.product} ${p.detail}`;
+          return hay.toLowerCase().includes(q.toLowerCase());
+        })
+      : it.products;
+    if (products.length > 0) rows.push({item: it, products});
+  }
+
+  meta.textContent = `${rows.length} / ${cat.items.length} 个类别`;
+  document.getElementById("cnt-non_gmo").textContent = rows.length;
+
+  if (rows.length === 0) {
+    tbody.innerHTML = "";
+    empty.hidden = false;
+    return;
+  }
+  empty.hidden = true;
+
+  tbody.innerHTML = rows.map(({item, products}) => products.map((p, i) => `
+    <tr>
+      <td class="col-seq">${i === 0 ? item.seq : ""}</td>
+      <td class="col-name">${i === 0 ? highlight(item.category, q) : ""}</td>
+      <td>${highlight(p.product, q)}</td>
+      <td>${highlight(p.detail || "/", q)}</td>
+    </tr>
+  `).join("")).join("");
+}
+
+function render() {
+  document.getElementById("sec-food").hidden = currentTab !== "food";
+  document.getElementById("sec-contact").hidden = currentTab !== "contact";
+  document.getElementById("sec-plasticizer").hidden = currentTab !== "plasticizer";
+  document.getElementById("sec-non_gmo").hidden = currentTab !== "non_gmo";
+  for (const t of document.querySelectorAll(".tab")) {
+    t.classList.toggle("active", t.dataset.tab === currentTab);
+  }
+  if (currentTab === "food" || currentTab === "contact") {
+    renderFoodOrContact(currentTab);
+  } else if (currentTab === "plasticizer") {
+    renderPlasticizer();
+  } else if (currentTab === "non_gmo") {
+    renderNonGMO();
+  }
+  updateFilters();
+  updateAllBadges();
+}
+
+// 仅更新 Tab 徽章（不切换 section），让所有 Tab 都显示正确计数
+function updateAllBadges() {
+  const q = document.getElementById("search").value.trim();
+  const catFilter = document.getElementById("catFilter").value;
+  const scopeFilter = document.getElementById("scopeFilter").value;
+
+  for (const cat of DATA.categories) {
+    let count = 0;
+    if (cat.id === "food" || cat.id === "contact") {
+      for (const it of cat.items) {
+        if (scopeFilter && it.scope !== scopeFilter) continue;
+        let hasMatch = false;
+        for (const req of it.requirements) {
+          if (catFilter && req.channel !== catFilter) continue;
+          const hay = `${it.name} ${it.scope} ${req.channel} ${req.detail} ${req.remark}`;
+          if (!q || hay.toLowerCase().includes(q.toLowerCase())) { hasMatch = true; break; }
+        }
+        if (hasMatch) count++;
+      }
+    } else if (cat.id === "plasticizer") {
+      for (const it of cat.items) {
+        const triples = q
+          ? it.triples.filter(t => `${it.category} ${t.product} ${t.item} ${t.limit} ${t.remark}`.toLowerCase().includes(q.toLowerCase()))
+          : it.triples;
+        if (triples.length > 0) count++;
+      }
+    } else if (cat.id === "non_gmo") {
+      for (const it of cat.items) {
+        const products = q
+          ? it.products.filter(p => `${it.category} ${p.product} ${p.detail}`.toLowerCase().includes(q.toLowerCase()))
+          : it.products;
+        if (products.length > 0) count++;
+      }
+    }
+    document.getElementById("cnt-" + cat.id).textContent = count;
+  }
+}
+
+function updateFilters() {
+  // 填充采购途径和范围筛选
+  const catFilter = document.getElementById("catFilter");
+  const scopeFilter = document.getElementById("scopeFilter");
+  const curCat = catFilter.value;
+  const curScope = scopeFilter.value;
+
+  // 收集当前 Tab 的全部渠道和范围
+  const channels = new Set();
+  const scopes = new Set();
+  const cat = DATA.categories.find(c => c.id === currentTab);
+  if (cat && (cat.id === "food" || cat.id === "contact")) {
+    for (const it of cat.items) {
+      if (it.scope) scopes.add(it.scope);
+      for (const req of it.requirements) channels.add(req.channel);
+    }
+  } else if (cat) {
+    for (const it of cat.items) {
+      if (it.scope) scopes.add(it.scope);
+      if (it.category) scopes.add(it.category);
+    }
+  }
+
+  catFilter.innerHTML = '<option value="">全部采购途径</option>' +
+    Array.from(channels).sort().map(c => `<option value="${escapeHTML(c)}">${escapeHTML(c)}</option>`).join("");
+  scopeFilter.innerHTML = '<option value="">全部范围</option>' +
+    Array.from(scopes).sort().map(s => `<option value="${escapeHTML(s)}">${escapeHTML(s)}</option>`).join("");
+
+  if (Array.from(catFilter.options).some(o => o.value === curCat)) catFilter.value = curCat;
+  if (Array.from(scopeFilter.options).some(o => o.value === curScope)) scopeFilter.value = curScope;
+
+  // 对塑化剂/非转基因，禁用采购途径筛选
+  const disable = (currentTab === "plasticizer" || currentTab === "non_gmo");
+  catFilter.disabled = disable;
+  catFilter.style.opacity = disable ? 0.5 : 1;
+}
+
+function getCurrentRows() {
+  // 返回当前可见行的扁平数据，用于复制 / 导出
+  const cat = DATA.categories.find(c => c.id === currentTab);
+  if (!cat) return {headers: [], rows: []};
+  if (cat.id === "food" || cat.id === "contact") {
+    const headers = ["序号", "项目", "范围", "采购途径", "索证明细", "备注"];
+    const rows = [];
+    for (const it of cat.items) {
+      for (const req of it.requirements) {
+        rows.push([it.seq, it.name, it.scope, req.channel, req.detail, req.remark]);
+      }
+    }
+    return {headers, rows};
+  } else if (cat.id === "plasticizer") {
+    const headers = ["序号", "食品类别", "产品明细", "塑化剂项目", "限值", "备注"];
+    const rows = [];
+    for (const it of cat.items) {
+      for (const t of it.triples) {
+        rows.push([it.seq, it.category, t.product, t.item, t.limit, t.remark]);
+      }
+    }
+    return {headers, rows};
+  } else if (cat.id === "non_gmo") {
+    const headers = ["序号", "类别", "产品明细", "索要明细"];
+    const rows = [];
+    for (const it of cat.items) {
+      for (const p of it.products) {
+        rows.push([it.seq, it.category, p.product, p.detail]);
+      }
+    }
+    return {headers, rows};
+  }
+}
+
+function exportCSV() {
+  const {headers, rows} = getCurrentRows();
+  const esc = v => `"${String(v ?? "").replace(/"/g, '""').replace(/\r?\n/g, " ")}"`;
+  const csv = "\uFEFF" + headers.map(esc).join(",") + "\n" +
+    rows.map(r => r.map(esc).join(",")).join("\n");
+  const blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `索证索票_${currentTab}_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast("已导出 CSV（可用 Excel 打开）");
+}
+
+function copyRows() {
+  const {headers, rows} = getCurrentRows();
+  const text = headers.join("\t") + "\n" +
+    rows.map(r => r.map(v => String(v ?? "").replace(/\t/g, " ").replace(/\r?\n/g, " ")).join("\t")).join("\n");
+  navigator.clipboard.writeText(text).then(() => showToast(`已复制 ${rows.length} 行（Excel 粘贴格式）`));
+}
+
+// ── 事件 ──
+document.querySelectorAll(".tab").forEach(t => {
+  t.addEventListener("click", () => {
+    currentTab = t.dataset.tab;
+    render();
+  });
+});
+document.getElementById("search").addEventListener("input", render);
+document.getElementById("catFilter").addEventListener("change", render);
+document.getElementById("scopeFilter").addEventListener("change", render);
+document.getElementById("btnExport").addEventListener("click", exportCSV);
+document.getElementById("btnCopy").addEventListener("click", copyRows);
+
+// 初始化 — 加载数据后渲染
+(async () => {
+  document.body.insertAdjacentHTML("afterbegin",
+    `<div id="loading" style="position:fixed;inset:0;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;z-index:99;font-size:14px;color:var(--c-text-2)">加载数据中...</div>`
+  );
+  const ok = await loadData();
+  document.getElementById("loading")?.remove();
+  if (!ok) {
+    document.body.insertAdjacentHTML("afterbegin",
+      `<div style="padding:24px;background:#ffebee;border:1px solid #ef9a9a;color:#c62828;margin:20px;border-radius:8px">⚠ 无法加载数据（请通过 HTTP server 访问，例如 http://127.0.0.1:8765/suozhengsuopiao.html）</div>`
+    );
+    return;
+  }
+  render();
+})();
+</script>
+</body>
+</html>

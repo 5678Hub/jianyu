@@ -14,3 +14,15 @@ jianyu-offline.html
 ~*.docx
 ~*.pptx
 scripts/pdf_*raw.json
+
+# sync_v6_active 自动生成的备份文件（不进仓库）
+data/gb2762/_meta/*_pre_active_sync_*.json
+data/gb2762/_meta/*_pre_active_sync_*.html
+data/gb2762/_meta/*_pre_t3_rewrite_*.xlsx
+data/gb2762/_meta/GB2762-2025.md
+data/gb2762/_meta/A1_*.txt
+data/gb2762/_meta/t1_*.txt
+data/gb2762/_meta/*待核对.txt
+data/gb2762/_meta/未匹配*.txt
+data/gb2762/_meta/模糊未匹配*.txt
+data/gb2762/GB_2762-2025.pdf

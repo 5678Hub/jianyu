@@ -134,6 +134,9 @@ table.results td.remark { font-size: 12px; color: var(--c-text-2); font-style: i
 .footnote-block .fn-title { font-weight: 600; color: var(--c-warn); margin-bottom: 6px; font-size: 12px; }
 .footnote-block .fn-item { padding: 2px 0; }
 .footnote-block .fn-mark { display: inline-block; width: 18px; height: 18px; line-height: 18px; text-align: center; background: var(--c-warn); color: white; border-radius: 50%; font-size: 11px; margin-right: 6px; font-weight: 600; }
+/* 内联脚注 badge（表格 备注 列） */
+.fn-mark.inline { display: inline-block; min-width: 18px; height: 18px; line-height: 18px; padding: 0 5px; text-align: center; background: var(--c-warn); color: white; border-radius: 9px; font-size: 11px; margin-right: 4px; font-weight: 600; vertical-align: middle; cursor: help; }
+.remark-cell .remark-text { color: var(--c-text-2); font-size: 11.5px; }
 
 .method-block { background: var(--c-primary-soft); border: 1px solid #d3dfee; border-radius: var(--r-sm); padding: 10px 14px; margin-top: 10px; font-size: 12px; color: var(--c-text-2); }
 .method-block .m-title { font-weight: 600; color: var(--c-primary); margin-bottom: 4px; }
@@ -1067,30 +1070,80 @@ function renderLimitTable(items, isSelf, nodeName, bigName) {
   let html = '<table class="lvl"><thead><tr>';
   html += '<th>污染物中文名称</th><th>元素符号</th><th>食品中文名称</th><th>限量要求</th><th>单位</th><th>检验方法</th><th>备注</th>';
   html += '</tr></thead><tbody>';
+  // v7: 把每个 item 拆成 1~2 行（main + sub 限量各自独立成行）
+  // 表8 亚硝酸盐/硝酸盐双行、表4 总砷/无机砷双行都走这里
+  const expanded = [];
   items.forEach(it => {
-    // 多列限量合并显示
-    let limitHtml;
-    if (it.limits && Array.isArray(it.limits) && it.limits.length > 0) {
-      if (it.limits.length === 1) {
-        limitHtml = `<span class="limit-main">${escapeHTML(it.limits[0].value)}</span>`;
-      } else {
-        limitHtml = it.limits.map(l => `<div><span class="limit-label">${escapeHTML(l.label)}</span> <span class="limit-main">${escapeHTML(l.value)}</span></div>`).join('');
-      }
-    } else {
-      limitHtml = `<span class="limit-main">${escapeHTML(it.limit || '—')}</span>`;
+    const mainVal = (it.limit_value || '').toString().trim();
+    const subVal  = (it.sub_value  || '').toString().trim();
+    // 脚注字母优先级：main_remark > sub_remark > note（兼容不同表结构）
+    const mainLetter = (it.main_remark || '').toString().trim();
+    const subLetter  = (it.sub_remark  || '').toString().trim();
+    const simpleLetter = (it.note || '').toString().trim();
+    const noteLetter = mainLetter || subLetter || simpleLetter;
+    it._noteLetter = noteLetter; // 缓存供渲染备注列
+    const hasMain = mainVal && mainVal !== '—';
+    const hasSub  = subVal  && subVal  !== '—';
+    if (hasMain) {
+      expanded.push({
+        ...it,
+        _rowName: it.main_label || it._contaminant,
+        _rowLimit: mainVal,
+        _rowMod:   it.limit_modifier || '',
+        _rowRemark: it.main_remark || '',
+        _rowSymbol: it._symbol || ''
+      });
     }
+    if (hasSub) {
+      expanded.push({
+        ...it,
+        _rowName: it.sub_label || it._contaminant,
+        _rowLimit: subVal,
+        _rowMod:   it.sub_modifier || '',
+        _rowRemark: it.sub_remark || '',
+        _rowSymbol: it._symbol || ''
+      });
+    }
+    if (!hasMain && !hasSub) {
+      // 双"—" 的通类母项：单行展示，名称用主标，限量"—"，脚注用主脚注
+      expanded.push({
+        ...it,
+        _rowName: it.main_label || it.sub_label || it._contaminant || '—',
+        _rowLimit: '—',
+        _rowMod: '',
+        _rowRemark: it.main_remark || it.sub_remark || '',
+        _rowSymbol: it._symbol || ''
+      });
+    }
+  });
+
+  expanded.forEach(it => {
     const ctxFood = isSelf ? (nodeName || it.food || '') : (it._viaSub || nodeName || it.food || '');
     const ctxBig = bigName || '';
     const method = pickMethod(it._rules, ctxFood, ctxBig) || it._inspection_method || '';
+    // 限量值 = 数字 + 修饰(若有)
+    const limitText = it._rowMod ? `${it._rowLimit} ${it._rowMod}` : (it._rowLimit === '—' ? '—' : `${it._rowLimit} mg/kg`);
+    // 备注 = 修饰脚注（_rowRemark 来自 main_remark/sub_remark；note 兼容 simple 表）
+    const remarkText = it._rowRemark || '';
+    // 脚注字母 badge：优先 _noteLetter（main_remark/sub_remark/note 兼容）
+    const noteLetter = (it._noteLetter || '').toString().trim();
+    let remarkHtml = '';
+    if (noteLetter) {
+      remarkHtml += `<span class="fn-mark inline" title="脚注 ${escapeAttr(noteLetter)}">${escapeHTML(noteLetter)}</span>`;
+    }
+    if (remarkText) {
+      remarkHtml += `<span class="remark-text">${escapeHTML(remarkText)}</span>`;
+    }
+
     html += '<tr>';
-    html += `<td class="contaminant-cell">${escapeHTML(it._contaminant)}</td>`;
-    html += `<td class="symbol">${escapeHTML(it._symbol || '')}</td>`;
+    html += `<td class="contaminant-cell">${escapeHTML(it._rowName)}</td>`;
+    html += `<td class="symbol">${escapeHTML(it._rowSymbol)}</td>`;
     const foodName = isSelf ? (it.food || nodeName) : (it._viaSub ? `${it._viaSub}:` + (it.food || '') : (it.food || ''));
     html += `<td class="food-cell">${escapeHTML(foodName)}</td>`;
-    html += `<td class="limit-cell">${limitHtml}</td>`;
+    html += `<td class="limit-cell"><span class="limit-main">${escapeHTML(limitText)}</span></td>`;
     html += `<td class="unit-cell">${escapeHTML(it._unit || '')}</td>`;
     html += `<td class="method-cell">${escapeHTML(method)}</td>`;
-    html += `<td class="remark-cell">${escapeHTML(it.remark || '')}</td>`;
+    html += `<td class="remark-cell">${remarkHtml}</td>`;
     html += '</tr>';
   });
   html += '</tbody></table>';
@@ -1098,18 +1151,25 @@ function renderLimitTable(items, isSelf, nodeName, bigName) {
 }
 
 function renderFootnotesFor(items, nodeName, bigName) {
-  // 脚注块(原逻辑不变)
+  // 脚注块：仅展示当前 items 引用过的脚注（避免堆太多不相关的）
   const seenFn = new Map();
+  const referenced = new Set();
   items.forEach(it => {
+    const letter = (it._noteLetter || it.note || '').toString().trim();
+    if (letter) referenced.add(letter);
     if (it._footnotes) it._footnotes.forEach(f => {
-      if (f.text && !seenFn.has(f.mark + '|' + f.text)) seenFn.set(f.mark + '|' + f.text, f);
+      // 兼容 {label, text} 和 {mark, text} 两种字段命名
+      const k = f.label || f.mark;
+      if (k && f.text && !seenFn.has(k + '|' + f.text)) seenFn.set(k + '|' + f.text, { key: k, text: f.text });
     });
   });
   let html = '';
-  if (seenFn.size > 0) {
+  if (seenFn.size > 0 && referenced.size > 0) {
     html += '<div class="footnote-block"><div class="fn-title">脚注说明</div>';
     seenFn.forEach(f => {
-      html += `<div class="fn-item"><span class="fn-mark">${f.mark}</span>${escapeHTML(f.text)}</div>`;
+      if (referenced.has(f.key)) {
+        html += `<div class="fn-item"><span class="fn-mark">${f.key}</span>${escapeHTML(f.text)}</div>`;
+      }
     });
     html += '</div>';
   }
@@ -1473,7 +1533,8 @@ function renderContamDetail() {
   if (footnotes.length > 0) {
     fhtml += '<div class="footnote-block"><div class="fn-title">脚注说明</div>';
     footnotes.forEach(f => {
-      fhtml += `<div class="fn-item"><span class="fn-mark">${escapeHTML(f.mark)}</span>${escapeHTML(f.text)}</div>`;
+      const k = f.label || f.mark;
+      fhtml += `<div class="fn-item"><span class="fn-mark">${escapeHTML(k)}</span>${escapeHTML(f.text)}</div>`;
     });
     fhtml += '</div>';
   }
@@ -1561,7 +1622,15 @@ function renderKeywordResults() {
     html += `<td class="food">${escapeHTML(it.food || '')}</td>`;
     html += `<td class="limit">${limitHtml}</td>`;
     html += `<td class="unit">${escapeHTML(it._unit || '')}</td>`;
-    html += `<td class="remark">${escapeHTML(it.remark || '')}</td>`;
+    // 备注列：兼容 footnote letter + 修饰备注
+    const rk = (it.remark || '').toString().trim();
+    let remarkHtml = '';
+    if (rk && /^[a-e]$/.test(rk)) {
+      remarkHtml += `<span class="fn-mark inline" title="脚注 ${escapeAttr(rk)}">${escapeHTML(rk)}</span>`;
+    } else if (rk) {
+      remarkHtml = escapeHTML(rk);
+    }
+    html += `<td class="remark">${remarkHtml}</td>`;
     html += '</tr>';
   });
   html += '</tbody></table>';
@@ -1573,8 +1642,9 @@ function renderKeywordResults() {
   items.forEach(it => {
     if (it._footnotes) {
       it._footnotes.forEach(f => {
-        if (f.text && !seenFn.has(f.mark + '|' + f.text)) {
-          seenFn.set(f.mark + '|' + f.text, f);
+        const k = f.label || f.mark;
+        if (f.text && !seenFn.has(k + '|' + f.text)) {
+          seenFn.set(k + '|' + f.text, { key: k, text: f.text });
         }
       });
     }
@@ -1582,7 +1652,7 @@ function renderKeywordResults() {
   if (seenFn.size > 0) {
     fhtml += '<div class="footnote-block"><div class="fn-title">脚注说明</div>';
     seenFn.forEach(f => {
-      fhtml += `<div class="fn-item"><span class="fn-mark">${f.mark}</span>${escapeHTML(f.text)}</div>`;
+      fhtml += `<div class="fn-item"><span class="fn-mark">${f.key}</span>${escapeHTML(f.text)}</div>`;
     });
     fhtml += '</div>';
   }

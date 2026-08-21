@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>GB 2760-2024 食品添加剂使用查询 · jianyu</title>
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='40' font-family='Arial,sans-serif' font-size='18' font-weight='600' fill='white' text-anchor='middle'>添加剂</text></svg>">
+<meta name="theme-color" content="#1a365d">
+<style>
+:root {
+  --c-bg: #f6f8fb;
+  --c-surface: #ffffff;
+  --c-border: #e6ebf1;
+  --c-border-strong: #d0d7e0;
+  --c-text-1: #1a2332;
+  --c-text-2: #5d6d7e;
+  --c-text-3: #95a5a6;
+  --c-primary: #1a365d;
+  --c-primary-2: #2c5282;
+  --c-primary-soft: #ebf2fa;
+  --c-accent: #8e44ad;
+  --c-accent-soft: #f5edf7;
+  --c-high: #c62828;
+  --c-high-soft: #ffebee;
+  --c-mid: #e65100;
+  --c-mid-soft: #fff3e0;
+  --c-warn: #f57f17;
+  --c-warn-soft: #fffde7;
+  --c-ok: #2e7d32;
+  --c-ok-soft: #e8f5e9;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --shadow-soft: 0 1px 2px rgba(20, 30, 50, 0.04), 0 0 1px rgba(20, 30, 50, 0.06);
+  --shadow-mid: 0 4px 12px rgba(20, 30, 50, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--c-bg); }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  color: var(--c-text-1); padding: 24px 16px; line-height: 1.6;
+  font-size: 14px; -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 1280px; margin: 0 auto; }
+
+header.brand {
+  display: flex; align-items: center; gap: 14px;
+  padding: 6px 4px 20px; border-bottom: 1px solid var(--c-border); margin-bottom: 18px;
+}
+header.brand .logo {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--c-primary-2), var(--c-primary));
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 600; font-size: 14px; letter-spacing: -0.5px;
+  box-shadow: var(--shadow-soft); flex-shrink: 0;
+}
+header.brand .brand-text { flex: 1; min-width: 0; }
+header.brand .brand-title { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+header.brand .brand-title .zh { font-size: 18px; font-weight: 600; color: var(--c-text-1); letter-spacing: 0.3px; }
+header.brand .brand-title .en { font-size: 13px; color: var(--c-text-3); font-weight: 500; }
+header.brand .subtitle { font-size: 12px; color: var(--c-text-2); margin-top: 6px; }
+header.brand .ver {
+  font-size: 11px; color: var(--c-primary); padding: 5px 12px;
+  background: var(--c-primary-soft); border-radius: 14px;
+  font-weight: 500; letter-spacing: 0.3px; flex-shrink: 0;
+}
+header.brand .back {
+  font-size: 12px; color: var(--c-text-2); padding: 5px 12px;
+  border: 1px solid var(--c-border-strong); border-radius: 14px;
+  text-decoration: none; transition: all 0.15s;
+}
+header.brand .back:hover { background: var(--c-primary-soft); border-color: var(--c-primary-2); color: var(--c-primary); }
+
+/* ── 统计卡片 ── */
+.stats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px; margin-bottom: 16px;
+}
+.stat {
+  background: var(--c-surface); border: 1px solid var(--c-border);
+  border-radius: var(--r-md); padding: 14px 16px; box-shadow: var(--shadow-soft);
+}
+.stat .label { font-size: 11px; color: var(--c-text-3); margin-bottom: 4px; }
+.stat .num { font-size: 22px; font-weight: 600; color: var(--c-primary); }
+.stat .sub { font-size: 11px; color: var(--c-text-3); margin-top: 2px; }
+
+/* ── Tab ── */
+.tabs {
+  display: flex; gap: 4px; padding: 4px;
+  background: var(--c-surface); border: 1px solid var(--c-border);
+  border-radius: var(--r-md); margin-bottom: 16px; box-shadow: var(--shadow-soft);
+  overflow-x: auto;
+}
+.tab {
+  font-family: inherit; font-size: 13px; font-weight: 500;
+  border: none; background: transparent; color: var(--c-text-2);
+  padding: 9px 16px; border-radius: var(--r-sm);
+  cursor: pointer; transition: all 0.15s; white-space: nowrap;
+  display: flex; align-items: center; gap: 6px;
+}
+.tab:hover { background: var(--c-primary-soft); color: var(--c-primary); }
+.tab.active { background: var(--c-primary); color: white; }
+.tab .badge {
+  font-size: 11px; padding: 1px 6px; border-radius: 8px;
+  background: rgba(255,255,255,0.25); font-weight: 500;
+}
+.tab:not(.active) .badge { background: var(--c-primary-soft); color: var(--c-primary); }
+
+/* ── 工具栏 ── */
+.toolbar {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  padding: 14px 16px; background: var(--c-surface);
+  border: 1px solid var(--c-border); border-radius: var(--r-md);
+  margin-bottom: 16px; box-shadow: var(--shadow-soft);
+  align-items: center;
+}
+.toolbar input[type=search], .toolbar select {
+  font-family: inherit; font-size: 14px;
+  border: 1px solid var(--c-border-strong); border-radius: var(--r-sm);
+  padding: 8px 12px; background: var(--c-surface);
+  color: var(--c-text-1); outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.toolbar input[type=search] { flex: 1; min-width: 220px; }
+.toolbar input[type=search]:focus, .toolbar select:focus {
+  border-color: var(--c-primary-2);
+  box-shadow: 0 0 0 3px var(--c-primary-soft);
+}
+.toolbar .btn {
+  font-family: inherit; font-size: 13px; font-weight: 500;
+  border: 1px solid var(--c-border-strong); border-radius: var(--r-sm);
+  padding: 8px 14px; background: var(--c-surface); color: var(--c-text-1);
+  cursor: pointer; transition: all 0.15s;
+}
+.toolbar .btn:hover { background: var(--c-primary-soft); border-color: var(--c-primary-2); color: var(--c-primary); }
+.toolbar .btn-count {
+  margin-left: auto; font-size: 12px; color: var(--c-text-3);
+  padding-left: 12px; border-left: 1px dashed var(--c-border);
+}
+
+/* ── 详情卡片 ── */
+.detail-card {
+  background: var(--c-surface); border: 1px solid var(--c-border);
+  border-radius: var(--r-md); padding: 18px 22px; margin-bottom: 14px;
+  box-shadow: var(--shadow-soft);
+}
+.detail-card .header {
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  padding-bottom: 12px; border-bottom: 1px solid var(--c-border);
+  margin-bottom: 14px;
+}
+.detail-card .name-zh {
+  font-size: 18px; font-weight: 600; color: var(--c-text-1);
+}
+.detail-card .name-en {
+  font-size: 13px; color: var(--c-text-3); font-weight: 500;
+}
+.detail-card .cns {
+  font-family: "SF Mono", Consolas, monospace;
+  font-size: 12px; color: var(--c-primary);
+  background: var(--c-primary-soft); padding: 3px 10px; border-radius: 10px;
+}
+.detail-card .meta {
+  display: flex; gap: 18px; flex-wrap: wrap;
+  font-size: 12px; color: var(--c-text-2); margin-bottom: 12px;
+}
+.detail-card .meta b { color: var(--c-text-1); font-weight: 600; }
+.detail-card .aliases {
+  font-size: 12px; color: var(--c-text-2);
+  background: var(--c-warn-soft); padding: 8px 12px;
+  border-radius: var(--r-sm); margin-bottom: 12px;
+}
+.detail-card .func-list {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.detail-card .func-tag {
+  font-size: 11px; padding: 3px 10px; border-radius: 10px;
+  background: var(--c-accent-soft); color: var(--c-accent);
+  font-weight: 500;
+}
+
+/* ── Section ── */
+.section {
+  background: var(--c-surface); border: 1px solid var(--c-border);
+  border-radius: var(--r-md); box-shadow: var(--shadow-soft);
+  overflow: hidden; margin-bottom: 16px;
+}
+.section-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 18px; border-bottom: 1px solid var(--c-border);
+  background: linear-gradient(180deg, var(--c-surface), #fafbfc);
+}
+.section-title {
+  font-size: 14px; font-weight: 600; color: var(--c-text-1);
+  display: flex; align-items: center; gap: 8px;
+}
+.section-meta { font-size: 12px; color: var(--c-text-3); }
+
+/* ── 表格 ── */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table thead th {
+  background: var(--c-primary-soft); color: var(--c-primary);
+  font-weight: 600; text-align: left;
+  padding: 10px 14px; border-bottom: 1px solid var(--c-border-strong);
+  white-space: nowrap; position: sticky; top: 0; z-index: 1;
+}
+.data-table tbody td {
+  padding: 10px 14px; border-bottom: 1px solid var(--c-border);
+  vertical-align: top; word-break: break-word;
+}
+.data-table tbody tr:hover { background: #fafbfc; }
+.data-table .col-code {
+  font-family: "SF Mono", Consolas, monospace;
+  font-size: 12px; color: var(--c-text-3);
+}
+.data-table .col-name { font-weight: 500; color: var(--c-text-1); }
+.data-table .col-limit {
+  font-family: "SF Mono", Consolas, monospace;
+  font-size: 12px; color: var(--c-high); font-weight: 500;
+}
+.data-table .col-remark { font-size: 12px; color: var(--c-text-2); }
+.data-table .col-cat {
+  display: inline-block; font-size: 11px; padding: 2px 8px;
+  border-radius: 8px; background: var(--c-bg);
+  color: var(--c-text-2); margin-right: 4px;
+}
+.data-table .col-cat-L1 { background: var(--c-primary-soft); color: var(--c-primary); }
+.data-table .col-cat-L2 { background: var(--c-accent-soft); color: var(--c-accent); }
+.data-table .col-cat-L3 { background: var(--c-ok-soft); color: var(--c-ok); }
+
+/* ── 列表(添加剂卡片) ── */
+.list-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; padding: 14px; }
+.add-card {
+  border: 1px solid var(--c-border); border-radius: var(--r-md);
+  padding: 14px; background: var(--c-surface); cursor: pointer;
+  transition: all 0.15s;
+}
+.add-card:hover { border-color: var(--c-primary-2); box-shadow: var(--shadow-mid); transform: translateY(-1px); }
+.add-card .name-zh { font-size: 14px; font-weight: 600; color: var(--c-text-1); margin-bottom: 4px; }
+.add-card .name-en { font-size: 12px; color: var(--c-text-3); margin-bottom: 8px; }
+.add-card .meta-row {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  font-size: 11px; color: var(--c-text-2);
+}
+.add-card .cns-chip {
+  font-family: "SF Mono", Consolas, monospace;
+  background: var(--c-primary-soft); color: var(--c-primary);
+  padding: 2px 8px; border-radius: 8px;
+}
+.add-card .func-chip {
+  background: var(--c-accent-soft); color: var(--c-accent);
+  padding: 2px 8px; border-radius: 8px;
+}
+.add-card .item-chip {
+  background: var(--c-ok-soft); color: var(--c-ok);
+  padding: 2px 8px; border-radius: 8px;
+}
+
+/* ── 空态 ── */
+.empty {
+  padding: 60px 20px; text-align: center; color: var(--c-text-3); font-size: 13px;
+}
+
+/* ── Toast ── */
+.toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--c-text-1); color: white; padding: 10px 18px;
+  border-radius: var(--r-sm); font-size: 13px;
+  box-shadow: var(--shadow-mid); opacity: 0; pointer-events: none;
+  transition: all 0.25s; z-index: 100;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── 页脚 ── */
+footer {
+  margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--c-border);
+  font-size: 12px; color: var(--c-text-3);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+}
+footer a { color: var(--c-text-2); text-decoration: none; }
+footer a:hover { color: var(--c-primary); }
+
+/* 滚动条 */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--c-bg); }
+::-webkit-scrollbar-thumb { background: var(--c-border-strong); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--c-text-3); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="brand">
+  <div class="logo">GB<br>2760</div>
+  <div class="brand-text">
+    <div class="brand-title">
+      <span class="zh">食品添加剂使用查询</span>
+      <span class="en">GB 2760-2024</span>
+    </div>
+    <div class="subtitle">食品添加剂的允许使用品种、使用范围以及最大使用量或残留量</div>
+  </div>
+  <span class="ver" id="updatedTag">v1.0</span>
+  <a class="back" href="./toolbox.html">← 工具箱</a>
+</header>
+
+<div class="stats">
+  <div class="stat"><div class="label">添加剂数</div><div class="num" id="st-add">—</div><div class="sub">表 A.1</div></div>
+  <div class="stat"><div class="label">食品条目数</div><div class="num" id="st-item">—</div><div class="sub">使用规定</div></div>
+  <div class="stat"><div class="label">食品分类节点</div><div class="num" id="st-cat">—</div><div class="sub">附录 E</div></div>
+  <div class="stat"><div class="label">功能种类</div><div class="num" id="st-func">—</div><div class="sub">着色/防腐/...</div></div>
+  <div class="stat"><div class="label">例外食品类别</div><div class="num" id="st-exc">—</div><div class="sub">表 A.2</div></div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" data-tab="by-additive">按添加剂查<span class="badge" id="b-add">0</span></button>
+  <button class="tab" data-tab="by-category">按食品查<span class="badge" id="b-cat">0</span></button>
+  <button class="tab" data-tab="by-function">按功能查<span class="badge" id="b-func">0</span></button>
+  <button class="tab" data-tab="exceptions">例外食品<span class="badge" id="b-exc">0</span></button>
+</div>
+
+<!-- 工具栏 -->
+<div class="toolbar" id="toolbar">
+  <input type="search" id="search" placeholder="输入名称、CNS、INS、功能..." autocomplete="off">
+  <select id="select-func" style="display:none">
+    <option value="">— 全部功能 —</option>
+  </select>
+  <button class="btn" id="btn-clear">清空</button>
+  <span class="btn-count" id="counter">— 项</span>
+</div>
+
+<!-- Tab 1: 按添加剂查 -->
+<div id="panel-by-additive">
+  <div class="section">
+    <div class="section-head">
+      <div class="section-title"><span class="ico">📋</span><span id="addListTitle">添加剂列表</span></div>
+      <div class="section-meta" id="addListMeta">—</div>
+    </div>
+    <div class="list-cards" id="addList"></div>
+    <div class="empty" id="addEmpty" hidden>未找到匹配的添加剂</div>
+  </div>
+
+  <div id="addDetail"></div>
+</div>
+
+<!-- Tab 2: 按食品查 -->
+<div id="panel-by-category" hidden>
+  <div class="section">
+    <div class="section-head">
+      <div class="section-title"><span class="ico">🍱</span><span>食品分类（点击展开可用添加剂）</span></div>
+      <div class="section-meta" id="catListMeta">—</div>
+    </div>
+    <div id="catList" style="padding: 14px;"></div>
+    <div class="empty" id="catEmpty" hidden>未找到匹配的食品分类</div>
+  </div>
+</div>
+
+<!-- Tab 3: 按功能查 -->
+<div id="panel-by-function" hidden>
+  <div class="section">
+    <div class="section-head">
+      <div class="section-title"><span class="ico">⚙️</span><span>按功能浏览添加剂</span></div>
+      <div class="section-meta" id="funcListMeta">—</div>
+    </div>
+    <div class="list-cards" id="funcList"></div>
+    <div class="empty" id="funcEmpty" hidden>未找到匹配的功能分类</div>
+  </div>
+</div>
+
+<!-- Tab 4: 例外食品 -->
+<div id="panel-exceptions" hidden>
+  <div class="section">
+    <div class="section-head">
+      <div class="section-title"><span class="ico">⚠️</span><span>表 A.2 — 表 A.1 中例外食品类别</span></div>
+      <div class="section-meta" id="excListMeta">—</div>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr><th style="width:60px">编号</th><th style="width:140px">食品分类号</th><th>食品名称</th></tr>
+      </thead>
+      <tbody id="excTbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<footer>
+  <div>数据来源：GB 2760-2024 食品安全国家标准 食品添加剂使用标准</div>
+  <div id="footerUpdated">—</div>
+</footer>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── 状态 ──
+let DATA = null;
+let currentTab = "by-additive";
+
+// 数据加载路径（多个 fallback）
+const DATA_URLS = [
+  './data/gb2760/gb2760_full.json',
+  './data/gb2760/gb2760_full.json?v=' + Date.now(),
+];
+
+// ── 工具函数 ──
+function escapeHTML(s) {
+  if (s == null) return "";
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function highlight(s, q) {
+  const safe = escapeHTML(s);
+  if (!q) return safe;
+  const re = new RegExp("(" + q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi");
+  return safe.replace(re, '<mark style="background:#fff59d;color:inherit;border-radius:2px;padding:0 2px">$1</mark>');
+}
+
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(() => t.classList.remove("show"), 1500);
+}
+
+// ── 数据加载 ──
+async function loadData() {
+  for (const url of DATA_URLS) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) {
+        DATA = await res.json();
+        return true;
+      }
+    } catch (e) {
+      console.warn("加载失败", url, e);
+    }
+  }
+  return false;
+}
+
+// ── Tab 切换 ──
+function switchTab(tabName) {
+  const tab = document.querySelector(`.tab[data-tab="${tabName}"]`);
+  if (!tab) return;
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  tab.classList.add("active");
+  currentTab = tabName;
+  document.querySelectorAll('[id^="panel-"]').forEach(p => p.hidden = true);
+  document.getElementById("panel-" + currentTab).hidden = false;
+  document.getElementById("select-func").style.display = (currentTab === "by-function") ? "block" : "none";
+  document.getElementById("search").placeholder = (
+    currentTab === "by-additive" ? "输入添加剂名、CNS 号、INS 号..." :
+    currentTab === "by-category" ? "输入食品分类编号或名称..." :
+    currentTab === "by-function" ? "输入功能名..." :
+    "搜索例外食品..."
+  );
+  render();
+}
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", () => switchTab(tab.dataset.tab));
+});
+
+// ── 渲染 ──
+function render() {
+  if (!DATA) return;
+  const q = document.getElementById("search").value.trim().toLowerCase();
+  if (currentTab === "by-additive") renderByAdditive(q);
+  else if (currentTab === "by-category") renderByCategory(q);
+  else if (currentTab === "by-function") renderByFunction(q);
+  else if (currentTab === "exceptions") renderExceptions(q);
+}
+
+function renderByAdditive(q) {
+  const allAdds = DATA.by_additive.additives;
+  const list = q ? allAdds.filter(a => {
+    const hay = `${a.name_zh} ${a.name_en} ${a.aliases} ${a.cns} ${a.ins} ${(a.functions || []).join(" ")}`.toLowerCase();
+    return hay.includes(q);
+  }) : allAdds;
+
+  document.getElementById("addListTitle").textContent = q ? `搜索：${q}` : "全部添加剂";
+  document.getElementById("addListMeta").textContent = `${list.length} / ${allAdds.length}`;
+  document.getElementById("counter").textContent = `${list.length} 项`;
+  document.getElementById("b-add").textContent = list.length;
+
+  const wrap = document.getElementById("addList");
+  const empty = document.getElementById("addEmpty");
+  if (list.length === 0) {
+    wrap.innerHTML = "";
+    empty.hidden = false;
+    return;
+  }
+  empty.hidden = true;
+
+  wrap.innerHTML = list.map(a => `
+    <div class="add-card" data-cns="${escapeHTML(a.cns)}">
+      <div class="name-zh">${highlight(a.name_zh || "(无名)", q)}</div>
+      <div class="name-en">${highlight(a.name_en || "", q)}</div>
+      <div class="meta-row">
+        <span class="cns-chip">CNS ${highlight(a.cns, q)}</span>
+        ${a.ins && a.ins !== "—" ? `<span class="cns-chip">INS ${highlight(a.ins, q)}</span>` : ""}
+        ${(a.functions || []).slice(0, 2).map(f => `<span class="func-chip">${highlight(f, q)}</span>`).join("")}
+        ${a.item_count ? `<span class="item-chip">${a.item_count} 条用途</span>` : ""}
+      </div>
+    </div>
+  `).join("");
+
+  // 点击展开详情
+  wrap.querySelectorAll(".add-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const cns = card.dataset.cns;
+      const a = DATA.by_additive.additives.find(x => x.cns === cns);
+      if (a) showAdditiveDetail(a);
+    });
+  });
+}
+
+function showAdditiveDetail(a) {
+  const det = document.getElementById("addDetail");
+  det.innerHTML = `
+    <div class="detail-card">
+      <div class="header">
+        <span class="name-zh">${escapeHTML(a.name_zh || "")}</span>
+        ${a.name_en ? `<span class="name-en">${escapeHTML(a.name_en)}</span>` : ""}
+        <span class="cns">CNS ${escapeHTML(a.cns)}</span>
+        ${a.ins && a.ins !== "—" ? `<span class="cns">INS ${escapeHTML(a.ins)}</span>` : ""}
+      </div>
+      <div class="meta">
+        <span><b>添加剂数：</b>${a.item_count || 0} 条使用规定</span>
+        ${a.functions && a.functions.length ? `<span><b>功能：</b>${a.functions.join("、")}</span>` : ""}
+      </div>
+      ${a.aliases ? `<div class="aliases"><b>别名：</b>${escapeHTML(a.aliases)}</div>` : ""}
+      <div class="func-list">
+        ${(a.functions || []).map(f => `<span class="func-tag">${escapeHTML(f)}</span>`).join("")}
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">使用范围（食品分类与最大使用量）</div>
+        <div class="section-meta">${a.items ? a.items.length : 0} 条</div>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width:120px">食品分类号</th>
+            <th>食品名称 / 分类</th>
+            <th style="width:160px">最大使用量</th>
+            <th>备注</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${(a.items || []).map(it => {
+            const cat = it.category || {};
+            const catL = cat.level || 0;
+            const catName = cat.name || it.food_name || "—";
+            return `
+              <tr>
+                <td class="col-code">${escapeHTML(it.food_code || "—")}</td>
+                <td>
+                  <span class="col-cat col-cat-L${catL}" title="第 ${catL} 级分类">L${catL}</span>
+                  ${escapeHTML(catName)}
+                </td>
+                <td class="col-limit">${escapeHTML(it.limit || "—")}</td>
+                <td class="col-remark">${escapeHTML(it.remark || "")}</td>
+              </tr>
+            `;
+          }).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+  det.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function renderByCategory(q) {
+  const fta = DATA.by_category.food_to_additives;
+  const codes = Object.keys(fta).sort();
+
+  // 按食品分类号 / 食品名称过滤
+  const allCats = DATA.by_category.category_tree;
+  // 收集所有分类(代号,名称)用于搜索
+  const allRows = [];
+  for (const tbl of allCats) {
+    for (const row of tbl.rows) {
+      allRows.push({
+        code: row.code,
+        name: row.name,
+        desc: row.desc,
+        level: row.level,
+        table_no: tbl.table_no,
+      });
+    }
+  }
+  const matched = q ? allRows.filter(r =>
+    `${r.code} ${r.name}`.toLowerCase().includes(q)
+  ) : allRows;
+
+  document.getElementById("catListMeta").textContent = `${matched.length} / ${allRows.length} 分类`;
+  document.getElementById("counter").textContent = `${matched.length} 项`;
+  document.getElementById("b-cat").textContent = matched.length;
+
+  const wrap = document.getElementById("catList");
+  const empty = document.getElementById("catEmpty");
+  if (matched.length === 0) {
+    wrap.innerHTML = "";
+    empty.hidden = false;
+    return;
+  }
+  empty.hidden = true;
+
+  // 分组：按一级分类(XX.0)
+  const groups = {};
+  for (const r of matched) {
+    const level1 = r.code.split(".")[0] + ".0";
+    if (!groups[level1]) groups[level1] = [];
+    groups[level1].push(r);
+  }
+  // 按一级分类代码排序
+  const sortedLevel1 = Object.keys(groups).sort();
+  const level1Names = {};
+  for (const cat of DATA.by_category.categories) {
+    level1Names[cat.code] = cat.title;
+  }
+
+  let html = "";
+  for (const l1 of sortedLevel1) {
+    const title = level1Names[l1] || l1;
+    const rows = groups[l1];
+    html += `
+        <div style="margin-bottom:14px">
+          <div style="font-size:13px;font-weight:600;color:var(--c-primary);padding:8px 0;border-bottom:1px solid var(--c-border)">
+            ${escapeHTML(l1)} ${escapeHTML(title)} <span style="font-size:11px;color:var(--c-text-3);font-weight:400">（${rows.length} 项）</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:6px;padding-top:8px">
+            ${rows.map(r => {
+              const cnt = fta[r.code] ? fta[r.code].length : 0;
+              return `
+                <div class="cat-card" data-code="${escapeHTML(r.code)}" style="
+                  padding: 8px 12px; border: 1px solid var(--c-border);
+                  border-radius: 6px; cursor: pointer; font-size: 12px;
+                  background: var(--c-surface); transition: all .15s;
+                ">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">
+                    <span style="font-family:monospace;color:var(--c-text-3)">${highlight(r.code, q)}</span>
+                    <span style="font-size:10px;color:var(--c-text-3)">L${r.level}</span>
+                  </div>
+                  <div style="color:var(--c-text-1);margin-top:2px">${highlight(r.name || "—", q)}</div>
+                  <div style="font-size:10px;color:var(--c-text-3);margin-top:4px">
+                    ${cnt > 0 ? `${cnt} 种可用添加剂` : '<span style="color:var(--c-high)">A.2 例外（不可添加）</span>'}
+                  </div>
+                </div>
+              `;
+            }).join("")}
+          </div>
+        </div>
+      `;
+  }
+  wrap.innerHTML = html;
+
+  // 点击展开
+  wrap.querySelectorAll(".cat-card").forEach(card => {
+    card.addEventListener("mouseover", () => {
+      card.style.borderColor = "var(--c-primary-2)";
+      card.style.background = "var(--c-primary-soft)";
+    });
+    card.addEventListener("mouseout", () => {
+      card.style.borderColor = "var(--c-border)";
+      card.style.background = "var(--c-surface)";
+    });
+    card.addEventListener("click", () => {
+      const code = card.dataset.code;
+      showCategoryDetail(code);
+    });
+  });
+}
+
+function showCategoryDetail(code) {
+  const fta = DATA.by_category.food_to_additives;
+  const allRows = DATA.by_category.category_tree;
+  let catRow = null;
+  for (const tbl of allRows) {
+    for (const r of tbl.rows) {
+      if (r.code === code) { catRow = r; break; }
+    }
+    if (catRow) break;
+  }
+
+  const adds = fta[code] || [];
+
+  const det = document.createElement("div");
+  det.innerHTML = `
+    <div class="detail-card">
+      <div class="header">
+        <span class="name-zh">${escapeHTML(catRow ? catRow.name : code)}</span>
+        <span class="cns">${escapeHTML(code)}</span>
+      </div>
+      ${catRow && catRow.desc ? `<div class="meta"><span>${escapeHTML(catRow.desc)}</span></div>` : ""}
+      <div class="meta">
+        <span><b>分类层级：</b>L${catRow ? catRow.level : "—"}</span>
+        <span><b>可用添加剂：</b>${adds.length} 种</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">该食品类别下允许使用的添加剂</div>
+        <div class="section-meta">${adds.length} 种</div>
+      </div>
+      ${adds.length === 0 ? `
+        <div class="empty">⚠️ 该食品类别属于表 A.2 例外列表，按 GB 2760 规定不允许使用食品添加剂</div>
+      ` : `
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>添加剂</th>
+              <th>英文名</th>
+              <th style="width:90px">CNS</th>
+              <th style="width:90px">INS</th>
+              <th>功能</th>
+              <th style="width:140px">最大使用量</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${adds.map(a => `
+              <tr>
+                <td class="col-name">${escapeHTML(a.additive_zh)}</td>
+                <td style="color:var(--c-text-2);font-size:12px">${escapeHTML(a.additive_en || "")}</td>
+                <td class="col-code">${escapeHTML(a.cns)}</td>
+                <td class="col-code">${escapeHTML(a.ins || "—")}</td>
+                <td style="font-size:11px;color:var(--c-text-2)">${(a.functions || []).join("、")}</td>
+                <td class="col-limit">${escapeHTML(a.limit || "—")}</td>
+                <td class="col-remark">${escapeHTML(a.remark || "")}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      `}
+    </div>
+  `;
+  // 替换 detail 容器内容
+  const old = document.getElementById("catDetail");
+  if (old) old.remove();
+  det.id = "catDetail";
+  document.getElementById("panel-by-category").appendChild(det);
+  det.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function renderByFunction(q) {
+  const funcList = DATA.by_function.function_list;
+  const sel = document.getElementById("select-func").value;
+  const matched = funcList.filter(f => {
+    if (sel && f !== sel) return false;
+    if (q && !f.toLowerCase().includes(q)) return false;
+    return true;
+  });
+
+  document.getElementById("funcListMeta").textContent = `${matched.length} / ${funcList.length} 功能`;
+  document.getElementById("counter").textContent = `${matched.length} 项`;
+  document.getElementById("b-func").textContent = matched.length;
+
+  const wrap = document.getElementById("funcList");
+  const empty = document.getElementById("funcEmpty");
+  if (matched.length === 0) {
+    wrap.innerHTML = "";
+    empty.hidden = false;
+    return;
+  }
+  empty.hidden = true;
+
+  wrap.innerHTML = matched.map(f => {
+    const adds = DATA.by_function.index[f] || [];
+    return `
+      <div class="add-card func-card" data-func="${escapeHTML(f)}" style="cursor:pointer">
+        <div class="name-zh">${highlight(f, q)}</div>
+        <div class="name-en">功能分类</div>
+        <div class="meta-row">
+          <span class="func-chip">${adds.length} 种添加剂</span>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  wrap.querySelectorAll(".func-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const f = card.dataset.func;
+      showFunctionDetail(f);
+    });
+  });
+}
+
+function showFunctionDetail(f) {
+  const adds = DATA.by_function.index[f] || [];
+  const det = document.createElement("div");
+  det.innerHTML = `
+    <div class="detail-card">
+      <div class="header">
+        <span class="name-zh">${escapeHTML(f)}</span>
+        <span class="cns">${adds.length} 种</span>
+      </div>
+      <div class="meta">
+        <span><b>功能分类：</b>${escapeHTML(f)}</span>
+        <span><b>添加剂数：</b>${adds.length}</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">${escapeHTML(f)} - 全部添加剂</div>
+        <div class="section-meta">${adds.length} 种</div>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width:90px">CNS</th>
+            <th>中文名</th>
+            <th>英文名</th>
+            <th>别名</th>
+            <th style="width:100px">用途数</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${adds.sort((a, b) => b.item_count - a.item_count).map(a => `
+            <tr>
+              <td class="col-code">${escapeHTML(a.cns)}</td>
+              <td class="col-name">${escapeHTML(a.name_zh)}</td>
+              <td style="color:var(--c-text-2);font-size:12px">${escapeHTML(a.name_en || "")}</td>
+              <td style="color:var(--c-text-2);font-size:12px">${escapeHTML(a.aliases || "")}</td>
+              <td style="text-align:center;color:var(--c-text-2)">${a.item_count}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+  const old = document.getElementById("funcDetail");
+  if (old) old.remove();
+  det.id = "funcDetail";
+  document.getElementById("panel-by-function").appendChild(det);
+  det.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function renderExceptions(q) {
+  const list = DATA.exceptions.list;
+  const matched = q ? list.filter(e =>
+    `${e.food_code} ${e.food_name}`.toLowerCase().includes(q)
+  ) : list;
+
+  document.getElementById("excListMeta").textContent = `${matched.length} / ${list.length}`;
+  document.getElementById("counter").textContent = `${matched.length} 项`;
+  document.getElementById("b-exc").textContent = matched.length;
+
+  const tbody = document.getElementById("excTbody");
+  tbody.innerHTML = matched.map(e => `
+    <tr>
+      <td class="col-code">${e.seq}.</td>
+      <td class="col-code">${escapeHTML(e.food_code)}</td>
+      <td class="col-name">${highlight(e.food_name, q)}</td>
+    </tr>
+  `).join("");
+}
+
+// ── 事件 ──
+document.getElementById("search").addEventListener("input", render);
+document.getElementById("select-func").addEventListener("change", render);
+document.getElementById("btn-clear").addEventListener("click", () => {
+  document.getElementById("search").value = "";
+  document.getElementById("select-func").value = "";
+  render();
+});
+
+// ── 入口 ──
+(async function init() {
+  const ok = await loadData();
+  if (!ok) {
+    document.body.innerHTML = `
+      <div class="container">
+        <div class="empty" style="padding:80px 20px">
+          <h2>❌ 数据加载失败</h2>
+          <p>请检查 <code>data/gb2760/gb2760_full.json</code> 是否存在</p>
+          <p style="margin-top:8px;font-size:11px;color:var(--c-text-3)">路径尝试：<br>${DATA_URLS.join('<br>')}</p>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // 填充统计
+  document.getElementById("st-add").textContent = DATA.stats.additive_count;
+  document.getElementById("st-item").textContent = DATA.stats.food_entry_count;
+  document.getElementById("st-cat").textContent = DATA.stats.category_count;
+  document.getElementById("st-func").textContent = DATA.stats.function_count;
+  document.getElementById("st-exc").textContent = DATA.stats.exception_count;
+  document.getElementById("updatedTag").text = `更新 ${DATA.updated}`;
+  document.getElementById("footerUpdated").text = `数据更新时间：${DATA.updated}`;
+
+  // 填充功能下拉
+  const sel = document.getElementById("select-func");
+  for (const f of DATA.by_function.function_list) {
+    const opt = document.createElement("option");
+    opt.value = f;
+    opt.textContent = f;
+    sel.appendChild(opt);
+  }
+
+  render();
+  console.log("[GB 2760] 数据已加载", DATA.stats);
+
+  // URL 参数 ?tab=by-additive | by-category | by-function | exceptions
+  const params = new URLSearchParams(location.search);
+  const urlTab = params.get("tab");
+  if (urlTab && ["by-additive","by-category","by-function","exceptions"].includes(urlTab)) {
+    switchTab(urlTab);
+  }
+})();
+</script>
+</body>
+</html>
