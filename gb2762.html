@@ -690,7 +690,17 @@ const FOOD_EMOJI = {
 };
 
 // 树工具:把 path 数组序列化用于 Set/Map key / data-attr
-function pathKey(path) { return path.map(s => s.replace(/\|/g, '||')).join('|'); }
+function pathKey(path) {
+  // v9: 归一化 - 去掉括号、冒号、逗号、空白的半全角差异
+  // (A.1 校对表录入时偶有半角标点 vs JSON 全角标点,统一归一后才能匹配)
+  const norm = (s) => (s || '')
+    .replace(/[()（）\[\]【】]/g, '')   // 所有括号
+    .replace(/:/g, '：')              // 半角冒号 → 全角
+    .replace(/,/g, '，')              // 半角逗号 → 全角
+    .replace(/\s+/g, '')              // 空白
+    .replace(/\|/g, '||');            // 转义分隔符
+  return path.map(norm).join('|');
+}
 function pathAttr(path) { return path.map(s => s.replace(/"/g, '&quot;').replace(/'/g, '&#39;')).join(' › '); }
 
 // JSON 用于 HTML 双引号属性时,必须把内部的 " 转义成 &quot;
@@ -729,10 +739,10 @@ function buildItemIndex() {
 // 把一个 item 关联到 A.1 树的某些节点路径
 // 优先用 v6.1 的 a1_l1/l2/l3/l4 精确路径(由 gen_xlsx_full.py 渲染时填充)
 function matchItemToPaths(item, tree) {
-  // 归一化:去掉括号+空白+大小写,并把半角冒号/逗号规范化为全角
-  // (兼容历史 xlsx 中偶尔出现的半角标点,避免与官方全角 A.1 树节点名匹配失败)
+  // v9: 归一化 - 去掉所有括号(包括方括号【】)、冒号、逗号、空白半全角差异
+  // (A.1 校对表 vs JSON vs PDF 三方标点不一致,统一归一后才能匹配)
   const norm = (s) => (s || '')
-    .replace(/[()（）]/g, '')
+    .replace(/[()（）\[\]【】]/g, '')
     .replace(/:/g, '：')
     .replace(/,/g, '，')
     .replace(/\s+/g, '')
@@ -746,18 +756,16 @@ function matchItemToPaths(item, tree) {
   const matchedPaths = new Set();
 
   if (a1Path.length > 0) {
-    // 递归遍历树,精确匹配 a1Path
+    // v9: 递归遍历树,精确匹配 a1Path,每一层祖先都注册(让 L2/L3 也能命中子节点 items)
     function walkExact(nodes, path, idx) {
       if (idx >= a1Path.length) return;
       const target = norm(a1Path[idx]);
       for (const n of nodes) {
         if (norm(n.name) === target) {
           const curPath = path.concat([n.name]);
-          if (idx === a1Path.length - 1) {
-            // 完全匹配 a1Path 的每一级 → 命中
-            matchedPaths.add(pathKey(curPath));
-          } else {
-            // 继续往下找下一级
+          // 注册到当前层(让上层 L2/L3 节点能包含下层 items)
+          matchedPaths.add(pathKey(curPath));
+          if (idx < a1Path.length - 1) {
             if (n.children) walkExact(n.children, curPath, idx + 1);
           }
         }
@@ -804,54 +812,21 @@ function countForPath(path) {
   return s.limits;
 }
 
-// 返回 {items, limits}:items = 子树下具体食品数(去重 path),limits = 限量条数总和
-// v8: limits 按 has_limit/sub_has_limit 过滤，与渲染表格保持一致（"—" 项不计入）
+// 返回 {items, limits}:items = 节点(含子树)下不同 item 数,limits = 限量条数总和
+// v9: 简化为只算 idx.get(targetKey)(因 matchItemToPaths 已把 item 注册到所有祖先层,无需子树累加)
+//     limits 按 has_limit/sub_has_limit 过滤,与渲染表格保持一致("—" 项不计入)
 function statsForPath(path) {
   const idx = buildItemIndex();
-  const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
   const targetKey = pathKey(path);
-  let items = 0, limits = 0;
-  // 累加一个 path-key 的有效限量条数（主副任一有值则贡献 1 行）
-  const visibleLimitsFor = (pk) => {
-    const list = idx.get(pk) || [];
-    let n = 0;
-    for (const it of list) {
-      const ml = (it.limit_value || '').toString().trim();
-      const sl = (it.sub_value  || '').toString().trim();
-      const hm = (it.has_limit === true) || (ml && ml !== '—' && it.has_limit === undefined);
-      const hs = (it.sub_has_limit === true) || (sl && sl !== '—' && it.sub_has_limit === undefined);
-      n += (hm ? 1 : 0) + (hs ? 1 : 0);
-    }
-    return n;
-  };
-  // 1) 直接命中
-  if (idx.has(targetKey)) {
-    items += 1;
-    limits += visibleLimitsFor(targetKey);
+  const list = idx.get(targetKey) || [];
+  let items = list.length, limits = 0;
+  for (const it of list) {
+    const ml = (it.limit_value || '').toString().trim();
+    const sl = (it.sub_value  || '').toString().trim();
+    const hm = (it.has_limit === true) || (ml && ml !== '—' && it.has_limit === undefined);
+    const hs = (it.sub_has_limit === true) || (sl && sl !== '—' && it.sub_has_limit === undefined);
+    limits += (hm ? 1 : 0) + (hs ? 1 : 0);
   }
-  // 2) 子树命中
-  function walk(nodes) {
-    nodes.forEach(n => {
-      const pk = pathKey(path.concat([n.name]));
-      if (idx.has(pk)) {
-        items += 1;
-        limits += visibleLimitsFor(pk);
-      }
-      if (n.children) walk(n.children);
-    });
-  }
-  const findNode = (nodes) => {
-    for (const n of nodes) {
-      if (pathKey(path.concat([n.name])) === targetKey) return n;
-      if (n.children) {
-        const r = findNode(n.children);
-        if (r) return r;
-      }
-    }
-    return null;
-  };
-  const node = findNode(tree);
-  if (node && node.children) walk(node.children);
   return { items, limits };
 }
 
@@ -981,7 +956,6 @@ function renderTreeDetail() {
   const path = treeSelected.path;
   const nodeName = path[path.length - 1];
   const bigName = path[0]; // L1
-  const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
 
   // 面包屑
   let bcHtml = `<a onclick="treeSelected=null;renderTree();renderTreeDetail();">食品类别</a>`;
@@ -1012,9 +986,9 @@ function renderTreeDetail() {
       }
     }
   }
-  const primaryItems = idx.has(primaryKey)
-    ? idx.get(primaryKey).map(x => ({ ...x, _viaSub: primaryName }))
-    : [];
+  // v9: 简化为只取 primaryKey 直接命中(因 matchItemToPaths 已把 item 注册到所有祖先层,无需子树累加)
+  // 上一级回退时只显示该层注册的 items,不会把兄弟 L3 全带上
+  const primaryItems = (idx.get(primaryKey) || []).map(x => ({ ...x, _viaSub: primaryName }));
 
   // === 二级分类:path 倒数第二层(二级分类)下所有命中 items(扣除 primaryItems) ===
   // 选中三级或更深时,展示其所属的二级分类(如:选"芸薹类蔬菜"→ 展示"新鲜蔬菜"下的其他限量)
