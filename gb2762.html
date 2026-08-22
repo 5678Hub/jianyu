@@ -348,10 +348,11 @@ table.ctable { width: 100%; border-collapse: collapse; font-size: 13px; }
 table.ctable th { background: #f4f7fa; padding: 10px 12px; text-align: left; font-weight: 600; color: var(--c-text-1); border-bottom: 1px solid var(--c-border-strong); font-size: 12px; }
 table.ctable td { padding: 10px 12px; border-bottom: 1px solid var(--c-border); color: var(--c-text); vertical-align: top; }
 table.ctable tr:hover td { background: #fafbfc; }
-table.ctable th.col-food, table.ctable td.col-food { width: 42%; }
-table.ctable th.col-limit, table.ctable td.col-limit { width: 16%; }
-table.ctable th.col-method, table.ctable td.col-method { width: 24%; }
-table.ctable th.col-note, table.ctable td.col-note { width: 18%; }
+table.ctable th.col-food, table.ctable td.col-food { width: 28%; }
+table.ctable th.col-limit, table.ctable td.col-limit { width: 13%; }
+table.ctable th.col-method, table.ctable td.col-method { width: 18%; }
+table.ctable th.col-note, table.ctable td.col-note { width: 41%; }
+table.ctable td.col-note { line-height: 1.55; }
 table.ctable td.col-food { line-height: 1.5; }
 table.ctable td.col-limit { font-weight: 600; color: var(--c-primary); white-space: nowrap; font-family: "SF Mono", Consolas, monospace; }
 table.ctable td.col-method { font-size: 12px; color: var(--c-text-2); }
@@ -1232,6 +1233,10 @@ function renderContamDetail() {
     if (fnE0) fnE0.innerHTML = '';
     return;
   }
+  // 准备脚注字典(用于展开备注列)
+  const footnoteDict = {};
+  (c.footnotes || []).forEach(fn => { if (fn && fn.label) footnoteDict[fn.label] = fn.text || ''; });
+
   let html = '<table class="ctable"><thead><tr>' +
     '<th class="col-food">食品中文名称</th>' +
     '<th class="col-limit">限量要求</th>' +
@@ -1239,32 +1244,58 @@ function renderContamDetail() {
     '<th class="col-note">备注</th>' +
   '</tr></thead><tbody>';
   items.forEach(it => {
-    // a1 路径(从 a1_l1/2/3/4 构建)
+    // 1. 食品中文名称: 用 it.food(完整字符串,就是 PDF 表里的"食品类别(名称)"列)
+    const foodName = it.food || '';
+    // 路径作为 title(供 hover 提示)
     const a1Path = [it.a1_l1, it.a1_l2, it.a1_l3, it.a1_l4].filter(x => x && String(x).trim());
-    const a1 = a1Path.length ? a1Path[a1Path.length - 1] : '';
     const path = a1Path.join(' › ');
-    let limitVal = '', method = '', note = '';
+
+    // 2. 限量要求: modif + value + unit(参考截图 5: "≤0.5mg/kg")
+    let limitVal = '', limitModif = '', limitUnit = it.unit || c.unit || '';
+    let noteKey = '';
+
     if (tab.sub === '甲基汞') {
-      // 表 3 甲基汞: 用 limit_value / inspection_method / note(没有 sub_* 字段)
+      // 表 3 甲基汞: limit_value / modif / note
       limitVal = (it.limit_value || '').toString();
-      method = it.inspection_method || '';
-      note = it.note || '';
+      limitModif = it.modif || '';
+      noteKey = it.note || '';
     } else if (tab.sub) {
-      // 表 4/8 无机砷/硝酸盐: 用 sub_value / inspection_method / sub_remark
+      // 表 4/8 无机砷/硝酸盐: sub_value / sub_modif / sub_remark
       limitVal = (it.sub_value || '').toString();
-      method = it.inspection_method || '';
-      note = it.sub_remark || it.remark || '';
+      limitModif = it.sub_modif || '';
+      noteKey = it.sub_remark || it.remark || '';
     } else {
-      // 主列(表 1-7, 8 亚硝酸盐等): limit_value / inspection_method / note
+      // 主列(表 1-7, 8 亚硝酸盐等)
       limitVal = (it.limit_value || '').toString();
-      method = it.inspection_method || '';
-      note = it.note || it.main_remark || '';
+      limitModif = it.limit_modifier || '';
+      noteKey = it.note || it.main_remark || '';
     }
+
+    const limitDisp = limitVal
+      ? (limitModif || (limitVal !== '—' ? '≤' : '')) + limitVal + (limitVal !== '—' && limitUnit ? limitUnit : '')
+      : '—';
+
+    // 3. 检验方法: 优先用顶层 c.inspection_method(完整描述),再用 item.inspection_method(标准号)
+    let method = c.inspection_method || it.inspection_method || '—';
+
+    // 4. 备注: 展开 footnotes 字典(把 "a" → 完整脚注文本)
+    const noteList = [];
+    noteKey.split(/[,，]/).forEach(k => {
+      const trimmed = k.trim();
+      if (!trimmed) return;
+      const txt = footnoteDict[trimmed];
+      if (txt) noteList.push('[' + trimmed + '] ' + txt);
+      else noteList.push(trimmed);
+    });
+    // 多脚注之间换行
+    const noteDisp = noteList.length ? noteList.join('<br>') : '—';
+    const noteDispForTitle = noteList.length ? noteList.join(' | ') : '';
+
     html += '<tr>' +
-      '<td class="col-food" title="' + escapeAttr(path) + '">' + escapeHTML(a1 || it.food || '—') + '</td>' +
-      '<td class="col-limit">' + escapeHTML(limitVal || '—') + '</td>' +
-      '<td class="col-method">' + escapeHTML(method || '—') + '</td>' +
-      '<td class="col-note">' + escapeHTML(note || '—') + '</td>' +
+      '<td class="col-food" title="' + escapeAttr(path) + '">' + escapeHTML(foodName || '—') + '</td>' +
+      '<td class="col-limit">' + escapeHTML(limitDisp) + '</td>' +
+      '<td class="col-method">' + escapeHTML(method) + '</td>' +
+      '<td class="col-note" title="' + escapeAttr(noteDispForTitle) + '">' + noteDisp + '</td>' +
     '</tr>';
   });
   html += '</tbody></table>';
