@@ -1139,6 +1139,18 @@ const CONTAM_TABS = [
 ];
 
 // 按污染物 + sub 取 items(主列 或 子列)
+// 去重:JSON 把路径树展平成多条,但 PDF 原表中同一食品类别(名称)只对应一条限量,
+//     按 (food, limit_value, sub_value) 三键去重可消除因路径展开产生的重复行
+function dedupByFoodKey(items) {
+  const seen = new Set();
+  return items.filter(it => {
+    const key = (it.food || '').trim() + '\x01' + (it.limit_value || '') + '\x01' + (it.sub_value || '');
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
 function getContamItems(tab) {
   if (!DATA || !DATA.contaminants) return [];
   const c = DATA.contaminants.find(x => x.table_no === tab.table_no);
@@ -1148,21 +1160,23 @@ function getContamItems(tab) {
     // 主列(limit_value + has_limit)且不为空
     // 表 3 汞: 必须 pollutant === "总汞"(否则甲基汞项会被误算进来)
     if (tab.table_no === 3) {
-      return all.filter(it => {
+      const filtered = all.filter(it => {
         const p = (it.pollutant || '');
         if (!(p === "总汞" || p.indexOf("总汞") === 0)) return false;
         const ml = (it.limit_value || '').toString().trim();
         return it.has_limit === true || ((ml && ml !== '—') && it.has_limit === undefined);
       });
+      return dedupByFoodKey(filtered);
     }
-    return all.filter(it => {
+    const filtered = all.filter(it => {
       const ml = (it.limit_value || '').toString().trim();
       const has = it.has_limit === true || (ml && ml !== '—' && it.has_limit === undefined);
       return has;
     });
+    return dedupByFoodKey(filtered);
   }
   // 子列(注:JSON 字段值带 ' a' 后缀表示带脚注,需 startsWith 匹配)
-  return all.filter(it => {
+  const filtered = all.filter(it => {
     if (tab.sub === "甲基汞") {
       const p = (it.pollutant || '');
       if (!(p === "甲基汞" || p.indexOf("甲基汞") === 0)) return false;
@@ -1185,6 +1199,7 @@ function getContamItems(tab) {
     }
     return false;
   });
+  return dedupByFoodKey(filtered);
 }
 
 function renderContamTabs() {
