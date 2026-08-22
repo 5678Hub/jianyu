@@ -805,15 +805,29 @@ function countForPath(path) {
 }
 
 // 返回 {items, limits}:items = 子树下具体食品数(去重 path),limits = 限量条数总和
+// v8: limits 按 has_limit/sub_has_limit 过滤，与渲染表格保持一致（"—" 项不计入）
 function statsForPath(path) {
   const idx = buildItemIndex();
   const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
   const targetKey = pathKey(path);
   let items = 0, limits = 0;
+  // 累加一个 path-key 的有效限量条数（主副任一有值则贡献 1 行）
+  const visibleLimitsFor = (pk) => {
+    const list = idx.get(pk) || [];
+    let n = 0;
+    for (const it of list) {
+      const ml = (it.limit_value || '').toString().trim();
+      const sl = (it.sub_value  || '').toString().trim();
+      const hm = (it.has_limit === true) || (ml && ml !== '—' && it.has_limit === undefined);
+      const hs = (it.sub_has_limit === true) || (sl && sl !== '—' && it.sub_has_limit === undefined);
+      n += (hm ? 1 : 0) + (hs ? 1 : 0);
+    }
+    return n;
+  };
   // 1) 直接命中
   if (idx.has(targetKey)) {
     items += 1;
-    limits += idx.get(targetKey).length;
+    limits += visibleLimitsFor(targetKey);
   }
   // 2) 子树命中
   function walk(nodes) {
@@ -821,7 +835,7 @@ function statsForPath(path) {
       const pk = pathKey(path.concat([n.name]));
       if (idx.has(pk)) {
         items += 1;
-        limits += idx.get(pk).length;
+        limits += visibleLimitsFor(pk);
       }
       if (n.children) walk(n.children);
     });
