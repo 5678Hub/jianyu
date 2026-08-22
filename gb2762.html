@@ -613,9 +613,16 @@ function buildItemIndex() {
   // 先建好树节点全集(所有叶子节点的 path)
   const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
 
-  // 收集每个 item 对应的 path
+  // 用 uniqueKey 全局去重:同一 (table_no, food, limit_value, sub_value, main_remark,
+  // sub_remark, note) 在所有 path 中只保留首次出现的 item(它携带最准确的 a1_path)。
+  // 这样可消除 gen_xlsx_full.py 重复写入导致的 4-8 倍重复条目。
+  const seenKeys = new Set();
   DATA.contaminants.forEach(c => {
     c.items.forEach(it => {
+      const k = [c.table_no, it.food || '', it.limit_value || '', it.sub_value || '',
+                 it.main_remark || '', it.sub_remark || '', it.note || ''].join('\x01');
+      if (seenKeys.has(k)) return;
+      seenKeys.add(k);
       const enriched = { ...it,
         _contaminant: c.contaminant, _symbol: c.symbol, _unit: c.unit,
         _table_no: c.table_no, _footnotes: c.footnotes,
@@ -756,12 +763,11 @@ function aggregateDescendants(path) {
       n.children.forEach(c => visit(c, curPath.concat([c.name])));
     }
   }
-  // 从 node 的 children 开始(不重复访问 node 自己,node 自身已在 idx 路径上但 idx.has(nodePath) 通常 false)
+  // 先访问 node 自己(包括 node 自身的 idx 命中,例如 L1 "食品" 直接挂载的锡表 item)
+  visit(node, path);
+  // 再访问 children
   if (node.children) {
     node.children.forEach(c => visit(c, path.concat([c.name])));
-  } else {
-    // 叶子节点(L3/L4):直接收自己
-    visit(node, path);
   }
   return out;
 }
