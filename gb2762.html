@@ -73,48 +73,25 @@ button.primary:hover { background: var(--c-primary); border-color: var(--c-prima
 button.export { background: var(--c-ok-soft); border-color: var(--c-ok); color: var(--c-ok); }
 button.export:hover { background: #d9ebd9; }
 
-/* ============= 关键词查询模式 ============= */
-.tab-row { display: flex; gap: 6px; flex-wrap: wrap; padding: 4px 0; }
-.tab { padding: 6px 14px; border-radius: 14px; border: 1px solid var(--c-border); background: #fafbfc; cursor: pointer; font-size: 12px; color: var(--c-text-2); transition: all 0.15s; user-select: none; }
-.tab:hover { border-color: var(--c-primary-2); color: var(--c-primary); }
-.tab.active { background: var(--c-primary-2); color: white; border-color: var(--c-primary-2); font-weight: 500; }
-.tab .count { margin-left: 4px; opacity: 0.7; font-size: 11px; }
-
+/* ============= Chips 多选筛选(模式 C 顶部) ============= */
 .filter-toggle {
-  padding: 6px 14px; font-size: 13px; background: var(--c-surface);
+  padding: 6px 14px; font-size: 12px; background: var(--c-surface);
   border: 1px solid var(--c-border-strong); color: var(--c-primary);
   border-radius: 6px; cursor: pointer; transition: all .15s;
 }
 .filter-toggle:hover { background: var(--c-primary-soft); border-color: var(--c-primary); }
 .filter-toggle.active { background: var(--c-primary-soft); border-color: var(--c-primary); color: var(--c-primary); font-weight: 600; }
 
-.cat-panel { margin-top: 10px; padding: 14px 16px; background: var(--c-surface); border: 1px solid var(--c-border); border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,.04); }
-.cat-panel-tip { font-size: 12px; color: var(--c-text-3); margin-bottom: 10px; }
-.cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; }
-.cat-chip { display: flex; align-items: center; justify-content: space-between; padding: 6px 10px; border: 1px solid var(--c-border); border-radius: 16px; background: var(--c-bg); font-size: 12px; color: var(--c-text-1); cursor: pointer; user-select: none; transition: all .15s; }
-.cat-chip:hover { border-color: var(--c-primary); background: var(--c-primary-soft); }
-.cat-chip.selected { background: var(--c-primary); color: #fff; border-color: var(--c-primary); font-weight: 500; }
-.cat-chip.selected .cat-chip-count { color: rgba(255,255,255,.85); }
-.cat-chip-count { font-size: 11px; color: var(--c-text-3); margin-left: 4px; }
+.chips-row { display: flex; flex-wrap: wrap; gap: 6px; padding: 4px 0; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--c-border); border-radius: 16px; background: var(--c-surface); font-size: 12.5px; color: var(--c-text-2); cursor: pointer; user-select: none; transition: all .15s; line-height: 1.4; }
+.chip:hover { border-color: var(--c-primary); background: var(--c-primary-soft); color: var(--c-primary); }
+.chip.selected { background: var(--c-primary); color: #fff; border-color: var(--c-primary); font-weight: 500; }
+.chip.selected .chip-count { color: rgba(255,255,255,.85); }
+.chip-count { font-size: 10.5px; color: var(--c-text-3); margin-left: 2px; }
+.chip.sym { color: var(--c-text-3); font-size: 11px; font-weight: 400; }
 
-.sub-cat-hint { font-size: 12px; color: var(--c-text-2); margin-bottom: 10px; }
-.sub-cat-block { margin-bottom: 10px; }
-.sub-cat-title { font-size: 12px; color: var(--c-primary); font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
-.sub-cat-title-count { font-size: 10px; color: var(--c-text-3); font-weight: 400; margin-left: 4px; }
-.sub-cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 5px; }
-.sub-cat-chip { display: flex; align-items: center; justify-content: space-between; padding: 5px 9px; border: 1px solid var(--c-border); border-radius: 14px; background: #fafbfc; font-size: 11.5px; color: var(--c-text-2); cursor: pointer; user-select: none; transition: all .15s; }
-.sub-cat-chip:hover { border-color: var(--c-accent); background: var(--c-accent-soft); color: var(--c-accent); }
-.sub-cat-chip.selected { background: var(--c-accent); color: #fff; border-color: var(--c-accent); font-weight: 500; }
-.sub-cat-chip.selected .cat-chip-count { color: rgba(255,255,255,.85); }
-
-td.subcategory { font-size: 11.5px; color: var(--c-text-2); line-height: 1.4; }
-
+/* tree toolbar 共用 .summary */
 .summary { display: flex; gap: 14px; flex-wrap: wrap; padding: 8px 0; }
-.summary-card { padding: 10px 14px; border-radius: var(--r-sm); background: var(--c-primary-soft); border: 1px solid var(--c-border); min-width: 130px; }
-.summary-card .label { font-size: 11px; color: var(--c-text-3); }
-.summary-card .num { font-size: 22px; font-weight: 600; color: var(--c-primary); margin-top: 2px; }
-.summary-card.warn { background: var(--c-warn-soft); }
-.summary-card.warn .num { color: var(--c-warn); }
 
 table.results { width: 100%; border-collapse: collapse; font-size: 13px; }
 table.results th { background: #f4f7fa; padding: 10px 12px; text-align: left; font-weight: 600; color: var(--c-text-1); border-bottom: 1px solid var(--c-border-strong); position: sticky; top: 0; font-size: 12px; }
@@ -144,36 +121,13 @@ table.results td.remark { font-size: 12px; color: var(--c-text-2); font-style: i
 /* ============= 树形浏览模式 ============= */
 .tree-view { display: grid; grid-template-columns: 280px 1fr; gap: 14px; align-items: flex-start; }
 
-/* ============= 按污染物浏览模式 ============= */
-.contam-toolbar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+/* ============= 按污染物查询模式(顶部 chips 多选) ============= */
+.contam-toolbar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
 .contam-toolbar input { flex: 1; min-width: 200px; padding: 7px 11px; border: 1px solid var(--c-border); border-radius: 6px; font-size: 13px; background: var(--c-bg); color: var(--c-text); font-family: inherit; }
 .contam-toolbar input:focus { outline: none; border-color: var(--c-primary); }
 .contam-toolbar button { padding: 7px 13px; border: 1px solid var(--c-border); border-radius: 6px; background: var(--c-surface); color: var(--c-text-2); font-size: 12px; cursor: pointer; font-family: inherit; }
 .contam-toolbar button:hover { color: var(--c-primary); border-color: var(--c-primary); }
 
-.contam-view { display: grid; grid-template-columns: 220px 1fr; gap: 14px; align-items: flex-start; }
-.contam-list-wrap { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: 8px; overflow: hidden; position: sticky; top: 12px; max-height: calc(100vh - 24px); display: flex; flex-direction: column; }
-.contam-list-header { background: var(--c-primary); color: #fff; text-align: center; padding: 9px 8px; font-size: 13px; font-weight: 600; }
-#contamList { overflow-y: auto; flex: 1; }
-.contam-list-item { padding: 11px 14px; border-bottom: 1px solid var(--c-border); cursor: pointer; font-size: 13px; color: var(--c-text); text-align: center; transition: background .12s; user-select: none; }
-.contam-list-item:hover { background: var(--c-primary-soft); color: var(--c-primary); }
-.contam-list-item.selected { background: var(--c-primary-soft); color: var(--c-primary); font-weight: 600; border-left: 3px solid var(--c-primary); padding-left: 11px; }
-.contam-list-item .contam-count { display: block; font-size: 10px; color: var(--c-text-3); margin-top: 2px; font-weight: 400; }
-.contam-list-item.selected .contam-count { color: var(--c-primary); }
-
-.contam-detail { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: 8px; overflow: hidden; }
-.contam-detail-header { padding: 12px 18px; border-bottom: 1px solid var(--c-border); background: var(--c-primary-soft); display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.contam-detail-name { font-size: 16px; font-weight: 600; color: var(--c-primary); }
-.contam-detail-meta { font-size: 12px; color: var(--c-text-3); }
-#contamTableWrap { padding: 0; overflow-x: auto; }
-#contamTableWrap table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
-#contamTableWrap th { background: #f4f6f8; color: var(--c-text-2); padding: 8px 10px; text-align: left; font-weight: 600; border-bottom: 1px solid var(--c-border); white-space: nowrap; }
-#contamTableWrap td { padding: 7px 10px; border-bottom: 1px solid var(--c-border); color: var(--c-text); vertical-align: top; }
-#contamTableWrap tr:hover td { background: #fafbfc; }
-#contamTableWrap td.food { white-space: normal; }
-#contamTableWrap td.limit { font-weight: 600; color: var(--c-primary); white-space: nowrap; }
-#contamTableWrap td.empty-row { text-align: center; color: var(--c-text-3); padding: 30px; font-size: 13px; }
-#contamFootnotes { padding: 0 18px 16px; }
 @media (max-width: 880px) { .tree-view { grid-template-columns: 1fr; } }
 
 .tree-side {
@@ -390,8 +344,7 @@ table.lvl td.remark-cell { font-size: 11.5px; color: var(--c-text-2); font-style
 
 <div class="mode-tabs">
   <div class="mode-tab active" data-mode="tree" onclick="switchMode('tree')">🌲 按食品类别浏览</div>
-  <div class="mode-tab" data-mode="keyword" onclick="switchMode('keyword')">🔍 关键词 / 污染物查询</div>
-  <div class="mode-tab" data-mode="contaminant" onclick="switchMode('contaminant')">☢️ 按污染物浏览</div>
+  <div class="mode-tab" data-mode="contaminant" onclick="switchMode('contaminant')">☢️ 按污染物查询</div>
 </div>
 
 <!-- ============== 模式 A:按食品类别浏览 ============== -->
@@ -431,83 +384,51 @@ table.lvl td.remark-cell { font-size: 11.5px; color: var(--c-text-2); font-style
   </div>
 </div>
 
-<!-- ============== 模式 B:关键词 + 污染物 tab ============== -->
-<div id="modeKeyword" style="display:none;">
-
-<section class="section">
-  <div class="section-title">🔍 关键词查询 <span class="hint" style="margin-left:auto;">支持食品名 / 大类 / 污染物名 / 脚注内容 模糊搜索 · 多关键词空格分隔即 AND</span></div>
-  <div class="input-row">
-    <input type="text" id="qInput" placeholder="例如:铅、谷物、蔬菜、酱腌菜、苯并…实时过滤" autocomplete="off" autofocus>
-    <button class="primary" onclick="forceSearch()">查询</button>
-    <button onclick="clearSearch()">清空</button>
-  </div>
-  <div class="tab-row" id="contaminantTabs" style="margin-top: 14px;">
-    <!-- JS 渲染 -->
-  </div>
-  <div style="margin-top: 10px;">
-    <button class="filter-toggle" onclick="toggleCategoryPanel()">
-      🏷️ 产品类型筛选(<span id="catSelectedCount">0</span>/22 类 已选)<span id="catToggleIcon">▼</span>
-    </button>
-    <button onclick="clearCategoryFilter()" style="margin-left:6px;font-size:12px;">清空筛选</button>
-    <div id="categoryPanel" class="cat-panel" style="display:none;">
-      <div class="cat-panel-tip">按 GB 2762-2025 标准附录 A.1「食品类别(名称)说明」分类 · 大类多选即 OR · 选大类后可继续选细类 · 跨污染物筛选</div>
-      <div class="cat-grid" id="catGrid">
-        <!-- JS 渲染 一级大类 -->
-      </div>
-      <div id="subCatWrap" style="display:none; margin-top:14px; padding-top:14px; border-top:1px dashed var(--c-border);">
-        <!-- JS 渲染 二级细类 -->
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-title">
-    📊 查询结果
-    <span class="hint" id="resultHint" style="margin-left:auto;">—</span>
-    <button class="export" onclick="exportCSV()">⬇ 导出 CSV</button>
-    <button class="export" onclick="exportXLSX()">⬇ 导出 Excel</button>
-  </div>
-  <div id="resultsWrap">
-    <div class="empty-tip"><span class="emoji">🔍</span>输入关键词查询，或点击上方污染物切换</div>
-  </div>
-  <div id="footnotesWrap"></div>
-</section>
-
-</div><!-- /modeKeyword -->
-
-<!-- ============== 模式 C:按污染物浏览(foodvip.net 风格) ============== -->
+<!-- ============== 模式 C:按污染物查询(顶部 chips 多选) ============== -->
 <div id="modeContaminant" style="display:none;">
 
 <section class="section">
   <div class="section-title">
-    ☢️ 按污染物浏览
-    <span class="hint" style="margin-left:auto;">按污染物查找其在 GB 2762-2025 中所有食品的限量要求 · 左侧切换污染物 · 右侧显示全部限量</span>
+    ☢️ 污染物筛选 <span class="hint" id="contamHint" style="margin-left:auto;">—</span>
   </div>
-  <div class="contam-toolbar">
-    <input type="text" id="contamSearchInput" placeholder="在当前污染物的限量中再筛食品名 / 类别 / 脚注…" autocomplete="off" oninput="onContamSearch()">
-    <button onclick="document.getElementById('contamSearchInput').value=''; onContamSearch();">清空</button>
-    <span class="hint" id="contamHint" style="margin-left:8px;">—</span>
+  <div class="chips-row" id="contamChips">
+    <!-- JS 渲染:12 个污染物 chips(默认全选) -->
+  </div>
+  <div style="margin-top:10px; display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+    <button class="filter-toggle" onclick="selectAllContam()">✓ 全选</button>
+    <button class="filter-toggle" onclick="deselectAllContam()">✗ 全不选</button>
+    <button class="filter-toggle" onclick="invertContam()">⇄ 反选</button>
+    <span class="hint" id="contamSelCount" style="margin-left:auto;">已选 0/12</span>
   </div>
 </section>
 
-<section class="section" style="padding: 0;">
-  <div class="contam-view">
-    <aside class="contam-list-wrap">
-      <div class="contam-list-header">中文名称</div>
-      <div id="contamList">
-        <!-- JS 渲染 -->
-      </div>
-    </aside>
-    <div class="contam-detail">
-      <div class="contam-detail-header">
-        <span class="contam-detail-name" id="contamDetailName">—</span>
-        <span class="contam-detail-meta" id="contamDetailMeta">—</span>
-      </div>
-      <div id="contamTableWrap"></div>
-      <div id="contamFootnotes"></div>
-    </div>
+<section class="section">
+  <div class="section-title">
+    🏷️ 食品大类筛选 <span class="hint" style="margin-left:auto;">—</span>
   </div>
+  <div class="chips-row" id="bigCatChips">
+    <!-- JS 渲染:22 个食品大类 chips(默认全选) -->
+  </div>
+  <div style="margin-top:10px; display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+    <button class="filter-toggle" onclick="selectAllBigCat()">✓ 全选</button>
+    <button class="filter-toggle" onclick="deselectAllBigCat()">✗ 全不选</button>
+    <button class="filter-toggle" onclick="invertBigCat()">⇄ 反选</button>
+    <span class="hint" id="bigCatSelCount" style="margin-left:auto;">已选 0/22</span>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    📊 查询结果 <span class="hint" id="resultHint" style="margin-left:auto;">—</span>
+  </div>
+  <div class="contam-toolbar">
+    <input type="text" id="contamSearchInput" placeholder="结果中再筛 食品名 / 类别 / 脚注…" autocomplete="off" oninput="onContamSearch()">
+    <button onclick="document.getElementById('contamSearchInput').value=''; onContamSearch();">清空</button>
+  </div>
+  <div id="resultsWrap">
+    <div class="empty-tip"><span class="emoji">☢️</span>勾选上方的污染物和食品大类查看限量</div>
+  </div>
+  <div id="footnotesWrap"></div>
 </section>
 
 </div><!-- /modeContaminant -->
@@ -523,12 +444,11 @@ table.lvl td.remark-cell { font-size: 11.5px; color: var(--c-text-2); font-style
 const DATA_URL = './data/gb2762/gb2762_2025.json?t=' + Date.now();
 let DATA = null;
 let currentMode = 'tree';
-let currentFilter = 'all';  // 'all' 或 污染物 table_no
-let currentQuery = '';
-let selectedBigCats = new Set();
-let selectedContam = null; // 当前选中的污染物中文名(用于模式 C:按污染物浏览)
-let selectedSubCats = new Set();
-let categoryPanelOpen = false;
+
+// 模式 C:按污染物查询 chips 多选状态
+// 默认全选 12 种污染物 + 22 个食品大类,用户可自由勾选/取消
+let selectedContams = new Set();   // Set<table_no>
+let selectedBigCats2 = new Set();  // Set<L1 短名>
 
 // 树形浏览模式状态
 let treeSelected = null; // {path: [name1, name2, ...]}  当前选中节点的全路径
@@ -599,11 +519,8 @@ async function loadData() {
       DATA = await res.json();
       DATA._dataSource = url;
       updateSubtitle();
-      renderTabs();
-      renderCategoryPanel();
       renderTree();
       refreshTreeSummary();
-      renderKeywordResults();
       return;
     } catch (e) {
       tried.push(`${url} → ${e.message || e}`);
@@ -660,20 +577,28 @@ function switchMode(mode) {
     el.classList.toggle('active', el.dataset.mode === mode);
   });
   document.getElementById('modeTree').style.display = (mode === 'tree') ? '' : 'none';
-  document.getElementById('modeKeyword').style.display = (mode === 'keyword') ? '' : 'none';
   document.getElementById('modeContaminant').style.display = (mode === 'contaminant') ? '' : 'none';
-  if (mode === 'keyword') {
-    const inp = document.getElementById('qInput');
-    if (inp) setTimeout(() => inp.focus(), 50);
-  }
   if (mode === 'contaminant') {
-    if (typeof selectedContam === 'undefined' || selectedContam === null) {
-      // 默认选中第一个污染物(表 1 铅)
-      const first = (DATA && DATA.contaminants && DATA.contaminants[0]) || null;
-      selectedContam = first ? String(first.table_no) : null;
+    // 首次进入模式 C 时,默认全选所有污染物和食品大类
+    if (selectedContams.size === 0 && DATA && DATA.contaminants) {
+      DATA.contaminants.forEach(c => selectedContams.add(String(c.table_no)));
     }
-    renderContamList();
-    renderContamDetail();
+    if (selectedBigCats2.size === 0 && DATA) {
+      // 默认 = A.1 树 L1 + JSON 中独有的 a1_l1 短名(与 renderBigCatChips 一致)
+      (DATA.appendix_a1 && DATA.appendix_a1.tree || []).forEach(n => {
+        const short = n.name.split('（')[0].split('(')[0].trim();
+        if (short) selectedBigCats2.add(short);
+      });
+      DATA.contaminants && DATA.contaminants.forEach(c => {
+        c.items.forEach(it => {
+          const short = (it.a1_l1 || '').split('（')[0].split('(')[0].trim();
+          if (short) selectedBigCats2.add(short);
+        });
+      });
+    }
+    renderContamChips();
+    renderBigCatChips();
+    renderContamResults();
   }
 }
 
@@ -1192,166 +1117,11 @@ function jumpToBig(big) {
   selectTreeNode([big]);
 }
 
-// ========== 模式 B:关键词查询 (原有逻辑) ==========
-
-function toggleCategoryPanel() {
-  categoryPanelOpen = !categoryPanelOpen;
-  document.getElementById('categoryPanel').style.display = categoryPanelOpen ? 'block' : 'none';
-  document.getElementById('catToggleIcon').textContent = categoryPanelOpen ? '▲' : '▼';
-}
-
-function clearCategoryFilter() {
-  selectedBigCats.clear();
-  selectedSubCats.clear();
-  renderCategoryPanel();
-  renderKeywordResults();
-}
-
-function getCategoryData() {
-  // 返回树形 + 拍扁的 L1 短名映射
-  const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
-  return tree;
-}
-
-// 短名(去括号内说明):用于大类/子类筛选 chip 与 item 比较 — 兼容全/半角括号
-function shortNameOf(s) {
-  return (s || '').split('（')[0].split('(')[0].trim();
-}
-
-// 把树节点拍扁为 [{name, fullName, shortName, depth, big, path}]
-function flattenTreeForModeB(tree) {
-  const out = [];
-  function walk(nodes, big, path, depth) {
-    nodes.forEach(n => {
-      const short = n.name.split('（')[0].split('(')[0].trim();
-      const p = path.concat([short]);
-      out.push({ name: n.name, shortName: short, depth, big: big || short, path: p });
-      if (n.children) walk(n.children, big || short, p, depth + 1);
-    });
-  }
-  walk(tree, '', [], 1);
-  return out;
-}
-
-function countItemsFor(bigShort, subShort) {
-  let n = 0;
-  DATA.contaminants.forEach(c => {
-    if (currentFilter !== 'all' && c.table_no != currentFilter) return;
-    c.items.forEach(it => {
-      const itBigShort = (it.category_a1 || it.category || '').split('（')[0].split('(')[0].trim();
-      if (bigShort && itBigShort !== bigShort) return;
-      if (subShort) {
-        const food = it.food || '';
-        const subName = subShort;
-        if (!food.includes(subName) && !subName.includes(food.replace(/[除外不包括]+.*$/, ''))) return;
-      }
-      n++;
-    });
-  });
-  return n;
-}
-
-function renderCategoryPanel() {
-  const tree = getCategoryData();
-  const flat = flattenTreeForModeB(tree);
-  const bigCats = tree.map(n => n.name.split('（')[0].split('(')[0].trim());
-
-  const bigGrid = document.getElementById('catGrid');
-  bigGrid.innerHTML = bigCats.map(big => {
-    const sel = selectedBigCats.has(big);
-    const cnt = countItemsFor(big);
-    return `<div class="cat-chip${sel ? ' selected' : ''}" onclick="toggleBigCat('${escapeAttr(big)}')">
-      <span>${escapeHTML(big)}</span><span class="cat-chip-count">${cnt}</span>
-    </div>`;
-  }).join('');
-
-  const subWrap = document.getElementById('subCatWrap');
-  if (selectedBigCats.size === 0) {
-    subWrap.style.display = 'none';
-    subWrap.innerHTML = '';
-  } else {
-    subWrap.style.display = 'block';
-    let html = '<div class="sub-cat-hint">已选大类下的细类(多选即 OR;不选则仅按大类过滤)</div>';
-    [...selectedBigCats].forEach(big => {
-      // 找属于该大类的所有节点
-      const subs = flat.filter(n => n.big === big);
-      html += `<div class="sub-cat-block">
-        <div class="sub-cat-title">📂 ${escapeHTML(big)} <span class="sub-cat-title-count">${subs.length} 类</span></div>
-        <div class="sub-cat-grid">`;
-      subs.forEach(s => {
-        const sel = selectedSubCats.has(s.shortName);
-        const cnt = countItemsFor(big, s.shortName);
-        const indent = '　'.repeat(Math.max(0, s.depth - 2));
-        html += `<div class="sub-cat-chip${sel ? ' selected' : ''}" onclick="toggleSubCat('${escapeAttr(s.shortName)}')">
-          <span>${indent}${escapeHTML(s.shortName)}</span><span class="cat-chip-count">${cnt}</span>
-        </div>`;
-      });
-      html += '</div></div>';
-    });
-    subWrap.innerHTML = html;
-  }
-
-  const totalSel = selectedBigCats.size + selectedSubCats.size;
-  document.getElementById('catSelectedCount').textContent = totalSel;
-  const btn = document.querySelector('.filter-toggle');
-  if (btn) btn.classList.toggle('active', totalSel > 0);
-}
-
-function toggleBigCat(big) {
-  if (selectedBigCats.has(big)) {
-    selectedBigCats.delete(big);
-    // 取消大类时,清掉该 big 名下所有子类的选中(用短名)
-    const flat = flattenTreeForModeB(getCategoryData());
-    flat.filter(n => n.big === big).forEach(s => selectedSubCats.delete(s.shortName));
-  } else {
-    selectedBigCats.add(big);
-  }
-  renderCategoryPanel();
-  renderKeywordResults();
-}
-
-function toggleSubCat(sub) {
-  if (selectedSubCats.has(sub)) selectedSubCats.delete(sub);
-  else selectedSubCats.add(sub);
-  renderCategoryPanel();
-  renderKeywordResults();
-}
-
-function renderTabs() {
-  const wrap = document.getElementById('contaminantTabs');
-  // v8: tab 计数按 has_limit/sub_has_limit 过滤，与 getFilteredItems 行为一致
-  const filterCount = (items) => (items || []).filter(it => {
-    const ml = (it.limit_value || '').toString().trim();
-    const sl = (it.sub_value  || '').toString().trim();
-    const hm = (it.has_limit === true) || (ml && ml !== '—' && it.has_limit === undefined);
-    const hs = (it.sub_has_limit === true) || (sl && sl !== '—' && it.sub_has_limit === undefined);
-    return hm || hs;
-  }).length;
-  const tabs = [{ no: 'all', name: '全部污染物', symbol: '', count: DATA.contaminants.reduce((s,c)=>s+filterCount(c.items),0) }];
-  DATA.contaminants.forEach(c => {
-    tabs.push({ no: c.table_no, name: c.contaminant, symbol: c.symbol, count: filterCount(c.items) });
-  });
-  wrap.innerHTML = tabs.map(t => {
-    const cls = currentFilter == t.no ? 'tab active' : 'tab';
-    const label = t.symbol ? `${t.name} (${t.symbol})` : t.name;
-    return `<div class="${cls}" data-no="${t.no}" onclick="setFilter(${t.no})">${label}<span class="count">${t.count}</span></div>`;
-  }).join('');
-}
-
-function setFilter(no) {
-  currentFilter = no;
-  renderTabs();
-  renderCategoryPanel();
-  renderKeywordResults();
-}
-
-// ========== 模式 C:按污染物浏览 ==========
-// 数据源: DATA.contaminants(12 张表,378 条总量;v8 渲染按 has_limit 过滤"—"后约 331 条)— 与模式 A/B 同一份 JSON,避免双源
+// ========== 模式 C:按污染物查询(顶部 chips 多选) ==========
+// 数据源: DATA.contaminants(12 张表) — 与模式 A 同一份 JSON,避免双源
 let contamSearchKw = '';
 
-// 左侧污染物列表按官方 12 张表顺序排序
-// 表1 铅(4.1)→ 表2 镉(4.2)→ 表3 总汞→ 表4 总砷→ 表5 锡→ 表6 镍→ 表7 铬
-// → 表8 亚硝酸盐→ 表9 苯并[a]芘→ 表10 N-二甲基亚硝胺→ 表11 多氯联苯→ 表12 3-MCPD
+// 12 个污染物按官方顺序排序(用于 chips 排列)
 const CONTAM_ORDER = [
   { table_no: '1',  no: '4.1'  }, // 铅
   { table_no: '2',  no: '4.2'  }, // 镉
@@ -1418,42 +1188,187 @@ function a1OrderOf(row) {
   return bestOrd * 1000 + (10 - bestDepth);
 }
 
-function renderContamList() {
-  const wrap = document.getElementById('contamList');
-  if (!wrap) return;
-  if (!DATA || !DATA.contaminants) { wrap.innerHTML = '<div style="padding:14px;color:var(--c-text-3);font-size:12px;">数据加载中…</div>'; return; }
+// ========== 顶部污染物 chips 渲染 ==========
+function visibleCountOf(c) {
+  return (c.items || []).filter(it => {
+    const ml = (it.limit_value || '').toString().trim();
+    const sl = (it.sub_value  || '').toString().trim();
+    const hm = (it.has_limit === true) || (ml && ml !== '—' && it.has_limit === undefined);
+    const hs = (it.sub_has_limit === true) || (sl && sl !== '—' && it.sub_has_limit === undefined);
+    return hm || hs;
+  }).length;
+}
+function renderContamChips() {
+  const wrap = document.getElementById('contamChips');
+  if (!wrap || !DATA || !DATA.contaminants) return;
   const sorted = [...DATA.contaminants].sort((a, b) => getContamOrderIndex(a.table_no) - getContamOrderIndex(b.table_no));
-  // v8: 计数按 has_limit/sub_has_limit 过滤，与实际渲染一致（侧栏与详情保持一致）
   wrap.innerHTML = sorted.map(c => {
-    const orderItem = CONTAM_ORDER.find(x => x.table_no === String(c.table_no));
-    const noTag = orderItem ? `<span style="color:#888;font-size:11px;font-weight:normal;margin-right:4px;">${orderItem.no}</span>` : '';
-    const sel = String(c.table_no) === String(selectedContam);
-    const visibleCount = (c.items || []).filter(it => {
-      const ml = (it.limit_value || '').toString().trim();
-      const sl = (it.sub_value  || '').toString().trim();
-      const hm = (it.has_limit === true) || (ml && ml !== '—' && it.has_limit === undefined);
-      const hs = (it.sub_has_limit === true) || (sl && sl !== '—' && it.sub_has_limit === undefined);
-      return hm || hs;
-    }).length;
-    return `<div class="contam-list-item${sel ? ' selected' : ''}" data-tn="${c.table_no}" onclick="selectContam('${c.table_no}')">
-      <div>${noTag}${escapeHTML(c.contaminant)}${c.symbol ? ' <span style="color:#999;font-size:11px;">(' + escapeHTML(c.symbol) + ')</span>' : ''}</div>
-      <span class="contam-count">${visibleCount} 条限量</span>
+    const sel = selectedContams.has(String(c.table_no));
+    const cnt = visibleCountOf(c);
+    const sym = c.symbol ? ` <span class="chip sym">(${escapeHTML(c.symbol)})</span>` : '';
+    return `<div class="chip${sel ? ' selected' : ''}" onclick="toggleContamChip('${c.table_no}')">
+      ${escapeHTML(c.contaminant)}${sym}<span class="chip-count">${cnt}</span>
     </div>`;
   }).join('');
+  updateContamSelCount();
+}
+function toggleContamChip(tn) {
+  const key = String(tn);
+  if (selectedContams.has(key)) selectedContams.delete(key);
+  else selectedContams.add(key);
+  renderContamChips();
+  renderContamResults();
+}
+function selectAllContam() {
+  if (!DATA) return;
+  DATA.contaminants.forEach(c => selectedContams.add(String(c.table_no)));
+  renderContamChips();
+  renderContamResults();
+}
+function deselectAllContam() {
+  selectedContams.clear();
+  renderContamChips();
+  renderContamResults();
+}
+function invertContam() {
+  if (!DATA) return;
+  const all = new Set(DATA.contaminants.map(c => String(c.table_no)));
+  const next = new Set();
+  all.forEach(tn => { if (!selectedContams.has(tn)) next.add(tn); });
+  selectedContams = next;
+  renderContamChips();
+  renderContamResults();
+}
+function updateContamSelCount() {
+  if (!DATA) return;
+  const el = document.getElementById('contamSelCount');
+  if (el) el.textContent = `已选 ${selectedContams.size}/${DATA.contaminants.length}`;
 }
 
-function selectContam(tableNo) {
-  selectedContam = String(tableNo);
-  const inp = document.getElementById('contamSearchInput');
-  if (inp) { inp.value = ''; contamSearchKw = ''; }
-  renderContamList();
-  renderContamDetail();
+// ========== 食品大类 chips 渲染 ==========
+function renderBigCatChips() {
+  const wrap = document.getElementById('bigCatChips');
+  if (!wrap || !DATA) return;
+  // 收集所有 chip key: A.1 树 L1 + JSON 中独有的 a1_l1 短名(如「食品」)
+  const bigSet = new Map(); // short → count
+  function addBig(short) {
+    if (!short) return;
+    if (!bigSet.has(short)) bigSet.set(short, 0);
+  }
+  // 1) A.1 树 L1
+  (DATA.appendix_a1 && DATA.appendix_a1.tree || []).forEach(n => {
+    addBig(n.name.split('（')[0].split('(')[0].trim());
+  });
+  // 2) JSON 中所有 a1_l1(避免树漏掉的边缘项被默认隐藏)
+  DATA.contaminants.forEach(c => {
+    c.items.forEach(it => {
+      const short = (it.a1_l1 || '').split('（')[0].split('(')[0].trim();
+      if (short) addBig(short);
+    });
+  });
+  // 统计每个大类下的有效 item 数(用于 chip 角标)
+  const bigCats = [...bigSet.keys()].map(short => {
+    let cnt = 0;
+    DATA.contaminants.forEach(c => {
+      c.items.forEach(it => {
+        const itBig = (it.a1_l1 || '').split('（')[0].split('(')[0].trim();
+        if (itBig === short) {
+          const ml = (it.limit_value || '').toString().trim();
+          const sl = (it.sub_value || '').toString().trim();
+          const hm = (it.has_limit === true) || (ml && ml !== '—' && it.has_limit === undefined);
+          const hs = (it.sub_has_limit === true) || (sl && sl !== '—' && it.sub_has_limit === undefined);
+          if (hm || hs) cnt++;
+        }
+      });
+    });
+    return { short, cnt };
+  });
+  // 按 A.1 树顺序排(A.1 校对表中的节点优先),然后是 JSON 独有的
+  const treeOrder = (DATA.appendix_a1 && DATA.appendix_a1.tree || []).map(n => n.name.split('（')[0].split('(')[0].trim());
+  bigCats.sort((a, b) => {
+    const ia = treeOrder.indexOf(a.short);
+    const ib = treeOrder.indexOf(b.short);
+    if (ia >= 0 && ib >= 0) return ia - ib;
+    if (ia >= 0) return -1;
+    if (ib >= 0) return 1;
+    return a.short.localeCompare(b.short, 'zh-CN');
+  });
+  wrap.innerHTML = bigCats.map(b => {
+    const sel = selectedBigCats2.has(b.short);
+    return `<div class="chip${sel ? ' selected' : ''}" onclick="toggleBigCatChip('${escapeAttr(b.short)}')">
+      ${escapeHTML(b.short)}<span class="chip-count">${b.cnt}</span>
+    </div>`;
+  }).join('');
+  updateBigCatSelCount();
+}
+function toggleBigCatChip(short) {
+  if (selectedBigCats2.has(short)) selectedBigCats2.delete(short);
+  else selectedBigCats2.add(short);
+  renderBigCatChips();
+  renderContamResults();
+}
+function selectAllBigCat() {
+  if (!DATA) return;
+  // 全选 = A.1 树 L1 + JSON 中独有的 a1_l1 短名
+  (DATA.appendix_a1 && DATA.appendix_a1.tree || []).forEach(n => {
+    const short = n.name.split('（')[0].split('(')[0].trim();
+    if (short) selectedBigCats2.add(short);
+  });
+  DATA.contaminants.forEach(c => {
+    c.items.forEach(it => {
+      const short = (it.a1_l1 || '').split('（')[0].split('(')[0].trim();
+      if (short) selectedBigCats2.add(short);
+    });
+  });
+  renderBigCatChips();
+  renderContamResults();
+}
+function deselectAllBigCat() {
+  selectedBigCats2.clear();
+  renderBigCatChips();
+  renderContamResults();
+}
+function invertBigCat() {
+  if (!DATA) return;
+  const all = new Set();
+  (DATA.appendix_a1 && DATA.appendix_a1.tree || []).forEach(n => {
+    const short = n.name.split('（')[0].split('(')[0].trim();
+    if (short) all.add(short);
+  });
+  DATA.contaminants.forEach(c => {
+    c.items.forEach(it => {
+      const short = (it.a1_l1 || '').split('（')[0].split('(')[0].trim();
+      if (short) all.add(short);
+    });
+  });
+  const next = new Set();
+  all.forEach(s => { if (!selectedBigCats2.has(s)) next.add(s); });
+  selectedBigCats2 = next;
+  renderBigCatChips();
+  renderContamResults();
+}
+function updateBigCatSelCount() {
+  if (!DATA) return;
+  // 计算 chips 渲染时的 chip 数量
+  const all = new Set();
+  (DATA.appendix_a1 && DATA.appendix_a1.tree || []).forEach(n => {
+    const short = n.name.split('（')[0].split('(')[0].trim();
+    if (short) all.add(short);
+  });
+  DATA.contaminants.forEach(c => {
+    c.items.forEach(it => {
+      const short = (it.a1_l1 || '').split('（')[0].split('(')[0].trim();
+      if (short) all.add(short);
+    });
+  });
+  const el = document.getElementById('bigCatSelCount');
+  if (el) el.textContent = `已选 ${selectedBigCats2.size}/${all.size}`;
 }
 
 function onContamSearch() {
   const inp = document.getElementById('contamSearchInput');
   contamSearchKw = (inp ? inp.value : '').trim().toLowerCase();
-  renderContamDetail();
+  renderContamResults();
 }
 
 // 从 item.a1_l1/l2/l3/l4 派生 row(big/sub/path/parts) + 智能 method
@@ -1479,157 +1394,80 @@ function contamRowFromItem(item, rules) {
   return { path, parts, big, sub, food: item.food || '', limit: item.limit || '', method, remark: item.remark || '' };
 }
 
-function renderContamDetail() {
-  const c = DATA && DATA.contaminants && DATA.contaminants.find(x => String(x.table_no) === String(selectedContam));
-  const nameEl = document.getElementById('contamDetailName');
-  const metaEl = document.getElementById('contamDetailMeta');
-  const tableEl = document.getElementById('contamTableWrap');
-  const fnEl = document.getElementById('contamFootnotes');
-  const hintEl = document.getElementById('contamHint');
-
-  if (!c) {
-    if (nameEl) nameEl.textContent = '— 请选择左侧污染物 —';
-    if (metaEl) metaEl.textContent = '';
-    if (tableEl) tableEl.innerHTML = '<div class="empty-tip"><span class="emoji">📭</span>暂无数据</div>';
-    if (hintEl) hintEl.textContent = '';
-    if (fnEl) fnEl.innerHTML = '';
-    return;
-  }
-
-  // 派生 rows(等同 v6.1 additives 的派生逻辑)
-  // v8: 先过滤掉未制定限量的项（has_limit=false 且 sub_has_limit=false）
-  const visibleItems = (c.items || []).filter(it => {
-    const mainLimit = (it.limit_value || '').toString().trim();
-    const subLimit  = (it.sub_value  || '').toString().trim();
-    const hasMain = (it.has_limit === true) || (mainLimit && mainLimit !== '—' && it.has_limit === undefined);
-    const hasSub  = (it.sub_has_limit === true) || (subLimit && subLimit !== '—' && it.sub_has_limit === undefined);
-    return hasMain || hasSub;
+function renderContamResults() {
+  if (!DATA || !DATA.contaminants) return;
+  // 收集符合 chips 选择 + has_limit 过滤的 items
+  let items = [];
+  const fnSet = new Map();
+  const methodSet = new Set();
+  DATA.contaminants.forEach(c => {
+    if (!selectedContams.has(String(c.table_no))) return;
+    c.items.forEach(it => {
+      // 大类筛选
+      const itBigShort = (it.a1_l1 || '').split('（')[0].split('(')[0].trim();
+      if (!selectedBigCats2.has(itBigShort)) return;
+      // 限量过滤
+      const ml = (it.limit_value || '').toString().trim();
+      const sl = (it.sub_value  || '').toString().trim();
+      const hm = (it.has_limit === true) || (ml && ml !== '—' && it.has_limit === undefined);
+      const hs = (it.sub_has_limit === true) || (sl && sl !== '—' && it.sub_has_limit === undefined);
+      if (!hm && !hs) return;
+      items.push({
+        ...it,
+        _contaminant: c.contaminant,
+        _symbol: c.symbol,
+        _unit: c.unit,
+        _table_no: c.table_no,
+        _footnotes: c.footnotes,
+        _inspection_method: c.inspection_method
+      });
+      if (c.footnotes) c.footnotes.forEach(f => {
+        const k = f.label || f.mark;
+        if (f.text && !fnSet.has(k + '|' + f.text)) fnSet.set(k + '|' + f.text, { key: k, text: f.text });
+      });
+      if (c.inspection_method) methodSet.add(c.inspection_method);
+    });
   });
-  const allRows = visibleItems.map(it => contamRowFromItem(it, c.inspection_method_rules));
-  const footnotes = (c.footnotes || []).map(f => ({ mark: f.label || '', text: f.text || '' }));
-  const methodNotes = (c.inspection_method_rules || []).map(r => r.apply ? `${r.apply}: ${r.method}` : r.method).join(';\n');
-
-  nameEl.textContent = `${c.contaminant}${c.symbol ? ' (' + c.symbol + ')' : ''}`;
-  metaEl.textContent = `GB 2762-2025 · 表 ${c.table_no} · 共 ${allRows.length} 条限量 · 方法 ${(c.inspection_method || '').replace(/^按 /, '').replace(/ 规定的方法测定$/, '')}`;
 
   // 关键词过滤
-  let rows = allRows;
   if (contamSearchKw) {
     const tokens = contamSearchKw.split(/\s+/).filter(Boolean);
-    const fnsText = footnotes.map(f => f.text).join(' ');
-    rows = rows.filter(r => {
-      const hay = [r.food, r.big, r.sub, r.path, r.remark, fnsText, methodNotes].join(' ').toLowerCase();
+    items = items.filter(it => {
+      const hay = [
+        it._contaminant, it._symbol, it.a1_l1, it.a1_l2, it.a1_l3, it.a1_l4,
+        it.food, it.remark, it.limit,
+        fnSet.size > 0 ? [...fnSet.values()].map(f => f.text).join(' ') : ''
+      ].join(' ').toLowerCase();
       return tokens.every(tk => hay.includes(tk));
     });
   }
 
-  if (hintEl) hintEl.textContent = contamSearchKw ? `已筛 "${contamSearchKw}" · ${rows.length}/${allRows.length} 条` : `${rows.length} 条限量`;
-
-  if (rows.length === 0) {
-    tableEl.innerHTML = '<div class="empty-tip"><span class="emoji">🔍</span>当前关键词下无匹配</div>';
-    fnEl.innerHTML = '';
-    return;
-  }
-
-  // 渲染限量表(食品大类(A.1) / 食品中文名称 / 限量要求 / 检验方法 / 备注)
-  let html = '<table><thead><tr><th>食品类别</th><th>食品中文名称</th><th>限量要求</th><th>检验方法</th><th>备注</th></tr></thead><tbody>';
-  rows.forEach(r => {
-    let pathDisplay = r.parts && r.parts.length >= 2 ? r.parts.join(':') : (r.path || r.food || '');
-    html += '<tr>';
-    html += `<td>${escapeHTML(r.big || '')}</td>`;
-    html += `<td class="food">${escapeHTML(pathDisplay)}</td>`;
-    html += `<td class="limit">${escapeHTML(r.limit || '—')}</td>`;
-    html += `<td>${escapeHTML(r.method || '')}</td>`;
-    html += `<td>${escapeHTML(r.remark || '')}</td>`;
-    html += '</tr>';
+  // 排序:按污染物表号 → A.1 路径序 → food
+  items.sort((a, b) => {
+    const oa = getContamOrderIndex(a._table_no);
+    const ob = getContamOrderIndex(b._table_no);
+    if (oa !== ob) return oa - ob;
+    const pa = a1OrderOf({ parts: [a.a1_l1, a.a1_l2, a.a1_l3, a.a1_l4] });
+    const pb = a1OrderOf({ parts: [b.a1_l1, b.a1_l2, b.a1_l3, b.a1_l4] });
+    if (pa !== pb) return pa - pb;
+    return (a.food || '').localeCompare(b.food || '', 'zh-CN');
   });
-  html += '</tbody></table>';
-  tableEl.innerHTML = html;
 
-  // 脚注 + 检验方法说明
-  let fhtml = '';
-  if (methodNotes) {
-    fhtml += `<div class="footnote-block"><div class="fn-title">检验方法</div><div class="fn-item">${escapeHTML(methodNotes)}</div></div>`;
-  }
-  if (footnotes.length > 0) {
-    fhtml += '<div class="footnote-block"><div class="fn-title">脚注说明</div>';
-    footnotes.forEach(f => {
-      const k = f.label || f.mark;
-      fhtml += `<div class="fn-item"><span class="fn-mark">${escapeHTML(k)}</span>${escapeHTML(f.text)}</div>`;
-    });
-    fhtml += '</div>';
-  }
-  fnEl.innerHTML = fhtml;
-}
-
-function getFilteredItems() {
-  let items = [];
-  if (currentFilter === 'all') {
-    DATA.contaminants.forEach(c => {
-      c.items.forEach(it => items.push({ ...it, _contaminant: c.contaminant, _symbol: c.symbol, _unit: c.unit, _table_no: c.table_no, _footnotes: c.footnotes, _inspection_method: c.inspection_method, _rules: c.inspection_method_rules }));
-    });
-  } else {
-    const c = DATA.contaminants.find(x => x.table_no == currentFilter);
-    if (c) {
-      c.items.forEach(it => items.push({ ...it, _contaminant: c.contaminant, _symbol: c.symbol, _unit: c.unit, _table_no: c.table_no, _footnotes: c.footnotes, _inspection_method: c.inspection_method, _rules: c.inspection_method_rules }));
-    }
-  }
-  // v8: 过滤未制定限量项（limit_value="—" 且 sub_value="—" 或无 sub_value）
-  // has_limit/sub_has_limit 都为 false 的项直接跳过
-  items = items.filter(it => {
-    const mainLimit = (it.limit_value || '').toString().trim();
-    const subLimit  = (it.sub_value  || '').toString().trim();
-    const hasMain = (it.has_limit === true) || (mainLimit && mainLimit !== '—' && it.has_limit === undefined);
-    const hasSub  = (it.sub_has_limit === true) || (subLimit && subLimit !== '—' && it.sub_has_limit === undefined);
-    return hasMain || hasSub; // 主副任一有值则保留
-  });
-  // 大类/子类筛选 — 用短名(去括号内说明)比对,避免 category_a1 带括号导致不匹配
-  if (selectedBigCats.size > 0 || selectedSubCats.size > 0) {
-    items = items.filter(it => {
-      if (selectedBigCats.size > 0) {
-        const itBigShort = shortNameOf(it.category_a1 || it.category || '');
-        const bigHit = itBigShort && selectedBigCats.has(itBigShort);
-        if (!bigHit) return false;
-      }
-      if (selectedSubCats.size > 0) {
-        if (!it.subcategories || it.subcategories.length === 0) return false;
-        const subHit = it.subcategories.some(s => selectedSubCats.has(shortNameOf(s.sub)));
-        if (!subHit) return false;
-      }
-      return true;
-    });
-  }
-  if (!currentQuery.trim()) return items;
-  const keywords = currentQuery.trim().toLowerCase().split(/\s+/);
-  return items.filter(it => {
-    const subHaystack = it.subcategories ? it.subcategories.map(s => s.big + ' ' + s.sub).join(' ') : '';
-    const haystack = [
-      it._contaminant, it._symbol, it.category, it.category_a1, subHaystack, it.food, it.remark,
-      it.limit, it.limit_raw,
-      it._footnotes ? it._footnotes.map(f => f.text).join(' ') : '',
-      it._inspection_method || ''
-    ].join(' ').toLowerCase();
-    return keywords.every(kw => haystack.includes(kw));
-  });
-}
-
-function renderKeywordResults() {
-  const items = getFilteredItems();
   const wrap = document.getElementById('resultsWrap');
   const hint = document.getElementById('resultHint');
-  hint.textContent = `共 ${items.length} 条记录`
-    + (currentFilter !== 'all' ? ` · ${DATA.contaminants.find(c=>c.table_no==currentFilter).contaminant}` : '')
-    + (selectedBigCats.size > 0 || selectedSubCats.size > 0
-        ? ` · 已选 ${selectedBigCats.size} 大类 / ${selectedSubCats.size} 细类` : '');
+  const fnWrap = document.getElementById('footnotesWrap');
+  const totalContam = DATA.contaminants.length;
+  const totalBig = (DATA.appendix_a1 && DATA.appendix_a1.tree || []).length;
+  hint.textContent = `共 ${items.length} 条 · 已选 ${selectedContams.size}/${totalContam} 污染物 · ${selectedBigCats2.size}/${totalBig} 食品大类`;
+
   if (items.length === 0) {
-    wrap.innerHTML = '<div class="empty-tip"><span class="emoji">📭</span>未匹配到记录</div>';
-    document.getElementById('footnotesWrap').innerHTML = '';
+    wrap.innerHTML = '<div class="empty-tip"><span class="emoji">📭</span>当前选择下无匹配限量记录</div>';
+    fnWrap.innerHTML = '';
     return;
   }
-  const isAll = currentFilter === 'all';
+
   let html = '<table class="results"><thead><tr>';
-  if (isAll) html += '<th>污染物</th>';
-  html += '<th>食品大类(附录 A.1)</th><th>细类</th><th>食品名称 / 适用范围</th><th>限量值</th><th>单位</th><th>备注</th>';
+  html += '<th>污染物</th><th>元素符号</th><th>食品大类</th><th>食品名称 / 适用范围</th><th>限量值</th><th>单位</th><th>备注</th>';
   html += '</tr></thead><tbody>';
   items.forEach(it => {
     // 多列限量合并显示
@@ -1643,16 +1481,9 @@ function renderKeywordResults() {
     } else {
       limitHtml = escapeHTML(it.limit || '—');
     }
-    const bigCat = it.category_a1 || it.category || '';
-    const subs = (it.subcategories || []).map(s => s.sub).join(' / ');
-    html += '<tr>';
-    if (isAll) html += `<td class="contaminant">${escapeHTML(it._contaminant)}<br><span style="font-size:10px;color:var(--c-text-3);font-weight:normal;">${escapeHTML(it._symbol || '')}</span></td>`;
-    html += `<td class="category">${escapeHTML(bigCat)}</td>`;
-    html += `<td class="subcategory">${escapeHTML(subs)}</td>`;
-    html += `<td class="food">${escapeHTML(it.food || '')}</td>`;
-    html += `<td class="limit">${limitHtml}</td>`;
-    html += `<td class="unit">${escapeHTML(it._unit || '')}</td>`;
-    // 备注列：兼容 footnote letter + 修饰备注
+    // a1 路径
+    const a1path = [it.a1_l1, it.a1_l2, it.a1_l3].filter(Boolean).map(s => s.split('（')[0].split('(')[0].trim()).join(' › ');
+    // 备注
     const rk = (it.remark || '').toString().trim();
     let remarkHtml = '';
     if (rk && /^[a-e]$/.test(rk)) {
@@ -1660,145 +1491,34 @@ function renderKeywordResults() {
     } else if (rk) {
       remarkHtml = escapeHTML(rk);
     }
+    html += '<tr>';
+    html += `<td class="contaminant">${escapeHTML(it._contaminant)}</td>`;
+    html += `<td>${escapeHTML(it._symbol || '')}</td>`;
+    html += `<td class="category">${escapeHTML(a1path)}</td>`;
+    html += `<td class="food">${escapeHTML(it.food || '')}</td>`;
+    html += `<td class="limit">${limitHtml}</td>`;
+    html += `<td class="unit">${escapeHTML(it._unit || '')}</td>`;
     html += `<td class="remark">${remarkHtml}</td>`;
     html += '</tr>';
   });
   html += '</tbody></table>';
   wrap.innerHTML = html;
 
-  const fnWrap = document.getElementById('footnotesWrap');
+  // 脚注 + 检验方法
   let fhtml = '';
-  const seenFn = new Map();
-  items.forEach(it => {
-    if (it._footnotes) {
-      it._footnotes.forEach(f => {
-        const k = f.label || f.mark;
-        if (f.text && !seenFn.has(k + '|' + f.text)) {
-          seenFn.set(k + '|' + f.text, { key: k, text: f.text });
-        }
-      });
-    }
-  });
-  if (seenFn.size > 0) {
+  if (methodSet.size > 0) {
+    fhtml += '<div class="method-block"><div class="m-title">📋 检验方法</div>';
+    methodSet.forEach(m => { fhtml += `<div style="margin: 2px 0;">${escapeHTML(m)}</div>`; });
+    fhtml += '</div>';
+  }
+  if (fnSet.size > 0) {
     fhtml += '<div class="footnote-block"><div class="fn-title">脚注说明</div>';
-    seenFn.forEach(f => {
+    fnSet.forEach(f => {
       fhtml += `<div class="fn-item"><span class="fn-mark">${f.key}</span>${escapeHTML(f.text)}</div>`;
     });
     fhtml += '</div>';
   }
-  const methods = new Set();
-  items.forEach(it => { if (it._inspection_method) methods.add(it._inspection_method); });
-  if (methods.size > 0) {
-    fhtml += '<div class="method-block"><div class="m-title">📋 检验方法</div>';
-    methods.forEach(m => { fhtml += `<div style="margin: 2px 0;">${escapeHTML(m)}</div>`; });
-    fhtml += '</div>';
-  }
   fnWrap.innerHTML = fhtml;
-}
-
-// ========== 导出 ==========
-function buildExportRows() {
-  const items = getFilteredItems();
-  const isAll = currentFilter === 'all';
-  const headers = [];
-  if (isAll) headers.push('污染物', '元素符号');
-  headers.push('食品大类(附录 A.1)', '细类', '食品名称', '限量值', '单位', '备注');
-  const rows = [headers];
-  items.forEach(it => {
-    const row = [];
-    if (isAll) { row.push(it._contaminant, it._symbol); }
-    const big = it.category_a1 || it.category || '';
-    const subs = (it.subcategories || []).map(s => s.sub).join(' / ');
-    // 多列限量合并
-    let limitStr;
-    if (it.limits && Array.isArray(it.limits) && it.limits.length > 0) {
-      if (it.limits.length === 1) {
-        limitStr = it.limits[0].value;
-      } else {
-        limitStr = it.limits.map(l => `${l.label}:${l.value}`).join(' | ');
-      }
-    } else {
-      limitStr = it.limit || '';
-    }
-    row.push(big, subs, it.food || '', limitStr, it._unit || '', it.remark || '');
-    rows.push(row);
-  });
-  const seenFn = new Map();
-  items.forEach(it => {
-    if (it._footnotes) it._footnotes.forEach(f => {
-      if (f.text && !seenFn.has(f.mark + '|' + f.text)) seenFn.set(f.mark + '|' + f.text, f);
-    });
-  });
-  if (seenFn.size > 0) {
-    rows.push([]);
-    rows.push(['脚注说明']);
-    seenFn.forEach(f => rows.push([f.mark, f.text]));
-  }
-  const methods = new Set();
-  items.forEach(it => { if (it._inspection_method) methods.add(it._inspection_method); });
-  if (methods.size > 0) {
-    rows.push([]);
-    rows.push(['检验方法']);
-    methods.forEach(m => rows.push([m]));
-  }
-  return rows;
-}
-
-function exportCSV() {
-  const rows = buildExportRows();
-  const csv = rows.map(r => r.map(cell => {
-    const s = String(cell || '');
-    if (s.includes(',') || s.includes('"') || s.includes('\n')) {
-      return '"' + s.replace(/"/g, '""') + '"';
-    }
-    return s;
-  }).join(',')).join('\n');
-  const bom = '\uFEFF';
-  const blob = new Blob([bom + csv], { type: 'text/csv;charset=utf-8' });
-  const ts = new Date().toISOString().slice(0,10);
-  const fname = `GB2762-2025_${currentFilter === 'all' ? '全部' : DATA.contaminants.find(c=>c.table_no==currentFilter).contaminant}_${ts}.csv`;
-  downloadBlob(blob, fname);
-}
-
-function exportXLSX() {
-  if (typeof XLSX === 'undefined') {
-    const s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';
-    s.onload = () => doExportXLSX();
-    s.onerror = () => { alert('Excel 导出库加载失败,已自动切换为 CSV 格式'); exportCSV(); };
-    document.head.appendChild(s);
-  } else {
-    doExportXLSX();
-  }
-}
-
-function doExportXLSX() {
-  try {
-    const rows = buildExportRows();
-    const wb = XLSX.utils.book_new();
-    const ws = XLSX.utils.aoa_to_sheet(rows);
-    ws['!cols'] = [
-      { wch: 16 }, { wch: 10 }, { wch: 28 }, { wch: 22 }, { wch: 50 }, { wch: 14 }, { wch: 10 }, { wch: 30 }
-    ];
-    XLSX.utils.book_append_sheet(wb, ws, '污染物限量');
-    const ts = new Date().toISOString().slice(0,10);
-    const fname = `GB2762-2025_${currentFilter === 'all' ? '全部' : DATA.contaminants.find(c=>c.table_no==currentFilter).contaminant}_${ts}.xlsx`;
-    XLSX.writeFile(wb, fname);
-  } catch (e) {
-    alert('Excel 导出失败:' + e.message + '\n已降级为 CSV');
-    exportCSV();
-  }
-}
-
-function downloadBlob(blob, filename) {
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
 }
 
 // ========== 工具 ==========
@@ -1811,30 +1531,12 @@ function escapeAttr(s) {
 }
 
 // ========== 启动 ==========
-let searchTimer = null;
 document.addEventListener('DOMContentLoaded', () => {
   loadData();
-  document.getElementById('qInput').addEventListener('input', e => {
-    clearTimeout(searchTimer);
-    searchTimer = setTimeout(() => {
-      currentQuery = e.target.value;
-      renderKeywordResults();
-    }, 200);
-  });
   document.getElementById('treeSearchInput').addEventListener('input', e => {
     renderTree(e.target.value);
   });
 });
-
-function forceSearch() {
-  currentQuery = document.getElementById('qInput').value;
-  renderKeywordResults();
-}
-function clearSearch() {
-  document.getElementById('qInput').value = '';
-  currentQuery = '';
-  renderKeywordResults();
-}
 </script>
 </body>
 </html>
