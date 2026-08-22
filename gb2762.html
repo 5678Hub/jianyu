@@ -652,18 +652,12 @@ function buildItemIndex() {
         _table_no: c.table_no, _footnotes: c.footnotes,
         _inspection_method: c.inspection_method, _rules: c.inspection_method_rules
       };
-      // 把 item 推入它归属的所有 path-key
-      // v10: matchItemToPaths 返回数组,深层路径在前(深→浅)
-      //   buildItemIndex 按顺序注册时,深层先到,浅层后到;
-      //   浅层注册时检查 itemKey 已存在则跳过 → 同一节点同 (food,limit,sub,table) 只算一条
+      // 把 item 推入它归属的 path-key
+      // v11: matchItemToPaths 只返回 a1_path 最深一层,每条 item 只注册到一个 node
       const paths = matchItemToPaths(it, tree);
-      const itemKey = (it.food || '') + '|' + (it.limit_value || '') + '|' + (it.sub_value || '') + '|' + (it.main_remark || '') + '|' + (it.sub_remark || '') + '|' + (it.note || '') + '|' + c.table_no;
       paths.forEach(pk => {
         if (!itemIndex.has(pk)) itemIndex.set(pk, []);
-        const list = itemIndex.get(pk);
-        if (!list.some(x => x._idxKey === itemKey)) {
-          list.push({ ...enriched, _idxKey: itemKey });
-        }
+        itemIndex.get(pk).push(enriched);
       });
     });
   });
@@ -687,12 +681,12 @@ function matchItemToPaths(item, tree) {
     .filter(Boolean)
     .filter((v, i, arr) => i === 0 || v !== arr[i - 1]); // 去掉连续重复
 
-  // v10: 用数组替代 Set,保持"深层在前、浅层在后"顺序,让 buildItemIndex
-  //   注册时先注册深层(深→浅),浅层注册时可去重避免重复
+  // v11: 只注册到 a1_path 最深一层(不递归祖先)
+  //   选 L1 只看 L1 专属 items;L2/L3 子节点限量在各子节点查看
+  //   这与"树状浏览"的直觉一致,也避免选 L1 时混入子级数据
   const matchedPaths = [];
 
   if (a1Path.length > 0) {
-    // v9: 递归遍历树,精确匹配 a1Path,每一层祖先都注册(让 L2/L3 也能命中子节点 items)
     function walkExact(nodes, path, idx) {
       if (idx >= a1Path.length) return;
       const target = norm(a1Path[idx]);
@@ -700,10 +694,11 @@ function matchItemToPaths(item, tree) {
         if (norm(n.name) === target) {
           const curPath = path.concat([n.name]);
           if (idx < a1Path.length - 1 && n.children) {
-            // 先递归(深层路径先加入),再注册当前层 → 数组顺序:深→浅
             walkExact(n.children, curPath, idx + 1);
+          } else {
+            // 到达 a1_path 最深一层 → 注册到这里
+            matchedPaths.push(pathKey(curPath));
           }
-          matchedPaths.push(pathKey(curPath));
         }
       }
     }
@@ -749,8 +744,8 @@ function countForPath(path) {
 }
 
 // 返回 {items, limits}:items = 节点(含子树)下不同 item 数,limits = 限量条数总和
-// v9: 简化为只算 idx.get(targetKey)(因 matchItemToPaths 已把 item 注册到所有祖先层,无需子树累加)
-//     limits 按 has_limit/sub_has_limit 过滤,与渲染表格保持一致("—" 项不计入)
+// v11: statsForPath 自动累加所有子树(选 L1 时可见子级限量统计)
+//     但渲染时只显示当前节点的 items(不递归展开)
 function statsForPath(path) {
   const idx = buildItemIndex();
   const targetKey = pathKey(path);
