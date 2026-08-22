@@ -613,27 +613,28 @@ function buildItemIndex() {
   // 先建好树节点全集(所有叶子节点的 path)
   const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
 
-  // 用 uniqueKey 全局去重:同一 (table_no, food, limit_value, sub_value, main_remark,
-  // sub_remark, note) 在所有 path 中只保留首次出现的 item(它携带最准确的 a1_path)。
-  // 这样可消除 gen_xlsx_full.py 重复写入导致的 4-8 倍重复条目。
-  const seenKeys = new Set();
+  // 用 uniqueKey 在每条 path 内去重(不是全局去重):同一 (table_no, food, limit, sub,
+  // remark, note) 在同一个 path 内只保留首次出现。但跨 path 的同 key 保留——例如
+  // 汞表 5 个 L2 都用合并 food 字段"生乳、巴氏杀菌乳、...,发酵乳",但 a1_l2 不同,
+  // 它们应该各自注册到自己的 idx["乳及乳制品 > 生乳"] / idx["乳及乳制品 > 发酵乳"]。
+  // 全局去重会错误跳过 4 条,导致发酵乳看不到汞 0.01、铅 0.04 等。
   DATA.contaminants.forEach(c => {
     c.items.forEach(it => {
-      const k = [c.table_no, it.food || '', it.limit_value || '', it.sub_value || '',
-                 it.main_remark || '', it.sub_remark || '', it.note || ''].join('\x01');
-      if (seenKeys.has(k)) return;
-      seenKeys.add(k);
       const enriched = { ...it,
         _contaminant: c.contaminant, _symbol: c.symbol, _unit: c.unit,
         _table_no: c.table_no, _footnotes: c.footnotes,
         _inspection_method: c.inspection_method, _rules: c.inspection_method_rules
       };
-      // 把 item 推入它归属的 path-key
-      // v11: matchItemToPaths 只返回 a1_path 最深一层,每条 item 只注册到一个 node
       const paths = matchItemToPaths(it, tree);
       paths.forEach(pk => {
         if (!itemIndex.has(pk)) itemIndex.set(pk, []);
-        itemIndex.get(pk).push(enriched);
+        const arr = itemIndex.get(pk);
+        // path 内 dedup
+        const dupKey = [c.table_no, it.food || '', it.limit_value || '', it.sub_value || '',
+                        it.main_remark || '', it.sub_remark || '', it.note || ''].join('\x01');
+        if (arr.some(x => x._dupKey === dupKey)) return;
+        enriched._dupKey = dupKey;
+        arr.push(enriched);
       });
     });
   });
