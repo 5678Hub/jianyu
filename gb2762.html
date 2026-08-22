@@ -51,11 +51,16 @@ header.brand .ver { font-size: 11px; color: var(--c-text-2); padding: 5px 12px; 
 header.brand .back { font-size: 12px; color: var(--c-text-2); padding: 5px 12px; border: 1px solid var(--c-border-strong); border-radius: 14px; text-decoration: none; }
 header.brand .back:hover { background: var(--c-primary-soft); border-color: var(--c-primary-2); color: var(--c-primary); }
 
-/* ============= 顶部 Tab 切换 ============= */
-.mode-tabs { display: flex; gap: 4px; padding: 0 4px 12px; margin-bottom: 14px; border-bottom: 1px solid var(--c-border); }
-.mode-tab { padding: 9px 18px; border-radius: 8px 8px 0 0; cursor: pointer; font-size: 13px; color: var(--c-text-2); border: 1px solid transparent; border-bottom: none; transition: all .15s; user-select: none; display: flex; align-items: center; gap: 6px; }
-.mode-tab:hover { color: var(--c-primary); background: var(--c-primary-soft); }
-.mode-tab.active { background: var(--c-surface); color: var(--c-primary); font-weight: 600; border-color: var(--c-border); border-bottom: 1px solid var(--c-surface); margin-bottom: -1px; }
+/* ============= 顶部污染物 tab 行(sticky) ============= */
+.contam-section {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(180deg, var(--c-bg) 0%, var(--c-bg) 90%, transparent 100%);
+  border-bottom: 1px solid var(--c-border);
+  border-radius: 0;
+  box-shadow: none;
+}
 
 /* ============= 通用 section ============= */
 .section { background: var(--c-surface); border-radius: var(--r-md); padding: 18px 22px; margin-bottom: 14px; border: 1px solid var(--c-border); box-shadow: var(--shadow-soft); }
@@ -374,72 +379,50 @@ table.ctable td.col-note { font-size: 12px; color: var(--c-text-2); }
   <div class="ver" id="verTag">v1.0</div>
 </header>
 
-<div class="mode-tabs">
-  <div class="mode-tab active" data-mode="tree" onclick="switchMode('tree')">🌲 按食品类别浏览</div>
-  <div class="mode-tab" data-mode="contaminant" onclick="switchMode('contaminant')">☢️ 按污染物查询</div>
-</div>
+<!-- ============== 统一单页面:污染物 tab + 食品分类树 + 详情 ============== -->
+<div id="pageRoot">
 
-<!-- ============== 模式 A:按食品类别浏览 ============== -->
-<div id="modeTree">
-  <div class="tree-view" id="treeView">
-    <aside class="tree-side" id="treeSide">
-      <h3>
-        <span>食品分类目录</span>
-        <span class="tree-toggle" id="treeToggle" title="折叠左侧目录" onclick="toggleSidePanel()"><span class="arrow">◀</span><span class="label">折叠</span></span>
-      </h3>
-      <div class="tree-subtitle">点击分类或具体食品名称即可查看对应限量</div>
-      <div class="tree-toolbar" id="treeToolbar">
-        <button onclick="expandAllTree()" title="展开所有 24 个大类">⇕ 全部展开</button>
-        <button onclick="collapseAllTree()" title="只保留 24 个大类(折叠所有子节点)">⇕ 全部收起</button>
-        <span class="summary" id="treeSummary">—</span>
-      </div>
-      <div class="tree-search">
-        <input type="text" id="treeSearchInput" placeholder="搜索食品名,例如 玉米、稻谷" autocomplete="off">
-      </div>
-      <div id="treeList"></div>
-      <div class="tree-collapsed-rail">
-        <button onclick="toggleSidePanel()" title="展开目录">▶</button>
-        <button onclick="expandAllTree()" title="全部展开">⇕</button>
-      </div>
-    </aside>
-    <div class="tree-detail">
-      <div class="breadcrumb" id="breadcrumb">— 请在左侧选择食品 —</div>
-      <div id="treeContent">
-        <div class="tree-empty">
-          <span class="emoji">🌽</span>
-          <div>请在左侧树形目录中点击任意食品</div>
-          <div class="hint-text">将显示该食品的所有污染物限量,<br>以及上级 / 上上级分类的限量要求</div>
-        </div>
-      </div>
-      <div id="treeFootnotes"></div>
-    </div>
-  </div>
-</div>
-
-<!-- ============== 模式 C:按污染物查询(顶部 tab 单选 + 单张完整表) ============== -->
-<div id="modeContaminant" style="display:none;">
-
-<section class="section" style="padding-bottom: 0;">
-  <div class="contam-breadcrumb" id="contamBreadcrumb">
-    当前位置:—
-  </div>
+<!-- 顶部污染物 tab 行 -->
+<section class="section contam-section" style="padding: 12px 16px; margin-bottom: 0;">
   <div class="contam-tabs" id="contamTabs">
     <!-- JS 渲染:15 个污染物 tab(表1铅 / 表2镉 / 表3总汞 / 表3甲基汞 / 表4总砷 / 表4无机砷 / 表5锡 / ...) -->
   </div>
 </section>
 
-<section class="section" style="padding-top: 12px;">
-  <div class="contam-detail">
-    <div class="contam-detail-header">
-      <span class="contam-detail-name" id="contamDetailName">—</span>
-      <span class="contam-detail-meta" id="contamDetailMeta">—</span>
+<!-- 食品分类树 + 详情视图 -->
+<div class="tree-view" id="treeView">
+  <aside class="tree-side" id="treeSide">
+    <h3>
+      <span>食品分类目录</span>
+      <span class="tree-toggle" id="treeToggle" title="折叠左侧目录" onclick="toggleSidePanel()"><span class="arrow">◀</span><span class="label">折叠</span></span>
+    </h3>
+    <div class="tree-subtitle">点击分类或具体食品名称即可查看对应限量</div>
+    <div class="tree-toolbar" id="treeToolbar">
+      <button onclick="expandAllTree()" title="展开所有 24 个大类">⇕ 全部展开</button>
+      <button onclick="collapseAllTree()" title="只保留 24 个大类(折叠所有子节点)">⇕ 全部收起</button>
+      <span class="summary" id="treeSummary">—</span>
     </div>
-    <div id="contamTableWrap"></div>
-    <div id="contamFootnotes"></div>
+    <div class="tree-search">
+      <input type="text" id="treeSearchInput" placeholder="搜索食品名,例如 玉米、稻谷" autocomplete="off">
+    </div>
+    <div id="treeList"></div>
+    <div class="tree-collapsed-rail">
+      <button onclick="toggleSidePanel()" title="展开目录">▶</button>
+      <button onclick="expandAllTree()" title="全部展开">⇕</button>
+    </div>
+  </aside>
+  <div class="tree-detail">
+    <div class="breadcrumb" id="breadcrumb">— 请在左侧选择食品 —</div>
+    <div id="treeContent">
+      <div class="tree-empty">
+        <span class="emoji">🌽</span>
+        <div>请在左侧树形目录中点击任意食品,<br>或在上方选择污染物开始查询</div>
+        <div class="hint-text">支持双向查询:按食品查所有污染物,或按污染物查所有食品,<br>两者都选可查看交叉结果</div>
+      </div>
+    </div>
+    <div id="treeFootnotes"></div>
   </div>
-</section>
-
-</div><!-- /modeContaminant -->
+</div>
 
 <footer style="text-align:center; color:var(--c-text-3); font-size:11px; padding: 20px 0 10px;">
   数据源:GB 2762-2025《食品安全国家标准 食品中污染物限量》
@@ -451,7 +434,7 @@ table.ctable td.col-note { font-size: 12px; color: var(--c-text-2); }
 <script>
 const DATA_URL = './data/gb2762/gb2762_2025.json?t=' + Date.now();
 let DATA = null;
-let currentMode = 'tree';
+let currentMode = null;
 
 // ========== 工具(必须在最前面,供模式 C 等后续函数引用) ==========
 function escapeHTML(s) {
@@ -537,7 +520,9 @@ async function loadData() {
       DATA._dataSource = url;
       updateSubtitle();
       renderTree();
+      renderContamTabs();
       refreshTreeSummary();
+      renderDetail();
       return;
     } catch (e) {
       tried.push(`${url} → ${e.message || e}`);
@@ -588,22 +573,6 @@ function updateSubtitle() {
 }
 
 // ========== 模式切换 ==========
-function switchMode(mode) {
-  currentMode = mode;
-  document.querySelectorAll('.mode-tab').forEach(el => {
-    el.classList.toggle('active', el.dataset.mode === mode);
-  });
-  document.getElementById('modeTree').style.display = (mode === 'tree') ? '' : 'none';
-  document.getElementById('modeContaminant').style.display = (mode === 'contaminant') ? '' : 'none';
-  if (mode === 'contaminant') {
-    if (!selectedContam && DATA && DATA.contaminants) {
-      selectedContam = String(DATA.contaminants[0].table_no);
-    }
-    renderContamTabs();
-    renderContamDetail();
-  }
-}
-
 // ========== 模式 A:按食品类别浏览 ==========
 
 // 食物 emoji 映射(浅趣味)
@@ -690,8 +659,10 @@ function matchItemToPaths(item, tree) {
     function walkExact(nodes, path, idx) {
       if (idx >= a1Path.length) return;
       const target = norm(a1Path[idx]);
+      let matchedHere = false;
       for (const n of nodes) {
         if (norm(n.name) === target) {
+          matchedHere = true;
           const curPath = path.concat([n.name]);
           if (idx < a1Path.length - 1 && n.children) {
             walkExact(n.children, curPath, idx + 1);
@@ -700,6 +671,12 @@ function matchItemToPaths(item, tree) {
             matchedPaths.push(pathKey(curPath));
           }
         }
+      }
+      // Fallback: 走到 a1Path 末层(深层层)但当前节点 children 为空/没有匹配的子节点
+      //   例: A.1 tree 里"花粉" children=[] 但 item.a1_l3="油菜花粉"——tree 没列子节点
+      //   此时应注册到当前 path(走的最远一层),而不是丢失
+      if (!matchedHere && idx === a1Path.length - 1 && path.length > 0) {
+        matchedPaths.push(pathKey(path));
       }
     }
     walkExact(tree, [], 0);
@@ -735,6 +712,58 @@ function matchItemToPaths(item, tree) {
     fallback(tree, []);
   }
   return matchedPaths;
+}
+
+// 聚合 path 下所有 L2+L3+L4 子节点的 items(用于 L1 无直接 idx 命中时)
+//   用 (food, limit_value, sub_value, main_remark, sub_remark, note, table_no) 作 key 去重
+function aggregateDescendants(path) {
+  const idx = buildItemIndex();
+  // 在 tree 中找到 path 对应节点
+  const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
+  function findNode(nodes, p) {
+    if (p.length === 0) return null;
+    const [head, ...rest] = p;
+    for (const n of nodes) {
+      if (n.name === head) {
+        if (rest.length === 0) return n;
+        if (n.children) return findNode(n.children, rest);
+      }
+    }
+    return null;
+  }
+  const node = findNode(tree, path);
+  if (!node) return [];
+
+  // 递归遍历 node 的所有 descendants,收集所有 idx[deepest_path] 的 items
+  const seen = new Set();
+  const out = [];
+  function visit(n, curPath) {
+    const curPk = pathKey(curPath);
+    const items = idx.get(curPk);
+    if (items) {
+      items.forEach(it => {
+        const k = (it.food || '') + '\x01' + (it.limit_value || '') + '\x01' +
+                  (it.sub_value || '') + '\x01' + (it.main_remark || '') + '\x01' +
+                  (it.sub_remark || '') + '\x01' + (it.note || '') + '\x01' +
+                  (it._table_no || '');
+        if (!seen.has(k)) {
+          seen.add(k);
+          out.push({ ...it, _viaSub: curPath[curPath.length - 1] });
+        }
+      });
+    }
+    if (n.children) {
+      n.children.forEach(c => visit(c, curPath.concat([c.name])));
+    }
+  }
+  // 从 node 的 children 开始(不重复访问 node 自己,node 自身已在 idx 路径上但 idx.has(nodePath) 通常 false)
+  if (node.children) {
+    node.children.forEach(c => visit(c, path.concat([c.name])));
+  } else {
+    // 叶子节点(L3/L4):直接收自己
+    visit(node, path);
+  }
+  return out;
 }
 
 // 统计某个 path 节点(及其子树)的 item 总数
@@ -868,7 +897,7 @@ function selectTreeNode(path) {
     expandedPaths.add(pathKey(path.slice(0, i)));
   }
   renderTree(document.getElementById('treeSearchInput').value);
-  renderTreeDetail();
+  renderDetail();
 }
 
 function renderTreeDetail() {
@@ -906,7 +935,12 @@ function renderTreeDetail() {
   // === 本级 / 最近有数据的上一级 ===
   // 沿 path 向上找第一个 idx 命中的节点(优先自身,其次父、祖父…)
   let primaryKey = pk, primaryName = nodeName, primaryLevel = '本级';
-  if (!idx.has(pk) && path.length > 1) {
+  let primaryItems = null;
+  if (idx.has(pk)) {
+    // 本级有命中,直接取
+    primaryItems = (idx.get(pk) || []).map(x => ({ ...x, _viaSub: primaryName }));
+  } else if (path.length > 1) {
+    // 沿 path 向上找第一个 idx 命中的节点
     for (let i = path.length - 2; i >= 0; i--) {
       const pkUp = pathKey(path.slice(0, i + 1));
       if (idx.has(pkUp)) {
@@ -916,10 +950,19 @@ function renderTreeDetail() {
         break;
       }
     }
+    if (primaryKey !== pk) {
+      primaryItems = (idx.get(primaryKey) || []).map(x => ({ ...x, _viaSub: primaryName }));
+    }
   }
-  // v9: 简化为只取 primaryKey 直接命中(因 matchItemToPaths 已把 item 注册到所有祖先层,无需子树累加)
-  // 上一级回退时只显示该层注册的 items,不会把兄弟 L3 全带上
-  const primaryItems = (idx.get(primaryKey) || []).map(x => ({ ...x, _viaSub: primaryName }));
+
+  // === L1 节点无 idx 命中时的子级聚合 ===
+  // 10 个 L1(水果/蔬菜/豆类/藻类/坚果/食糖/淀粉/可可/特殊膳/其他类)没有直接挂载 items
+  // v11 idx 只注册到 deepest,L1 没注册;展示时聚合其下所有 L2+L3+L4 的 items
+  if (primaryItems === null) {
+    primaryName = nodeName;
+    primaryLevel = '本级聚合';
+    primaryItems = aggregateDescendants(path);
+  }
 
   // === 二级分类:path 倒数第二层(二级分类)下所有命中 items(扣除 primaryItems) ===
   // 选中三级或更深时,展示其所属的二级分类(如:选"芸薹类蔬菜"→ 展示"新鲜蔬菜"下的其他限量)
@@ -1221,70 +1264,189 @@ function renderContamTabs() {
 }
 
 function selectContam(key) {
-  selectedContam = key;
+  // 再点选中的 tab → 取消选中
+  selectedContam = (selectedContam === key) ? null : key;
   renderContamTabs();
-  renderContamDetail();
+  renderDetail();
 }
 
-function renderContamDetail() {
+// ========== 统一渲染入口 ==========
+// state = { treeSelected, contamSelected } 四种 case:
+//   1) 都空 → 空状态
+//   2) 只 tree → 食品视图(renderTreeDetail 已修 L1 聚合)
+//   3) 只 contam → 污染物视图(全食品)
+//   4) 都选 → 交叉过滤(只显示该食品该污染物)
+function renderDetail() {
+  const bc = document.getElementById('breadcrumb');
+  const tc = document.getElementById('treeContent');
+  const fn = document.getElementById('treeFootnotes');
+
+  // 共同状态:清空污染物视图用过的元素(避免污染)
+  const cTable = document.getElementById('contamTableWrap');
+  if (cTable) cTable.innerHTML = '';
+  const cDetail = document.querySelector('.contam-detail');
+  if (cDetail) cDetail.style.display = 'none';
+
+  // === 状态 1: 都空 → 空状态 ===
+  if (!treeSelected && !selectedContam) {
+    bc.innerHTML = '— 请选择食品或污染物开始查询 —';
+    tc.innerHTML = '<div class="tree-empty"><span class="emoji">🔍</span><div>请在左侧树形目录中点击食品,<br>或在上方选择污染物开始查询</div><div class="hint-text">支持双向查询:按食品查所有污染物,<br>或按污染物查所有食品,两者都选可查看交叉结果</div></div>';
+    fn.innerHTML = '';
+    return;
+  }
+
+  // === 状态 2: 只选食品 → renderTreeDetail ===
+  if (treeSelected && !selectedContam) {
+    // 直接复用原 renderTreeDetail(它已经处理 breadcrumb + treeContent + treeFootnotes)
+    renderTreeDetail();
+    return;
+  }
+
+  // === 状态 3 / 4: 选了污染物(可能也选了食品) → 污染物视图 ===
   const tab = CONTAM_TABS.find(t => t.key === selectedContam);
-  if (!tab || !DATA) return;
+  if (!tab) return;
   const c = DATA.contaminants.find(x => x.table_no === tab.table_no);
   if (!c) return;
-  const items = getContamItems(tab);
+  let items = getContamItems(tab);
 
-  // 面包屑
-  const crumb = document.getElementById('contamBreadcrumb');
-  if (crumb) crumb.innerHTML = '当前位置:表 ' + tab.table_no + ' ' + escapeHTML(tab.label) + ' (' + escapeHTML(tab.sym) + ')';
+  // 状态 4: 同时选了食品 → 交叉过滤
+  let crossFilter = null;
+  if (treeSelected && items.length) {
+    crossFilter = treeSelected;
+    // 从 idx 中取该食品的全部 items,过滤出属于当前污染物 sub 的项
+    const idx = buildItemIndex();
+    const pk = pathKey(treeSelected.path);
+    let foodItems = idx.get(pk);
+    if (!foodItems) {
+      // 向上回退 / 聚合子级
+      let found = false;
+      for (let i = treeSelected.path.length - 2; i >= 0; i--) {
+        const upk = pathKey(treeSelected.path.slice(0, i + 1));
+        if (idx.has(upk)) { foodItems = idx.get(upk); found = true; break; }
+      }
+      if (!found) foodItems = aggregateDescendants(treeSelected.path);
+    }
+    // foodItems 的 contaminant 是 c.contaminant(可能含 " a" 后缀等),先按 _table_no 过滤
+    const filtered = (foodItems || []).filter(it => it._table_no === c.table_no);
+    // 再按 tab.sub 过滤(总汞/甲基汞、总砷/无机砷、亚硝酸盐/硝酸盐)
+    if (tab.sub === '甲基汞') {
+      items = filtered.filter(it => (it.pollutant || '').startsWith('甲基汞') || it.pollutant === '甲基汞');
+    } else if (tab.sub === '无机砷') {
+      items = filtered.filter(it => {
+        const lab = it.sub_label || '';
+        return (lab === '无机砷' || lab.indexOf('无机砷') === 0) &&
+               ((it.sub_value || '').toString().trim() !== '' && it.sub_value !== '—');
+      });
+    } else if (tab.sub === '硝酸盐') {
+      items = filtered.filter(it => {
+        const lab = it.sub_label || '';
+        return (lab === '硝酸盐' || lab.indexOf('硝酸盐') === 0) &&
+               ((it.sub_value || '').toString().trim() !== '' && it.sub_value !== '—');
+      });
+    } else if (tab.table_no === 3) {
+      // 总汞(主列):pollutant 以"总汞"开头
+      items = filtered.filter(it => (it.pollutant || '').startsWith('总汞'));
+    } else if (tab.table_no === 4) {
+      // 总砷(主列):pollutant 是"总砷"或不含"无机砷"的
+      items = filtered.filter(it => {
+        const p = it.pollutant || '';
+        return (p === '总砷' || p.indexOf('总砷') === 0);
+      });
+    } else if (tab.table_no === 8) {
+      // 亚硝酸盐(主列):sub_label 是亚硝酸盐或主限量是亚硝酸盐
+      items = filtered.filter(it => {
+        const lab = it.sub_label || it.main_label || '';
+        return lab.indexOf('亚硝酸盐') >= 0;
+      });
+    } else {
+      items = filtered;
+    }
+    // 还要 dedup
+    const seen = new Set();
+    items = items.filter(it => {
+      const k = (it.food || '') + '\x01' + (it.limit_value || '') + '\x01' + (it.sub_value || '');
+      if (seen.has(k)) return false;
+      seen.add(k);
+      return true;
+    });
+  }
 
-  // 标题
-  const nm = document.getElementById('contamDetailName');
-  const mt = document.getElementById('contamDetailMeta');
-  if (nm) nm.textContent = tab.label;
-  if (mt) mt.innerHTML = '<span class="ctab-sym">' + escapeHTML(tab.sym) + '</span> · 表 ' + tab.table_no + ' · 共 ' + items.length + ' 条限量';
+  // 面包屑:显示食品分类(若有)+ 污染物
+  const crumbParts = ['<a onclick="treeSelected=null;selectedContam=null;renderTree();renderContamTabs();renderDetail();">查询</a>'];
+  if (treeSelected) {
+    const p = treeSelected.path;
+    p.forEach((seg, i) => {
+      const pPath = p.slice(0, i + 1);
+      crumbParts.push('<span class="sep">›</span><a onclick="selectTreeNode(' + jsonInAttr(pPath) + ')">' + escapeHTML(seg) + '</a>');
+    });
+  }
+  crumbParts.push('<span class="sep">›</span><span class="current">' + escapeHTML(tab.label) + '</span>');
+  bc.innerHTML = crumbParts.join('');
 
-  // 表格
-  const wrap = document.getElementById('contamTableWrap');
-  if (!wrap) return;
+  // 渲染到 treeContent
+  renderContamDetail(tab, items, tc);
+}
+
+function renderContamDetail(tab, items, targetEl) {
+  if (!tab || !DATA || !targetEl) return;
+  const c = DATA.contaminants.find(x => x.table_no === tab.table_no);
+  if (!c) return;
+
+  // 标题卡
+  const emoji = '☢️';
+  let html = '<div class="food-card contam-card">' +
+    '<div class="icon">' + emoji + '</div>' +
+    '<div>' +
+      '<div class="name-cn">' + escapeHTML(tab.label) + '</div>' +
+      '<div class="name-en">GB 2762-2025 · 表 ' + tab.table_no + ' · ' + escapeHTML(c.full_name || tab.label) + '</div>' +
+    '</div>' +
+    '<div class="meta">' +
+      '<div class="meta-card"><div class="label">限量条数</div><div class="num">' + items.length + '</div></div>' +
+      '<div class="meta-card"><div class="label">元素符号</div><div class="num" style="font-size:13px;">' + escapeHTML(tab.sym) + '</div></div>' +
+    '</div>' +
+  '</div>';
+
   if (!items.length) {
-    wrap.innerHTML = '<div style="padding:40px;text-align:center;color:var(--c-text-3);">暂无数据</div>';
-    const fnE0 = document.getElementById('contamFootnotes');
+    html += '<div style="padding:40px;text-align:center;color:var(--c-text-3);">该污染物暂无食品限量数据</div>';
+    targetEl.innerHTML = html;
+    const fnE0 = document.getElementById('treeFootnotes');
     if (fnE0) fnE0.innerHTML = '';
     return;
   }
+
   // 准备脚注字典(用于展开备注列)
   const footnoteDict = {};
   (c.footnotes || []).forEach(fn => { if (fn && fn.label) footnoteDict[fn.label] = fn.text || ''; });
 
-  let html = '<table class="ctable"><thead><tr>' +
-    '<th class="col-food">食品中文名称</th>' +
-    '<th class="col-limit">限量要求</th>' +
-    '<th class="col-method">检验方法</th>' +
-    '<th class="col-note">备注</th>' +
-  '</tr></thead><tbody>';
+  html += '<div class="level-block self-level">' +
+    '<div class="level-header">' +
+      '<span>' + escapeHTML(tab.label) + ' 的所有食品限量要求</span>' +
+      '<span class="level-tag">本级</span>' +
+      '<span class="count-tag">' + items.length + ' 条</span>' +
+    '</div>' +
+    '<table class="ctable"><thead><tr>' +
+      '<th class="col-food">食品中文名称</th>' +
+      '<th class="col-limit">限量要求</th>' +
+      '<th class="col-method">检验方法</th>' +
+      '<th class="col-note">备注</th>' +
+    '</tr></thead><tbody>';
   items.forEach(it => {
-    // 1. 食品中文名称: 用 it.food(完整字符串,就是 PDF 表里的"食品类别(名称)"列)
     const foodName = it.food || '';
-    // 路径作为 title(供 hover 提示)
     const a1Path = [it.a1_l1, it.a1_l2, it.a1_l3, it.a1_l4].filter(x => x && String(x).trim());
     const path = a1Path.join(' › ');
 
-    // 2. 限量要求: modif + value + unit(参考截图 5: "≤0.5mg/kg")
     let limitVal = '', limitModif = '', limitUnit = it.unit || c.unit || '';
     let noteKey = '';
 
     if (tab.sub === '甲基汞') {
-      // 表 3 甲基汞: limit_value / modif / note
       limitVal = (it.limit_value || '').toString();
       limitModif = it.modif || '';
       noteKey = it.note || '';
     } else if (tab.sub) {
-      // 表 4/8 无机砷/硝酸盐: sub_value / sub_modif / sub_remark
       limitVal = (it.sub_value || '').toString();
       limitModif = it.sub_modif || '';
       noteKey = it.sub_remark || it.remark || '';
     } else {
-      // 主列(表 1-7, 8 亚硝酸盐等)
       limitVal = (it.limit_value || '').toString();
       limitModif = it.limit_modifier || '';
       noteKey = it.note || it.main_remark || '';
@@ -1294,10 +1456,8 @@ function renderContamDetail() {
       ? (limitModif || (limitVal !== '—' ? '≤' : '')) + limitVal + (limitVal !== '—' && limitUnit ? limitUnit : '')
       : '—';
 
-    // 3. 检验方法: 优先用顶层 c.inspection_method(完整描述),再用 item.inspection_method(标准号)
     let method = c.inspection_method || it.inspection_method || '—';
 
-    // 4. 备注: 展开 footnotes 字典(把 "a" → 完整脚注文本)
     const noteList = [];
     noteKey.split(/[,，]/).forEach(k => {
       const trimmed = k.trim();
@@ -1306,7 +1466,6 @@ function renderContamDetail() {
       if (txt) noteList.push('[' + trimmed + '] ' + txt);
       else noteList.push(trimmed);
     });
-    // 多脚注之间换行
     const noteDisp = noteList.length ? noteList.join('<br>') : '—';
     const noteDispForTitle = noteList.length ? noteList.join(' | ') : '';
 
@@ -1317,11 +1476,12 @@ function renderContamDetail() {
       '<td class="col-note" title="' + escapeAttr(noteDispForTitle) + '">' + noteDisp + '</td>' +
     '</tr>';
   });
-  html += '</tbody></table>';
-  wrap.innerHTML = html;
+  html += '</tbody></table></div>';
+
+  targetEl.innerHTML = html;
 
   // 脚注(污染物全名 + 脚注)
-  const fnEl = document.getElementById('contamFootnotes');
+  const fnEl = document.getElementById('treeFootnotes');
   if (fnEl) {
     const parts = [];
     if (c.full_name) parts.push('完整名:' + c.full_name);
@@ -1330,6 +1490,50 @@ function renderContamDetail() {
     if (parts.length) fnEl.innerHTML = '<div class="contam-foot">' + parts.map(escapeHTML).join(' · ') + '</div>';
     else fnEl.innerHTML = '';
   }
+}
+
+// 渲染单条 item 到单行(用于交叉过滤视图)
+function renderContamRow(it, tab, c, footnoteDict) {
+  let limitVal = '', limitModif = '', limitUnit = it.unit || c.unit || '';
+  let noteKey = '';
+
+  if (tab.sub === '甲基汞') {
+    limitVal = (it.limit_value || '').toString();
+    limitModif = it.modif || '';
+    noteKey = it.note || '';
+  } else if (tab.sub) {
+    limitVal = (it.sub_value || '').toString();
+    limitModif = it.sub_modif || '';
+    noteKey = it.sub_remark || it.remark || '';
+  } else {
+    limitVal = (it.limit_value || '').toString();
+    limitModif = it.limit_modifier || '';
+    noteKey = it.note || it.main_remark || '';
+  }
+
+  const limitDisp = limitVal
+    ? (limitModif || (limitVal !== '—' ? '≤' : '')) + limitVal + (limitVal !== '—' && limitUnit ? limitUnit : '')
+    : '—';
+
+  let method = c.inspection_method || it.inspection_method || '—';
+
+  const noteList = [];
+  noteKey.split(/[,，]/).forEach(k => {
+    const trimmed = k.trim();
+    if (!trimmed) return;
+    const txt = footnoteDict[trimmed];
+    if (txt) noteList.push('[' + trimmed + '] ' + txt);
+    else noteList.push(trimmed);
+  });
+  const noteDisp = noteList.length ? noteList.join('<br>') : '—';
+  const noteDispForTitle = noteList.length ? noteList.join(' | ') : '';
+
+  return '<tr>' +
+    '<td class="col-food" title="' + escapeAttr([it.a1_l1, it.a1_l2, it.a1_l3, it.a1_l4].filter(Boolean).join(' › ')) + '">' + escapeHTML(it.food || '—') + '</td>' +
+    '<td class="col-limit">' + escapeHTML(limitDisp) + '</td>' +
+    '<td class="col-method">' + escapeHTML(method) + '</td>' +
+    '<td class="col-note" title="' + escapeAttr(noteDispForTitle) + '">' + noteDisp + '</td>' +
+  '</tr>';
 }
 
 
