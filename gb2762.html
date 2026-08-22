@@ -891,10 +891,15 @@ function toggleTreeNode(path) {
 }
 
 function selectTreeNode(path) {
-  treeSelected = { path: path.slice() };
-  // 自动展开所有祖先
-  for (let i = 1; i <= path.length; i++) {
-    expandedPaths.add(pathKey(path.slice(0, i)));
+  // 再点当前选中的节点 → 取消选中(toggle 行为)
+  if (treeSelected && pathKey(treeSelected.path) === pathKey(path)) {
+    treeSelected = null;
+  } else {
+    treeSelected = { path: path.slice() };
+    // 自动展开所有祖先
+    for (let i = 1; i <= path.length; i++) {
+      expandedPaths.add(pathKey(path.slice(0, i)));
+    }
   }
   renderTree(document.getElementById('treeSearchInput').value);
   renderDetail();
