@@ -653,10 +653,17 @@ function buildItemIndex() {
         _inspection_method: c.inspection_method, _rules: c.inspection_method_rules
       };
       // 把 item 推入它归属的所有 path-key
+      // v10: matchItemToPaths 返回数组,深层路径在前(深→浅)
+      //   buildItemIndex 按顺序注册时,深层先到,浅层后到;
+      //   浅层注册时检查 itemKey 已存在则跳过 → 同一节点同 (food,limit,sub,table) 只算一条
       const paths = matchItemToPaths(it, tree);
+      const itemKey = (it.food || '') + '|' + (it.limit_value || '') + '|' + (it.sub_value || '') + '|' + (it.main_remark || '') + '|' + (it.sub_remark || '') + '|' + (it.note || '') + '|' + c.table_no;
       paths.forEach(pk => {
         if (!itemIndex.has(pk)) itemIndex.set(pk, []);
-        itemIndex.get(pk).push(enriched);
+        const list = itemIndex.get(pk);
+        if (!list.some(x => x._idxKey === itemKey)) {
+          list.push({ ...enriched, _idxKey: itemKey });
+        }
       });
     });
   });
@@ -680,7 +687,9 @@ function matchItemToPaths(item, tree) {
     .filter(Boolean)
     .filter((v, i, arr) => i === 0 || v !== arr[i - 1]); // 去掉连续重复
 
-  const matchedPaths = new Set();
+  // v10: 用数组替代 Set,保持"深层在前、浅层在后"顺序,让 buildItemIndex
+  //   注册时先注册深层(深→浅),浅层注册时可去重避免重复
+  const matchedPaths = [];
 
   if (a1Path.length > 0) {
     // v9: 递归遍历树,精确匹配 a1Path,每一层祖先都注册(让 L2/L3 也能命中子节点 items)
@@ -690,11 +699,11 @@ function matchItemToPaths(item, tree) {
       for (const n of nodes) {
         if (norm(n.name) === target) {
           const curPath = path.concat([n.name]);
-          // 注册到当前层(让上层 L2/L3 节点能包含下层 items)
-          matchedPaths.add(pathKey(curPath));
-          if (idx < a1Path.length - 1) {
-            if (n.children) walkExact(n.children, curPath, idx + 1);
+          if (idx < a1Path.length - 1 && n.children) {
+            // 先递归(深层路径先加入),再注册当前层 → 数组顺序:深→浅
+            walkExact(n.children, curPath, idx + 1);
           }
+          matchedPaths.push(pathKey(curPath));
         }
       }
     }
@@ -702,13 +711,13 @@ function matchItemToPaths(item, tree) {
   }
 
   // 2) 兜底:用 category_a1 找 L1 节点(老字段,兼容)
-  if (matchedPaths.size === 0) {
+  if (matchedPaths.length === 0) {
     const catA1 = item.category_a1 || item.category || '';
     const catNorm = norm(catA1);
     if (catNorm) {
       for (const n of tree) {
         if (norm(n.name) === catNorm) {
-          matchedPaths.add(pathKey([n.name]));
+          matchedPaths.push(pathKey([n.name]));
           break;
         }
       }
@@ -716,12 +725,12 @@ function matchItemToPaths(item, tree) {
   }
 
   // 3) 都不行:关联到 food 匹配最深的节点(L1 兜底)
-  if (matchedPaths.size === 0) {
+  if (matchedPaths.length === 0) {
     function fallback(nodes, path) {
       for (const n of nodes) {
         const curPath = path.concat([n.name]);
         if (path.length === 0 && norm(n.name) === norm(a1Path[0] || '')) {
-          matchedPaths.add(pathKey(curPath));
+          matchedPaths.push(pathKey(curPath));
           return true;
         }
         if (n.children && fallback(n.children, curPath)) return true;
@@ -730,7 +739,7 @@ function matchItemToPaths(item, tree) {
     }
     fallback(tree, []);
   }
-  return [...matchedPaths];
+  return matchedPaths;
 }
 
 // 统计某个 path 节点(及其子树)的 item 总数
