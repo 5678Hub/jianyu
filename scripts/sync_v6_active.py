@@ -40,7 +40,7 @@ TABLE_DEFS = [
     ("5.锡", 5, "锡", "category"),
     ("6.镍", 6, "镍", "category"),
     ("7.铬", 7, "铬", "main_only"),
-    ("8.亚硝酸盐", 8, "亚硝酸盐、硝酸盐", "category"),
+    ("8.亚硝酸盐", 8, "亚硝酸盐、硝酸盐", "pair"),
     ("9.苯并a芘", 9, "苯并[a]芘", "main_only"),
     ("10.N二甲基亚硝胺", 10, "N-二甲基亚硝胺", "category"),
     ("11.多氯联苯", 11, "多氯联苯", "category"),
@@ -201,18 +201,39 @@ def to_main_only_json_item(row, contaminant_name):
 
 
 def to_pair_json_item(rows_pair, contaminant_name):
-    """rows_pair: 同一 food 的 2 行（总砷+无机砷）"""
+    """rows_pair: 同一 food 的 2 行（总砷+无机砷 或 亚硝酸盐+硝酸盐）。
+    识别规则：
+    - 表 4 砷：含"无机"→ sub_row，其他→ main_row
+    - 表 8 亚硝酸盐：含"硝酸盐"（但不是"亚硝酸盐"）→ sub_row
+    - 其他：fallback 到第一行 main + 第二行 sub
+    """
     main_row = None
     sub_row = None
+    has_explicit_pair = False
     for r in rows_pair:
-        if "无机" in r["pollutant"]:
+        pol = r["pollutant"] or ""
+        if "无机" in pol:  # 表 4 砷：总砷 + 无机砷
             sub_row = r
-        else:
+            has_explicit_pair = True
+        elif "亚硝酸盐" in pol:  # 表 8 亚硝酸盐：亚硝酸盐 + 硝酸盐
             main_row = r
-    if main_row is None:
-        main_row = rows_pair[0]
-    if sub_row is None:
-        sub_row = rows_pair[-1]
+            has_explicit_pair = True
+        elif "硝酸盐" in pol:  # 表 8 亚硝酸盐：亚硝酸盐 + 硝酸盐
+            sub_row = r
+            has_explicit_pair = True
+        else:
+            # 没明确标识，按行号顺序：第一行 main，第二行 sub
+            if main_row is None:
+                main_row = r
+            elif sub_row is None:
+                sub_row = r
+
+    if not has_explicit_pair:
+        # fallback: 按行号顺序
+        if main_row is None:
+            main_row = rows_pair[0]
+        if sub_row is None:
+            sub_row = rows_pair[-1] if rows_pair[-1] is not main_row else (rows_pair[1] if len(rows_pair) > 1 else None)
 
     main_letter, _ = parse_note(main_row["raw_note"])
     sub_letter, _ = parse_note(sub_row["raw_note"])
@@ -251,10 +272,12 @@ def to_pair_json_item(rows_pair, contaminant_name):
 
 
 def group_pair_rows(rows):
-    """把表 4 的成对行按 (a1_l1, a1_l2, food) 分组"""
+    """把表 4 / 表 8 的成对行按 (a1_l1, a1_l2, a1_l3, food) 分组。
+    包含 a1_l3 是因为表 8 中部分行 L3 非空（如酱腌菜），不同 L3 相同 food 应分到不同组。
+    """
     groups = {}
     for r in rows:
-        key = (r["a1_l1"], r["a1_l2"], r["food"])
+        key = (r["a1_l1"], r["a1_l2"], r["a1_l3"], r["food"])
         groups.setdefault(key, []).append(r)
     return list(groups.values())
 
