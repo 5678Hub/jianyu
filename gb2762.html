@@ -785,8 +785,13 @@ function countForPath(path) {
 function statsForPath(path) {
   const idx = buildItemIndex();
   const targetKey = pathKey(path);
-  const list = idx.get(targetKey) || [];
-  let items = list.length, limits = 0;
+  let list = idx.get(targetKey) || [];
+  // 无 direct items(典型 L1: 豆类/蔬菜/水果/藻类/坚果/食糖/淀粉/可可/特殊膳/其他类)
+  // 自动 fallback 到子级聚合,与详情页保持一致
+  if (list.length === 0 && path.length === 1) {
+    list = aggregateDescendants(path);
+  }
+  let limits = 0;
   for (const it of list) {
     const ml = (it.limit_value || '').toString().trim();
     const sl = (it.sub_value  || '').toString().trim();
@@ -794,7 +799,9 @@ function statsForPath(path) {
     const hs = (it.sub_has_limit === true) || (sl && sl !== '—' && it.sub_has_limit === undefined);
     limits += (hm ? 1 : 0) + (hs ? 1 : 0);
   }
-  return { items, limits };
+  // 食品项数 = unique food 数量(聚合后按完整 food 字段去重)
+  const foodCount = new Set(list.map(it => it.food || '')).size;
+  return { items: foodCount, limits };
 }
 
 // 递归展平树节点
