@@ -1161,7 +1161,7 @@ function renderLimitTable(items, isSelf, nodeName, bigName) {
     const ctxBig = bigName || '';
     const method = pickMethod(it._rules, ctxFood, ctxBig) || it._inspection_method || '';
     // 限量值 = 数字 + 修饰(若有);参考 foodvip.net 国标写法前置 ≤ 符号
-    const limitText = it._rowMod ? `${it._rowLimit} ${it._rowMod}` : (it._rowLimit === '—' ? '—' : `≤${it._rowLimit} mg/kg`);
+    const limitText = it._rowMod ? `${it._rowMod} ≤${it._rowLimit} mg/kg` : (it._rowLimit === '—' ? '—' : `≤${it._rowLimit} mg/kg`);
     // 备注 = 修饰脚注（_rowRemark 来自 main_remark/sub_remark；note 兼容 simple 表）
     const remarkText = it._rowRemark || '';
     // 脚注字母 badge：优先 _noteLetter（main_remark/sub_remark/note 兼容）
