@@ -1117,10 +1117,13 @@ function renderLimitTable(items, isSelf, nodeName, bigName) {
     // v8: 优先用 JSON has_limit 字段（兼容老数据时回退到 limit_value !== '—' 判断）
     const hasMain = (it.has_limit === true) || (mainVal && mainVal !== '—' && it.has_limit === undefined);
     const hasSub  = (it.sub_has_limit === true) || (subVal && subVal !== '—' && it.sub_has_limit === undefined);
+    // 用 JSON 的 pollutant 字段显示主副限量指标（如"甲基汞"/"总汞"、"总砷"/"无机砷"）。
+    // pollutant 带" a"后缀表示引用脚注 a，需去掉（脚注通过 _noteLetter 通道独立显示）。
+    const polName = ((it.pollutant || '').toString().trim()).replace(/\s*a\s*$/, '');
     if (hasMain) {
       expanded.push({
         ...it,
-        _rowName: it.main_label || it._contaminant,
+        _rowName: polName || it.main_label || it._contaminant,
         _rowLimit: mainVal,
         _rowMod:   it.limit_modifier || '',
         _rowRemark: it.main_remark || '',
@@ -1130,7 +1133,7 @@ function renderLimitTable(items, isSelf, nodeName, bigName) {
     if (hasSub) {
       expanded.push({
         ...it,
-        _rowName: it.sub_label || it._contaminant,
+        _rowName: it.sub_label || polName || it._contaminant,
         _rowLimit: subVal,
         _rowMod:   it.sub_modifier || '',
         _rowRemark: it.sub_remark || '',
