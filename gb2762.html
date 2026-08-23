@@ -1160,8 +1160,8 @@ function renderLimitTable(items, isSelf, nodeName, bigName) {
     const ctxFood = isSelf ? (nodeName || it.food || '') : (it._viaSub || nodeName || it.food || '');
     const ctxBig = bigName || '';
     const method = pickMethod(it._rules, ctxFood, ctxBig) || it._inspection_method || '';
-    // 限量值 = 数字 + 修饰(若有)
-    const limitText = it._rowMod ? `${it._rowLimit} ${it._rowMod}` : (it._rowLimit === '—' ? '—' : `${it._rowLimit} mg/kg`);
+    // 限量值 = 数字 + 修饰(若有);参考 foodvip.net 国标写法前置 ≤ 符号
+    const limitText = it._rowMod ? `${it._rowLimit} ${it._rowMod}` : (it._rowLimit === '—' ? '—' : `≤${it._rowLimit} mg/kg`);
     // 备注 = 修饰脚注（_rowRemark 来自 main_remark/sub_remark；note 兼容 simple 表）
     const remarkText = it._rowRemark || '';
     // 脚注字母 badge：优先 _noteLetter（main_remark/sub_remark/note 兼容）
@@ -1521,7 +1521,7 @@ function renderContamDetail(tab, items, targetEl) {
     }
 
     const limitDisp = limitVal
-      ? (limitModif || (limitVal !== '—' ? '≤' : '')) + limitVal + (limitVal !== '—' && limitUnit ? limitUnit : '')
+      ? (limitModif ? limitModif + ' ≤' : (limitVal !== '—' ? '≤' : '')) + limitVal + (limitVal !== '—' && limitUnit ? limitUnit : '')
       : '—';
 
     let method = c.inspection_method || it.inspection_method || '—';
@@ -1580,7 +1580,7 @@ function renderContamRow(it, tab, c, footnoteDict) {
   }
 
   const limitDisp = limitVal
-    ? (limitModif || (limitVal !== '—' ? '≤' : '')) + limitVal + (limitVal !== '—' && limitUnit ? limitUnit : '')
+    ? (limitModif ? limitModif + ' ≤' : (limitVal !== '—' ? '≤' : '')) + limitVal + (limitVal !== '—' && limitUnit ? limitUnit : '')
     : '—';
 
   let method = c.inspection_method || it.inspection_method || '—';
