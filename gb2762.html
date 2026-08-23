@@ -512,9 +512,13 @@ const DATA_URLS = [
 ];
 async function loadData() {
   const tried = [];
+  // 每个 URL 8 秒超时(fetch 没有内置超时,卡死会无限等)
   for (const url of DATA_URLS) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 8000);
     try {
-      const res = await fetch(url + '?t=' + Date.now());
+      const res = await fetch(url + '?t=' + Date.now(), { signal: ctrl.signal });
+      clearTimeout(timer);
       if (!res.ok) { tried.push(`${url} → HTTP ${res.status}`); continue; }
       DATA = await res.json();
       DATA._dataSource = url;
@@ -525,7 +529,9 @@ async function loadData() {
       renderDetail();
       return;
     } catch (e) {
-      tried.push(`${url} → ${e.message || e}`);
+      clearTimeout(timer);
+      const msg = (e && e.name === 'AbortError') ? 'timeout 8s' : (e.message || e);
+      tried.push(`${url} → ${msg}`);
     }
   }
   document.getElementById('subtitle').innerHTML =
