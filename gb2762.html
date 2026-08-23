@@ -534,11 +534,39 @@ async function loadData() {
       tried.push(`${url} → ${msg}`);
     }
   }
+  // 所有 URL 都失败(file:// 协议下 fetch 被浏览器拦截时尤其常见)
+  // 提示用户上传本地 JSON 文件兜底
   document.getElementById('subtitle').innerHTML =
     '❌ 加载失败:所有数据源均不可访问<br>' +
     '<span style="font-size:11px;color:var(--c-text-3);font-weight:normal;">' +
     tried.join('<br>') + '</span>';
   console.error('All data sources failed:', tried);
+
+  // 提供本地文件上传兜底(file:// 协议下也能用)
+  const uploadBtn = document.createElement('div');
+  uploadBtn.style.cssText = 'margin-top:14px;padding:14px;background:#fff8e1;border:1px dashed #d4a;7;border-radius:6px;text-align:center;';
+  uploadBtn.innerHTML = `
+    <div style="font-size:13px;color:#8a6d3b;margin-bottom:8px;">📂 本地数据兜底(选 <code>data/gb2762/gb2762_2025.json</code> 文件即可)</div>
+    <input type="file" accept=".json" id="fallbackFileInput" style="display:none;">
+    <button onclick="document.getElementById('fallbackFileInput').click()" style="padding:6px 14px;background:#fff;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:13px;">选择本地 JSON 文件</button>
+  `;
+  document.getElementById('subtitle').appendChild(uploadBtn);
+  document.getElementById('fallbackFileInput').addEventListener('change', async (ev) => {
+    const file = ev.target.files[0];
+    if (!file) return;
+    try {
+      const text = await file.text();
+      DATA = JSON.parse(text);
+      DATA._dataSource = 'local-file://' + file.name;
+      document.getElementById('subtitle').innerHTML = '✅ 已加载本地文件:' + file.name;
+      renderTree();
+      renderContamTabs();
+      refreshTreeSummary();
+      renderDetail();
+    } catch (e) {
+      alert('JSON 解析失败:' + e.message);
+    }
+  });
 }
 
 // 恢复左侧面板折叠状态
