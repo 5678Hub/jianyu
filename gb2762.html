@@ -703,7 +703,15 @@ function matchItemToPaths(item, tree) {
       const target = norm(a1Path[idx]);
       let matchedHere = false;
       for (const n of nodes) {
-        if (norm(n.name) === target) {
+        const nNameNorm = norm(n.name);
+        let matched = nNameNorm === target;
+        // 末层 fallback A: 简写匹配全称
+        //   item.a1_l4="肉食性鱼类" vs tree "肉食性鱼类（例如：金枪鱼、金目鲷、枪鱼、鲨鱼等）"
+        //   归一化后前者是后者的前缀 → 注册到全称节点,避免被挤到 idx[L3]
+        if (!matched && idx === a1Path.length - 1 && target.length >= 3 && nNameNorm.startsWith(target)) {
+          matched = true;
+        }
+        if (matched) {
           matchedHere = true;
           const curPath = path.concat([n.name]);
           if (idx < a1Path.length - 1 && n.children) {
@@ -714,7 +722,7 @@ function matchItemToPaths(item, tree) {
           }
         }
       }
-      // Fallback: 走到 a1Path 末层(深层层)但当前节点 children 为空/没有匹配的子节点
+      // Fallback B: 走到 a1Path 末层(深层层)但当前节点 children 为空/没有匹配的子节点
       //   例: A.1 tree 里"花粉" children=[] 但 item.a1_l3="油菜花粉"——tree 没列子节点
       //   此时应注册到当前 path(走的最远一层),而不是丢失
       if (!matchedHere && idx === a1Path.length - 1 && path.length > 0) {
