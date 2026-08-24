@@ -1024,13 +1024,14 @@ function renderTreeDetail() {
     }
   }
 
-  // === L1 节点无 idx 命中时的子级聚合 ===
-  // 10 个 L1(水果/蔬菜/豆类/藻类/坚果/食糖/淀粉/可可/特殊膳/其他类)没有直接挂载 items
-  // v11 idx 只注册到 deepest,L1 没注册;展示时聚合其下所有 L2+L3+L4 的 items
+  // === L1 节点无 idx 命中时不再聚合子级 ===
+  // v11 旧逻辑会聚合 L2+L3+L4 的所有 items 到 L1 详情页本级,造成 L1 详情页堆满子级内容
+  // v13: 改为只在 statsForPath(左侧统计卡)保留聚合,详情页限量表保持 idx[L1] 直接命中 + 祖先继承
+  // 这样 L1 详情页不再平铺子级限量,引导用户进入子分类查看具体限量
   if (primaryItems === null) {
     primaryName = nodeName;
-    primaryLevel = '本级聚合';
-    primaryItems = aggregateDescendants(path);
+    primaryLevel = '本级';
+    primaryItems = []; // 不聚合,L1 idx 空时显示提示
   }
 
   // === 上级分类限量递归展示（参考 foodvip.net "上级分类赋予" 设计） ===
@@ -1117,7 +1118,12 @@ function renderTreeDetail() {
   });
 
   if (levels.length === 0) {
-    html += `<div class="tree-empty"><span class="emoji">📭</span><div>该食品暂无污染物限量记录</div><div class="hint-text">可能未在 GB 2762-2025 中单独规定<br>适用 GB 2762 通用原则</div></div>`;
+    if (path.length === 1 && primaryItems.length === 0) {
+      // L1 idx 无命中(常见:水果/蔬菜/豆类等 L1 分类本身不直接挂限量,具体限量在 L2/L3)
+      html += `<div class="tree-empty"><span class="emoji">📭</span><div>本分类下暂无直接限量要求</div><div class="hint-text">请点击左侧展开的二级 / 三级子分类查看具体限量</div></div>`;
+    } else {
+      html += `<div class="tree-empty"><span class="emoji">📭</span><div>该食品暂无污染物限量记录</div><div class="hint-text">可能未在 GB 2762-2025 中单独规定<br>适用 GB 2762 通用原则</div></div>`;
+    }
   } else {
     levels.forEach(lv => {
       const cls = lv.isSelf ? 'level-block self-level' : 'level-block';
