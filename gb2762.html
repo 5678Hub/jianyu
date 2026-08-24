@@ -796,6 +796,10 @@ function aggregateDescendants(path) {
     const items = idx.get(curPk);
     if (items) {
       items.forEach(it => {
+        // v12: 跨 idx dedup (基于 food+limit+table_no,忽略 pathKey)
+        //   因为 PDF 复合展示行(如"麦片、面筋、粥类罐头、带馅料面米制品 0.5")被
+        //   gen_xlsx_full.py 复制到 4 个 L2/L3 idx,各 idx 内 dedup 各自保留 1 条
+        //   → 聚合到 L1 时不再次去重会导致"复合限量"重复/错误展示
         const k = (it.food || '') + '\x01' + (it.limit_value || '') + '\x01' +
                   (it.sub_value || '') + '\x01' + (it.main_remark || '') + '\x01' +
                   (it.sub_remark || '') + '\x01' + (it.note || '') + '\x01' +
@@ -1029,23 +1033,65 @@ function renderTreeDetail() {
     primaryItems = aggregateDescendants(path);
   }
 
-  // === 二级分类:path 倒数第二层(二级分类)下所有命中 items(扣除 primaryItems) ===
-  // 选中三级或更深时,展示其所属的二级分类(如:选"芸薹类蔬菜"→ 展示"新鲜蔬菜"下的其他限量)
-  // 选中 L1/L2 时,path 没有"倒数第二层",这块跳过
-  let bigOther = [];
-  let secondName = null; // 二级分类名(L2),仅用于本块标题
-  if (path.length >= 3) {
-    secondName = path[path.length - 2];
-    const l2Key = pathKey(path.slice(0, path.length - 1));
-    if (idx.has(l2Key)) {
-      idx.get(l2Key).forEach(it => bigOther.push({ ...it, _viaSub: secondName }));
+  // === 上级分类限量递归展示（参考 foodvip.net "上级分类赋予" 设计） ===
+  // 沿 path 向上逐层收集每个祖先节点的 idx 命中项
+  // 每个祖先一个独立块,展示"父级分类的限量如何适用于当前节点"
+  // 含"除外"的 L1 通类项:判断排除列表是否覆盖当前节点,自动剔除不适用项
+  function isExcluded(itemFood, currentPath) {
+    // 含"除外"且排除列表覆盖当前节点任一名称 → 不适用
+    const m = (itemFood || '').toString().match(/[\(（]([^)）]+除外)[\)）]/);
+    if (!m) return false;
+    const excludeStr = m[1].replace(/除外$/, '');
+    // 拆分(顿号、逗号、"及"/"和"/空格)
+    const excList = excludeStr.split(/[、,,及和  \s]+/).filter(Boolean);
+    for (const exc of excList) {
+      const normExc = exc.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+      if (!normExc || normExc.length < 2) continue;
+      // 当前节点的任一祖先 name 被排除 → 不适用
+      for (const name of currentPath) {
+        const normName = name.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+        // 全等 OR 简写匹配全称(target 是 nameNorm 前缀,长度>=3)
+        // 注意:不能用 includes,会误判 "非肉食性鱼类" 包含 "肉食性鱼类"
+        if (normName === normExc) return true;
+        if (normExc.length >= 3 && (normName.startsWith(normExc) || normExc.startsWith(normName))) return true;
+      }
     }
+    return false;
   }
   function itemKey(it) {
     return (it._table_no || '') + '|' + (it.food || '') + '|' + ((it.limits && it.limits[0] && it.limits[0].value) || it.limit || '') + '|' + (it._viaSub || '');
   }
   const primKey = new Set(primaryItems.map(itemKey));
-  bigOther = bigOther.filter(it => !primKey.has(itemKey(it)));
+  let ancestorsLevels = [];
+  if (path.length >= 2) {
+    for (let i = path.length - 2; i >= 0; i--) {
+      const ancestorPath = path.slice(0, i + 1);
+      const ancestorKey = pathKey(ancestorPath);
+      const ancestorName = path[i];
+      if (!idx.has(ancestorKey)) continue;
+      const items = idx.get(ancestorKey) || [];
+      // 过滤:1) 排除项不适用 2) 已在 primaryItems 出现的不重复
+      const filtered = items.filter(it => {
+        if (isExcluded(it.food, path)) return false;
+        return !primKey.has(itemKey({ ...it, _viaSub: ancestorName }));
+      }).map(x => ({ ...x, _viaSub: ancestorName }));
+      if (filtered.length === 0) continue;
+      // 标记 dedup key 用于跨祖先层去重(浅层优先,即 i 大的层优先)
+      const seen = new Set(filtered.map(itemKey));
+      ancestorsLevels.push({
+        tag: '上级分类',
+        label: `${ancestorName} 赋予的污染物限量要求`,
+        ancestorName,
+        depth: i + 1,
+        isSelf: false,
+        items: filtered,
+        _seen: seen
+      });
+    }
+  }
+  // 跨祖先层 dedup:浅层祖先(L1)优先,如果浅层已展示,深层祖先不展示同一 (food, limit)
+  // 但 foodvip.net 不做这个去重——每个祖先节点都完整展示自己的限量
+  // 这里遵循 foodvip.net:不去重,每个祖先块独立展示自己的 idx
 
   // 卡片
   const emoji = pickEmoji(nodeName);
@@ -1065,9 +1111,10 @@ function renderTreeDetail() {
   if (primaryItems.length > 0) {
     levels.push({ tag: primaryLevel, label: `${primaryName} 的污染物限量要求`, isSelf: primaryLevel === '本级', items: primaryItems });
   }
-  if (bigOther.length > 0 && secondName) {
-    levels.push({ tag: '二级分类', label: `${secondName} 的其他限量`, isSelf: false, items: bigOther });
-  }
+  // 上级分类块(参考 foodvip.net "上级分类 X 赋予的限量" 标题)
+  ancestorsLevels.forEach(lv => {
+    levels.push(lv);
+  });
 
   if (levels.length === 0) {
     html += `<div class="tree-empty"><span class="emoji">📭</span><div>该食品暂无污染物限量记录</div><div class="hint-text">可能未在 GB 2762-2025 中单独规定<br>适用 GB 2762 通用原则</div></div>`;
@@ -1086,7 +1133,9 @@ function renderTreeDetail() {
   }
 
   tc.innerHTML = html;
-  fn.innerHTML = renderFootnotesFor(primaryItems, primaryName, bigName);
+  // 脚注/检验方法块:收集所有 levels 的 items（含 ancestors 块）
+  const allItems = levels.flatMap(lv => lv.items);
+  fn.innerHTML = renderFootnotesFor(allItems, primaryName, bigName);
 }
 
 function pickEmoji(name) {
@@ -1177,7 +1226,14 @@ function renderLimitTable(items, isSelf, nodeName, bigName) {
     html += '<tr>';
     html += `<td class="contaminant-cell">${escapeHTML(it._rowName)}</td>`;
     html += `<td class="symbol">${escapeHTML(it._rowSymbol)}</td>`;
-    const foodName = isSelf ? (it.food || nodeName) : (it._viaSub ? `${it._viaSub}:` + (it.food || '') : (it.food || ''));
+    // 食品名显示:本级用 it.food;上级分类块用 a1_l1/l2/l3/l4 完整路径(参考 foodvip.net "上级分类赋予" 风格)
+    let foodName;
+    if (isSelf) {
+      foodName = it.food || nodeName;
+    } else {
+      const fullPath = [it.a1_l1, it.a1_l2, it.a1_l3, it.a1_l4].filter(Boolean).join('：');
+      foodName = fullPath || (it._viaSub ? it._viaSub + '：' + (it.food || '') : (it.food || ''));
+    }
     html += `<td class="food-cell">${escapeHTML(foodName)}</td>`;
     html += `<td class="limit-cell"><span class="limit-main">${escapeHTML(limitText)}</span></td>`;
     html += `<td class="unit-cell">${escapeHTML(it._unit || '')}</td>`;
@@ -1415,9 +1471,10 @@ function renderDetail() {
       // 总汞(主列):pollutant 以"总汞"开头
       items = filtered.filter(it => (it.pollutant || '').startsWith('总汞'));
     } else if (tab.table_no === 4) {
-      // 总砷(主列):pollutant 是"总砷"或不含"无机砷"的
+      // 总砷(主列):main_label 是"总砷"或 pollutant 是"总砷"
+      // 注:砷表 items 用 main_label/sub_label 字段(其他污染物用 pollutant 字段)
       items = filtered.filter(it => {
-        const p = it.pollutant || '';
+        const p = it.pollutant || it.main_label || '';
         return (p === '总砷' || p.indexOf('总砷') === 0);
       });
     } else if (tab.table_no === 8) {
