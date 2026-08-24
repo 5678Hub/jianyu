@@ -1226,14 +1226,10 @@ function renderLimitTable(items, isSelf, nodeName, bigName) {
     html += '<tr>';
     html += `<td class="contaminant-cell">${escapeHTML(it._rowName)}</td>`;
     html += `<td class="symbol">${escapeHTML(it._rowSymbol)}</td>`;
-    // 食品名显示:本级用 it.food;上级分类块用 a1_l1/l2/l3/l4 完整路径(参考 foodvip.net "上级分类赋予" 风格)
+    // 食品名显示:始终用 it.food（PDF 原文），不拼上层路径
+    // 原因:同 idx 内多条目 food 已天然不同,无冲突;祖先块也会展示 PDF 原 food（如"水果制品(果酱(泥)、蜜饯、水果干类除外)"）更忠实
     let foodName;
-    if (isSelf) {
-      foodName = it.food || nodeName;
-    } else {
-      const fullPath = [it.a1_l1, it.a1_l2, it.a1_l3, it.a1_l4].filter(Boolean).join('：');
-      foodName = fullPath || (it._viaSub ? it._viaSub + '：' + (it.food || '') : (it.food || ''));
-    }
+    foodName = it.food || nodeName;
     html += `<td class="food-cell">${escapeHTML(foodName)}</td>`;
     html += `<td class="limit-cell"><span class="limit-main">${escapeHTML(limitText)}</span></td>`;
     html += `<td class="unit-cell">${escapeHTML(it._unit || '')}</td>`;
