@@ -4595,6 +4595,29 @@
           "a1_l4": "",
           "inspection_method": "GB 5009.11",
           "test_method": ""
+        },
+        {
+          "a1_l1": "水产动物及其制品",
+          "a1_l2": "",
+          "a1_l3": "",
+          "a1_l4": "",
+          "food": "水产动物及其制品（鱼类及其制品除外）",
+          "has_limit": false,
+          "sub_has_limit": true,
+          "main_label": "总砷",
+          "sub_label": "无机砷 a",
+          "main_value": "—",
+          "sub_value": "0.5",
+          "unit": "mg/kg",
+          "inspection_method": "GB 5009.11",
+          "test_method": "",
+          "main_remark": "",
+          "sub_remark": "以As计。鱼类及其制品除外。对于制定无机砷限量的食品可先测定其总砷，当总砷含量不超过无机砷限量值时，可判定符合限量要求而不必测定无机砷；否则，需测定无机砷含量再作判定。",
+          "modif": "",
+          "sub_modifier": "",
+          "limit": "— mg/kg",
+          "sub_limit": "0.5 mg/kg",
+          "remark": ""
         }
       ],
       "footnotes": [
@@ -12079,5 +12102,5 @@
       ]
     }
   ],
-  "_last_fix": "2026-08-23: 鲜、冻水产动物/鱼类、甲壳类 L2 通类母项 a1_l3 清空"
+  "_last_fix": "arsenic table: added L1 通类母项 水产动物及其制品（鱼类及其制品除外）— / 0.5"
 }
