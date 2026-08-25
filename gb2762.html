@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="cwz0001-2026-08-25-10:15">
+<meta name="version" content="v15-idx-console-2026-08-25-11:15">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   (function() {
-    var EXPECTED = 'cwz0001-2026-08-25-10:15';
+    var EXPECTED = 'v15-idx-console-2026-08-25-11:15';
     // 第 1 层:URL cbust 缺失 → 跳一次
     if (!location.search.includes('cbust=')) {
       var url = location.href.split('?')[0] + '?cbust=' + Date.now() + '#' + location.hash;
@@ -60,7 +60,7 @@
   // 加载完后,在右下角显一个固定徽章告诉用户当前 build
   // 如果看到的是 cwz0001 + 时间戳就是新版;看到其他(如 5ae1df6)说明磁盘里就是旧 HTML
   window.addEventListener('DOMContentLoaded', function() {
-    var EXPECTED = 'cwz0001-2026-08-25-10:15';
+    var EXPECTED = 'v15-idx-console-2026-08-25-11:15';
     // 仅当 DOM 有 body 时插入
     var badge = document.createElement('div');
     badge.id = 'buildBadge';
@@ -72,7 +72,7 @@
   });
 
 </script>
-<title>[cwz0001] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
+<title>[v15] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='40' font-family='Arial,sans-serif' font-size='18' font-weight='600' fill='white' text-anchor='middle'>污染物</text></svg>">
 <meta name="theme-color" content="#1a365d">
 <style>
@@ -588,7 +588,7 @@ async function loadData() {
     try {
       // cache-busting: t=Date.now() + 数据版本(每次提交 JSON 时手动 bump)
       // cache: 'reload' 走 HTTP 强刷(Max-Age=0)而非简单 no-store,绕过浏览器 disk cache 最彻底
-      const cacheBust = 't=' + Date.now() + '&v=20260825-cwz0001';
+      const cacheBust = 't=' + Date.now() + '&v=20260825-v15-idxconsole';
       const res = await fetch(url + '?' + cacheBust, { signal: ctrl.signal, cache: 'reload' });
       clearTimeout(timer);
       if (!res.ok) { tried.push(`${url} → HTTP ${res.status}`); continue; }
@@ -744,6 +744,15 @@ function buildItemIndex() {
       });
     });
   });
+  // v15: 自查 - 显打印 idx 关键节点内容,用户可在 DevTools Console 验证注册逻辑正确
+  // 之前用户多次反馈「不在 idx 的数据出现在 ancestorsLevels 上」,怀疑浏览器 JS 旧。
+  // 打印当前 idx L2 蔬菜制品 + L3 酱腌菜 count,供肉眼对照
+  if (typeof console !== 'undefined') {
+    const l2pk = pathKey(['蔬菜及其制品（包括薯类，不包括食用菌）', '蔬菜制品']);
+    const l3pk = pathKey(['蔬菜及其制品（包括薯类，不包括食用菌）', '蔬菜制品', '酱腌菜']);
+    console.log('[gb2762] idx L2 蔬菜制品:', (itemIndex.get(l2pk) || []).map(x => x.food + '(' + x.limit_value + ')').join(', '));
+    console.log('[gb2762] idx L3 酱腌菜:', (itemIndex.get(l3pk) || []).map(x => x.food + '(' + x.limit_value + ')').join(', '));
+  }
   return itemIndex;
 }
 
