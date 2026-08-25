@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="63f62c7-2026-08-25-09:35">
+<meta name="version" content="cwz0001-2026-08-25-10:15">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -13,7 +13,7 @@
   //  2. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  3. fetch 内部用 cache: 'no-store' + URL timestamp(防 JSON disk cache)
   (function() {
-    var EXPECTED = '63f62c7-2026-08-25-09:35';
+    var EXPECTED = 'cwz0001-2026-08-25-10:15';
     // 第 1 层:URL cbust 缺失 → 自动跳一次
     if (!location.search.includes('cbust=')) {
       var url = location.href.split('?')[0] + '?cbust=' + Date.now() + '#' + location.hash;
@@ -43,7 +43,7 @@
     });
   }
 </script>
-<title>[63f62c7] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
+<title>[cwz0001] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='40' font-family='Arial,sans-serif' font-size='18' font-weight='600' fill='white' text-anchor='middle'>污染物</text></svg>">
 <meta name="theme-color" content="#1a365d">
 <style>
@@ -559,7 +559,7 @@ async function loadData() {
     try {
       // cache-busting: t=Date.now() + 数据版本(每次提交 JSON 时手动 bump)
       // cache: 'reload' 走 HTTP 强刷(Max-Age=0)而非简单 no-store,绕过浏览器 disk cache 最彻底
-      const cacheBust = 't=' + Date.now() + '&v=20260825-63f62c7';
+      const cacheBust = 't=' + Date.now() + '&v=20260825-cwz0001';
       const res = await fetch(url + '?' + cacheBust, { signal: ctrl.signal, cache: 'reload' });
       clearTimeout(timer);
       if (!res.ok) { tried.push(`${url} → HTTP ${res.status}`); continue; }
@@ -664,14 +664,14 @@ const FOOD_EMOJI = {
 
 // 树工具:把 path 数组序列化用于 Set/Map key / data-attr
 function pathKey(path) {
-  // v9: 归一化 - 去掉括号、冒号、逗号、空白的半全角差异
-  // (A.1 校对表录入时偶有半角标点 vs JSON 全角标点,统一归一后才能匹配)
+  // v14: 归一化 - 全部删除括号/逗号/顿号/冒号/空白,消除 JSON vs tree 字符差
+  // (A.1 校对表录入时偶有半角标点 vs JSON 全角标点,如 木耳 顿号 「、」 vs tree 半角 「,」)
   const norm = (s) => (s || '')
-    .replace(/[()（）\[\]【】]/g, '')   // 所有括号
-    .replace(/:/g, '：')              // 半角冒号 → 全角
-    .replace(/,/g, '，')              // 半角逗号 → 全角
-    .replace(/\s+/g, '')              // 空白
-    .replace(/\|/g, '||');            // 转义分隔符
+    .replace(/[,，、;；]+/g, '')          // 所有逗号/分号/顿号 → 删
+    .replace(/[()（）\[\]【】]+/g, '')     // 所有括号 → 删
+    .replace(/[:：]+/g, '')                // 冒号 → 删
+    .replace(/\s+/g, '')                  // 空白 → 删
+    .replace(/\|/g, '||');                // 转义分隔符
   return path.map(norm).join('|');
 }
 function pathAttr(path) { return path.map(s => s.replace(/"/g, '&quot;').replace(/'/g, '&#39;')).join(' › '); }
@@ -721,12 +721,11 @@ function buildItemIndex() {
 // 把一个 item 关联到 A.1 树的某些节点路径
 // 优先用 v6.1 的 a1_l1/l2/l3/l4 精确路径(由 gen_xlsx_full.py 渲染时填充)
 function matchItemToPaths(item, tree) {
-  // v9: 归一化 - 去掉所有括号(包括方括号【】)、冒号、逗号、空白半全角差异
-  // (A.1 校对表 vs JSON vs PDF 三方标点不一致,统一归一后才能匹配)
+  // v14: 归一化 - 全部删除括号/逗号/顿号/冒号/空白 (同 pathKey)
   const norm = (s) => (s || '')
-    .replace(/[()（）\[\]【】]/g, '')
-    .replace(/:/g, '：')
-    .replace(/,/g, '，')
+    .replace(/[,，、;；]+/g, '')
+    .replace(/[()（）\[\]【】]+/g, '')
+    .replace(/[:：]+/g, '')
     .replace(/\s+/g, '')
     .toLowerCase();
 
