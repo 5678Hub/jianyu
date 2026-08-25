@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v17-fnfilter-2026-08-25-12:45">
+<meta name="version" content="v18-backnav-2026-08-25-13:10">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   (function() {
-    var EXPECTED = 'v17-fnfilter-2026-08-25-12:45';
+    var EXPECTED = 'v18-backnav-2026-08-25-13:10';
     // 第 1 层:URL cbust 缺失 → 跳一次
     if (!location.search.includes('cbust=')) {
       var url = location.href.split('?')[0] + '?cbust=' + Date.now() + '#' + location.hash;
@@ -60,19 +60,19 @@
   // 加载完后,在右下角显一个固定徽章告诉用户当前 build
   // 如果看到的是 cwz0001 + 时间戳就是新版;看到其他(如 5ae1df6)说明磁盘里就是旧 HTML
   window.addEventListener('DOMContentLoaded', function() {
-    var EXPECTED = 'v17-fnfilter-2026-08-25-12:45';
+    var EXPECTED = 'v18-backnav-2026-08-25-13:10';
     // 仅当 DOM 有 body 时插入
     var badge = document.createElement('div');
     badge.id = 'buildBadge';
     badge.style.cssText = 'position:fixed;bottom:8px;right:8px;z-index:99999;background:#1a365d;color:white;'
       + 'padding:4px 10px;border-radius:6px;font:11px/1.4 monospace;opacity:0.85;'
       + 'box-shadow:0 2px 6px rgba(0,0,0,0.3);user-select:none;pointer-events:none;';
-    badge.textContent = 'build v17-fnfilter';
+    badge.textContent = 'build v18-backnav';
     document.body.appendChild(badge);
   });
 
 </script>
-<title>[v17] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
+<title>[v18] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='40' font-family='Arial,sans-serif' font-size='18' font-weight='600' fill='white' text-anchor='middle'>污染物</text></svg>">
 <meta name="theme-color" content="#1a365d">
 <style>
@@ -340,6 +340,17 @@ table.results td.remark { font-size: 12px; color: var(--c-text-2); font-style: i
   background: white; border: 1px solid var(--c-border);
   border-radius: var(--r-sm); padding: 6px 12px; text-align: center; min-width: 70px;
 }
+.food-card .meta-card.clickable {
+  cursor: pointer; transition: all .15s ease;
+  border-color: var(--c-primary-light);
+}
+.food-card .meta-card.clickable:hover {
+  background: var(--c-primary-light); border-color: var(--c-primary);
+  transform: translateY(-1px); box-shadow: 0 2px 6px rgba(0,0,0,.06);
+}
+.food-card .meta-card.clickable .num::before {
+  content: '← '; color: var(--c-primary); font-weight: 700;
+}
 .food-card .meta-card .label { font-size: 10px; color: var(--c-text-3); }
 .food-card .meta-card .num { font-size: 16px; font-weight: 600; color: var(--c-primary); }
 
@@ -588,7 +599,7 @@ async function loadData() {
     try {
       // cache-busting: t=Date.now() + 数据版本(每次提交 JSON 时手动 bump)
       // cache: 'reload' 走 HTTP 强刷(Max-Age=0)而非简单 no-store,绕过浏览器 disk cache 最彻底
-      const cacheBust = 't=' + Date.now() + '&v=20260825-v17-fnfilter';
+      const cacheBust = 't=' + Date.now() + '&v=20260825-v18-backnav';
       const res = await fetch(url + '?' + cacheBust, { signal: ctrl.signal, cache: 'reload' });
       clearTimeout(timer);
       if (!res.ok) { tried.push(`${url} → HTTP ${res.status}`); continue; }
@@ -1219,7 +1230,21 @@ function renderTreeDetail() {
     </div>
     <div class="meta">
       <div class="meta-card"><div class="label">适用污染物</div><div class="num">${primaryItems.length}</div></div>
-      <div class="meta-card"><div class="label">所属大类</div><div class="num" style="font-size:13px;">${escapeHTML(bigName)}</div></div>
+      ${(() => {
+        // v18:「所属大类」改为「上一级」(L2+节点),可点击跳到直接父节点
+        //   之前 L3 蔬菜罐头详情页用户找不到返回上一级入口,只能依赖面包屑小字
+        //   现在 meta-card 做成可点击的导航卡,鼠标 hover 高亮 + num 前置 ← 箭头
+        //   L1 节点没有「上一级」,仍显示「所属大类 = bigName」
+        if (path.length >= 2) {
+          const parentPath = path.slice(0, -1);
+          const parentName = path[path.length - 2];
+          return `<div class="meta-card clickable" onclick="selectTreeNode(${jsonInAttr(parentPath)})" title="点击返回上一级: ${escapeHTML(parentName)}">
+            <div class="label">上一级</div>
+            <div class="num" style="font-size:13px;">${escapeHTML(parentName)}</div>
+          </div>`;
+        }
+        return `<div class="meta-card"><div class="label">所属大类</div><div class="num" style="font-size:13px;">${escapeHTML(bigName)}</div></div>`;
+      })()}
     </div>
   </div>`;
 
