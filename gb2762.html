@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v18-backnav-2026-08-25-13:10">
+<meta name="version" content="v20-countfix-2026-08-25-20:05">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   (function() {
-    var EXPECTED = 'v18-backnav-2026-08-25-13:10';
+    var EXPECTED = 'v20-countfix-2026-08-25-20:05';
     // 第 1 层:URL cbust 缺失 → 跳一次
     if (!location.search.includes('cbust=')) {
       var url = location.href.split('?')[0] + '?cbust=' + Date.now() + '#' + location.hash;
@@ -60,19 +60,19 @@
   // 加载完后,在右下角显一个固定徽章告诉用户当前 build
   // 如果看到的是 cwz0001 + 时间戳就是新版;看到其他(如 5ae1df6)说明磁盘里就是旧 HTML
   window.addEventListener('DOMContentLoaded', function() {
-    var EXPECTED = 'v18-backnav-2026-08-25-13:10';
+    var EXPECTED = 'v20-countfix-2026-08-25-20:05';
     // 仅当 DOM 有 body 时插入
     var badge = document.createElement('div');
     badge.id = 'buildBadge';
     badge.style.cssText = 'position:fixed;bottom:8px;right:8px;z-index:99999;background:#1a365d;color:white;'
       + 'padding:4px 10px;border-radius:6px;font:11px/1.4 monospace;opacity:0.85;'
       + 'box-shadow:0 2px 6px rgba(0,0,0,0.3);user-select:none;pointer-events:none;';
-    badge.textContent = 'build v18-backnav';
+    badge.textContent = 'build v20-countfix';
     document.body.appendChild(badge);
   });
 
 </script>
-<title>[v18] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
+<title>[v20] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='40' font-family='Arial,sans-serif' font-size='18' font-weight='600' fill='white' text-anchor='middle'>污染物</text></svg>">
 <meta name="theme-color" content="#1a365d">
 <style>
@@ -599,7 +599,7 @@ async function loadData() {
     try {
       // cache-busting: t=Date.now() + 数据版本(每次提交 JSON 时手动 bump)
       // cache: 'reload' 走 HTTP 强刷(Max-Age=0)而非简单 no-store,绕过浏览器 disk cache 最彻底
-      const cacheBust = 't=' + Date.now() + '&v=20260825-v18-backnav';
+      const cacheBust = 't=' + Date.now() + '&v=20260825-v20-countfix';
       const res = await fetch(url + '?' + cacheBust, { signal: ctrl.signal, cache: 'reload' });
       clearTimeout(timer);
       if (!res.ok) { tried.push(`${url} → HTTP ${res.status}`); continue; }
@@ -1267,13 +1267,14 @@ function renderTreeDetail() {
   } else {
     levels.forEach(lv => {
       const cls = lv.isSelf ? 'level-block self-level' : 'level-block';
+      const tableInfo = renderLimitTable(lv.items, lv.isSelf, nodeName, bigName);
       html += `<div class="${cls}">
         <div class="level-header">
           <span>${escapeHTML(lv.label)}</span>
           <span class="level-tag">${lv.tag}</span>
-          <span class="count-tag">${lv.items.length} 条</span>
+          <span class="count-tag">${tableInfo.count} 条</span>
         </div>
-        ${renderLimitTable(lv.items, lv.isSelf, nodeName, bigName)}
+        ${tableInfo.html}
       </div>`;
     });
   }
@@ -1384,7 +1385,7 @@ function renderLimitTable(items, isSelf, nodeName, bigName) {
     html += '</tr>';
   });
   html += '</tbody></table>';
-  return html;
+  return { html, count: expanded.length };
 }
 
 function renderFootnotesFor(items, nodeName, bigName) {
