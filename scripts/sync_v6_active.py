@@ -135,13 +135,57 @@ def is_l1_category_item(row):
     return food.startswith(l1) and "除外" in food
 
 
-def to_simple_json_item(row):
+def is_processed_l3_item(row):
+    """v24: 加工食品错位识别 — a1_l2=新鲜食用菌 + food 含「及以上食用菌的制品」
+    且 food 不以 L1 开头(排除 L1 通类项 row 97-109 的情况)
+    → 实际应归 L2「食用菌制品」+ L3「其他食用菌制品」。
+
+    Excel 录入时 a1Path 末层填了具体子类(双孢菇/松茸/木耳 等),
+    但 food 描述明显是「食用菌制品」(加工类) 的限量。
+    例如:
+      row 110-113: a1_l2=新鲜食用菌, a1_l3=双孢菇, food="双孢菇...及以上食用菌的制品"
+        → 实际应归 idx[L3 其他食用菌制品]
+      row 116-121: a1_l2=新鲜食用菌, a1_l3=松茸, food="牛肝菌、松茸...及以上食用菌的制品"
+        → 实际应归 idx[L3 其他食用菌制品]
+    修复: 把 a1_l2 改为「食用菌制品」,a1_l3 改为「其他食用菌制品」。
+    注意: row 97-109 (L1 通类项 0.5) food 也含「及以上食用菌的制品」,
+    但它们是 v19 的 L1 通类项,已经被 v19 规则处理,这里不再二次处理。
+    """
+    if is_l1_category_item(row):
+        return False
+    a1l2 = (row.get("a1_l2") or "").strip()
+    food = (row.get("food") or "").strip()
+    if "新鲜食用菌" not in a1l2:
+        return False
+    if not food:
+        return False
+    return ("及以上食用菌的制品" in food) or ("及以上食用菌制品" in food)
+
+
+def to_simple_json_item(row, force_original_a1path=False):
     letter, _ = parse_note(row["raw_note"])
     limit_str = str(row["limit_value"]).strip()
     has_limit = limit_str not in ("", "—", "-")
     # v19: 通类项(food 以 L1 开头 + 含"(除外)")→ a1_l2/l3/l4 置空,
     #   只挂在 L1,避免 idx 注册到具体子类导致 L1 详情页看不到通类项
     is_l1_cat = is_l1_category_item(row)
+    # v24: 加工食品错位 — a1_l2=新鲜食用菌 + food 含「及以上食用菌的制品」
+    #   → 重写 a1Path 为 [食用菌及其制品, 食用菌制品, 其他食用菌制品]
+    is_processed = is_processed_l3_item(row)
+    if is_processed:
+        if force_original_a1path:
+            # 保留原 a1Path(挂到 L3 具体子类如双孢菇/松茸)
+            a1l2 = row["a1_l2"]
+            a1l3 = row["a1_l3"]
+            a1l4 = row["a1_l4"]
+        else:
+            a1l2 = "食用菌制品"
+            a1l3 = "其他食用菌制品"
+            a1l4 = ""
+    else:
+        a1l2 = "" if is_l1_cat else row["a1_l2"]
+        a1l3 = "" if is_l1_cat else row["a1_l3"]
+        a1l4 = "" if is_l1_cat else row["a1_l4"]
     return {
         "food": row["food"],
         "pollutant": row["pollutant"],
@@ -153,9 +197,9 @@ def to_simple_json_item(row):
         "modif": row["modif"],
         "inspection_method": row["inspection_method"],
         "a1_l1": row["a1_l1"],
-        "a1_l2": "" if is_l1_cat else row["a1_l2"],
-        "a1_l3": "" if is_l1_cat else row["a1_l3"],
-        "a1_l4": "" if is_l1_cat else row["a1_l4"],
+        "a1_l2": a1l2,
+        "a1_l3": a1l3,
+        "a1_l4": a1l4,
     }
 
 
@@ -192,12 +236,27 @@ def to_category_json_item(row):
     return item
 
 
-def to_main_only_json_item(row, contaminant_name):
+def to_main_only_json_item(row, contaminant_name, force_original_a1path=False):
     letter, _ = parse_note(row["raw_note"])
     limit_val = str(row["limit_value"]).strip()
     has_limit = limit_val not in ("", "—", "-")
     # v19: 通类项识别,同 to_simple_json_item
     is_l1_cat = is_l1_category_item(row)
+    # v24: 加工食品错位识别,同 to_simple_json_item
+    is_processed = is_processed_l3_item(row)
+    if is_processed:
+        if force_original_a1path:
+            a1l2 = row["a1_l2"]
+            a1l3 = row["a1_l3"]
+            a1l4 = row["a1_l4"]
+        else:
+            a1l2 = "食用菌制品"
+            a1l3 = "其他食用菌制品"
+            a1l4 = ""
+    else:
+        a1l2 = "" if is_l1_cat else row["a1_l2"]
+        a1l3 = "" if is_l1_cat else row["a1_l3"]
+        a1l4 = "" if is_l1_cat else row["a1_l4"]
     return {
         "food": row["food"],
         "limit": f'{row["limit_value"]} {row["unit"]}'.strip(),
@@ -213,9 +272,9 @@ def to_main_only_json_item(row, contaminant_name):
         "sub_remark": "",
         "remark": letter or "",  # 仅字母
         "a1_l1": row["a1_l1"],
-        "a1_l2": "" if is_l1_cat else row["a1_l2"],
-        "a1_l3": "" if is_l1_cat else row["a1_l3"],
-        "a1_l4": "" if is_l1_cat else row["a1_l4"],
+        "a1_l2": a1l2,
+        "a1_l3": a1l3,
+        "a1_l4": a1l4,
         "inspection_method": row["inspection_method"],
         "test_method": "",
     }
@@ -366,9 +425,24 @@ def sync_json(source):
         rows = read_xlsx_rows(source, sheet_name)
 
         if structure == "simple":
-            items = [to_simple_json_item(r) for r in rows]
+            items = []
+            for r in rows:
+                if is_processed_l3_item(r):
+                    # v24: 加工食品错位 — 既保留原 a1Path(挂到具体 L3 子类如双孢菇),
+                    #   又生成一份新 a1Path(挂到 L3 其他食用菌制品)
+                    #   这样 idx[L3 双孢菇] 和 idx[L3 其他食用菌制品] 都能看到
+                    items.append(to_simple_json_item(r, force_original_a1path=True))
+                    items.append(to_simple_json_item(r, force_original_a1path=False))
+                else:
+                    items.append(to_simple_json_item(r))
         elif structure == "main_only":
-            items = [to_main_only_json_item(r, contam_name) for r in rows]
+            items = []
+            for r in rows:
+                if is_processed_l3_item(r):
+                    items.append(to_main_only_json_item(r, contam_name, force_original_a1path=True))
+                    items.append(to_main_only_json_item(r, contam_name, force_original_a1path=False))
+                else:
+                    items.append(to_main_only_json_item(r, contam_name))
         elif structure == "pair":
             grouped = group_pair_rows(rows)
             items = [to_pair_json_item(g, contam_name) for g in grouped]
