@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v22-ancestor-raw-2026-08-25-20:30">
+<meta name="version" content="v23-sibling-probe-2026-08-25-20:40">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   (function() {
-    var EXPECTED = 'v22-ancestor-raw-2026-08-25-20:30';
+    var EXPECTED = 'v23-sibling-probe-2026-08-25-20:40';
     // 第 1 层:URL cbust 缺失 → 跳一次
     if (!location.search.includes('cbust=')) {
       var url = location.href.split('?')[0] + '?cbust=' + Date.now() + '#' + location.hash;
@@ -60,19 +60,19 @@
   // 加载完后,在右下角显一个固定徽章告诉用户当前 build
   // 如果看到的是 cwz0001 + 时间戳就是新版;看到其他(如 5ae1df6)说明磁盘里就是旧 HTML
   window.addEventListener('DOMContentLoaded', function() {
-    var EXPECTED = 'v22-ancestor-raw-2026-08-25-20:30';
+    var EXPECTED = 'v23-sibling-probe-2026-08-25-20:40';
     // 仅当 DOM 有 body 时插入
     var badge = document.createElement('div');
     badge.id = 'buildBadge';
     badge.style.cssText = 'position:fixed;bottom:8px;right:8px;z-index:99999;background:#1a365d;color:white;'
       + 'padding:4px 10px;border-radius:6px;font:11px/1.4 monospace;opacity:0.85;'
       + 'box-shadow:0 2px 6px rgba(0,0,0,0.3);user-select:none;pointer-events:none;';
-    badge.textContent = 'build v22-ancestor-raw';
+    badge.textContent = 'build v23-sibling-probe';
     document.body.appendChild(badge);
   });
 
 </script>
-<title>[v22] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
+<title>[v23] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='40' font-family='Arial,sans-serif' font-size='18' font-weight='600' fill='white' text-anchor='middle'>污染物</text></svg>">
 <meta name="theme-color" content="#1a365d">
 <style>
@@ -599,7 +599,7 @@ async function loadData() {
     try {
       // cache-busting: t=Date.now() + 数据版本(每次提交 JSON 时手动 bump)
       // cache: 'reload' 走 HTTP 强刷(Max-Age=0)而非简单 no-store,绕过浏览器 disk cache 最彻底
-      const cacheBust = 't=' + Date.now() + '&v=20260825-v22-ancestor-raw';
+      const cacheBust = 't=' + Date.now() + '&v=20260825-v23-sibling-probe';
       const res = await fetch(url + '?' + cacheBust, { signal: ctrl.signal, cache: 'reload' });
       clearTimeout(timer);
       if (!res.ok) { tried.push(`${url} → HTTP ${res.status}`); continue; }
@@ -743,7 +743,7 @@ function buildItemIndex() {
         _inspection_method: c.inspection_method, _rules: c.inspection_method_rules
       };
       const paths = matchItemToPaths(it, tree);
-      paths.forEach(pk => {
+      paths.forEach(({ pk, path }) => {
         if (!itemIndex.has(pk)) itemIndex.set(pk, []);
         const arr = itemIndex.get(pk);
         // path 内 dedup
@@ -752,6 +752,47 @@ function buildItemIndex() {
         if (arr.some(x => x._dupKey === dupKey)) return;
         enriched._dupKey = dupKey;
         arr.push(enriched);
+
+        // v23: 兄弟节点探测 — item 注册到 a1Path 末层节点后,
+        // 扫描 item.food 字段是否含 path 末层节点的兄弟节点(tree 同级 children)。
+        // 如有,把 item 也注册到那些兄弟 idx。
+        // 例: row 110-113 a1_l3=双孢菇 + food="双孢菇、平菇、香菇、榛蘑及以上..."
+        //   → 平菇/香菇/榛蘑 也应该能看到 0.3 mg/kg
+        // Excel a1_l3 录入错位(只填 1 个 a子类) 导致其他 a子类 idx 缺失,
+        // food 字段含真实完整的 a子类名 → 按 tree 同级探测补注册。
+        if (path.length >= 2 && it.food) {
+          const parentPath = path.slice(0, -1);
+          let parentNode = null;
+          // 找 path 父节点
+          let cur = null;
+          for (const p of parentPath) {
+            const children = cur ? cur.children : tree;
+            if (!children) break;
+            const f = children.find(c => c.name === p);
+            if (!f) { cur = null; break; }
+            cur = f;
+          }
+          parentNode = cur;
+          if (parentNode && parentNode.children) {
+            const currentLeaf = path[path.length - 1];
+            for (const sib of parentNode.children) {
+              if (sib.name === currentLeaf) continue;
+              if (!sib.name || sib.name.length < 2) continue;
+              // v23: tree 节点名常含括号别名(如「牛肝菌[美味牛肝菌,...]」),
+              //   item.food 只用核心名「牛肝菌」,探测要用核心名匹配。
+              const sibCore = sib.name.replace(/[\(\[【].*$/, '').trim();
+              if (!sibCore || sibCore.length < 2) continue;
+              if (it.food.indexOf(sibCore) >= 0 || (sibCore.length >= 3 && it.food.indexOf(sib.name) >= 0)) {
+                const sibPath = parentPath.concat([sib.name]);
+                const sibPk = pathKey(sibPath);
+                if (!itemIndex.has(sibPk)) itemIndex.set(sibPk, []);
+                const sibArr = itemIndex.get(sibPk);
+                if (sibArr.some(x => x._dupKey === dupKey)) continue;
+                itemIndex.get(sibPk).push(enriched);
+              }
+            }
+          }
+        }
       });
     });
   });
@@ -836,7 +877,7 @@ function matchItemToPaths(item, tree) {
             walkExact(n.children, curPath, idx + 1);
           } else {
             // 到达 a1_path 最深一层 → 注册到这里
-            matchedPaths.push(pathKey(curPath));
+            matchedPaths.push({ pk: pathKey(curPath), path: curPath });
           }
         }
       }
@@ -844,7 +885,7 @@ function matchItemToPaths(item, tree) {
       //   例: A.1 tree 里"花粉" children=[] 但 item.a1_l3="油菜花粉"——tree 没列子节点
       //   此时应注册到当前 path(走的最远一层),而不是丢失
       if (!matchedHere && idx === a1Path.length - 1 && path.length > 0) {
-        matchedPaths.push(pathKey(path));
+        matchedPaths.push({ pk: pathKey(path), path: path.slice() });
       }
     }
     walkExact(tree, [], 0);
@@ -857,7 +898,7 @@ function matchItemToPaths(item, tree) {
     if (catNorm) {
       for (const n of tree) {
         if (norm(n.name) === catNorm) {
-          matchedPaths.push(pathKey([n.name]));
+          matchedPaths.push({ pk: pathKey([n.name]), path: [n.name] });
           break;
         }
       }
@@ -870,7 +911,7 @@ function matchItemToPaths(item, tree) {
       for (const n of nodes) {
         const curPath = path.concat([n.name]);
         if (path.length === 0 && norm(n.name) === norm(a1Path[0] || '')) {
-          matchedPaths.push(pathKey(curPath));
+          matchedPaths.push({ pk: pathKey(curPath), path: curPath });
           return true;
         }
         if (n.children && fallback(n.children, curPath)) return true;
