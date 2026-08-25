@@ -8,26 +8,40 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <script>
-  // 三层 cache-bust:
-  //  1. URL 没 cbust → 自动 reload 一次(从服务器拉 HTML,绕开 disk cache)
-  //  2. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
-  //  3. fetch 内部用 cache: 'no-store' + URL timestamp(防 JSON disk cache)
+  // 四层 cache-bust:
+  //  1. URL 没 cbust → 自动 replace 加 query 触发新服务器拉取(URL 唯一,disk cache miss)
+  //  2. fetch 自身新版 HTML,校验 EXPECTED;server 是新版/我是旧版 → 再 replace 一次
+  //    (location.reload(true) 已被所有现代浏览器忽略,这是真正能生效的强刷)
+  //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
+  //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   (function() {
     var EXPECTED = 'cwz0001-2026-08-25-10:15';
-    // 第 1 层:URL cbust 缺失 → 自动跳一次
+    // 第 1 层:URL cbust 缺失 → 跳一次
     if (!location.search.includes('cbust=')) {
       var url = location.href.split('?')[0] + '?cbust=' + Date.now() + '#' + location.hash;
       location.replace(url);
       return;
     }
-    // 第 2 层:localStorage 版本比对,不一致强制 reload
+    // 第 2 层(新增):fetch server 端 HTML,与客户端比对
+    fetch(location.href.split('?')[0], { cache: 'no-store' })
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        var m = html.match(/EXPECTED\s*=\s*'([^']+)'/);
+        var serverBuild = m ? m[1] : null;
+        if (serverBuild && serverBuild !== EXPECTED) {
+          // 服务器 HTML 是新版,客户端是旧版 → 强制跳新 URL(URL 唯一绕过磁盘 cache)
+          location.replace(location.href.split('?')[0] + '?cbust=fresh-' + Date.now());
+        }
+      })
+      .catch(function() { /* fetch 失败(file:// 之类)跳过,继续用现有 HTML */ });
+    // 第 3 层:localStorage 版本比对,首次之后跨版本 reload
     try {
       var stored = localStorage.getItem('html_build');
       if (stored !== EXPECTED) {
         localStorage.setItem('html_build', EXPECTED);
         if (stored !== null) {
-          // 不是首次,说明版本号变了 → reload 取新 HTML
-          location.reload(true);
+          // 不是首次,说明版本号变了 → 跳一次带 cache-bust 的 URL
+          location.replace(location.href.split('?')[0] + '?cbust=' + Date.now());
         }
       }
     } catch(e) {}
