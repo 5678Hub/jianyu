@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v20-countfix-2026-08-25-20:05">
+<meta name="version" content="v21-ancestor-dedup-2026-08-25-20:25">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   (function() {
-    var EXPECTED = 'v20-countfix-2026-08-25-20:05';
+    var EXPECTED = 'v21-ancestor-dedup-2026-08-25-20:25';
     // 第 1 层:URL cbust 缺失 → 跳一次
     if (!location.search.includes('cbust=')) {
       var url = location.href.split('?')[0] + '?cbust=' + Date.now() + '#' + location.hash;
@@ -60,19 +60,19 @@
   // 加载完后,在右下角显一个固定徽章告诉用户当前 build
   // 如果看到的是 cwz0001 + 时间戳就是新版;看到其他(如 5ae1df6)说明磁盘里就是旧 HTML
   window.addEventListener('DOMContentLoaded', function() {
-    var EXPECTED = 'v20-countfix-2026-08-25-20:05';
+    var EXPECTED = 'v21-ancestor-dedup-2026-08-25-20:25';
     // 仅当 DOM 有 body 时插入
     var badge = document.createElement('div');
     badge.id = 'buildBadge';
     badge.style.cssText = 'position:fixed;bottom:8px;right:8px;z-index:99999;background:#1a365d;color:white;'
       + 'padding:4px 10px;border-radius:6px;font:11px/1.4 monospace;opacity:0.85;'
       + 'box-shadow:0 2px 6px rgba(0,0,0,0.3);user-select:none;pointer-events:none;';
-    badge.textContent = 'build v20-countfix';
+    badge.textContent = 'build v21-ancestor-dedup';
     document.body.appendChild(badge);
   });
 
 </script>
-<title>[v20] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
+<title>[v21] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='40' font-family='Arial,sans-serif' font-size='18' font-weight='600' fill='white' text-anchor='middle'>污染物</text></svg>">
 <meta name="theme-color" content="#1a365d">
 <style>
@@ -599,7 +599,7 @@ async function loadData() {
     try {
       // cache-busting: t=Date.now() + 数据版本(每次提交 JSON 时手动 bump)
       // cache: 'reload' 走 HTTP 强刷(Max-Age=0)而非简单 no-store,绕过浏览器 disk cache 最彻底
-      const cacheBust = 't=' + Date.now() + '&v=20260825-v20-countfix';
+      const cacheBust = 't=' + Date.now() + '&v=20260825-v21-ancestor-dedup';
       const res = await fetch(url + '?' + cacheBust, { signal: ctrl.signal, cache: 'reload' });
       clearTimeout(timer);
       if (!res.ok) { tried.push(`${url} → HTTP ${res.status}`); continue; }
@@ -1200,8 +1200,15 @@ function renderTreeDetail() {
           // isSelf 边界(i==path.length-2=1): 这是直接父级,本身 food===ancestorName 才排除
           if (foodName === ancestorName || path.indexOf(foodName) > i) return false;
         }
-        return !primKey.has(itemKey({ ...it, _viaSub: ancestorName }));
+        return true;
       }).map(x => ({ ...x, _viaSub: ancestorName }));
+      // v21: 祖先块不与 primaryItems 去重 —— 每个祖先独立展示自己 idx 中所有适用项
+      // 之前 primKey.has 去重会把 ancestorName idx 中的 (food,limit) 项删掉,
+      // 导致 L3 详情页的「上级分类 X 赋予」块显示不全。
+      // 例: idx[L2 新鲜蔬菜] 6 items,本级 L3 芸薹类蔬菜 只有 1 items,
+      //   祖先块原显示 5 (扣掉本级那条),实际应显示全部 5 条适用项。
+      // 注: ancestorName idx 中的项必须包含当前节点(本级 isSelf 已被 isExcluded +
+      //   foodName===ancestorName 排除),所以即便不去重也不会与本级冲突。
       if (filtered.length === 0) continue;
       // 标记 dedup key 用于跨祖先层去重(浅层优先,即 i 大的层优先)
       const seen = new Set(filtered.map(itemKey));
