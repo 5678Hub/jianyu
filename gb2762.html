@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v15-idx-console-2026-08-25-11:15">
+<meta name="version" content="v16-render-fix-2026-08-25-11:35">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   (function() {
-    var EXPECTED = 'v15-idx-console-2026-08-25-11:15';
+    var EXPECTED = 'v16-render-fix-2026-08-25-11:35';
     // 第 1 层:URL cbust 缺失 → 跳一次
     if (!location.search.includes('cbust=')) {
       var url = location.href.split('?')[0] + '?cbust=' + Date.now() + '#' + location.hash;
@@ -60,19 +60,19 @@
   // 加载完后,在右下角显一个固定徽章告诉用户当前 build
   // 如果看到的是 cwz0001 + 时间戳就是新版;看到其他(如 5ae1df6)说明磁盘里就是旧 HTML
   window.addEventListener('DOMContentLoaded', function() {
-    var EXPECTED = 'v15-idx-console-2026-08-25-11:15';
+    var EXPECTED = 'v16-render-fix-2026-08-25-11:35';
     // 仅当 DOM 有 body 时插入
     var badge = document.createElement('div');
     badge.id = 'buildBadge';
     badge.style.cssText = 'position:fixed;bottom:8px;right:8px;z-index:99999;background:#1a365d;color:white;'
       + 'padding:4px 10px;border-radius:6px;font:11px/1.4 monospace;opacity:0.85;'
       + 'box-shadow:0 2px 6px rgba(0,0,0,0.3);user-select:none;pointer-events:none;';
-    badge.textContent = 'build ' + EXPECTED;
+    badge.textContent = 'build v16-render-fix';
     document.body.appendChild(badge);
   });
 
 </script>
-<title>[v15] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
+<title>[v16] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='40' font-family='Arial,sans-serif' font-size='18' font-weight='600' fill='white' text-anchor='middle'>污染物</text></svg>">
 <meta name="theme-color" content="#1a365d">
 <style>
@@ -588,7 +588,7 @@ async function loadData() {
     try {
       // cache-busting: t=Date.now() + 数据版本(每次提交 JSON 时手动 bump)
       // cache: 'reload' 走 HTTP 强刷(Max-Age=0)而非简单 no-store,绕过浏览器 disk cache 最彻底
-      const cacheBust = 't=' + Date.now() + '&v=20260825-v15-idxconsole';
+      const cacheBust = 't=' + Date.now() + '&v=20260825-v16-render-fix';
       const res = await fetch(url + '?' + cacheBust, { signal: ctrl.signal, cache: 'reload' });
       clearTimeout(timer);
       if (!res.ok) { tried.push(`${url} → HTTP ${res.status}`); continue; }
@@ -1150,6 +1150,18 @@ function renderTreeDetail() {
       // 过滤:1) 排除项不适用 2) 已在 primaryItems 出现的不重复
       const filtered = items.filter(it => {
         if (isExcluded(it.food, path)) return false;
+        // v15 双保险:防止 idx 注册 bug 导致祖先块混入了'严格属于子孙节点'的 items
+        // 例:idx[L2 蔬菜制品] 异常含有 '酱腌菜 0.5'(其实是 L3 自己的),
+        //   在 L3 酱腌菜的 ancestorsLevels 显示时不出现这块
+        //   food 严格匹配 path 中任一节点名 → 它是某层节点的'自身限量',不该出现在祖先块的广义展示
+        const foodName = (it.food || '').toString().trim();
+        if (foodName && path.some(p => p.toString().trim() === foodName)) {
+          // 进一步:food 比 ancestorName 更具体的层 → 排除
+          // 例: ancestorName='蔬菜制品'(L2), food='酱腌菜'(L3) → 排除
+          // 但: ancestorName='蔬菜及其制品'(L1), food='蔬菜制品'(L2) — 实际不应有,如果有也排除
+          // isSelf 边界(i==path.length-2=1): 这是直接父级,本身 food===ancestorName 才排除
+          if (foodName === ancestorName || path.indexOf(foodName) > i) return false;
+        }
         return !primKey.has(itemKey({ ...it, _viaSub: ancestorName }));
       }).map(x => ({ ...x, _viaSub: ancestorName }));
       if (filtered.length === 0) continue;
