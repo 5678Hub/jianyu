@@ -56,6 +56,21 @@
       console.warn('[sw] register fail', err);
     });
   }
+  // Build 状态显示 + 缓存修复提示
+  // 加载完后,在右下角显一个固定徽章告诉用户当前 build
+  // 如果看到的是 cwz0001 + 时间戳就是新版;看到其他(如 5ae1df6)说明磁盘里就是旧 HTML
+  window.addEventListener('DOMContentLoaded', function() {
+    var EXPECTED = 'cwz0001-2026-08-25-10:15';
+    // 仅当 DOM 有 body 时插入
+    var badge = document.createElement('div');
+    badge.id = 'buildBadge';
+    badge.style.cssText = 'position:fixed;bottom:8px;right:8px;z-index:99999;background:#1a365d;color:white;'
+      + 'padding:4px 10px;border-radius:6px;font:11px/1.4 monospace;opacity:0.85;'
+      + 'box-shadow:0 2px 6px rgba(0,0,0,0.3);user-select:none;pointer-events:none;';
+    badge.textContent = 'build ' + EXPECTED;
+    document.body.appendChild(badge);
+  });
+
 </script>
 <title>[cwz0001] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='40' font-family='Arial,sans-serif' font-size='18' font-weight='600' fill='white' text-anchor='middle'>污染物</text></svg>">
