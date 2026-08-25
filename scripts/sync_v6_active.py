@@ -119,10 +119,29 @@ def collect_footnotes(rows, existing_footnotes):
     return [{"label": k, "text": by_label[k]} for k in sorted(by_label.keys()) if k in referenced]
 
 
+def is_l1_category_item(row):
+    """通类项识别：food 字段以 L1 名称开头 + 含"除外" → L1 通类项。
+
+    GB 标准的"通类项"food 描述格式很灵活：
+    - 食用菌及其制品(X、Y...除外)
+    - 食用菌及其制品（X、Y...除外）  ← GB 标准用全角
+    - 食用菌及其制品(X、Y...以上除外)
+    - 蔬菜及其制品(芸薹类...等除外)
+    """
+    food = (row.get("food") or "").strip()
+    l1 = (row.get("a1_l1") or "").strip()
+    if not food or not l1:
+        return False
+    return food.startswith(l1) and "除外" in food
+
+
 def to_simple_json_item(row):
     letter, _ = parse_note(row["raw_note"])
     limit_str = str(row["limit_value"]).strip()
     has_limit = limit_str not in ("", "—", "-")
+    # v19: 通类项(food 以 L1 开头 + 含"(除外)")→ a1_l2/l3/l4 置空,
+    #   只挂在 L1,避免 idx 注册到具体子类导致 L1 详情页看不到通类项
+    is_l1_cat = is_l1_category_item(row)
     return {
         "food": row["food"],
         "pollutant": row["pollutant"],
@@ -134,9 +153,9 @@ def to_simple_json_item(row):
         "modif": row["modif"],
         "inspection_method": row["inspection_method"],
         "a1_l1": row["a1_l1"],
-        "a1_l2": row["a1_l2"],
-        "a1_l3": row["a1_l3"],
-        "a1_l4": row["a1_l4"],
+        "a1_l2": "" if is_l1_cat else row["a1_l2"],
+        "a1_l3": "" if is_l1_cat else row["a1_l3"],
+        "a1_l4": "" if is_l1_cat else row["a1_l4"],
     }
 
 
@@ -177,6 +196,8 @@ def to_main_only_json_item(row, contaminant_name):
     letter, _ = parse_note(row["raw_note"])
     limit_val = str(row["limit_value"]).strip()
     has_limit = limit_val not in ("", "—", "-")
+    # v19: 通类项识别,同 to_simple_json_item
+    is_l1_cat = is_l1_category_item(row)
     return {
         "food": row["food"],
         "limit": f'{row["limit_value"]} {row["unit"]}'.strip(),
@@ -192,9 +213,9 @@ def to_main_only_json_item(row, contaminant_name):
         "sub_remark": "",
         "remark": letter or "",  # 仅字母
         "a1_l1": row["a1_l1"],
-        "a1_l2": row["a1_l2"],
-        "a1_l3": row["a1_l3"],
-        "a1_l4": row["a1_l4"],
+        "a1_l2": "" if is_l1_cat else row["a1_l2"],
+        "a1_l3": "" if is_l1_cat else row["a1_l3"],
+        "a1_l4": "" if is_l1_cat else row["a1_l4"],
         "inspection_method": row["inspection_method"],
         "test_method": "",
     }
