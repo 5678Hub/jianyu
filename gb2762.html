@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v16-render-fix-2026-08-25-11:35">
+<meta name="version" content="v17-fnfilter-2026-08-25-12:45">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   (function() {
-    var EXPECTED = 'v16-render-fix-2026-08-25-11:35';
+    var EXPECTED = 'v17-fnfilter-2026-08-25-12:45';
     // 第 1 层:URL cbust 缺失 → 跳一次
     if (!location.search.includes('cbust=')) {
       var url = location.href.split('?')[0] + '?cbust=' + Date.now() + '#' + location.hash;
@@ -60,19 +60,19 @@
   // 加载完后,在右下角显一个固定徽章告诉用户当前 build
   // 如果看到的是 cwz0001 + 时间戳就是新版;看到其他(如 5ae1df6)说明磁盘里就是旧 HTML
   window.addEventListener('DOMContentLoaded', function() {
-    var EXPECTED = 'v16-render-fix-2026-08-25-11:35';
+    var EXPECTED = 'v17-fnfilter-2026-08-25-12:45';
     // 仅当 DOM 有 body 时插入
     var badge = document.createElement('div');
     badge.id = 'buildBadge';
     badge.style.cssText = 'position:fixed;bottom:8px;right:8px;z-index:99999;background:#1a365d;color:white;'
       + 'padding:4px 10px;border-radius:6px;font:11px/1.4 monospace;opacity:0.85;'
       + 'box-shadow:0 2px 6px rgba(0,0,0,0.3);user-select:none;pointer-events:none;';
-    badge.textContent = 'build v16-render-fix';
+    badge.textContent = 'build v17-fnfilter';
     document.body.appendChild(badge);
   });
 
 </script>
-<title>[v16] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
+<title>[v17] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='40' font-family='Arial,sans-serif' font-size='18' font-weight='600' fill='white' text-anchor='middle'>污染物</text></svg>">
 <meta name="theme-color" content="#1a365d">
 <style>
@@ -588,7 +588,7 @@ async function loadData() {
     try {
       // cache-busting: t=Date.now() + 数据版本(每次提交 JSON 时手动 bump)
       // cache: 'reload' 走 HTTP 强刷(Max-Age=0)而非简单 no-store,绕过浏览器 disk cache 最彻底
-      const cacheBust = 't=' + Date.now() + '&v=20260825-v16-render-fix';
+      const cacheBust = 't=' + Date.now() + '&v=20260825-v17-fnfilter';
       const res = await fetch(url + '?' + cacheBust, { signal: ctrl.signal, cache: 'reload' });
       clearTimeout(timer);
       if (!res.ok) { tried.push(`${url} → HTTP ${res.status}`); continue; }
@@ -768,9 +768,36 @@ function matchItemToPaths(item, tree) {
     .toLowerCase();
 
   // 1) 优先用 item.a1_l1/l2/l3/l4 精确路径
-  const a1Path = [item.a1_l1, item.a1_l2, item.a1_l3, item.a1_l4]
+  const a1PathRaw = [item.a1_l1, item.a1_l2, item.a1_l3, item.a1_l4]
     .filter(Boolean)
     .filter((v, i, arr) => i === 0 || v !== arr[i - 1]); // 去掉连续重复
+
+  // v17: 末层若是脚注(纯字母/数字短字符),用 item.food 替换为真实 food 名
+  //   例: a1_l3="c" + food="酱腌菜" → 实际层级应到 L3「酱腌菜」
+  //   之前 walkExact 走到 target="c" 匹配失败 → Fallback B 错注册到 L2
+  //   现在:把末层脚注替换成 food,前提是 food 在 tree 中有对应节点
+  const isFootnote = (s) => {
+    const v = (s || '').toString().trim();
+    return /^[a-zA-Z]{1,3}$/.test(v) || /^\d{1,2}$/.test(v);
+  };
+  const a1Path = a1PathRaw.slice();
+  if (a1Path.length > 0 && isFootnote(a1Path[a1Path.length - 1]) && item.food) {
+    // 仅当 tree 中存在 food 同名节点才替换
+    let foundInTree = false;
+    function probe(nodes) {
+      for (const n of nodes) {
+        if (norm(n.name) === norm(item.food)) { foundInTree = true; return; }
+        if (n.children) probe(n.children);
+      }
+    }
+    probe(tree);
+    if (foundInTree) {
+      a1Path[a1Path.length - 1] = item.food;
+    } else {
+      // tree 中找不到同名 → 视为脚注,直接丢弃末层
+      a1Path.pop();
+    }
+  }
 
   // v11: 只注册到 a1_path 最深一层(不递归祖先)
   //   选 L1 只看 L1 专属 items;L2/L3 子节点限量在各子节点查看
