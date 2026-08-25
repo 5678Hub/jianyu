@@ -938,21 +938,6 @@
           "a1_l4": ""
         },
         {
-          "food": "酱腌菜",
-          "pollutant": "铅",
-          "limit_value": "0.5",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.12",
-          "a1_l1": "蔬菜及其制品（包括薯类，不包括食用菌）",
-          "a1_l2": "蔬菜制品",
-          "a1_l3": "c",
-          "a1_l4": ""
-        },
-        {
           "food": "干制蔬菜",
           "pollutant": "铅",
           "limit_value": "0.8",
@@ -12103,5 +12088,5 @@
       ]
     }
   ],
-  "_last_fix": "split: 芹菜、黄花菜 → 芹菜(茎类蔬菜) + 黄花菜(其他新鲜蔬菜)"
+  "_last_fix": "data: 删 a1_l3=c 字段污染条目（酱腌菜 0.5 镉），与 l3=酱腌菜 那条重复"
 }
