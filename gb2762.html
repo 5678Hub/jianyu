@@ -521,7 +521,9 @@ async function loadData() {
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), 8000);
     try {
-      const res = await fetch(url + '?t=' + Date.now(), { signal: ctrl.signal });
+      // cache-busting: t=Date.now() + 数据版本(每次提交 JSON 时手动 bump)
+      const cacheBust = 't=' + Date.now() + '&v=20260825-c601c57';
+      const res = await fetch(url + '?' + cacheBust, { signal: ctrl.signal, cache: 'no-store' });
       clearTimeout(timer);
       if (!res.ok) { tried.push(`${url} → HTTP ${res.status}`); continue; }
       DATA = await res.json();
