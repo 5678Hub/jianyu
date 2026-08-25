@@ -2765,7 +2765,7 @@
         {
           "food": "黄花菜",
           "pollutant": "镉",
-          "limit_value": "0.1",
+          "limit_value": "0.2",
           "has_limit": true,
           "sub_value": "",
           "unit": "mg/kg",
@@ -2780,7 +2780,7 @@
         {
           "food": "芹菜",
           "pollutant": "镉",
-          "limit_value": "0.1",
+          "limit_value": "0.2",
           "has_limit": true,
           "sub_value": "",
           "unit": "mg/kg",
@@ -12088,5 +12088,5 @@
       ]
     }
   ],
-  "_last_fix": "data: 删 a1_l3=c 字段污染条目（酱腌菜 0.5 镉），与 l3=酱腌菜 那条重复"
+  "_last_fix": "fix: 芹菜/黄花菜 镉 limit_value 0.1 → 0.2（之前取错模板）"
 }
