@@ -3,10 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="a0af3bf-2026-08-23-21:00">
+<meta name="version" content="dfed615-2026-08-25-09:30">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
+<script>
+  // 强制 cache-bust:HTML 顶部加载后,如果 URL 没有 build 参数,自动重定向加 query string 强制重新加载一次
+  // 解决浏览器 disk cache 卡住旧版 HTML 的问题(单次 reload,后续用户操作走 disk cache 也安全)
+  (function() {
+    if (!location.search.includes('cbust=')) {
+      var url = location.href.split('?')[0] + '?cbust=' + Date.now() + '#' + location.hash;
+      location.replace(url);
+    }
+  })();
+</script>
 <title>GB 2762-2025 食品中污染物限量查询 · jianyu</title>
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='40' font-family='Arial,sans-serif' font-size='18' font-weight='600' fill='white' text-anchor='middle'>污染物</text></svg>">
 <meta name="theme-color" content="#1a365d">
@@ -522,7 +532,7 @@ async function loadData() {
     const timer = setTimeout(() => ctrl.abort(), 8000);
     try {
       // cache-busting: t=Date.now() + 数据版本(每次提交 JSON 时手动 bump)
-      const cacheBust = 't=' + Date.now() + '&v=20260825-c601c57';
+      const cacheBust = 't=' + Date.now() + '&v=20260825-dfed615';
       const res = await fetch(url + '?' + cacheBust, { signal: ctrl.signal, cache: 'no-store' });
       clearTimeout(timer);
       if (!res.ok) { tried.push(`${url} → HTTP ${res.status}`); continue; }
