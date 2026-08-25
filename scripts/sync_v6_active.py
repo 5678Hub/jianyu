@@ -136,20 +136,24 @@ def is_l1_category_item(row):
 
 
 def is_processed_l3_item(row):
-    """v24: 加工食品错位识别 — a1_l2=新鲜食用菌 + food 含「及以上食用菌的制品」
-    且 food 不以 L1 开头(排除 L1 通类项 row 97-109 的情况)
+    """v24 + v25: 加工食品错位识别 — a1_l2=新鲜食用菌 + food 含加工标记
+    且不是 L1 通类项(已由 v19 处理)
     → 实际应归 L2「食用菌制品」+ L3「其他食用菌制品」。
 
     Excel 录入时 a1Path 末层填了具体子类(双孢菇/松茸/木耳 等),
     但 food 描述明显是「食用菌制品」(加工类) 的限量。
-    例如:
-      row 110-113: a1_l2=新鲜食用菌, a1_l3=双孢菇, food="双孢菇...及以上食用菌的制品"
-        → 实际应归 idx[L3 其他食用菌制品]
-      row 116-121: a1_l2=新鲜食用菌, a1_l3=松茸, food="牛肝菌、松茸...及以上食用菌的制品"
-        → 实际应归 idx[L3 其他食用菌制品]
+
+    三种模式:
+      模式 1 (v24): a1_l2=新鲜食用菌 + food 含「及以上食用菌的制品」
+        row 110-113: a1_l3=双孢菇, food="双孢菇...及以上食用菌的制品"
+        row 116-121: a1_l3=松茸, food="牛肝菌、松茸...及以上食用菌的制品"
+      模式 2 (v25 新增): a1_l2=新鲜食用菌 + food 含「及其制品」(但不含「及以上」)
+        row 114-115: a1_l3=木耳（毛木耳,黑木耳）, food="木耳及其制品、银耳及其制品"
+          → 应归 idx[L3 其他食用菌制品],不再归 idx[L3 木耳]
+
     修复: 把 a1_l2 改为「食用菌制品」,a1_l3 改为「其他食用菌制品」。
-    注意: row 97-109 (L1 通类项 0.5) food 也含「及以上食用菌的制品」,
-    但它们是 v19 的 L1 通类项,已经被 v19 规则处理,这里不再二次处理。
+    注意: row 97-109 (L1 通类项 0.5) food 也含「及以上食用菌的制品」/「及其制品」,
+    但它们是 v19 的 L1 通类项,已被 v19 规则处理,这里不再二次处理(is_l1_category_item 排除)。
     """
     if is_l1_category_item(row):
         return False
@@ -159,7 +163,13 @@ def is_processed_l3_item(row):
         return False
     if not food:
         return False
-    return ("及以上食用菌的制品" in food) or ("及以上食用菌制品" in food)
+    # 模式 1 (v24): ...及以上食用菌的制品
+    if ("及以上食用菌的制品" in food) or ("及以上食用菌制品" in food):
+        return True
+    # 模式 2 (v25): X 及其制品 (X 不限,food 含"及其制品" 但不含"除外")
+    if "及其制品" in food and "除外" not in food:
+        return True
+    return False
 
 
 def to_simple_json_item(row, force_original_a1path=False):
