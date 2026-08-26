@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v26-unique-pollutants-2026-08-26-20:15">
+<meta name="version" content="v27-no-fallback3-deep-2026-08-26-21:25">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   (function() {
-    var EXPECTED = 'v26-unique-pollutants-2026-08-26-20:15';
+    var EXPECTED = 'v27-no-fallback3-deep-2026-08-26-21:25';
     // 第 1 层:URL cbust 缺失 → 跳一次
     if (!location.search.includes('cbust=')) {
       var url = location.href.split('?')[0] + '?cbust=' + Date.now() + '#' + location.hash;
@@ -60,7 +60,7 @@
   // 加载完后,在右下角显一个固定徽章告诉用户当前 build
   // 如果看到的是 cwz0001 + 时间戳就是新版;看到其他(如 5ae1df6)说明磁盘里就是旧 HTML
   window.addEventListener('DOMContentLoaded', function() {
-    var EXPECTED = 'v26-unique-pollutants-2026-08-26-20:15';
+    var EXPECTED = 'v27-no-fallback3-deep-2026-08-26-21:25';
     // 仅当 DOM 有 body 时插入
     var badge = document.createElement('div');
     badge.id = 'buildBadge';
@@ -906,7 +906,12 @@ function matchItemToPaths(item, tree) {
   }
 
   // 3) 都不行:关联到 food 匹配最深的节点(L1 兜底)
-  if (matchedPaths.length === 0) {
+  // v27: 仅当 row 的 a1Path 只有 a1_l1(无 a1_l2/l3/l4)时才兜底到 L1
+  //   如果 a1_l2/l3/l4 都有值但 walkExact 完全失败 → 说明 a1Path 错填(末层子节点在 tree 中缺失)
+  //   这种情况下挂到 L1 会污染 L1 详情页(已有 L1 通类项),应直接丢弃
+  //   例: row 84 (a1_l2=其他谷物制品, a1_l3=粥类罐头) — tree 没有「其他谷物制品」/「粥类罐头」节点
+  //     walkExact 失败 → 旧 fallback 3 兜底 L1 → L1 详情页多出本不该有的 row
+  if (matchedPaths.length === 0 && a1PathRaw.length === 1) {
     function fallback(nodes, path) {
       for (const n of nodes) {
         const curPath = path.concat([n.name]);
