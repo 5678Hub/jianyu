@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v25-processed-l3-zhi-2026-08-25-21:25">
+<meta name="version" content="v26-unique-pollutants-2026-08-26-20:15">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   (function() {
-    var EXPECTED = 'v25-processed-l3-zhi-2026-08-25-21:25';
+    var EXPECTED = 'v26-unique-pollutants-2026-08-26-20:15';
     // 第 1 层:URL cbust 缺失 → 跳一次
     if (!location.search.includes('cbust=')) {
       var url = location.href.split('?')[0] + '?cbust=' + Date.now() + '#' + location.hash;
@@ -60,7 +60,7 @@
   // 加载完后,在右下角显一个固定徽章告诉用户当前 build
   // 如果看到的是 cwz0001 + 时间戳就是新版;看到其他(如 5ae1df6)说明磁盘里就是旧 HTML
   window.addEventListener('DOMContentLoaded', function() {
-    var EXPECTED = 'v25-processed-l3-zhi-2026-08-25-21:25';
+    var EXPECTED = 'v26-unique-pollutants-2026-08-26-20:15';
     // 仅当 DOM 有 body 时插入
     var badge = document.createElement('div');
     badge.id = 'buildBadge';
@@ -1261,7 +1261,7 @@ function renderTreeDetail() {
       <div class="name-en">GB 2762-2025 · ${escapeHTML(bigName)} · 第 ${path.length} 级</div>
     </div>
     <div class="meta">
-      <div class="meta-card"><div class="label">适用污染物</div><div class="num">${primaryItems.length}</div></div>
+      <div class="meta-card"><div class="label">适用污染物</div><div class="num">${new Set(primaryItems.map(it => it.pollutant)).size}</div></div>
       ${(() => {
         // v18:「所属大类」改为「上一级」(L2+节点),可点击跳到直接父节点
         //   之前 L3 蔬菜罐头详情页用户找不到返回上一级入口,只能依赖面包屑小字
