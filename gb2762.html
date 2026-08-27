@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v29-sibling-l3-only-2026-08-27-13:35">
+<meta name="version" content="v30-l2-category-expand-2026-08-27-14:35">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   (function() {
-    var EXPECTED = 'v29-sibling-l3-only-2026-08-27-13:35';
+    var EXPECTED = 'v30-l2-category-expand-2026-08-27-14:35';
     // 第 1 层:URL cbust 缺失 → 跳一次
     if (!location.search.includes('cbust=')) {
       var url = location.href.split('?')[0] + '?cbust=' + Date.now() + '#' + location.hash;
@@ -60,7 +60,7 @@
   // 加载完后,在右下角显一个固定徽章告诉用户当前 build
   // 如果看到的是 cwz0001 + 时间戳就是新版;看到其他(如 5ae1df6)说明磁盘里就是旧 HTML
   window.addEventListener('DOMContentLoaded', function() {
-    var EXPECTED = 'v29-sibling-l3-only-2026-08-27-13:35';
+    var EXPECTED = 'v30-l2-category-expand-2026-08-27-14:35';
     // 仅当 DOM 有 body 时插入
     var badge = document.createElement('div');
     badge.id = 'buildBadge';
@@ -762,30 +762,39 @@ function buildItemIndex() {
         // food 字段含真实完整的 a子类名 → 按 tree 同级探测补注册。
         // v29: 兄弟节点探测**仅限 L3 及以上** (path.length >= 3),
         //   避免 L2 row 把同 L1 的其他 L2 兄弟 row 也聚合过来(例: row a1_l2=谷物碾磨加工品 错误把自身也注册到 idx[L2 谷物])
-        if (path.length >= 3 && it.food) {
-          const parentPath = path.slice(0, -1);
-          let parentNode = null;
-          // 找 path 父节点
+        // v30: L2 通类项扩散 — row.a1_l3 空 (L2 通类项) + path.length === 2 时,
+        //   把 row 推送到 L2 各 children idx (前提是 tree L3 节点名出现在 row.food 字符串中)。
+        //   例: row a1_l2=谷物 a1_l3=空 food='稻谷、糙米、...、小麦粉'
+        //     → idx[L3 稻谷] / idx[L3 玉米] / idx[L3 小麦] / idx[L3 大麦] 都能看到 总汞 0.02
+        //   这是与 v23/v29 兄弟节点探测**不同**的逻辑:v23 是 a1_l3 row 推送到 siblings,v30 是 L2 通类项 row 推送到 children。
+        // v30 必须**只在 a1_l3 空**时触发,否则 row.a1_l3='玉米' 也会触发 v30 把 row 推到 L3 稻谷 idx (重复聚合)。
+        const isL2Category = path.length === 2 && !(it.a1_l3 || '').trim() && it.food;
+        if ((path.length >= 3 || isL2Category) && it.food) {
+          // 找扩散起点节点:
+          //   v23/v29 兄弟节点探测:parentPath 末层节点 (L2 节点 — path 末层是 L3)
+          //   v30 L2 通类项扩散:path 末层节点本身 (L2 节点本身 — path 末层是 L2)
+          const startPath = isL2Category ? path : path.slice(0, -1);
+          let startNode = null;
           let cur = null;
-          for (const p of parentPath) {
+          for (const p of startPath) {
             const children = cur ? cur.children : tree;
             if (!children) break;
             const f = children.find(c => c.name === p);
             if (!f) { cur = null; break; }
             cur = f;
           }
-          parentNode = cur;
-          if (parentNode && parentNode.children) {
-            const currentLeaf = path[path.length - 1];
-            for (const sib of parentNode.children) {
-              if (sib.name === currentLeaf) continue;
+          startNode = cur;
+          if (startNode && startNode.children) {
+            const currentLeaf = isL2Category ? null : path[path.length - 1];
+            for (const sib of startNode.children) {
+              if (!isL2Category && sib.name === currentLeaf) continue;
               if (!sib.name || sib.name.length < 2) continue;
               // v23: tree 节点名常含括号别名(如「牛肝菌[美味牛肝菌,...]」),
               //   item.food 只用核心名「牛肝菌」,探测要用核心名匹配。
               const sibCore = sib.name.replace(/[\(\[【].*$/, '').trim();
               if (!sibCore || sibCore.length < 2) continue;
               if (it.food.indexOf(sibCore) >= 0 || (sibCore.length >= 3 && it.food.indexOf(sib.name) >= 0)) {
-                const sibPath = parentPath.concat([sib.name]);
+                const sibPath = startPath.concat([sib.name]);
                 const sibPk = pathKey(sibPath);
                 if (!itemIndex.has(sibPk)) itemIndex.set(sibPk, []);
                 const sibArr = itemIndex.get(sibPk);
