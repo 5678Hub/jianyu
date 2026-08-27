@@ -1,7 +1,7 @@
 // GB2762 Cache Buster Service Worker
 // 拦截所有 fetch 请求,绕过浏览器 disk cache,强制从服务器拉最新
 
-const CACHE_BUST = 'v28-grain-arsenic-2026-08-27-08:57';
+const CACHE_BUST = 'v29-sibling-l3-only-2026-08-27-13:35';
 
 self.addEventListener('install', (event) => {
   // 立即激活,不等旧 SW 关闭
