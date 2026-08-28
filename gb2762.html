@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v32-core-tree-match-2026-08-28-19:35">
+<meta name="version" content="v33-l2-leaf-fallback-2026-08-28-19:50">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   (function() {
-    var EXPECTED = 'v32-core-tree-match-2026-08-28-19:35';
+    var EXPECTED = 'v33-l2-leaf-fallback-2026-08-28-19:50';
     // 第 1 层:URL cbust 缺失 → 跳一次
     if (!location.search.includes('cbust=')) {
       var url = location.href.split('?')[0] + '?cbust=' + Date.now() + '#' + location.hash;
@@ -60,7 +60,7 @@
   // 加载完后,在右下角显一个固定徽章告诉用户当前 build
   // 如果看到的是 cwz0001 + 时间戳就是新版;看到其他(如 5ae1df6)说明磁盘里就是旧 HTML
   window.addEventListener('DOMContentLoaded', function() {
-    var EXPECTED = 'v32-core-tree-match-2026-08-28-19:35';
+    var EXPECTED = 'v33-l2-leaf-fallback-2026-08-28-19:50';
     // 仅当 DOM 有 body 时插入
     var badge = document.createElement('div');
     badge.id = 'buildBadge';
@@ -750,8 +750,38 @@ function buildItemIndex() {
         //     → idx[L2 谷物] 不再显示 总汞 row (用户反馈:food 列了具体 L3,应归到 L3)
         //     → idx[L3 稻谷/玉米/小麦/糙米/大米/小麦粉/玉米粉] 各显示 1 条 总汞 row (v30 扩散)
         //   PDF 表头虽然是 L2 谷物,但 row 的 food 列了具体 L3 食品 → 用户期望归到 L3 各节点。
-        const isL2CategoryRow = path.length === 2 && !(it.a1_l3 || '').trim();
-        if (isL2CategoryRow) return;
+        // v33: 但有两种情况 row 必须保留在 L2 本级,不应 return:
+        //   (a) L2 node 本身没有 L3 children(如 L2 豆类(干豆、以干豆磨成的粉) tree 无 L3),
+        //       v30 扩散不适用,row 会丢失 → 改为仍注册到 L2 本级 idx。
+        //       修复: idx[L2 豆类(干豆)] 应该有 3 条 (Pb 0.2, Cd 0.2, Cr 1.0),v32 后丢失为 0。
+        //   (b) L2 node 有 children 但 row.food 不含 L3 子节点名(如 r90 1.铅 a1_l2=豆类制品
+        //       food='豆类制品(豆浆除外)' 是 L2 通类项本身,不是 L3 食品),v30 扩散不命中任何 L3,
+        //       row 也会丢失 → 改为仍注册到 L2 本级 idx。
+        //   修复: idx[L2 豆类制品] 应该有 1 条 (Pb 0.3 豆类制品豆浆除外),v32 后丢失为 0。
+        if (path.length === 2 && !(it.a1_l3 || '').trim()) {
+          // 找 path 末层 L2 node
+          let l2Node = null, cur = null;
+          for (const p of path) {
+            const children = cur ? cur.children : tree;
+            if (!children) break;
+            const f = children.find(c => c.name === p);
+            if (!f) { cur = null; break; }
+            cur = f;
+          }
+          l2Node = cur;
+          if (l2Node && l2Node.children && l2Node.children.length > 0) {
+            // L2 node 有 children → 检查 food 是否含 L3 子节点名(决定走 v30 扩散 vs 注册 L2 本级)
+            const sibCores = l2Node.children
+              .map(sib => sib.name.replace(/[([{【（].*$/, '').trim())
+              .filter(c => c && c.length >= 2);
+            const foodHasL3 = sibCores.some(c => it.food.indexOf(c) >= 0);
+            if (foodHasL3) {
+              return; // food 列了 L3 食品 → v30 扩散,row 不注册到 L2 本级
+            }
+            // food 不含 L3 食品 → row 是 L2 通类项本身,注册到 L2 本级 (不 return)
+          }
+          // L2 node 无 children → row 注册到 L2 本级 (不 return)
+        }
 
         if (!itemIndex.has(pk)) itemIndex.set(pk, []);
         const arr = itemIndex.get(pk);
@@ -800,7 +830,10 @@ function buildItemIndex() {
               if (!sib.name || sib.name.length < 2) continue;
               // v23: tree 节点名常含括号别名(如「牛肝菌[美味牛肝菌,...]」),
               //   item.food 只用核心名「牛肝菌」,探测要用核心名匹配。
-              const sibCore = sib.name.replace(/[\(\[【].*$/, '').trim();
+              // v33: 正则必须包含全角"（"和")" → 与 v32 walkExact core 匹配保持一致,
+              //   修复 L3 非发酵豆制品(例如:豆浆、...)等含全角括号的 L3 节点被 v30 扩散正确探测
+              //   (否则 sibCore 不会切分,导致 v30 扩散对 L2 豆类制品 → L3 非发酵豆制品等失败)
+              const sibCore = sib.name.replace(/[([{【（].*$/, '').trim();
               if (!sibCore || sibCore.length < 2) continue;
               if (it.food.indexOf(sibCore) >= 0 || (sibCore.length >= 3 && it.food.indexOf(sib.name) >= 0)) {
                 const sibPath = startPath.concat([sib.name]);
