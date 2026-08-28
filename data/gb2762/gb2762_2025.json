@@ -4671,6 +4671,28 @@
           "test_method": ""
         },
         {
+          "food": "水产动物及其制品(鱼类及其制品除外)",
+          "limit": "— mg/kg",
+          "limit_value": "—",
+          "has_limit": false,
+          "limit_modifier": "0.5",
+          "main_label": "总砷",
+          "main_remark": "a",
+          "sub_label": "无机砷 a",
+          "sub_limit": "0.5 mg/kg",
+          "sub_value": "0.5",
+          "sub_has_limit": true,
+          "sub_modifier": "—",
+          "sub_remark": "a",
+          "remark": "a",
+          "a1_l1": "水产动物及其制品",
+          "a1_l2": "",
+          "a1_l3": "",
+          "a1_l4": "",
+          "inspection_method": "GB 5009.11",
+          "test_method": ""
+        },
+        {
           "food": "鱼类及其制品",
           "limit": "— mg/kg",
           "limit_value": "—",
