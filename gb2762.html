@@ -730,6 +730,27 @@ function buildItemIndex() {
   // 先建好树节点全集(所有叶子节点的 path)
   const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
 
+  // v35: 提取 row.food 中的"除外"列表(如 "新鲜藻类(螺旋藻除外)" → ['螺旋藻'])
+  //   用于反向判断 sib 是否被 row 排除,从而决定 v30 扩散是否推到该 sib idx
+  //   以及是否影响 should_skip_l2 的 foodHasL3 判断
+  function getExcludes(food) {
+    const m = (food || '').toString().match(/[\(（]([^)）]+除外)[\)）]/);
+    if (!m) return [];
+    const excList = m[1].replace(/除外$/, '').split(/[、,,及和  \s]+/).filter(Boolean);
+    return excList.map(e => e.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim())
+                  .filter(e => e && e.length >= 2);
+  }
+  // 判断 sib 是否被 row 排除
+  function sibIsExcluded(sibName, excludes) {
+    if (!excludes.length) return false;
+    const sibNorm = sibName.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+    return excludes.some(normExc => {
+      if (sibNorm === normExc) return true;
+      if (normExc.length >= 3 && (sibNorm.startsWith(normExc) || normExc.startsWith(sibNorm))) return true;
+      return false;
+    });
+  }
+
   // 用 uniqueKey 在每条 path 内去重(不是全局去重):同一 (table_no, food, limit, sub,
   // remark, note) 在同一个 path 内只保留首次出现。但跨 path 的同 key 保留——例如
   // 汞表 5 个 L2 都用合并 food 字段"生乳、巴氏杀菌乳、...,发酵乳",但 a1_l2 不同,
@@ -771,7 +792,10 @@ function buildItemIndex() {
           l2Node = cur;
           if (l2Node && l2Node.children && l2Node.children.length > 0) {
             // L2 node 有 children → 检查 food 是否含 L3 子节点名(决定走 v30 扩散 vs 注册 L2 本级)
+            // v35: 排除被 row "除外"列表排除的 sib (例: r70 food='新鲜藻类(螺旋藻除外)' 应排除螺旋藻 sib)
+            const excludes = getExcludes(it.food);
             const sibCores = l2Node.children
+              .filter(sib => !sibIsExcluded(sib.name, excludes))
               .map(sib => sib.name.replace(/[([{【（].*$/, '').trim())
               .filter(c => c && c.length >= 2);
             const foodHasL3 = sibCores.some(c => it.food.indexOf(c) >= 0);
@@ -825,9 +849,13 @@ function buildItemIndex() {
           startNode = cur;
           if (startNode && startNode.children) {
             const currentLeaf = isL2Category ? null : path[path.length - 1];
+            // v35: 提取 row 的"除外"列表,扩散时跳过被排除的 sib
+            const excludes = getExcludes(it.food);
             for (const sib of startNode.children) {
               if (!isL2Category && sib.name === currentLeaf) continue;
               if (!sib.name || sib.name.length < 2) continue;
+              // v35: sib 被 row "除外"列表排除 → 不扩散 (例: r70 food='新鲜藻类(螺旋藻除外)' 不推到螺旋藻 sib)
+              if (sibIsExcluded(sib.name, excludes)) continue;
               // v23: tree 节点名常含括号别名(如「牛肝菌[美味牛肝菌,...]」),
               //   item.food 只用核心名「牛肝菌」,探测要用核心名匹配。
               // v33: 正则必须包含全角"（"和")" → 与 v32 walkExact core 匹配保持一致,

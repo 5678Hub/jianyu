@@ -1,7 +1,7 @@
 // GB2762 Cache Buster Service Worker
 // 拦截所有 fetch 请求,绕过浏览器 disk cache,强制从服务器拉最新
 
-const CACHE_BUST = 'v34-dedup-primary-ancestor-2026-08-28-20:00';
+const CACHE_BUST = 'v35-excludes-sib-filter-2026-08-28-20:10';
 
 self.addEventListener('install', (event) => {
   // 立即激活,不等旧 SW 关闭
