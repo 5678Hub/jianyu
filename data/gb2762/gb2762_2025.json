@@ -3406,6 +3406,36 @@
           "a1_l2": "婴幼儿辅助食品",
           "a1_l3": "婴幼儿谷类辅助食品",
           "a1_l4": ""
+        },
+        {
+          "food": "肉类(畜禽内脏除外)",
+          "pollutant": "镉",
+          "limit_value": "0.1",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "肉及肉制品",
+          "a1_l2": "肉类（生鲜肉、冷却肉、冷冻肉等）",
+          "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
+          "food": "肉制品(畜禽内脏制品除外)",
+          "pollutant": "镉",
+          "limit_value": "0.1",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "肉及肉制品",
+          "a1_l2": "肉制品（包括内脏制品、血制品）",
+          "a1_l3": "",
+          "a1_l4": ""
         }
       ],
       "footnotes": [

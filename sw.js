@@ -1,7 +1,7 @@
 // GB2762 Cache Buster Service Worker
 // 拦截所有 fetch 请求,绕过浏览器 disk cache,强制从服务器拉最新
 
-const CACHE_BUST = 'v38-fix-meat-l1-arsenic-chrome-2026-08-28-20:35';
+const CACHE_BUST = 'v39-fix-meat-l2-cadmium-l1-cat-false-positive-2026-08-28-20:50';
 
 self.addEventListener('install', (event) => {
   // 立即激活,不等旧 SW 关闭
