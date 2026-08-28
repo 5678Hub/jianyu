@@ -1,7 +1,7 @@
 // GB2762 Cache Buster Service Worker
 // 拦截所有 fetch 请求,绕过浏览器 disk cache,强制从服务器拉最新
 
-const CACHE_BUST = 'v35-excludes-sib-filter-2026-08-28-20:10';
+const CACHE_BUST = 'v36-remove-coffee-l3-2026-08-28-20:15';
 
 self.addEventListener('install', (event) => {
   // 立即激活,不等旧 SW 关闭
