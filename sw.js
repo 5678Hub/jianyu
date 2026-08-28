@@ -1,7 +1,7 @@
 // GB2762 Cache Buster Service Worker
 // 拦截所有 fetch 请求,绕过浏览器 disk cache,强制从服务器拉最新
 
-const CACHE_BUST = 'v44-fix-sugar-cocoa-l1-2026-08-28-21:13';
+const CACHE_BUST = 'v45-force-cache-wipe-2026-08-28-21:25';
 
 self.addEventListener('install', (event) => {
   // 立即激活,不等旧 SW 关闭
@@ -9,8 +9,11 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
-  // 立即接管页面
-  event.waitUntil(self.clients.claim());
+  // v45: 激进清理所有旧缓存名 + 立即接管页面
+  event.waitUntil(
+    caches.keys().then((keys) => Promise.all(keys.map((k) => caches.delete(k))))
+      .then(() => self.clients.claim())
+  );
 });
 
 self.addEventListener('fetch', (event) => {
