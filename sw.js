@@ -1,7 +1,7 @@
 // GB2762 Cache Buster Service Worker
 // 拦截所有 fetch 请求,绕过浏览器 disk cache,强制从服务器拉最新
 
-const CACHE_BUST = 'v43-fix-tiaoweipin-l1-dups-2026-08-28-21:05';
+const CACHE_BUST = 'v44-fix-sugar-cocoa-l1-2026-08-28-21:13';
 
 self.addEventListener('install', (event) => {
   // 立即激活,不等旧 SW 关闭
