@@ -5471,6 +5471,28 @@
           "a1_l4": "",
           "inspection_method": "GB 5009.11",
           "test_method": ""
+        },
+        {
+          "food": "油脂及其制品(鱼油及其制品、磷虾油及其制品除外)",
+          "limit": "0.1 mg/kg",
+          "limit_value": "0.1",
+          "has_limit": true,
+          "limit_modifier": "",
+          "main_label": "总砷",
+          "main_remark": "",
+          "sub_label": "无机砷 a",
+          "sub_limit": "— mg/kg",
+          "sub_value": "—",
+          "sub_has_limit": false,
+          "sub_modifier": "",
+          "sub_remark": "",
+          "remark": "",
+          "a1_l1": "油脂及其制品",
+          "a1_l2": "",
+          "a1_l3": "",
+          "a1_l4": "",
+          "inspection_method": "GB 5009.11",
+          "test_method": ""
         }
       ],
       "footnotes": [
