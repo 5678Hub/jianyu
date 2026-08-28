@@ -1265,6 +1265,10 @@ function renderTreeDetail() {
   // 沿 path 向上逐层收集每个祖先节点的 idx 命中项
   // 每个祖先一个独立块,展示"父级分类的限量如何适用于当前节点"
   // 含"除外"的 L1 通类项:判断排除列表是否覆盖当前节点,自动剔除不适用项
+  // v34: 跳过与 primary 重复的 ancestor 层(避免"上一级"和"上级分类"展示同一 ancestor 的相同 row)
+  // 例: L3 其他豆类制品(无 idx 命中) → primary 沿 path 找到 L2 豆类制品(1 条 Pb 0.3)
+  //      ancestorsLevels 也会循环到 L2 豆类制品(同一 pathKey) → 重复展示
+  //      修复: 当 ancestorPath.pathKey === primaryKey 时 skip
   function isExcluded(itemFood, currentPath) {
     // 含"除外"且排除列表覆盖当前节点任一名称 → 不适用
     const m = (itemFood || '').toString().match(/[\(（]([^)）]+除外)[\)）]/);
@@ -1295,6 +1299,8 @@ function renderTreeDetail() {
     for (let i = path.length - 2; i >= 0; i--) {
       const ancestorPath = path.slice(0, i + 1);
       const ancestorKey = pathKey(ancestorPath);
+      // v34: 跳过与 primary 重复的 ancestor 层(避免"上一级"+"上级分类"展示同一 ancestor)
+      if (ancestorKey === primaryKey) continue;
       const ancestorName = path[i];
       if (!idx.has(ancestorKey)) continue;
       const items = idx.get(ancestorKey) || [];
