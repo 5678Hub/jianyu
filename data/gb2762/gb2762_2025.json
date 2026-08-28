@@ -278,48 +278,18 @@
           "a1_l4": ""
         },
         {
-          "food": "坚果及籽类(生咖啡豆及烘焙咖啡豆除外)",
-          "pollutant": "铅",
-          "limit_value": "0.2",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.12",
-          "a1_l1": "坚果及籽类",
-          "a1_l2": "",
-          "a1_l3": "",
-          "a1_l4": ""
-        },
-        {
           "food": "生咖啡豆及烘焙咖啡豆",
           "pollutant": "铅",
           "limit_value": "0.5",
           "has_limit": true,
           "sub_value": "",
           "unit": "mg/kg",
-          "note": "",
+          "note": "d",
           "modif": "",
           "inspection_method": "GB 5009.12",
           "a1_l1": "坚果及籽类",
-          "a1_l2": "坚果及籽类制品",
-          "a1_l3": "熟制坚果及籽类(带壳、脱壳、包衣)",
-          "a1_l4": ""
-        },
-        {
-          "food": "生咖啡豆及烘焙咖啡豆",
-          "pollutant": "铅",
-          "limit_value": "0.5",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.12",
-          "a1_l1": "坚果及籽类",
-          "a1_l2": "坚果及籽类制品",
-          "a1_l3": "熟制坚果及籽类(带壳、脱壳、包衣)",
+          "a1_l2": "生干坚果及籽类",
+          "a1_l3": "生咖啡豆及烘焙咖啡豆",
           "a1_l4": ""
         },
         {
@@ -2225,6 +2195,10 @@
         {
           "label": "c",
           "text": "液态婴幼儿配方食品根据8∶1的比例折算其限量。"
+        },
+        {
+          "label": "d",
+          "text": "仅限生咖啡豆及烘焙咖啡豆"
         }
       ],
       "inspection_method_rules": [
@@ -3114,12 +3088,12 @@
           "has_limit": true,
           "sub_value": "",
           "unit": "mg/kg",
-          "note": "",
+          "note": "b",
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "坚果及籽类",
-          "a1_l2": "坚果及籽类制品",
-          "a1_l3": "熟制坚果及籽类(带壳、脱壳、包衣)",
+          "a1_l2": "生干坚果及籽类",
+          "a1_l3": "花生",
           "a1_l4": ""
         },
         {
@@ -3442,6 +3416,10 @@
         {
           "label": "a",
           "text": "稻谷以糙米计。"
+        },
+        {
+          "label": "b",
+          "text": "仅限花生"
         }
       ],
       "inspection_method_rules": [
