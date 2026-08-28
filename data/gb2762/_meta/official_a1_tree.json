@@ -503,7 +503,18 @@
         {
           "catid": 98,
           "name": "生干坚果及籽类（不包括谷物种子和豆类，包括咖啡豆、可可豆）",
-          "children": []
+          "children": [
+            {
+              "catid": "",
+              "name": "生咖啡豆",
+              "children": []
+            },
+            {
+              "catid": "",
+              "name": "烘焙咖啡豆",
+              "children": []
+            }
+          ]
         },
         {
           "catid": 99,

@@ -1,7 +1,7 @@
 // GB2762 Cache Buster Service Worker
 // 拦截所有 fetch 请求,绕过浏览器 disk cache,强制从服务器拉最新
 
-const CACHE_BUST = 'v30-l2-category-expand-2026-08-27-14:35';
+const CACHE_BUST = 'v32-core-tree-match-2026-08-28-19:35';
 
 self.addEventListener('install', (event) => {
   // 立即激活,不等旧 SW 关闭

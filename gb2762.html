@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v30-l2-category-expand-2026-08-27-14:35">
+<meta name="version" content="v32-core-tree-match-2026-08-28-19:35">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   (function() {
-    var EXPECTED = 'v30-l2-category-expand-2026-08-27-14:35';
+    var EXPECTED = 'v32-core-tree-match-2026-08-28-19:35';
     // 第 1 层:URL cbust 缺失 → 跳一次
     if (!location.search.includes('cbust=')) {
       var url = location.href.split('?')[0] + '?cbust=' + Date.now() + '#' + location.hash;
@@ -60,7 +60,7 @@
   // 加载完后,在右下角显一个固定徽章告诉用户当前 build
   // 如果看到的是 cwz0001 + 时间戳就是新版;看到其他(如 5ae1df6)说明磁盘里就是旧 HTML
   window.addEventListener('DOMContentLoaded', function() {
-    var EXPECTED = 'v30-l2-category-expand-2026-08-27-14:35';
+    var EXPECTED = 'v32-core-tree-match-2026-08-28-19:35';
     // 仅当 DOM 有 body 时插入
     var badge = document.createElement('div');
     badge.id = 'buildBadge';
@@ -744,6 +744,15 @@ function buildItemIndex() {
       };
       const paths = matchItemToPaths(it, tree);
       paths.forEach(({ pk, path }) => {
+        // v31: L2 通类项 row (a1_l3 空 + path.length === 2) 不注册到 L2 本级 idx,
+        //   只通过 v30 L2 通类项扩散推到 L3 children idx。
+        //   例: r35 a1_l2=谷物 a1_l3=空 food='稻谷、糙米、...、小麦粉'
+        //     → idx[L2 谷物] 不再显示 总汞 row (用户反馈:food 列了具体 L3,应归到 L3)
+        //     → idx[L3 稻谷/玉米/小麦/糙米/大米/小麦粉/玉米粉] 各显示 1 条 总汞 row (v30 扩散)
+        //   PDF 表头虽然是 L2 谷物,但 row 的 food 列了具体 L3 食品 → 用户期望归到 L3 各节点。
+        const isL2CategoryRow = path.length === 2 && !(it.a1_l3 || '').trim();
+        if (isL2CategoryRow) return;
+
         if (!itemIndex.has(pk)) itemIndex.set(pk, []);
         const arr = itemIndex.get(pk);
         // path 内 dedup
@@ -880,6 +889,20 @@ function matchItemToPaths(item, tree) {
         //   归一化后前者是后者的前缀 → 注册到全称节点,避免被挤到 idx[L3]
         if (!matched && idx === a1Path.length - 1 && target.length >= 3 && nNameNorm.startsWith(target)) {
           matched = true;
+        }
+        // v32: 通用 core 匹配 — a1_l2/l3/l4 简写匹配 tree 全称
+        //   例: item.a1_l2="生干坚果及籽类" vs tree "生干坚果及籽类（不包括谷物种子和豆类，包括咖啡豆、可可豆）"
+        //        item.a1_l2="其他谷物制品" vs tree "其他谷物制品[例如：带馅（料）面米制品、粥类罐头等]"
+        //   提取 tree 节点 core(括号前),与 a1 短名相同即视为匹配。
+        //   仅 target 长度 >= 2 且 tree 节点 core 比 target 长(说明有括号后缀)才触发,避免误匹配
+        //   (例: target="食用菌" 不会匹配 "食用菌及其制品",因为 core="食用菌及其制品" 不同)
+        // 注意:正则必须包含全角括号（ 和 ）
+        if (!matched && idx >= 1) {
+          const sibCore = n.name.replace(/[([{【（].*$/, '').trim();
+          const sibCoreNorm = norm(sibCore);
+          if (sibCoreNorm === target && sibCore.length > 0 && nNameNorm.length > target.length) {
+            matched = true;
+          }
         }
         if (matched) {
           matchedHere = true;
