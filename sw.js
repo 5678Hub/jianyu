@@ -1,7 +1,7 @@
 // GB2762 Cache Buster Service Worker
 // 拦截所有 fetch 请求,绕过浏览器 disk cache,强制从服务器拉最新
 
-const CACHE_BUST = 'v45-force-cache-wipe-2026-08-28-21:25';
+const CACHE_BUST = 'v46-nitrosamine-meat-l2-2026-08-28-21:50';
 
 self.addEventListener('install', (event) => {
   // 立即激活,不等旧 SW 关闭
