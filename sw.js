@@ -1,7 +1,7 @@
 // GB2762 Cache Buster Service Worker
 // 拦截所有 fetch 请求,绕过浏览器 disk cache,强制从服务器拉最新
 
-const CACHE_BUST = 'v53-infant-formula-spread-2026-08-29-12:25';
+const CACHE_BUST = 'v54-cocoa-l2-fix-2026-08-29-12:42';
 
 self.addEventListener('install', (event) => {
   // 立即激活,不等旧 SW 关闭
