@@ -263,7 +263,7 @@
           "a1_l4": ""
         },
         {
-          "food": "可可制品、巧克力制品以及糖果",
+          "food": "可可制品、巧克力和巧克力制品以及糖果",
           "pollutant": "铅",
           "limit_value": "0.5",
           "has_limit": true,
@@ -3569,29 +3569,7 @@
           "test_method": ""
         },
         {
-          "food": "可可制品、巧克力制品以及糖果",
-          "limit": "0.5 mg/kg",
-          "limit_value": "0.5",
-          "has_limit": true,
-          "limit_modifier": "",
-          "main_label": "总砷",
-          "main_remark": "",
-          "sub_label": "无机砷 a",
-          "sub_limit": "— mg/kg",
-          "sub_value": "—",
-          "sub_has_limit": false,
-          "sub_modifier": "",
-          "sub_remark": "",
-          "remark": "",
-          "a1_l1": "可可制品、巧克力和巧克力制品以及糖果",
-          "a1_l2": "",
-          "a1_l3": "",
-          "a1_l4": "",
-          "inspection_method": "GB 5009.11",
-          "test_method": ""
-        },
-        {
-          "food": "可可制品、巧克力制品",
+          "food": "可可制品、巧克力和巧克力制品",
           "limit": "0.5 mg/kg",
           "limit_value": "0.5",
           "has_limit": true,
