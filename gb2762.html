@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v72-short-exclude-core-match-2026-08-29-20:55">
+<meta name="version" content="v73-excluded-ancestor-hint-2026-08-29-21:25">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   // v72: 单一 CACHE_BUST,与 sw.js 保持一致,避免多个 hardcoded 版本号不同步
-  var CACHE_BUST = 'v72-short-exclude-core-match-2026-08-29-20:55';
+  var CACHE_BUST = 'v73-excluded-ancestor-hint-2026-08-29-21:25';
   (function() {
     var EXPECTED = CACHE_BUST;
     // 第 1 层:URL cbust 缺失 → 跳一次
@@ -379,6 +379,11 @@ table.results td.remark { font-size: 12px; color: var(--c-text-2); font-style: i
 .level-header .level-tag { font-size: 10px; padding: 2px 8px; border-radius: 8px; background: var(--c-primary-soft); color: var(--c-primary); font-weight: 400; }
 .level-block.self-level .level-tag { background: var(--c-tree-sel-border); color: white; }
 .level-header .count-tag { margin-left: auto; font-size: 11px; color: var(--c-text-3); font-weight: 400; }
+.level-block.excluded-level { border-color: #e5e7eb; border-left: 3px solid #9ca3af; opacity: 0.92; }
+.level-block.excluded-level .level-header { background: #f9fafb; color: var(--c-text-2); }
+.level-block.excluded-level .level-tag { background: #e5e7eb; color: #6b7280; }
+.level-block.excluded-level .count-tag { color: #9ca3af; }
+.excluded-hint { padding: 14px 16px; font-size: 12.5px; color: var(--c-text-2); line-height: 1.6; background: #fafbfc; }
 
 table.lvl { width: 100%; border-collapse: collapse; font-size: 12.5px; }
 table.lvl th { background: #fafbfc; padding: 8px 12px; text-align: left; font-weight: 600; color: var(--c-text-2); border-bottom: 1px solid var(--c-border); font-size: 11.5px; }
@@ -1426,6 +1431,9 @@ function renderTreeDetail() {
   }
   const primKey = new Set(primaryItems.map(itemKey));
   let ancestorsLevels = [];
+  // v73: 记录上级分类有数据、但因"除外"等原因全部不适用于当前节点的祖先,
+  //   用于页面展示"上级分类另有 X 条,但已将本类除外"提示,避免用户误以为没返回上级
+  let excludedAncestors = [];
   if (path.length >= 2) {
     for (let i = path.length - 2; i >= 0; i--) {
       const ancestorPath = path.slice(0, i + 1);
@@ -1442,7 +1450,12 @@ function renderTreeDetail() {
       const filtered = items
         .filter(x => isApplicableToPath(x, path))
         .map(x => ({ ...x, _viaSub: ancestorName }));
-      if (filtered.length === 0) continue;
+      if (filtered.length === 0) {
+        if (items.length > 0) {
+          excludedAncestors.push({ ancestorName, count: items.length });
+        }
+        continue;
+      }
       // 标记 dedup key 用于跨祖先层去重(浅层优先,即 i 大的层优先)
       const seen = new Set(filtered.map(itemKey));
       ancestorsLevels.push({
@@ -1525,6 +1538,20 @@ function renderTreeDetail() {
           <span class="count-tag">${tableInfo.count} 条</span>
         </div>
         ${tableInfo.html}
+      </div>`;
+    });
+    // v73: 上级分类有数据,但因"除外"等规则不适用于当前节点时,给出明确提示,
+    //   避免用户误以为页面没有返回上级分类
+    excludedAncestors.forEach(a => {
+      html += `<div class="level-block excluded-level">
+        <div class="level-header">
+          <span>${escapeHTML(a.ancestorName)} 赋予的污染物限量要求</span>
+          <span class="level-tag">上级分类</span>
+          <span class="count-tag">${a.count} 条已除外</span>
+        </div>
+        <div class="excluded-hint">
+          上级分类另有 ${a.count} 条限量要求，但 GB 2762-2025 已明确将<strong>${escapeHTML(nodeName)}</strong>除外，故不适用于本类。
+        </div>
       </div>`;
     });
   }
