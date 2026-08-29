@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v54-cocoa-l2-fix-2026-08-29-12:42">
+<meta name="version" content="v55-l1-spread-l2-2026-08-29-12:55">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -67,12 +67,12 @@
     badge.style.cssText = 'position:fixed;bottom:8px;right:8px;z-index:99999;background:#1a365d;color:white;'
       + 'padding:4px 10px;border-radius:6px;font:11px/1.4 monospace;opacity:0.85;'
       + 'box-shadow:0 2px 6px rgba(0,0,0,0.3);user-select:none;pointer-events:none;';
-    badge.textContent = 'build v54-cocoa-l2-fix';
+    badge.textContent = 'build v55-l1-spread-l2';
     document.body.appendChild(badge);
   });
 
 </script>
-<title>[v54] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
+<title>[v55] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='40' font-family='Arial,sans-serif' font-size='18' font-weight='600' fill='white' text-anchor='middle'>污染物</text></svg>">
 <meta name="theme-color" content="#1a365d">
 <style>
@@ -599,7 +599,7 @@ async function loadData() {
     try {
       // cache-busting: t=Date.now() + 数据版本(每次提交 JSON 时手动 bump)
       // cache: 'reload' 走 HTTP 强刷(Max-Age=0)而非简单 no-store,绕过浏览器 disk cache 最彻底
-      const cacheBust = 't=' + Date.now() + '&v=20260829-v54-cocoa-l2-fix';
+      const cacheBust = 't=' + Date.now() + '&v=20260829-v55-l1-spread-l2';
       const res = await fetch(url + '?' + cacheBust, { signal: ctrl.signal, cache: 'reload' });
       clearTimeout(timer);
       if (!res.ok) { tried.push(`${url} → HTTP ${res.status}`); continue; }
@@ -865,6 +865,43 @@ function buildItemIndex() {
               if (!sibCore || sibCore.length < 2) continue;
               if (it.food.indexOf(sibCore) >= 0 || (sibCore.length >= 3 && it.food.indexOf(sib.name) >= 0)) {
                 const sibPath = startPath.concat([sib.name]);
+                const sibPk = pathKey(sibPath);
+                if (!itemIndex.has(sibPk)) itemIndex.set(sibPk, []);
+                const sibArr = itemIndex.get(sibPk);
+                if (sibArr.some(x => x._dupKey === dupKey)) continue;
+                itemIndex.get(sibPk).push(enriched);
+              }
+            }
+          }
+        }
+
+        // v36: L1 通类项扩散到 L2 children — row.a1_l2 空 (L1 通类项) + path.length === 1 时,
+        //   把 row 推送到 L1 各 L2 children idx。
+        //   例: row a1_l1=食糖及淀粉糖 a1_l2=空 food='食糖及淀粉糖'
+        //     → idx[L2 食糖] / idx[L2 乳糖] / idx[L2 淀粉糖] 都能看到 铅 0.5 / 砷 0.5
+        //   v36 类似 v30,但作用于 L1 → L2 层。L1 通类项一般 food 只写 L1 名本身,
+        //   因此不能依赖 it.food 含 sibCore 判定;而是用 row.food 含 L1 核心名 (isL1CatRow) 判定。
+        //   若 row.food 含具体 L2 名 (foodHasSib),也按对应 L2 推(更精确)。
+        //   v35 排除逻辑:被 row "除外"列表命中的 L2 sib 不扩散 (例: 乳及乳制品(生乳...除外) 不推到生乳)。
+        if (path.length === 1 && !(it.a1_l2 || '').trim() && it.food) {
+          // 找 L1 节点本身
+          let l1Node = null;
+          const l1Children = tree;
+          const f1 = l1Children.find(c => c.name === path[0]);
+          if (f1) l1Node = f1;
+          if (l1Node && l1Node.children && l1Node.children.length > 0) {
+            const l1Core = path[0].replace(/[([{【（].*$/, '').trim();
+            const isL1CatRow = l1Core && it.food.indexOf(l1Core) >= 0;
+            const excludes = getExcludes(it.food);
+            for (const sib of l1Node.children) {
+              if (!sib.name || sib.name.length < 2) continue;
+              if (sibIsExcluded(sib.name, excludes)) continue;
+              const sibCore = sib.name.replace(/[([{【（].*$/, '').trim();
+              if (!sibCore || sibCore.length < 2) continue;
+              const foodHasSib = it.food.indexOf(sibCore) >= 0 || (sibCore.length >= 3 && it.food.indexOf(sib.name) >= 0);
+              // L1 通类项 (food 含 L1 核心名) 或 row.food 含具体 L2 名 → 扩散
+              if (foodHasSib || isL1CatRow) {
+                const sibPath = [l1Node.name, sib.name];
                 const sibPk = pathKey(sibPath);
                 if (!itemIndex.has(sibPk)) itemIndex.set(sibPk, []);
                 const sibArr = itemIndex.get(sibPk);
