@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v73-excluded-ancestor-hint-2026-08-29-21:25">
+<meta name="version" content="v74-food-root-node-2026-08-29-21:40">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   // v72: 单一 CACHE_BUST,与 sw.js 保持一致,避免多个 hardcoded 版本号不同步
-  var CACHE_BUST = 'v73-excluded-ancestor-hint-2026-08-29-21:25';
+  var CACHE_BUST = 'v74-food-root-node-2026-08-29-21:40';
   (function() {
     var EXPECTED = CACHE_BUST;
     // 第 1 层:URL cbust 缺失 → 跳一次
@@ -292,6 +292,13 @@ table.results td.remark { font-size: 12px; color: var(--c-text-2); font-style: i
 .tn-row2 { font-size: 11.5px; color: var(--c-text-3); padding-left: 22px; line-height: 1.4; }
 .tn-row2 .dot { margin: 0 4px; opacity: 0.5; }
 .tree-node.selected .tn-row2 { color: var(--c-text-2); }
+/* v74: 顶部"食品"根节点 */
+.tree-node.root-node { background: linear-gradient(135deg, #1a365d, #2a5298); color: #fff; border-color: transparent; }
+.tree-node.root-node:hover { background: linear-gradient(135deg, #21456f, #3360ad); }
+.tree-node.root-node .tn-name.root-name { font-weight: 800; font-size: 15px; letter-spacing: .5px; }
+.tree-node.root-node .tn-row2 { color: rgba(255,255,255,0.8); padding-left: 26px; }
+.tree-node.root-node .tn-arrow { background: rgba(255,255,255,0.2); color: #fff; }
+.tree-node.root-node .tn-arrow:hover { background: rgba(255,255,255,0.35); }
 
 .tn-arrow {
   display: inline-flex; align-items: center; justify-content: center;
@@ -541,6 +548,8 @@ let selectedContam = null;
 // 树形浏览模式状态
 let treeSelected = null; // {path: [name1, name2, ...]}  当前选中节点的全路径
 let expandedPaths = new Set(); // 已展开的节点路径(序列化字符串)
+// v74: 默认展开顶部"食品"根节点(用户期望左侧树以"食品"作为一级分类入口)
+expandedPaths.add(pathKey(['__FOOD_ROOT__']));
 let sideCollapsed = false;     // 左侧面板是否折叠
 
 function toggleSidePanel() {
@@ -578,6 +587,7 @@ function collapseAllTree() {
   // 只保留 L1(24 大类)处于展开状态,其余收起
   const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
   expandedPaths = new Set();
+  expandedPaths.add(pathKey(['__FOOD_ROOT__'])); // v74: 食品根保持展开
   tree.forEach(n => expandedPaths.add(pathKey(n.path)));
   renderTree(document.getElementById('treeSearchInput').value);
 }
@@ -588,7 +598,7 @@ function refreshTreeSummary() {
   const total = flat.length;
   const l1Count = tree.length;
   const sum = document.getElementById('treeSummary');
-  if (sum) sum.textContent = `共 ${l1Count} 大类 / ${total} 项`;
+  if (sum) sum.textContent = `🍎 食品 · 共 ${l1Count} 大类 / ${total} 项`;
 }
 
 // ========== 数据加载 ==========
@@ -1177,6 +1187,14 @@ function flattenTree(tree) {
   return out;
 }
 
+function toggleRoot() {
+  // v74: 顶部"食品"根节点展开/折叠(不进入详情页,只控制一级大类显隐)
+  const pk = pathKey(['__FOOD_ROOT__']);
+  if (expandedPaths.has(pk)) expandedPaths.delete(pk);
+  else expandedPaths.add(pk);
+  renderTree(document.getElementById('treeSearchInput').value);
+}
+
 function renderTree(filterKw) {
   const tree = (DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
   const wrap = document.getElementById('treeList');
@@ -1221,11 +1239,25 @@ function renderTree(filterKw) {
     expandedPaths.forEach(pk => openKeys.add(pk));
   }
   let html = '';
+  // v74: 顶部"食品"根节点(参考之前版本:左侧树以"食品"作为一级分类入口)
+  const rootPk = pathKey(['__FOOD_ROOT__']);
+  const rootOpen = showAll || expandedPaths.has(rootPk);
+  html += `<div class="tree-node depth-0 root-node${rootOpen ? ' open' : ''}"
+            onclick="toggleRoot()">
+    <div class="tn-row1">
+      <span class="tn-arrow has">${rootOpen ? '−' : '+'}</span>
+      <span class="tn-name root-name">🍎 食品</span>
+    </div>
+    <div class="tn-row2">${tree.length} 个食品大类</div>
+  </div>`;
   nodes.forEach(n => {
     const pk = pathKey(n.path);
     // 决定是否渲染:默认渲染所有 L1;L2+ 必须父链全部展开
+    // v74: L1(一级大类)的显隐由顶部"食品"根节点控制
     const parentPath = n.path.slice(0, -1);
-    const parentOpen = parentPath.length === 0 || openKeys.has(pathKey(parentPath));
+    const parentOpen = parentPath.length === 0
+      ? rootOpen
+      : (showAll || openKeys.has(pathKey(parentPath)));
     if (!showAll && !parentOpen) return; // 父节点未展开,不渲染
     const isOpen = showAll || expandedPaths.has(pk);
     const isSelected = treeSelected && pathKey(treeSelected.path) === pk;
