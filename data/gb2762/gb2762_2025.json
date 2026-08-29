@@ -3666,6 +3666,28 @@
           "test_method": ""
         },
         {
+          "food": "可可制品、巧克力和巧克力制品",
+          "limit": "0.5 mg/kg",
+          "limit_value": "0.5",
+          "has_limit": true,
+          "limit_modifier": "",
+          "main_label": "总砷",
+          "main_remark": "",
+          "sub_label": "无机砷 a",
+          "sub_limit": "—",
+          "sub_value": "—",
+          "sub_has_limit": false,
+          "sub_modifier": "",
+          "sub_remark": "",
+          "remark": "",
+          "a1_l1": "可可制品、巧克力和巧克力制品以及糖果",
+          "a1_l2": "可可制品、巧克力和巧克力制品（包括代可可脂巧克力及制品）",
+          "a1_l3": "",
+          "a1_l4": "",
+          "inspection_method": "GB 5009.11",
+          "test_method": ""
+        },
+        {
           "food": "水产动物及其制品(鱼类及其制品除外)",
           "limit": "— mg/kg",
           "limit_value": "—",

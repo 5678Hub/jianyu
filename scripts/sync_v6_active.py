@@ -326,7 +326,7 @@ def to_pair_json_item(rows_pair, contaminant_name):
             sub_row = rows_pair[-1] if rows_pair[-1] is not main_row else (rows_pair[1] if len(rows_pair) > 1 else None)
 
     main_letter, _ = parse_note(main_row["raw_note"])
-    sub_letter, _ = parse_note(sub_row["raw_note"])
+    sub_letter, _ = parse_note(sub_row["raw_note"]) if sub_row else ("", "")
 
     def fmt(row):
         return f'{row["limit_value"]} {row["unit"]}'.strip() if row else ""
