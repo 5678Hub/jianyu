@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v57-l2-cat-keep-2026-08-29-13:25">
+<meta name="version" content="v58-word-boundary-sib-match-2026-08-29-13:38">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -67,12 +67,12 @@
     badge.style.cssText = 'position:fixed;bottom:8px;right:8px;z-index:99999;background:#1a365d;color:white;'
       + 'padding:4px 10px;border-radius:6px;font:11px/1.4 monospace;opacity:0.85;'
       + 'box-shadow:0 2px 6px rgba(0,0,0,0.3);user-select:none;pointer-events:none;';
-    badge.textContent = 'build v57-l2-cat-keep';
+    badge.textContent = 'build v58-word-boundary-sib-match';
     document.body.appendChild(badge);
   });
 
 </script>
-<title>[v57] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
+<title>[v58] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='40' font-family='Arial,sans-serif' font-size='18' font-weight='600' fill='white' text-anchor='middle'>污染物</text></svg>">
 <meta name="theme-color" content="#1a365d">
 <style>
@@ -599,7 +599,7 @@ async function loadData() {
     try {
       // cache-busting: t=Date.now() + 数据版本(每次提交 JSON 时手动 bump)
       // cache: 'reload' 走 HTTP 强刷(Max-Age=0)而非简单 no-store,绕过浏览器 disk cache 最彻底
-      const cacheBust = 't=' + Date.now() + '&v=20260829-v57-l2-cat-keep';
+      const cacheBust = 't=' + Date.now() + '&v=20260829-v58-word-boundary-sib-match';
       const res = await fetch(url + '?' + cacheBust, { signal: ctrl.signal, cache: 'reload' });
       clearTimeout(timer);
       if (!res.ok) { tried.push(`${url} → HTTP ${res.status}`); continue; }
@@ -751,6 +751,24 @@ function buildItemIndex() {
     });
   }
 
+  // v38: 检测 food 是否"独立包含" sibCore (前面是边界字符:开头/标点/空格)
+  //   避免 '婴儿配方食品' 在 '特殊医学用途婴儿配方食品'/'较大婴儿配方食品'/'婴幼儿配方食品' 中误命中子串。
+  //   例: row food='特殊医学用途婴儿配方食品' 应推到 L3 特殊医学用途婴儿配方食品 idx,不会推到 L3 婴儿配方食品 idx。
+  function foodContainsSibCore(food, sibCore) {
+    if (!food || !sibCore) return false;
+    const escCore = sibCore.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    // 边界字符:开头、(、[、【、（、,、,、、空格
+    const re = new RegExp('(^|[\\(【（\\[，,、\\s])' + escCore);
+    return re.test(food);
+  }
+  // v38: 检测 food 是否独立含 sibName (含括号完整名)
+  function foodContainsSibName(food, sibName) {
+    if (!food || !sibName) return false;
+    const escName = sibName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const re = new RegExp('(^|[\\(【（\\[，,、\\s])' + escName);
+    return re.test(food);
+  }
+
   // 用 uniqueKey 在每条 path 内去重(不是全局去重):同一 (table_no, food, limit, sub,
   // remark, note) 在同一个 path 内只保留首次出现。但跨 path 的同 key 保留——例如
   // 汞表 5 个 L2 都用合并 food 字段"生乳、巴氏杀菌乳、...,发酵乳",但 a1_l2 不同,
@@ -798,7 +816,7 @@ function buildItemIndex() {
               .filter(sib => !sibIsExcluded(sib.name, excludes))
               .map(sib => sib.name.replace(/[([{【（].*$/, '').trim())
               .filter(c => c && c.length >= 2);
-            const foodHasL3 = sibCores.some(c => it.food.indexOf(c) >= 0);
+            const foodHasL3 = sibCores.some(c => foodContainsSibCore(it.food, c));
             // v57: 即使 foodHasL3 也保留 L2 本级注册(v30 扩散到 L3 children 仍生效)。
             //   原因: L2 通类项 row 在 PDF 中归属于 L2 表头本身,用户期望 L2 详情页也能看到限量。
             //   例: r45 1.铅 a1_l2=婴幼儿配方食品 food='婴儿配方食品、较大婴儿配方食品、幼儿配方食品、特殊医学用途婴儿配方食品'
@@ -865,7 +883,7 @@ function buildItemIndex() {
               //   (否则 sibCore 不会切分,导致 v30 扩散对 L2 豆类制品 → L3 非发酵豆制品等失败)
               const sibCore = sib.name.replace(/[([{【（].*$/, '').trim();
               if (!sibCore || sibCore.length < 2) continue;
-              if (it.food.indexOf(sibCore) >= 0 || (sibCore.length >= 3 && it.food.indexOf(sib.name) >= 0)) {
+              if (foodContainsSibCore(it.food, sibCore) || (sibCore.length >= 3 && foodContainsSibName(it.food, sib.name))) {
                 const sibPath = startPath.concat([sib.name]);
                 const sibPk = pathKey(sibPath);
                 if (!itemIndex.has(sibPk)) itemIndex.set(sibPk, []);
@@ -900,7 +918,7 @@ function buildItemIndex() {
               if (sibIsExcluded(sib.name, excludes)) continue;
               const sibCore = sib.name.replace(/[([{【（].*$/, '').trim();
               if (!sibCore || sibCore.length < 2) continue;
-              const foodHasSib = it.food.indexOf(sibCore) >= 0 || (sibCore.length >= 3 && it.food.indexOf(sib.name) >= 0);
+              const foodHasSib = foodContainsSibCore(it.food, sibCore) || (sibCore.length >= 3 && foodContainsSibName(it.food, sib.name));
               // L1 通类项 (food 含 L1 核心名) 或 row.food 含具体 L2 名 → 扩散
               if (foodHasSib || isL1CatRow) {
                 const sibPath = [l1Node.name, sib.name];

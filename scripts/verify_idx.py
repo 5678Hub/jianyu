@@ -70,6 +70,22 @@ def sib_is_excluded(sib_name, excludes):
     return False
 
 
+def food_contains_sib(food, sib_core, sib_name):
+    """v38: 检测 food 是否独立含 sibCore (边界字符判定)
+    避免 '婴儿配方食品' 在 '特殊医学用途婴儿配方食品'/'较大婴儿配方食品'/'婴幼儿配方食品' 中误命中子串。
+    """
+    if not food or not sib_core:
+        return False
+    esc = re.escape(sib_core)
+    if re.search(r'(^|[(【（\[[，,、\s])' + esc, food):
+        return True
+    if len(sib_core) >= 3 and sib_name:
+        esc_name = re.escape(sib_name)
+        if re.search(r'(^|[(【（\[[，,、\s])' + esc_name, food):
+            return True
+    return False
+
+
 def walk_exact(tree_children, a1_path):
     """模拟 gb2762.html matchItemToPaths 的 walkExact + Fallback B"""
     paths = []
@@ -181,7 +197,7 @@ def build_idx():
                             sc = sib_core(sib['name'])
                             if not sc or len(sc) < 2:
                                 continue
-                            if (it['food'] or '').find(sc) >= 0 or (len(sc) >= 3 and (it['food'] or '').find(sib['name']) >= 0):
+                            if food_contains_sib(it['food'], sc, sib['name']):
                                 sib_path = start_path + [sib['name']]
                                 sib_pk = path_key(sib_path)
                                 add_item(sib_pk, it, c, dup_key)
@@ -202,7 +218,7 @@ def build_idx():
                             sc = sib_core(sib['name'])
                             if not sc or len(sc) < 2:
                                 continue
-                            food_has_sib = (it['food'] or '').find(sc) >= 0 or (len(sc) >= 3 and (it['food'] or '').find(sib['name']) >= 0)
+                            food_has_sib = food_contains_sib(it['food'], sc, sib['name'])
                             if food_has_sib or is_l1_cat_row:
                                 sib_path = [l1_node['name'], sib['name']]
                                 sib_pk = path_key(sib_path)
