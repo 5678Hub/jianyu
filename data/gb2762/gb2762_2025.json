@@ -1448,6 +1448,21 @@
           "a1_l4": ""
         },
         {
+          "food": "包装饮用水",
+          "pollutant": "铅",
+          "limit_value": "0.01",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/L",
+          "note": "",
+          "modif": "",
+          "inspection_method": "",
+          "a1_l1": "饮料类",
+          "a1_l2": "包装饮用水",
+          "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
           "food": "果蔬汁类及其饮料(含浆果及小粒水果的果蔬汁类及其饮料、浓缩果蔬汁(浆)除外)",
           "pollutant": "铅",
           "limit_value": "0.03",
