@@ -4370,13 +4370,13 @@
       "inspection_method": "食品按 GB 5009.16 规定的方法测定。",
       "items": [
         {
-          "category": "婴幼儿辅助食品",
+          "category": "",
           "food": "婴幼儿辅助食品",
           "limit": "50 mg/kg",
           "limit_value": "50",
           "has_limit": true,
-          "a1_l1": "特殊膳食用食品",
-          "a1_l2": "婴幼儿辅助食品",
+          "a1_l1": "",
+          "a1_l2": "",
           "a1_l3": "",
           "a1_l4": "",
           "remark": "a",
@@ -4385,13 +4385,13 @@
           "test_method": ""
         },
         {
-          "category": "婴幼儿配方食品",
+          "category": "",
           "food": "婴儿配方食品、较大婴儿配方食品、幼儿配方食品、特殊医学用途婴儿配方食品",
           "limit": "50 mg/kg",
           "limit_value": "50",
           "has_limit": true,
-          "a1_l1": "特殊膳食用食品",
-          "a1_l2": "婴幼儿配方食品",
+          "a1_l1": "",
+          "a1_l2": "",
           "a1_l3": "",
           "a1_l4": "",
           "remark": "a",
@@ -4400,12 +4400,12 @@
           "test_method": ""
         },
         {
-          "category": "食品",
+          "category": "",
           "food": "食品(饮料类、婴幼儿配方食品、婴幼儿辅助食品除外)",
           "limit": "250 mg/kg",
           "limit_value": "250",
           "has_limit": true,
-          "a1_l1": "食品",
+          "a1_l1": "",
           "a1_l2": "",
           "a1_l3": "",
           "a1_l4": "",
