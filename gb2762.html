@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v67-fruit-juice-exclude-filter-2026-08-29-16:30">
+<meta name="version" content="v72-short-exclude-core-match-2026-08-29-20:55">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -14,8 +14,10 @@
   //    (location.reload(true) 已被所有现代浏览器忽略,这是真正能生效的强刷)
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
+  // v72: 单一 CACHE_BUST,与 sw.js 保持一致,避免多个 hardcoded 版本号不同步
+  var CACHE_BUST = 'v72-short-exclude-core-match-2026-08-29-20:55';
   (function() {
-    var EXPECTED = 'v33-l2-leaf-fallback-2026-08-28-19:50';
+    var EXPECTED = CACHE_BUST;
     // 第 1 层:URL cbust 缺失 → 跳一次
     if (!location.search.includes('cbust=')) {
       var url = location.href.split('?')[0] + '?cbust=' + Date.now() + '#' + location.hash;
@@ -49,7 +51,9 @@
   // SW 兜底:拦截所有 fetch,强 reload + URL timestamp cache-bust
   // 解决浏览器顽固 disk cache(Chrome/Edge memory cache + disk cache 双层)
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js').then(function(reg) {
+    // v72: SW URL 带版本,避免浏览器用旧 sw.js 拦截
+    navigator.serviceWorker.register('./sw.js?v=' + CACHE_BUST).then(function(reg) {
+      reg.update();
       // 立即检查新 SW
       if (reg.waiting) reg.waiting.postMessage({type: 'SKIP_WAITING'});
     }).catch(function(err) {
@@ -60,19 +64,18 @@
   // 加载完后,在右下角显一个固定徽章告诉用户当前 build
   // 如果看到的是 cwz0001 + 时间戳就是新版;看到其他(如 5ae1df6)说明磁盘里就是旧 HTML
   window.addEventListener('DOMContentLoaded', function() {
-    var EXPECTED = 'v33-l2-leaf-fallback-2026-08-28-19:50';
     // 仅当 DOM 有 body 时插入
     var badge = document.createElement('div');
     badge.id = 'buildBadge';
     badge.style.cssText = 'position:fixed;bottom:8px;right:8px;z-index:99999;background:#1a365d;color:white;'
       + 'padding:4px 10px;border-radius:6px;font:11px/1.4 monospace;opacity:0.85;'
       + 'box-shadow:0 2px 6px rgba(0,0,0,0.3);user-select:none;pointer-events:none;';
-    badge.textContent = 'build v67-fruit-juice-exclude-filter';
+    badge.textContent = 'build ' + CACHE_BUST;
     document.body.appendChild(badge);
   });
 
 </script>
-<title>[v61] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
+<title>[v72] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='40' font-family='Arial,sans-serif' font-size='18' font-weight='600' fill='white' text-anchor='middle'>污染物</text></svg>">
 <meta name="theme-color" content="#1a365d">
 <style>
@@ -754,11 +757,15 @@ function buildItemIndex() {
                   .filter(e => e && e.length >= 2);
   }
   // 判断 sib 是否被 row 排除
+  // v72: 增加 tree 节点核心名(括号前)精确匹配,避免 2 字符短项(如"蜜饯")因 length>=3 阈值漏判
   function sibIsExcluded(sibName, excludes) {
     if (!excludes.length) return false;
     const sibNorm = sibName.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+    const sibCore = sibName.replace(/[([{【（].*$/, '').trim()
+      .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
     return excludes.some(normExc => {
       if (sibNorm === normExc) return true;
+      if (sibCore === normExc) return true;
       if (normExc.length >= 3 && (sibNorm.startsWith(normExc) || normExc.startsWith(sibNorm))) return true;
       return false;
     });
@@ -1366,7 +1373,11 @@ function renderTreeDetail() {
           if (!normExc || normExc.length < 2) continue;
           for (const name of currentPath) {
             const normName = name.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+            // v72: 用节点核心名(括号前)做精确匹配,解决 2 字符短项(如"蜜饯")漏判
+            const nameCore = name.replace(/[([{【（].*$/, '').trim()
+              .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
             if (normName === normExc) return false;
+            if (nameCore === normExc) return false;
             if (normExc.length >= 3 && (normName.startsWith(normExc) || normExc.startsWith(normName))) return false;
           }
         }
