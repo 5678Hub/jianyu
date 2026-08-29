@@ -1,7 +1,7 @@
 // GB2762 Cache Buster Service Worker
 // 拦截所有 fetch 请求,绕过浏览器 disk cache,强制从服务器拉最新
 
-const CACHE_BUST = 'v51-fix-fresh-aquatic-l2-2026-08-29-10:20';
+const CACHE_BUST = 'v52-cocoa-arsenic-l2-2026-08-29-10:45';
 
 self.addEventListener('install', (event) => {
   // 立即激活,不等旧 SW 关闭
