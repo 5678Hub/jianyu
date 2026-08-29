@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v66-lead-packaged-drinking-water-2026-08-29-16:00">
+<meta name="version" content="v67-fruit-juice-exclude-filter-2026-08-29-16:30">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -67,7 +67,7 @@
     badge.style.cssText = 'position:fixed;bottom:8px;right:8px;z-index:99999;background:#1a365d;color:white;'
       + 'padding:4px 10px;border-radius:6px;font:11px/1.4 monospace;opacity:0.85;'
       + 'box-shadow:0 2px 6px rgba(0,0,0,0.3);user-select:none;pointer-events:none;';
-    badge.textContent = 'build v66-lead-packaged-drinking-water';
+    badge.textContent = 'build v67-fruit-juice-exclude-filter';
     document.body.appendChild(badge);
   });
 
@@ -599,7 +599,7 @@ async function loadData() {
     try {
       // cache-busting: t=Date.now() + 数据版本(每次提交 JSON 时手动 bump)
       // cache: 'reload' 走 HTTP 强刷(Max-Age=0)而非简单 no-store,绕过浏览器 disk cache 最彻底
-      const cacheBust = 't=' + Date.now() + '&v=20260829-v66-lead-packaged-drinking-water';
+      const cacheBust = 't=' + Date.now() + '&v=20260829-v67-fruit-juice-exclude-filter';
       const res = await fetch(url + '?' + cacheBust, { signal: ctrl.signal, cache: 'reload' });
       clearTimeout(timer);
       if (!res.ok) { tried.push(`${url} → HTTP ${res.status}`); continue; }
@@ -1328,9 +1328,21 @@ function renderTreeDetail() {
   //      修复: 当 ancestorPath.pathKey === primaryKey 时 skip
   function isExcluded(itemFood, currentPath) {
     // 含"除外"且排除列表覆盖当前节点任一名称 → 不适用
-    const m = (itemFood || '').toString().match(/[\(（]([^)）]+除外)[\)）]/);
-    if (!m) return false;
-    const excludeStr = m[1].replace(/除外$/, '');
+    const food = (itemFood || '').toString();
+    // v67: 从后向前找"除外",并匹配其对应的左括号(处理嵌套括号如"浓缩果蔬汁(浆)")
+    let idx = food.lastIndexOf('除外');
+    if (idx < 0) return false;
+    let openIdx = -1;
+    let depth = 0;
+    for (let i = idx - 1; i >= 0; i--) {
+      if (food[i] === ')' || food[i] === '）') depth++;
+      else if (food[i] === '(' || food[i] === '（') {
+        if (depth === 0) { openIdx = i; break; }
+        depth--;
+      }
+    }
+    if (openIdx < 0) return false;
+    const excludeStr = food.slice(openIdx + 1, idx);
     // 拆分(顿号、逗号、"及"/"和"/空格)
     const excList = excludeStr.split(/[、,,及和  \s]+/).filter(Boolean);
     for (const exc of excList) {
@@ -1361,14 +1373,14 @@ function renderTreeDetail() {
       const ancestorName = path[i];
       if (!idx.has(ancestorKey)) continue;
       const items = idx.get(ancestorKey) || [];
-      // v22: 上级分类块 = 上一级的全部内容,不做任何过滤
-      // 用户反馈: 之前 isExcluded / foodName===ancestorName 等过滤逻辑太复杂,
-      //   实际语义就是「上一级 idx 的全部内容」。
-      // 例: L3 芸薹类蔬菜 → 「上级分类 新鲜蔬菜(...)」展示 idx[L2 新鲜蔬菜] 全部 6 条
-      //   (含铅 0.1 通类项、镉 0.05、汞 0.01、甲基汞 a —、砷 0.5、铬 0.5)
-      // 本级与祖先块天然不冲突,各自的限量来自各自 idx;
-      // 「本级限量」和「上级分类限量」是两个独立维度,允许并存。
-      const filtered = items.map(x => ({ ...x, _viaSub: ancestorName }));
+      // v67: 上级分类块启用 isExcluded 过滤
+      //   含"除外"的 ancestor item 若排除了当前节点或其祖先,则不适用,应剔除。
+      //   例: L1 饮料类通类项 0.3 明确"果蔬汁类及其饮料"除外,
+      //       在 L2 果蔬汁类及其饮料详情页不应显示该 0.3 行。
+      //   过滤后仍保留未排除的全部 items,与 foodvip.net 设计一致。
+      const filtered = items
+        .filter(x => !isExcluded(x.food || x.a1_l1, path))
+        .map(x => ({ ...x, _viaSub: ancestorName }));
       if (filtered.length === 0) continue;
       // 标记 dedup key 用于跨祖先层去重(浅层优先,即 i 大的层优先)
       const seen = new Set(filtered.map(itemKey));
