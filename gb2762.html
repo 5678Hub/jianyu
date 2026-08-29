@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v75-parent-aggregate-inherit-2026-08-29-21:55">
+<meta name="version" content="v76-multi-sub-food-split-2026-08-29-22:10">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   // v72: 单一 CACHE_BUST,与 sw.js 保持一致,避免多个 hardcoded 版本号不同步
-  var CACHE_BUST = 'v75-parent-aggregate-inherit-2026-08-29-21:55';
+  var CACHE_BUST = 'v76-multi-sub-food-split-2026-08-29-22:10';
   (function() {
     var EXPECTED = CACHE_BUST;
     // 第 1 层:URL cbust 缺失 → 跳一次
@@ -1469,22 +1469,64 @@ function renderTreeDetail() {
     //    例: L2 果蔬汁类及其饮料下的 row food='葡萄汁' / '含浆果及小粒水果的果蔬汁类及其饮料'
     //        是具体子类名,只在对应 L3 子节点(或更深)显示,不在 L3 果蔬汁（浆）等兄弟节点显示。
     //    v69: 从仅 L1 扩展到任意 ancestorLevel,覆盖 L2 通类项下的子类专属行扩散问题。
+    //    v76: food 也可能是多个子类名并列(如"稻谷、糙米、大米(粉)、玉米、玉米粉、玉米糁(渣)、小麦、小麦粉")。
+    //        这种情况下:
+    //        a) 在挂载节点本级(currentPath.length === ancestorLevel)不显示,让限量只体现在各子类;
+    //        b) 在子类节点(currentPath.length > ancestorLevel)拆开后分别匹配。
+    function getFoodSubCores(foodStr) {
+      return foodStr.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim()
+        .split(/[,，、]+/).map(x => x.replace(/[([{【（].*$/, '').trim())
+        .filter(x => x.length >= 2);
+    }
+    function isMultiSubItemAtMount(mountName, mountPath) {
+      const mountCore = mountName.replace(/[([{【（].*$/, '').trim()
+        .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+      const normFood = food.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+      if (!normFood || normFood.startsWith(mountCore)) return false;
+      const foodCores = getFoodSubCores(food);
+      if (foodCores.length < 2) return false;
+      // 仅当 food 中每个片段都能在挂载节点的真实子节点中找到匹配时,才视为"多子类列举项"
+      let node = null;
+      const nodes = (DATA && DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
+      for (let depth = 0; depth < mountPath.length; depth++) {
+        const name = mountPath[depth];
+        const children = node ? node.children : nodes;
+        if (!children) return false;
+        const found = children.find(c => c.name === name);
+        if (!found) return false;
+        node = found;
+      }
+      const childNames = (node && node.children || []).map(c => c.name);
+      if (childNames.length === 0) return false;
+      const normChildCores = childNames.map(n => n.replace(/[([{【（].*$/, '').trim()
+        .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim())
+        .filter(Boolean);
+      return foodCores.every(fc => {
+        return normChildCores.some(cc => cc === fc || (fc.length >= 3 && (cc.startsWith(fc) || fc.startsWith(cc))));
+      });
+    }
+
     if (currentPath.length > ancestorLevel) {
       const mountName = a1Path[ancestorLevel - 1];
-      // v69 fix: 挂载节点名常带括号别名(如「果蔬汁类及其饮料（例如：...）」),
-      //   比较通类项时应以核心名(去掉括号及以后)为前缀,避免把真正的 L2 通类项误判为子类专属项。
       const mountCore = mountName.replace(/[([{【（].*$/, '').trim()
         .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
       const normFood = food.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
       // 通类项(food 以挂载节点核心名开头)针对挂载节点本身,对其所有后代适用
       if (normFood && !normFood.startsWith(mountCore)) {
+        const foodCores = getFoodSubCores(food);
         for (const name of currentPath) {
           const normName = name.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
-          if (normName === normFood) return true;
-          if (normFood.length >= 3 && (normName.startsWith(normFood) || normFood.startsWith(normName))) return true;
+          for (const fc of foodCores) {
+            if (normName === fc) return true;
+            if (fc.length >= 3 && (normName.startsWith(fc) || fc.startsWith(normName))) return true;
+          }
         }
         return false;
       }
+    } else if (currentPath.length === ancestorLevel) {
+      const mountName = a1Path[ancestorLevel - 1];
+      // 多子类列举项(如谷物下的总汞):不在挂载节点本级显示
+      if (isMultiSubItemAtMount(mountName, a1Path)) return false;
     }
 
     return true;
