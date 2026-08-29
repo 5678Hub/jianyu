@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v77-direct-parent-aggregate-only-2026-08-29-22:25">
+<meta name="version" content="v78-all-ancestors-self-filter-2026-08-29-22:35">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   // v72: 单一 CACHE_BUST,与 sw.js 保持一致,避免多个 hardcoded 版本号不同步
-  var CACHE_BUST = 'v77-direct-parent-aggregate-only-2026-08-29-22:25';
+  var CACHE_BUST = 'v78-all-ancestors-self-filter-2026-08-29-22:35';
   (function() {
     var EXPECTED = CACHE_BUST;
     // 第 1 层:URL cbust 缺失 → 跳一次
@@ -1547,18 +1547,31 @@ function renderTreeDetail() {
     return (it._table_no || '') + '|' + (it.food || '') + '|' + ((it.limits && it.limits[0] && it.limits[0].value) || it.limit || '') + '|' + (it._viaSub || '');
   }
   const primKey = new Set(primaryItems.map(dedupKey));
-  // v77: 统一只显示【直接上一级完整聚合】(父节点详情页所见内容),
-  //   不再逐层独立展示祖父级、曾祖父级等,避免不同节点返回层级不一致。
-  //   父节点完整聚合已包含父节点自身及其祖先,相当于"直接引用"父节点详情页。
-  let parentItems = [];
-  let parentName = '';
+  // v78: 统一显示【全部上级分类】,但每层都用该祖先节点自身的 path 过滤,
+  //   相当于直接引用该祖先详情页显示的内容,避免按子类 path 重新过滤后
+  //   把父节点本级已过滤掉的项(如 v76 多子类项)又显示出来。
+  //   同时去掉与本级完全重复的项(food+limit 相同)。
+  let ancestorsLevels = [];
   if (path.length >= 2 && primaryLevel === '本级') {
-    const parentPath = path.slice(0, -1);
-    parentName = path[path.length - 2];
-    const agg = aggregateUpwards(parentPath, parentPath);
-    // 去掉与本级已显示内容完全重复的项(food+limit 相同)
-    parentItems = agg.items.filter(x => !primKey.has(dedupKey(x)));
-    excludedAncestors = agg.excludedAncestors;
+    for (let i = path.length - 2; i >= 0; i--) {
+      const ancestorPath = path.slice(0, i + 1);
+      const ancestorKey = pathKey(ancestorPath);
+      if (ancestorKey === primaryKey) continue;
+      const ancestorName = path[i];
+      if (!idx.has(ancestorKey)) continue;
+      const items = idx.get(ancestorKey) || [];
+      const filtered = items
+        .filter(x => isApplicableToPath(x, ancestorPath))
+        .map(x => ({ ...x, _viaSub: ancestorName }))
+        .filter(x => !primKey.has(dedupKey(x)));
+      if (filtered.length === 0) continue;
+      ancestorsLevels.push({
+        tag: '上级分类',
+        label: `${ancestorName} 赋予的污染物限量要求`,
+        isSelf: false,
+        items: filtered
+      });
+    }
   }
 
   // 卡片
@@ -1593,12 +1606,10 @@ function renderTreeDetail() {
   if (primaryItems.length > 0) {
     levels.push({ tag: primaryLevel, label: `${primaryName} 的污染物限量要求`, isSelf: primaryLevel === '本级', items: primaryItems });
   }
-  // v77: 直接上一级完整聚合(父节点详情页内容),统一只返回这一级上级
-  if (parentItems.length > 0) {
-    levels.push({ tag: '上级分类', label: `${parentName} 赋予的污染物限量要求`, isSelf: false, items: parentItems });
-  }
+  // v78: 全部上级分类(每层都是该祖先详情页的直接引用)
+  ancestorsLevels.forEach(lv => levels.push(lv));
 
-  // v68/v77: 空级自动返回上一级
+  // v68/v78: 空级自动返回上一级
   // 当前节点自身在 idx 无命中、上一级内容全是通类继承(非专属子类项) → 直接跳回上一级
   if (path.length >= 2 && primaryLevel === '上一级' && !hasOwnContent(primaryItems, path)) {
     const parentPath = path.slice(0, -1);
