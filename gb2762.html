@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v74-food-root-node-2026-08-29-21:40">
+<meta name="version" content="v75-parent-aggregate-inherit-2026-08-29-21:55">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   // v72: 单一 CACHE_BUST,与 sw.js 保持一致,避免多个 hardcoded 版本号不同步
-  var CACHE_BUST = 'v74-food-root-node-2026-08-29-21:40';
+  var CACHE_BUST = 'v75-parent-aggregate-inherit-2026-08-29-21:55';
   (function() {
     var EXPECTED = CACHE_BUST;
     // 第 1 层:URL cbust 缺失 → 跳一次
@@ -1342,28 +1342,60 @@ function renderTreeDetail() {
   // 找节点对应的 items
   const pk = pathKey(path);
 
+  // v75: 聚合函数——沿 nodePath 向上收集所有 idx 命中项,按 currentPath 过滤,
+  //   并做跨层去重(同一 food+limit 保留深度最大的)。
+  //   用于:
+  //   1) 当前节点自身有命中时,本级 = 自身聚合(自身 + 祖先,排除已在 ancestorsLevels 重复展示的部分)
+  //   2) 当前节点无命中、primary 为父节点时,上一级 = 父节点完整聚合(父节点自身 + 父节点祖先),
+  //      直接引用父节点详情页所见内容,不再只展示父节点专属项。
+  function dedupKey(it) {
+    return (it._table_no || '') + '|' + (it.food || '') + '|' + (it.limit_value || '') + '|' + (it.sub_value || '');
+  }
+  function aggregateUpwards(nodePath, currentPath) {
+    const seen = new Map(); // dedupKey -> enriched item with _depth
+    const excluded = [];
+    for (let i = nodePath.length - 1; i >= 0; i--) {
+      const ancestorPath = nodePath.slice(0, i + 1);
+      const ancestorKey = pathKey(ancestorPath);
+      if (!idx.has(ancestorKey)) continue;
+      const ancestorName = nodePath[i];
+      const rawItems = idx.get(ancestorKey) || [];
+      const filtered = rawItems.filter(x => isApplicableToPath(x, currentPath));
+      if (filtered.length === 0) {
+        if (rawItems.length > 0) excluded.push({ ancestorName, count: rawItems.length });
+        continue;
+      }
+      filtered.forEach(x => {
+        const enriched = { ...x, _viaSub: ancestorName, _depth: i + 1 };
+        const k = dedupKey(enriched);
+        const existing = seen.get(k);
+        if (!existing || enriched._depth > existing._depth) seen.set(k, enriched);
+      });
+    }
+    // 按深度升序(浅层优先)输出,与 foodvip 展示顺序一致
+    return {
+      items: Array.from(seen.values()).sort((a, b) => a._depth - b._depth),
+      excludedAncestors: excluded
+    };
+  }
+
   // === 本级 / 最近有数据的上一级 ===
   // 沿 path 向上找第一个 idx 命中的节点(优先自身,其次父、祖父…)
-  let primaryKey = pk, primaryName = nodeName, primaryLevel = '本级';
-  let primaryItems = null;
+  let primaryKey = pk, primaryName = nodeName, primaryLevel = '本级', primaryDepth = path.length;
+  let primaryItems = [];
+  let excludedAncestors = [];
   if (idx.has(pk)) {
-    // 本级有命中,直接取
     primaryItems = (idx.get(pk) || []).map(x => ({ ...x, _viaSub: primaryName }));
   } else if (path.length > 1) {
-    // 沿 path 向上找第一个 idx 命中的节点
     for (let i = path.length - 2; i >= 0; i--) {
       const pkUp = pathKey(path.slice(0, i + 1));
       if (idx.has(pkUp)) {
         primaryKey = pkUp;
         primaryName = path[i];
+        primaryDepth = i + 1;
         primaryLevel = '上一级';
         break;
       }
-    }
-    if (primaryKey !== pk) {
-      primaryItems = (idx.get(primaryKey) || [])
-        .filter(x => isApplicableToPath(x, path))
-        .map(x => ({ ...x, _viaSub: primaryName }));
     }
   }
 
@@ -1371,10 +1403,19 @@ function renderTreeDetail() {
   // v11 旧逻辑会聚合 L2+L3+L4 的所有 items 到 L1 详情页本级,造成 L1 详情页堆满子级内容
   // v13: 改为只在 statsForPath(左侧统计卡)保留聚合,详情页限量表保持 idx[L1] 直接命中 + 祖先继承
   // 这样 L1 详情页不再平铺子级限量,引导用户进入子分类查看具体限量
-  if (primaryItems === null) {
-    primaryName = nodeName;
-    primaryLevel = '本级';
-    primaryItems = []; // 不聚合,L1 idx 空时显示提示
+  if (primaryLevel === '本级' && primaryItems.length === 0 && path.length === 1) {
+    // L1 自身无数据,保持空数组,显示提示
+  } else if (primaryLevel === '本级') {
+    // 本级有命中:聚合自身 + 祖先,但祖先块仍独立展示,所以本级只取自身 idx 命中项
+    // (保持现有行为:本级块展示当前节点专属项,上级分类块展示祖先项)
+    primaryItems = (idx.get(pk) || [])
+      .filter(x => isApplicableToPath(x, path))
+      .map(x => ({ ...x, _viaSub: primaryName }));
+  } else if (primaryKey !== pk) {
+    // v75: 叶子节点无自身数据 → 上一级直接引用父节点完整聚合(父节点自身 + 父节点祖先)
+    const agg = aggregateUpwards(path.slice(0, primaryDepth), path);
+    primaryItems = agg.items;
+    excludedAncestors = agg.excludedAncestors;
   }
 
   // === 上级分类限量递归展示（参考 foodvip.net "上级分类赋予" 设计） ===
@@ -1386,6 +1427,8 @@ function renderTreeDetail() {
   //      ancestorsLevels 也会循环到 L2 豆类制品(同一 pathKey) → 重复展示
   //      修复: 当 ancestorPath.pathKey === primaryKey 时 skip
   // v67: 判断 ancestor item 是否适用于当前节点
+  // v75: 若 primary 为"上一级"(叶子节点无自身数据),父节点聚合已包含父节点自身及其祖先,
+  //      这里不再重复展示 ancestorsLevels。
   function isApplicableToPath(item, currentPath) {
     const food = (item.food || '').toString();
     const a1Path = [item.a1_l1, item.a1_l2, item.a1_l3, item.a1_l4].filter(Boolean);
@@ -1463,10 +1506,8 @@ function renderTreeDetail() {
   }
   const primKey = new Set(primaryItems.map(itemKey));
   let ancestorsLevels = [];
-  // v73: 记录上级分类有数据、但因"除外"等原因全部不适用于当前节点的祖先,
-  //   用于页面展示"上级分类另有 X 条,但已将本类除外"提示,避免用户误以为没返回上级
-  let excludedAncestors = [];
-  if (path.length >= 2) {
+  // v75: 若 primary 已经是父节点聚合,父节点的祖先也已包含在内,这里不再重复展示
+  if (path.length >= 2 && primaryLevel === '本级') {
     for (let i = path.length - 2; i >= 0; i--) {
       const ancestorPath = path.slice(0, i + 1);
       const ancestorKey = pathKey(ancestorPath);
