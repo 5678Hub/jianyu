@@ -278,6 +278,21 @@
           "a1_l4": ""
         },
         {
+          "food": "坚果及籽类(生咖啡豆及烘焙咖啡豆除外)",
+          "pollutant": "铅",
+          "limit_value": "0.2",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.12",
+          "a1_l1": "坚果及籽类",
+          "a1_l2": "",
+          "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
           "food": "生咖啡豆及烘焙咖啡豆",
           "pollutant": "铅",
           "limit_value": "0.5",
