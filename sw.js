@@ -1,7 +1,7 @@
 // GB2762 Cache Buster Service Worker
 // 拦截所有 fetch 请求,绕过浏览器 disk cache,强制从服务器拉最新
 
-const CACHE_BUST = 'v58-word-boundary-sib-match-2026-08-29-13:38';
+const CACHE_BUST = 'v59-revoke-v36-l1-spread-2026-08-29-13:55';
 
 self.addEventListener('install', (event) => {
   // 立即激活,不等旧 SW 关闭

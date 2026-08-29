@@ -13,7 +13,7 @@ r"""
   - walkExact + Fallback B (item 按 a1_l1/l2/l3/l4 精确注册)
   - v31: L2 通类项 (a1_l3 空 + path.length===2) 的 foodHasL3 判定
   - v30: L2 通类项扩散到 L3 children idx
-  - v36: L1 通类项扩散到 L2 children idx (path.length===1 + a1_l2 空)
+  - v36: 已被 v58 撤销 (L1 通类项不再扩散到 L2 children)
   - v23/v29: 兄弟节点探测 (path.length>=3)
   - v35: getExcludes + sibIsExcluded,row "除外"列表排除对应 sib
 
@@ -202,27 +202,10 @@ def build_idx():
                                 sib_pk = path_key(sib_path)
                                 add_item(sib_pk, it, c, dup_key)
 
-                # v36: L1 通类项扩散到 L2 children (path.length===1 + a1_l2 空)
-                is_l1_cat = len(path) == 1 and not (it.get('a1_l2') or '').strip() and (it.get('food') or '')
-                if is_l1_cat:
-                    l1_node = next((n for n in (tree_root or []) if n['name'] == path[0]), None)
-                    if l1_node and l1_node.get('children'):
-                        l1_core = sib_core(path[0])
-                        is_l1_cat_row = bool(l1_core) and (it['food'] or '').find(l1_core) >= 0
-                        excludes = get_excludes(it['food'])
-                        for sib in l1_node['children']:
-                            if not sib['name'] or len(sib['name']) < 2:
-                                continue
-                            if sib_is_excluded(sib['name'], excludes):
-                                continue
-                            sc = sib_core(sib['name'])
-                            if not sc or len(sc) < 2:
-                                continue
-                            food_has_sib = food_contains_sib(it['food'], sc, sib['name'])
-                            if food_has_sib or is_l1_cat_row:
-                                sib_path = [l1_node['name'], sib['name']]
-                                sib_pk = path_key(sib_path)
-                                add_item(sib_pk, it, c, dup_key)
+                # v36 已被 v58 撤销: L1 通类项不再扩散到 L2 children
+                # 原因: PDF 中 L1 通类项是"行表头",不应推到 L2 子页 (用户反馈)。
+                #   副作用: L2 食糖/乳糖/淀粉糖 等"无自己 row 但 L1 通类项有"的 L2 子页会显示 0 命中,
+                #   这是符合 PDF 的 (L2 本身无独立限量行,L1 通类项只在 L1 展示)。
 
     return idx, tree
 

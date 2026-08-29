@@ -1118,7 +1118,7 @@
           "a1_l4": ""
         },
         {
-          "food": "白酒、黄酒",
+          "food": "白酒",
           "pollutant": "铅",
           "limit_value": "0.5",
           "has_limit": true,
@@ -1133,7 +1133,7 @@
           "a1_l4": ""
         },
         {
-          "food": "白酒、黄酒",
+          "food": "黄酒",
           "pollutant": "铅",
           "limit_value": "0.5",
           "has_limit": true,
