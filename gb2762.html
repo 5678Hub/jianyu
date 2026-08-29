@@ -733,10 +733,23 @@ function buildItemIndex() {
   // v35: 提取 row.food 中的"除外"列表(如 "新鲜藻类(螺旋藻除外)" → ['螺旋藻'])
   //   用于反向判断 sib 是否被 row 排除,从而决定 v30 扩散是否推到该 sib idx
   //   以及是否影响 should_skip_l2 的 foodHasL3 判断
+  // v71 fix: 原正则无法处理嵌套括号(如 "水果制品(果酱(泥)、蜜饯、水果干类除外)"),
+  //   改为从后向前找"除外"并计数括号深度,与 isApplicableToPath 保持一致。
   function getExcludes(food) {
-    const m = (food || '').toString().match(/[\(（]([^)）]+除外)[\)）]/);
-    if (!m) return [];
-    const excList = m[1].replace(/除外$/, '').split(/[、,,及和  \s]+/).filter(Boolean);
+    const s = (food || '').toString();
+    const idx = s.lastIndexOf('除外');
+    if (idx < 0) return [];
+    let openIdx = -1, depth = 0;
+    for (let i = idx - 1; i >= 0; i--) {
+      if (s[i] === ')' || s[i] === '）') depth++;
+      else if (s[i] === '(' || s[i] === '（') {
+        if (depth === 0) { openIdx = i; break; }
+        depth--;
+      }
+    }
+    if (openIdx < 0) return [];
+    const excludeStr = s.slice(openIdx + 1, idx);
+    const excList = excludeStr.split(/[、,,及和  \s]+/).filter(Boolean);
     return excList.map(e => e.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim())
                   .filter(e => e && e.length >= 2);
   }
