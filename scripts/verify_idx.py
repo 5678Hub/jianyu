@@ -9,15 +9,17 @@ r"""
   python3 scripts/verify_idx.py --zero-l2        # 列出 idx 命中 0 的 L2 分类
   python3 scripts/verify_idx.py --path 路径      # 查看指定路径(用 / 分隔)的 idx 详情
 
-注意: norm 必须用 re.sub(r'[,，、;；()（）\[\]【】:：\s]+', ...) 正则替换字符集合,
-      不能用 str.replace('()（）[]【】', '') — 后者只替换连续字符串,不会替换单个括号。
+实现: 完全模拟 gb2762.html buildItemIndex 逻辑,包括:
+  - walkExact + Fallback B (item 按 a1_l1/l2/l3/l4 精确注册)
+  - v31: L2 通类项 (a1_l3 空 + path.length===2) 的 foodHasL3 判定
+  - v30: L2 通类项扩散到 L3 children idx
+  - v23/v29: 兄弟节点探测 (path.length>=3)
+  - v35: getExcludes + sibIsExcluded,row "除外"列表排除对应 sib
 
-限制: 本脚本只模拟了 walkExact + Fallback B(即 item 按 a1_l1/l2/l3/l4 精确注册的逻辑),
-       **没有模拟 gb2762.html 的 v23/v29 兄弟节点探测 和 v30 L2 通类项扩散**。
-       因此:
-       - L1 / L2 级 idx 命中数是准确的(扩散只影响 L3,不改变 L1/L2 注册)
-       - L3 级 idx 可能偏低(实际 web app 会通过 v30 把 L2 通类项推到匹配的 L3)
-       如需验证 L3,请以浏览器实际显示为准。
+限制: 不模拟 v23 的副作用(如某些 row 因为 a1_l3 错位而触发兄弟节点探测)。
+
+norm 必须用 re.sub(r'[,，、;；()（）\[\]【】:：\s]+', ...) 正则替换字符集合,
+不能用 str.replace('()（）[]【】', '') — 后者只替换连续字符串,不会替换单个括号。
 """
 import json
 import re
@@ -39,6 +41,34 @@ def path_key(path):
     return '|'.join(norm(p) for p in path)
 
 
+def sib_core(name):
+    """模拟 gb2762.html 的 sibCore:删除从括号/方括号/花括号/全角括号开始到结尾"""
+    return re.sub(r'[([{【（].*$', '', name).strip()
+
+
+def get_excludes(food):
+    """v35: 提取 row.food 中的 '除外' 列表(如 '新鲜藻类(螺旋藻除外)' -> ['螺旋藻'])"""
+    m = (food or '').toString() if hasattr(food or '', 'toString') else str(food or '')
+    m = re.search(r'[\(（]([^)）]+除外)[\)）]', m)
+    if not m:
+        return []
+    exc_str = m.group(1).replace('除外', '')
+    parts = re.split(r'[、,，及和\s]+', exc_str)
+    return [norm(p) for p in parts if p and len(p) >= 2]
+
+
+def sib_is_excluded(sib_name, excludes):
+    if not excludes:
+        return False
+    sib_n = norm(sib_name)
+    for exc in excludes:
+        if sib_n == exc:
+            return True
+        if len(exc) >= 3 and (sib_n.startswith(exc) or exc.startswith(sib_n)):
+            return True
+    return False
+
+
 def walk_exact(tree_children, a1_path):
     """模拟 gb2762.html matchItemToPaths 的 walkExact + Fallback B"""
     paths = []
@@ -51,14 +81,12 @@ def walk_exact(tree_children, a1_path):
         for n in nodes:
             n_name_norm = norm(n['name'])
             matched = n_name_norm == target
-            # 末层前缀匹配
             if not matched and idx == len(a1_path) - 1 and len(target) >= 3 and n_name_norm.startswith(target):
                 matched = True
-            # sibCore 匹配(去掉括号别名后的核心名)
             if not matched and idx >= 1:
-                sib_core = re.sub(r'[([{【（].*$', '', n['name']).strip()
-                sib_core_norm = norm(sib_core)
-                if sib_core_norm == target and sib_core and len(n_name_norm) > len(target):
+                sib_core_n = sib_core(n['name'])
+                sib_core_norm = norm(sib_core_n)
+                if sib_core_norm == target and sib_core_n and len(n_name_norm) > len(target):
                     matched = True
             if matched:
                 matched_here = True
@@ -67,12 +95,24 @@ def walk_exact(tree_children, a1_path):
                     walk(n['children'], cur_path, idx + 1)
                 else:
                     paths.append(cur_path[:])
-        # Fallback B: 走到 a1Path 末层但当前节点 children 为空 → 注册到 path 走的最远一层
         if not matched_here and idx == len(a1_path) - 1 and path:
             paths.append(path[:])
 
     walk(tree_children, [], 0)
     return paths
+
+
+def find_node_by_path(tree, path):
+    cur = None
+    for p in path:
+        children = cur['children'] if cur else tree
+        if not children:
+            return None
+        f = next((c for c in children if c['name'] == p), None)
+        if not f:
+            return None
+        cur = f
+    return cur
 
 
 def build_idx():
@@ -82,20 +122,76 @@ def build_idx():
         tree = json.load(f)
 
     idx = collections.defaultdict(list)
-    dup = collections.defaultdict(set)
+    dup_keys = collections.defaultdict(set)
+
+    def add_item(pk, it, c, dup_key):
+        if dup_key in dup_keys[pk]:
+            return
+        dup_keys[pk].add(dup_key)
+        idx[pk].append({**it, '_c': c['contaminant'], '_t': c['table_no']})
+
+    tree_root = tree.get('children', tree)
+
     for c in data.get('contaminants', []):
         for it in c.get('items', []):
             a1_path = [it.get('a1_l1'), it.get('a1_l2'), it.get('a1_l3'), it.get('a1_l4')]
             a1_path = [x for x in a1_path if x]
             if not a1_path:
                 continue
-            for path in walk_exact(tree.get('children', tree), a1_path):
+
+            dup_key = '%s|%s|%s|%s|%s|%s|%s' % (
+                c['table_no'], it['food'], it.get('limit_value', ''), it.get('sub_value', ''),
+                it.get('main_remark', ''), it.get('sub_remark', ''), it.get('note', ''))
+
+            paths = walk_exact(tree_root, a1_path)
+
+            for path in paths:
                 pk = path_key(path)
-                dk = '%s|%s|%s|%s' % (c['table_no'], it['food'], it.get('limit_value', ''), it.get('sub_value', ''))
-                if dk in dup[pk]:
-                    continue
-                dup[pk].add(dk)
-                idx[pk].append({**it, '_c': c['contaminant'], '_t': c['table_no']})
+                is_l2_cat = path.length == 2 if hasattr(path, 'length') else len(path) == 2
+                is_l2_cat = is_l2_cat and not (it.get('a1_l3') or '').strip()
+
+                # v31: L2 通类项 (a1_l3 空 + path.length===2) 的 foodHasL3 判定
+                if is_l2_cat:
+                    l2_node = find_node_by_path(tree_root, path)
+                    if l2_node and l2_node.get('children'):
+                        excludes = get_excludes(it['food'])
+                        sib_cores = [sib_core(s['name']) for s in l2_node['children']
+                                     if not sib_is_excluded(s['name'], excludes) and sib_core(s['name']) and len(sib_core(s['name'])) >= 2]
+                        food_has_l3 = any(sc and (it['food'] or '').find(sc) >= 0 for sc in sib_cores)
+                        if food_has_l3:
+                            # v30 扩散,row 不注册到 L2 本级
+                            pass  # 跳过 L2 本级注册
+                        else:
+                            add_item(pk, it, c, dup_key)
+                    else:
+                        # L2 无 children → 注册到 L2 本级
+                        add_item(pk, it, c, dup_key)
+                else:
+                    add_item(pk, it, c, dup_key)
+
+                # v30 L2 通类项扩散 + v23/v29 兄弟节点探测
+                spread_to_l3 = (len(path) >= 3 or is_l2_cat) and (it.get('food') or '')
+                if spread_to_l3:
+                    start_path = path[:-1] if not is_l2_cat else path
+                    start_node = find_node_by_path(tree_root, start_path)
+                    if start_node and start_node.get('children'):
+                        current_leaf = None if is_l2_cat else path[-1]
+                        excludes = get_excludes(it['food'])
+                        for sib in start_node['children']:
+                            if not is_l2_cat and sib['name'] == current_leaf:
+                                continue
+                            if not sib['name'] or len(sib['name']) < 2:
+                                continue
+                            if sib_is_excluded(sib['name'], excludes):
+                                continue
+                            sc = sib_core(sib['name'])
+                            if not sc or len(sc) < 2:
+                                continue
+                            if (it['food'] or '').find(sc) >= 0 or (len(sc) >= 3 and (it['food'] or '').find(sib['name']) >= 0):
+                                sib_path = start_path + [sib['name']]
+                                sib_pk = path_key(sib_path)
+                                add_item(sib_pk, it, c, dup_key)
+
     return idx, tree
 
 
