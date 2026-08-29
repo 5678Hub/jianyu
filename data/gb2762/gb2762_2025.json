@@ -4393,12 +4393,12 @@
           "test_method": ""
         },
         {
-          "category": "饮料类",
+          "category": "",
           "food": "饮料类",
           "limit": "150 mg/kg",
           "limit_value": "150",
           "has_limit": true,
-          "a1_l1": "饮料类",
+          "a1_l1": "",
           "a1_l2": "",
           "a1_l3": "",
           "a1_l4": "",

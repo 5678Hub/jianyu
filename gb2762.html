@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v59-revoke-v36-l1-spread-2026-08-29-13:55">
+<meta name="version" content="v60-tin-r3-detach-render-row-unit-method-2026-08-29-14:25">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -67,12 +67,12 @@
     badge.style.cssText = 'position:fixed;bottom:8px;right:8px;z-index:99999;background:#1a365d;color:white;'
       + 'padding:4px 10px;border-radius:6px;font:11px/1.4 monospace;opacity:0.85;'
       + 'box-shadow:0 2px 6px rgba(0,0,0,0.3);user-select:none;pointer-events:none;';
-    badge.textContent = 'build v59-revoke-v36-l1-spread';
+    badge.textContent = 'build v60-tin-r3-detach-render-row-unit-method';
     document.body.appendChild(badge);
   });
 
 </script>
-<title>[v59] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
+<title>[v60] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='40' font-family='Arial,sans-serif' font-size='18' font-weight='600' fill='white' text-anchor='middle'>污染物</text></svg>">
 <meta name="theme-color" content="#1a365d">
 <style>
@@ -599,7 +599,7 @@ async function loadData() {
     try {
       // cache-busting: t=Date.now() + 数据版本(每次提交 JSON 时手动 bump)
       // cache: 'reload' 走 HTTP 强刷(Max-Age=0)而非简单 no-store,绕过浏览器 disk cache 最彻底
-      const cacheBust = 't=' + Date.now() + '&v=20260829-v59-revoke-v36-l1-spread';
+      const cacheBust = 't=' + Date.now() + '&v=20260829-v60-tin-r3-detach-render-row-unit-method';
       const res = await fetch(url + '?' + cacheBust, { signal: ctrl.signal, cache: 'reload' });
       clearTimeout(timer);
       if (!res.ok) { tried.push(`${url} → HTTP ${res.status}`); continue; }
@@ -1522,9 +1522,14 @@ function renderLimitTable(items, isSelf, nodeName, bigName) {
   expanded.forEach(it => {
     const ctxFood = isSelf ? (nodeName || it.food || '') : (it._viaSub || nodeName || it.food || '');
     const ctxBig = bigName || '';
-    const method = pickMethod(it._rules, ctxFood, ctxBig) || it._inspection_method || '';
-    // 限量值 = 数字 + 修饰(若有);参考 foodvip.net 国标写法前置 ≤ 符号
-    const limitText = it._rowMod ? `${it._rowMod} ≤${it._rowLimit} mg/kg` : (it._rowLimit === '—' ? '—' : `≤${it._rowLimit} mg/kg`);
+    // v60: row 自身 inspection_method 优先于整表默认 (修复 PDF 中水相关 row 误显示 GB 5009.x 整表默认)
+    const method = it.inspection_method || pickMethod(it._rules, ctxFood, ctxBig) || it._inspection_method || '';
+    // v60: row 自身 unit 优先于整表默认 (修复 mg/L row 误显示 mg/kg 整表默认)
+    const unitCell = it.unit || it._unit || '';
+    // v60: limitText 单位随 row 实际 unit 走,不用硬编码 'mg/kg'
+    const limitText = it._rowMod
+      ? `${it._rowMod} ≤${it._rowLimit} ${unitCell || 'mg/kg'}`
+      : (it._rowLimit === '—' ? '—' : `≤${it._rowLimit} ${unitCell || 'mg/kg'}`);
     // 备注 = 修饰脚注（_rowRemark 来自 main_remark/sub_remark；note 兼容 simple 表）
     const remarkText = it._rowRemark || '';
     // 脚注字母 badge：优先 _noteLetter（main_remark/sub_remark/note 兼容）
@@ -1546,7 +1551,7 @@ function renderLimitTable(items, isSelf, nodeName, bigName) {
     foodName = it.food || nodeName;
     html += `<td class="food-cell">${escapeHTML(foodName)}</td>`;
     html += `<td class="limit-cell"><span class="limit-main">${escapeHTML(limitText)}</span></td>`;
-    html += `<td class="unit-cell">${escapeHTML(it._unit || '')}</td>`;
+    html += `<td class="unit-cell">${escapeHTML(unitCell)}</td>`;
     html += `<td class="method-cell">${escapeHTML(method)}</td>`;
     html += `<td class="remark-cell">${remarkHtml}</td>`;
     html += '</tr>';
@@ -1891,7 +1896,8 @@ function renderContamDetail(tab, items, targetEl) {
       ? (limitModif ? limitModif + ' ≤' : (limitVal !== '—' ? '≤' : '')) + limitVal + (limitVal !== '—' && limitUnit ? limitUnit : '')
       : '—';
 
-    let method = c.inspection_method || it.inspection_method || '—';
+    // v60: row 自身 inspection_method 优先于整表默认
+  let method = it.inspection_method || c.inspection_method || '—';
 
     const noteList = [];
     noteKey.split(/[,，]/).forEach(k => {
@@ -1950,7 +1956,8 @@ function renderContamRow(it, tab, c, footnoteDict) {
     ? (limitModif ? limitModif + ' ≤' : (limitVal !== '—' ? '≤' : '')) + limitVal + (limitVal !== '—' && limitUnit ? limitUnit : '')
     : '—';
 
-  let method = c.inspection_method || it.inspection_method || '—';
+  // v60: row 自身 inspection_method 优先于整表默认
+  let method = it.inspection_method || c.inspection_method || '—';
 
   const noteList = [];
   noteKey.split(/[,，]/).forEach(k => {
