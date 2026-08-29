@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v78-all-ancestors-self-filter-2026-08-29-22:35">
+<meta name="version" content="v79-tin-food-root-2026-08-29">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   // v72: 单一 CACHE_BUST,与 sw.js 保持一致,避免多个 hardcoded 版本号不同步
-  var CACHE_BUST = 'v78-all-ancestors-self-filter-2026-08-29-22:35';
+  var CACHE_BUST = 'v79-tin-food-root-2026-08-29';
   (function() {
     var EXPECTED = CACHE_BUST;
     // 第 1 层:URL cbust 缺失 → 跳一次
@@ -940,6 +940,21 @@ function buildItemIndex() {
 //   这是符合 PDF 的 (L2 本身无独立限量行,L1 通类项只在 L1 展示)。
       });
     });
+
+    // v79: 锡(表5) 是"食品"一级通类污染物。
+    //   把全部锡行镜像注册到 "🍎 食品" 根节点的虚拟 pk(__FOOD_ROOT__),
+    //   使点击左侧"🍎 食品"根节点即可看到完整的锡限量(用户要求:锡的内容全部放在食品一级分类中)。
+    //   通用"食品（饮料类…除外）"行(a1 路径无法匹配标准树节点,正常流程会被孤立)也借此显示。
+    if (c.table_no === 5) {
+      const rootPk = pathKey(['__FOOD_ROOT__']);
+      if (!itemIndex.has(rootPk)) itemIndex.set(rootPk, []);
+      const rootArr = itemIndex.get(rootPk);
+      const tinDup = [c.table_no, it.food || '', it.limit_value || '', it.sub_value || '',
+                      it.main_remark || '', it.sub_remark || '', it.note || ''].join('\x01');
+      if (!rootArr.some(x => x._dupKey === tinDup)) {
+        rootArr.push({ ...enriched, _dupKey: tinDup, _viaSub: '食品' });
+      }
+    }
   });
   // v15: 自查 - 显打印 idx 关键节点内容,用户可在 DevTools Console 验证注册逻辑正确
   // 之前用户多次反馈「不在 idx 的数据出现在 ancestorsLevels 上」,怀疑浏览器 JS 旧。
@@ -1048,6 +1063,74 @@ function matchItemToPaths(item, tree) {
       }
     }
     walkExact(tree, [], 0);
+  }
+
+  // 4) v79: 锡(表5) 等行在源表 a1_l1/l2/l3/l4 为空,JSON 中 it.path 也常缺失。
+  //    用 it.food 在 tree 中递归找最深同名节点(完整树路径)作为兜底。
+  //    例: 锡 food='饮料类' → 树 L1 饮料类;food='婴幼儿辅助食品' → 树 L2 婴幼儿辅助食品。
+  //    通用"食品（饮料类…除外）"行 food='食品(...)' 在 tree 中无同名节点,兜底失败,
+  //    留待根节点虚拟 pk 处理(见 v79 镜像注册逻辑)。
+  if (matchedPaths.length === 0 && item.food) {
+    const foodNorm = norm(item.food);
+    // 取 food 的核心名(括号前)用于匹配
+    const foodCore = String(item.food).replace(/[([{【（].*$/, '').trim();
+    const foodCoreNorm = norm(foodCore);
+    let bestPath = null;
+    function walkFood(nodes, curPath) {
+      for (const n of nodes) {
+        if (norm(n.name) === foodNorm || norm(n.name) === foodCoreNorm) {
+          // 找到同名节点 → 优先取最深的(递归到叶),否则当前
+          let deepest = null;
+          function goDeeper(nn, p) {
+            if (!nn.children || nn.children.length === 0) { deepest = p; return; }
+            // 如果子节点名也含 foodCore,继续深入
+            for (const c of nn.children) {
+              const cn = norm(c.name);
+              if (cn === foodCoreNorm || cn.startsWith(foodCoreNorm) || (foodCoreNorm.length >= 3 && cn.includes(foodCoreNorm))) {
+                goDeeper(c, p.concat([c.name]));
+              }
+            }
+          }
+          goDeeper(n, curPath.concat([n.name]));
+          if (deepest) {
+            if (!bestPath || deepest.length > bestPath.length) bestPath = deepest;
+          } else if (!bestPath) {
+            bestPath = curPath.concat([n.name]);
+          }
+        }
+        if (n.children) walkFood(n.children, curPath.concat([n.name]));
+      }
+    }
+    walkFood(tree, []);
+
+    // v79 增强: 仍无匹配时,尝试把 food 当作"多子类列举"(以"、"分隔) →
+    //   找 tree 中完全等于 food 核心名片段的最浅祖先节点作为挂载点,
+    //   让 v76 isMultiSubItemAtMount 判定为多子类列举项,
+    //   在该祖先本级不显示,在其子类正确扩散。
+    //   例: food='婴儿配方食品、较大婴儿配方食品、幼儿配方食品、特殊医学用途婴儿配方食品'
+    //   cores 包含 '婴儿配方食品','较大婴儿配方食品',...,'婴幼儿配方食品' 等
+    //     → 优先匹配到 L2 '婴幼儿配方食品'(浅路径),触发 v76 扩散。
+    if (!bestPath && item.food) {
+      // 先按中英文分隔符 split,再去除每段标点(避免把分隔符也当标点吃掉后只剩 1 段)
+      // 剔除含"除外"的项(这类是通类项,不应作为挂载线索)
+      const cores = String(item.food).split(/[,，、]+/)
+        .map(x => x.replace(/[()（）\[\]【】:：.。、\s]/g, '').toLowerCase().trim())
+        .filter(x => x && x.length >= 2 && x.indexOf('除外') < 0);
+      function findShallowest(nodes, curPath) {
+        for (const n of nodes) {
+          const nNorm = norm(n.name);
+          if (cores.includes(nNorm)) return curPath.concat([n.name]);
+          if (n.children) {
+            const sub = findShallowest(n.children, curPath.concat([n.name]));
+            if (sub) return sub;
+          }
+        }
+        return null;
+      }
+      const fp = findShallowest(tree, []);
+      if (fp) bestPath = fp;
+    }
+    if (bestPath) matchedPaths.push({ pk: pathKey(bestPath), path: bestPath });
   }
 
   // 2) 兜底:用 category_a1 找 L1 节点(老字段,兼容)
@@ -1242,13 +1325,14 @@ function renderTree(filterKw) {
   // v74: 顶部"食品"根节点(参考之前版本:左侧树以"食品"作为一级分类入口)
   const rootPk = pathKey(['__FOOD_ROOT__']);
   const rootOpen = showAll || expandedPaths.has(rootPk);
-  html += `<div class="tree-node depth-0 root-node${rootOpen ? ' open' : ''}"
-            onclick="toggleRoot()">
+  const rootSel = treeSelected && pathKey(treeSelected.path) === rootPk;
+  html += `<div class="tree-node depth-0 root-node${rootOpen ? ' open' : ''}${rootSel ? ' selected' : ''}"
+            onclick="selectFoodRoot()">
     <div class="tn-row1">
-      <span class="tn-arrow has">${rootOpen ? '−' : '+'}</span>
+      <span class="tn-arrow has" onclick="event.stopPropagation();toggleRoot()">${rootOpen ? '−' : '+'}</span>
       <span class="tn-name root-name">🍎 食品</span>
     </div>
-    <div class="tn-row2">${tree.length} 个食品大类</div>
+    <div class="tn-row2">${tree.length} 个食品大类 · 点击查看一级通类限量</div>
   </div>`;
   nodes.forEach(n => {
     const pk = pathKey(n.path);
@@ -1310,6 +1394,21 @@ function selectTreeNode(path) {
   renderDetail();
 }
 
+// v79: "🍎 食品"根节点可点击进入详情页(显示"食品"一级通类污染物,如锡表5)。
+//   再点当前选中的根节点 → 取消选中;否则选中并展开。箭头仍由 toggleRoot() 控制折叠。
+function selectFoodRoot() {
+  const rootPath = ['__FOOD_ROOT__'];
+  const rootPk = pathKey(rootPath);
+  if (treeSelected && pathKey(treeSelected.path) === rootPk) {
+    treeSelected = null;
+  } else {
+    treeSelected = { path: rootPath.slice() };
+    expandedPaths.add(rootPk);
+  }
+  renderTree(document.getElementById('treeSearchInput').value);
+  renderDetail();
+}
+
 function renderTreeDetail() {
   const idx = buildItemIndex();
   const bc = document.getElementById('breadcrumb');
@@ -1324,17 +1423,20 @@ function renderTreeDetail() {
   }
 
   const path = treeSelected.path;
-  const nodeName = path[path.length - 1];
-  const bigName = path[0]; // L1
+  // v79: "🍎 食品"根节点虚拟路径 ['__FOOD_ROOT__'] → 显示名统一为"食品"
+  const isFoodRoot = path.length === 1 && path[0] === '__FOOD_ROOT__';
+  const nodeName = isFoodRoot ? '食品' : path[path.length - 1];
+  const bigName = isFoodRoot ? '食品' : path[0]; // L1
 
   // 面包屑
   let bcHtml = `<a onclick="treeSelected=null;renderTree();renderTreeDetail();">食品类别</a>`;
   path.forEach((p, i) => {
+    const segName = p === '__FOOD_ROOT__' ? '食品' : p;
     const pPath = path.slice(0, i + 1);
     if (i === path.length - 1) {
-      bcHtml += `<span class="sep">›</span><span class="current">${escapeHTML(p)}</span>`;
+      bcHtml += `<span class="sep">›</span><span class="current">${escapeHTML(segName)}</span>`;
     } else {
-      bcHtml += `<span class="sep">›</span><a onclick="selectTreeNode(${jsonInAttr(pPath)})">${escapeHTML(p)}</a>`;
+      bcHtml += `<span class="sep">›</span><a onclick="selectTreeNode(${jsonInAttr(pPath)})">${escapeHTML(segName)}</a>`;
     }
   });
   bc.innerHTML = bcHtml;
@@ -1433,6 +1535,10 @@ function renderTreeDetail() {
     const food = (item.food || '').toString();
     const a1Path = [item.a1_l1, item.a1_l2, item.a1_l3, item.a1_l4].filter(Boolean);
     const ancestorLevel = a1Path.length; // item 实际挂在哪一层
+
+    // v79: 锡(表5) 等行 a1 路径为空(ancestorLevel=0)→ 视为"食品"一级通类项,
+    //   对任一路径均适用。同时避免下方 a1Path[ancestorLevel-1] 访问越界(undefined.replace 崩溃)。
+    if (ancestorLevel === 0) return true;
 
     // 1) 含"除外"的通类项:排除列表覆盖当前节点任一名称 → 不适用
     const idx = food.lastIndexOf('除外');
