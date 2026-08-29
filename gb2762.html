@@ -1360,16 +1360,20 @@ function renderTreeDetail() {
       }
     }
 
-    // 2) 挂在 L1 但 food 明确指向某个 L2 子类的 item(如"固态调味品")：
-    //    只在该子类(或其 descendant)下显示,不扩散到其他 L2 sibling。
-    //    判断: a1Path 长度为 1(即 L1), food 不是 L1 名称本身, food 是一个具体子类名。
-    if (ancestorLevel === 1 && currentPath.length >= 2) {
-      const l1Name = a1Path[0];
-      const normL1 = l1Name.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+    // 2) 挂在某层的 item，若 food 明确指向该层下的某个具体子类名（而非该挂载节点自身的通类项），
+    //    则只在 currentPath 包含该子类名（或 descendants）时显示，不扩散到兄弟子类。
+    //    例: L2 果蔬汁类及其饮料下的 row food='葡萄汁' / '含浆果及小粒水果的果蔬汁类及其饮料'
+    //        是具体子类名,只在对应 L3 子节点(或更深)显示,不在 L3 果蔬汁（浆）等兄弟节点显示。
+    //    v69: 从仅 L1 扩展到任意 ancestorLevel,覆盖 L2 通类项下的子类专属行扩散问题。
+    if (currentPath.length > ancestorLevel) {
+      const mountName = a1Path[ancestorLevel - 1];
+      // v69 fix: 挂载节点名常带括号别名(如「果蔬汁类及其饮料（例如：...）」),
+      //   比较通类项时应以核心名(去掉括号及以后)为前缀,避免把真正的 L2 通类项误判为子类专属项。
+      const mountCore = mountName.replace(/[([{【（].*$/, '').trim()
+        .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
       const normFood = food.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
-      // 通类项(food 以 L1 名开头)已在上面处理,这里只处理明确子类项
-      if (normFood && !normFood.startsWith(normL1)) {
-        // food 是 L1 下的某个具体子类名: 只有当前 path 包含该子类名(或 descendants)才适用
+      // 通类项(food 以挂载节点核心名开头)针对挂载节点本身,对其所有后代适用
+      if (normFood && !normFood.startsWith(mountCore)) {
         for (const name of currentPath) {
           const normName = name.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
           if (normName === normFood) return true;

@@ -1,7 +1,7 @@
 // GB2762 Cache Buster Service Worker
 // 拦截所有 fetch 请求,绕过浏览器 disk cache,强制从服务器拉最新
 
-const CACHE_BUST = 'v68-other-condiment-solid-up-2026-08-29-19:50';
+const CACHE_BUST = 'v69-grape-juice-a1-fix-2026-08-29-20:10';
 
 self.addEventListener('install', (event) => {
   // 立即激活,不等旧 SW 关闭
