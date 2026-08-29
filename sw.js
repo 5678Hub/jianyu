@@ -1,7 +1,7 @@
 // GB2762 Cache Buster Service Worker
 // 拦截所有 fetch 请求,绕过浏览器 disk cache,强制从服务器拉最新
 
-const CACHE_BUST = 'v69-grape-juice-a1-fix-2026-08-29-20:10';
+const CACHE_BUST = 'v70-other-oil-products-inorganic-arsenic-2026-08-29-20:35';
 
 self.addEventListener('install', (event) => {
   // 立即激活,不等旧 SW 关闭
