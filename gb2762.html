@@ -1304,7 +1304,9 @@ function renderTreeDetail() {
       }
     }
     if (primaryKey !== pk) {
-      primaryItems = (idx.get(primaryKey) || []).map(x => ({ ...x, _viaSub: primaryName }));
+      primaryItems = (idx.get(primaryKey) || [])
+        .filter(x => isApplicableToPath(x, path))
+        .map(x => ({ ...x, _viaSub: primaryName }));
     }
   }
 
@@ -1326,38 +1328,70 @@ function renderTreeDetail() {
   // 例: L3 其他豆类制品(无 idx 命中) → primary 沿 path 找到 L2 豆类制品(1 条 Pb 0.3)
   //      ancestorsLevels 也会循环到 L2 豆类制品(同一 pathKey) → 重复展示
   //      修复: 当 ancestorPath.pathKey === primaryKey 时 skip
-  function isExcluded(itemFood, currentPath) {
-    // 含"除外"且排除列表覆盖当前节点任一名称 → 不适用
-    const food = (itemFood || '').toString();
-    // v67: 从后向前找"除外",并匹配其对应的左括号(处理嵌套括号如"浓缩果蔬汁(浆)")
-    let idx = food.lastIndexOf('除外');
-    if (idx < 0) return false;
-    let openIdx = -1;
-    let depth = 0;
-    for (let i = idx - 1; i >= 0; i--) {
-      if (food[i] === ')' || food[i] === '）') depth++;
-      else if (food[i] === '(' || food[i] === '（') {
-        if (depth === 0) { openIdx = i; break; }
-        depth--;
+  // v67: 判断 ancestor item 是否适用于当前节点
+  function isApplicableToPath(item, currentPath) {
+    const food = (item.food || '').toString();
+    const a1Path = [item.a1_l1, item.a1_l2, item.a1_l3, item.a1_l4].filter(Boolean);
+    const ancestorLevel = a1Path.length; // item 实际挂在哪一层
+
+    // 1) 含"除外"的通类项:排除列表覆盖当前节点任一名称 → 不适用
+    const idx = food.lastIndexOf('除外');
+    if (idx >= 0) {
+      let openIdx = -1, depth = 0;
+      for (let i = idx - 1; i >= 0; i--) {
+        if (food[i] === ')' || food[i] === '）') depth++;
+        else if (food[i] === '(' || food[i] === '（') {
+          if (depth === 0) { openIdx = i; break; }
+          depth--;
+        }
+      }
+      if (openIdx >= 0) {
+        const excludeStr = food.slice(openIdx + 1, idx);
+        const excList = excludeStr.split(/[、,,及和  \s]+/).filter(Boolean);
+        for (const exc of excList) {
+          const normExc = exc.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+          if (!normExc || normExc.length < 2) continue;
+          for (const name of currentPath) {
+            const normName = name.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+            if (normName === normExc) return false;
+            if (normExc.length >= 3 && (normName.startsWith(normExc) || normExc.startsWith(normName))) return false;
+          }
+        }
       }
     }
-    if (openIdx < 0) return false;
-    const excludeStr = food.slice(openIdx + 1, idx);
-    // 拆分(顿号、逗号、"及"/"和"/空格)
-    const excList = excludeStr.split(/[、,,及和  \s]+/).filter(Boolean);
-    for (const exc of excList) {
-      const normExc = exc.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
-      if (!normExc || normExc.length < 2) continue;
-      // 当前节点的任一祖先 name 被排除 → 不适用
-      for (const name of currentPath) {
-        const normName = name.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
-        // 全等 OR 简写匹配全称(target 是 nameNorm 前缀,长度>=3)
-        // 注意:不能用 includes,会误判 "非肉食性鱼类" 包含 "肉食性鱼类"
-        if (normName === normExc) return true;
-        if (normExc.length >= 3 && (normName.startsWith(normExc) || normExc.startsWith(normName))) return true;
+
+    // 2) 挂在 L1 但 food 明确指向某个 L2 子类的 item(如"固态调味品")：
+    //    只在该子类(或其 descendant)下显示,不扩散到其他 L2 sibling。
+    //    判断: a1Path 长度为 1(即 L1), food 不是 L1 名称本身, food 是一个具体子类名。
+    if (ancestorLevel === 1 && currentPath.length >= 2) {
+      const l1Name = a1Path[0];
+      const normL1 = l1Name.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+      const normFood = food.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+      // 通类项(food 以 L1 名开头)已在上面处理,这里只处理明确子类项
+      if (normFood && !normFood.startsWith(normL1)) {
+        // food 是 L1 下的某个具体子类名: 只有当前 path 包含该子类名(或 descendants)才适用
+        for (const name of currentPath) {
+          const normName = name.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+          if (normName === normFood) return true;
+          if (normFood.length >= 3 && (normName.startsWith(normFood) || normFood.startsWith(normName))) return true;
+        }
+        return false;
       }
     }
-    return false;
+
+    return true;
+  }
+  // v68: 判断 items 中是否存在"专属"内容(即 food 明确指向当前节点路径的子类项)
+  // 仅通类项(food 以 L1 名开头)不算专属;用于空级节点自动返回上一级的判定
+  function hasOwnContent(items, currentPath) {
+    const names = currentPath.map(n => n.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim());
+    return items.some(it => {
+      const food = (it.food || '').toString();
+      const normFood = food.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+      const l1 = (it.a1_l1 || '').toString().replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+      if (!normFood || normFood.startsWith(l1)) return false; // 通类项不算专属
+      return names.some(n => n === normFood || (normFood.length >= 3 && (n.startsWith(normFood) || normFood.startsWith(n))));
+    });
   }
   function itemKey(it) {
     return (it._table_no || '') + '|' + (it.food || '') + '|' + ((it.limits && it.limits[0] && it.limits[0].value) || it.limit || '') + '|' + (it._viaSub || '');
@@ -1373,13 +1407,12 @@ function renderTreeDetail() {
       const ancestorName = path[i];
       if (!idx.has(ancestorKey)) continue;
       const items = idx.get(ancestorKey) || [];
-      // v67: 上级分类块启用 isExcluded 过滤
-      //   含"除外"的 ancestor item 若排除了当前节点或其祖先,则不适用,应剔除。
-      //   例: L1 饮料类通类项 0.3 明确"果蔬汁类及其饮料"除外,
-      //       在 L2 果蔬汁类及其饮料详情页不应显示该 0.3 行。
-      //   过滤后仍保留未排除的全部 items,与 foodvip.net 设计一致。
+      // v68: 上级分类块启用 isApplicableToPath 过滤
+      //   1) 含"除外"的通类项若排除当前节点(或其祖先),则不显示
+      //   2) 挂在 L1 但 food 明确指向某个 L2 子类的 item(如"固态调味品"):
+      //      只在该子类详情页显示,不扩散到其他 L2 sibling
       const filtered = items
-        .filter(x => !isExcluded(x.food || x.a1_l1, path))
+        .filter(x => isApplicableToPath(x, path))
         .map(x => ({ ...x, _viaSub: ancestorName }));
       if (filtered.length === 0) continue;
       // 标记 dedup key 用于跨祖先层去重(浅层优先,即 i 大的层优先)
@@ -1435,6 +1468,16 @@ function renderTreeDetail() {
   ancestorsLevels.forEach(lv => {
     levels.push(lv);
   });
+
+  // v68: 空级自动返回上一级
+  // 当前节点自身在 idx 无命中(无专属数据行)、向上找到的"上一级"内容全是 L1 通类继承
+  // (非专属子类项)、且祖先块已被 v34 跳过(ancestorsLevels 为空) → 视为 level=0 无内容,
+  // 直接跳回上一级,不在空页停留。例:其他调味品(原固态调味品已上调到 L1 调味品)
+  if (path.length >= 2 && primaryLevel === '上一级' && ancestorsLevels.length === 0 && !hasOwnContent(primaryItems, path)) {
+    const parentPath = path.slice(0, -1);
+    selectTreeNode(parentPath);
+    return;
+  }
 
   if (levels.length === 0) {
     if (path.length === 1 && primaryItems.length === 0) {

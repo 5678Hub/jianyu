@@ -5644,13 +5644,13 @@
           "test_method": ""
         },
         {
-          "category": "其他调味品",
+          "category": "调味品",
           "food": "固态调味品",
           "limit": "1.0 mg/kg",
           "limit_value": "1.0",
           "has_limit": true,
           "a1_l1": "调味品",
-          "a1_l2": "其他调味品",
+          "a1_l2": "",
           "a1_l3": "",
           "a1_l4": "",
           "remark": "a",
