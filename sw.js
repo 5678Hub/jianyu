@@ -1,7 +1,7 @@
 // GB2762 Cache Buster Service Worker
 // 拦截所有 fetch 请求,绕过浏览器 disk cache,强制从服务器拉最新
 
-const CACHE_BUST = 'v55-l1-spread-l2-2026-08-29-12:55';
+const CACHE_BUST = 'v56-beverage-unit-method-fix-2026-08-29-13:15';
 
 self.addEventListener('install', (event) => {
   // 立即激活,不等旧 SW 关闭
