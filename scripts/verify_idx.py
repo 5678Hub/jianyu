@@ -155,15 +155,8 @@ def build_idx():
                 if is_l2_cat:
                     l2_node = find_node_by_path(tree_root, path)
                     if l2_node and l2_node.get('children'):
-                        excludes = get_excludes(it['food'])
-                        sib_cores = [sib_core(s['name']) for s in l2_node['children']
-                                     if not sib_is_excluded(s['name'], excludes) and sib_core(s['name']) and len(sib_core(s['name'])) >= 2]
-                        food_has_l3 = any(sc and (it['food'] or '').find(sc) >= 0 for sc in sib_cores)
-                        if food_has_l3:
-                            # v30 扩散,row 不注册到 L2 本级
-                            pass  # 跳过 L2 本级注册
-                        else:
-                            add_item(pk, it, c, dup_key)
+                        # v57: 即使 foodHasL3 也注册到 L2 本级 (PDF 表头 L2 通类项本身显示限量)
+                        add_item(pk, it, c, dup_key)
                     else:
                         # L2 无 children → 注册到 L2 本级
                         add_item(pk, it, c, dup_key)
