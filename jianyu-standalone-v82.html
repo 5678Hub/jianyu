@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v82-fix100-stats-align-2026-09-03">
+<meta name="version" content="v82-fix101-scope-2026-09-03">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   // v72: 单一 CACHE_BUST,与 sw.js 保持一致,避免多个 hardcoded 版本号不同步
-  var CACHE_BUST = 'v82-fix100-stats-align-2026-09-03';
+  var CACHE_BUST = 'v82-fix101-scope-2026-09-03';
   (function() {
     var EXPECTED = CACHE_BUST;
     // 第 1 层:URL cbust 缺失 → 跳一次
@@ -12703,6 +12703,154 @@ function countForPath(path) {
 //
 // v82-fix14: 旧版 limits = uniq.length(全树聚合去重条目数,常 10+ 不直观)。
 // v82-fix19: 改为 limits = 本级 own row 条数,与 PDF 表行数 1:1 对应;categories = 下级子分类数(用户新口径)
+  function isApplicableToPath(item, currentPath) {
+    const food = (item.food || '').toString();
+    const a1Path = [item.a1_l1, item.a1_l2, item.a1_l3, item.a1_l4].filter(Boolean);
+    const ancestorLevel = a1Path.length; // item 实际挂在哪一层
+
+    // v79: 锡(表5) 等行 a1 路径为空(ancestorLevel=0)→ 视为"食品"一级通类项,
+    //   对任一路径均适用。同时避免下方 a1Path[ancestorLevel-1] 访问越界(undefined.replace 崩溃)。
+    if (ancestorLevel === 0) return true;
+
+    // 1) 含"除外"的通类项:排除列表覆盖当前节点任一名称 → 不适用
+    const idx = food.lastIndexOf('除外');
+    if (idx >= 0) {
+      let openIdx = -1, depth = 0;
+      for (let i = idx - 1; i >= 0; i--) {
+        if (food[i] === ')' || food[i] === '）') depth++;
+        else if (food[i] === '(' || food[i] === '（') {
+          if (depth === 0) { openIdx = i; break; }
+          depth--;
+        }
+      }
+      if (openIdx >= 0) {
+        const excludeStr = food.slice(openIdx + 1, idx);
+        // v82-fix18: 「和」「及」是节点名内部连接词(如「块根和块茎蔬菜」「坚果及籽类」、
+        //   「及以上食用菌的制品」),不能用作「除外」列表分隔符,否则「块根和块茎蔬菜」
+        //   会被切错成「块根」「块茎蔬菜」两项,与 currentPath 节点名「块根和块茎蔬菜」匹配不上,
+        //   导致「新鲜蔬菜(...除外)」这条 L2 own row 错误地扩散到「块根和块茎蔬菜」L3 节点上,
+        //   用户在 L3 详情页看到了不该出现的上级分类限量 0.05 mg/kg。
+        // 改为只切顿号和逗号作为分隔符。
+        const excList = excludeStr.split(/[、,，]/).filter(Boolean);
+        for (const exc of excList) {
+          // v82-fix87: 处理「及以上」修饰语 (例: 「银耳及以上食用菌的制品除外」→ 「银耳」)
+          //   避免「银耳及以上食用菌的制品」整词与 A.1 树「银耳制品」L4 节点匹配不上
+          let normExc = exc.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+          let hasShangji = normExc.includes('及以上');
+          if (hasShangji) {
+            normExc = normExc.split('及以上')[0];
+          }
+          if (!normExc || normExc.length < 2) continue;
+          for (const name of currentPath) {
+            const normName = name.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+            // v72: 用节点核心名(括号前)做精确匹配,解决 2 字符短项(如"蜜饯")漏判
+            const nameCore = name.replace(/[([{【（].*$/, '').trim()
+              .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+            if (normName === normExc) return false;
+            if (nameCore === normExc) return false;
+            // v82-fix87: 「及以上」split 后 normExc 可能只有 2 字符(如「银耳」), 但应启用 substring 匹配
+            //   因为 split 已表明这是一个有效 excl 项
+            if ((normExc.length >= 3 || hasShangji) && (normName.startsWith(normExc) || normExc.startsWith(normName))) return false;
+          }
+        }
+      }
+    }
+
+    // 2) 挂在某层的 item，若 food 明确指向该层下的某个具体子类名（而非该挂载节点自身的通类项），
+    //    则只在 currentPath 包含该子类名（或 descendants）时显示，不扩散到兄弟子类。
+    //    例: L2 果蔬汁类及其饮料下的 row food='葡萄汁' / '含浆果及小粒水果的果蔬汁类及其饮料'
+    //        是具体子类名,只在对应 L3 子节点(或更深)显示,不在 L3 果蔬汁（浆）等兄弟节点显示。
+    //    v69: 从仅 L1 扩展到任意 ancestorLevel,覆盖 L2 通类项下的子类专属行扩散问题。
+    //    v76: food 也可能是多个子类名并列(如"稻谷、糙米、大米(粉)、玉米、玉米粉、玉米糁(渣)、小麦、小麦粉")。
+    //        这种情况下:
+    //        a) 在挂载节点本级(currentPath.length === ancestorLevel)不显示,让限量只体现在各子类;
+    //        b) 在子类节点(currentPath.length > ancestorLevel)拆开后分别匹配。
+    function getFoodSubCores(foodStr) {
+      return foodStr.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim()
+        .split(/[,，、]+/).map(x => x.replace(/[([{【（].*$/, '').trim())
+        .filter(x => x.length >= 2);
+    }
+    function isMultiSubItemAtMount(mountName, mountPath) {
+      const mountCore = mountName.replace(/[([{【（].*$/, '').trim()
+        .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+      const normFood = food.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+      if (!normFood || normFood.startsWith(mountCore)) return false;
+      const foodCores = getFoodSubCores(food);
+      if (foodCores.length < 2) return false;
+      // 仅当 food 中每个片段都能在挂载节点的真实子节点中找到匹配时,才视为"多子类列举项"
+      let node = null;
+      const nodes = (DATA && DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
+      for (let depth = 0; depth < mountPath.length; depth++) {
+        const name = mountPath[depth];
+        const children = node ? node.children : nodes;
+        if (!children) return false;
+        const found = children.find(c => c.name === name);
+        if (!found) return false;
+        node = found;
+      }
+      const childNames = (node && node.children || []).map(c => c.name);
+      if (childNames.length === 0) return false;
+      const normChildCores = childNames.map(n => n.replace(/[([{【（].*$/, '').trim()
+        .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim())
+        .filter(Boolean);
+      return foodCores.every(fc => {
+        return normChildCores.some(cc => cc === fc || (fc.length >= 3 && (cc.startsWith(fc) || fc.startsWith(cc))));
+      });
+    }
+
+    if (currentPath.length > ancestorLevel) {
+      const mountName = a1Path[ancestorLevel - 1];
+      const mountCore = mountName.replace(/[([{【（].*$/, '').trim()
+        .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+      const normFood = food.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+      // 通类项(food 以挂载节点核心名开头)针对挂载节点本身,对其所有后代适用
+      if (normFood && !normFood.startsWith(mountCore)) {
+        const foodCores = getFoodSubCores(food);
+        for (const name of currentPath) {
+          const normName = name.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+          for (const fc of foodCores) {
+            if (normName === fc) return true;
+            if (fc.length >= 3 && (normName.startsWith(fc) || fc.startsWith(normName))) return true;
+          }
+        }
+        return false;
+      }
+    } else if (currentPath.length === ancestorLevel) {
+      const mountName = a1Path[ancestorLevel - 1];
+      // 多子类列举项(如谷物下的总汞):不在挂载节点本级显示
+      if (isMultiSubItemAtMount(mountName, a1Path)) return false;
+      // v80: 单具体子类名专属项(例: L2 果蔬汁类及其饮料 下 row food='葡萄汁' limit=0.04)
+      //   不在 L2 本级显示,只扩散到对应 L3 子节点。
+      //   与多子类列举项的区别:food 单 core 且能完全匹配挂载节点的某个真实子节点名。
+      const mountCore = mountName.replace(/[([{【（].*$/, '').trim()
+        .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+      const normFood = food.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+      // 通类项(food 以 mountCore 开头,如"果蔬汁类及其饮料(...)")不在此过滤
+      if (normFood && !normFood.startsWith(mountCore)) {
+        const foodCore = normFood.replace(/[([{【（].*$/, '').trim();
+        let node = null;
+        const nodes = (DATA && DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
+        for (let depth = 0; depth < a1Path.length; depth++) {
+          const name = a1Path[depth];
+          const children = node ? node.children : nodes;
+          if (!children) break;
+          const found = children.find(c => c.name === name);
+          if (!found) { node = null; break; }
+          node = found;
+        }
+        const childCores = (node && node.children || [])
+          .map(c => c.name.replace(/[([{【（].*$/, '').trim()
+            .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim())
+          .filter(Boolean);
+        if (foodCore && childCores.some(cc => cc === foodCore || (foodCore.length >= 3 && (cc.startsWith(foodCore) || foodCore.startsWith(cc))))) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
 function statsForPath(path) {
   const idx = buildItemIndex();
 
@@ -13000,153 +13148,6 @@ function renderTreeDetail() {
   // v67: 判断 ancestor item 是否适用于当前节点
   // v75: 若 primary 为"上一级"(叶子节点无自身数据),父节点聚合已包含父节点自身及其祖先,
   //      这里不再重复展示 ancestorsLevels。
-  function isApplicableToPath(item, currentPath) {
-    const food = (item.food || '').toString();
-    const a1Path = [item.a1_l1, item.a1_l2, item.a1_l3, item.a1_l4].filter(Boolean);
-    const ancestorLevel = a1Path.length; // item 实际挂在哪一层
-
-    // v79: 锡(表5) 等行 a1 路径为空(ancestorLevel=0)→ 视为"食品"一级通类项,
-    //   对任一路径均适用。同时避免下方 a1Path[ancestorLevel-1] 访问越界(undefined.replace 崩溃)。
-    if (ancestorLevel === 0) return true;
-
-    // 1) 含"除外"的通类项:排除列表覆盖当前节点任一名称 → 不适用
-    const idx = food.lastIndexOf('除外');
-    if (idx >= 0) {
-      let openIdx = -1, depth = 0;
-      for (let i = idx - 1; i >= 0; i--) {
-        if (food[i] === ')' || food[i] === '）') depth++;
-        else if (food[i] === '(' || food[i] === '（') {
-          if (depth === 0) { openIdx = i; break; }
-          depth--;
-        }
-      }
-      if (openIdx >= 0) {
-        const excludeStr = food.slice(openIdx + 1, idx);
-        // v82-fix18: 「和」「及」是节点名内部连接词(如「块根和块茎蔬菜」「坚果及籽类」、
-        //   「及以上食用菌的制品」),不能用作「除外」列表分隔符,否则「块根和块茎蔬菜」
-        //   会被切错成「块根」「块茎蔬菜」两项,与 currentPath 节点名「块根和块茎蔬菜」匹配不上,
-        //   导致「新鲜蔬菜(...除外)」这条 L2 own row 错误地扩散到「块根和块茎蔬菜」L3 节点上,
-        //   用户在 L3 详情页看到了不该出现的上级分类限量 0.05 mg/kg。
-        // 改为只切顿号和逗号作为分隔符。
-        const excList = excludeStr.split(/[、,，]/).filter(Boolean);
-        for (const exc of excList) {
-          // v82-fix87: 处理「及以上」修饰语 (例: 「银耳及以上食用菌的制品除外」→ 「银耳」)
-          //   避免「银耳及以上食用菌的制品」整词与 A.1 树「银耳制品」L4 节点匹配不上
-          let normExc = exc.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
-          let hasShangji = normExc.includes('及以上');
-          if (hasShangji) {
-            normExc = normExc.split('及以上')[0];
-          }
-          if (!normExc || normExc.length < 2) continue;
-          for (const name of currentPath) {
-            const normName = name.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
-            // v72: 用节点核心名(括号前)做精确匹配,解决 2 字符短项(如"蜜饯")漏判
-            const nameCore = name.replace(/[([{【（].*$/, '').trim()
-              .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
-            if (normName === normExc) return false;
-            if (nameCore === normExc) return false;
-            // v82-fix87: 「及以上」split 后 normExc 可能只有 2 字符(如「银耳」), 但应启用 substring 匹配
-            //   因为 split 已表明这是一个有效 excl 项
-            if ((normExc.length >= 3 || hasShangji) && (normName.startsWith(normExc) || normExc.startsWith(normName))) return false;
-          }
-        }
-      }
-    }
-
-    // 2) 挂在某层的 item，若 food 明确指向该层下的某个具体子类名（而非该挂载节点自身的通类项），
-    //    则只在 currentPath 包含该子类名（或 descendants）时显示，不扩散到兄弟子类。
-    //    例: L2 果蔬汁类及其饮料下的 row food='葡萄汁' / '含浆果及小粒水果的果蔬汁类及其饮料'
-    //        是具体子类名,只在对应 L3 子节点(或更深)显示,不在 L3 果蔬汁（浆）等兄弟节点显示。
-    //    v69: 从仅 L1 扩展到任意 ancestorLevel,覆盖 L2 通类项下的子类专属行扩散问题。
-    //    v76: food 也可能是多个子类名并列(如"稻谷、糙米、大米(粉)、玉米、玉米粉、玉米糁(渣)、小麦、小麦粉")。
-    //        这种情况下:
-    //        a) 在挂载节点本级(currentPath.length === ancestorLevel)不显示,让限量只体现在各子类;
-    //        b) 在子类节点(currentPath.length > ancestorLevel)拆开后分别匹配。
-    function getFoodSubCores(foodStr) {
-      return foodStr.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim()
-        .split(/[,，、]+/).map(x => x.replace(/[([{【（].*$/, '').trim())
-        .filter(x => x.length >= 2);
-    }
-    function isMultiSubItemAtMount(mountName, mountPath) {
-      const mountCore = mountName.replace(/[([{【（].*$/, '').trim()
-        .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
-      const normFood = food.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
-      if (!normFood || normFood.startsWith(mountCore)) return false;
-      const foodCores = getFoodSubCores(food);
-      if (foodCores.length < 2) return false;
-      // 仅当 food 中每个片段都能在挂载节点的真实子节点中找到匹配时,才视为"多子类列举项"
-      let node = null;
-      const nodes = (DATA && DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
-      for (let depth = 0; depth < mountPath.length; depth++) {
-        const name = mountPath[depth];
-        const children = node ? node.children : nodes;
-        if (!children) return false;
-        const found = children.find(c => c.name === name);
-        if (!found) return false;
-        node = found;
-      }
-      const childNames = (node && node.children || []).map(c => c.name);
-      if (childNames.length === 0) return false;
-      const normChildCores = childNames.map(n => n.replace(/[([{【（].*$/, '').trim()
-        .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim())
-        .filter(Boolean);
-      return foodCores.every(fc => {
-        return normChildCores.some(cc => cc === fc || (fc.length >= 3 && (cc.startsWith(fc) || fc.startsWith(cc))));
-      });
-    }
-
-    if (currentPath.length > ancestorLevel) {
-      const mountName = a1Path[ancestorLevel - 1];
-      const mountCore = mountName.replace(/[([{【（].*$/, '').trim()
-        .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
-      const normFood = food.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
-      // 通类项(food 以挂载节点核心名开头)针对挂载节点本身,对其所有后代适用
-      if (normFood && !normFood.startsWith(mountCore)) {
-        const foodCores = getFoodSubCores(food);
-        for (const name of currentPath) {
-          const normName = name.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
-          for (const fc of foodCores) {
-            if (normName === fc) return true;
-            if (fc.length >= 3 && (normName.startsWith(fc) || fc.startsWith(normName))) return true;
-          }
-        }
-        return false;
-      }
-    } else if (currentPath.length === ancestorLevel) {
-      const mountName = a1Path[ancestorLevel - 1];
-      // 多子类列举项(如谷物下的总汞):不在挂载节点本级显示
-      if (isMultiSubItemAtMount(mountName, a1Path)) return false;
-      // v80: 单具体子类名专属项(例: L2 果蔬汁类及其饮料 下 row food='葡萄汁' limit=0.04)
-      //   不在 L2 本级显示,只扩散到对应 L3 子节点。
-      //   与多子类列举项的区别:food 单 core 且能完全匹配挂载节点的某个真实子节点名。
-      const mountCore = mountName.replace(/[([{【（].*$/, '').trim()
-        .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
-      const normFood = food.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
-      // 通类项(food 以 mountCore 开头,如"果蔬汁类及其饮料(...)")不在此过滤
-      if (normFood && !normFood.startsWith(mountCore)) {
-        const foodCore = normFood.replace(/[([{【（].*$/, '').trim();
-        let node = null;
-        const nodes = (DATA && DATA.appendix_a1 && DATA.appendix_a1.tree) || [];
-        for (let depth = 0; depth < a1Path.length; depth++) {
-          const name = a1Path[depth];
-          const children = node ? node.children : nodes;
-          if (!children) break;
-          const found = children.find(c => c.name === name);
-          if (!found) { node = null; break; }
-          node = found;
-        }
-        const childCores = (node && node.children || [])
-          .map(c => c.name.replace(/[([{【（].*$/, '').trim()
-            .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim())
-          .filter(Boolean);
-        if (foodCore && childCores.some(cc => cc === foodCore || (foodCore.length >= 3 && (cc.startsWith(foodCore) || foodCore.startsWith(cc))))) {
-          return false;
-        }
-      }
-    }
-
-    return true;
-  }
   // v68: 判断 items 中是否存在"专属"内容(即 food 明确指向当前节点路径的子类项)
   // 仅通类项(food 以 L1 名开头)不算专属;用于空级节点自动返回上一级的判定
   function hasOwnContent(items, currentPath) {
