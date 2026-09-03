@@ -13223,7 +13223,8 @@ function renderTreeDetail() {
           // v82-fix87: 处理「及以上」修饰语 (例: 「银耳及以上食用菌的制品除外」→ 「银耳」)
           //   避免「银耳及以上食用菌的制品」整词与 A.1 树「银耳制品」L4 节点匹配不上
           let normExc = exc.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
-          if (normExc.includes('及以上')) {
+          let hasShangji = normExc.includes('及以上');
+          if (hasShangji) {
             normExc = normExc.split('及以上')[0];
           }
           if (!normExc || normExc.length < 2) continue;
@@ -13234,7 +13235,9 @@ function renderTreeDetail() {
               .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
             if (normName === normExc) return false;
             if (nameCore === normExc) return false;
-            if (normExc.length >= 3 && (normName.startsWith(normExc) || normExc.startsWith(normName))) return false;
+            // v82-fix87: 「及以上」split 后 normExc 可能只有 2 字符(如「银耳」), 但应启用 substring 匹配
+            //   因为 split 已表明这是一个有效 excl 项
+            if ((normExc.length >= 3 || hasShangji) && (normName.startsWith(normExc) || normExc.startsWith(normName))) return false;
           }
         }
       }
