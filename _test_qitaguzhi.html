@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>jump qitaguzhi</title></head>
+<body>
+<iframe id="f" src="jianyu-standalone-v82.html" style="width:1400px;height:1200px;border:1px solid #ccc"></iframe>
+<script>
+const f = document.getElementById('f');
+f.addEventListener('load', () => {
+  setTimeout(() => {
+    try {
+      const w = f.contentWindow;
+      w.selectTreeNode(['谷物及其制品（不包括焙烤制品）', '谷物制品', '其他谷物制品[例如：带馅（料）面米制品、粥类罐头等]']);
+    } catch(e) {
+      document.body.insertAdjacentText('afterbegin', 'ERR ' + e.message);
+    }
+  }, 1500);
+});
+</script>
+</body></html>

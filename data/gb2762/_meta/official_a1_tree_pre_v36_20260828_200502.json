@@ -1,0 +1,1340 @@
+{
+  "catid": 1,
+  "name": "食品",
+  "children": [
+    {
+      "catid": 2,
+      "name": "水果及其制品",
+      "children": [
+        {
+          "catid": 3,
+          "name": "新鲜水果（未经加工的、经表面处理的、去皮或预切的、冷冻的水果）",
+          "children": [
+            {
+              "catid": 4,
+              "name": "浆果和其他小粒水果（例如：蔓越莓、醋栗等）",
+              "children": []
+            },
+            {
+              "catid": 5,
+              "name": "其他新鲜水果（包括甘蔗）",
+              "children": []
+            }
+          ]
+        },
+        {
+          "catid": 6,
+          "name": "水果制品",
+          "children": [
+            {
+              "catid": 7,
+              "name": "水果罐头",
+              "children": []
+            },
+            {
+              "catid": 8,
+              "name": "水果干类",
+              "children": []
+            },
+            {
+              "catid": 9,
+              "name": "醋、油或盐渍水果",
+              "children": []
+            },
+            {
+              "catid": 10,
+              "name": "果酱（泥）",
+              "children": []
+            },
+            {
+              "catid": 11,
+              "name": "蜜饯（包括果丹皮）",
+              "children": []
+            },
+            {
+              "catid": 12,
+              "name": "发酵的水果制品",
+              "children": []
+            },
+            {
+              "catid": 13,
+              "name": "煮熟的或油炸的水果",
+              "children": []
+            },
+            {
+              "catid": 14,
+              "name": "水果甜品",
+              "children": []
+            },
+            {
+              "catid": 15,
+              "name": "其他水果制品",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "catid": 16,
+      "name": "蔬菜及其制品（包括薯类，不包括食用菌）",
+      "children": [
+        {
+          "catid": 17,
+          "name": "新鲜蔬菜（未经加工的、经表面处理的、去皮或预切的、冷冻的蔬菜）",
+          "children": [
+            {
+              "catid": 18,
+              "name": "芸薹类蔬菜",
+              "children": []
+            },
+            {
+              "catid": 19,
+              "name": "叶菜蔬菜（包括芸薹类叶菜）",
+              "children": []
+            },
+            {
+              "catid": 20,
+              "name": "豆类蔬菜",
+              "children": []
+            },
+            {
+              "catid": 21,
+              "name": "块根和块茎蔬菜（例如：薯类、胡萝卜、萝卜、生姜等）",
+              "children": []
+            },
+            {
+              "catid": 22,
+              "name": "茎类蔬菜",
+              "children": []
+            },
+            {
+              "catid": 23,
+              "name": "其他新鲜蔬菜（包括瓜果类、鳞茎类和水生类、芽菜类；竹笋、黄花菜等多年生蔬菜）",
+              "children": []
+            }
+          ]
+        },
+        {
+          "catid": 24,
+          "name": "蔬菜制品",
+          "children": [
+            {
+              "catid": 25,
+              "name": "蔬菜罐头",
+              "children": []
+            },
+            {
+              "catid": 26,
+              "name": "干制蔬菜",
+              "children": []
+            },
+            {
+              "catid": 27,
+              "name": "酱腌菜",
+              "children": []
+            },
+            {
+              "catid": 28,
+              "name": "蔬菜泥（酱）",
+              "children": []
+            },
+            {
+              "catid": 29,
+              "name": "经水煮或油炸的蔬菜",
+              "children": []
+            },
+            {
+              "catid": 30,
+              "name": "其他蔬菜制品",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "catid": 31,
+      "name": "食用菌及其制品",
+      "children": [
+        {
+          "catid": 32,
+          "name": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
+          "children": [
+            {
+              "catid": 33,
+              "name": "双孢菇",
+              "children": []
+            },
+            {
+              "catid": 34,
+              "name": "平菇",
+              "children": []
+            },
+            {
+              "catid": 35,
+              "name": "香菇",
+              "children": []
+            },
+            {
+              "catid": 36,
+              "name": "榛蘑",
+              "children": []
+            },
+            {
+              "catid": 37,
+              "name": "牛肝菌[美味牛肝菌,兰茂牛肝菌,茶褐新生牛肝菌,远东邹盖牛肝菌]",
+              "children": []
+            },
+            {
+              "catid": 38,
+              "name": "松茸",
+              "children": []
+            },
+            {
+              "catid": 39,
+              "name": "松露",
+              "children": []
+            },
+            {
+              "catid": 40,
+              "name": "青头菌",
+              "children": []
+            },
+            {
+              "catid": 41,
+              "name": "鸡枞",
+              "children": []
+            },
+            {
+              "catid": 42,
+              "name": "鸡油菌",
+              "children": []
+            },
+            {
+              "catid": 43,
+              "name": "多汁乳菇",
+              "children": []
+            },
+            {
+              "catid": 44,
+              "name": "羊肚菌",
+              "children": []
+            },
+            {
+              "catid": 45,
+              "name": "獐头菌",
+              "children": []
+            },
+            {
+              "catid": 46,
+              "name": "姬松茸",
+              "children": []
+            },
+            {
+              "catid": 47,
+              "name": "木耳 （毛木耳,黑木耳）",
+              "children": []
+            },
+            {
+              "catid": 48,
+              "name": "银耳",
+              "children": []
+            },
+            {
+              "catid": 49,
+              "name": "其他新鲜食用菌",
+              "children": []
+            }
+          ]
+        },
+        {
+          "catid": 50,
+          "name": "食用菌制品",
+          "children": [
+            {
+              "catid": 51,
+              "name": "食用菌罐头",
+              "children": []
+            },
+            {
+              "catid": 52,
+              "name": "腌渍食用菌（例如：酱渍、盐渍、糖醋渍食用菌等）",
+              "children": []
+            },
+            {
+              "catid": 53,
+              "name": "经水煮或油炸的食用菌",
+              "children": []
+            },
+            {
+              "catid": 54,
+              "name": "其他食用菌制品",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "catid": 55,
+      "name": "谷物及其制品(不包括焙烤制品)",
+      "children": [
+        {
+          "catid": 56,
+          "name": "谷物",
+          "children": [
+            {
+              "catid": 57,
+              "name": "稻谷",
+              "children": []
+            },
+            {
+              "catid": 58,
+              "name": "玉米",
+              "children": []
+            },
+            {
+              "catid": 59,
+              "name": "小麦",
+              "children": []
+            },
+            {
+              "catid": 60,
+              "name": "大麦（包括青稞）",
+              "children": []
+            },
+            {
+              "catid": 61,
+              "name": "其他谷物[例如：粟（谷子）、高粱、黑麦、燕麦、荞麦等]",
+              "children": []
+            }
+          ]
+        },
+        {
+          "catid": 62,
+          "name": "谷物碾磨加工品",
+          "children": [
+            {
+              "catid": 63,
+              "name": "糙米（包括色稻米）",
+              "children": []
+            },
+            {
+              "catid": 64,
+              "name": "大米（粉）",
+              "children": []
+            },
+            {
+              "catid": 65,
+              "name": "小麦粉（包括食用麸皮）",
+              "children": []
+            },
+            {
+              "catid": 66,
+              "name": "玉米粉、玉米糁（渣）",
+              "children": []
+            },
+            {
+              "catid": 67,
+              "name": "麦片",
+              "children": []
+            },
+            {
+              "catid": 68,
+              "name": "其他谷物碾磨加工品（例如：小米、高粱米、大麦米、黍米等）",
+              "children": []
+            }
+          ]
+        },
+        {
+          "catid": 69,
+          "name": "谷物制品",
+          "children": [
+            {
+              "catid": 70,
+              "name": "大米制品（例如：米粉、米线等）",
+              "children": []
+            },
+            {
+              "catid": 71,
+              "name": "小麦粉制品",
+              "children": [
+                {
+                  "catid": 72,
+                  "name": "生湿面制品（例如：面条、饺子皮、馄饨皮、烧麦皮等）",
+                  "children": []
+                },
+                {
+                  "catid": 73,
+                  "name": "生干面制品",
+                  "children": []
+                },
+                {
+                  "catid": 74,
+                  "name": "发酵面制品",
+                  "children": []
+                },
+                {
+                  "catid": 75,
+                  "name": "面糊（例如：用于鱼和禽肉的拖面糊）、裹粉、煎炸粉",
+                  "children": []
+                },
+                {
+                  "catid": 76,
+                  "name": "面筋",
+                  "children": []
+                },
+                {
+                  "catid": 77,
+                  "name": "其他小麦粉制品",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "catid": 78,
+              "name": "玉米制品（例如：玉米面条、玉米片等）",
+              "children": []
+            },
+            {
+              "catid": 79,
+              "name": "其他谷物制品[例如：带馅（料）面米制品、粥类罐头等]",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "catid": 80,
+      "name": "豆类及其制品",
+      "children": [
+        {
+          "catid": 81,
+          "name": "豆类（干豆、以干豆磨成的粉）",
+          "children": []
+        },
+        {
+          "catid": 82,
+          "name": "豆类制品",
+          "children": [
+            {
+              "catid": 83,
+              "name": "非发酵豆制品（例如：豆浆、豆腐类、豆干类、腐竹类、熟制豆类、大豆蛋白膨化食品、大豆素肉等）",
+              "children": []
+            },
+            {
+              "catid": 84,
+              "name": "发酵豆制品（例如：腐乳类、纳豆、豆豉、豆豉制品等）",
+              "children": []
+            },
+            {
+              "catid": 85,
+              "name": "豆类罐头",
+              "children": []
+            },
+            {
+              "catid": 86,
+              "name": "其他豆类制品（包括豆沙馅）",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "catid": 87,
+      "name": "藻类及其制品",
+      "children": [
+        {
+          "catid": 88,
+          "name": "新鲜藻类（未经加工的、经表面处理的、预切的、冷冻的藻类）",
+          "children": [
+            {
+              "catid": 89,
+              "name": "螺旋藻",
+              "children": []
+            },
+            {
+              "catid": 90,
+              "name": "其他新鲜藻类",
+              "children": []
+            }
+          ]
+        },
+        {
+          "catid": 91,
+          "name": "藻类制品",
+          "children": [
+            {
+              "catid": 92,
+              "name": "藻类罐头",
+              "children": []
+            },
+            {
+              "catid": 93,
+              "name": "干制藻类",
+              "children": []
+            },
+            {
+              "catid": 94,
+              "name": "盐渍藻类",
+              "children": []
+            },
+            {
+              "catid": 95,
+              "name": "经水煮或油炸的藻类",
+              "children": []
+            },
+            {
+              "catid": 96,
+              "name": "其他藻类制品",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "catid": 97,
+      "name": "坚果及籽类",
+      "children": [
+        {
+          "catid": 98,
+          "name": "生干坚果及籽类（不包括谷物种子和豆类，包括咖啡豆、可可豆）",
+          "children": [
+            {
+              "catid": "",
+              "name": "生咖啡豆",
+              "children": []
+            },
+            {
+              "catid": "",
+              "name": "烘焙咖啡豆",
+              "children": []
+            }
+          ]
+        },
+        {
+          "catid": 99,
+          "name": "坚果及籽类制品",
+          "children": [
+            {
+              "catid": 100,
+              "name": "熟制坚果及籽类（带壳、脱壳、包衣）",
+              "children": []
+            },
+            {
+              "catid": 101,
+              "name": "坚果及籽类罐头",
+              "children": []
+            },
+            {
+              "catid": 102,
+              "name": "坚果及籽类的泥（酱）（例如：花生酱等）",
+              "children": []
+            },
+            {
+              "catid": 103,
+              "name": "其他坚果及籽类制品（例如：腌渍的果仁等）",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "catid": 104,
+      "name": "肉及肉制品",
+      "children": [
+        {
+          "catid": 105,
+          "name": "肉类（生鲜肉、冷却肉、冷冻肉等）",
+          "children": [
+            {
+              "catid": 106,
+              "name": "畜禽肉",
+              "children": []
+            },
+            {
+              "catid": 107,
+              "name": "畜禽内脏（例如：肝、肾、肺、肠等）",
+              "children": []
+            }
+          ]
+        },
+        {
+          "catid": 108,
+          "name": "肉制品（包括内脏制品、血制品）",
+          "children": [
+            {
+              "catid": 109,
+              "name": "预制肉制品",
+              "children": [
+                {
+                  "catid": 110,
+                  "name": "调理肉制品（生肉添加调理料）",
+                  "children": []
+                },
+                {
+                  "catid": 111,
+                  "name": "腌腊肉制品类（例如：咸肉、腊肉、板鸭、中式火腿、腊肠等）",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "catid": 112,
+              "name": "熟肉制品",
+              "children": [
+                {
+                  "catid": 113,
+                  "name": "肉类罐头",
+                  "children": []
+                },
+                {
+                  "catid": 114,
+                  "name": "酱卤肉制品类",
+                  "children": []
+                },
+                {
+                  "catid": 115,
+                  "name": "熏、烧、烤肉类",
+                  "children": []
+                },
+                {
+                  "catid": 116,
+                  "name": "油炸肉类",
+                  "children": []
+                },
+                {
+                  "catid": 117,
+                  "name": "西式火腿（熏烤、烟熏、蒸煮火腿）类",
+                  "children": []
+                },
+                {
+                  "catid": 118,
+                  "name": "肉灌肠类",
+                  "children": []
+                },
+                {
+                  "catid": 119,
+                  "name": "发酵肉制品类",
+                  "children": []
+                },
+                {
+                  "catid": 120,
+                  "name": "熟肉干制品（例如:肉干、肉松等）",
+                  "children": []
+                },
+                {
+                  "catid": 121,
+                  "name": "其他熟肉制品",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "catid": 122,
+      "name": "水产动物及其制品",
+      "children": [
+        {
+          "catid": 123,
+          "name": "鲜、冻水产动物",
+          "children": [
+            {
+              "catid": 124,
+              "name": "鱼类",
+              "children": [
+                {
+                  "catid": 125,
+                  "name": "非肉食性鱼类",
+                  "children": []
+                },
+                {
+                  "catid": 126,
+                  "name": "肉食性鱼类（例如：金枪鱼、金目鲷、枪鱼、鲨鱼等）",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "catid": 127,
+              "name": "甲壳类（例如：虾类、蟹类等）",
+              "children": []
+            },
+            {
+              "catid": 128,
+              "name": "软体动物",
+              "children": [
+                {
+                  "catid": 129,
+                  "name": "头足类",
+                  "children": []
+                },
+                {
+                  "catid": 130,
+                  "name": "双壳贝类",
+                  "children": []
+                },
+                {
+                  "catid": 131,
+                  "name": "腹足类",
+                  "children": []
+                },
+                {
+                  "catid": 132,
+                  "name": "其他软体动物",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "catid": 133,
+              "name": "棘皮类",
+              "children": []
+            },
+            {
+              "catid": 134,
+              "name": "其他鲜、冻水产动物",
+              "children": []
+            }
+          ]
+        },
+        {
+          "catid": 135,
+          "name": "水产制品",
+          "children": [
+            {
+              "catid": 136,
+              "name": "水产品罐头",
+              "children": []
+            },
+            {
+              "catid": 137,
+              "name": "鱼糜制品（例如：鱼丸等）",
+              "children": []
+            },
+            {
+              "catid": 138,
+              "name": "腌制水产品",
+              "children": []
+            },
+            {
+              "catid": 139,
+              "name": "鱼子制品",
+              "children": []
+            },
+            {
+              "catid": 140,
+              "name": "熏、烤水产品",
+              "children": []
+            },
+            {
+              "catid": 141,
+              "name": "发酵水产品",
+              "children": []
+            },
+            {
+              "catid": 142,
+              "name": "其他水产制品",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "catid": 143,
+      "name": "乳及乳制品",
+      "children": [
+        {
+          "catid": 144,
+          "name": "生乳",
+          "children": []
+        },
+        {
+          "catid": 145,
+          "name": "巴氏杀菌乳",
+          "children": []
+        },
+        {
+          "catid": 146,
+          "name": "灭菌乳",
+          "children": []
+        },
+        {
+          "catid": 147,
+          "name": "调制乳",
+          "children": []
+        },
+        {
+          "catid": 148,
+          "name": "发酵乳",
+          "children": []
+        },
+        {
+          "catid": 149,
+          "name": "浓缩乳制品",
+          "children": []
+        },
+        {
+          "catid": 150,
+          "name": "稀奶油、奶油、无水奶油",
+          "children": []
+        },
+        {
+          "catid": 151,
+          "name": "乳粉和调制乳粉",
+          "children": []
+        },
+        {
+          "catid": 152,
+          "name": "乳清粉和乳清蛋白粉",
+          "children": []
+        },
+        {
+          "catid": 153,
+          "name": "干酪",
+          "children": []
+        },
+        {
+          "catid": 154,
+          "name": "再制干酪",
+          "children": []
+        },
+        {
+          "catid": 155,
+          "name": "其他乳制品（例如：酪蛋白等）",
+          "children": []
+        }
+      ]
+    },
+    {
+      "catid": 156,
+      "name": "蛋及蛋制品",
+      "children": [
+        {
+          "catid": 157,
+          "name": "鲜蛋",
+          "children": []
+        },
+        {
+          "catid": 158,
+          "name": "蛋制品",
+          "children": [
+            {
+              "catid": 159,
+              "name": "卤蛋",
+              "children": []
+            },
+            {
+              "catid": 160,
+              "name": "糟蛋",
+              "children": []
+            },
+            {
+              "catid": 161,
+              "name": "皮蛋",
+              "children": []
+            },
+            {
+              "catid": 162,
+              "name": "咸蛋",
+              "children": []
+            },
+            {
+              "catid": 163,
+              "name": "其他蛋制品",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "catid": 164,
+      "name": "油脂及其制品",
+      "children": [
+        {
+          "catid": 165,
+          "name": "植物油脂（包括食用植物调和油及添加了鱼油的调和油）",
+          "children": []
+        },
+        {
+          "catid": 166,
+          "name": "动物油脂（例如：猪油、牛油、鱼油、磷虾油等）",
+          "children": []
+        },
+        {
+          "catid": 167,
+          "name": "油脂制品",
+          "children": [
+            {
+              "catid": 168,
+              "name": "氢化植物油",
+              "children": []
+            },
+            {
+              "catid": 169,
+              "name": "含氢化和（或）部分氢化油脂的油脂制品",
+              "children": []
+            },
+            {
+              "catid": 170,
+              "name": "其他油脂制品",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "catid": 171,
+      "name": "调味品",
+      "children": [
+        {
+          "catid": 172,
+          "name": "食用盐",
+          "children": []
+        },
+        {
+          "catid": 173,
+          "name": "味精",
+          "children": []
+        },
+        {
+          "catid": 174,
+          "name": "食醋",
+          "children": []
+        },
+        {
+          "catid": 175,
+          "name": "酱油",
+          "children": []
+        },
+        {
+          "catid": 176,
+          "name": "酿造酱",
+          "children": []
+        },
+        {
+          "catid": 177,
+          "name": "香辛料类",
+          "children": [
+            {
+              "catid": 178,
+              "name": "香辛料及粉",
+              "children": []
+            },
+            {
+              "catid": 179,
+              "name": "香辛料油",
+              "children": []
+            },
+            {
+              "catid": 180,
+              "name": "香辛料酱（例如：芥末酱、青芥酱等）",
+              "children": []
+            },
+            {
+              "catid": 181,
+              "name": "其他香辛料加工品",
+              "children": []
+            }
+          ]
+        },
+        {
+          "catid": 182,
+          "name": "水产调味品",
+          "children": [
+            {
+              "catid": 183,
+              "name": "鱼类调味品（例如：鱼露等）",
+              "children": []
+            },
+            {
+              "catid": 184,
+              "name": "其他水产调味品（例如：蚝油、虾油等）",
+              "children": []
+            }
+          ]
+        },
+        {
+          "catid": 185,
+          "name": "复合调味料（例如：调味料酒、固体汤料、鸡精、鸡粉、蛋黄酱、沙拉酱、调味清汁等）",
+          "children": []
+        },
+        {
+          "catid": 186,
+          "name": "其他调味品",
+          "children": []
+        }
+      ]
+    },
+    {
+      "catid": 187,
+      "name": "饮料类",
+      "children": [
+        {
+          "catid": 188,
+          "name": "包装饮用水",
+          "children": [
+            {
+              "catid": 189,
+              "name": "饮用天然矿泉水",
+              "children": []
+            },
+            {
+              "catid": 190,
+              "name": "饮用纯净水",
+              "children": []
+            },
+            {
+              "catid": 191,
+              "name": "其他类饮用水",
+              "children": []
+            }
+          ]
+        },
+        {
+          "catid": 192,
+          "name": "果蔬汁类及其饮料（例如：苹果汁、苹果醋饮料、山楂汁、山楂醋饮料等）",
+          "children": [
+            {
+              "catid": 193,
+              "name": "果蔬汁（浆）",
+              "children": []
+            },
+            {
+              "catid": 194,
+              "name": "浓缩果蔬汁（浆）",
+              "children": []
+            },
+            {
+              "catid": 195,
+              "name": "果蔬汁（浆）类饮料",
+              "children": []
+            }
+          ]
+        },
+        {
+          "catid": 196,
+          "name": "蛋白饮料",
+          "children": [
+            {
+              "catid": 197,
+              "name": "含乳饮料（例如：发酵型含乳饮料、配制型含乳饮料、乳酸菌饮料等）",
+              "children": []
+            },
+            {
+              "catid": 198,
+              "name": "植物蛋白饮料",
+              "children": []
+            },
+            {
+              "catid": 199,
+              "name": "复合蛋白饮料",
+              "children": []
+            },
+            {
+              "catid": 200,
+              "name": "其他蛋白饮料",
+              "children": []
+            }
+          ]
+        },
+        {
+          "catid": 201,
+          "name": "碳酸饮料",
+          "children": []
+        },
+        {
+          "catid": 202,
+          "name": "茶饮料",
+          "children": []
+        },
+        {
+          "catid": 203,
+          "name": "咖啡类饮料",
+          "children": []
+        },
+        {
+          "catid": 204,
+          "name": "植物饮料",
+          "children": []
+        },
+        {
+          "catid": 205,
+          "name": "风味饮料",
+          "children": []
+        },
+        {
+          "catid": 206,
+          "name": "固体饮料[包括速溶咖啡、研磨咖啡（烘焙咖啡）]",
+          "children": []
+        },
+        {
+          "catid": 207,
+          "name": "特殊用途饮料",
+          "children": []
+        },
+        {
+          "catid": 208,
+          "name": "其他饮料",
+          "children": []
+        }
+      ]
+    },
+    {
+      "catid": 209,
+      "name": "酒类",
+      "children": [
+        {
+          "catid": 210,
+          "name": "蒸馏酒（例如：白酒、白兰地、威士忌、伏特加、朗姆酒等）",
+          "children": []
+        },
+        {
+          "catid": 211,
+          "name": "配制酒",
+          "children": []
+        },
+        {
+          "catid": 212,
+          "name": "发酵酒（例如：葡萄酒、黄酒、果酒、啤酒等）",
+          "children": []
+        }
+      ]
+    },
+    {
+      "catid": 213,
+      "name": "食糖及淀粉糖",
+      "children": [
+        {
+          "catid": 214,
+          "name": "食糖（包括方糖、冰片糖、原糖、糖蜜、部分转化糖、槭树糖浆）",
+          "children": []
+        },
+        {
+          "catid": 215,
+          "name": "乳糖",
+          "children": []
+        },
+        {
+          "catid": 216,
+          "name": "淀粉糖（例如：食用葡萄糖、低聚异麦芽糖、果葡糖浆、麦芽糖、麦芽糊精、葡萄糖浆等）",
+          "children": []
+        }
+      ]
+    },
+    {
+      "catid": 217,
+      "name": "淀粉及淀粉制品（包括谷物、豆类和块根植物提取的淀粉）",
+      "children": [
+        {
+          "catid": 218,
+          "name": "食用淀粉",
+          "children": []
+        },
+        {
+          "catid": 219,
+          "name": "淀粉制品（包括虾味片）",
+          "children": []
+        }
+      ]
+    },
+    {
+      "catid": 220,
+      "name": "焙烤食品",
+      "children": [
+        {
+          "catid": 221,
+          "name": "面包",
+          "children": []
+        },
+        {
+          "catid": 222,
+          "name": "糕点（包括月饼）",
+          "children": []
+        },
+        {
+          "catid": 223,
+          "name": "饼干",
+          "children": []
+        },
+        {
+          "catid": 224,
+          "name": "其他焙烤食品",
+          "children": []
+        }
+      ]
+    },
+    {
+      "catid": 225,
+      "name": "可可制品、巧克力和巧克力制品以及糖果",
+      "children": [
+        {
+          "catid": 226,
+          "name": "可可制品、巧克力和巧克力制品（包括代可可脂巧克力及制品）",
+          "children": []
+        },
+        {
+          "catid": 227,
+          "name": "糖果（包括胶基糖果）",
+          "children": []
+        }
+      ]
+    },
+    {
+      "catid": 228,
+      "name": "冷冻饮品",
+      "children": [
+        {
+          "catid": 229,
+          "name": "冰淇淋",
+          "children": []
+        },
+        {
+          "catid": 230,
+          "name": "雪糕",
+          "children": []
+        },
+        {
+          "catid": 231,
+          "name": "雪泥",
+          "children": []
+        },
+        {
+          "catid": 232,
+          "name": "冰棍",
+          "children": []
+        },
+        {
+          "catid": 233,
+          "name": "甜味冰",
+          "children": []
+        },
+        {
+          "catid": 234,
+          "name": "食用冰",
+          "children": []
+        },
+        {
+          "catid": 235,
+          "name": "其他冷冻饮品",
+          "children": []
+        }
+      ]
+    },
+    {
+      "catid": 236,
+      "name": "特殊膳食用食品",
+      "children": [
+        {
+          "catid": 237,
+          "name": "婴幼儿配方食品",
+          "children": [
+            {
+              "catid": 238,
+              "name": "婴儿配方食品",
+              "children": []
+            },
+            {
+              "catid": 239,
+              "name": "较大婴儿配方食品",
+              "children": []
+            },
+            {
+              "catid": 240,
+              "name": "幼儿配方食品",
+              "children": []
+            },
+            {
+              "catid": 241,
+              "name": "特殊医学用途婴儿配方食品",
+              "children": []
+            }
+          ]
+        },
+        {
+          "catid": 242,
+          "name": "婴幼儿辅助食品",
+          "children": [
+            {
+              "catid": 243,
+              "name": "婴幼儿谷类辅助食品",
+              "children": []
+            },
+            {
+              "catid": 244,
+              "name": "婴幼儿罐装辅助食品",
+              "children": []
+            }
+          ]
+        },
+        {
+          "catid": 245,
+          "name": "特殊医学用途配方食品（特殊医学用途婴儿配方食品涉及的品种除外）",
+          "children": []
+        },
+        {
+          "catid": 246,
+          "name": "其他特殊膳食用食品（例如：辅食营养补充品、运动营养食品、孕妇及乳母营养补充食品等）",
+          "children": []
+        }
+      ]
+    },
+    {
+      "catid": 247,
+      "name": "其他类（除上述食品以外的食品）",
+      "children": [
+        {
+          "catid": 248,
+          "name": "果冻",
+          "children": []
+        },
+        {
+          "catid": 249,
+          "name": "膨化食品",
+          "children": []
+        },
+        {
+          "catid": 250,
+          "name": "蜂蜜",
+          "children": []
+        },
+        {
+          "catid": 251,
+          "name": "花粉",
+          "children": []
+        },
+        {
+          "catid": 252,
+          "name": "茶叶",
+          "children": []
+        },
+        {
+          "catid": 253,
+          "name": "干菊花",
+          "children": []
+        },
+        {
+          "catid": 254,
+          "name": "苦丁茶",
+          "children": []
+        },
+        {
+          "catid": 255,
+          "name": "食用燕窝",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

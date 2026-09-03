@@ -297,14 +297,33 @@ const state = {
 };
 
 // ============ 数据加载 ============
+const DATA_BASES = [
+  // 本地服务器/同源(优先)
+  '.',
+  // GitHub Pages 兜底(任何环境都能访问)
+  'https://5678hub.github.io/jianyu',
+];
+async function fetchJson(path) {
+  for (const base of DATA_BASES) {
+    const url = base + path + (path.includes('?') ? '&' : '?') + 't=' + Date.now();
+    try {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 6000);
+      const res = await fetch(url, { signal: ctrl.signal, cache: 'reload' });
+      clearTimeout(timer);
+      if (res.ok) return await res.json();
+    } catch (_) {}
+  }
+  throw new Error('Failed to fetch ' + path);
+}
 async function loadData() {
   try {
     const [master, cm, subcatItems, subcatChecklist, categories] = await Promise.all([
-      fetch('data/master.json').then(r => r.json()),
-      fetch('data/category_map.json').then(r => r.json()),
-      fetch('data/subcat_to_items.json').then(r => r.json()),
-      fetch('data/current_period/gb_checklist_subcat.json').then(r => r.json()),
-      fetch('data/categories_2026.json').then(r => r.json()),
+      fetchJson('/data/master.json'),
+      fetchJson('/data/category_map.json'),
+      fetchJson('/data/subcat_to_items.json'),
+      fetchJson('/data/current_period/gb_checklist_subcat.json'),
+      fetchJson('/data/categories_2026.json'),
     ]);
     state.records = master.records || [];
     state.categoryMap = cm || {};
