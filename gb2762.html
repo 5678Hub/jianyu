@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v82-fix82-revert-idx88-multi-mount-2026-09-02">
+<meta name="version" content="v82-fix97-aquatic-2026-09-03">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   // v72: 单一 CACHE_BUST,与 sw.js 保持一致,避免多个 hardcoded 版本号不同步
-  var CACHE_BUST = 'v82-fix56-delete-idx68-grain-0-5-2026-09-02';
+  var CACHE_BUST = 'v82-fix97-aquatic-2026-09-03';
   (function() {
     var EXPECTED = CACHE_BUST;
     // 第 1 层:URL cbust 缺失 → 跳一次
@@ -584,7 +584,8 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
 
 </div>
 
-<script type="application/json" id="inlineData">{
+<script type="application/json" id="inlineData">
+{
   "standard": {
     "code": "GB 2762-2025",
     "name": "食品安全国家标准 食品中污染物限量",
@@ -891,7 +892,22 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l1": "坚果及籽类",
           "a1_l2": "生干坚果及籽类（不包括谷物种子和豆类，包括咖啡豆、可可豆）",
           "a1_l3": "",
-          "a1_l4": "生咖啡豆及烘焙咖啡豆"
+          "a1_l4": ""
+        },
+        {
+          "food": "生咖啡豆及烘焙咖啡豆",
+          "pollutant": "铅",
+          "limit_value": "0.5",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "d",
+          "modif": "",
+          "inspection_method": "GB 5009.12",
+          "a1_l1": "坚果及籽类",
+          "a1_l2": "坚果及籽类制品",
+          "a1_l3": "熟制坚果及籽类（带壳、脱壳、包衣）",
+          "a1_l4": ""
         },
         {
           "food": "水产制品(鱼类制品、海蜇制品除外)",
@@ -1554,7 +1570,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l4": ""
         },
         {
-          "food": "谷物及其制品〔麦片、面筋、粥类罐头、带馅(料)面米制品除外〕",
+          "food": "谷物及其制品(麦片、面筋、粥类罐头、带馅料面米制品除外)",
           "pollutant": "铅",
           "limit_value": "0.2",
           "has_limit": true,
@@ -1563,13 +1579,13 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "note": "a",
           "modif": "",
           "inspection_method": "GB 5009.12",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "",
           "a1_l3": "",
           "a1_l4": ""
         },
         {
-          "food": "麦片、面筋、粥类罐头、带馅(料)面米制品",
+          "food": "糙米、大米、小麦粉、玉米粉、玉米糁等",
           "pollutant": "铅",
           "limit_value": "0.5",
           "has_limit": true,
@@ -1578,9 +1594,24 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "note": "",
           "modif": "",
           "inspection_method": "GB 5009.12",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物碾磨加工品",
-          "a1_l3": "麦片",
+          "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
+          "food": "麦片、面筋、粥类罐头、带馅料面米制品",
+          "pollutant": "铅",
+          "limit_value": "0.5",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.12",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
+          "a1_l2": "谷物制品",
+          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -1674,7 +1705,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l4": ""
         },
         {
-          "food": "食用菌及其制品(双孢菇、平菇、香菇、榛蘑、牛肝菌、松茸、松露、青头菌、鸡枞、鸡油菌、多汁乳菇、木耳、银耳及以上食用菌的制品除外)",
+          "food": "食用菌及其制品(双孢菇、平菇、香菇、榛蘑、牛肝菌、松茸、松露、青头菌、鸡枞、鸡油菌、多汁乳菇、木耳及以上食用菌的制品、银耳及以上食用菌的制品除外)",
           "pollutant": "铅",
           "limit_value": "0.5",
           "has_limit": true,
@@ -1824,19 +1855,64 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l4": ""
         },
         {
+          "food": "果蔬汁类及其饮料(含浆果及小粒水果的果蔬汁类及其饮料、浓缩果蔬汁(浆)除外)",
+          "pollutant": "铅",
+          "limit_value": "0.03",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.12",
+          "a1_l1": "饮料类",
+          "a1_l2": "果蔬汁类及其饮料（例如：苹果汁、苹果醋饮料、山楂汁、山楂醋饮料等）",
+          "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
+          "food": "含浆果及小粒水果的果蔬汁类及其饮料(葡萄汁除外)",
+          "pollutant": "铅",
+          "limit_value": "0.05",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.12",
+          "a1_l1": "饮料类",
+          "a1_l2": "果蔬汁类及其饮料（例如：苹果汁、苹果醋饮料、山楂汁、山楂醋饮料等）",
+          "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
+          "food": "葡萄汁",
+          "pollutant": "铅",
+          "limit_value": "0.04",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.12",
+          "a1_l1": "饮料类",
+          "a1_l2": "果蔬汁类及其饮料（例如：苹果汁、苹果醋饮料、山楂汁、山楂醋饮料等）",
+          "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
+          "food": "浓缩果蔬汁(浆)",
+          "pollutant": "铅",
+          "limit_value": "0.5",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.12",
           "a1_l1": "饮料类",
           "a1_l2": "果蔬汁类及其饮料（例如：苹果汁、苹果醋饮料、山楂汁、山楂醋饮料等）",
           "a1_l3": "浓缩果蔬汁（浆）",
-          "a1_l4": "",
-          "food": "浓缩果蔬汁(浆)",
-          "limit_value": "0.5",
-          "unit": "mg/kg",
-          "has_limit": true,
-          "inspection_method": "GB 5009.12",
-          "note": "",
-          "modif": "",
-          "sub_value": "",
-          "pollutant": "铅"
+          "a1_l4": ""
         },
         {
           "food": "固体饮料",
@@ -1869,97 +1945,18 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l4": ""
         },
         {
-          "id": "r0001",
-          "food": "生咖啡豆及烘焙咖啡豆",
+          "food": "木耳及其制品、银耳及其制品",
           "pollutant": "铅",
-          "limit_value": "0.5",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "d",
-          "modif": "",
-          "inspection_method": "GB 5009.12",
-          "a1_l1": "坚果及籽类",
-          "a1_l2": "坚果及籽类制品",
-          "a1_l3": "熟制坚果及籽类（带壳、脱壳、包衣）",
-          "a1_l4": ""
-        },
-        {
-          "id": "r0005",
-          "a1_l1": "饮料类",
-          "a1_l2": "果蔬汁类及其饮料（例如：苹果汁、苹果醋饮料、山楂汁、山楂醋饮料等）",
-          "a1_l3": "",
-          "a1_l4": "",
-          "food": "果蔬汁类及其饮料〔含浆果及小粒水果的果蔬汁类及其饮料、浓缩果蔬汁(浆)除外〕",
-          "limit_value": "0.03",
-          "unit": "mg/kg",
-          "has_limit": true,
-          "inspection_method": "GB 5009.12",
-          "note": "",
-          "modif": "",
-          "sub_value": "",
-          "pollutant": "铅"
-        },
-        {
-          "id": "r0003",
-          "food": "含浆果及小粒水果的果蔬汁类及其饮料(葡萄汁除外)",
-          "pollutant": "铅",
-          "limit_value": "0.05",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "按GB 5009.12规定的方法测定。",
-          "a1_l1": "饮料类",
-          "a1_l2": "果蔬汁类及其饮料（例如：苹果汁、苹果醋饮料、山楂汁、山楂醋饮料等）",
-          "a1_l3": "",
-          "a1_l4": ""
-        },
-        {
-          "id": "r0004",
-          "food": "葡萄汁",
-          "pollutant": "铅",
-          "limit_value": "0.04",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "按GB 5009.12规定的方法测定。",
-          "a1_l1": "饮料类",
-          "a1_l2": "果蔬汁类及其饮料（例如：苹果汁、苹果醋饮料、山楂汁、山楂醋饮料等）",
-          "a1_l3": "果蔬汁（浆）",
-          "a1_l4": ""
-        },
-        {
-          "food": "麦片、面筋、粥类罐头、带馅(料)面米制品",
-          "pollutant": "铅",
-          "limit_value": "0.5",
+          "limit_value": "1.0",
           "has_limit": true,
           "sub_value": "",
           "unit": "mg/kg",
           "note": "",
           "modif": "",
           "inspection_method": "GB 5009.12",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
-          "a1_l2": "谷物制品",
-          "a1_l3": "小麦粉制品",
-          "a1_l4": "面筋"
-        },
-        {
-          "food": "麦片、面筋、粥类罐头、带馅(料)面米制品",
-          "pollutant": "铅",
-          "limit_value": "0.5",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.12",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
-          "a1_l2": "谷物制品",
-          "a1_l3": "其他谷物制品[例如：带馅（料）面米制品、粥类罐头等]",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "银耳",
           "a1_l4": ""
         }
       ],
@@ -2007,22 +2004,22 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
       "inspection_method": "食品按 GB 5009.15 规定的方法测定。",
       "items": [
         {
-          "food": "谷物及其制品：谷物（稻谷除外）",
+          "food": "谷物(稻谷除外)",
           "pollutant": "镉",
           "limit_value": "0.1",
           "has_limit": true,
           "sub_value": "",
           "unit": "mg/kg",
-          "note": "",
+          "note": "a",
           "modif": "",
           "inspection_method": "GB 5009.15",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物",
           "a1_l3": "",
           "a1_l4": ""
         },
         {
-          "food": "谷物及其制品：谷物碾磨加工品〔糙米、大米（粉）除外〕",
+          "food": "谷物碾磨加工品[糙米、大米(粉)除外]",
           "pollutant": "镉",
           "limit_value": "0.1",
           "has_limit": true,
@@ -2031,7 +2028,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "note": "",
           "modif": "",
           "inspection_method": "GB 5009.15",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物碾磨加工品",
           "a1_l3": "",
           "a1_l4": ""
@@ -2046,7 +2043,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "note": "a",
           "modif": "",
           "inspection_method": "GB 5009.15",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物",
           "a1_l3": "稻谷",
           "a1_l4": ""
@@ -2057,11 +2054,11 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "limit_value": "0.2",
           "has_limit": true,
           "sub_value": "",
-          "unit": "mg/kg",
-          "note": "a",
+          "unit": "",
+          "note": "",
           "modif": "",
           "inspection_method": "GB 5009.15",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物碾磨加工品",
           "a1_l3": "糙米（包括色稻米）",
           "a1_l4": ""
@@ -2072,13 +2069,73 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "limit_value": "0.2",
           "has_limit": true,
           "sub_value": "",
-          "unit": "mg/kg",
-          "note": "a",
+          "unit": "",
+          "note": "",
           "modif": "",
           "inspection_method": "GB 5009.15",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物碾磨加工品",
           "a1_l3": "大米（粉）",
+          "a1_l4": ""
+        },
+        {
+          "food": "新鲜蔬菜(叶菜蔬菜、豆类蔬菜、块根和块茎蔬菜、茎类蔬菜、黄花菜除外)",
+          "pollutant": "镉",
+          "limit_value": "0.05",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "蔬菜及其制品（包括薯类，不包括食用菌）",
+          "a1_l2": "新鲜蔬菜（未经加工的、经表面处理的、去皮或预切的、冷冻的蔬菜）",
+          "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
+          "food": "叶菜蔬菜",
+          "pollutant": "镉",
+          "limit_value": "0.2",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "蔬菜及其制品（包括薯类，不包括食用菌）",
+          "a1_l2": "新鲜蔬菜（未经加工的、经表面处理的、去皮或预切的、冷冻的蔬菜）",
+          "a1_l3": "叶菜蔬菜（包括芸薹类叶菜）",
+          "a1_l4": ""
+        },
+        {
+          "food": "豆类蔬菜、块根和块茎蔬菜、茎类蔬菜(芹菜除外)",
+          "pollutant": "镉",
+          "limit_value": "0.1",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "蔬菜及其制品（包括薯类，不包括食用菌）",
+          "a1_l2": "新鲜蔬菜（未经加工的、经表面处理的、去皮或预切的、冷冻的蔬菜）",
+          "a1_l3": "豆类蔬菜",
+          "a1_l4": ""
+        },
+        {
+          "food": "豆类蔬菜、块根和块茎蔬菜、茎类蔬菜(芹菜除外)",
+          "pollutant": "镉",
+          "limit_value": "0.1",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "蔬菜及其制品（包括薯类，不包括食用菌）",
+          "a1_l2": "新鲜蔬菜（未经加工的、经表面处理的、去皮或预切的、冷冻的蔬菜）",
+          "a1_l3": "块根和块茎蔬菜（例如：薯类、胡萝卜、萝卜、生姜等）",
           "a1_l4": ""
         },
         {
@@ -2112,6 +2169,21 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l4": ""
         },
         {
+          "food": "芹菜、黄花菜",
+          "pollutant": "镉",
+          "limit_value": "0.2",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "蔬菜及其制品（包括薯类，不包括食用菌）",
+          "a1_l2": "新鲜蔬菜（未经加工的、经表面处理的、去皮或预切的、冷冻的蔬菜）",
+          "a1_l3": "其他新鲜蔬菜（包括瓜果类、鳞茎类和水生类、芽菜类；竹笋、黄花菜等多年生蔬菜）",
+          "a1_l4": ""
+        },
+        {
           "food": "新鲜水果",
           "pollutant": "镉",
           "limit_value": "0.05",
@@ -2127,7 +2199,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l4": ""
         },
         {
-          "food": "食用菌及其制品(香菇、羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑、松茸、牛肝菌、鸡枞、多汁乳菇、松露、姬松茸、木耳、银耳及以上食用菌的制品除外)",
+          "food": "食用菌及其制品(香菇、羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑、松茸、牛肝菌、鸡枞、多汁乳菇、松露、姬松茸、木耳及以上食用菌的制品、银耳及以上食用菌的制品除外)",
           "pollutant": "镉",
           "limit_value": "0.2",
           "has_limit": true,
@@ -2168,7 +2240,22 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
           "a1_l2": "食用菌制品",
-          "a1_l3": "其他食用菌制品",
+          "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
+          "food": "香菇及其制品",
+          "pollutant": "镉",
+          "limit_value": "0.5",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -2198,7 +2285,22 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
           "a1_l2": "食用菌制品",
-          "a1_l3": "其他食用菌制品",
+          "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
+          "food": "羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑及以上食用菌的制品",
+          "pollutant": "镉",
+          "limit_value": "0.6",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -2227,8 +2329,38 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
+          "food": "羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑及以上食用菌的制品",
+          "pollutant": "镉",
+          "limit_value": "0.6",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
           "a1_l3": "青头菌",
+          "a1_l4": ""
+        },
+        {
+          "food": "羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑及以上食用菌的制品",
+          "pollutant": "镉",
+          "limit_value": "0.6",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -2257,8 +2389,38 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
+          "food": "羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑及以上食用菌的制品",
+          "pollutant": "镉",
+          "limit_value": "0.6",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
           "a1_l3": "榛蘑",
+          "a1_l4": ""
+        },
+        {
+          "food": "羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑及以上食用菌的制品",
+          "pollutant": "镉",
+          "limit_value": "0.6",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -2288,7 +2450,22 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
           "a1_l2": "食用菌制品",
-          "a1_l3": "其他食用菌制品",
+          "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
+          "food": "松茸、牛肝菌、鸡枞、多汁乳菇及以上食用菌的制品",
+          "pollutant": "镉",
+          "limit_value": "1.0",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -2317,6 +2494,21 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
+          "food": "松茸、牛肝菌、鸡枞、多汁乳菇及以上食用菌的制品",
+          "pollutant": "镉",
+          "limit_value": "1.0",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
           "a1_l3": "鸡枞",
           "a1_l4": ""
@@ -2332,8 +2524,38 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
+          "food": "松茸、牛肝菌、鸡枞、多汁乳菇及以上食用菌的制品",
+          "pollutant": "镉",
+          "limit_value": "1.0",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
           "a1_l3": "多汁乳菇",
+          "a1_l4": ""
+        },
+        {
+          "food": "松茸、牛肝菌、鸡枞、多汁乳菇及以上食用菌的制品",
+          "pollutant": "镉",
+          "limit_value": "1.0",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -2363,7 +2585,22 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
           "a1_l2": "食用菌制品",
-          "a1_l3": "其他食用菌制品",
+          "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
+          "food": "松露、姬松茸及以上食用菌的制品",
+          "pollutant": "镉",
+          "limit_value": "2.0",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -2379,6 +2616,21 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
           "a1_l3": "姬松茸",
+          "a1_l4": ""
+        },
+        {
+          "food": "松露、姬松茸及以上食用菌的制品",
+          "pollutant": "镉",
+          "limit_value": "2.0",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -2408,7 +2660,22 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
           "a1_l2": "食用菌制品",
-          "a1_l3": "其他食用菌制品",
+          "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
+          "food": "木耳及其制品、银耳及其制品",
+          "pollutant": "镉",
+          "limit_value": "0.5",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "干重计",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -2454,6 +2721,21 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l1": "坚果及籽类",
           "a1_l2": "生干坚果及籽类（不包括谷物种子和豆类，包括咖啡豆、可可豆）",
           "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
+          "food": "花生",
+          "pollutant": "镉",
+          "limit_value": "0.5",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "b",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "坚果及籽类",
+          "a1_l2": "坚果及籽类制品",
+          "a1_l3": "熟制坚果及籽类（带壳、脱壳、包衣）",
           "a1_l4": ""
         },
         {
@@ -2562,7 +2844,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l4": ""
         },
         {
-          "food": "双壳贝类、腹足类、头足类、棘皮类",
+          "food": "双壳贝类",
           "pollutant": "镉",
           "limit_value": "2.0",
           "has_limit": true,
@@ -2575,6 +2857,36 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l2": "鲜、冻水产动物",
           "a1_l3": "软体动物",
           "a1_l4": "双壳贝类"
+        },
+        {
+          "food": "腹足类",
+          "pollutant": "镉",
+          "limit_value": "2.0",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "去除内脏",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "水产动物及其制品",
+          "a1_l2": "鲜、冻水产动物",
+          "a1_l3": "软体动物",
+          "a1_l4": "腹足类"
+        },
+        {
+          "food": "头足类",
+          "pollutant": "镉",
+          "limit_value": "2.0",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "去除内脏",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "水产动物及其制品",
+          "a1_l2": "鲜、冻水产动物",
+          "a1_l3": "软体动物",
+          "a1_l4": "头足类"
         },
         {
           "food": "鱼类罐头",
@@ -2727,19 +3039,33 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l4": ""
         },
         {
-          "id": "r0002",
-          "food": "花生",
+          "food": "木耳及其制品、银耳及其制品",
           "pollutant": "镉",
           "limit_value": "0.5",
           "has_limit": true,
           "sub_value": "",
           "unit": "mg/kg",
-          "note": "b",
-          "modif": "",
+          "note": "",
+          "modif": "干重计",
           "inspection_method": "GB 5009.15",
-          "a1_l1": "坚果及籽类",
-          "a1_l2": "坚果及籽类制品",
-          "a1_l3": "熟制坚果及籽类（带壳、脱壳、包衣）",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "其他食用菌制品",
+          "a1_l4": ""
+        },
+        {
+          "food": "棘皮类",
+          "pollutant": "镉",
+          "limit_value": "2.0",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "去除内脏",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "水产动物及其制品",
+          "a1_l2": "鲜、冻水产动物",
+          "a1_l3": "棘皮类",
           "a1_l4": ""
         }
       ],
@@ -2805,7 +3131,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l4": ""
         },
         {
-          "food": "肉食性鱼类及其制品(金枪鱼、金目鲷、枪鱼、鲨鱼及以上鱼类的制品除外)",
+          "food": "肉食性鱼类及其制品(金枪鱼、金目鲷、枪鱼及以上鱼类的制品、鲨鱼及以上鱼类的制品除外)",
           "pollutant": "总汞",
           "limit_value": "—",
           "has_limit": false,
@@ -2817,10 +3143,10 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l1": "水产动物及其制品",
           "a1_l2": "鲜、冻水产动物",
           "a1_l3": "鱼类",
-          "a1_l4": "肉食性鱼类（例如：金枪鱼、金目鲷、枪鱼、鲨鱼等）"
+          "a1_l4": ""
         },
         {
-          "food": "肉食性鱼类及其制品(金枪鱼、金目鲷、枪鱼、鲨鱼及以上鱼类的制品除外)",
+          "food": "肉食性鱼类及其制品(金枪鱼、金目鲷、枪鱼及以上鱼类的制品、鲨鱼及以上鱼类的制品除外)",
           "pollutant": "甲基汞 a",
           "limit_value": "1.0",
           "has_limit": true,
@@ -2832,7 +3158,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l1": "水产动物及其制品",
           "a1_l2": "鲜、冻水产动物",
           "a1_l3": "鱼类",
-          "a1_l4": "肉食性鱼类（例如：金枪鱼、金目鲷、枪鱼、鲨鱼等）"
+          "a1_l4": ""
         },
         {
           "food": "金枪鱼及其制品",
@@ -2964,99 +3290,24 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "note": "b",
           "modif": "",
           "inspection_method": "GB 5009.17",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物",
-          "a1_l3": "稻谷",
+          "a1_l3": "",
           "a1_l4": ""
         },
         {
           "food": "稻谷、糙米、大米(粉)、玉米、玉米粉、玉米糁(渣)、小麦、小麦粉",
-          "pollutant": "总汞",
-          "limit_value": "0.02",
-          "has_limit": true,
+          "pollutant": "甲基汞 a",
+          "limit_value": "—",
+          "has_limit": false,
           "sub_value": "",
           "unit": "mg/kg",
-          "note": "b",
+          "note": "",
           "modif": "",
           "inspection_method": "GB 5009.17",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物",
-          "a1_l3": "玉米",
-          "a1_l4": ""
-        },
-        {
-          "food": "稻谷、糙米、大米(粉)、玉米、玉米粉、玉米糁(渣)、小麦、小麦粉",
-          "pollutant": "总汞",
-          "limit_value": "0.02",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "b",
-          "modif": "",
-          "inspection_method": "GB 5009.17",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
-          "a1_l2": "谷物",
-          "a1_l3": "小麦",
-          "a1_l4": ""
-        },
-        {
-          "food": "稻谷、糙米、大米(粉)、玉米、玉米粉、玉米糁(渣)、小麦、小麦粉",
-          "pollutant": "总汞",
-          "limit_value": "0.02",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "b",
-          "modif": "",
-          "inspection_method": "GB 5009.17",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
-          "a1_l2": "谷物碾磨加工品",
-          "a1_l3": "糙米（包括色稻米）",
-          "a1_l4": ""
-        },
-        {
-          "food": "稻谷、糙米、大米(粉)、玉米、玉米粉、玉米糁(渣)、小麦、小麦粉",
-          "pollutant": "总汞",
-          "limit_value": "0.02",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "b",
-          "modif": "",
-          "inspection_method": "GB 5009.17",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
-          "a1_l2": "谷物碾磨加工品",
-          "a1_l3": "大米（粉）",
-          "a1_l4": ""
-        },
-        {
-          "food": "稻谷、糙米、大米(粉)、玉米、玉米粉、玉米糁(渣)、小麦、小麦粉",
-          "pollutant": "总汞",
-          "limit_value": "0.02",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "b",
-          "modif": "",
-          "inspection_method": "GB 5009.17",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
-          "a1_l2": "谷物碾磨加工品",
-          "a1_l3": "小麦粉（包括食用麸皮）",
-          "a1_l4": ""
-        },
-        {
-          "food": "稻谷、糙米、大米(粉)、玉米、玉米粉、玉米糁(渣)、小麦、小麦粉",
-          "pollutant": "总汞",
-          "limit_value": "0.02",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "b",
-          "modif": "",
-          "inspection_method": "GB 5009.17",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
-          "a1_l2": "谷物碾磨加工品",
-          "a1_l3": "玉米粉、玉米糁（渣）",
+          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -3463,6 +3714,36 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l2": "婴幼儿辅助食品",
           "a1_l3": "婴幼儿罐装辅助食品",
           "a1_l4": ""
+        },
+        {
+          "food": "木耳及其制品、银耳及其制品",
+          "pollutant": "总汞",
+          "limit_value": "—",
+          "has_limit": false,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.17",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "银耳",
+          "a1_l4": ""
+        },
+        {
+          "food": "木耳及其制品、银耳及其制品",
+          "pollutant": "甲基汞 a",
+          "limit_value": "0.1",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "a",
+          "modif": "干重计",
+          "inspection_method": "GB 5009.17",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "银耳",
+          "a1_l4": ""
         }
       ],
       "footnotes": [
@@ -3843,7 +4124,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l1": "特殊膳食用食品",
           "a1_l2": "婴幼儿辅助食品",
           "a1_l3": "",
-          "a1_l4": "以水产及动物肝脏为原料的产品",
+          "a1_l4": "",
           "inspection_method": "GB 5009.11",
           "test_method": ""
         },
@@ -3909,7 +4190,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l1": "特殊膳食用食品",
           "a1_l2": "婴幼儿辅助食品",
           "a1_l3": "",
-          "a1_l4": "添加藻类的产品",
+          "a1_l4": "",
           "inspection_method": "GB 5009.11",
           "test_method": ""
         },
@@ -4038,7 +4319,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "sub_modifier": "",
           "sub_remark": "",
           "remark": "b",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物",
           "a1_l3": "稻谷",
           "a1_l4": "",
@@ -4060,7 +4341,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "sub_modifier": "",
           "sub_remark": "",
           "remark": "",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物碾磨加工品",
           "a1_l3": "大米（粉）",
           "a1_l4": "",
@@ -4082,7 +4363,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "sub_modifier": "",
           "sub_remark": "",
           "remark": "",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物碾磨加工品",
           "a1_l3": "糙米（包括色稻米）",
           "a1_l4": "",
@@ -4150,7 +4431,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "remark": "",
           "a1_l1": "食用菌及其制品",
           "a1_l2": "食用菌制品",
-          "a1_l3": "其他食用菌制品",
+          "a1_l3": "",
           "a1_l4": "",
           "inspection_method": "GB 5009.11",
           "test_method": ""
@@ -4216,7 +4497,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "remark": "",
           "a1_l1": "食用菌及其制品",
           "a1_l2": "食用菌制品",
-          "a1_l3": "其他食用菌制品",
+          "a1_l3": "",
           "a1_l4": "",
           "inspection_method": "GB 5009.11",
           "test_method": ""
@@ -4288,7 +4569,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "test_method": ""
         },
         {
-          "food": "谷物及其制品：谷物（稻谷除外）",
+          "food": "谷物(稻谷除外)",
           "limit": "0.5 mg/kg",
           "limit_value": "0.5",
           "has_limit": true,
@@ -4302,16 +4583,15 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "sub_modifier": "",
           "sub_remark": "",
           "remark": "",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物",
           "a1_l3": "",
           "a1_l4": "",
           "inspection_method": "GB 5009.11",
-          "test_method": "",
-          "note": ""
+          "test_method": ""
         },
         {
-          "food": "谷物及其制品：谷物碾磨加工品〔糙米、大米（粉）除外〕",
+          "food": "谷物碾磨加工品[糙米、大米(粉)除外]",
           "limit": "0.5 mg/kg",
           "limit_value": "0.5",
           "has_limit": true,
@@ -4325,13 +4605,12 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "sub_modifier": "",
           "sub_remark": "",
           "remark": "",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物碾磨加工品",
           "a1_l3": "",
           "a1_l4": "",
           "inspection_method": "GB 5009.11",
-          "test_method": "",
-          "note": ""
+          "test_method": ""
         },
         {
           "food": "肉及肉制品",
@@ -4373,6 +4652,28 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l1": "油脂及其制品",
           "a1_l2": "",
           "a1_l3": "",
+          "a1_l4": "",
+          "inspection_method": "GB 5009.11",
+          "test_method": ""
+        },
+        {
+          "food": "木耳及其制品、银耳及其制品",
+          "limit": "— mg/kg",
+          "limit_value": "—",
+          "has_limit": false,
+          "limit_modifier": "",
+          "main_label": "总砷",
+          "main_remark": "",
+          "sub_label": "无机砷 a",
+          "sub_limit": "0.5 mg/kg",
+          "sub_value": "0.5",
+          "sub_has_limit": true,
+          "sub_modifier": "(干重计)",
+          "sub_remark": "a",
+          "remark": "",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "其他食用菌制品",
           "a1_l4": "",
           "inspection_method": "GB 5009.11",
           "test_method": ""
@@ -4761,7 +5062,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "test_method": ""
         },
         {
-          "food": "谷物及其制品：谷物",
+          "food": "谷物",
           "limit": "1.0 mg/kg",
           "limit_value": "1.0",
           "has_limit": true,
@@ -4774,16 +5075,15 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "sub_modifier": "",
           "sub_remark": "",
           "remark": "a",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物",
           "a1_l3": "",
           "a1_l4": "",
           "inspection_method": "GB 5009.123",
-          "test_method": "",
-          "note": "a"
+          "test_method": ""
         },
         {
-          "food": "谷物及其制品：谷物碾磨加工品",
+          "food": "谷物碾磨加工品",
           "limit": "1.0 mg/kg",
           "limit_value": "1.0",
           "has_limit": true,
@@ -4796,13 +5096,12 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "sub_modifier": "",
           "sub_remark": "",
           "remark": "",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物碾磨加工品",
           "a1_l3": "",
           "a1_l4": "",
           "inspection_method": "GB 5009.123",
-          "test_method": "",
-          "note": ""
+          "test_method": ""
         },
         {
           "food": "豆类",
@@ -5377,7 +5676,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "test_method": ""
         },
         {
-          "food": "稻谷a、糙米、大米(粉)、小麦、小麦粉、玉米、玉米粉、玉米糁(渣)",
+          "food": "小麦",
           "limit": "2.0 μg/kg",
           "limit_value": "2.0",
           "has_limit": true,
@@ -5390,60 +5689,15 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "sub_modifier": "",
           "sub_remark": "",
           "remark": "a",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
-          "a1_l2": "谷物",
-          "a1_l3": "稻谷",
-          "a1_l4": "",
-          "inspection_method": "GB 5009.27",
-          "test_method": "",
-          "note": "a"
-        },
-        {
-          "food": "稻谷a、糙米、大米(粉)、小麦、小麦粉、玉米、玉米粉、玉米糁(渣)",
-          "limit": "2.0 μg/kg",
-          "limit_value": "2.0",
-          "has_limit": true,
-          "limit_modifier": "",
-          "main_label": "苯并[a]芘",
-          "main_remark": "",
-          "sub_label": "",
-          "sub_limit": "",
-          "sub_value": "",
-          "sub_modifier": "",
-          "sub_remark": "",
-          "remark": "a",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
-          "a1_l2": "谷物",
-          "a1_l3": "玉米",
-          "a1_l4": "",
-          "inspection_method": "GB 5009.27",
-          "test_method": "",
-          "note": "a"
-        },
-        {
-          "food": "稻谷a、糙米、大米(粉)、小麦、小麦粉、玉米、玉米粉、玉米糁(渣)",
-          "limit": "2.0 μg/kg",
-          "limit_value": "2.0",
-          "has_limit": true,
-          "limit_modifier": "",
-          "main_label": "苯并[a]芘",
-          "main_remark": "",
-          "sub_label": "",
-          "sub_limit": "",
-          "sub_value": "",
-          "sub_modifier": "",
-          "sub_remark": "",
-          "remark": "a",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物",
           "a1_l3": "小麦",
           "a1_l4": "",
           "inspection_method": "GB 5009.27",
-          "test_method": "",
-          "note": "a"
+          "test_method": ""
         },
         {
-          "food": "小麦粉",
+          "food": "玉米",
           "limit": "2.0 μg/kg",
           "limit_value": "2.0",
           "has_limit": true,
@@ -5456,9 +5710,30 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "sub_modifier": "",
           "sub_remark": "",
           "remark": "a",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
-          "a1_l2": "谷物碾磨加工品",
-          "a1_l3": "小麦粉（包括食用麸皮）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
+          "a1_l2": "谷物",
+          "a1_l3": "玉米",
+          "a1_l4": "",
+          "inspection_method": "GB 5009.27",
+          "test_method": ""
+        },
+        {
+          "food": "稻谷",
+          "limit": "2.0 μg/kg",
+          "limit_value": "2.0",
+          "has_limit": true,
+          "limit_modifier": "",
+          "main_label": "苯并[a]芘",
+          "main_remark": "",
+          "sub_label": "",
+          "sub_limit": "",
+          "sub_value": "",
+          "sub_modifier": "",
+          "sub_remark": "",
+          "remark": "a",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
+          "a1_l2": "谷物",
+          "a1_l3": "稻谷",
           "a1_l4": "",
           "inspection_method": "GB 5009.27",
           "test_method": ""
@@ -5477,7 +5752,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "sub_modifier": "",
           "sub_remark": "",
           "remark": "a",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物碾磨加工品",
           "a1_l3": "大米（粉）",
           "a1_l4": "",
@@ -5485,7 +5760,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "test_method": ""
         },
         {
-          "food": "玉米粉、玉米糁(渣)",
+          "food": "小麦粉",
           "limit": "2.0 μg/kg",
           "limit_value": "2.0",
           "has_limit": true,
@@ -5498,7 +5773,49 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "sub_modifier": "",
           "sub_remark": "",
           "remark": "a",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
+          "a1_l2": "谷物碾磨加工品",
+          "a1_l3": "小麦粉（包括食用麸皮）",
+          "a1_l4": "",
+          "inspection_method": "GB 5009.27",
+          "test_method": ""
+        },
+        {
+          "food": "玉米粉",
+          "limit": "2.0 μg/kg",
+          "limit_value": "2.0",
+          "has_limit": true,
+          "limit_modifier": "",
+          "main_label": "苯并[a]芘",
+          "main_remark": "",
+          "sub_label": "",
+          "sub_limit": "",
+          "sub_value": "",
+          "sub_modifier": "",
+          "sub_remark": "",
+          "remark": "a",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
+          "a1_l2": "谷物碾磨加工品",
+          "a1_l3": "玉米粉、玉米糁（渣）",
+          "a1_l4": "",
+          "inspection_method": "GB 5009.27",
+          "test_method": ""
+        },
+        {
+          "food": "玉米糁(渣)",
+          "limit": "2.0 μg/kg",
+          "limit_value": "2.0",
+          "has_limit": true,
+          "limit_modifier": "",
+          "main_label": "苯并[a]芘",
+          "main_remark": "",
+          "sub_label": "",
+          "sub_limit": "",
+          "sub_value": "",
+          "sub_modifier": "",
+          "sub_remark": "",
+          "remark": "a",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物碾磨加工品",
           "a1_l3": "玉米粉、玉米糁（渣）",
           "a1_l4": "",
@@ -5519,7 +5836,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "sub_modifier": "",
           "sub_remark": "",
           "remark": "a",
-          "a1_l1": "谷物及其制品（不包括焙烤制品）",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物碾磨加工品",
           "a1_l3": "糙米（包括色稻米）",
           "a1_l4": "",
@@ -5704,7 +6021,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l1": "调味品",
           "a1_l2": "其他调味品",
           "a1_l3": "",
-          "a1_l4": "固态调味品",
+          "a1_l4": "",
           "remark": "a",
           "note": "a",
           "inspection_method": "GB5009.191",
@@ -6367,6 +6684,10 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
                     "children": []
                   }
                 ]
+              },
+              {
+                "name": "熏、烧、烤肉类",
+                "children": []
               }
             ]
           }
@@ -6618,12 +6939,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           {
             "catid": 166,
             "name": "动物油脂（例如：猪油、牛油、鱼油、磷虾油等）",
-            "children": [
-              {
-                "name": "水产动物油脂",
-                "children": []
-              }
-            ]
+            "children": []
           },
           {
             "catid": 167,
@@ -6727,12 +7043,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           {
             "catid": 186,
             "name": "其他调味品",
-            "children": [
-              {
-                "name": "固态调味品",
-                "children": []
-              }
-            ]
+            "children": []
           }
         ]
       },
@@ -7033,14 +7344,6 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
               {
                 "catid": 244,
                 "name": "婴幼儿罐装辅助食品",
-                "children": []
-              },
-              {
-                "name": "以水产及动物肝脏为原料的产品",
-                "children": []
-              },
-              {
-                "name": "添加藻类的产品",
                 "children": []
               }
             ]
@@ -7629,14 +7932,13 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "remark": "以Hg计。以干重计。对于制定甲基汞限量的食品可先测定总汞,当总汞含量不超过甲基汞限量值时,可判定符合限量要求而不必测定甲基汞；否则,需测定甲基汞含量再作判定。"
         },
         {
-          "path": "食用菌及其制品:食用菌制品:其他食用菌制品",
+          "path": "食用菌及其制品:木耳制品、银耳制品",
           "parts": [
             "食用菌及其制品",
-            "食用菌制品",
-            "其他食用菌制品"
+            "木耳制品、银耳制品"
           ],
           "big": "食用菌及其制品",
-          "sub": "其他食用菌制品",
+          "sub": "木耳制品、银耳制品",
           "food": "木耳制品、银耳制品",
           "limit": "≤0.1mg/kg",
           "limit_value": 0.1,
@@ -8103,14 +8405,13 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "remark": "以Cd计。干重计。"
         },
         {
-          "path": "食用菌及其制品:食用菌制品:其他食用菌制品",
+          "path": "食用菌及其制品:香菇制品",
           "parts": [
             "食用菌及其制品",
-            "食用菌制品",
-            "其他食用菌制品"
+            "香菇制品"
           ],
           "big": "食用菌及其制品",
-          "sub": "其他食用菌制品",
+          "sub": "香菇制品",
           "food": "香菇制品",
           "limit": "≤0.5mg/kg",
           "limit_value": 0.5,
@@ -8119,14 +8420,13 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "remark": "以Cd计。仅限香菇制品。"
         },
         {
-          "path": "食用菌及其制品:食用菌制品:其他食用菌制品",
+          "path": "食用菌及其制品:羊肚菌制品、獐头菌制品、青头菌制品、鸡油菌制品、榛蘑制品",
           "parts": [
             "食用菌及其制品",
-            "食用菌制品",
-            "其他食用菌制品"
+            "羊肚菌制品、獐头菌制品、青头菌制品、鸡油菌制品、榛蘑制品"
           ],
           "big": "食用菌及其制品",
-          "sub": "其他食用菌制品",
+          "sub": "羊肚菌制品、獐头菌制品、青头菌制品、鸡油菌制品、榛蘑制品",
           "food": "羊肚菌制品、獐头菌制品、青头菌制品、鸡油菌制品、榛蘑制品",
           "limit": "≤0.6mg/kg",
           "limit_value": 0.6,
@@ -8135,14 +8435,13 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "remark": "以Cd计。仅限羊肚菌制品、獐头菌制品、青头菌制品、鸡油菌制品、榛蘑制品。"
         },
         {
-          "path": "食用菌及其制品:食用菌制品:其他食用菌制品",
+          "path": "食用菌及其制品:松茸制品、牛肝菌制品、鸡枞制品、多汁乳菇制品",
           "parts": [
             "食用菌及其制品",
-            "食用菌制品",
-            "其他食用菌制品"
+            "松茸制品、牛肝菌制品、鸡枞制品、多汁乳菇制品"
           ],
           "big": "食用菌及其制品",
-          "sub": "其他食用菌制品",
+          "sub": "松茸制品、牛肝菌制品、鸡枞制品、多汁乳菇制品",
           "food": "松茸制品、牛肝菌制品、鸡枞制品、多汁乳菇制品",
           "limit": "≤1.0mg/kg",
           "limit_value": 1,
@@ -8151,14 +8450,13 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "remark": "以Cd计。仅限松茸制品、牛肝菌制品、鸡枞制品、多汁乳菇制品。"
         },
         {
-          "path": "食用菌及其制品:食用菌制品:其他食用菌制品",
+          "path": "食用菌及其制品:松露制品",
           "parts": [
             "食用菌及其制品",
-            "食用菌制品",
-            "其他食用菌制品"
+            "松露制品"
           ],
           "big": "食用菌及其制品",
-          "sub": "其他食用菌制品",
+          "sub": "松露制品",
           "food": "松露制品",
           "limit": "≤2.0mg/kg",
           "limit_value": 2,
@@ -8167,14 +8465,13 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "remark": "以Cd计。仅限松露制品。"
         },
         {
-          "path": "食用菌及其制品:食用菌制品:其他食用菌制品",
+          "path": "食用菌及其制品:姬松茸制品",
           "parts": [
             "食用菌及其制品",
-            "食用菌制品",
-            "其他食用菌制品"
+            "姬松茸制品"
           ],
           "big": "食用菌及其制品",
-          "sub": "其他食用菌制品",
+          "sub": "姬松茸制品",
           "food": "姬松茸制品",
           "limit": "≤2.0mg/kg",
           "limit_value": 2,
@@ -8183,14 +8480,13 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "remark": "以Cd计。仅限姬松茸制品。"
         },
         {
-          "path": "食用菌及其制品:食用菌制品:其他食用菌制品",
+          "path": "食用菌及其制品:木耳制品、银耳制品",
           "parts": [
             "食用菌及其制品",
-            "食用菌制品",
-            "其他食用菌制品"
+            "木耳制品、银耳制品"
           ],
           "big": "食用菌及其制品",
-          "sub": "其他食用菌制品",
+          "sub": "木耳制品、银耳制品",
           "food": "木耳制品、银耳制品",
           "limit": "≤0.5mg/kg",
           "limit_value": 0.5,
@@ -8244,14 +8540,15 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "remark": "以Cd计。畜禽内脏除外。"
         },
         {
-          "path": "肉及肉制品:肉类（生鲜肉、冷却肉、冷冻肉等）:畜禽内脏（例如：肝、肾、肺、肠等）",
+          "path": "肉及肉制品:肉类:畜禽内脏:畜禽肝脏",
           "parts": [
             "肉及肉制品",
-            "肉类（生鲜肉、冷却肉、冷冻肉等）",
-            "畜禽内脏（例如：肝、肾、肺、肠等）"
+            "肉类",
+            "畜禽内脏",
+            "畜禽肝脏"
           ],
           "big": "肉及肉制品",
-          "sub": "畜禽内脏（例如：肝、肾、肺、肠等）",
+          "sub": "肉类",
           "food": "畜禽肝脏",
           "limit": "≤0.5mg/kg",
           "limit_value": 0.5,
@@ -8260,14 +8557,15 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "remark": "以Cd计。仅限畜禽肝脏。"
         },
         {
-          "path": "肉及肉制品:肉类（生鲜肉、冷却肉、冷冻肉等）:畜禽内脏（例如：肝、肾、肺、肠等）",
+          "path": "肉及肉制品:肉类:畜禽内脏:畜禽肾脏",
           "parts": [
             "肉及肉制品",
-            "肉类（生鲜肉、冷却肉、冷冻肉等）",
-            "畜禽内脏（例如：肝、肾、肺、肠等）"
+            "肉类",
+            "畜禽内脏",
+            "畜禽肾脏"
           ],
           "big": "肉及肉制品",
-          "sub": "畜禽内脏（例如：肝、肾、肺、肠等）",
+          "sub": "肉类",
           "food": "畜禽肾脏",
           "limit": "≤1.0mg/kg",
           "limit_value": 1,
@@ -9131,14 +9429,13 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "remark": "以Pb计。干重计。"
         },
         {
-          "path": "食用菌及其制品:食用菌制品:其他食用菌制品",
+          "path": "食用菌及其制品:木耳制品、银耳制品",
           "parts": [
             "食用菌及其制品",
-            "食用菌制品",
-            "其他食用菌制品"
+            "木耳制品、银耳制品"
           ],
           "big": "食用菌及其制品",
-          "sub": "其他食用菌制品",
+          "sub": "木耳制品、银耳制品",
           "food": "木耳制品、银耳制品",
           "limit": "≤1.0mg/kg",
           "limit_value": 1,
@@ -9330,13 +9627,14 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "remark": "以Pb计。畜禽内脏制品除外。"
         },
         {
-          "path": "肉及肉制品:肉制品（包括内脏制品、血制品）",
+          "path": "肉及肉制品:肉制品:畜禽内脏制品",
           "parts": [
             "肉及肉制品",
-            "肉制品（包括内脏制品、血制品）"
+            "肉制品",
+            "畜禽内脏制品"
           ],
           "big": "肉及肉制品",
-          "sub": "肉制品（包括内脏制品、血制品）",
+          "sub": "肉制品",
           "food": "畜禽内脏制品",
           "limit": "≤0.5mg/kg",
           "limit_value": 0.5,
@@ -10395,11 +10693,9 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "remark": ""
         },
         {
-          "path": "肉及肉制品:肉制品（包括内脏制品、血制品）:熟肉制品:熏、烧、烤肉类",
+          "path": "肉及肉制品:熏、烧、烤肉类",
           "parts": [
             "肉及肉制品",
-            "肉制品（包括内脏制品、血制品）",
-            "熟肉制品",
             "熏、烧、烤肉类"
           ],
           "big": "肉及肉制品",
@@ -11670,14 +11966,13 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "remark": "以As计。对于制定无机砷限量的食品可先测定其总砷,当总砷含量不超过无机砷限量值时,可判定符合限量要求而不必测定无机砷；否则,需测定无机砷含量再作判定。"
         },
         {
-          "path": "食用菌及其制品:食用菌制品:其他食用菌制品",
+          "path": "食用菌及其制品:松茸制品",
           "parts": [
             "食用菌及其制品",
-            "食用菌制品",
-            "其他食用菌制品"
+            "松茸制品"
           ],
           "big": "食用菌及其制品",
-          "sub": "其他食用菌制品",
+          "sub": "松茸制品",
           "food": "松茸制品",
           "limit": "≤0.8mg/kg",
           "limit_value": 0.8,
@@ -11701,14 +11996,13 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "remark": "以As计。以干重计。对于制定无机砷限量的食品可先测定其总砷,当总砷含量不超过无机砷限量值时,可判定符合限量要求而不必测定无机砷；否则,需测定无机砷含量再作判定。"
         },
         {
-          "path": "食用菌及其制品:食用菌制品:其他食用菌制品",
+          "path": "食用菌及其制品:木耳制品、银耳制品",
           "parts": [
             "食用菌及其制品",
-            "食用菌制品",
-            "其他食用菌制品"
+            "木耳制品、银耳制品"
           ],
           "big": "食用菌及其制品",
-          "sub": "其他食用菌制品",
+          "sub": "木耳制品、银耳制品",
           "food": "木耳制品、银耳制品",
           "limit": "≤0.5mg/kg",
           "limit_value": 0.5,
@@ -11876,8 +12170,9 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
       ]
     }
   ],
-  "_last_fix": "fix v82-fix13: 统计口径统一为「限量条数 = 节点涉及的不同污染物种类数」(跨污染物表 union)。L3 节点只在 idx 非空时聚合 L1 自身 row(避免大麦误算)"
-}</script>
+  "_last_fix": "v82-fix93-nuts-cooked-duplicate-2026-09-03"
+}
+</script>
 <script>
 const DATA_URL = './data/gb2762/gb2762_2025.json?t=' + Date.now();
 let DATA = null;
@@ -12030,8 +12325,8 @@ const DATA_URLS = [
   // 本地服务器/同源(优先,速度快)
   './data/gb2762/gb2762_2025.json',
   // GitHub Pages 兜底(任何环境都能访问,只要有网)
-  'https://5678hub.github.io/jianyu/data/gb2762/gb2762_2025.json',
-];
+  'https://5678hub.github.io/jianyu/data/gb2762/gb2762_2025.json'
+          ];
 async function loadData() {
   // v82-fix4: 直接从 <script type="application/json" id="inlineData"> 读 JSON
   // HTML parser 自动按 UTF-8 解码,避免 atob + TextDecoder 多步处理
@@ -12956,7 +13251,13 @@ function renderTreeDetail() {
         // 改为只切顿号和逗号作为分隔符。
         const excList = excludeStr.split(/[、,，]/).filter(Boolean);
         for (const exc of excList) {
-          const normExc = exc.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+          // v82-fix87: 处理「及以上」修饰语 (例: 「银耳及以上食用菌的制品除外」→ 「银耳」)
+          //   避免「银耳及以上食用菌的制品」整词与 A.1 树「银耳制品」L4 节点匹配不上
+          let normExc = exc.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+          let hasShangji = normExc.includes('及以上');
+          if (hasShangji) {
+            normExc = normExc.split('及以上')[0];
+          }
           if (!normExc || normExc.length < 2) continue;
           for (const name of currentPath) {
             const normName = name.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
@@ -12965,7 +13266,9 @@ function renderTreeDetail() {
               .replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
             if (normName === normExc) return false;
             if (nameCore === normExc) return false;
-            if (normExc.length >= 3 && (normName.startsWith(normExc) || normExc.startsWith(normName))) return false;
+            // v82-fix87: 「及以上」split 后 normExc 可能只有 2 字符(如「银耳」), 但应启用 substring 匹配
+            //   因为 split 已表明这是一个有效 excl 项
+            if ((normExc.length >= 3 || hasShangji) && (normName.startsWith(normExc) || normExc.startsWith(normName))) return false;
           }
         }
       }
@@ -13132,6 +13435,50 @@ function renderTreeDetail() {
         isSelf: false,
         items: filtered
       });
+    }
+
+    // v82-fix86: L3+ 节点 ancestorsLevels 段全空时, 跨级显示 L1 通类 row
+    //   触发条件: path.length >= 3 && ancestorsLevels.length === 0 && DATA.contaminants 存在
+    //   策略: 收集 a1l1=path[0], a1l2/l3/l4 全空的 row (即 L1 通类 row)
+    //   标签: 「上级分类 + L1 名 赋予」(与 ancestorsLevels 段统一)
+    //   用户反馈 (2026-09-03): 「卤蛋 L3 上级 L2 是 0, 应该返回 L1」
+    if (path.length >= 3 && ancestorsLevels.length === 0 && DATA && DATA.contaminants) {
+      const pathL1 = path[0];
+      const l1Rows = [];
+      DATA.contaminants.forEach(con => {
+        con.items.forEach(it => {
+          // 必须 a1l1 = path[0] (L1 通类 row)
+          if (norm(it.a1_l1) !== norm(pathL1)) return;
+          // 必须 a1l2/l3/l4 全空 (L1 通类 row, 非 L2/L3/L4 own row)
+          if (it.a1_l2 || it.a1_l3 || it.a1_l4) return;
+          // 注入污染表元数据
+          l1Rows.push(Object.assign({}, it, {
+            _contaminant: con.contaminant, _symbol: con.symbol, _unit: con.unit,
+            _table_no: con.table_no, _footnotes: con.footnotes,
+            _inspection_method: con.inspection_method, _rules: con.inspection_method_rules,
+            _viaSub: pathL1
+          }));
+        });
+      });
+      // 用 isApplicableToPath 过滤 (用 path[0] 作为 ancestorPath)
+      const l1Filtered = l1Rows.filter(x => isApplicableToPath(x, [path[0]]));
+      // dedupKey 去重 (排除 own 段已有的)
+      const seen = new Set();
+      for (const x of l1Filtered) {
+        const k = dedupKey(x);
+        if (primKey.has(k)) continue;
+        if (seen.has(k)) continue;
+        seen.add(k);
+      }
+      const l1Deduped = l1Filtered.filter(x => !primKey.has(dedupKey(x)));
+      if (l1Deduped.length > 0) {
+        ancestorsLevels.push({
+          tag: '上级分类',
+          label: `${pathL1} 赋予的污染物限量要求`,
+          isSelf: false,
+          items: l1Deduped
+        });
+      }
     }
   }
 
@@ -13443,8 +13790,8 @@ const CONTAM_TABS = [
   { key: "9",     table_no: 9,  label: "苯并[a]芘",     sym: "BaP",    sub: null },
   { key: "10",    table_no: 10, label: "N-二甲基亚硝胺", sym: "NDMA",  sub: null },
   { key: "11",    table_no: 11, label: "多氯联苯",      sym: "PCBs",   sub: null },
-  { key: "12",    table_no: 12, label: "3-氯-1,2-丙二醇", sym: "3-MCPD", sub: null },
-];
+  { key: "12",    table_no: 12, label: "3-氯-1,2-丙二醇", sym: "3-MCPD", sub: null }
+          ];
 
 // v82-fix: 统一过滤函数(chip count + selectContam 渲染共用)
 // 旧 getContamItems 在某些 tab 上返 0(浏览器兼容/数据 schema 差异),
