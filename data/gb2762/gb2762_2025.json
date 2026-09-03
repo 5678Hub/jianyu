@@ -1341,6 +1341,21 @@
           "a1_l2": "蛋白饮料",
           "a1_l3": "含乳饮料（例如：发酵型含乳饮料、配制型含乳饮料、乳酸菌饮料等）",
           "a1_l4": ""
+        },
+        {
+          "food": "木耳及其制品、银耳及其制品",
+          "pollutant": "铅",
+          "limit_value": "1.0",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.12",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "银耳",
+          "a1_l4": ""
         }
       ],
       "footnotes": [
@@ -2405,6 +2420,21 @@
           "a1_l2": "肉制品（包括内脏制品、血制品）",
           "a1_l3": "",
           "a1_l4": ""
+        },
+        {
+          "food": "木耳及其制品、银耳及其制品",
+          "pollutant": "镉",
+          "limit_value": "0.5",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "干重计",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "其他食用菌制品",
+          "a1_l4": ""
         }
       ],
       "footnotes": [
@@ -3051,6 +3081,36 @@
           "a1_l1": "特殊膳食用食品",
           "a1_l2": "婴幼儿辅助食品",
           "a1_l3": "婴幼儿罐装辅助食品",
+          "a1_l4": ""
+        },
+        {
+          "food": "木耳及其制品、银耳及其制品",
+          "pollutant": "总汞",
+          "limit_value": "—",
+          "has_limit": false,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.17",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "银耳",
+          "a1_l4": ""
+        },
+        {
+          "food": "木耳及其制品、银耳及其制品",
+          "pollutant": "甲基汞 a",
+          "limit_value": "0.1",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "a",
+          "modif": "干重计",
+          "inspection_method": "GB 5009.17",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "银耳",
           "a1_l4": ""
         }
       ],
@@ -3960,6 +4020,28 @@
           "a1_l1": "油脂及其制品",
           "a1_l2": "",
           "a1_l3": "",
+          "a1_l4": "",
+          "inspection_method": "GB 5009.11",
+          "test_method": ""
+        },
+        {
+          "food": "木耳及其制品、银耳及其制品",
+          "limit": "— mg/kg",
+          "limit_value": "—",
+          "has_limit": false,
+          "limit_modifier": "",
+          "main_label": "总砷",
+          "main_remark": "",
+          "sub_label": "无机砷 a",
+          "sub_limit": "0.5 mg/kg",
+          "sub_value": "0.5",
+          "sub_has_limit": true,
+          "sub_modifier": "(干重计)",
+          "sub_remark": "a",
+          "remark": "",
+          "a1_l1": "食用菌及其制品",
+          "a1_l2": "食用菌制品",
+          "a1_l3": "其他食用菌制品",
           "a1_l4": "",
           "inspection_method": "GB 5009.11",
           "test_method": ""

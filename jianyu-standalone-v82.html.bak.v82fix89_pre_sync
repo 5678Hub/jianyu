@@ -1765,22 +1765,6 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l4": ""
         },
         {
-          "food": "木耳及其制品、银耳及其制品",
-          "pollutant": "铅",
-          "limit_value": "1.0",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.12",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
-          "a1_l3": "银耳",
-          "a1_l4": ""
-        },
-
-        {
           "food": "牛肝菌、松茸、松露、青头菌、鸡枞、鸡油菌、多汁乳菇及以上食用菌的制品",
           "pollutant": "铅",
           "limit_value": "1.0",
@@ -2661,22 +2645,6 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
           "a1_l2": "食用菌制品",
-          "a1_l3": "其他食用菌制品",
-          "a1_l4": ""
-        },
-
-        {
-          "food": "木耳及其制品、银耳及其制品",
-          "pollutant": "镉",
-          "limit_value": "0.5",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "干重计",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
           "a1_l3": "",
           "a1_l4": "木耳制品"
         },
@@ -3344,22 +3312,6 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
         },
         {
           "food": "木耳及其制品、银耳及其制品",
-          "pollutant": "总汞",
-          "limit_value": "—",
-          "has_limit": false,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.17",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "银耳",
-          "a1_l4": ""
-        },
-
-        {
-          "food": "木耳及其制品、银耳及其制品",
           "pollutant": "甲基汞 a",
           "limit_value": "0.1",
           "has_limit": true,
@@ -3388,22 +3340,6 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l3": "其他食用菌制品",
           "a1_l4": ""
         },
-        {
-          "food": "木耳及其制品、银耳及其制品",
-          "pollutant": "甲基汞 a",
-          "limit_value": "0.1",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "a",
-          "modif": "干重计",
-          "inspection_method": "GB 5009.17",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "银耳",
-          "a1_l4": ""
-        },
-
         {
           "food": "肉类",
           "pollutant": "总汞",
@@ -4417,29 +4353,6 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "inspection_method": "GB 5009.11",
           "test_method": ""
         },
-        {
-          "food": "木耳及其制品、银耳及其制品",
-          "limit": "— mg/kg",
-          "limit_value": "—",
-          "has_limit": false,
-          "limit_modifier": "",
-          "main_label": "总砷",
-          "main_remark": "",
-          "sub_label": "无机砷 a",
-          "sub_limit": "0.5 mg/kg",
-          "sub_value": "0.5",
-          "sub_has_limit": true,
-          "sub_modifier": "(干重计)",
-          "sub_remark": "a",
-          "remark": "",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "其他食用菌制品",
-          "a1_l4": "",
-          "inspection_method": "GB 5009.11",
-          "test_method": ""
-        },
-
         {
           "food": "松茸及其制品",
           "limit": "— mg/kg",
