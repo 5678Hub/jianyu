@@ -299,7 +299,7 @@
           "has_limit": true,
           "sub_value": "",
           "unit": "mg/kg",
-          "note": "d",
+          "note": "",
           "modif": "",
           "inspection_method": "GB 5009.12",
           "a1_l1": "坚果及籽类",
@@ -314,7 +314,7 @@
           "has_limit": true,
           "sub_value": "",
           "unit": "mg/kg",
-          "note": "d",
+          "note": "",
           "modif": "",
           "inspection_method": "GB 5009.12",
           "a1_l1": "坚果及籽类",
@@ -880,7 +880,7 @@
         {
           "food": "螺旋藻",
           "pollutant": "铅",
-          "limit_value": "0.5(干重计)",
+          "limit_value": "2.0(干重计)",
           "has_limit": true,
           "sub_value": "",
           "unit": "mg/kg",
@@ -1114,7 +1114,7 @@
           "inspection_method": "GB 5009.12",
           "a1_l1": "酒类",
           "a1_l2": "发酵酒（例如：葡萄酒、黄酒、果酒、啤酒等）",
-          "a1_l3": "黄酒",
+          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -1385,10 +1385,6 @@
         {
           "label": "c",
           "text": "液态婴幼儿配方食品根据8∶1的比例折算其限量。"
-        },
-        {
-          "label": "d",
-          "text": "仅限生咖啡豆及烘焙咖啡豆"
         }
       ],
       "inspection_method_rules": [
@@ -1414,7 +1410,7 @@
       "contaminant": "镉",
       "symbol": "Cd",
       "unit": "mg/kg",
-      "inspection_method": "食品按 GB 5009.15 规定的方法测定。",
+      "inspection_method": "包装饮用水按 GB 8538 规定的方法测定,其他食品按 GB 5009.15 规定的方法测定。",
       "items": [
         {
           "food": "谷物(稻谷除外)",
@@ -1582,21 +1578,6 @@
           "a1_l4": ""
         },
         {
-          "food": "芹菜、黄花菜",
-          "pollutant": "镉",
-          "limit_value": "0.2",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "蔬菜及其制品（包括薯类，不包括食用菌）",
-          "a1_l2": "新鲜蔬菜（未经加工的、经表面处理的、去皮或预切的、冷冻的蔬菜）",
-          "a1_l3": "其他新鲜蔬菜（包括瓜果类、鳞茎类和水生类、芽菜类；竹笋、黄花菜等多年生蔬菜）",
-          "a1_l4": ""
-        },
-        {
           "food": "新鲜水果",
           "pollutant": "镉",
           "limit_value": "0.05",
@@ -1657,21 +1638,6 @@
           "a1_l4": ""
         },
         {
-          "food": "香菇及其制品",
-          "pollutant": "镉",
-          "limit_value": "0.5",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
-          "a1_l4": ""
-        },
-        {
           "food": "羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑及以上食用菌的制品",
           "pollutant": "镉",
           "limit_value": "0.6",
@@ -1684,21 +1650,6 @@
           "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
           "a1_l3": "羊肚菌",
-          "a1_l4": ""
-        },
-        {
-          "food": "羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "0.6",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -1742,38 +1693,8 @@
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
-          "a1_l4": ""
-        },
-        {
-          "food": "羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "0.6",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
           "a1_l3": "青头菌",
-          "a1_l4": ""
-        },
-        {
-          "food": "羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "0.6",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -1802,38 +1723,8 @@
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
-          "a1_l4": ""
-        },
-        {
-          "food": "羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "0.6",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
           "a1_l3": "榛蘑",
-          "a1_l4": ""
-        },
-        {
-          "food": "羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "0.6",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -1877,38 +1768,8 @@
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
-          "a1_l4": ""
-        },
-        {
-          "food": "松茸、牛肝菌、鸡枞、多汁乳菇及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "1.0",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
-          "a1_l3": "牛肝菌",
-          "a1_l4": ""
-        },
-        {
-          "food": "松茸、牛肝菌、鸡枞、多汁乳菇及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "1.0",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
+          "a1_l3": "牛肝菌[美味牛肝菌,兰茂牛肝菌,茶褐新生牛肝菌,远东邹盖牛肝菌]",
           "a1_l4": ""
         },
         {
@@ -1937,38 +1798,8 @@
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
-          "a1_l4": ""
-        },
-        {
-          "food": "松茸、牛肝菌、鸡枞、多汁乳菇及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "1.0",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
           "a1_l3": "多汁乳菇",
-          "a1_l4": ""
-        },
-        {
-          "food": "松茸、牛肝菌、鸡枞、多汁乳菇及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "1.0",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -2012,38 +1843,8 @@
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
-          "a1_l4": ""
-        },
-        {
-          "food": "松露、姬松茸及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "2.0",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
           "a1_l3": "姬松茸",
-          "a1_l4": ""
-        },
-        {
-          "food": "松露、姬松茸及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "2.0",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -2059,21 +1860,6 @@
           "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
           "a1_l3": "木耳 （毛木耳,黑木耳）",
-          "a1_l4": ""
-        },
-        {
-          "food": "木耳及其制品、银耳及其制品",
-          "pollutant": "镉",
-          "limit_value": "0.5",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "干重计",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -2128,7 +1914,7 @@
           "has_limit": true,
           "sub_value": "",
           "unit": "mg/kg",
-          "note": "b",
+          "note": "",
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "坚果及籽类",
@@ -2143,7 +1929,7 @@
           "has_limit": true,
           "sub_value": "",
           "unit": "mg/kg",
-          "note": "b",
+          "note": "",
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "坚果及籽类",
@@ -2182,36 +1968,6 @@
           "a1_l4": ""
         },
         {
-          "food": "畜禽肝脏及其制品",
-          "pollutant": "镉",
-          "limit_value": "0.5",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "肉及肉制品",
-          "a1_l2": "肉制品（包括内脏制品、血制品）",
-          "a1_l3": "畜禽内脏",
-          "a1_l4": ""
-        },
-        {
-          "food": "畜禽肾脏及其制品",
-          "pollutant": "镉",
-          "limit_value": "1.0",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "肉及肉制品",
-          "a1_l2": "肉制品（包括内脏制品、血制品）",
-          "a1_l3": "畜禽内脏",
-          "a1_l4": ""
-        },
-        {
           "food": "鱼类",
           "pollutant": "镉",
           "limit_value": "0.1",
@@ -2238,7 +1994,7 @@
           "inspection_method": "GB 5009.15",
           "a1_l1": "水产动物及其制品",
           "a1_l2": "鲜、冻水产动物",
-          "a1_l3": "甲壳类",
+          "a1_l3": "甲壳类（例如：虾类、蟹类等）",
           "a1_l4": ""
         },
         {
@@ -2253,7 +2009,7 @@
           "inspection_method": "GB 5009.15",
           "a1_l1": "水产动物及其制品",
           "a1_l2": "鲜、冻水产动物",
-          "a1_l3": "甲壳类",
+          "a1_l3": "甲壳类（例如：虾类、蟹类等）",
           "a1_l4": ""
         },
         {
@@ -2486,13 +2242,13 @@
         {
           "label": "a",
           "text": "稻谷以糙米计。"
-        },
-        {
-          "label": "b",
-          "text": "仅限花生"
         }
       ],
       "inspection_method_rules": [
+        {
+          "apply": "包装饮用水",
+          "method": "按 GB 8538 规定的方法测定"
+        },
         {
           "apply": "全部食品",
           "method": "按 GB 5009.15 规定的方法测定",
@@ -4546,7 +4302,7 @@
           "sub_remark": "",
           "remark": "",
           "a1_l1": "豆类及其制品",
-          "a1_l2": "豆类",
+          "a1_l2": "豆类（干豆、以干豆磨成的粉）",
           "a1_l3": "",
           "a1_l4": "",
           "inspection_method": "GB 5009.123",
@@ -4974,7 +4730,7 @@
         },
         {
           "label": "e",
-          "text": "仅适用于乳基产品,不含豆类成分。"
+          "text": "仅适用于乳基产品(不含豆类成分)。"
         }
       ],
       "inspection_method_rules": [
@@ -5390,7 +5146,7 @@
           "has_limit": true,
           "a1_l1": "油脂及其制品",
           "a1_l2": "动物油脂（例如：猪油、牛油、鱼油、磷虾油等）",
-          "a1_l3": "水产动物油脂",
+          "a1_l3": "",
           "a1_l4": "",
           "remark": "a",
           "note": "a",
@@ -11594,5 +11350,5 @@
       ]
     }
   ],
-  "_last_fix": "v82-fix93-nuts-cooked-duplicate-2026-09-03"
+  "_last_fix": "v82-fix97-notes-methods-spirulina-repoint-dedupe-2026-09-03"
 }
