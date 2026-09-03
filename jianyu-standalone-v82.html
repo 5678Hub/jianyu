@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v82-fix99-normfix-2026-09-03">
+<meta name="version" content="v82-fix100-stats-align-2026-09-03">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   // v72: 单一 CACHE_BUST,与 sw.js 保持一致,避免多个 hardcoded 版本号不同步
-  var CACHE_BUST = 'v82-fix99-normfix-2026-09-03';
+  var CACHE_BUST = 'v82-fix100-stats-align-2026-09-03';
   (function() {
     var EXPECTED = CACHE_BUST;
     // 第 1 层:URL cbust 缺失 → 跳一次
@@ -12729,17 +12729,29 @@ function statsForPath(path) {
   }
   if (curNode && Array.isArray(curNode.children)) categories = curNode.children.length;
 
-  // 2. limits:本级 idx 中 has_limit=true 的 row 数(与详情页本级渲染一致)
-  // v82-fix24: 取消 a1_lN 字段更深一层为空的过滤。
-  //   原 v82-fix19 过滤会排除 L2 「发酵酒」 idx 中 a1_l3='黄酒' 的 row (因为 a1 树没 L3 黄酒节点,
-  //   walkExact Fallback B 把 row 注册到 L2 idx),导致 sidebar 显示「0 条限量」与详情页本级 1 条不一致。
-  //   改为直接 idx.get(path) 中所有 has_limit=true 的 row, 与 renderTreeDetail 本级渲染对齐。
-  const ownItems = (idx.get(pathKey(path)) || []).filter(it => it.has_limit !== false);
+  // 2. limits:本级 idx 中按 renderTreeDetail「本级」口径可显示的限量行数
+  // v82-fix100: 与详情页严格对齐,解决 dual-limit / sub_limit 节点 sidebar 与 detail 数量不一致。
+  //   旧逻辑只统计 has_limit !== false 的 item 数,漏了 sub_has_limit 行(如水产品味品 sub 无机砷 0.5);
+  //   也未应用 isApplicableToPath,导致多子类列举项在父节点被重复计数。
+  //   新逻辑：先用 isApplicableToPath(path) 过滤 idx 命中项（同 renderTreeDetail primaryItems）,
+  //   再按 renderLimitTable 可见行计数(main + sub)。
+  const rawItems = idx.get(pathKey(path)) || [];
+  const ownItems = rawItems.filter(it => isApplicableToPath(it, path));
+  const visibleRows = [];
+  ownItems.forEach(it => {
+    const mainVal = (it.limit_value || '').toString().trim();
+    const subVal  = (it.sub_value  || '').toString().trim();
+    const hasMain = (it.has_limit === true) || (mainVal && mainVal !== '—' && it.has_limit === undefined);
+    const hasSub  = (it.sub_has_limit === true) || (subVal && subVal !== '—' && it.sub_has_limit === undefined);
+    if (hasMain) visibleRows.push(it._contaminant || '');
+    if (hasSub)  visibleRows.push(it._contaminant || '');
+  });
+  const limits = visibleRows.length;
 
-  // 3. kinds:own row 涉及的污染物种类数(用 _contaminant 字段,与详情页一致)
-  const kinds = new Set(ownItems.map(it => (it._contaminant || '').trim()).filter(Boolean)).size;
+  // 3. kinds:本级 own row 涉及的污染物种类数(与详情页「适用污染物」一致)
+  const kinds = new Set(visibleRows.map(c => c.trim()).filter(Boolean)).size;
 
-  return { categories, limits: ownItems.length, kinds };
+  return { categories, limits, kinds };
 }
 
 // 递归展平树节点
