@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!-- v82-final 完整功能清单 + 用户验证清单 -->
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>GB 2762-2025 应用 v82-final 完整功能清单</title>
+<style>
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 1100px; margin: 30px auto; padding: 0 20px; color: #1a1a1a; line-height: 1.6; }
+  h1 { color: #1f6e3a; border-bottom: 3px solid #1f6e3a; padding-bottom: 10px; }
+  h2 { color: #2a7a4f; margin-top: 40px; border-left: 4px solid #1f6e3a; padding-left: 12px; }
+  h3 { color: #444; margin-top: 24px; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+  th, td { border: 1px solid #d0d0d0; padding: 8px 10px; text-align: left; }
+  th { background: #e8f0e5; font-weight: 600; }
+  tr:nth-child(even) td { background: #f7faf6; }
+  .status-pass { color: #1f6e3a; font-weight: 600; }
+  .status-empty { color: #999; }
+  .verify { background: #fffce8; border-left: 3px solid #f5c542; padding: 12px 16px; margin: 12px 0; }
+  .file-link { color: #0066cc; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+  .tag-ok { background: #e0f0d8; color: #1f6e3a; }
+  .tag-pending { background: #fff4d0; color: #a06a00; }
+  code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: Consolas, monospace; }
+</style>
+</head>
+<body>
+
+<h1>GB 2762-2025 应用 v82-final 完整功能清单</h1>
+
+<p><strong>更新时间</strong>: 2026-09-03 09:00 | <strong>GitHub Pages</strong>: <a href="https://5678hub.github.io/jianyu/">https://5678hub.github.io/jianyu/</a> | <strong>本地</strong>: http://127.0.0.1:8765/jianyu-standalone-v82.html</p>
+
+<h2>一、整体状态</h2>
+
+<table>
+<tr><th>维度</th><th>数据</th></tr>
+<tr><td>总污染物表</td><td>12 (Pb/Cd/Hg/As/Cr/BaP/3-MCPD/亚硝基/锡/NDMA/PCB/苯并芘)</td></tr>
+<tr><td>总 row 数</td><td>290 (含主条目+子条目)</td></tr>
+<tr><td>A.1 树 L1 节点</td><td>23 个食品大类</td></tr>
+<tr><td>A.1 树 L3/L4 节点</td><td>195 个</td></tr>
+<tr><td>idx 命中节点</td><td>99 个 (有 own row 显示)</td></tr>
+<tr><td>idx 空节点</td><td>96 个 (走 ancestorsLevels fallback)</td></tr>
+<tr><td>idx 空 ancestorsLevels 有显示</td><td>68 个 (符合 PDF 表达)</td></tr>
+<tr><td>idx 空 ancestorsLevels 全空</td><td>28 个 (PDF 表达即空)</td></tr>
+<tr><td>git commit</td><td>fecba65 (v82-fix85 取消跨级段)</td></tr>
+<tr><td>HTML MD5 (4 副本)</td><td>19d9f5b118d1a3622b570816e3591b06</td></tr>
+</table>
+
+<h2>二、核心功能清单</h2>
+
+<h3>1. 数据层</h3>
+<table>
+<tr><th>功能</th><th>实现</th><th>状态</th></tr>
+<tr><td>JSON 数据加载</td><td>fetch('./data/gb2762/gb2762_2025.json?t=' + Date.now())</td><td class="status-pass">正常</td></tr>
+<tr><td>多源 fallback</td><td>本地 → GitHub Pages → 三级 fallback</td><td class="status-pass">正常</td></tr>
+<tr><td>A.1 分类树</td><td>DATA.appendix_a1.tree (23 L1 → 多级嵌套)</td><td class="status-pass">正常</td></tr>
+<tr><td>污染物表</td><td>DATA.contaminants (12 个表)</td><td class="status-pass">正常</td></tr>
+</table>
+
+<h3>2. 渲染层</h3>
+<table>
+<tr><th>功能</th><th>实现</th><th>状态</th></tr>
+<tr><td>左侧 A.1 分类树</td><td>递归渲染所有 L1/L2/L3/L4 节点</td><td class="status-pass">正常</td></tr>
+<tr><td>右侧食品详情卡片</td><td>节点名 + emoji + 元数据</td><td class="status-pass">正常</td></tr>
+<tr><td>本级 own row 显示</td><td>primaryItems = idx.get(pathKey) 或 fallback B</td><td class="status-pass">正常</td></tr>
+<tr><td>ancestorsLevels fallback 段</td><td>按祖先逐级显示 (L4 → L3 → L2 → L1)</td><td class="status-pass">正常</td></tr>
+<tr><td>L2 节点显示 L1 通类 row</td><td>v82-fix82 Plan B (path.length===2 不过滤)</td><td class="status-pass">正常</td></tr>
+<tr><td>L3+ 节点过滤 L1 通类 row</td><td>v82-fix82 Plan B (path.length>=3 过滤)</td><td class="status-pass">正常</td></tr>
+<tr><td>「上一级/上二级/上三级」按钮</td><td>点击跳转到对应祖先节点</td><td class="status-pass">正常</td></tr>
+<tr><td>「适用污染物」计数</td><td>统计 own row 中的污染物种类数</td><td class="status-pass">正常</td></tr>
+<tr><td>检测方法展示</td><td>每条 row 显示 GB 5009.xx 检测方法</td><td class="status-pass">正常</td></tr>
+<tr><td>Excel 导出</td><td>导出当前节点的限量表为 xlsx</td><td class="status-pass">正常</td></tr>
+</table>
+
+<h3>3. 校验层</h3>
+<table>
+<tr><th>功能</th><th>实现</th><th>状态</th></tr>
+<tr><td>isApplicableToPath</td><td>检查 row 是否适用于当前节点路径 (除外列表)</td><td class="status-pass">正常</td></tr>
+<tr><td>multi-sub-item 判定</td><td>food 字段多子类名列举项不显示在挂载节点本级</td><td class="status-pass">正常</td></tr>
+<tr><td>single-sub-item 判定</td><td>单具体子类名专属项不显示在挂载节点本级</td><td class="status-pass">正常</td></tr>
+<tr><td>除外项智能分隔</td><td>仅切顿号/逗号 (不和/及)</td><td class="status-pass">正常</td></tr>
+<tr><td>核心名匹配</td><td>2 字符短项 (蜜饯) 精确匹配 (v72)</td><td class="status-pass">正常</td></tr>
+<tr><td>括号深度跟踪</td><td>正确解析嵌套括号 (蜜饯、其他食用菌除外)</td><td class="status-pass">正常</td></tr>
+<tr><td>归属与继承</td><td>v82-fix82 Plan B 整体规则</td><td class="status-pass">正常</td></tr>
+</table>
+
+<h2>三、96 个 idx 空节点按章节分类</h2>
+
+<h3>1. ancestorsLevels 有显示 (68 个) — 符合 PDF 表达</h3>
+
+<table>
+<tr><th>章节</th><th>节点数</th><th>主要 row 来源</th></tr>
+<tr><td>水产动物及其制品</td><td>11</td><td>L2「鲜、冻水产动物」通类 + L3 own</td></tr>
+<tr><td>水果及其制品</td><td>7</td><td>L2「水果制品」Pb 0.2</td></tr>
+<tr><td>肉及肉制品</td><td>14</td><td>L2「肉制品」Pb/Cd/NDMA</td></tr>
+<tr><td>蔬菜及其制品</td><td>4</td><td>L2「蔬菜制品」Pb 0.3</td></tr>
+<tr><td>藻类及其制品</td><td>5</td><td>L2「藻类制品」Pb 1.0</td></tr>
+<tr><td>调味品</td><td>4</td><td>L2 多个通类</td></tr>
+<tr><td>谷物及其制品</td><td>16</td><td>L2「谷物碾磨加工品」「谷物制品」</td></tr>
+<tr><td>豆类及其制品</td><td>3</td><td>L2「豆类制品」Pb 0.3</td></tr>
+<tr><td>饮料类 (4)</td><td>4</td><td>L2「包装饮用水」「固体饮料」</td></tr>
+</table>
+
+<h3>2. ancestorsLevels 全空 (28 个) — PDF 表达即为空</h3>
+
+<div class="verify">
+<strong>说明</strong>：这些节点的 L2 通类 row 在数据中不存在（PDF 原文也没为这些节点所属的 L2 章节单独写 row）。按用户「没有就不显示」原则，ancestorsLevels 段为空是 PDF 真实表达。
+</div>
+
+<table>
+<tr><th>章节</th><th>节点数</th><th>节点</th></tr>
+<tr><td>坚果及籽类</td><td>4</td><td>熟制坚果/坚果罐头/坚果泥/其他坚果制品 (L2「坚果及籽类制品」无通类 row)</td></tr>
+<tr><td>油脂及其制品</td><td>1</td><td>其他油脂制品 (L2「油脂制品」无通类 row)</td></tr>
+<tr><td>蛋及蛋制品</td><td>5</td><td>卤蛋/糟蛋/皮蛋/咸蛋/其他蛋制品 (L2「蛋制品」无通类 row)</td></tr>
+<tr><td>食用菌及其制品</td><td>15</td><td>平菇/牛肝菌/鸡枞/银耳 等 (L2「食用菌制品」「新鲜食用菌」无通类 row)</td></tr>
+<tr><td>饮料类</td><td>3</td><td>植物蛋白饮料/复合蛋白饮料/其他蛋白饮料 (L2「蛋白饮料」无通类 row)</td></tr>
+</table>
+
+<h2>四、用户验证清单</h2>
+
+<div class="verify">
+<strong>操作</strong>：打开 <a href="https://5678hub.github.io/jianyu/">https://5678hub.github.io/jianyu/</a>，按下列清单逐一验证。
+</div>
+
+<h3>✅ 核心功能验证 (必做)</h3>
+
+<table>
+<tr><th>#</th><th>测试节点</th><th>期望显示</th></tr>
+<tr><td>1</td><td>谷物 → 谷物碾磨加工品 → 糙米 (包括色稻米)</td><td>本级 own 段: Cd 0.2 / Hg 0.02 / 无机砷 0.35 / BaP 2.0 (共 4 条)</td></tr>
+<tr><td>2</td><td>水产 → 鲜、冻水产动物 → 软体动物 → 头足类</td><td>本级 own 段: Cd 2.0 (modif 去除内脏, v82-fix82 task3 新增 idx=145)</td></tr>
+<tr><td>3</td><td>水果 → 水果制品 → 水果罐头</td><td>ancestorsLevels L2 段: 1 条「水果制品 Pb 0.2」</td></tr>
+<tr><td>4</td><td>蔬菜 → 蔬菜制品 → 蔬菜罐头</td><td>ancestorsLevels L2 段: 1 条「蔬菜制品 Pb 0.3」</td></tr>
+<tr><td>5</td><td>蛋 → 蛋制品 → 卤蛋</td><td>ancestorsLevels 段全空 (L2「蛋制品」无通类 row, PDF 真实表达)</td></tr>
+<tr><td>6</td><td>食用菌 → 食用菌制品 → 平菇</td><td>ancestorsLevels 段全空 (L2「食用菌制品」无通类 row)</td></tr>
+<tr><td>7</td><td>饮料 → 蛋白饮料 → 植物蛋白饮料</td><td>ancestorsLevels 段全空 (L2「蛋白饮料」无通类 row)</td></tr>
+</table>
+
+<h3>✅ 跨级段已撤回验证 (v82-fix85)</h3>
+
+<table>
+<tr><th>#</th><th>测试节点</th><th>期望显示</th></tr>
+<tr><td>1</td><td>水果 → 水果制品 → 醋、油或盐渍水果</td><td>仅 ancestorsLevels 段 1 条「水果制品 Pb 0.2」, <strong>无「同章节其他通类」段</strong></td></tr>
+<tr><td>2</td><td>肉 → 肉制品 → 熟肉制品</td><td>仅 ancestorsLevels 段 5 条, <strong>无「同 L3 其他 L4 兄弟」段</strong></td></tr>
+</table>
+
+<h3>✅ 导出功能验证</h3>
+
+<table>
+<tr><th>#</th><th>测试节点</th><th>期望结果</th></tr>
+<tr><td>1</td><td>点击「导出 Excel」按钮 (谷物 → 糙米)</td><td>下载 .xlsx 文件, 包含本级 own row + ancestorsLevels 段</td></tr>
+<tr><td>2</td><td>打开 .xlsx</td><td>列: 污染物/限量要求/单位/检测方法/备注</td></tr>
+</table>
+
+<h2>五、已知机制说明</h2>
+
+<ol>
+<li><strong>idx 命中</strong>：节点有 own row 注册到 pathKey → 显示本级 own row</li>
+<li><strong>idx 空 + ancestorsLevels 有显示</strong>：L2 通类 row 存在 → 显示 fallback row</li>
+<li><strong>idx 空 + ancestorsLevels 全空</strong>：L2 通类 row 不存在 → 不显示任何内容 (PDF 表达即空)</li>
+<li><strong>L3+ 节点不显示 L1 通类 row</strong>：v82-fix82 决策 (避免机制层 row 扩散)</li>
+<li><strong>L2 节点可显示 L1 通类 row</strong>：v82-fix82 决策 (如「蛋制品」显示 L1「蛋及蛋制品」row)</li>
+<li><strong>跨级段已撤回</strong>：v82-fix85 取消「同章节其他通类」+「同 L3 其他 L4 兄弟」段</li>
+</ol>
+
+<h2>六、附录：版本历史</h2>
+
+<table>
+<tr><th>版本</th><th>变更</th><th>commit</th></tr>
+<tr><td>v82-final</td><td>取消跨级段, ancestorsLevels 段稳定</td><td>fecba65</td></tr>
+<tr><td>v82-fix85</td><td>撤回 v82-fix83/84 跨级显示</td><td>fecba65</td></tr>
+<tr><td>v82-fix84</td><td>L4 节点跨 L3 兄弟显示 (已撤回)</td><td>a9cdc6b</td></tr>
+<tr><td>v82-fix83</td><td>L3 节点跨 L2 通类显示 (已撤回)</td><td>320e6cd</td></tr>
+<tr><td>v82-fix82-task3</td><td>头足类+腹足类 L4 镉 2.0 复制挂载</td><td>136b4bd</td></tr>
+<tr><td>v82-fix81</td><td>恢复 ancestorsLevels 显示</td><td>(合并前)</td></tr>
+<tr><td>v82-fix80</td><td>idx=68 麦片/面筋/其他谷物制品 多节点挂载</td><td>(合并前)</td></tr>
+</table>
+
+<h2>七、数据校对审计脚本清单</h2>
+
+<ul>
+<li><code>scripts/audit_full_walkexact_v82fix82.py</code> - walkExact 模拟 (19 个 idx 空)</li>
+<li><code>scripts/audit_v82final_22_nodes.py</code> - 22 节点 PDF 深度核对</li>
+<li><code>scripts/audit_v82final_total.py</code> - 96 节点完整状态</li>
+<li><code>scripts/audit_v82fix85_empty_ancestors.py</code> - ancestorsLevels 空节点扫描</li>
+<li><code>scripts/audit_v82fix84_l3_grouped.py</code> - L3 idx 空按章节分组</li>
+<li><code>scripts/fix_mount_cd_to_cephalopoda_gastropoda_v82fix82.py</code> - 头足类+腹足类复制挂载</li>
+</ul>
+
+</body>
+</html>
