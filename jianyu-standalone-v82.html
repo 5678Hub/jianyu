@@ -13398,8 +13398,49 @@ function renderTreeDetail() {
       });
     }
 
-    // v82-fix85: 取消 v82-fix83 / v82-fix84 跨级段 (用户反馈「不要跨级了, 只显示上一级即可」)
-    //   只保留 ancestorsLevels 段 (按祖先逐级显示), 不再额外显示跨 L2 通类 / 跨 L4 兄弟 row
+    // v82-fix86: L3+ 节点 ancestorsLevels 段全空时, 跨级显示 L1 通类 row
+    //   触发条件: path.length >= 3 && ancestorsLevels.length === 0 && DATA.contaminants 存在
+    //   策略: 收集 a1l1=path[0], a1l2/l3/l4 全空的 row (即 L1 通类 row)
+    //   标签: 「上级分类 + L1 名 赋予」(与 ancestorsLevels 段统一)
+    //   用户反馈 (2026-09-03): 「卤蛋 L3 上级 L2 是 0, 应该返回 L1」
+    if (path.length >= 3 && ancestorsLevels.length === 0 && DATA && DATA.contaminants) {
+      const pathL1 = path[0];
+      const l1Rows = [];
+      DATA.contaminants.forEach(con => {
+        con.items.forEach(it => {
+          // 必须 a1l1 = path[0] (L1 通类 row)
+          if (norm(it.a1_l1) !== norm(pathL1)) return;
+          // 必须 a1l2/l3/l4 全空 (L1 通类 row, 非 L2/L3/L4 own row)
+          if (it.a1_l2 || it.a1_l3 || it.a1_l4) return;
+          // 注入污染表元数据
+          l1Rows.push(Object.assign({}, it, {
+            _contaminant: con.contaminant, _symbol: con.symbol, _unit: con.unit,
+            _table_no: con.table_no, _footnotes: con.footnotes,
+            _inspection_method: con.inspection_method, _rules: con.inspection_method_rules,
+            _viaSub: pathL1
+          }));
+        });
+      });
+      // 用 isApplicableToPath 过滤 (用 path[0] 作为 ancestorPath)
+      const l1Filtered = l1Rows.filter(x => isApplicableToPath(x, [path[0]]));
+      // dedupKey 去重 (排除 own 段已有的)
+      const seen = new Set();
+      for (const x of l1Filtered) {
+        const k = dedupKey(x);
+        if (primKey.has(k)) continue;
+        if (seen.has(k)) continue;
+        seen.add(k);
+      }
+      const l1Deduped = l1Filtered.filter(x => !primKey.has(dedupKey(x)));
+      if (l1Deduped.length > 0) {
+        ancestorsLevels.push({
+          tag: '上级分类',
+          label: `${pathL1} 赋予的污染物限量要求`,
+          isSelf: false,
+          items: l1Deduped
+        });
+      }
+    }
   }
 
   // 卡片
