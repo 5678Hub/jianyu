@@ -13220,7 +13220,12 @@ function renderTreeDetail() {
         // 改为只切顿号和逗号作为分隔符。
         const excList = excludeStr.split(/[、,，]/).filter(Boolean);
         for (const exc of excList) {
-          const normExc = exc.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+          // v82-fix87: 处理「及以上」修饰语 (例: 「银耳及以上食用菌的制品除外」→ 「银耳」)
+          //   避免「银耳及以上食用菌的制品」整词与 A.1 树「银耳制品」L4 节点匹配不上
+          let normExc = exc.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
+          if (normExc.includes('及以上')) {
+            normExc = normExc.split('及以上')[0];
+          }
           if (!normExc || normExc.length < 2) continue;
           for (const name of currentPath) {
             const normName = name.replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
