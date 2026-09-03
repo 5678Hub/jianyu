@@ -45,6 +45,7 @@ def main():
         src_row = cont['items'][src_idx]
         # 复制
         new_row = dict(src_row)
+        new_row['a1_l2'] = '坚果及籽类制品'  # a1 路径: L1 坚果及籽类 → L2 坚果及籽类制品 → L3 熟制坚果
         new_row['a1_l3'] = L3_NAME
         new_row['a1_l4'] = ''
         # 在 src_idx + 1 位置插入

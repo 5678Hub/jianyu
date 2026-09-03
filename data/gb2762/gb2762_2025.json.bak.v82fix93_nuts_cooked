@@ -308,21 +308,6 @@
           "a1_l4": ""
         },
         {
-          "food": "生咖啡豆及烘焙咖啡豆",
-          "pollutant": "铅",
-          "limit_value": "0.5",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "d",
-          "modif": "",
-          "inspection_method": "GB 5009.12",
-          "a1_l1": "坚果及籽类",
-          "a1_l2": "坚果及籽类制品",
-          "a1_l3": "熟制坚果及籽类（带壳、脱壳、包衣）",
-          "a1_l4": ""
-        },
-        {
           "food": "水产制品(鱼类制品、海蜇制品除外)",
           "pollutant": "铅",
           "limit_value": "1.0",
@@ -2134,21 +2119,6 @@
           "a1_l1": "坚果及籽类",
           "a1_l2": "生干坚果及籽类（不包括谷物种子和豆类，包括咖啡豆、可可豆）",
           "a1_l3": "",
-          "a1_l4": ""
-        },
-        {
-          "food": "花生",
-          "pollutant": "镉",
-          "limit_value": "0.5",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "b",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "坚果及籽类",
-          "a1_l2": "坚果及籽类制品",
-          "a1_l3": "熟制坚果及籽类（带壳、脱壳、包衣）",
           "a1_l4": ""
         },
         {
@@ -11568,5 +11538,5 @@
       ]
     }
   ],
-  "_last_fix": "v82-fix93-nuts-cooked-duplicate-2026-09-03"
+  "_last_fix": "v82-fix30-ancestor-segmentation-2026-09-01"
 }
