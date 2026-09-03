@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v82-fix97-aquatic-2026-09-03">
+<meta name="version" content="v82-fix99-normfix-2026-09-03">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   // v72: 单一 CACHE_BUST,与 sw.js 保持一致,避免多个 hardcoded 版本号不同步
-  var CACHE_BUST = 'v82-fix97-aquatic-2026-09-03';
+  var CACHE_BUST = 'v82-fix99-normfix-2026-09-03';
   (function() {
     var EXPECTED = CACHE_BUST;
     // 第 1 层:URL cbust 缺失 → 跳一次
@@ -49,7 +49,7 @@
     } catch(e) {}
   })();
 </script>
-<title>[v82-fix73] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
+<title>[v82-fix99] GB 2762-2025 食品中污染物限量查询 · jianyu</title>
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='40' font-family='Arial,sans-serif' font-size='18' font-weight='600' fill='white' text-anchor='middle'>污染物</text></svg>">
 <meta name="theme-color" content="#1a365d">
 <style>
@@ -13459,7 +13459,7 @@ function renderTreeDetail() {
       DATA.contaminants.forEach(con => {
         con.items.forEach(it => {
           // 必须 a1l1 = path[0] (L1 通类 row)
-          if (norm(it.a1_l1) !== norm(pathL1)) return;
+          if (normName(it.a1_l1) !== normName(pathL1)) return;
           // 必须 a1l2/l3/l4 全空 (L1 通类 row, 非 L2/L3/L4 own row)
           if (it.a1_l2 || it.a1_l3 || it.a1_l4) return;
           // 注入污染表元数据
