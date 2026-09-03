@@ -13398,75 +13398,8 @@ function renderTreeDetail() {
       });
     }
 
-    // v82-fix83: L3 节点 idx 空时, 额外显示「跨 L2 通类 row 段」。
-    //   策略: 收集 a1l1=path[0], a1l2!=path[1], a1l3='', a1l4='' 的 row
-    //   (即同 L1 章节下, 其他 L2 通类 row + L1 通类 row)
-    //   排除 ancestorsLevels 段已显示的 row + 本级 primaryItems
-    //   仅当 path.length === 3 且 primaryItems.length === 0 时显示
-    // v82-fix84: 扩展到 L4 节点。L4 idx 空时额外显示「跨 L4 兄弟 row 段」:
-    //   收集 a1l1=path[0], a1l2=path[1], a1l3=path[2], a1l4!=path[3], a1l4!='' 的 row
-    //   (即同 L3 章节下其他 L4 兄弟 own row)
-    if ((path.length === 3 || path.length === 4) && primaryItems.length === 0 && DATA && DATA.contaminants) {
-      const pathL1 = path[0].replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
-      const pathL2 = path[1];
-      const pathL3 = path.length === 4 ? path[2] : null;
-      const pathL4 = path.length === 4 ? path[3] : null;
-      const crossItems = [];
-      DATA.contaminants.forEach(con => {
-        con.items.forEach(it => {
-          // 必须 a1l1 = path[0] (同 L1 章节)
-          const xL1 = (it.a1_l1 || '').toString().replace(/[()（）\[\]【】:：,，.。、]/g, '').toLowerCase().trim();
-          if (xL1 !== pathL1) return;
-          // 必须 a1l1 不空 (排除锡表空 row)
-          if (!it.a1_l1) return;
-
-          if (path.length === 3) {
-            // L3: 跨 L2 通类 row + L1 通类 row
-            // 必须 a1l2 ≠ path[1] (跨 L2)
-            if ((it.a1_l2 || '') === pathL2) return;
-            // 必须 a1l3/l4 空 (L2/L1 通类 row, 非其他 L3/L4 own row)
-            if (it.a1_l3 || it.a1_l4) return;
-          } else {
-            // L4: 跨 L4 兄弟 own row (同 L3 下其他 L4)
-            // 必须 a1l2 = path[1] (同 L2 章节)
-            if ((it.a1_l2 || '') !== pathL2) return;
-            // 必须 a1l3 = path[2] (同 L3 节点)
-            if ((it.a1_l3 || '') !== pathL3) return;
-            // 必须 a1l4 ≠ path[3], 且 a1l4 不空 (跨 L4 兄弟)
-            if (!it.a1_l4 || it.a1_l4 === pathL4) return;
-          }
-          // 注入污染表元数据
-          crossItems.push(Object.assign({}, it, {
-            _contaminant: con.contaminant, _symbol: con.symbol, _unit: con.unit,
-            _table_no: con.table_no, _footnotes: con.footnotes,
-            _inspection_method: con.inspection_method, _rules: con.inspection_method_rules,
-            _viaSub: path.length === 3 ? '同章节其他通类' : '同L3其他L4'
-          }));
-        });
-      });
-      // 用 isApplicableToPath 过滤
-      const ancestorPath = path.length === 3 ? [path[0]] : [path[0], path[1], path[2]];
-      const filtered2 = crossItems.filter(x => isApplicableToPath(x, ancestorPath));
-      // 收集已显示的 dedupKey, 去重
-      const shownKeys = new Set();
-      for (const seg of ancestorsLevels) {
-        for (const it of seg.items) shownKeys.add(dedupKey(it));
-      }
-      const crossFiltered = filtered2.filter(x => {
-        const k = dedupKey(x);
-        if (shownKeys.has(k)) return false;
-        shownKeys.add(k);
-        return true;
-      });
-      if (crossFiltered.length > 0) {
-        ancestorsLevels.push({
-          tag: '跨级',
-          label: path.length === 3 ? '同章节其他通类赋予的污染物限量要求' : '同 L3 其他 L4 兄弟赋予的污染物限量要求',
-          isSelf: false,
-          items: crossFiltered
-        });
-      }
-    }
+    // v82-fix85: 取消 v82-fix83 / v82-fix84 跨级段 (用户反馈「不要跨级了, 只显示上一级即可」)
+    //   只保留 ancestorsLevels 段 (按祖先逐级显示), 不再额外显示跨 L2 通类 / 跨 L4 兄弟 row
   }
 
   // 卡片
