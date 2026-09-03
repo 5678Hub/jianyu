@@ -2163,7 +2163,37 @@
           "inspection_method": "GB 5009.15",
           "a1_l1": "肉及肉制品",
           "a1_l2": "肉类（生鲜肉、冷却肉、冷冻肉等）",
+          "a1_l3": "",
+          "a1_l4": ""
+        },
+        {
+          "food": "畜禽肝脏及其制品",
+          "pollutant": "镉",
+          "limit_value": "0.5",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "肉及肉制品",
+          "a1_l2": "肉类（生鲜肉、冷却肉、冷冻肉等）",
           "a1_l3": "畜禽内脏（例如：肝、肾、肺、肠等）",
+          "a1_l4": ""
+        },
+        {
+          "food": "畜禽肾脏及其制品",
+          "pollutant": "镉",
+          "limit_value": "1.0",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.15",
+          "a1_l1": "肉及肉制品",
+          "a1_l2": "肉类（生鲜肉、冷却肉、冷冻肉等）",
+          "a1_l3": "",
           "a1_l4": ""
         },
         {
