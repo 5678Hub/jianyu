@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v82-fix104-ui-simplify-2026-09-04">
+<meta name="version" content="v82-fix106-footer-semantics-2026-09-04">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   // v72: 单一 CACHE_BUST,与 sw.js 保持一致,避免多个 hardcoded 版本号不同步
-  var CACHE_BUST = 'v82-fix104-ui-simplify-2026-09-04';
+  var CACHE_BUST = 'v82-fix106-footer-semantics-2026-09-04';
   (function() {
     var EXPECTED = CACHE_BUST;
     // 第 1 层:URL cbust 缺失 → 跳一次
@@ -11943,7 +11943,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
       ]
     }
   ],
-  "_last_fix": "v82-fix104-ui-simplify-2026-09-04"
+  "_last_fix": "v82-fix106-footer-semantics-2026-09-04"
 }
 </script>
 <script>
@@ -13404,7 +13404,9 @@ function renderTreeDetail() {
   tc.innerHTML = html;
   // 脚注/检验方法块:收集所有 levels 的 items（含 ancestors 块）
   const allItems = levels.flatMap(lv => lv.items);
-  fn.innerHTML = renderFootnotesFor(allItems, primaryName, bigName);
+  // v82-fix106: 本节点 own row（不含 ancestorsLevels 赋予的 row），与 sidebar「条限量」语义一致
+  const ownItems = (levels.find(lv => lv.isSelf) || { items: [] }).items;
+  fn.innerHTML = renderFootnotesFor(allItems, ownItems, primaryName, bigName);
 }
 
 function pickEmoji(name) {
@@ -13523,27 +13525,37 @@ function renderLimitTable(items, isSelf, nodeName, bigName) {
   return { html, count: expanded.length };
 }
 
-function renderFootnotesFor(items, nodeName, bigName) {
+function renderFootnotesFor(items, ownItems, nodeName, bigName) {
   // v82-fix104: UI 简化 - 删除底部 footnote-block 和 method-block
   //   - 完整脚注通过行内 badge hover/点击浮层显示 (上方 renderLimitTable 已加 data-fn)
   //   - 检验方法在表格 im 列已显示,底部无需重复
-  //   - 右栏末尾加 footer-block 收尾:本节点共 N 条限量 + 来源 GB 2762-2025 表 X
+  //   - 右栏末尾加 footer-block 收尾:本节点 own N 条限量 / 含上级继承 N 条 / 来源 GB 2762-2025 表 X
+  // v82-fix106: 拆分"本节点 own" 与"含上级继承"两组数据,标签语义与 sidebar「条限量」对齐
   let html = '';
   // 收集涉及的污染物表号 + 限量数 (去除 dual-limit sub 行重复计数,按唯一污染物计)
   const tableSet = new Set();
   const contamSet = new Set();
+  const ownContamSet = new Set();
   items.forEach(it => {
     if (it._table_no) tableSet.add(it._table_no);
     const c = (it._contaminant || it.pollutant || '').toString().trim();
     if (c) contamSet.add(c);
   });
+  (ownItems || []).forEach(it => {
+    const c = (it._contaminant || it.pollutant || '').toString().trim();
+    if (c) ownContamSet.add(c);
+  });
   const tables = Array.from(tableSet).sort((a, b) => a - b);
   const total = contamSet.size;
+  const ownTotal = ownContamSet.size;
+  const ownRows = (ownItems || []).length;
   html += '<div class="footer-block">';
-  if (total > 0) {
-    html += `<span class="fb-item"><span class="fb-label">本节点</span><span class="fb-value">${total} 项污染物</span></span>`;
+  // v82-fix106: "本节点" 只统计 own row,与 sidebar「条限量」语义一致
+  html += `<span class="fb-item"><span class="fb-label">本节点</span><span class="fb-value">${ownTotal} 项污染物 / ${ownRows} 条限量行</span></span>`;
+  // 含上级继承时单独显示
+  if (items.length > ownRows) {
+    html += `<span class="fb-item"><span class="fb-label">含上级继承</span><span class="fb-value">${items.length} 条限量行</span></span>`;
   }
-  html += `<span class="fb-item"><span class="fb-label">限量行</span><span class="fb-value">${items.length} 条</span></span>`;
   if (tables.length > 0) {
     html += `<span class="fb-item"><span class="fb-label">来源</span><span class="fb-value">GB 2762-2025 表 ${tables.join('/')}</span></span>`;
   }
