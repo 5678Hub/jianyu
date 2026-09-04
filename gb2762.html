@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v82-fix101-scope-2026-09-03">
+<meta name="version" content="v82-fix104-ui-simplify-2026-09-04">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   // v72: 单一 CACHE_BUST,与 sw.js 保持一致,避免多个 hardcoded 版本号不同步
-  var CACHE_BUST = 'v82-fix101-scope-2026-09-03';
+  var CACHE_BUST = 'v82-fix104-ui-simplify-2026-09-04';
   (function() {
     var EXPECTED = CACHE_BUST;
     // 第 1 层:URL cbust 缺失 → 跳一次
@@ -157,16 +157,22 @@ table.results td.remark { font-size: 12px; color: var(--c-text-2); font-style: i
 .empty-tip { color: var(--c-text-3); font-size: 13px; padding: 24px 0; text-align: center; }
 .empty-tip .emoji { font-size: 36px; display: block; margin-bottom: 6px; opacity: 0.4; }
 
-.footnote-block { background: #fffbea; border: 1px solid #f7e4a8; border-radius: var(--r-sm); padding: 10px 14px; margin-top: 12px; font-size: 12px; color: var(--c-text-2); }
-.footnote-block .fn-title { font-weight: 600; color: var(--c-warn); margin-bottom: 6px; font-size: 12px; }
-.footnote-block .fn-item { padding: 2px 0; }
-.footnote-block .fn-mark { display: inline-block; width: 18px; height: 18px; line-height: 18px; text-align: center; background: var(--c-warn); color: white; border-radius: 50%; font-size: 11px; margin-right: 6px; font-weight: 600; }
-/* 内联脚注 badge（表格 备注 列） */
-.fn-mark.inline { display: inline-block; min-width: 18px; height: 18px; line-height: 18px; padding: 0 5px; text-align: center; background: var(--c-warn); color: white; border-radius: 9px; font-size: 11px; margin-right: 4px; font-weight: 600; vertical-align: middle; cursor: help; }
+/* v82-fix104: 简化脚注 / 检验方法 UI
+   - 删除底部 footnote-block 和 method-block (与表格 im 列 + 行内 badge hover 重复)
+   - 行内 badge hover/点击 显示完整脚注内容 (单点信息闭环)
+   - 右栏末尾加 footer-block 收尾 (节点共 N 条限量 / 来源 GB 2762-2025 表 X)
+*/
+.fn-mark.inline { display: inline-block; min-width: 16px; height: 16px; line-height: 16px; padding: 0 4px; text-align: center; background: var(--c-warn); color: white; border-radius: 3px; font-size: 10.5px; margin-right: 4px; font-weight: 600; vertical-align: middle; cursor: help; user-select: none; }
+.fn-mark.inline:hover { background: #b8902c; }
 .remark-cell .remark-text { color: var(--c-text-2); font-size: 11.5px; }
-
-.method-block { background: var(--c-primary-soft); border: 1px solid #d3dfee; border-radius: var(--r-sm); padding: 10px 14px; margin-top: 10px; font-size: 12px; color: var(--c-text-2); }
-.method-block .m-title { font-weight: 600; color: var(--c-primary); margin-bottom: 4px; }
+/* 脚注 hover/点击 浮层 */
+.fn-popup { position: absolute; z-index: 9999; max-width: 320px; padding: 8px 10px; background: #fffef5; border: 1px solid #d8c46a; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); font-size: 12px; line-height: 1.55; color: var(--c-text-1); }
+.fn-popup .fn-popup-mark { display: inline-block; min-width: 16px; height: 16px; line-height: 16px; padding: 0 4px; margin-right: 6px; background: var(--c-warn); color: white; border-radius: 3px; font-size: 10.5px; font-weight: 600; vertical-align: middle; }
+/* 右栏末尾收尾 */
+.footer-block { margin-top: 18px; padding-top: 10px; border-top: 1px dashed var(--c-border, #e5e7eb); font-size: 11.5px; color: var(--c-text-3); display: flex; flex-wrap: wrap; gap: 10px 18px; }
+.footer-block .fb-item { white-space: nowrap; }
+.footer-block .fb-label { color: var(--c-text-3); margin-right: 4px; }
+.footer-block .fb-value { color: var(--c-text-1); font-weight: 500; }
 
 /* ============= 树形浏览模式 ============= */
 .tree-view { display: grid; grid-template-columns: 280px 1fr; gap: 14px; align-items: flex-start; }
@@ -886,7 +892,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "has_limit": true,
           "sub_value": "",
           "unit": "mg/kg",
-          "note": "d",
+          "note": "",
           "modif": "",
           "inspection_method": "GB 5009.12",
           "a1_l1": "坚果及籽类",
@@ -901,7 +907,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "has_limit": true,
           "sub_value": "",
           "unit": "mg/kg",
-          "note": "d",
+          "note": "",
           "modif": "",
           "inspection_method": "GB 5009.12",
           "a1_l1": "坚果及籽类",
@@ -1467,7 +1473,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
         {
           "food": "螺旋藻",
           "pollutant": "铅",
-          "limit_value": "0.5(干重计)",
+          "limit_value": "2.0(干重计)",
           "has_limit": true,
           "sub_value": "",
           "unit": "mg/kg",
@@ -1701,7 +1707,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "inspection_method": "GB 5009.12",
           "a1_l1": "酒类",
           "a1_l2": "发酵酒（例如：葡萄酒、黄酒、果酒、啤酒等）",
-          "a1_l3": "黄酒",
+          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -1972,16 +1978,12 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
         {
           "label": "c",
           "text": "液态婴幼儿配方食品根据8∶1的比例折算其限量。"
-        },
-        {
-          "label": "d",
-          "text": "仅限生咖啡豆及烘焙咖啡豆"
         }
       ],
       "inspection_method_rules": [
         {
           "apply": "包装饮用水",
-          "method": "按 GB 8538 规定的方法测定"
+          "method": "GB 8538"
         },
         {
           "apply": "其他食品",
@@ -2001,7 +2003,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
       "contaminant": "镉",
       "symbol": "Cd",
       "unit": "mg/kg",
-      "inspection_method": "食品按 GB 5009.15 规定的方法测定。",
+      "inspection_method": "包装饮用水按 GB 8538 规定的方法测定,其他食品按 GB 5009.15 规定的方法测定。",
       "items": [
         {
           "food": "谷物(稻谷除外)",
@@ -2169,21 +2171,6 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l4": ""
         },
         {
-          "food": "芹菜、黄花菜",
-          "pollutant": "镉",
-          "limit_value": "0.2",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "蔬菜及其制品（包括薯类，不包括食用菌）",
-          "a1_l2": "新鲜蔬菜（未经加工的、经表面处理的、去皮或预切的、冷冻的蔬菜）",
-          "a1_l3": "其他新鲜蔬菜（包括瓜果类、鳞茎类和水生类、芽菜类；竹笋、黄花菜等多年生蔬菜）",
-          "a1_l4": ""
-        },
-        {
           "food": "新鲜水果",
           "pollutant": "镉",
           "limit_value": "0.05",
@@ -2244,21 +2231,6 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l4": ""
         },
         {
-          "food": "香菇及其制品",
-          "pollutant": "镉",
-          "limit_value": "0.5",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
-          "a1_l4": ""
-        },
-        {
           "food": "羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑及以上食用菌的制品",
           "pollutant": "镉",
           "limit_value": "0.6",
@@ -2271,21 +2243,6 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
           "a1_l3": "羊肚菌",
-          "a1_l4": ""
-        },
-        {
-          "food": "羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "0.6",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -2329,38 +2286,8 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
-          "a1_l4": ""
-        },
-        {
-          "food": "羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "0.6",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
           "a1_l3": "青头菌",
-          "a1_l4": ""
-        },
-        {
-          "food": "羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "0.6",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -2389,38 +2316,8 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
-          "a1_l4": ""
-        },
-        {
-          "food": "羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "0.6",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
           "a1_l3": "榛蘑",
-          "a1_l4": ""
-        },
-        {
-          "food": "羊肚菌、獐头菌、青头菌、鸡油菌、榛蘑及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "0.6",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -2464,38 +2361,8 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
-          "a1_l4": ""
-        },
-        {
-          "food": "松茸、牛肝菌、鸡枞、多汁乳菇及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "1.0",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
-          "a1_l3": "牛肝菌",
-          "a1_l4": ""
-        },
-        {
-          "food": "松茸、牛肝菌、鸡枞、多汁乳菇及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "1.0",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
+          "a1_l3": "牛肝菌[美味牛肝菌,兰茂牛肝菌,茶褐新生牛肝菌,远东邹盖牛肝菌]",
           "a1_l4": ""
         },
         {
@@ -2524,38 +2391,8 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
-          "a1_l4": ""
-        },
-        {
-          "food": "松茸、牛肝菌、鸡枞、多汁乳菇及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "1.0",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
           "a1_l3": "多汁乳菇",
-          "a1_l4": ""
-        },
-        {
-          "food": "松茸、牛肝菌、鸡枞、多汁乳菇及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "1.0",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -2599,38 +2436,8 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
-          "a1_l4": ""
-        },
-        {
-          "food": "松露、姬松茸及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "2.0",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
           "a1_l3": "姬松茸",
-          "a1_l4": ""
-        },
-        {
-          "food": "松露、姬松茸及以上食用菌的制品",
-          "pollutant": "镉",
-          "limit_value": "2.0",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -2646,21 +2453,6 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l1": "食用菌及其制品",
           "a1_l2": "新鲜食用菌（未经加工的、经表面处理的、预切的、冷冻的食用菌）",
           "a1_l3": "木耳 （毛木耳,黑木耳）",
-          "a1_l4": ""
-        },
-        {
-          "food": "木耳及其制品、银耳及其制品",
-          "pollutant": "镉",
-          "limit_value": "0.5",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "干重计",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "食用菌及其制品",
-          "a1_l2": "食用菌制品",
-          "a1_l3": "",
           "a1_l4": ""
         },
         {
@@ -2715,7 +2507,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "has_limit": true,
           "sub_value": "",
           "unit": "mg/kg",
-          "note": "b",
+          "note": "",
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "坚果及籽类",
@@ -2730,7 +2522,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "has_limit": true,
           "sub_value": "",
           "unit": "mg/kg",
-          "note": "b",
+          "note": "",
           "modif": "",
           "inspection_method": "GB 5009.15",
           "a1_l1": "坚果及籽类",
@@ -2769,36 +2561,6 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "a1_l4": ""
         },
         {
-          "food": "畜禽肝脏及其制品",
-          "pollutant": "镉",
-          "limit_value": "0.5",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "肉及肉制品",
-          "a1_l2": "肉制品（包括内脏制品、血制品）",
-          "a1_l3": "畜禽内脏",
-          "a1_l4": ""
-        },
-        {
-          "food": "畜禽肾脏及其制品",
-          "pollutant": "镉",
-          "limit_value": "1.0",
-          "has_limit": true,
-          "sub_value": "",
-          "unit": "mg/kg",
-          "note": "",
-          "modif": "",
-          "inspection_method": "GB 5009.15",
-          "a1_l1": "肉及肉制品",
-          "a1_l2": "肉制品（包括内脏制品、血制品）",
-          "a1_l3": "畜禽内脏",
-          "a1_l4": ""
-        },
-        {
           "food": "鱼类",
           "pollutant": "镉",
           "limit_value": "0.1",
@@ -2825,7 +2587,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "inspection_method": "GB 5009.15",
           "a1_l1": "水产动物及其制品",
           "a1_l2": "鲜、冻水产动物",
-          "a1_l3": "甲壳类",
+          "a1_l3": "甲壳类（例如：虾类、蟹类等）",
           "a1_l4": ""
         },
         {
@@ -2840,7 +2602,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "inspection_method": "GB 5009.15",
           "a1_l1": "水产动物及其制品",
           "a1_l2": "鲜、冻水产动物",
-          "a1_l3": "甲壳类",
+          "a1_l3": "甲壳类（例如：虾类、蟹类等）",
           "a1_l4": ""
         },
         {
@@ -3073,13 +2835,13 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
         {
           "label": "a",
           "text": "稻谷以糙米计。"
-        },
-        {
-          "label": "b",
-          "text": "仅限花生"
         }
       ],
       "inspection_method_rules": [
+        {
+          "apply": "包装饮用水",
+          "method": "GB 8538"
+        },
         {
           "apply": "全部食品",
           "method": "按 GB 5009.15 规定的方法测定",
@@ -3774,7 +3536,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
       "inspection_method_rules": [
         {
           "apply": "饮用天然矿泉水",
-          "method": "按 GB 8538 规定的方法测定"
+          "method": "GB 8538"
         },
         {
           "apply": "其他食品",
@@ -4707,7 +4469,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
       "inspection_method_rules": [
         {
           "apply": "包装饮用水",
-          "method": "按 GB 8538 规定的方法测定"
+          "method": "GB 8538"
         },
         {
           "apply": "其他食品",
@@ -5133,7 +4895,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "sub_remark": "",
           "remark": "",
           "a1_l1": "豆类及其制品",
-          "a1_l2": "豆类",
+          "a1_l2": "豆类（干豆、以干豆磨成的粉）",
           "a1_l3": "",
           "a1_l4": "",
           "inspection_method": "GB 5009.123",
@@ -5561,13 +5323,13 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
         },
         {
           "label": "e",
-          "text": "仅适用于乳基产品,不含豆类成分。"
+          "text": "仅适用于乳基产品(不含豆类成分)。"
         }
       ],
       "inspection_method_rules": [
         {
           "apply": "饮料类",
-          "method": "按 GB 8538 规定的方法测定"
+          "method": "GB 8538"
         },
         {
           "apply": "其他食品",
@@ -5977,7 +5739,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "has_limit": true,
           "a1_l1": "油脂及其制品",
           "a1_l2": "动物油脂（例如：猪油、牛油、鱼油、磷虾油等）",
-          "a1_l3": "水产动物油脂",
+          "a1_l3": "",
           "a1_l4": "",
           "remark": "a",
           "note": "a",
@@ -12181,7 +11943,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
       ]
     }
   ],
-  "_last_fix": "v82-fix93-nuts-cooked-duplicate-2026-09-03"
+  "_last_fix": "v82-fix104-ui-simplify-2026-09-04"
 }
 </script>
 <script>
@@ -13729,7 +13491,15 @@ function renderLimitTable(items, isSelf, nodeName, bigName) {
     const noteLetter = (it._noteLetter || '').toString().trim();
     let remarkHtml = '';
     if (noteLetter) {
-      remarkHtml += `<span class="fn-mark inline" title="脚注 ${escapeAttr(noteLetter)}">${escapeHTML(noteLetter)}</span>`;
+      // v82-fix104: 查找完整脚注文本供 hover/点击 浮层显示 (单点信息闭环)
+      let fnText = '';
+      const fns = it._footnotes || [];
+      for (const f of fns) {
+        if ((f.label || f.mark || '').toString().trim() === noteLetter) { fnText = f.text || ''; break; }
+      }
+      const tooltip = fnText ? `${noteLetter} ${fnText}` : `脚注 ${noteLetter}`;
+      // data-fn 用于点击事件, title 用于 hover fallback (移动端无 hover 时靠点击)
+      remarkHtml += `<span class="fn-mark inline" data-fn="${escapeAttr(fnText)}" title="${escapeAttr(tooltip)}">${escapeHTML(noteLetter)}</span>`;
     }
     if (remarkText) {
       remarkHtml += `<span class="remark-text">${escapeHTML(remarkText)}</span>`;
@@ -13754,42 +13524,30 @@ function renderLimitTable(items, isSelf, nodeName, bigName) {
 }
 
 function renderFootnotesFor(items, nodeName, bigName) {
-  // 脚注块：仅展示当前 items 引用过的脚注（避免堆太多不相关的）
-  const seenFn = new Map();
-  const referenced = new Set();
-  items.forEach(it => {
-    const letter = (it._noteLetter || it.note || '').toString().trim();
-    if (letter) referenced.add(letter);
-    if (it._footnotes) it._footnotes.forEach(f => {
-      // 兼容 {label, text} 和 {mark, text} 两种字段命名
-      const k = f.label || f.mark;
-      if (k && f.text && !seenFn.has(k + '|' + f.text)) seenFn.set(k + '|' + f.text, { key: k, text: f.text });
-    });
-  });
+  // v82-fix104: UI 简化 - 删除底部 footnote-block 和 method-block
+  //   - 完整脚注通过行内 badge hover/点击浮层显示 (上方 renderLimitTable 已加 data-fn)
+  //   - 检验方法在表格 im 列已显示,底部无需重复
+  //   - 右栏末尾加 footer-block 收尾:本节点共 N 条限量 + 来源 GB 2762-2025 表 X
   let html = '';
-  if (seenFn.size > 0 && referenced.size > 0) {
-    html += '<div class="footnote-block"><div class="fn-title">脚注说明</div>';
-    seenFn.forEach(f => {
-      if (referenced.has(f.key)) {
-        html += `<div class="fn-item"><span class="fn-mark">${f.key}</span>${escapeHTML(f.text)}</div>`;
-      }
-    });
-    html += '</div>';
-  }
-  // 检验方法块:智能匹配当前食品的适用方法
-  const methodSet = new Set();
+  // 收集涉及的污染物表号 + 限量数 (去除 dual-limit sub 行重复计数,按唯一污染物计)
+  const tableSet = new Set();
+  const contamSet = new Set();
   items.forEach(it => {
-    const m = pickMethod(it._rules, nodeName, bigName) || it._inspection_method;
-    if (m) methodSet.add(m);
+    if (it._table_no) tableSet.add(it._table_no);
+    const c = (it._contaminant || it.pollutant || '').toString().trim();
+    if (c) contamSet.add(c);
   });
-  if (methodSet.size > 0) {
-    html += '<div class="method-block"><div class="m-title">📋 检验方法</div>';
-    methodSet.forEach(m => {
-      const ctxLabel = nodeName || bigName;
-      html += `<div style="margin: 4px 0;"><span style="font-size:10px;color:var(--c-text-3);">适用:</span> ${escapeHTML(ctxLabel)} → ${escapeHTML(m)}</div>`;
-    });
-    html += '</div>';
+  const tables = Array.from(tableSet).sort((a, b) => a - b);
+  const total = contamSet.size;
+  html += '<div class="footer-block">';
+  if (total > 0) {
+    html += `<span class="fb-item"><span class="fb-label">本节点</span><span class="fb-value">${total} 项污染物</span></span>`;
   }
+  html += `<span class="fb-item"><span class="fb-label">限量行</span><span class="fb-value">${items.length} 条</span></span>`;
+  if (tables.length > 0) {
+    html += `<span class="fb-item"><span class="fb-label">来源</span><span class="fb-value">GB 2762-2025 表 ${tables.join('/')}</span></span>`;
+  }
+  html += '</div>';
   return html;
 }
 
@@ -14389,6 +14147,41 @@ document.addEventListener('DOMContentLoaded', () => {
   loadData();
   document.getElementById('treeSearchInput').addEventListener('input', e => {
     renderTree(e.target.value);
+  });
+  // v82-fix104: 脚注 badge 点击事件 (移动端无 hover, 用 tap 弹浮层)
+  let _fnPopup = null;
+  function showFnPopup(target) {
+    if (_fnPopup) { _fnPopup.remove(); _fnPopup = null; }
+    if (!target || !target.dataset || !target.dataset.fn) return;
+    const noteLetter = (target.textContent || '').trim();
+    const fnText = target.dataset.fn;
+    const popup = document.createElement('div');
+    popup.className = 'fn-popup';
+    popup.innerHTML = `<span class="fn-popup-mark">${escapeHTML(noteLetter)}</span>${escapeHTML(fnText)}`;
+    document.body.appendChild(popup);
+    const r = target.getBoundingClientRect();
+    const top = r.bottom + window.scrollY + 6;
+    let left = r.left + window.scrollX;
+    const popupRect = popup.getBoundingClientRect();
+    if (left + popupRect.width > window.scrollX + window.innerWidth - 8) {
+      left = window.scrollX + window.innerWidth - popupRect.width - 8;
+    }
+    popup.style.top = top + 'px';
+    popup.style.left = Math.max(8, left) + 'px';
+    _fnPopup = popup;
+  }
+  // 事件委托: 点击 .fn-mark.inline 显示浮层, 点击其他位置关闭
+  document.body.addEventListener('click', (e) => {
+    const t = e.target.closest && e.target.closest('.fn-mark.inline');
+    if (t) {
+      e.stopPropagation();
+      if (_fnPopup && _fnPopup._target === t) { _fnPopup.remove(); _fnPopup = null; return; }
+      if (_fnPopup) { _fnPopup.remove(); _fnPopup = null; }
+      showFnPopup(t);
+      if (_fnPopup) _fnPopup._target = t;
+      return;
+    }
+    if (_fnPopup) { _fnPopup.remove(); _fnPopup = null; }
   });
 });
 </script>
