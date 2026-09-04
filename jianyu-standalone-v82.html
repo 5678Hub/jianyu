@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v82-fix106-footer-semantics-2026-09-04">
+<meta name="version" content="v82-fix107-grain-maipian-mianjin-repoint-2026-09-04">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   // v72: 单一 CACHE_BUST,与 sw.js 保持一致,避免多个 hardcoded 版本号不同步
-  var CACHE_BUST = 'v82-fix106-footer-semantics-2026-09-04';
+  var CACHE_BUST = 'v82-fix107-grain-maipian-mianjin-repoint-2026-09-04';
   (function() {
     var EXPECTED = CACHE_BUST;
     // 第 1 层:URL cbust 缺失 → 跳一次
@@ -1616,8 +1616,38 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
           "modif": "",
           "inspection_method": "GB 5009.12",
           "a1_l1": "谷物及其制品(不包括焙烤制品)",
+          "a1_l2": "谷物碾磨加工品",
+          "a1_l3": "麦片",
+          "a1_l4": ""
+        },
+        {
+          "food": "麦片、面筋、粥类罐头、带馅料面米制品",
+          "pollutant": "铅",
+          "limit_value": "0.5",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.12",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物制品",
-          "a1_l3": "",
+          "a1_l3": "小麦粉制品",
+          "a1_l4": "面筋"
+        },
+        {
+          "food": "麦片、面筋、粥类罐头、带馅料面米制品",
+          "pollutant": "铅",
+          "limit_value": "0.5",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.12",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
+          "a1_l2": "谷物制品",
+          "a1_l3": "其他谷物制品[例如：带馅（料）面米制品、粥类罐头等]",
           "a1_l4": ""
         },
         {
@@ -11943,7 +11973,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
       ]
     }
   ],
-  "_last_fix": "v82-fix106-footer-semantics-2026-09-04"
+  "_last_fix": "v82-fix107-grain-maipian-mianjin-repoint-2026-09-04"
 }
 </script>
 <script>

@@ -1023,8 +1023,38 @@
           "modif": "",
           "inspection_method": "GB 5009.12",
           "a1_l1": "谷物及其制品(不包括焙烤制品)",
+          "a1_l2": "谷物碾磨加工品",
+          "a1_l3": "麦片",
+          "a1_l4": ""
+        },
+        {
+          "food": "麦片、面筋、粥类罐头、带馅料面米制品",
+          "pollutant": "铅",
+          "limit_value": "0.5",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.12",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
           "a1_l2": "谷物制品",
-          "a1_l3": "",
+          "a1_l3": "小麦粉制品",
+          "a1_l4": "面筋"
+        },
+        {
+          "food": "麦片、面筋、粥类罐头、带馅料面米制品",
+          "pollutant": "铅",
+          "limit_value": "0.5",
+          "has_limit": true,
+          "sub_value": "",
+          "unit": "mg/kg",
+          "note": "",
+          "modif": "",
+          "inspection_method": "GB 5009.12",
+          "a1_l1": "谷物及其制品(不包括焙烤制品)",
+          "a1_l2": "谷物制品",
+          "a1_l3": "其他谷物制品[例如：带馅（料）面米制品、粥类罐头等]",
           "a1_l4": ""
         },
         {
@@ -11350,5 +11380,5 @@
       ]
     }
   ],
-  "_last_fix": "v82-fix106-footer-semantics-2026-09-04"
+  "_last_fix": "v82-fix107-grain-maipian-mianjin-repoint-2026-09-04"
 }
