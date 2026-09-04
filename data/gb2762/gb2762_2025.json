@@ -1390,7 +1390,7 @@
       "inspection_method_rules": [
         {
           "apply": "包装饮用水",
-          "method": "按 GB 8538 规定的方法测定"
+          "method": "GB 8538"
         },
         {
           "apply": "其他食品",
@@ -2247,7 +2247,7 @@
       "inspection_method_rules": [
         {
           "apply": "包装饮用水",
-          "method": "按 GB 8538 规定的方法测定"
+          "method": "GB 8538"
         },
         {
           "apply": "全部食品",
@@ -2943,7 +2943,7 @@
       "inspection_method_rules": [
         {
           "apply": "饮用天然矿泉水",
-          "method": "按 GB 8538 规定的方法测定"
+          "method": "GB 8538"
         },
         {
           "apply": "其他食品",
@@ -3876,7 +3876,7 @@
       "inspection_method_rules": [
         {
           "apply": "包装饮用水",
-          "method": "按 GB 8538 规定的方法测定"
+          "method": "GB 8538"
         },
         {
           "apply": "其他食品",
@@ -4736,7 +4736,7 @@
       "inspection_method_rules": [
         {
           "apply": "饮料类",
-          "method": "按 GB 8538 规定的方法测定"
+          "method": "GB 8538"
         },
         {
           "apply": "其他食品",
@@ -11350,5 +11350,5 @@
       ]
     }
   ],
-  "_last_fix": "v82-fix97-notes-methods-spirulina-repoint-dedupe-2026-09-03"
+  "_last_fix": "v82-fix103-water-im-short-2026-09-04"
 }

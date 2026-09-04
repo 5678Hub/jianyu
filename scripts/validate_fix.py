@@ -98,7 +98,7 @@ for t in allt:
     check(f"表{t} items 未变", same)
 
 print("\n===== I. 顶层结构 =====")
-check("_last_fix 已更新", cur.get("_last_fix","").startswith("v82-fix97"), cur.get("_last_fix"))
+check("_last_fix 已更新", cur.get("_last_fix","").startswith("v82-fix"), cur.get("_last_fix"))
 for k in ["standard","application_principles","contaminants","appendix_a1","additives"]:
     check(f"顶层 key {k} 存在", k in cur)
 

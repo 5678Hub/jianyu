@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v82-fix101-scope-2026-09-03">
+<meta name="version" content="v82-fix103-water-im-short-2026-09-04">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,7 +15,7 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   // v72: 单一 CACHE_BUST,与 sw.js 保持一致,避免多个 hardcoded 版本号不同步
-  var CACHE_BUST = 'v82-fix101-scope-2026-09-03';
+  var CACHE_BUST = 'v82-fix103-water-im-short-2026-09-04';
   (function() {
     var EXPECTED = CACHE_BUST;
     // 第 1 层:URL cbust 缺失 → 跳一次
@@ -1977,7 +1977,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
       "inspection_method_rules": [
         {
           "apply": "包装饮用水",
-          "method": "按 GB 8538 规定的方法测定"
+          "method": "GB 8538"
         },
         {
           "apply": "其他食品",
@@ -2834,7 +2834,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
       "inspection_method_rules": [
         {
           "apply": "包装饮用水",
-          "method": "按 GB 8538 规定的方法测定"
+          "method": "GB 8538"
         },
         {
           "apply": "全部食品",
@@ -3530,7 +3530,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
       "inspection_method_rules": [
         {
           "apply": "饮用天然矿泉水",
-          "method": "按 GB 8538 规定的方法测定"
+          "method": "GB 8538"
         },
         {
           "apply": "其他食品",
@@ -4463,7 +4463,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
       "inspection_method_rules": [
         {
           "apply": "包装饮用水",
-          "method": "按 GB 8538 规定的方法测定"
+          "method": "GB 8538"
         },
         {
           "apply": "其他食品",
@@ -5323,7 +5323,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
       "inspection_method_rules": [
         {
           "apply": "饮料类",
-          "method": "按 GB 8538 规定的方法测定"
+          "method": "GB 8538"
         },
         {
           "apply": "其他食品",
@@ -11937,7 +11937,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
       ]
     }
   ],
-  "_last_fix": "v82-fix97-notes-methods-spirulina-repoint-dedupe-2026-09-03"
+  "_last_fix": "v82-fix103-water-im-short-2026-09-04"
 }
 </script>
 <script>
