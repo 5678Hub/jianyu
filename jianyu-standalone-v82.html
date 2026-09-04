@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="version" content="v82-fix108-desktop-back-fix-2026-09-04">
+<meta name="version" content="v82-fix109-desktop-back-dom-2026-09-04">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -15,19 +15,26 @@
   //  3. localStorage 记录当前 HTML 期望版本,不一致就 reload(防 SW/disk cache 残留)
   //  4. SW + fetch cache:reload 拦截兜底(防 JSON disk cache)
   // v72: 单一 CACHE_BUST,与 sw.js 保持一致,避免多个 hardcoded 版本号不同步
-  var CACHE_BUST = 'v82-fix108-desktop-back-fix-2026-09-04';
+  var CACHE_BUST = 'v82-fix109-desktop-back-dom-2026-09-04';
   // v82-fix108: 桌面离线版(file://)点「返回工具箱」时跳 GitHub Pages 工具箱,
-  //   因为本地没有 toolbox.html。其他情况维持 ./toolbox.html
-  (function() {
+  //   因为本地没有 toolbox.html。其他情况维持 ./toolbox.html。
+  //   注意:此 JS 在 <head> 内执行,DOMContentLoaded 后才设置 href(target=blank 即可避开相对路径解析)
+  function v82_fix108_setupBack() {
     try {
-      var isFile = location.protocol === 'file:';
-      var hasInPage = !!document.getElementById('backBtn');
-      if (isFile && hasInPage) {
-        document.getElementById('backBtn').href = 'https://5678hub.github.io/jianyu/toolbox.html';
-        document.getElementById('backBtn').target = '_blank';
+      if (location.protocol === 'file:') {
+        var b = document.getElementById('backBtn');
+        if (b) {
+          b.href = 'https://5678hub.github.io/jianyu/toolbox.html';
+          b.target = '_blank';
+        }
       }
     } catch (e) {}
-  })();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', v82_fix108_setupBack);
+  } else {
+    v82_fix108_setupBack();
+  }
   (function() {
     var EXPECTED = CACHE_BUST;
     // 第 1 层:URL cbust 缺失 → 跳一次
@@ -11985,7 +11992,7 @@ table.ctable tr.synth-header-row.synth-header-l2 td.synth-header {
       ]
     }
   ],
-  "_last_fix": "v82-fix108-desktop-back-fix-2026-09-04"
+  "_last_fix": "v82-fix109-desktop-back-dom-2026-09-04"
 }
 </script>
 <script>
