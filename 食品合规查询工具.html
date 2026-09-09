@@ -63,6 +63,28 @@ main.content{ flex:1; padding:26px 30px 60px; min-width:0; }
 .step-s{ font-size:11px; color:var(--c-text-3); line-height:1.5; }
 .step-arrow{ color:var(--c-text-3); font-size:18px; font-weight:700; }
 .bico{ width:13px; height:13px; vertical-align:-2px; margin-right:3px; }
+.explainer{ background:linear-gradient(180deg,#fff 0%,#f9fbf9 100%); border:1.5px solid var(--c-border); border-radius:14px; padding:16px 18px; margin-bottom:14px; box-shadow:0 2px 8px rgba(20,40,30,.05); }
+.ex-title{ display:flex; align-items:center; gap:8px; font-size:15px; font-weight:700; color:var(--c-text-1); margin-bottom:12px; }
+.ex-title svg{ width:20px; height:20px; flex-shrink:0; }
+.ex-grid{ display:grid; grid-template-columns:1fr 48px 1fr; gap:8px; align-items:stretch; }
+.ex-bad, .ex-good{ border-radius:11px; padding:11px 12px; }
+.ex-bad{ background:linear-gradient(180deg,#fff1f0,#ffe8e5); border:1.5px solid #f3bfb9; }
+.ex-good{ background:linear-gradient(180deg,#e6f4ec,#d4ebe0); border:1.5px solid #aed4bd; }
+.ex-h{ display:flex; align-items:center; gap:6px; font-size:12.5px; font-weight:700; margin-bottom:8px; }
+.ex-bad .ex-h{ color:var(--c-bad); }
+.ex-good .ex-h{ color:var(--c-primary); }
+.ex-h svg{ width:16px; height:16px; }
+.bad-list{ display:flex; flex-direction:column; gap:4px; }
+.bad-item{ padding:4px 9px; background:#fff; border:1px solid #f3bfb9; border-radius:6px; font-size:12.5px; color:var(--c-text-1); display:flex; align-items:center; gap:5px; }
+.bad-item::before{ content:"×"; color:var(--c-bad); font-weight:700; font-size:13px; }
+.good-list{ display:flex; flex-direction:column; gap:5px; }
+.good-item{ padding:6px 10px; background:#fff; border:1px solid #aed4bd; border-radius:7px; font-size:12.5px; line-height:1.6; color:var(--c-text-1); }
+.ex-arrow{ display:flex; align-items:center; justify-content:center; }
+.ex-arrow svg{ width:34px; height:34px; }
+.ex-law{ margin-top:12px; padding:9px 11px; background:var(--c-primary-soft); border-radius:7px; font-size:12.5px; line-height:1.7; color:var(--c-text-1); }
+.ex-law .k{ color:var(--c-primary); font-weight:700; margin-right:5px; }
+.ex-remark{ margin-top:7px; font-size:12px; color:var(--c-text-2); line-height:1.65; padding:2px 4px; }
+.ex-remark .k{ color:var(--c-warn); font-weight:700; margin-right:4px; }
 
 .search{ margin-bottom:6px; }
 .box{ position:relative; }
@@ -120,6 +142,8 @@ footer{ margin-top:28px; font-size:11px; color:var(--c-text-3); text-align:cente
   .steps{ flex-direction:column; gap:10px; }
   .step{ flex-direction:row; width:100%; max-width:300px; text-align:left; gap:12px; }
   .step-arrow{ transform:rotate(90deg); }
+  .ex-grid{ grid-template-columns:1fr; }
+  .ex-arrow{ transform:rotate(90deg); padding:2px 0; }
 }
 </style>
 </head>
@@ -191,6 +215,36 @@ const STEPS_HTML = '<div class="steps">'
   + '<div class="step"><div class="step-ico"><svg viewBox="0 0 44 44" fill="none"><rect x="12" y="9" width="20" height="26" rx="4" fill="#fff" stroke="#1f8a4c" stroke-width="2.5"/><line x1="17" y1="16" x2="27" y2="16" stroke="#2aa55d" stroke-width="2.2" stroke-linecap="round"/><line x1="17" y1="22" x2="27" y2="22" stroke="#2aa55d" stroke-width="2.2" stroke-linecap="round"/><line x1="17" y1="28" x2="24" y2="28" stroke="#2aa55d" stroke-width="2.2" stroke-linecap="round"/></svg></div><div class="step-t">③ 调出法规</div><div class="step-s">条款 + 原文一键呈现</div></div>'
   + '</div>';
 
+const EX_ICO_WARN = '<svg viewBox="0 0 24 24" fill="none"><path d="M12 3 L20 6 V12 c0 5 -3.5 8.5 -8 10 c-4.5 -1.5 -8 -5 -8 -10 V6 Z" fill="#f57f17" opacity=".18"/><path d="M12 3 L20 6 V12 c0 5 -3.5 8.5 -8 10 c-4.5 -1.5 -8 -5 -8 -10 V6 Z" stroke="#f57f17" stroke-width="2" stroke-linejoin="round"/><line x1="12" y1="9" x2="12" y2="14" stroke="#f57f17" stroke-width="2.5" stroke-linecap="round"/><circle cx="12" cy="17" r="1.2" fill="#f57f17"/></svg>';
+const EX_ICO_BAN = '<svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" fill="#d4380d"/><line x1="5" y1="5" x2="15" y2="15" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>';
+const EX_ICO_OK = '<svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" fill="#1f8a4c"/><path d="M5 10 l4 4 l7 -8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>';
+const EX_ICO_ARROW = '<svg viewBox="0 0 36 36" fill="none"><line x1="6" y1="18" x2="28" y2="18" stroke="#1f8a4c" stroke-width="2.5" stroke-linecap="round"/><path d="M22 12 l6 6 l-6 6" stroke="#1f8a4c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>';
+function parseNote(note){
+  const s = note||'';
+  const m1 = s.split('【合规改法】');
+  if(m1.length<2) return {fix:'', remark:s};
+  const after = m1[1];
+  const m2 = after.split('【备注】');
+  return {fix: m2[0].trim(), remark: m2.length>1 ? m2.slice(1).join('【备注】').trim() : ''};
+}
+function explainerHtml(r){
+  const parsed = parseNote(r.note);
+  const fixes = parsed.fix ? parsed.fix.split(/[;；]/).map(s=>s.trim()).filter(Boolean) : (r.desc ? [r.desc] : []);
+  const terms = (r.term||'').split('/').map(s=>s.trim()).filter(Boolean);
+  const banItems = terms.length ? terms.map(t=>'<div class="bad-item">'+escapeHtml(t)+'</div>').join('') : '<div class="bad-item">'+escapeHtml(r.term||'')+'</div>';
+  const goodItems = fixes.length ? fixes.map(f=>'<div class="good-item">'+escapeHtml(f)+'</div>').join('') : '<div class="good-item">请按 GB 7718 等法规及品类标准如实标注。</div>';
+  const remark = parsed.remark ? '<div class="ex-remark"><span class="k">💡 备注</span>'+hl(parsed.remark,'')+'</div>' : '';
+  return '<div class="explainer">'
+    + '<div class="ex-title">'+EX_ICO_WARN+'标识错误释义</div>'
+    + '<div class="ex-grid">'
+    +   '<div class="ex-bad"><div class="ex-h">'+EX_ICO_BAN+'禁用表述</div><div class="bad-list">'+banItems+'</div></div>'
+    +   '<div class="ex-arrow">'+EX_ICO_ARROW+'</div>'
+    +   '<div class="ex-good"><div class="ex-h">'+EX_ICO_OK+'合规改法</div><div class="good-list">'+goodItems+'</div></div>'
+    + '</div>'
+    + '<div class="ex-law"><span class="k">📜 法律依据</span>'+hl(r.law,'')+'</div>'
+    + remark
+    + '</div>';
+}
 const META = {
   label: { title:'🏷️ 食品标签禁用词', desc:'预包装食品标签常见禁用词与违规表述 · 输入即可调出对应法规条款' },
   cater: { title:'🍽️ 餐饮宣传违禁词', desc:'餐饮门店宣传 / 广告常见违禁词 · 输入即可调出法规条款与合规改法' },
@@ -279,7 +333,8 @@ function render(q){
     items = list.map(r=>({r, strong:false, score:1, matched:''}));
     cnt.textContent = '全部 '+list.length+' 条';
   }
-  out.innerHTML = items.length ? items.slice(0,80).map(x=>cardHtml(x.r,q)).join('') : '<div class="hint">未命中任何词条，但请仍结合具体标注语境综合判断。</div>';
+  const explainer = (items.length && items[0].strong) ? explainerHtml(items[0].r) : '';
+  out.innerHTML = explainer + (items.length ? items.slice(0,80).map(x=>cardHtml(x.r,q)).join('') : '<div class="hint">未命中任何词条，但请仍结合具体标注语境综合判断。</div>');
 }
 function hintHtml(n){
   return '<div class="hint">'
