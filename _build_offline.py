@@ -24,12 +24,17 @@ html = INDEX.read_text(encoding='utf-8')
 old_block = """async function loadData() {
   try {
     const [master, cm, subcatItems, subcatChecklist, categories] = await Promise.all([
-      fetch('data/master.json').then(r => r.json()),
-      fetch('data/category_map.json').then(r => r.json()),
-      fetch('data/subcat_to_items.json').then(r => r.json()),
-      fetch('data/current_period/gb_checklist_subcat.json').then(r => r.json()),
-      fetch('data/categories_2026.json').then(r => r.json()),
-    ]);"""
+      fetchJson('/data/master.json'),
+      fetchJson('/data/category_map.json'),
+      fetchJson('/data/subcat_to_items.json'),
+      fetchJson('/data/current_period/gb_checklist_subcat.json'),
+      fetchJson('/data/categories_2026.json'),
+    ]);
+    state.records = master.records || [];
+    state.categoryMap = cm || {};
+    state.subcatToItems = (subcatItems && subcatItems.aliases) || {};
+    state.subcatChecklist = subcatChecklist || {};
+    state.categories = (categories && categories.categories) || [];"""
 
 new_block = """function loadData() {
   try {
@@ -39,7 +44,12 @@ new_block = """function loadData() {
     const cm = D.category_map;
     const subcatItems = D.subcat_to_items;
     const subcatChecklist = D.gb_checklist_subcat;
-    const categories = D.categories_2026;"""
+    const categories = D.categories_2026;
+    state.records = master.records || [];
+    state.categoryMap = cm || {};
+    state.subcatToItems = (subcatItems && subcatItems.aliases) || {};
+    state.subcatChecklist = subcatChecklist || {};
+    state.categories = (categories && categories.categories) || [];"""
 
 if old_block not in html:
     raise SystemExit('ERROR: loadData block not found in index.html — 模板已变更,需手动调整')
@@ -61,7 +71,7 @@ html = html.replace(
 )
 
 # 在 head 加注释（说明构建时间和数据快照）
-build_note = f'  <!-- 单文件离线版 · 构建于 2026-08-14 · 数据快照见末尾 window.__JIANYU_DATA__._meta -->\n'
+build_note = f'  <!-- 单文件离线版 · 构建于 2026-09-04 · 数据快照见末尾 window.__JIANYU_DATA__._meta -->\n'
 html = html.replace(
     '<meta name="theme-color" content="#1a365d">',
     build_note + '<meta name="theme-color" content="#1a365d">',
@@ -85,7 +95,7 @@ data_json = json.dumps(data_obj, ensure_ascii=False, separators=(',', ':'))
 # 在 </body> 前插入 window.__JIANYU_DATA__
 inject = f"""
 <script>
-// 单文件离线版数据载荷 (构建于 2026-08-14)
+// 单文件离线版数据载荷 (构建于 2026-09-04)
 window.__JIANYU_DATA__ = {data_json};
 </script>
 """
