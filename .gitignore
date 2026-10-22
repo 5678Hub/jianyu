@@ -26,3 +26,8 @@ data/gb2762/_meta/*待核对.txt
 data/gb2762/_meta/未匹配*.txt
 data/gb2762/_meta/模糊未匹配*.txt
 data/gb2762/GB_2762-2025.pdf
+
+# 本地备份，不入库
+*_backup.html
+*.bak*
+_test_*.html

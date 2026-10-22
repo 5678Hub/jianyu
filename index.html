@@ -219,6 +219,25 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
   .dashboard-chart .bar-label { font-size: 10px; }
   .dashboard-chart .bar-value { font-size: 9px; }
 }
+
+/* v4.1.0 细则速查卡片（大类 → 细则品种 / 法定检验项目） */
+.xz-wrap { margin-bottom: 12px; }
+.xz-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px; color: var(--c-text-1); }
+.xz-no { display: inline-block; padding: 2px 9px; border-radius: 10px; background: var(--c-primary-soft); color: var(--c-primary); font-weight: 600; font-size: 12px; }
+.xz-meta { color: var(--c-text-2); font-size: 12px; }
+.xz-toggle { margin-left: auto; font-size: 12px; padding: 4px 12px; border-radius: 12px; border: 1px solid var(--c-border-strong); background: white; color: var(--c-text-2); cursor: pointer; transition: all .15s; }
+.xz-toggle:hover { background: var(--c-primary-soft); border-color: var(--c-primary-2); color: var(--c-primary); }
+.xz-body { display: none; margin-top: 12px; }
+.xz-body.open { display: block; }
+.xz-sec-title { font-size: 12px; font-weight: 600; color: var(--c-text-2); margin: 10px 0 6px; }
+.xz-sec-title:first-child { margin-top: 0; }
+.xz-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.xz-chip { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; background: #f4f6f8; color: var(--c-text-2); border: 1px solid var(--c-border); }
+.xz-chip.hit { background: var(--c-high-soft); border-color: #e8a0a0; color: #9b2c2c; font-weight: 600; }
+.xz-sub { margin-top: 10px; padding: 8px 10px; background: #fafbfc; border: 1px solid var(--c-border); border-radius: var(--r-sm); }
+.xz-sub-name { font-size: 12px; font-weight: 600; color: var(--c-text-1); margin-bottom: 5px; }
+.xz-src { font-size: 11px; color: var(--c-text-3); margin-top: 12px; line-height: 1.5; }
+.xz-empty { font-size: 12px; color: var(--c-text-3); }
 </style>
 </head>
 <body>
@@ -230,7 +249,7 @@ footer.brand-foot { text-align: center; margin-top: 28px; padding-top: 18px; bor
     <div class="brand-title"><span class="zh">食品抽检风险查询</span></div>
     <div class="subtitle" id="subtitle">加载中…</div>
   </div>
-  <div class="ver">v4.0.4 · 2026</div>
+  <div class="ver">v4.1.0 · 2026</div>
 </header>
 
 <!-- 模块入口(扩展工具) -->
@@ -292,6 +311,8 @@ const state = {
   subcatToItems: {},    // {aliases: {食品名: {big_category, subcategory}}}
   subcatChecklist: {},  // {categories: {大类: [{name, items: [...]}]}}
   categories: [],       // [{no, name}]  39 大类
+  xizeVariants: {},     // {"31": {no, cn, name, variants: [...], sub: {...}}}  细则品种表
+  xizeItems: {},        // {"31": [检验项目...]}                                  细则法定检验项目集
   q: '',                // 当前查询词
   selectedCategory: '', // 用户主动点选的类别（可选）
 };
@@ -330,6 +351,19 @@ async function loadData() {
     state.subcatToItems = (subcatItems && subcatItems.aliases) || {};
     state.subcatChecklist = subcatChecklist || {};
     state.categories = (categories && categories.categories) || [];
+
+    // 细则品种表 / 法定检验项目：独立容错加载（失败不影响主功能）
+    Promise.all([
+      fetchJson('/data/xize_variants.json').catch(() => null),
+      fetchJson('/data/xize_items.json').catch(() => null),
+    ]).then(([xv, xi]) => {
+      state.xizeVariants = xv || {};
+      state.xizeItems = xi || {};
+      console.log('[v4.1] 细则数据加载完成', {
+        大类: Object.keys(state.xizeVariants).length,
+        项目大类: Object.keys(state.xizeItems).length,
+      });
+    });
 
     // 从 records 推导实际省份（按入库顺序首次出现排序，避免硬编码）
     function deriveProvinces(records) {
@@ -630,6 +664,7 @@ function renderResults(q, hits, ctx) {
     ${renderSummaryBlocks(foodQ, hits)}
     ${renderDetailTable(foodQ, hits, ctx)}
     ${renderSelfCheck(foodQ, autoCat, hits)}
+    ${renderXizeCard(hits)}
   `;
 }
 
@@ -687,6 +722,102 @@ function renderRiskBlock(risk, q, count) {
       </div>
     </div>
   `;
+}
+
+// ============ 细则速查（v4.1.0）：大类 → 细则品种 + 法定检验项目 ============
+// 目的：用户问某个大类时，直接看到 2026 细则里这一类到底含哪些品种、能检哪些项目
+function findBigNo(catName) {
+  // categories 用的是中文序号（如「一」），xize 用阿拉伯数字，用名字对齐
+  const list = state.categories || [];
+  for (let i = 0; i < list.length; i++) {
+    if (list[i].name === catName) return String(i + 1);
+  }
+  return '';
+}
+
+// 命中记录里出现过的细类短名（用于高亮）
+function hitSubNames(hits, bigCat) {
+  const set = new Set();
+  hits.forEach(r => {
+    if (bigCat && r.big_category !== bigCat) return;
+    const s = (r.sub_category || '').split('-').slice(-1)[0];
+    if (s) set.add(s);
+  });
+  return set;
+}
+
+function renderXizeCard(hits) {
+  if (!state.xizeVariants || !Object.keys(state.xizeVariants).length) return '';
+  // 汇总本次查询命中了哪几个大类（按记录数降序）
+  const cnt = {};
+  hits.forEach(r => {
+    const c = r.big_category || '';
+    if (c) cnt[c] = (cnt[c] || 0) + 1;
+  });
+  const cats = Object.keys(cnt).sort((a, b) => cnt[b] - cnt[a]);
+  if (!cats.length) return '';
+
+  const blocks = cats.map(cat => {
+    const no = findBigNo(cat);
+    const v = no ? state.xizeVariants[no] : null;
+    if (!v) {
+      return `
+        <div class="card">
+          <div class="card-title">📖 细则速查</div>
+          <div class="xz-empty">「${cat}」在 39 大类骨架中未匹配到序号，暂无法定位细则品种表。</div>
+        </div>`;
+    }
+    const hitSubs = hitSubNames(hits, cat);
+    const vlist = v.variants || [];
+    const items = state.xizeItems[no] || [];
+    const sub = v.sub || {};
+    const subKeys = Object.keys(sub);
+
+    // 品种 chip：命中历史不合格细类的标红
+    const chips = vlist.map(name => {
+      const isHit = hitSubs.has(name) || hitSubs.has(name + 'a');
+      return `<span class="xz-chip${isHit ? ' hit' : ''}"${isHit ? ' title="本库历史不合格记录命中该细则品种"' : ''}>${name}${isHit ? ' ●' : ''}</span>`;
+    }).join('');
+
+    const itemsChips = items.length
+      ? items.map(it => `<span class="xz-chip">${it}</span>`).join('')
+      : '<span class="xz-empty">细则原表未列出检验项目。</span>';
+
+    const subBlocks = subKeys.length ? `
+      <div class="xz-sec-title">细则品种分组</div>
+      ${subKeys.map(k => `
+        <div class="xz-sub">
+          <div class="xz-sub-name">${k}</div>
+          <div class="xz-chips">${(sub[k] || []).map(n => {
+            const isHit = hitSubs.has(n) || hitSubs.has(n + 'a');
+            return `<span class="xz-chip${isHit ? ' hit' : ''}">${n}${isHit ? ' ●' : ''}</span>`;
+          }).join('')}</div>
+        </div>
+      `).join('')}
+    ` : '';
+
+    return `
+      <div class="xz-wrap">
+        <div class="card" style="margin-bottom:0;">
+          <div class="xz-head">
+            <span class="xz-no">第 ${no} 类</span>
+            <strong>${v.name || cat}</strong>
+            <span class="xz-meta">细则品种 ${vlist.length} 个 · 法定检验项目 ${items.length} 项 · 本次命中 ${cnt[cat]} 条记录</span>
+            <button class="xz-toggle" onclick="var b=document.getElementById('xzBody${no}');var o=b.classList.toggle('open');this.textContent=o?'收起细则':'展开细则'">展开细则</button>
+          </div>
+          <div class="xz-body" id="xzBody${no}">
+            <div class="xz-sec-title">细则品种清单（${vlist.length} 个<span class="muted" style="font-weight:normal;">· 标红 ● = 本库历史不合格记录命中</span>）</div>
+            <div class="xz-chips">${chips || '<span class="xz-empty">细则原表未列品种。</span>'}</div>
+            ${subBlocks}
+            <div class="xz-sec-title">法定检验项目（${items.length} 项）</div>
+            <div class="xz-chips">${itemsChips}</div>
+            <div class="xz-src">数据源：《食品安全监督抽检实施细则（2026 年版）》第 ${no} 类${v.cn ? `（${v.cn}）` : ''}。检验项目为细则法定项目，实际判定还需按对应食品安全国家标准限值执行。</div>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  return blocks;
 }
 
 // ============ 摘要块（按高频项目聚合） ============

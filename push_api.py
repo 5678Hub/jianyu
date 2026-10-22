@@ -17,7 +17,7 @@ import sys
 import urllib.request
 import urllib.error
 
-PROXY = "http://127.0.0.1:61114"
+PROXY = "http://127.0.0.1:7897"
 REPO = "5678Hub/jianyu"
 API = "https://api.github.com"
 
