@@ -982,11 +982,17 @@ function ancestorsOf(code) {
    overridden : 被本级（或更近下级）覆盖的上级规定
    src        : 继承来源集合
 */
+// 添加剂唯一键：公告新品种可能无 CNS 号，此时用添加剂名兜底，避免互相串号
+function akey(a) {
+  const c = a && a.cns;
+  if (c) return String(c);
+  return 'n:' + ((a && (a.name_zh || a.additive_zh)) || '');
+}
 function resolveCategory(code) {
   const direct = FTA[code] || [];
   const anc = ancestorsOf(code);                 // 近 → 远
   const chain = [code].concat(anc);
-  const claimed = new Set(direct.map(a => a.cns)); // 已被更近级（含本级）占用的 CNS
+  const claimed = new Set(direct.map(a => akey(a))); // 已被更近级（含本级）占用的添加剂键
   const inherited = [];
   const overridden = [];
   const excluded = [];                            // 被上级条目「XX.XX 除外」排除的条目
@@ -994,10 +1000,10 @@ function resolveCategory(code) {
     const lvl = chain[i];
     const items = FTA[lvl] || [];
     if (!items.length) continue;
-    // 该级中尚未被更近级占用的条目 → 继承（同一 CNS 在本级的多行全部保留）
-    let fresh = items.filter(x => !claimed.has(x.cns));
+    // 该级中尚未被更近级占用的条目 → 继承（同一添加剂在本级的多行全部保留）
+    let fresh = items.filter(x => !claimed.has(akey(x)));
     // 该级中已被更近级占用的条目 → 被覆盖（下级优先）
-    for (const x of items) if (claimed.has(x.cns)) overridden.push({ from: lvl, item: x });
+    for (const x of items) if (claimed.has(akey(x))) overridden.push({ from: lvl, item: x });
     // 上级条目自带「XX.XX 类别除外」限定 → 本级若落在排除清单内，则该条目不适用
     for (const x of fresh) {
       const ex = x.exclude_codes || [];
@@ -1007,7 +1013,7 @@ function resolveCategory(code) {
       }
     }
     fresh = fresh.filter(x => !excluded.some(e => e.item === x));
-    for (const x of fresh) { inherited.push({ item: x, from: lvl }); claimed.add(x.cns); }
+    for (const x of fresh) { inherited.push({ item: x, from: lvl }); claimed.add(akey(x)); }
   }
   const src = inherited.length ? Array.from(new Set(inherited.map(x => x.from))) : [];
   return { direct, inherited, src, overridden, excluded };
@@ -1332,8 +1338,8 @@ function renderCategoryMain() {
         <thead><tr><th style="width:96px">CNS</th><th>添加剂</th><th style="width:130px">上级用量</th>
           <th style="width:150px">本类别实际用量</th><th>说明</th></tr></thead>
         <tbody>${res.overridden.map(o => {
-          const win = res.direct.find(d => d.cns === o.item.cns)
-            || res.inherited.find(x => x.item.cns === o.item.cns);
+          const win = res.direct.find(d => akey(d) === akey(o.item))
+            || res.inherited.find(x => akey(x.item) === akey(o.item));
           const winLimit = win ? (win.limit || (win.item ? win.item.limit : '')) : '';
           const winFrom = win ? (win.item ? win.from : '本级') : '';
           return `<tr>
@@ -1459,7 +1465,7 @@ function renderAdditiveSide(q) {
   for (const f of order) {
     html += `<div class="side-group">${escapeHTML(f)}（${groups[f].length}）</div>`;
     for (const a of groups[f]) {
-      html += `<div class="plain-item${SEL.add === a.cns ? ' active' : ''}" data-cns="${escapeHTML(a.cns)}">
+      html += `<div class="plain-item${SEL.add === akey(a) ? ' active' : ''}" data-ak="${escapeHTML(akey(a))}">
         <span class="pi-name">${highlight(a.name_zh || '(无名)', ql)}</span>
         <span class="pi-code">${escapeHTML(a.cns)}</span>
         <span class="pi-badge">${a.item_count}</span>
@@ -1469,7 +1475,7 @@ function renderAdditiveSide(q) {
   list.innerHTML = html || '<div class="main-empty"><div class="me-hint">无匹配添加剂</div></div>';
   list.querySelectorAll('.plain-item').forEach(el => {
     el.addEventListener('click', () => {
-      SEL.add = el.dataset.cns;
+      SEL.add = el.dataset.ak;
       renderAdditiveSide(document.getElementById('sideSearch').value);
       renderMain();
       document.querySelector('.split-main').scrollTop = 0;
@@ -1479,8 +1485,8 @@ function renderAdditiveSide(q) {
 
 function renderAdditiveMain() {
   const box = document.getElementById('mainInner');
-  const cns = SEL.add;
-  const a = DATA.by_additive.additives.find(x => x.cns === cns);
+  const ak = SEL.add;
+  const a = DATA.by_additive.additives.find(x => akey(x) === ak);
   if (!a) {
     box.innerHTML = `<div class="main-empty"><div class="me-ico">💊</div>
       <div class="me-title">请在左侧选择添加剂</div>
@@ -1829,12 +1835,12 @@ document.getElementById('sideBack').addEventListener('click', () => {
   document.getElementById('st-cat').textContent = DATA.stats.category_count;
   document.getElementById('st-func').textContent = DATA.stats.function_count;
   document.getElementById('st-exc').textContent = DATA.stats.exception_count;
-  document.getElementById('updatedTag').textContent = 'v3.1';
+  document.getElementById('updatedTag').textContent = 'v3.2';
   document.getElementById('footerUpdated').textContent = '数据版本：' + DATA.version + ' · ' + DATA.updated;
   updateBadges();
   renderSide();
   renderMain();
-  console.log('[GB 2760] v3.1 已加载', DATA.stats);
+  console.log('[GB 2760] v3.0 已加载', DATA.stats);
 
   const params = new URLSearchParams(location.search);
   const t = params.get('task');
