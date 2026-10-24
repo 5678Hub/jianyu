@@ -848,6 +848,7 @@ footer a:hover { color: var(--c-primary); }
   <div class="stat"><div class="label">食品分类节点</div><div class="num" id="st-cat">—</div><div class="sub">附录 E</div></div>
   <div class="stat"><div class="label">功能种类</div><div class="num" id="st-func">—</div><div class="sub">附录 D</div></div>
   <div class="stat"><div class="label">例外食品类别</div><div class="num" id="st-exc">—</div><div class="sub">表 A.2</div></div>
+    <div class="stat"><div class="label">香料/酶/助剂</div><div class="num" id="st-aux">—</div><div class="sub">附录 B/C</div></div>
 </div>
 
 <!-- 任务型 Tab -->
@@ -856,6 +857,7 @@ footer a:hover { color: var(--c-primary); }
   <button class="task-tab" data-task="by-additive"><span class="tt-num">2</span>按添加剂查<span class="tt-badge" id="b-add">0</span></button>
   <button class="task-tab" data-task="by-function"><span class="tt-num">3</span>按功能查<span class="tt-badge" id="b-func">0</span></button>
   <button class="task-tab" data-task="by-exception"><span class="tt-num">4</span>表 A.2 例外<span class="tt-badge" id="b-exc">0</span></button>
+  <button class="task-tab" data-task="aux"><span class="tt-num">5</span>香料·酶·助剂<span class="tt-badge" id="b-aux">0</span></button>
 </div>
 
 <details class="howto" id="howto">
@@ -909,7 +911,7 @@ footer a:hover { color: var(--c-primary); }
 
 let DATA = null;
 let TASK = 'by-category';
-let SEL = { cat: null, add: null, func: null, exc: null };
+let SEL = { cat: null, add: null, func: null, exc: null, auxK: null, auxI: null };
 let CAT_INDEX = {};      // code -> row
 let CAT_ORDER = [];      // 有序节点列表
 let FTA = {};            // code -> [允许的添加剂]
@@ -1774,7 +1776,91 @@ const TASK_META = {
   'by-additive': { title: '添加剂', placeholder: '搜索名称、CNS、INS、功能...', badge: 'b-add' },
   'by-function': { title: '功能类别', placeholder: '搜索功能名称...', badge: 'b-func' },
   'by-exception': { title: '表 A.2 例外食品', placeholder: '搜索编号、分类号或名称...', badge: 'b-exc' },
+  'aux': { title: '香料·酶·助剂', placeholder: '搜索名称或编码...', badge: 'b-aux' },
 };
+
+/* ── 辅助库（GB 2760-2024 附录 B/C）：香料 / 酶制剂 / 加工助剂 ── */
+function auxGroups() {
+  const A = DATA.by_aux;
+  return [
+    { kind: 'noflavor', name: '表B.1 不得添加香精香料', items: A.no_flavor_foods },
+    { kind: 'spice_n', name: '表B.2 天然香料', items: A.spices_natural },
+    { kind: 'spice_s', name: '表B.3 合成香料', items: A.spices_synthetic },
+    { kind: 'enzyme', name: '酶制剂', items: A.enzymes },
+    { kind: 'proc', name: '加工助剂', items: A.processing_aids },
+  ];
+}
+function auxMatch(item, ql) {
+  return `${item.zh || ''} ${item.en || ''} ${item.code || ''} ${item.func || ''} ${item.source || ''}`.toLowerCase().includes(ql);
+}
+function renderAuxSide(q) {
+  const list = document.getElementById('sideList');
+  const ql = (q || '').trim().toLowerCase();
+  const sel = SEL.auxK ? `${SEL.auxK}|${SEL.auxI}` : '';
+  let html = '';
+  let total = 0;
+  for (const g of auxGroups()) {
+    const items = ql ? g.items.filter(x => auxMatch(x, ql)) : g.items;
+    total += items.length;
+    if (!items.length) continue;
+    html += `<div class="side-group">${escapeHTML(g.name)}（${items.length}）</div>`;
+    for (let i = 0; i < items.length; i++) {
+      const it = items[i];
+      const key = `${g.kind}|${i}`;
+      const sub = it.code || it.func || (it.zh || '').slice(0, 0);
+      html += `<div class="plain-item${sel === key ? ' active' : ''}" data-k="${g.kind}" data-i="${i}">
+        <span class="pi-name">${highlight(it.zh || '(无名)', ql)}</span>
+        ${sub ? `<span class="pi-code">${escapeHTML(sub)}</span>` : ''}
+      </div>`;
+    }
+  }
+  document.getElementById('sideMeta').textContent = `${total} 条`;
+  list.innerHTML = html || '<div class="main-empty"><div class="me-hint">无匹配条目</div></div>';
+  list.querySelectorAll('.plain-item').forEach(el => {
+    el.addEventListener('click', () => {
+      SEL.auxK = el.dataset.k; SEL.auxI = +el.dataset.i;
+      renderAuxSide(document.getElementById('sideSearch').value);
+      renderAuxMain();
+      document.querySelector('.split-main').scrollTop = 0;
+    });
+  });
+}
+function auxItem(kind, i) {
+  const g = auxGroups().find(x => x.kind === kind);
+  return g ? { group: g.name, item: g.items[i] } : null;
+}
+function auxDetailRows(it) {
+  const rows = [
+    ['英文名称', it.en], ['编码', it.code], ['FEMA 编码', it.fema],
+    ['来源', it.source], ['供体', it.donor], ['功能', it.func], ['使用范围', it.scope], ['备注', it.note],
+  ].filter(r => r[1]);
+  return rows.map(r => `<tr><td style="width:120px;color:var(--c-text-3)">${r[0]}</td><td>${escapeHTML(String(r[1]))}</td></tr>`).join('');
+}
+function renderAuxMain() {
+  const box = document.getElementById('mainInner');
+  const A = DATA.by_aux;
+  const hit = SEL.auxK != null ? auxItem(SEL.auxK, SEL.auxI) : null;
+  if (!hit) {
+    const counts = A.no_flavor_foods.length + A.spices_natural.length + A.spices_synthetic.length + A.enzymes.length + A.processing_aids.length;
+    box.innerHTML = `<div class="main-card">
+      <div class="mc-title">附录 B / C：香料 · 酶制剂 · 加工助剂</div>
+      <p style="font-size:12px;color:var(--c-text-2);line-height:1.8">
+        共 ${counts} 条。GB 2760—2024 规定：<b>食品用香料、香精在各类食品中按生产需要适量使用</b>，
+        但表 B.1 所列 ${A.no_flavor_foods.length} 类食品没有加香的必要，<b>不得添加食品用香料、香精</b>（法律法规或标准另有明确规定的除外）。<br>
+        食品用香精辅料应符合 GB 30616；香料质量规格应符合 GB 29938。
+      </p>
+      <table class="data-table"><thead><tr><th style="width:110px">分类号</th><th>不得添加香料、香精的食品（表 B.1）</th></tr></thead>
+      <tbody>${A.no_flavor_foods.map(x => `<tr><td class="col-code">${escapeHTML(x.code)}</td><td>${escapeHTML(x.name)}</td></tr>`).join('')}</tbody></table>
+    </div>`;
+    return;
+  }
+  const it = hit.item;
+  box.innerHTML = `<div class="main-card">
+    <div class="mc-title">${escapeHTML(it.zh || '(无名)')}</div>
+    <div style="font-size:11px;color:var(--c-text-3);margin-bottom:10px">${escapeHTML(hit.group)}</div>
+    <table class="data-table"><tbody>${auxDetailRows(it)}</tbody></table>
+  </div>`;
+}
 
 function switchTask(t) {
   TASK = t;
@@ -1793,6 +1879,7 @@ function renderSide() {
   if (TASK === 'by-category') renderCategorySide(q);
   else if (TASK === 'by-additive') renderAdditiveSide(q);
   else if (TASK === 'by-function') renderFunctionSide(q);
+  else if (TASK === 'aux') renderAuxSide(q);
   else renderExceptionSide(q);
 }
 
@@ -1800,6 +1887,7 @@ function renderMain() {
   if (TASK === 'by-category') renderCategoryMain();
   else if (TASK === 'by-additive') renderAdditiveMain();
   else if (TASK === 'by-function') renderFunctionMain();
+  else if (TASK === 'aux') renderAuxMain();
   else renderExceptionMain();
 }
 
@@ -1808,6 +1896,10 @@ function updateBadges() {
   document.getElementById('b-cat').textContent = Object.keys(FTA).length;
   document.getElementById('b-func').textContent = DATA.by_function.function_list.length;
   document.getElementById('b-exc').textContent = DATA.exceptions.list.length;
+  const A = DATA.by_aux;
+  document.getElementById('b-aux').textContent =
+    A.no_flavor_foods.length + A.spices_natural.length + A.spices_synthetic.length +
+    A.enzymes.length + A.processing_aids.length;
 }
 
 document.querySelectorAll('.task-tab').forEach(b => {
@@ -1815,7 +1907,7 @@ document.querySelectorAll('.task-tab').forEach(b => {
 });
 document.getElementById('sideSearch').addEventListener('input', renderSide);
 document.getElementById('sideBack').addEventListener('click', () => {
-  SEL.cat = null; SEL.add = null; SEL.func = null; SEL.exc = null;
+  SEL.cat = null; SEL.add = null; SEL.func = null; SEL.exc = null; SEL.auxK = null; SEL.auxI = null;
   renderSide(); renderMain();
 });
 
@@ -1835,12 +1927,13 @@ document.getElementById('sideBack').addEventListener('click', () => {
   document.getElementById('st-cat').textContent = DATA.stats.category_count;
   document.getElementById('st-func').textContent = DATA.stats.function_count;
   document.getElementById('st-exc').textContent = DATA.stats.exception_count;
-  document.getElementById('updatedTag').textContent = 'v3.2';
+  const _A=DATA.by_aux; document.getElementById('st-aux').textContent = _A.no_flavor_foods.length+_A.spices_natural.length+_A.spices_synthetic.length+_A.enzymes.length+_A.processing_aids.length;
+  document.getElementById('updatedTag').textContent = 'v3.3';
   document.getElementById('footerUpdated').textContent = '数据版本：' + DATA.version + ' · ' + DATA.updated;
   updateBadges();
   renderSide();
   renderMain();
-  console.log('[GB 2760] v3.0 已加载', DATA.stats);
+  console.log('[GB 2760] v3.3 已加载', DATA.stats);
 
   const params = new URLSearchParams(location.search);
   const t = params.get('task');
