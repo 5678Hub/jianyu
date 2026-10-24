@@ -75,8 +75,7 @@ def push_git(token, message="update", branch="main"):
 
     背景：本机 GCM 无 github.com 凭据，git push 会挂起等待账号密码输入。
     方案：credential.helper 置空 + http.extraheader 注入 Basic 认证。
-    注意：代理对 github.com 的 CONNECT 隧道不稳定（时通时 502），
-          失败时由调用方回退到 REST API 通道。
+    优先于 REST API 通道（一次可推多个文件，不会让本地落后远端）。
     """
     import base64
     import subprocess
@@ -94,8 +93,8 @@ def push_git(token, message="update", branch="main"):
         print("[OK] git push 成功")
         print("    " + "\n    ".join(out.splitlines()[-3:]))
         return 0
-    print("[X] git push 失败 rc=%d（代理 CONNECT 隧道不稳定，可重试或改用 API 通道）" % p.returncode)
-    print("    " + "\n    ".join(out.splitlines()[-4:]))
+    print("[X] git push 失败 rc=%d" % p.returncode)
+    print("    " + "\n    ".join(out.splitlines()[-6:]))
     return 1
 
 
