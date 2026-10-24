@@ -7,6 +7,7 @@
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a365d'/><text x='32' y='40' font-family='Arial,sans-serif' font-size='18' font-weight='600' fill='white' text-anchor='middle'>添加剂</text></svg>">
 <meta name="theme-color" content="#1a365d">
 <style>
+
 :root {
   --c-bg: #f6f8fb;
   --c-surface: #ffffff;
@@ -382,6 +383,447 @@ footer a:hover { color: var(--c-primary); }
 ::-webkit-scrollbar-track { background: var(--c-bg); }
 ::-webkit-scrollbar-thumb { background: var(--c-border-strong); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--c-text-3); }
+
+/* ══════════════════════════════════════════════════════════════
+   v3.0 左右主从布局（split view）
+   左：导航列表（分类树 / 添加剂列表 / 功能列表）
+   右：详情面板（随左侧选择实时更新，无需上下滚动）
+   ══════════════════════════════════════════════════════════════ */
+.split {
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) 1fr;
+  gap: 14px;
+  align-items: start;
+  height: calc(100vh - 210px);
+  min-height: 560px;
+}
+.split-side {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-soft);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+}
+.split-side .side-head {
+  padding: 12px 14px; border-bottom: 1px solid var(--c-border);
+  background: linear-gradient(180deg, var(--c-surface), #fafbfc);
+  flex-shrink: 0;
+}
+.side-head .sh-title {
+  font-size: 13px; font-weight: 600; color: var(--c-text-1);
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.side-head .sh-meta { font-size: 11px; color: var(--c-text-3); margin-top: 3px; }
+.side-head .sh-back {
+  display: none; font-size: 11.5px; color: var(--c-primary);
+  background: var(--c-primary-soft); border: 1px solid var(--c-primary-2);
+  border-radius: 12px; padding: 3px 11px; cursor: pointer; font-family: inherit;
+  margin-bottom: 8px; font-weight: 500;
+}
+.side-head .sh-back:hover { background: var(--c-primary); color: #fff; }
+.side-head .sh-back.show { display: inline-block; }
+.side-list {
+  flex: 1; overflow-y: auto; padding: 8px;
+  overscroll-behavior: contain;
+}
+.split-main {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-soft);
+  overflow-y: auto; height: 100%;
+  overscroll-behavior: contain;
+}
+.split-main .main-inner { padding: 18px 22px 26px; }
+
+/* 侧栏条目 */
+.side-item {
+  padding: 9px 11px; border-radius: var(--r-sm); cursor: pointer;
+  border: 1px solid transparent; transition: all .13s; margin-bottom: 2px;
+}
+.side-item:hover { background: var(--c-primary-soft); border-color: #d5e3f2; }
+.side-item.active { background: var(--c-primary-soft); border-color: var(--c-primary-2); }
+.side-item .si-top { display: flex; align-items: baseline; gap: 7px; }
+.side-item .si-name {
+  font-size: 13px; color: var(--c-text-1); font-weight: 500;
+  flex: 1; min-width: 0; line-height: 1.4;
+}
+.side-item.active .si-name { color: var(--c-primary); font-weight: 600; }
+.side-item .si-code {
+  font-family: "SF Mono", Consolas, monospace; font-size: 10.5px;
+  color: var(--c-text-3); flex-shrink: 0;
+}
+.side-item .si-sub {
+  font-size: 11px; color: var(--c-text-3); margin-top: 3px;
+  display: flex; gap: 6px; align-items: center; flex-wrap: wrap;
+}
+.side-item .si-arrow { color: var(--c-text-3); font-size: 12px; flex-shrink: 0; }
+
+/* 侧栏分组标题 */
+.side-group {
+  font-size: 10.5px; font-weight: 600; color: var(--c-text-3);
+  letter-spacing: .8px; padding: 12px 11px 5px; text-transform: none;
+  display: flex; align-items: center; gap: 6px;
+}
+.side-group::after {
+  content: ''; flex: 1; height: 1px; background: var(--c-border);
+}
+
+/* 主区标题区 */
+.main-head {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding-bottom: 13px; border-bottom: 1px solid var(--c-border);
+  margin-bottom: 15px;
+}
+.main-head .mh-art { width: 64px; height: 52px; flex-shrink: 0; border-radius: var(--r-sm); overflow: hidden; }
+.main-head .mh-art svg { width: 100%; height: 100%; display: block; }
+.main-head .mh-text { flex: 1; min-width: 0; }
+.main-head .mh-title { font-size: 17px; font-weight: 600; color: var(--c-text-1); line-height: 1.4; }
+.main-head .mh-sub { font-size: 12px; color: var(--c-text-2); margin-top: 4px; line-height: 1.55; }
+.main-head .mh-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+
+/* 提示条（继承/例外/带入原则） */
+.notice {
+  border-radius: var(--r-sm); padding: 11px 14px; font-size: 12.5px;
+  line-height: 1.65; margin-bottom: 13px; border: 1px solid;
+}
+.notice .nt-title { font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+.notice.info { background: var(--c-primary-soft); border-color: #c9dcf0; color: #1c3d5e; }
+.notice.warn { background: var(--c-warn-soft); border-color: #f3dfa0; color: #6d4a10; }
+.notice.danger { background: var(--c-high-soft); border-color: #f3c4c4; color: #8c2020; }
+.notice.ok { background: var(--c-ok-soft); border-color: #bfe3c4; color: #1f5c26; }
+.notice ul { margin: 5px 0 0 16px; padding: 0; }
+.notice li { margin-bottom: 3px; }
+
+/* 继承条：标注来源上级分类 */
+.inherit-tag {
+  display: inline-block; font-size: 10.5px; padding: 1px 7px;
+  border-radius: 8px; background: var(--c-warn-soft); color: var(--c-mid);
+  border: 1px solid #f3dfa0; font-weight: 500; margin-left: 6px;
+}
+.override-tag {
+  display: inline-block; font-size: 10.5px; padding: 1px 7px;
+  border-radius: 8px; background: var(--c-high-soft); color: var(--c-high);
+  border: 1px solid #f3c4c4; font-weight: 500; margin-left: 6px;
+}
+.excluded-tag {
+  display: inline-block; font-size: 10.5px; padding: 1px 7px;
+  border-radius: 8px; background: #f1f3f5; color: var(--c-text-3);
+  border: 1px solid var(--c-border-strong); font-weight: 500; margin-left: 6px;
+}
+
+/* 主区小节 */
+.main-sec { font-size: 12px; font-weight: 600; color: var(--c-text-2); margin: 20px 0 9px; display: flex; align-items: center; gap: 8px; }
+.main-sec::after { content: ''; flex: 1; height: 1px; background: var(--c-border); }
+.main-sec:first-child { margin-top: 0; }
+
+/* 继承来源折叠块 */
+.inherit-block {
+  border: 1px dashed var(--c-border-strong); border-radius: var(--r-sm);
+  margin-bottom: 10px; overflow: hidden;
+}
+.inherit-block > .ib-head {
+  padding: 9px 13px; background: #fafbfc; cursor: pointer;
+  font-size: 12px; color: var(--c-text-2); display: flex;
+  align-items: center; gap: 8px; user-select: none;
+}
+.inherit-block > .ib-head:hover { background: var(--c-primary-soft); }
+.inherit-block > .ib-head .ib-caret { transition: transform .18s; font-size: 10px; }
+.inherit-block.open > .ib-head .ib-caret { transform: rotate(90deg); }
+.inherit-block > .ib-body { display: none; padding: 4px 0 0; }
+.inherit-block.open > .ib-body { display: block; }
+
+/* 混合比例说明（A.4） */
+.mix-formula {
+  font-family: "SF Mono", Consolas, monospace; font-size: 13px;
+  background: var(--c-primary-soft); color: var(--c-primary);
+  padding: 9px 14px; border-radius: var(--r-sm); display: inline-block;
+  margin: 6px 0; font-weight: 600;
+}
+
+/* 主区表格紧凑化 */
+.split-main .data-table { font-size: 12.5px; }
+.split-main .data-table thead th { padding: 8px 12px; }
+.split-main .data-table tbody td { padding: 8px 12px; }
+
+/* 空态在主区 */
+.main-empty {
+  padding: 70px 24px; text-align: center; color: var(--c-text-3); font-size: 13px;
+}
+.main-empty .me-ico { font-size: 34px; margin-bottom: 12px; opacity: .5; }
+.main-empty .me-title { font-size: 14px; color: var(--c-text-2); margin-bottom: 5px; font-weight: 500; }
+.main-empty .me-hint { font-size: 12px; }
+
+/* 移动端：左右折叠为上下 */
+@media (max-width: 860px) {
+  .split { grid-template-columns: 1fr; height: auto; }
+  .split-side { height: auto; max-height: 46vh; }
+  .split-main { height: auto; }
+}
+
+/* 搜索框内嵌侧栏 */
+.side-search {
+  width: 100%; font-family: inherit; font-size: 12.5px;
+  border: 1px solid var(--c-border-strong); border-radius: var(--r-sm);
+  padding: 6px 10px; background: var(--c-surface); color: var(--c-text-1);
+  outline: none; margin-top: 9px; transition: border-color .15s, box-shadow .15s;
+}
+.side-search:focus { border-color: var(--c-primary-2); box-shadow: 0 0 0 3px var(--c-primary-soft); }
+
+/* 任务型 Tab（替代原 4 个平级 Tab） */
+.task-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.task-tab {
+  font-family: inherit; font-size: 13px; font-weight: 500;
+  border: 1px solid var(--c-border-strong); background: var(--c-surface);
+  color: var(--c-text-2); padding: 8px 15px; border-radius: 20px;
+  cursor: pointer; transition: all .15s; display: flex; align-items: center; gap: 7px;
+}
+.task-tab:hover { border-color: var(--c-primary-2); color: var(--c-primary); background: var(--c-primary-soft); }
+.task-tab.active { background: var(--c-primary); border-color: var(--c-primary); color: #fff; }
+.task-tab .tt-num {
+  width: 17px; height: 17px; border-radius: 50%; font-size: 10px;
+  background: var(--c-primary-soft); color: var(--c-primary);
+  display: flex; align-items: center; justify-content: center; font-weight: 600;
+}
+.task-tab.active .tt-num { background: rgba(255,255,255,.25); color: #fff; }
+
+/* ══════════════════════════════════════════════════════════════
+   v3.0 补充样式：分类树 / 继承链 / 详情块
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── 左侧分类树 ── */
+.tree-l1 {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 11px; margin-bottom: 2px; border-radius: var(--r-sm);
+  cursor: pointer; border: 1px solid transparent; transition: all .13s;
+}
+.tree-l1:hover { background: var(--c-primary-soft); border-color: #d5e3f2; }
+.tree-l1.active { background: var(--c-primary-soft); border-color: var(--c-primary-2); }
+.tree-l1 .tl-no {
+  font-family: "SF Mono", Consolas, monospace; font-size: 10.5px;
+  font-weight: 600; color: #fff; background: var(--c-primary-2);
+  padding: 1px 6px; border-radius: 7px; flex-shrink: 0;
+}
+.tree-l1.active .tl-no { background: var(--c-primary); }
+.tree-l1 .tl-name {
+  font-size: 12.5px; font-weight: 600; color: var(--c-text-1);
+  flex: 1; min-width: 0; line-height: 1.4;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.tree-l1 .tl-caret {
+  font-size: 9px; color: var(--c-text-3); flex-shrink: 0;
+  transition: transform .18s;
+}
+.tree-l1.open .tl-caret { transform: rotate(90deg); }
+
+.tree-kids { display: none; padding-left: 13px; border-left: 1px dashed var(--c-border-strong); margin-left: 15px; }
+.tree-kids.open { display: block; }
+
+.tree-item {
+  display: flex; align-items: baseline; gap: 7px;
+  padding: 7px 10px; margin-bottom: 1px; border-radius: var(--r-sm);
+  cursor: pointer; border: 1px solid transparent; transition: all .13s;
+}
+.tree-item:hover { background: var(--c-primary-soft); border-color: #d5e3f2; }
+.tree-item.active { background: var(--c-primary); border-color: var(--c-primary); }
+.tree-item.active .ti-code, .tree-item.active .ti-name { color: #fff; }
+.tree-item .ti-code {
+  font-family: "SF Mono", Consolas, monospace; font-size: 10.5px;
+  color: var(--c-text-3); flex-shrink: 0;
+}
+.tree-item .ti-name {
+  font-size: 12px; color: var(--c-text-1); flex: 1; min-width: 0;
+  line-height: 1.45;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.tree-item .ti-badge {
+  font-size: 10px; padding: 0 6px; border-radius: 7px; flex-shrink: 0;
+  background: var(--c-ok-soft); color: var(--c-ok); font-weight: 600;
+}
+.tree-item .ti-badge.inherit { background: var(--c-warn-soft); color: var(--c-mid); }
+.tree-item .ti-badge.exc { background: var(--c-high-soft); color: var(--c-high); }
+.tree-item .ti-badge.zero { background: var(--c-bg); color: var(--c-text-3); }
+.tree-item.active .ti-badge { background: rgba(255,255,255,.25); color: #fff; }
+
+/* ── 通用条款块 ── */
+.generic-card {
+  border: 1px solid var(--c-border); border-radius: var(--r-sm);
+  padding: 11px 14px; margin-bottom: 8px; background: var(--c-surface);
+}
+.generic-card.excluded { background: #fafbfc; border-style: dashed; }
+.generic-card .gc-top {
+  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 4px;
+}
+.generic-card .gc-name { font-size: 13.5px; font-weight: 600; color: var(--c-text-1); }
+.generic-card .gc-scope { font-size: 12px; color: var(--c-text-2); }
+.generic-card .gc-limit { font-family: "SF Mono", Consolas, monospace; font-size: 12px; color: var(--c-high); font-weight: 600; }
+.generic-card .gc-remark { font-size: 12px; color: var(--c-text-2); margin-top: 4px; }
+.gc-actions { margin-top: 7px; display: flex; gap: 8px; flex-wrap: wrap; }
+.gc-link {
+  font-size: 11.5px; color: var(--c-primary); background: var(--c-primary-soft);
+  border: 1px solid var(--c-primary-2); border-radius: 12px; padding: 2px 10px;
+  cursor: pointer; font-family: inherit;
+}
+.gc-link:hover { background: var(--c-primary); color: #fff; }
+
+/* ── 生效来源说明块 ── */
+.src-row {
+  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  padding: 9px 13px; border-radius: var(--r-sm); margin-bottom: 8px;
+  border: 1px solid var(--c-border); background: #fafbfc; font-size: 12.5px;
+}
+.src-row .sr-label { font-weight: 600; color: var(--c-text-1); flex-shrink: 0; }
+.src-row .sr-code {
+  font-family: "SF Mono", Consolas, monospace; font-size: 11.5px;
+  color: var(--c-primary); background: var(--c-primary-soft);
+  padding: 1px 7px; border-radius: 8px;
+}
+.src-row .sr-note { color: var(--c-text-2); font-size: 12px; }
+
+/* ── 例外表 ── */
+.exc-row {
+  display: flex; align-items: center; gap: 9px;
+  padding: 9px 11px; margin-bottom: 2px; border-radius: var(--r-sm);
+  cursor: pointer; border: 1px solid transparent; transition: all .13s;
+}
+.exc-row:hover { background: var(--c-primary-soft); border-color: #d5e3f2; }
+.exc-row.active { background: var(--c-primary); }
+.exc-row.active .er-seq, .exc-row.active .er-code, .exc-row.active .er-name { color: #fff; }
+.exc-row .er-seq {
+  font-family: "SF Mono", Consolas, monospace; font-size: 10.5px;
+  color: #fff; background: var(--c-high); padding: 1px 6px;
+  border-radius: 7px; flex-shrink: 0; font-weight: 600;
+}
+.exc-row.active .er-seq { background: rgba(255,255,255,.28); }
+.exc-row .er-code {
+  font-family: "SF Mono", Consolas, monospace; font-size: 10.5px;
+  color: var(--c-text-3); flex-shrink: 0;
+}
+.exc-row .er-name {
+  font-size: 12.5px; color: var(--c-text-1); flex: 1; min-width: 0;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.exc-row .er-n { font-size: 10.5px; color: var(--c-text-3); flex-shrink: 0; }
+
+/* ── 添加剂行（详情表内） ── */
+.addrow { }
+.addrow .ar-name { font-weight: 600; color: var(--c-text-1); }
+.addrow .ar-en { font-size: 11.5px; color: var(--c-text-3); }
+.src-flag {
+  display: inline-block; font-size: 10px; padding: 0 6px; border-radius: 7px;
+  font-weight: 500; margin-left: 5px;
+}
+.src-flag.direct { background: var(--c-ok-soft); color: var(--c-ok); }
+.src-flag.inherit { background: var(--c-warn-soft); color: var(--c-mid); }
+.src-flag.generic { background: var(--c-accent-soft); color: var(--c-accent); }
+.src-flag.over { background: var(--c-high-soft); color: var(--c-high); }
+
+/* 通用条款除外清单中命中当前类别的高亮行 */
+.data-table tbody tr.row-hit { background: var(--c-high-soft) !important; }
+.data-table tbody tr.row-hit td { font-weight: 600; }
+
+/* CNS 号列：复配条目会含多个编号（01.111,01.313），需留足宽度且在逗号处换行 */
+.data-table .col-code {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+.data-table th.col-code, .data-table td.col-code { min-width: 92px; }
+
+/* ── 分类概览（未选具体分类时） ── */
+.cat-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.cat-card {
+  border: 1px solid var(--c-border); border-radius: var(--r-md);
+  overflow: hidden; background: var(--c-surface); cursor: pointer;
+  transition: transform .18s cubic-bezier(.34,1.2,.64,1), box-shadow .18s, border-color .18s;
+}
+.cat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-mid); border-color: var(--c-primary-2); }
+.cat-card .cc-art { height: 84px; position: relative; overflow: hidden; }
+.cat-card .cc-art svg { width: 100%; height: 100%; display: block; }
+.cat-card .cc-no {
+  position: absolute; left: 8px; top: 8px; z-index: 2;
+  font-family: "SF Mono", Consolas, monospace; font-size: 10.5px; font-weight: 600;
+  color: #fff; background: rgba(20,30,50,.32); backdrop-filter: blur(4px);
+  padding: 2px 8px; border-radius: 9px;
+}
+.cat-card .cc-body { padding: 10px 12px 12px; }
+.cat-card .cc-title {
+  font-size: 13px; font-weight: 600; color: var(--c-text-1);
+  line-height: 1.45; min-height: 36px;
+}
+.cat-card .cc-meta { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+.cat-card .cc-count { font-size: 11px; color: var(--c-text-3); }
+.cat-card .cc-go {
+  margin-left: auto; font-size: 11px; color: var(--c-primary);
+  background: var(--c-primary-soft); padding: 2px 9px; border-radius: 9px; font-weight: 500;
+}
+.cat-card:hover .cc-go { background: var(--c-primary); color: #fff; }
+
+/* ── 左侧列表通用条目（添加剂/功能） ── */
+.plain-item {
+  display: flex; align-items: baseline; gap: 8px;
+  padding: 8px 11px; margin-bottom: 1px; border-radius: var(--r-sm);
+  cursor: pointer; border: 1px solid transparent; transition: all .13s;
+}
+.plain-item:hover { background: var(--c-primary-soft); border-color: #d5e3f2; }
+.plain-item.active { background: var(--c-primary); border-color: var(--c-primary); }
+.plain-item.active .pi-name, .plain-item.active .pi-code { color: #fff; }
+.plain-item .pi-name {
+  font-size: 12.5px; color: var(--c-text-1); font-weight: 500;
+  flex: 1; min-width: 0; line-height: 1.4;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.plain-item.active .pi-name { font-weight: 600; }
+.plain-item .pi-code {
+  font-family: "SF Mono", Consolas, monospace; font-size: 10.5px;
+  color: var(--c-text-3); flex-shrink: 0;
+}
+.plain-item .pi-badge {
+  font-size: 10px; padding: 0 6px; border-radius: 7px; flex-shrink: 0;
+  background: var(--c-primary-soft); color: var(--c-primary); font-weight: 600;
+}
+.plain-item.active .pi-badge { background: rgba(255,255,255,.25); color: #fff; }
+
+/* ── 面包屑（分类路径） ── */
+.crumb {
+  display: flex; align-items: center; gap: 5px; flex-wrap: wrap;
+  font-size: 11.5px; color: var(--c-text-2); margin-bottom: 9px;
+}
+.crumb .cb-item {
+  cursor: pointer; padding: 2px 8px; border-radius: 8px;
+  background: var(--c-bg); border: 1px solid var(--c-border);
+}
+.crumb .cb-item:hover { background: var(--c-primary-soft); border-color: var(--c-primary-2); color: var(--c-primary); }
+.crumb .cb-item.cur { background: var(--c-primary); border-color: var(--c-primary); color: #fff; cursor: default; }
+.crumb .cb-sep { color: var(--c-text-3); }
+
+/* ── 顶部说明折叠 ── */
+.howto { margin-bottom: 14px; }
+.howto summary {
+  cursor: pointer; list-style: none; font-size: 12.5px; color: var(--c-primary);
+  background: var(--c-primary-soft); border: 1px solid var(--c-primary-2);
+  border-radius: var(--r-sm); padding: 8px 14px; font-weight: 500;
+  display: flex; align-items: center; gap: 7px;
+}
+.howto summary::-webkit-details-marker { display: none; }
+.howto summary::before { content: '▸'; font-size: 10px; transition: transform .18s; }
+.howto[open] summary::before { transform: rotate(90deg); }
+.howto .howto-body {
+  border: 1px solid var(--c-border); border-top: none;
+  border-radius: 0 0 var(--r-sm) var(--r-sm);
+  padding: 13px 16px; font-size: 12.5px; line-height: 1.75; color: var(--c-text-2);
+}
+.howto .howto-body ol { margin: 6px 0 0 18px; padding: 0; }
+.howto .howto-body li { margin-bottom: 4px; }
+.howto .howto-body b { color: var(--c-text-1); }
+
+/* 滚动条微调 */
+.side-list::-webkit-scrollbar, .split-main::-webkit-scrollbar { width: 7px; }
+.side-list::-webkit-scrollbar-thumb, .split-main::-webkit-scrollbar-thumb { background: #cfd8e3; border-radius: 4px; }
+.side-list::-webkit-scrollbar-thumb:hover, .split-main::-webkit-scrollbar-thumb:hover { background: var(--c-text-3); }
+
 </style>
 </head>
 <body>
@@ -392,95 +834,66 @@ footer a:hover { color: var(--c-primary); }
   <div class="brand-text">
     <div class="brand-title">
       <span class="zh">食品添加剂使用查询</span>
-      <span class="en">GB 2760-2024</span>
+      <span class="en">GB 2760—2024</span>
     </div>
-    <div class="subtitle">食品添加剂的允许使用品种、使用范围以及最大使用量或残留量</div>
+    <div class="subtitle">按 GB 2760—2024 附录 A.1 原表查询 · 继承查找 · 下级优先 · 例外联动</div>
   </div>
-  <span class="ver" id="updatedTag">v2.0</span>
+  <span class="ver" id="updatedTag">v3.0</span>
   <a class="back" href="./toolbox.html">← 工具箱</a>
 </header>
 
 <div class="stats">
   <div class="stat"><div class="label">添加剂数</div><div class="num" id="st-add">—</div><div class="sub">表 A.1</div></div>
-  <div class="stat"><div class="label">食品条目数</div><div class="num" id="st-item">—</div><div class="sub">使用规定</div></div>
+  <div class="stat"><div class="label">使用规定</div><div class="num" id="st-item">—</div><div class="sub">表 A.1 条目</div></div>
   <div class="stat"><div class="label">食品分类节点</div><div class="num" id="st-cat">—</div><div class="sub">附录 E</div></div>
-  <div class="stat"><div class="label">功能种类</div><div class="num" id="st-func">—</div><div class="sub">着色/防腐/...</div></div>
+  <div class="stat"><div class="label">功能种类</div><div class="num" id="st-func">—</div><div class="sub">附录 D</div></div>
   <div class="stat"><div class="label">例外食品类别</div><div class="num" id="st-exc">—</div><div class="sub">表 A.2</div></div>
 </div>
 
-<div class="tabs">
-  <button class="tab active" data-tab="by-additive">按添加剂查<span class="badge" id="b-add">0</span></button>
-  <button class="tab" data-tab="by-category">按食品查<span class="badge" id="b-cat">0</span></button>
-  <button class="tab" data-tab="by-function">按功能查<span class="badge" id="b-func">0</span></button>
-  <button class="tab" data-tab="exceptions">例外食品<span class="badge" id="b-exc">0</span></button>
+<!-- 任务型 Tab -->
+<div class="task-tabs" id="taskTabs">
+  <button class="task-tab active" data-task="by-category"><span class="tt-num">1</span>按食品类别查<span class="tt-badge" id="b-cat">0</span></button>
+  <button class="task-tab" data-task="by-additive"><span class="tt-num">2</span>按添加剂查<span class="tt-badge" id="b-add">0</span></button>
+  <button class="task-tab" data-task="by-function"><span class="tt-num">3</span>按功能查<span class="tt-badge" id="b-func">0</span></button>
+  <button class="task-tab" data-task="by-exception"><span class="tt-num">4</span>表 A.2 例外<span class="tt-badge" id="b-exc">0</span></button>
 </div>
 
-<!-- 工具栏 -->
-<div class="toolbar" id="toolbar">
-  <input type="search" id="search" placeholder="输入名称、CNS、INS、功能..." autocomplete="off">
-  <select id="select-func" style="display:none">
-    <option value="">— 全部功能 —</option>
-  </select>
-  <button class="btn" id="btn-clear">清空</button>
-  <span class="btn-count" id="counter">— 项</span>
-</div>
-
-<!-- Tab 1: 按添加剂查 -->
-<div id="panel-by-additive">
-  <div class="section">
-    <div class="section-head">
-      <div class="section-title"><span class="ico">📋</span><span id="addListTitle">添加剂列表</span></div>
-      <div class="section-meta" id="addListMeta">—</div>
-    </div>
-    <div class="list-cards" id="addList"></div>
-    <div class="empty" id="addEmpty" hidden>未找到匹配的添加剂</div>
+<details class="howto" id="howto">
+  <summary>怎么用这个工具？（GB 2760—2024 的标准使用方法对照）</summary>
+  <div class="howto-body">
+    <ol>
+      <li><b>先定食品分类号</b> —— 左侧树按附录 E 的 16 大类逐级展开，找到你的产品所属类别（如 <code>12.09</code> 复合调味料）。</li>
+      <li><b>看本级有无规定</b> —— 右侧「本级直接规定」表就是该类别在表 A.1 中直接命中的行。</li>
+      <li><b>本级没有就向上继承</b> —— 展开「继承自上级」折叠块，标注了从哪一级继承而来。依据：表 A.1 规定「允许用于某一食品类别时，则允许应用于该类别下所有类别食品（另有规定除外）」；分类系统第 (4) 条同理。</li>
+      <li><b>下级优先</b> —— 若同一添加剂在下级另有规定，以本级为准，冲突处标 <span class="override-tag">下级覆盖</span>。依据：表 A.1「下级与上级规定不一致时，遵守下级」。</li>
+      <li><b>通用条款与例外联动</b> —— 「各类食品（表 A.2 所列类别除外）」的通用条款单列一块；点开可看被排除的例外类别。若本类别在 A.2 内，会单独提示。</li>
+      <li><b>带入原则</b> —— 用复合调味料/馅料等时，另一配料带入的添加剂须满足 3.4.1：用量不超过终产品中的最大使用量、含量明显低于直接添加、标签标示用途。</li>
+      <li><b>同功能混合</b> —— 同一功能（附录 D）的多种添加剂混合使用时，各自用量占最大使用量的比例之和 ≤ 1。</li>
+    </ol>
   </div>
+</details>
 
-  <div id="addDetail"></div>
-</div>
-
-<!-- Tab 2: 按食品查 -->
-<div id="panel-by-category" hidden>
-  <div class="section">
-    <div class="section-head">
-      <div class="section-title"><span class="ico">🍱</span><span>食品分类（点击卡片查看可用添加剂）</span></div>
-      <div class="section-meta" id="catListMeta">—</div>
+<!-- 左右主从 -->
+<div class="split">
+  <aside class="split-side">
+    <div class="side-head">
+      <div class="sh-title">
+        <span id="sideTitle">食品分类</span>
+        <span class="sh-meta" id="sideMeta">—</span>
+      </div>
+      <input type="search" class="side-search" id="sideSearch" placeholder="搜索分类编号或名称..." autocomplete="off">
+      <button class="sh-back" id="sideBack">← 返回</button>
     </div>
-    <div class="hero-grid" id="catList"></div>
-    <div class="empty" id="catEmpty" hidden>未找到匹配的食品分类</div>
-  </div>
-</div>
+    <div class="side-list" id="sideList"></div>
+  </aside>
 
-<!-- Tab 3: 按功能查 -->
-<div id="panel-by-function" hidden>
-  <div class="section">
-    <div class="section-head">
-      <div class="section-title"><span class="ico">⚙️</span><span>按功能浏览添加剂</span></div>
-      <div class="section-meta" id="funcListMeta">—</div>
-    </div>
-    <div class="list-cards" id="funcList"></div>
-    <div class="empty" id="funcEmpty" hidden>未找到匹配的功能分类</div>
-  </div>
-</div>
-
-<!-- Tab 4: 例外食品 -->
-<div id="panel-exceptions" hidden>
-  <div class="section">
-    <div class="section-head">
-      <div class="section-title"><span class="ico">⚠️</span><span>表 A.2 — 表 A.1 中例外食品类别</span></div>
-      <div class="section-meta" id="excListMeta">—</div>
-    </div>
-    <table class="data-table">
-      <thead>
-        <tr><th style="width:60px">编号</th><th style="width:140px">食品分类号</th><th>食品名称</th></tr>
-      </thead>
-      <tbody id="excTbody"></tbody>
-    </table>
-  </div>
+  <main class="split-main">
+    <div class="main-inner" id="mainInner"></div>
+  </main>
 </div>
 
 <footer>
-  <div>数据来源：GB 2760-2024 食品安全国家标准 食品添加剂使用标准</div>
+  <div>数据来源：GB 2760—2024 食品安全国家标准 食品添加剂使用标准（2025-02-08 实施）</div>
   <div id="footerUpdated">—</div>
 </footer>
 
@@ -488,24 +901,7 @@ footer a:hover { color: var(--c-primary); }
 
 <div class="toast" id="toast"></div>
 
-<!-- 弹窗 -->
-<div class="modal-mask" id="modalMask">
-  <div class="modal" id="modalBox">
-    <div class="modal-head">
-      <div class="mh-art" id="modalArt"></div>
-      <div class="mh-text">
-        <div class="mh-title" id="modalTitle">—</div>
-        <div class="mh-sub" id="modalSub">—</div>
-        <div class="mh-chips" id="modalChips"></div>
-      </div>
-      <button class="modal-close" id="modalClose" title="关闭 (Esc)">✕</button>
-    </div>
-    <div class="modal-body" id="modalBody"></div>
-  </div>
-</div>
-
 <script>
-/* ===== CAT_ART_INLINE_START ===== */
 window.CAT_ART = {
   "01.0": { bg: ["#e8f2fb", "#c9dff5"], ink: "#2c5282", art: `
     <path d="M52 26 h16 a5 5 0 0 1 5 5 v34 a5 5 0 0 1 -5 5 h-16 a5 5 0 0 1 -5 -5 v-34 a5 5 0 0 1 5 -5z" fill="#fff" stroke="#2c5282" stroke-width="2.4"/>
@@ -615,551 +1011,914 @@ window.CAT_ART = {
     <path d="M32 42 l28 14 l28 -14 M60 56 v30" stroke="#4a5b6b" stroke-width="2.2" fill="none"/>
     <path d="M46 35 l28 14 v-9" stroke="#4a5b6b" stroke-width="2" fill="none"/>` }
 };
-/* ===== CAT_ART_INLINE_END ===== */
+/* ══════════════════════════════════════════════════════════════
+   GB 2760—2024 食品添加剂使用查询 · v3.0
+   左右主从布局 + 与标准使用方法一致的查询逻辑
+   ══════════════════════════════════════════════════════════════ */
 
-// ── 状态 ──
 let DATA = null;
-let currentTab = "by-additive";
+let TASK = 'by-category';
+let SEL = { cat: null, add: null, func: null, exc: null };
+let CAT_INDEX = {};      // code -> row
+let CAT_ORDER = [];      // 有序节点列表
+let FTA = {};            // code -> [允许的添加剂]
+let EXC_BY_SEQ = {};     // seq -> 例外条目
+let EXC_CODES = {};      // code -> 例外条目
+let GENERIC = [];        // 通用条款（scope_type = all_except）
 
-// 数据加载路径（多个 fallback）
 const DATA_URLS = [
   './data/gb2760/gb2760_full.json',
   './data/gb2760/gb2760_full.json?v=' + Date.now(),
 ];
 
-// ── 工具函数 ──
+/* ── 工具函数 ── */
 function escapeHTML(s) {
-  if (s == null) return "";
-  return String(s)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
+  if (s == null) return '';
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
-
 function highlight(s, q) {
   const safe = escapeHTML(s);
   if (!q) return safe;
-  const re = new RegExp("(" + q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi");
+  const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
   return safe.replace(re, '<mark style="background:#fff59d;color:inherit;border-radius:2px;padding:0 2px">$1</mark>');
 }
-
 function showToast(msg) {
-  const t = document.getElementById("toast");
+  const t = document.getElementById('toast');
   t.textContent = msg;
-  t.classList.add("show");
+  t.classList.add('show');
   clearTimeout(showToast._t);
-  showToast._t = setTimeout(() => t.classList.remove("show"), 1500);
+  showToast._t = setTimeout(() => t.classList.remove('show'), 1800);
 }
 
-// ── 数据加载 ──
+/* ── CNS 号渲染：复配条目含多个编号，按逗号分行更易读 ── */
+function cnsHTML(cns) {
+  const s = String(cns == null ? '' : cns);
+  if (s.indexOf(',') < 0) return escapeHTML(s);
+  return s.split(',').map(x => escapeHTML(x.trim())).join('<br>');
+}
+
+/* ── 父级编码 ──
+   GB 2760 附录 E 分类号规则：
+     L1 = XX.0            （2 段，末段恒为 0）
+     L2 = XX.YY           （2 段）
+     L3 = XX.YY.ZZ        （3 段）
+     L4 = XX.YY.ZZ.ZZ     （4 段）
+     L5 = XX.YY.ZZ.ZZ.ZZ  （5 段）
+   故 L1 与 L2 段数相同，不能按段数切分，必须按「末段是否为 0」区分。
+*/
+function parentOf(code) {
+  const p = String(code || '').split('.');
+  if (p.length <= 2) return (p.length === 2 && p[1] !== '0') ? p[0] + '.0' : null;
+  return p.slice(0, p.length - 1).join('.');
+}
+
+/* ── 继承链：返回从最近上级到最远的祖先编码（不含自身） ── */
+function ancestorsOf(code) {
+  const out = [];
+  let x = parentOf(code);
+  let guard = 0;
+  while (x && guard++ < 12) { out.push(x); x = parentOf(x); }
+  return out;
+}
+
+/* ── 查找某分类的"生效规定" ──
+   依据 A.3：允许用于某食品类别时，则允许应用于该类别下的所有类别食品（另有规定除外）；
+             下级食品类别中与上级对同一添加剂的用量规定不一致的，遵守下级。
+   ⇒ 继承是「逐添加剂」判定：某添加剂取「最近的、规定了它的那一级」。
+   direct     : 本级直接规定
+   inherited  : 继承自上级的规定（逐条带来源编码）
+   overridden : 被本级（或更近下级）覆盖的上级规定
+   src        : 继承来源集合
+*/
+function resolveCategory(code) {
+  const direct = FTA[code] || [];
+  const anc = ancestorsOf(code);                 // 近 → 远
+  const chain = [code].concat(anc);
+  const claimed = new Set(direct.map(a => a.cns)); // 已被更近级（含本级）占用的 CNS
+  const inherited = [];
+  const overridden = [];
+  for (let i = 1; i < chain.length; i++) {
+    const lvl = chain[i];
+    const items = FTA[lvl] || [];
+    if (!items.length) continue;
+    // 该级中尚未被更近级占用的条目 → 继承（同一 CNS 在本级的多行全部保留）
+    const fresh = items.filter(x => !claimed.has(x.cns));
+    // 该级中已被更近级占用的条目 → 被覆盖（���级优先）
+    for (const x of items) if (claimed.has(x.cns)) overridden.push({ from: lvl, item: x });
+    for (const x of fresh) { inherited.push({ item: x, from: lvl }); claimed.add(x.cns); }
+  }
+  const src = inherited.length ? Array.from(new Set(inherited.map(x => x.from))) : [];
+  return { direct, inherited, src, overridden };
+}
+
+/* ── 本类别是否落在 A.2 例外内 ── */
+function isException(code) {
+  return !!EXC_CODES[code];
+}
+
+/* ── 某通用条款对某类别是否适用 ──
+   A.2 的排除是「逐添加剂」的：不同通用条款的除外清单并不相同
+   （实测 76 条通用条款有 23 种不同组合），不可按类别一刀切。*/
+function genericAppliesTo(g, code) {
+  const seq = EXC_CODES[code] ? EXC_CODES[code].seq : null;
+  if (seq == null) return true;                       // 本类别不在 A.2 内 → 通用条款适用
+  return !(g.item.except_codes || []).includes(seq);   // 在 A.2 内 → 看该条款自身是否排除本编号
+}
+
+/* ── 加载数据 ── */
 async function loadData() {
   for (const url of DATA_URLS) {
     try {
       const res = await fetch(url);
-      if (res.ok) {
-        DATA = await res.json();
-        return true;
-      }
-    } catch (e) {
-      console.warn("加载失败", url, e);
-    }
+      if (res.ok) { DATA = await res.json(); return true; }
+    } catch (e) { console.warn('加载失败', url, e); }
   }
   return false;
 }
 
-// ── Tab 切换 ──
-function switchTab(tabName) {
-  const tab = document.querySelector(`.tab[data-tab="${tabName}"]`);
-  if (!tab) return;
-  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-  tab.classList.add("active");
-  currentTab = tabName;
-  document.querySelectorAll('[id^="panel-"]').forEach(p => p.hidden = true);
-  document.getElementById("panel-" + currentTab).hidden = false;
-  document.getElementById("select-func").style.display = (currentTab === "by-function") ? "block" : "none";
-  document.getElementById("search").placeholder = (
-    currentTab === "by-additive" ? "输入添加剂名、CNS 号、INS 号..." :
-    currentTab === "by-category" ? "输入食品分类编号或名称..." :
-    currentTab === "by-function" ? "输入功能名..." :
-    "搜索例外食品..."
-  );
-  render();
-}
-document.querySelectorAll(".tab").forEach(tab => {
-  tab.addEventListener("click", () => switchTab(tab.dataset.tab));
-});
-
-// ── 渲染 ──
-function render() {
-  if (!DATA) return;
-  const q = document.getElementById("search").value.trim().toLowerCase();
-  if (currentTab === "by-additive") renderByAdditive(q);
-  else if (currentTab === "by-category") renderByCategory(q);
-  else if (currentTab === "by-function") renderByFunction(q);
-  else if (currentTab === "exceptions") renderExceptions(q);
-}
-
-function renderByAdditive(q) {
-  const allAdds = DATA.by_additive.additives;
-  const list = q ? allAdds.filter(a => {
-    const hay = `${a.name_zh} ${a.name_en} ${a.aliases} ${a.cns} ${a.ins} ${(a.functions || []).join(" ")}`.toLowerCase();
-    return hay.includes(q);
-  }) : allAdds;
-
-  document.getElementById("addListTitle").textContent = q ? `搜索：${q}` : "全部添加剂";
-  document.getElementById("addListMeta").textContent = `${list.length} / ${allAdds.length}`;
-  document.getElementById("counter").textContent = `${list.length} 项`;
-  document.getElementById("b-add").textContent = list.length;
-
-  const wrap = document.getElementById("addList");
-  const empty = document.getElementById("addEmpty");
-  if (list.length === 0) {
-    wrap.innerHTML = "";
-    empty.hidden = false;
-    return;
-  }
-  empty.hidden = true;
-
-  wrap.innerHTML = list.map(a => `
-    <div class="add-card" data-cns="${escapeHTML(a.cns)}">
-      <div class="name-zh">${highlight(a.name_zh || "(无名)", q)}</div>
-      <div class="name-en">${highlight(a.name_en || "", q)}</div>
-      <div class="meta-row">
-        <span class="cns-chip">CNS ${highlight(a.cns, q)}</span>
-        ${a.ins && a.ins !== "—" ? `<span class="cns-chip">INS ${highlight(a.ins, q)}</span>` : ""}
-        ${(a.functions || []).slice(0, 2).map(f => `<span class="func-chip">${highlight(f, q)}</span>`).join("")}
-        ${a.item_count ? `<span class="item-chip">${a.item_count} 条用途</span>` : ""}
-      </div>
-    </div>
-  `).join("");
-
-  // 点击展开详情
-  wrap.querySelectorAll(".add-card").forEach(card => {
-    card.addEventListener("click", () => {
-      const cns = card.dataset.cns;
-      const a = DATA.by_additive.additives.find(x => x.cns === cns);
-      if (a) showAdditiveDetail(a);
-    });
-  });
-}
-
-function showAdditiveDetail(a) {
-  openModal({
-    art: "",
-    title: `${escapeHTML(a.name_zh || "")} ${a.name_en ? `<span style="font-size:13px;color:var(--c-text-3);font-weight:500">${escapeHTML(a.name_en)}</span>` : ""}`,
-    sub: a.aliases ? `<b>别名：</b>${escapeHTML(a.aliases)}` : "",
-    chips: `
-      <span class="cns-chip">CNS ${escapeHTML(a.cns)}</span>
-      ${a.ins && a.ins !== "—" ? `<span class="cns-chip">INS ${escapeHTML(a.ins)}</span>` : ""}
-      <span class="item-chip">${a.item_count || 0} 条使用规定</span>
-      ${(a.functions || []).map(f => `<span class="func-chip">${escapeHTML(f)}</span>`).join("")}`,
-    body: `
-      <div class="modal-sec">使用范围（食品分类与最大使用量）— ${a.items ? a.items.length : 0} 条</div>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th style="width:110px">食品分类号</th>
-            <th>食品名称 / 分类</th>
-            <th style="width:160px">最大使用量</th>
-            <th>备注</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${(a.items || []).map(it => {
-            const cat = it.category || {};
-            const catL = cat.level || 0;
-            const catName = cat.name || it.food_name || "—";
-            return `
-              <tr>
-                <td class="col-code">${escapeHTML(it.food_code || "—")}</td>
-                <td>
-                  <span class="col-cat col-cat-L${catL}" title="第 ${catL} 级分类">L${catL}</span>
-                  ${escapeHTML(catName)}
-                </td>
-                <td class="col-limit">${escapeHTML(it.limit || "—")}</td>
-                <td class="col-remark">${escapeHTML(it.remark || "")}</td>
-              </tr>
-            `;
-          }).join("")}
-        </tbody>
-      </table>`,
-  });
-}
-
-// ── 配图 SVG ──
-function artSVG(code, size) {
-  const a = (window.CAT_ART || {})[code];
-  if (!a) return "";
-  const w = size || 120, h = size ? Math.round(size * 0.75) : 90;
-  return `<svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-    <defs><linearGradient id="g_${code.replace(/\./g, "_")}" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="${a.bg[0]}"/><stop offset="100%" stop-color="${a.bg[1]}"/>
-    </linearGradient></defs>
-    <rect width="120" height="90" fill="url(#g_${code.replace(/\./g, "_")})"/>
-    ${a.art}
-  </svg>`;
-}
-
-// ── 弹窗 ──
-function openModal(opts) {
-  document.getElementById("modalArt").innerHTML = opts.art || "";
-  document.getElementById("modalTitle").innerHTML = opts.title || "";
-  document.getElementById("modalSub").innerHTML = opts.sub || "";
-  document.getElementById("modalChips").innerHTML = opts.chips || "";
-  document.getElementById("modalBody").innerHTML = opts.body || "";
-  document.getElementById("modalMask").classList.add("open");
-  document.body.style.overflow = "hidden";
-  document.getElementById("modalBody").scrollTop = 0;
-  if (opts.onMount) opts.onMount();
-}
-function closeModal() {
-  document.getElementById("modalMask").classList.remove("open");
-  document.body.style.overflow = "";
-}
-document.getElementById("modalClose").addEventListener("click", closeModal);
-document.getElementById("modalMask").addEventListener("click", e => {
-  if (e.target.id === "modalMask") closeModal();
-});
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape") closeModal();
-});
-
-function renderByCategory(q) {
-  const fta = DATA.by_category.food_to_additives;
-  const allCats = DATA.by_category.category_tree;
-  const allRows = [];
-  for (const tbl of allCats) {
-    for (const row of tbl.rows) {
-      allRows.push({
-        code: row.code, name: row.name, desc: row.desc,
-        level: row.level, table_no: tbl.table_no,
-      });
+function indexData() {
+  const tree = DATA.by_category.category_tree || [];
+  for (const grp of tree) {
+    for (const row of (grp.rows || [])) {
+      CAT_INDEX[row.code] = Object.assign({}, row, { table_no: grp.table_no });
+      CAT_ORDER.push(row.code);
     }
   }
-  // 一级分类清单（16 个）
-  const l1List = DATA.by_category.categories || [];
-
-  // 搜索：命中任意子分类的一级分类才保留
-  const qLower = (q || "").toLowerCase();
-  const matchedRows = qLower ? allRows.filter(r =>
-    `${r.code} ${r.name}`.toLowerCase().includes(qLower)
-  ) : allRows;
-
-  // 每个一级分类下的子分类数量（全部 / 搜索命中）
-  const subAll = {}, subHit = {};
-  for (const r of allRows) {
-    const k = r.code.split(".")[0] + ".0";
-    subAll[k] = (subAll[k] || 0) + 1;
+  FTA = DATA.by_category.food_to_additives || {};
+  for (const e of (DATA.exceptions.list || [])) {
+    EXC_BY_SEQ[e.seq] = e;
+    EXC_CODES[e.food_code] = e;
   }
-  for (const r of matchedRows) {
-    const k = r.code.split(".")[0] + ".0";
-    subHit[k] = (subHit[k] || 0) + 1;
-  }
-
-  // 哪些一级分类有实际可用添加剂
-  const addCount = {};
-  for (const code of Object.keys(fta)) {
-    const k = code.split(".")[0] + ".0";
-    addCount[k] = (addCount[k] || 0) + fta[code].length;
-  }
-
-  const shown = qLower
-    ? l1List.filter(c => subHit[c.code] > 0)
-    : l1List;
-
-  document.getElementById("catListMeta").textContent = qLower
-    ? `${shown.length} / ${l1List.length} 个大类 · 命中子分类 ${matchedRows.length} 项`
-    : `${l1List.length} 个大类 · ${allRows.length} 个分类节点`;
-  document.getElementById("counter").textContent = qLower ? `${shown.length} 项` : `${l1List.length} 项`;
-  document.getElementById("b-cat").textContent = shown.length;
-
-  const wrap = document.getElementById("catList");
-  const empty = document.getElementById("catEmpty");
-  if (shown.length === 0) {
-    wrap.innerHTML = "";
-    empty.hidden = false;
-    return;
-  }
-  empty.hidden = true;
-
-  wrap.innerHTML = shown.map(c => {
-    const nSub = qLower ? subHit[c.code] : subAll[c.code];
-    const nAdd = addCount[c.code] || 0;
-    return `
-      <div class="hero-card" data-code="${escapeHTML(c.code)}">
-        <div class="hero-art">
-          ${artSVG(c.code)}
-          <span class="hero-no">${escapeHTML(c.code)}</span>
-          <span class="hero-badge">${nSub} 个分类</span>
-        </div>
-        <div class="hero-info">
-          <div class="hero-title">${highlight(c.title || c.code, q)}</div>
-          <div class="hero-meta">
-            <span class="hero-count">${nAdd > 0 ? `${nAdd} 种添加剂` : "表 A.2 例外"}</span>
-            <span class="hero-go">查看 →</span>
-          </div>
-        </div>
-      </div>`;
-  }).join("");
-
-  wrap.querySelectorAll(".hero-card").forEach(card => {
-    card.addEventListener("click", () => showCategoryModal(card.dataset.code));
-  });
-}
-
-// ── 一级分类弹窗：列出子分类 → 点子分类再展开添加剂 ──
-function showCategoryModal(code) {
-  const fta = DATA.by_category.food_to_additives;
-  const allCats = DATA.by_category.category_tree;
-  const l1 = (DATA.by_category.categories || []).find(c => c.code === code);
-  const l1Name = l1 ? l1.title : code;
-
-  // 该一级下的所有分类行（保持原表顺序，天然是层级序）
-  const rows = [];
-  for (const tbl of allCats) {
-    for (const r of tbl.rows) {
-      if (r.code.split(".")[0] + ".0" === code) {
-        rows.push({ ...r, table_no: tbl.table_no });
+  GENERIC = [];
+  for (const a of DATA.by_additive.additives) {
+    for (const it of (a.items || [])) {
+      if (it.scope_type === 'all_except') {
+        GENERIC.push({ additive: a, item: it });
       }
     }
   }
-
-  const totalAdds = rows.reduce((s, r) => s + (fta[r.code] ? fta[r.code].length : 0), 0);
-
-  openModal({
-    art: artSVG(code),
-    title: `${escapeHTML(l1Name)}`,
-    sub: escapeHTML((rows.find(r => r.level === 1) || {}).desc || ""),
-    chips: `
-      <span class="cns-chip">${escapeHTML(code)}</span>
-      <span class="item-chip">${rows.length} 个分类节点</span>
-      <span class="func-chip">${totalAdds} 种可用添加剂</span>`,
-    body: `
-      <div class="modal-sec">选择具体食品分类查看可用添加剂</div>
-      <div class="sub-list">
-        ${rows.map(r => {
-          const cnt = fta[r.code] ? fta[r.code].length : 0;
-          return `
-            <div class="sub-card" data-code="${escapeHTML(r.code)}">
-              <div class="sc-top">
-                <span class="sc-code">${escapeHTML(r.code)}</span>
-                <span class="sc-lv">L${r.level}</span>
-              </div>
-              <div class="sc-name">${escapeHTML(r.name || "—")}</div>
-              <div class="sc-meta">${cnt > 0 ? `${cnt} 种可用添加剂` : '<span class="no-add">A.2 例外（不可添加）</span>'}</div>
-            </div>`;
-        }).join("")}
-      </div>`,
-    onMount: () => {
-      document.getElementById("modalBody").querySelectorAll(".sub-card").forEach(sc => {
-        sc.addEventListener("click", () => showAdditiveTable(sc.dataset.code, code));
-      });
-    },
-  });
 }
 
-// ── 子分类弹窗：可用添加剂明细（带返回上级） ──
-function showAdditiveTable(code, parentCode) {
-  const fta = DATA.by_category.food_to_additives;
-  const allCats = DATA.by_category.category_tree;
-  let catRow = null;
-  for (const tbl of allCats) {
-    for (const r of tbl.rows) {
-      if (r.code === code) { catRow = r; break; }
+/* ── 配图 ── */
+function artSVG(code, size) {
+  const a = (window.CAT_ART || {})[code];
+  if (!a) return '';
+  const w = size || 120, h = size ? Math.round(size * 0.75) : 90;
+  const gid = 'g_' + String(code).replace(/\./g, '_');
+  return `<svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="${a.bg[0]}"/><stop offset="100%" stop-color="${a.bg[1]}"/>
+    </linearGradient></defs>
+    <rect width="120" height="90" fill="url(#${gid})"/>${a.art}</svg>`;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   任务 1 · 按食品类别查
+   ══════════════════════════════════════════════════════════════ */
+function renderCategorySide(q) {
+  const list = document.getElementById('sideList');
+  const ql = (q || '').trim().toLowerCase();
+  const l1 = CAT_ORDER.filter(c => (CAT_INDEX[c].level || 1) === 1);
+
+  // 搜索：命中任意节点
+  let hits = null;
+  if (ql) {
+    hits = {};
+    for (const c of CAT_ORDER) {
+      const r = CAT_INDEX[c];
+      if ((`${c} ${r.name}`).toLowerCase().includes(ql)) hits[c] = true;
     }
-    if (catRow) break;
+    // 命中节点的祖先全部保留（保证树形上下文）
+    for (const c of Object.keys(hits)) {
+      for (const a of ancestorsOf(c)) hits[a] = true;
+    }
   }
-  const adds = fta[code] || [];
-  const l1 = (DATA.by_category.categories || []).find(c => c.code === parentCode);
 
-  openModal({
-    art: artSVG(parentCode),
-    title: `${escapeHTML(catRow ? catRow.name : code)}`,
-    sub: escapeHTML(catRow && catRow.desc ? catRow.desc : ""),
-    chips: `
-      <span class="cns-chip">${escapeHTML(code)}</span>
-      ${parentCode ? `<span class="cns-chip">${escapeHTML(l1 ? l1.title : parentCode)}</span>` : ""}
-      <span class="item-chip">L${catRow ? catRow.level : "—"}</span>
-      <span class="func-chip">${adds.length} 种可用添加剂</span>`,
-    body: `
-      <button class="modal-back" id="modalBack">← 返回 ${escapeHTML(l1 ? l1.title : parentCode)} 全部分类</button>
-      ${adds.length === 0 ? `
-        <div class="empty">⚠️ 该食品类别属于表 A.2 例外列表，按 GB 2760 规定不允许使用食品添加剂</div>
-      ` : `
-        <div class="modal-sec">该食品类别下允许使用的添加剂（${adds.length} 种）</div>
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>添加剂</th><th style="width:90px">CNS</th><th style="width:80px">INS</th>
-              <th>功能</th><th style="width:140px">最大使用量</th><th>备注</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${adds.map(a => `
-              <tr>
-                <td class="col-name">${escapeHTML(a.additive_zh)}</td>
-                <td class="col-code">${escapeHTML(a.cns)}</td>
-                <td class="col-code">${escapeHTML(a.ins || "—")}</td>
-                <td style="font-size:11px;color:var(--c-text-2)">${(a.functions || []).join("、")}</td>
-                <td class="col-limit">${escapeHTML(a.limit || "—")}</td>
-                <td class="col-remark">${escapeHTML(a.remark || "")}</td>
-              </tr>
-            `).join("")}
-          </tbody>
-        </table>`}`,
-    onMount: () => {
-      const back = document.getElementById("modalBack");
-      if (back) back.addEventListener("click", () => showCategoryModal(parentCode));
-    },
-  });
-}
+  let html = '';
+  for (const code of l1) {
+    const r = CAT_INDEX[code];
+    const kids = CAT_ORDER.filter(c => (CAT_INDEX[c].level || 1) > 1 && ancestorsOf(c).includes(code));
+    const kidHtml = kids.map(k => {
+      const kr = CAT_INDEX[k];
+      const lv = kr.level || 1;
+      const ind = (lv - 2) * 12;
+      const cnt = (FTA[k] || []).length;
+      const exc = isException(k);
+      let badge;
+      if (exc) badge = `<span class="ti-badge exc" title="表 A.2 例外类别">A.2</span>`;
+      else if (cnt) badge = `<span class="ti-badge" title="本级直接规定">${cnt}</span>`;
+      else {
+        const anc = ancestorsOf(k);
+        let inh = false;
+        for (const a of anc) { if ((FTA[a] || []).length) { inh = true; break; } }
+        badge = inh ? `<span class="ti-badge inherit" title="继承自上级">↑</span>`
+                    : `<span class="ti-badge zero">—</span>`;
+      }      const hit = hits && !hits[k] ? ' style="display:none"' : '';
+      return `<div class="tree-item${SEL.cat === k ? ' active' : ''}" data-code="${escapeHTML(k)}"${hit}>
+        <span class="ti-code" style="margin-left:${ind}px">${escapeHTML(k)}</span>
+        <span class="ti-name">${highlight(kr.name || '', ql)}</span>${badge}
+      </div>`;
+    }).join('');
 
-function renderByFunction(q) {
-  const funcList = DATA.by_function.function_list;
-  const sel = document.getElementById("select-func").value;
-  const matched = funcList.filter(f => {
-    if (sel && f !== sel) return false;
-    if (q && !f.toLowerCase().includes(q)) return false;
-    return true;
-  });
-
-  document.getElementById("funcListMeta").textContent = `${matched.length} / ${funcList.length} 功能`;
-  document.getElementById("counter").textContent = `${matched.length} 项`;
-  document.getElementById("b-func").textContent = matched.length;
-
-  const wrap = document.getElementById("funcList");
-  const empty = document.getElementById("funcEmpty");
-  if (matched.length === 0) {
-    wrap.innerHTML = "";
-    empty.hidden = false;
-    return;
+    const open = ql ? true : (SEL.cat === code || (SEL.cat && ancestorsOf(SEL.cat).includes(code)));
+    const show = hits && !hits[code] ? ' style="display:none"' : '';
+    html += `<div class="tree-l1${open ? ' open' : ''}${SEL.cat === code ? ' active' : ''}" data-code="${escapeHTML(code)}"${show}>
+      <span class="tl-no">${escapeHTML(code)}</span>
+      <span class="tl-name">${highlight(r.name || '', ql)}</span>
+      <span class="tl-caret">▶</span>
+    </div><div class="tree-kids${open ? ' open' : ''}" data-parent="${escapeHTML(code)}">${kidHtml}</div>`;
   }
-  empty.hidden = true;
+  list.innerHTML = html || '<div class="main-empty"><div class="me-hint">无匹配分类</div></div>';
 
-  wrap.innerHTML = matched.map(f => {
-    const adds = DATA.by_function.index[f] || [];
-    return `
-      <div class="add-card func-card" data-func="${escapeHTML(f)}" style="cursor:pointer">
-        <div class="name-zh">${highlight(f, q)}</div>
-        <div class="name-en">功能分类</div>
-        <div class="meta-row">
-          <span class="func-chip">${adds.length} 种添加剂</span>
-        </div>
-      </div>
-    `;
-  }).join("");
-
-  wrap.querySelectorAll(".func-card").forEach(card => {
-    card.addEventListener("click", () => {
-      const f = card.dataset.func;
-      showFunctionDetail(f);
+  list.querySelectorAll('.tree-l1').forEach(el => {
+    el.addEventListener('click', () => {
+      const code = el.dataset.code;
+      const kids = list.querySelector(`.tree-kids[data-parent="${CSS.escape(code)}"]`);
+      const isOpen = kids.classList.contains('open');
+      if (isOpen) { kids.classList.remove('open'); el.classList.remove('open'); }
+      else { kids.classList.add('open'); el.classList.add('open'); }
+    });
+  });
+  list.querySelectorAll('.tree-item').forEach(el => {
+    el.addEventListener('click', () => {
+      SEL.cat = el.dataset.code;
+      renderCategorySide(document.getElementById('sideSearch').value);
+      renderMain();
+      document.querySelector('.split-main').scrollTop = 0;
     });
   });
 }
 
-function showFunctionDetail(f) {
-  const adds = (DATA.by_function.index[f] || []).slice().sort((a, b) => (b.item_count || 0) - (a.item_count || 0));
-  openModal({
-    art: "",
-    title: escapeHTML(f),
-    sub: "该功能分类下的全部食品添加剂，按使用规定数量排序",
-    chips: `<span class="func-chip">${adds.length} 种添加剂</span>`,
-    body: `
-      <div class="modal-sec">${escapeHTML(f)} — 全部添加剂</div>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th style="width:90px">CNS</th><th>中文名</th><th>英文名</th><th>别名</th><th style="width:100px">用途数</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${adds.map(a => `
-            <tr>
-              <td class="col-code">${escapeHTML(a.cns)}</td>
-              <td class="col-name">${escapeHTML(a.name_zh)}</td>
-              <td style="color:var(--c-text-2);font-size:12px">${escapeHTML(a.name_en || "")}</td>
-              <td style="color:var(--c-text-2);font-size:12px">${escapeHTML(a.aliases || "")}</td>
-              <td style="text-align:center;color:var(--c-text-2)">${a.item_count}</td>
-            </tr>
-          `).join("")}
-        </tbody>
-      </table>`,
-  });
-}
+function renderCategoryMain() {
+  const box = document.getElementById('mainInner');
+  const code = SEL.cat;
 
-function renderExceptions(q) {
-  const list = DATA.exceptions.list;
-  const matched = q ? list.filter(e =>
-    `${e.food_code} ${e.food_name}`.toLowerCase().includes(q)
-  ) : list;
-
-  document.getElementById("excListMeta").textContent = `${matched.length} / ${list.length}`;
-  document.getElementById("counter").textContent = `${matched.length} 项`;
-  document.getElementById("b-exc").textContent = matched.length;
-
-  const tbody = document.getElementById("excTbody");
-  tbody.innerHTML = matched.map(e => `
-    <tr>
-      <td class="col-code">${e.seq}.</td>
-      <td class="col-code">${escapeHTML(e.food_code)}</td>
-      <td class="col-name">${highlight(e.food_name, q)}</td>
-    </tr>
-  `).join("");
-}
-// ── 事件 ──
-document.getElementById("search").addEventListener("input", render);
-document.getElementById("select-func").addEventListener("change", render);
-document.getElementById("btn-clear").addEventListener("click", () => {
-  document.getElementById("search").value = "";
-  document.getElementById("select-func").value = "";
-  render();
-});
-
-// ── 入口 ──
-(async function init() {
-  const ok = await loadData();
-  if (!ok) {
-    document.body.innerHTML = `
-      <div class="container">
-        <div class="empty" style="padding:80px 20px">
-          <h2>❌ 数据加载失败</h2>
-          <p>请检查 <code>data/gb2760/gb2760_full.json</code> 是否存在</p>
-          <p style="margin-top:8px;font-size:11px;color:var(--c-text-3)">路径尝试：<br>${DATA_URLS.join('<br>')}</p>
-        </div>
+  if (!code) {
+    const l1 = CAT_ORDER.filter(c => (CAT_INDEX[c].level || 1) === 1);
+    box.innerHTML = `
+      <div class="main-empty">
+        <div class="me-ico">🗂</div>
+        <div class="me-title">请在左侧选择食品分类</div>
+        <div class="me-hint">也可以直接搜索分类编号（如 12.09）或名称（如 复合调味料）</div>
       </div>
-    `;
+      <div class="main-sec">16 个食品大类（附录 E 表 E.1）</div>
+      <div class="cat-cards">
+        ${l1.map(c => {
+          const r = CAT_INDEX[c];
+          const desc = CAT_ORDER.filter(x => ancestorsOf(x).includes(c));
+          const n = desc.length;
+          const cnt = desc.reduce((s, x) => s + (FTA[x] || []).length, 0) + (FTA[c] || []).length;
+          return `<div class="cat-card" data-code="${escapeHTML(c)}">
+            <div class="cc-art">${artSVG(c)}<span class="cc-no">${escapeHTML(c)}</span></div>
+            <div class="cc-body">
+              <div class="cc-title">${escapeHTML(r.name || '')}</div>
+              <div class="cc-meta"><span class="cc-count">${n} 个下级 · ${cnt} 条规定</span><span class="cc-go">查看 →</span></div>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>`;
+    box.querySelectorAll('.cat-card').forEach(el => {
+      el.addEventListener('click', () => {
+        SEL.cat = el.dataset.code;
+        renderCategorySide(document.getElementById('sideSearch').value);
+        renderMain();
+      });
+    });
     return;
   }
 
-  // 填充统计
-  document.getElementById("st-add").textContent = DATA.stats.additive_count;
-  document.getElementById("st-item").textContent = DATA.stats.food_entry_count;
-  document.getElementById("st-cat").textContent = DATA.stats.category_count;
-  document.getElementById("st-func").textContent = DATA.stats.function_count;
-  document.getElementById("st-exc").textContent = DATA.stats.exception_count;
-  document.getElementById("updatedTag").text = `更新 ${DATA.updated}`;
-  document.getElementById("footerUpdated").text = `数据更新时间：${DATA.updated}`;
+  const r = CAT_INDEX[code];
+  const res = resolveCategory(code);
+  const exc = isException(code);
+  const l1code = code.split('.')[0] + '.0';
+  const crumbs = ancestorsOf(code).concat([code]);
 
-  // 填充功能下拉
-  const sel = document.getElementById("select-func");
-  for (const f of DATA.by_function.function_list) {
-    const opt = document.createElement("option");
-    opt.value = f;
-    opt.textContent = f;
-    sel.appendChild(opt);
+  let html = `
+    <div class="crumb">
+      ${crumbs.map((c, i) => `<span class="cb-item${i === crumbs.length - 1 ? ' cur' : ''}" data-code="${escapeHTML(c)}">${escapeHTML(CAT_INDEX[c] ? (CAT_INDEX[c].name || c) : c)}</span>${i < crumbs.length - 1 ? '<span class="cb-sep">›</span>' : ''}`).join('')}
+    </div>
+    <div class="main-head">
+      <div class="mh-art">${artSVG(l1code)}</div>
+      <div class="mh-text">
+        <div class="mh-title">${escapeHTML(r.name || code)}</div>
+        <div class="mh-sub">${escapeHTML(r.desc || '')}</div>
+        <div class="mh-chips">
+          <span class="cns-chip">${escapeHTML(code)}</span>
+          <span class="cns-chip">第 ${r.level} 级分类</span>
+          <span class="cns-chip">附录 E 表 ${escapeHTML(r.table_no || '')}</span>
+          <span class="item-chip">本级直接规定 ${res.direct.length} 条</span>
+          ${exc ? '<span class="excluded-tag">表 A.2 例外类别</span>' : ''}
+        </div>
+      </div>
+    </div>`;
+
+  // 分类说明
+  if (r.desc) {
+    html += `<div class="notice info">
+      <div class="nt-title">分类说明（附录 E）</div>${escapeHTML(r.desc)}
+    </div>`;
   }
 
-  render();
-  console.log("[GB 2760] 数据已加载", DATA.stats);
+  // 例外提示
+  if (exc) {
+    html += `<div class="notice danger">
+      <div class="nt-title">⚠ 本类别属于表 A.2 例外食品类别</div>
+      该类别在表 A.2 中列为第 ${exc.seq} 项（${escapeHTML(exc.food_name)}）。
+      表 A.1 中「各类食品（表 A.2 所列类别除外）」的通用条款<b>不适用于本类别</b>；
+      只有表 A.1 中针对本类别或其下属类别单独列出的规定才适用。
+      ${res.direct.length ? '' : '<br>本类别在表 A.1 中<b>无任何直接规定</b>。'}
+    </div>`;
+  }
 
-  // URL 参数 ?tab=by-additive | by-category | by-function | exceptions
+  // 继承提示
+  if (res.inherited.length) {
+    const srcTxt = res.src.map(s => `<b>${escapeHTML(s)} ${escapeHTML(CAT_INDEX[s] ? CAT_INDEX[s].name : '')}</b>`).join('、');
+    html += `<div class="notice warn">
+      <div class="nt-title">↑ 继承自上级规定</div>
+      表 A.1（A.3）：允许用于某一食品类别时，则允许应用于该类别下的所有类别食品（另有规定除外）；
+      分类系统第 (4) 条同理。本类别未单独规定的添加剂，自 ${srcTxt} 继承，共 ${res.inherited.length} 条。
+    </div>`;
+  }
+
+  // 下级覆盖提示
+  if (res.overridden.length) {
+    html += `<div class="notice warn">
+      <div class="nt-title">↓ 下级优先：以下上级规定被本级覆盖</div>
+      表 A.1（A.3）「下级食品类别中与上级食品类别中对于同一食品添加剂的最大使用量规定不一致的，应遵守下级食品类别的规定」。
+      共 ${res.overridden.length} 处冲突，详见下表标注。
+    </div>`;
+  }
+
+  // 本级直接规定
+  html += `<div class="main-sec">本级直接规定（表 A.1 · ${res.direct.length} 条）</div>`;
+  if (res.direct.length) {
+    html += `<table class="data-table">
+      <thead><tr>
+        <th style="width:96px">CNS</th><th>添加剂</th><th>功能</th>
+        <th style="width:150px">最大使用量</th><th>备注</th>
+      </tr></thead><tbody>
+      ${res.direct.map(a => `
+        <tr>
+          <td class="col-code">${cnsHTML(a.cns)}</td>
+          <td class="addrow"><span class="ar-name">${escapeHTML(a.additive_zh)}</span>
+            ${a.additive_en ? `<div class="ar-en">${escapeHTML(a.additive_en)}</div>` : ''}
+            <span class="src-flag direct">本级规定</span></td>
+          <td style="font-size:11px;color:var(--c-text-2)">${escapeHTML((a.functions || []).join('、'))}</td>
+          <td class="col-limit">${escapeHTML(a.limit || '—')}</td>
+          <td class="col-remark">${escapeHTML(a.remark || '')}</td>
+        </tr>`).join('')}
+      </tbody></table>`;
+  } else {
+    html += `<div class="empty" style="padding:26px">本类别在表 A.1 中无直接规定${res.inherited.length ? '（见下方继承部分）' : ''}</div>`;
+  }
+
+  // 继承块（逐条标注来源级）
+  if (res.inherited.length) {
+    html += `<div class="main-sec">继承自上级的规定（${res.inherited.length} 条）</div>
+      <div class="inherit-block open" id="inheritBox">
+        <div class="ib-head" id="inheritHead"><span class="ib-caret">▼</span>
+          <span>共 ${res.inherited.length} 条继承规定，来源：${res.src.map(s => escapeHTML(s)).join('、')}</span>
+        </div>
+        <div class="ib-body">
+          <table class="data-table">
+            <thead><tr><th style="width:96px">CNS</th><th>添加剂</th><th>功能</th>
+              <th style="width:150px">最大使用量</th><th>备注</th></tr></thead>
+            <tbody>${res.inherited.map(x => `
+              <tr>
+                <td class="col-code">${cnsHTML(x.item.cns)}</td>
+                <td><span class="ar-name">${escapeHTML(x.item.additive_zh)}</span>
+                  <span class="src-flag inherit">继承自 ${escapeHTML(x.from)}</span></td>
+                <td style="font-size:11px;color:var(--c-text-2)">${escapeHTML((x.item.functions || []).join('、'))}</td>
+                <td class="col-limit">${escapeHTML(x.item.limit || '—')}</td>
+                <td class="col-remark">${escapeHTML(x.item.remark || '')}</td>
+              </tr>`).join('')}</tbody>
+          </table>
+        </div>
+      </div>`;
+  }
+
+  // 被覆盖的上级规定明细
+  if (res.overridden.length) {
+    html += `<div class="main-sec">被下级覆盖的上级规定（${res.overridden.length} 条，不适用于本类别）</div>
+      <div class="notice warn">
+        <div class="nt-title">↓ 下级优先</div>
+        下列添加剂在更下级（或本级）已有规定，按 A.3「应遵守下级食品类别的规定」执行，
+        上级所载用量<b>不适用于本类别</b>。
+      </div>
+      <table class="data-table">
+        <thead><tr><th style="width:96px">CNS</th><th>添加剂</th><th style="width:130px">上级用量</th>
+          <th style="width:150px">本类别实际用量</th><th>说明</th></tr></thead>
+        <tbody>${res.overridden.map(o => {
+          const win = res.direct.find(d => d.cns === o.item.cns)
+            || res.inherited.find(x => x.item.cns === o.item.cns);
+          const winLimit = win ? (win.limit || (win.item ? win.item.limit : '')) : '';
+          const winFrom = win ? (win.item ? win.from : '本级') : '';
+          return `<tr>
+            <td class="col-code">${cnsHTML(o.item.cns)}</td>
+            <td><span class="ar-name">${escapeHTML(o.item.additive_zh)}</span>
+              <span class="src-flag over">上级 ${escapeHTML(o.from)}</span></td>
+            <td class="col-limit" style="color:var(--c-text-3);text-decoration:line-through">${escapeHTML(o.item.limit || '—')}</td>
+            <td class="col-limit"><b>${escapeHTML(winLimit || '—')}</b></td>
+            <td style="font-size:11px;color:var(--c-text-2)">按 ${escapeHTML(winFrom === '本级' ? '本级规定' : winFrom + ' 规定')}执行</td>
+          </tr>`;
+        }).join('')}</tbody>
+      </table>`;
+  }
+
+  // 通用条款（例外判定逐添加剂）
+  if (GENERIC.length) {
+    const gApply = GENERIC.filter(g => genericAppliesTo(g, code));
+    const gExcl = GENERIC.filter(g => !genericAppliesTo(g, code));
+    html += `<div class="main-sec">通用条款 · 各类食品（表 A.2 所列类别除外）</div>
+      <div class="notice info">
+        <div class="nt-title">本类别适用 ${gApply.length} 条 / 排除 ${gExcl.length} 条</div>
+        表 A.1 中以「各类食品」为使用范围的条款，在除其自身除外清单所列类别外的所有食品类别中均可使用。
+        <b>各条款的除外清单并不相同</b>（76 条通用条款共有 23 种除外组合），故须逐条判定，不能按类别一概而论。
+        ${gExcl.length ? '<br><b style="color:var(--c-high)">本类别在表 A.2 内，' + gExcl.length + ' 条通用条款不适用于本类别。</b>' : ''}
+        点击卡片可展开各自的除外清单。
+      </div>
+      <div id="genericList">
+        ${GENERIC.map((g, i) => {
+          const ok = genericAppliesTo(g, code);
+          return `
+          <div class="generic-card${ok ? '' : ' excluded'}">
+            <div class="gc-top">
+              <span class="gc-name">${escapeHTML(g.additive.name_zh)}</span>
+              <span class="cns-chip">${escapeHTML(g.additive.cns)}</span>
+              <span class="gc-limit">${escapeHTML(g.item.limit || '—')}</span>
+              ${ok ? '<span class="src-flag generic">通用条款·适用</span>' : '<span class="excluded-tag">本类别不适用</span>'}
+            </div>
+            <div class="gc-scope">适用范围：${escapeHTML(g.item.scope_raw || '各类食品（表 A.2 所列类别除外）')}</div>
+            ${g.item.remark ? `<div class="gc-remark">${escapeHTML(g.item.remark)}</div>` : ''}
+            <div class="gc-actions">
+              <button class="gc-link" data-gi="${i}">除外清单（${(g.item.except_codes || []).length} 项）</button>
+            </div>
+            <div class="gc-except" id="gex_${i}" style="display:none;margin-top:9px">
+              <table class="data-table"><thead><tr><th style="width:56px">编号</th><th style="width:130px">食品分类号</th><th>食品名称</th></tr></thead>
+              <tbody>${(g.item.except_list || []).map(e => `
+                <tr${e.food_code === code ? ' class="row-hit"' : ''}><td class="col-code">${e.seq}</td><td class="col-code">${escapeHTML(e.food_code)}</td>
+                <td class="col-name">${escapeHTML(e.food_name)}</td></tr>`).join('')}
+              </tbody></table>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>`;
+  }
+
+  // 带入原则 & 混合
+  html += `
+    <div class="main-sec">使用注意（实施指南第三章第一节）</div>
+    <div class="notice warn">
+      <div class="nt-title">带入原则</div>
+      <ul>
+        <li>3.4.1 食品添加剂通过另一配料带入终产品时，应符合：用量不超过终产品中该添加剂的最大使用量；其在终产品中的含量明显低于直接添加时的含量；标签上应注明其在该终产品中的用途。</li>
+        <li>3.4.2 特定终产品配料授权使用的添加剂，授权该配料在其他食品中的使用时应符合上述要求。</li>
+      </ul>
+    </div>
+    <div class="notice info">
+      <div class="nt-title">同功能添加剂混合使用（表 A.4）</div>
+      <div>同一功能类别（附录 D）的多种添加剂同时使用时，各自用量占其最大使用量的比例之和应 ≤ 1。</div>
+      <div class="mix-formula">m/m′ + n/n′ + x/x′ + … ≤ 1</div>
+    </div>
+    <div class="notice info">
+      <div class="nt-title">「功能」栏说明（表 A.6）</div>
+      表 A.1 中的「功能」栏是按附录 D 填写的主要功能，仅供参考，不代表该添加剂的全部功能。
+    </div>`;
+
+  box.innerHTML = html;
+
+  // 面包屑跳转
+  box.querySelectorAll('.crumb .cb-item').forEach(el => {
+    el.addEventListener('click', () => {
+      if (el.classList.contains('cur')) return;
+      SEL.cat = el.dataset.code;
+      renderCategorySide(document.getElementById('sideSearch').value);
+      renderMain();
+      document.querySelector('.split-main').scrollTop = 0;
+    });
+  });
+  // 继承块折叠
+  const ib = document.getElementById('inheritBox');
+  const ih = document.getElementById('inheritHead');
+  if (ib && ih) ih.addEventListener('click', () => ib.classList.toggle('open'));
+  // 通用条款例外展开
+  box.querySelectorAll('.gc-link').forEach(b => {
+    b.addEventListener('click', () => {
+      const t = document.getElementById('gex_' + b.dataset.gi);
+      if (!t) return;
+      t.style.display = (t.style.display === 'none') ? 'block' : 'none';
+    });
+  });
+}
+
+/* ══════════════════════════════════════════════════════════════
+   任务 2 · 按添加剂查
+   ══════════════════════════════════════════════════════════════ */
+function renderAdditiveSide(q) {
+  const list = document.getElementById('sideList');
+  const all = DATA.by_additive.additives;
+  const ql = (q || '').trim().toLowerCase();
+  const items = ql ? all.filter(a => {
+    const hay = `${a.name_zh} ${a.name_en} ${a.aliases} ${a.cns} ${a.ins} ${(a.functions || []).join(' ')}`.toLowerCase();
+    return hay.includes(ql);
+  }) : all;
+
+  document.getElementById('sideMeta').textContent = `${items.length} / ${all.length}`;
+
+  // 按功能分组
+  const groups = {};
+  for (const a of items) {
+    const f = (a.functions && a.functions[0]) || '其他';
+    (groups[f] = groups[f] || []).push(a);
+  }
+  const order = Object.keys(groups).sort();
+  let html = '';
+  for (const f of order) {
+    html += `<div class="side-group">${escapeHTML(f)}（${groups[f].length}）</div>`;
+    for (const a of groups[f]) {
+      html += `<div class="plain-item${SEL.add === a.cns ? ' active' : ''}" data-cns="${escapeHTML(a.cns)}">
+        <span class="pi-name">${highlight(a.name_zh || '(无名)', ql)}</span>
+        <span class="pi-code">${escapeHTML(a.cns)}</span>
+        <span class="pi-badge">${a.item_count}</span>
+      </div>`;
+    }
+  }
+  list.innerHTML = html || '<div class="main-empty"><div class="me-hint">无匹配添加剂</div></div>';
+  list.querySelectorAll('.plain-item').forEach(el => {
+    el.addEventListener('click', () => {
+      SEL.add = el.dataset.cns;
+      renderAdditiveSide(document.getElementById('sideSearch').value);
+      renderMain();
+      document.querySelector('.split-main').scrollTop = 0;
+    });
+  });
+}
+
+function renderAdditiveMain() {
+  const box = document.getElementById('mainInner');
+  const cns = SEL.add;
+  const a = DATA.by_additive.additives.find(x => x.cns === cns);
+  if (!a) {
+    box.innerHTML = `<div class="main-empty"><div class="me-ico">💊</div>
+      <div class="me-title">请在左侧选择添加剂</div>
+      <div class="me-hint">可搜索中文名、英文名、CNS 号、INS 号或功能</div></div>`;
+    return;
+  }
+  const gen = (a.items || []).filter(i => i.scope_type === 'all_except');
+  const spec = (a.items || []).filter(i => i.scope_type === 'specific');
+
+  let html = `
+    <div class="main-head">
+      <div class="mh-art">${artSVG('16.0')}</div>
+      <div class="mh-text">
+        <div class="mh-title">${escapeHTML(a.name_zh || '(无名)')}
+          ${a.name_en ? `<span style="font-size:13px;color:var(--c-text-3);font-weight:500">${escapeHTML(a.name_en)}</span>` : ''}</div>
+        ${a.aliases ? `<div class="mh-sub">别名：${escapeHTML(a.aliases)}</div>` : ''}
+        <div class="mh-chips">
+          <span class="cns-chip">CNS ${escapeHTML(a.cns)}</span>
+          ${a.ins && a.ins !== '—' ? `<span class="cns-chip">INS ${escapeHTML(a.ins)}</span>` : ''}
+          <span class="item-chip">${spec.length} 条具体规定</span>
+          ${gen.length ? `<span class="func-chip">${gen.length} 条通用条款</span>` : ''}
+          ${(a.functions || []).map(f => `<span class="func-chip">${escapeHTML(f)}</span>`).join('')}
+        </div>
+      </div>
+    </div>`;
+
+  // 通用条款
+  if (gen.length) {
+    for (const g of gen) {
+      html += `<div class="notice info">
+        <div class="nt-title">通用条款 · 各类食品（表 A.2 所列类别除外）</div>
+        <div>最大使用量：<b>${escapeHTML(g.limit || '—')}</b>${g.remark ? ' · ' + escapeHTML(g.remark) : ''}</div>
+        <div style="margin-top:6px">例外食品类别 ${(g.except_codes || []).length} 项（表 A.2）</div>
+        <div class="gc-actions"><button class="gc-link" id="addExcToggle">展开例外清单</button></div>
+        <div id="addExcBox" style="display:none;margin-top:9px">
+          <table class="data-table"><thead><tr><th style="width:56px">编号</th><th style="width:130px">食品分类号</th><th>食品名称</th></tr></thead>
+          <tbody>${(g.except_list || []).map(e => `
+            <tr><td class="col-code">${e.seq}</td><td class="col-code">${escapeHTML(e.food_code)}</td>
+            <td class="col-name">${escapeHTML(e.food_name)}</td></tr>`).join('')}
+          </tbody></table>
+        </div>
+      </div>`;
+    }
+  }
+
+  // 具体规定（按分类级别分组）
+  html += `<div class="main-sec">使用范围（表 A.1 · ${spec.length} 条）</div>`;
+  if (spec.length) {
+    const withCat = spec.map(i => {
+      const lv = (i.category && i.category.level) || 0;
+      return { i, lv, code: i.food_code || '', name: (i.category && i.category.name) || i.food_name || '' };
+    });
+    // 标注：是否为该添加剂在更细一级上的规定（下级覆盖上级）
+    // 注意 L1（XX.0）与 L2（XX.YY）段数相同，不能用 startsWith(code+'.') 判断子孙，须用父链
+    const codeSet = new Set(withCat.map(x => x.code).filter(Boolean));
+    const descOf = (c) => {
+      const out = new Set();
+      for (const o of codeSet) {
+        if (o === c) continue;
+        if (ancestorsOf(o).includes(c)) out.add(o);
+      }
+      return out;
+    };
+    for (const x of withCat) {
+      x.overridden = false;
+      if (!x.code) continue;
+      if (descOf(x.code).size) { x.overridden = true; continue; }
+      // 也可能是上级被本级覆盖：本级若为某条目的后代
+      for (const c of codeSet) {
+        if (c && c !== x.code && ancestorsOf(x.code).includes(c)) { x.overridden = true; break; }
+      }
+    }
+    html += `<table class="data-table">
+      <thead><tr>
+        <th style="width:110px">食品分类号</th><th>食品名称</th>
+        <th style="width:150px">最大使用量</th><th>备注</th>
+      </tr></thead><tbody>
+      ${withCat.map(x => `
+        <tr>
+          <td class="col-code">${escapeHTML(x.code || '—')}</td>
+          <td><span class="col-name">${escapeHTML(x.name || x.i.food_name || '')}</span>
+            ${x.lv ? `<span class="src-flag direct">L${x.lv}</span>` : ''}
+            ${x.overridden ? '<span class="override-tag">下级另有规定</span>' : ''}</td>
+          <td class="col-limit">${escapeHTML(x.i.limit || '—')}</td>
+          <td class="col-remark">${escapeHTML(x.i.remark || '')}</td>
+        </tr>`).join('')}
+      </tbody></table>`;
+  } else {
+    html += '<div class="empty" style="padding:26px">该添加剂无具体使用范围规定</div>';
+  }
+
+  html += `<div class="main-sec">使用注意</div>
+    <div class="notice warn">
+      <div class="nt-title">带入原则</div>
+      <ul>
+        <li>3.4.1 通过另一配料带入终产品时，用量不得超过终产品中该添加剂的最大使用量，且终产品中含量明显低于直接添加时的含量，标签应注明其用途。</li>
+        <li>3.4.2 特定终产品配料授权使用的添加剂，授权其在其他食品中使用时同样适用上述要求。</li>
+      </ul>
+    </div>
+    <div class="notice info">
+      <div class="nt-title">同功能混合（表 A.4）</div>
+      <div>与同一功能的其他添加剂混合使用时，各自用量占最大使用量的比例之和 ≤ 1。</div>
+      <div class="mix-formula">m/m′ + n/n′ + x/x′ + … ≤ 1</div>
+    </div>`;
+
+  box.innerHTML = html;
+  const tg = document.getElementById('addExcToggle');
+  const bx = document.getElementById('addExcBox');
+  if (tg && bx) tg.addEventListener('click', () => {
+    bx.style.display = (bx.style.display === 'none') ? 'block' : 'none';
+  });
+}
+
+/* ══════════════════════════════════════════════════════════════
+   任务 3 · 按功能查
+   ══════════════════════════════════════════════════════════════ */
+function renderFunctionSide(q) {
+  const list = document.getElementById('sideList');
+  const all = DATA.by_function.function_list;
+  const ql = (q || '').trim().toLowerCase();
+  const items = ql ? all.filter(f => f.toLowerCase().includes(ql)) : all;
+  document.getElementById('sideMeta').textContent = `${items.length} / ${all.length}`;
+  list.innerHTML = items.map(f => {
+    const n = (DATA.by_function.index[f] || []).length;
+    return `<div class="plain-item${SEL.func === f ? ' active' : ''}" data-func="${escapeHTML(f)}">
+      <span class="pi-name">${highlight(f, ql)}</span>
+      <span class="pi-badge">${n}</span>
+    </div>`;
+  }).join('') || '<div class="main-empty"><div class="me-hint">无匹配功能</div></div>';
+  list.querySelectorAll('.plain-item').forEach(el => {
+    el.addEventListener('click', () => {
+      SEL.func = el.dataset.func;
+      renderFunctionSide(document.getElementById('sideSearch').value);
+      renderMain();
+      document.querySelector('.split-main').scrollTop = 0;
+    });
+  });
+}
+
+function renderFunctionMain() {
+  const box = document.getElementById('mainInner');
+  const f = SEL.func;
+  if (!f) {
+    box.innerHTML = `<div class="main-empty"><div class="me-ico">⚙️</div>
+      <div class="me-title">请在左侧选择功能类别</div>
+      <div class="me-hint">附录 D 共 23 个功能类别</div></div>`;
+    return;
+  }
+  const adds = (DATA.by_function.index[f] || []).slice()
+    .sort((a, b) => (b.item_count || 0) - (a.item_count || 0));
+  box.innerHTML = `
+    <div class="main-head">
+      <div class="mh-art">${artSVG('05.0')}</div>
+      <div class="mh-text">
+        <div class="mh-title">${escapeHTML(f)}</div>
+        <div class="mh-sub">附录 D 规定的功能类别，共 ${adds.length} 种添加剂</div>
+        <div class="mh-chips"><span class="func-chip">${adds.length} 种添加剂</span></div>
+      </div>
+    </div>
+    <div class="notice info">
+      <div class="nt-title">表 A.6「功能」栏说明</div>
+      表 A.1 中的「功能」栏仅为该添加剂的<b>主要功能</b>，不代表其全部功能。同一功能下多种添加剂混合使用时，按表 A.4：各自用量占最大使用量的比例之和 ≤ 1。
+    </div>
+    <div class="main-sec">该功能下的全部添加剂（按使用规定数量排序）</div>
+    <table class="data-table">
+      <thead><tr><th style="width:96px">CNS</th><th>中文名</th><th>英文名</th><th>别名</th><th style="width:90px">规定条数</th></tr></thead>
+      <tbody>${adds.map(a => `
+        <tr>
+          <td class="col-code">${cnsHTML(a.cns)}</td>
+          <td class="col-name">${escapeHTML(a.name_zh)}</td>
+          <td style="color:var(--c-text-2);font-size:12px">${escapeHTML(a.name_en || '')}</td>
+          <td style="color:var(--c-text-2);font-size:12px">${escapeHTML(a.aliases || '')}</td>
+          <td style="text-align:center;color:var(--c-text-2)">${a.item_count}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>`;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   任务 4 · 表 A.2 例外食品
+   ══════════════════════════════════════════════════════════════ */
+function renderExceptionSide(q) {
+  const list = document.getElementById('sideList');
+  const all = DATA.exceptions.list;
+  const ql = (q || '').trim().toLowerCase();
+  const items = ql ? all.filter(e => `${e.food_code} ${e.food_name}`.toLowerCase().includes(ql)) : all;
+  document.getElementById('sideMeta').textContent = `${items.length} / ${all.length}`;
+  list.innerHTML = items.map(e => {
+    const n = (FTA[e.food_code] || []).length;
+    return `<div class="exc-row${SEL.exc === e.seq ? ' active' : ''}" data-seq="${e.seq}">
+      <span class="er-seq">${e.seq}</span>
+      <span class="er-code">${escapeHTML(e.food_code)}</span>
+      <span class="er-name">${highlight(e.food_name, ql)}</span>
+      <span class="er-n">${n ? n + ' 条' : ''}</span>
+    </div>`;
+  }).join('') || '<div class="main-empty"><div class="me-hint">无匹配例外类别</div></div>';
+  list.querySelectorAll('.exc-row').forEach(el => {
+    el.addEventListener('click', () => {
+      SEL.exc = Number(el.dataset.seq);
+      renderExceptionSide(document.getElementById('sideSearch').value);
+      renderMain();
+      document.querySelector('.split-main').scrollTop = 0;
+    });
+  });
+}
+
+function renderExceptionMain() {
+  const box = document.getElementById('mainInner');
+  const seq = SEL.exc;
+  const e = EXC_BY_SEQ[seq];
+  if (!e) {
+    box.innerHTML = `<div class="main-empty"><div class="me-ico">⚠️</div>
+      <div class="me-title">请在左侧选择例外食品类别</div>
+      <div class="me-hint">表 A.2 共 ${DATA.exceptions.list.length} 条</div></div>`;
+    return;
+  }
+  const r = CAT_INDEX[e.food_code] || {};
+  const res = resolveCategory(e.food_code);
+  // 哪些通用条款排除了本类别（逐添加剂判定）
+  const excluded = GENERIC.filter(g => !genericAppliesTo(g, e.food_code));
+  const applies = GENERIC.length - excluded.length;
+
+  let html = `
+    <div class="main-head">
+      <div class="mh-art">${artSVG(e.food_code.split('.')[0] + '.0')}</div>
+      <div class="mh-text">
+        <div class="mh-title">${escapeHTML(e.food_name)}</div>
+        <div class="mh-sub">${escapeHTML(r.desc || '')}</div>
+        <div class="mh-chips">
+          <span class="cns-chip">表 A.2 第 ${e.seq} 项</span>
+          <span class="cns-chip">${escapeHTML(e.food_code)}</span>
+          ${r.level ? `<span class="cns-chip">第 ${r.level} 级分类</span>` : ''}
+          <span class="item-chip">本级直接规定 ${res.direct.length} 条</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="notice danger">
+      <div class="nt-title">⚠ 例外含义</div>
+      表 A.2 列出的是表 A.1 中「各类食品（表 A.2 所列类别除外）」通用条款的<b>排除范围</b>。
+      本类别中，${applies} 条通用条款可用，${excluded.length} 条通用条款不适用；
+      表 A.1 中针对本类别单独列出的规定仍然适用（当前 ${res.direct.length} 条）。
+    </div>
+
+    ${res.direct.length ? `
+    <div class="main-sec">本类别仍适用的具体规定（${res.direct.length} 条）</div>
+    <table class="data-table">
+      <thead><tr><th style="width:96px">CNS</th><th>添加剂</th><th>功能</th><th style="width:150px">最大使用量</th><th>备注</th></tr></thead>
+      <tbody>${res.direct.map(a => `
+        <tr><td class="col-code">${cnsHTML(a.cns)}</td>
+        <td><span class="ar-name">${escapeHTML(a.additive_zh)}</span><span class="src-flag direct">本级规定</span></td>
+        <td style="font-size:11px;color:var(--c-text-2)">${escapeHTML((a.functions || []).join('、'))}</td>
+        <td class="col-limit">${escapeHTML(a.limit || '—')}</td>
+        <td class="col-remark">${escapeHTML(a.remark || '')}</td></tr>`).join('')}
+      </tbody></table>` : `
+    <div class="main-sec">本类别的具体规定</div>
+    <div class="empty" style="padding:22px">本类别在表 A.1 中无直接规定</div>`}
+
+    <div class="main-sec">因本类别而排除的通用条款（${excluded.length} 条）</div>
+    ${excluded.length ? `
+    <table class="data-table">
+      <thead><tr><th style="width:96px">CNS</th><th>添加剂</th><th>功能</th><th style="width:150px">最大使用量</th></tr></thead>
+      <tbody>${excluded.map(g => `
+        <tr><td class="col-code">${cnsHTML(g.additive.cns)}</td>
+        <td><span class="ar-name">${escapeHTML(g.additive.name_zh)}</span><span class="excluded-tag">本类别不适用</span></td>
+        <td style="font-size:11px;color:var(--c-text-2)">${escapeHTML((g.additive.functions || []).join('、'))}</td>
+        <td class="col-limit">${escapeHTML(g.item.limit || '—')}</td></tr>`).join('')}
+      </tbody></table>` : '<div class="empty" style="padding:22px">无</div>'}
+
+    <div class="main-sec">本类别仍适用的通用条款（${applies} 条）</div>
+    <div class="notice info">
+      <div class="nt-title">说明</div>
+      上述通用条款适用于除本类别外的其他食品类别。使用前请核对目标产品的具体分类号，
+      并结合带入原则（3.4.1 / 3.4.2）判断。
+    </div>`;
+
+  box.innerHTML = html;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   框架：任务切换 / 搜索 / 渲染
+   ══════════════════════════════════════════════════════════════ */
+const TASK_META = {
+  'by-category': { title: '食品分类', placeholder: '搜索分类编号或名称...', badge: 'b-cat' },
+  'by-additive': { title: '添加剂', placeholder: '搜索名称、CNS、INS、功能...', badge: 'b-add' },
+  'by-function': { title: '功能类别', placeholder: '搜索功能名称...', badge: 'b-func' },
+  'by-exception': { title: '表 A.2 例外食品', placeholder: '搜索编号、分类号或名称...', badge: 'b-exc' },
+};
+
+function switchTask(t) {
+  TASK = t;
+  document.querySelectorAll('.task-tab').forEach(b => b.classList.toggle('active', b.dataset.task === t));
+  const meta = TASK_META[t];
+  document.getElementById('sideTitle').textContent = meta.title;
+  document.getElementById('sideSearch').value = '';
+  document.getElementById('sideSearch').placeholder = meta.placeholder;
+  document.getElementById('sideBack').classList.remove('show');
+  renderSide();
+  renderMain();
+}
+
+function renderSide() {
+  const q = document.getElementById('sideSearch').value;
+  if (TASK === 'by-category') renderCategorySide(q);
+  else if (TASK === 'by-additive') renderAdditiveSide(q);
+  else if (TASK === 'by-function') renderFunctionSide(q);
+  else renderExceptionSide(q);
+}
+
+function renderMain() {
+  if (TASK === 'by-category') renderCategoryMain();
+  else if (TASK === 'by-additive') renderAdditiveMain();
+  else if (TASK === 'by-function') renderFunctionMain();
+  else renderExceptionMain();
+}
+
+function updateBadges() {
+  document.getElementById('b-add').textContent = DATA.by_additive.additives.length;
+  document.getElementById('b-cat').textContent = Object.keys(FTA).length;
+  document.getElementById('b-func').textContent = DATA.by_function.function_list.length;
+  document.getElementById('b-exc').textContent = DATA.exceptions.list.length;
+}
+
+document.querySelectorAll('.task-tab').forEach(b => {
+  b.addEventListener('click', () => switchTask(b.dataset.task));
+});
+document.getElementById('sideSearch').addEventListener('input', renderSide);
+document.getElementById('sideBack').addEventListener('click', () => {
+  SEL.cat = null; SEL.add = null; SEL.func = null; SEL.exc = null;
+  renderSide(); renderMain();
+});
+
+(async function init() {
+  const ok = await loadData();
+  if (!ok) {
+    document.body.innerHTML = `<div class="container"><div class="empty" style="padding:80px 20px">
+      <h2>❌ 数据加载失败</h2>
+      <p>请检查 <code>data/gb2760/gb2760_full.json</code> 是否存在</p>
+      <p style="margin-top:8px;font-size:11px;color:var(--c-text-3)">路径尝试：<br>${DATA_URLS.join('<br>')}</p>
+    </div></div>`;
+    return;
+  }
+  indexData();
+  document.getElementById('st-add').textContent = DATA.stats.additive_count;
+  document.getElementById('st-item').textContent = DATA.stats.food_entry_count;
+  document.getElementById('st-cat').textContent = DATA.stats.category_count;
+  document.getElementById('st-func').textContent = DATA.stats.function_count;
+  document.getElementById('st-exc').textContent = DATA.stats.exception_count;
+  document.getElementById('updatedTag').textContent = 'v3.0';
+  document.getElementById('footerUpdated').textContent = '数据版本：' + DATA.version + ' · ' + DATA.updated;
+  updateBadges();
+  renderSide();
+  renderMain();
+  console.log('[GB 2760] v3.0 已加载', DATA.stats);
+
   const params = new URLSearchParams(location.search);
-  const urlTab = params.get("tab");
-  if (urlTab && ["by-additive","by-category","by-function","exceptions"].includes(urlTab)) {
-    switchTab(urlTab);
-  }
+  const t = params.get('task');
+  if (t && TASK_META[t]) switchTask(t);
 })();
+
 </script>
 </body>
 </html>
