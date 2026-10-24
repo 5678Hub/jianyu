@@ -280,6 +280,103 @@ footer {
 footer a { color: var(--c-text-2); text-decoration: none; }
 footer a:hover { color: var(--c-primary); }
 
+/* ── v2.0 配图分类大卡 ── */
+.hero-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 14px; padding: 16px;
+}
+.hero-card {
+  position: relative; cursor: pointer; overflow: hidden;
+  background: var(--c-surface); border: 1px solid var(--c-border);
+  border-radius: var(--r-lg); box-shadow: var(--shadow-soft);
+  transition: transform .18s cubic-bezier(.34,1.2,.64,1), box-shadow .18s, border-color .18s;
+}
+.hero-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-mid); border-color: var(--c-primary-2); }
+.hero-card:active { transform: translateY(-1px) scale(.985); }
+.hero-art { position: relative; height: 108px; overflow: hidden; }
+.hero-art svg { width: 100%; height: 100%; display: block; }
+.hero-no {
+  position: absolute; left: 10px; top: 10px; z-index: 2;
+  font-family: "SF Mono", Consolas, monospace; font-size: 11px; font-weight: 600;
+  color: #fff; background: rgba(20,30,50,.32); backdrop-filter: blur(4px);
+  padding: 3px 9px; border-radius: 10px;
+}
+.hero-badge {
+  position: absolute; right: 10px; top: 10px; z-index: 2;
+  font-size: 11px; color: #fff; background: rgba(20,30,50,.32); backdrop-filter: blur(4px);
+  padding: 3px 9px; border-radius: 10px; font-weight: 500;
+}
+.hero-info { padding: 12px 14px 14px; }
+.hero-title {
+  font-size: 14px; font-weight: 600; color: var(--c-text-1);
+  line-height: 1.45; min-height: 40px;
+}
+.hero-meta { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+.hero-count { font-size: 11px; color: var(--c-text-3); }
+.hero-go {
+  margin-left: auto; font-size: 11px; color: var(--c-primary);
+  background: var(--c-primary-soft); padding: 3px 10px; border-radius: 10px; font-weight: 500;
+  transition: all .15s;
+}
+.hero-card:hover .hero-go { background: var(--c-primary); color: #fff; }
+
+/* 二级分类小卡（弹窗内） */
+.sub-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px; }
+.sub-card {
+  padding: 10px 12px; border: 1px solid var(--c-border); border-radius: var(--r-sm);
+  background: var(--c-surface); cursor: pointer; transition: all .15s;
+}
+.sub-card:hover { border-color: var(--c-primary-2); background: var(--c-primary-soft); }
+.sub-card .sc-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.sub-card .sc-code { font-family: "SF Mono", Consolas, monospace; font-size: 11px; color: var(--c-text-3); }
+.sub-card .sc-lv { font-size: 10px; color: var(--c-text-3); }
+.sub-card .sc-name { font-size: 12.5px; color: var(--c-text-1); margin-top: 3px; line-height: 1.45; }
+.sub-card .sc-meta { font-size: 10.5px; color: var(--c-text-3); margin-top: 5px; }
+.sub-card .sc-meta .no-add { color: var(--c-high); }
+
+/* ── 弹窗 ── */
+.modal-mask {
+  position: fixed; inset: 0; z-index: 200; display: none;
+  background: rgba(16,24,40,.5); backdrop-filter: blur(3px);
+  padding: 40px 16px; overflow-y: auto;
+}
+.modal-mask.open { display: block; animation: fadeIn .18s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.modal {
+  max-width: 1080px; margin: 0 auto;
+  background: var(--c-surface); border-radius: var(--r-lg);
+  box-shadow: 0 20px 60px rgba(10,20,40,.28); overflow: hidden;
+  animation: popIn .22s cubic-bezier(.34,1.2,.64,1);
+}
+@keyframes popIn { from { transform: translateY(18px) scale(.97); opacity: 0; } to { transform: none; opacity: 1; } }
+.modal-head {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 20px 24px 16px; border-bottom: 1px solid var(--c-border);
+  background: linear-gradient(180deg, #fbfcfe, var(--c-surface));
+}
+.modal-head .mh-art { width: 76px; height: 60px; flex-shrink: 0; border-radius: var(--r-sm); overflow: hidden; }
+.modal-head .mh-art svg { width: 100%; height: 100%; display: block; }
+.modal-head .mh-text { flex: 1; min-width: 0; }
+.modal-head .mh-title { font-size: 17px; font-weight: 600; color: var(--c-text-1); line-height: 1.4; }
+.modal-head .mh-sub { font-size: 12px; color: var(--c-text-2); margin-top: 5px; line-height: 1.55; }
+.modal-head .mh-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 9px; }
+.modal-close {
+  width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%;
+  border: 1px solid var(--c-border-strong); background: var(--c-surface);
+  color: var(--c-text-2); font-size: 17px; line-height: 1; cursor: pointer;
+  transition: all .15s;
+}
+.modal-close:hover { background: var(--c-high); color: #fff; border-color: var(--c-high); }
+.modal-body { padding: 18px 24px 24px; max-height: calc(100vh - 220px); overflow-y: auto; }
+.modal-back {
+  font-size: 12px; color: var(--c-primary); background: var(--c-primary-soft);
+  border: 1px solid var(--c-primary-2); border-radius: 14px; padding: 4px 13px;
+  cursor: pointer; margin-bottom: 14px; font-family: inherit; font-weight: 500;
+}
+.modal-back:hover { background: var(--c-primary); color: #fff; }
+.modal-sec { font-size: 12px; font-weight: 600; color: var(--c-text-2); margin: 18px 0 9px; }
+.modal-sec:first-child { margin-top: 0; }
+
 /* 滚动条 */
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: var(--c-bg); }
@@ -299,7 +396,7 @@ footer a:hover { color: var(--c-primary); }
     </div>
     <div class="subtitle">食品添加剂的允许使用品种、使用范围以及最大使用量或残留量</div>
   </div>
-  <span class="ver" id="updatedTag">v1.0</span>
+  <span class="ver" id="updatedTag">v2.0</span>
   <a class="back" href="./toolbox.html">← 工具箱</a>
 </header>
 
@@ -346,10 +443,10 @@ footer a:hover { color: var(--c-primary); }
 <div id="panel-by-category" hidden>
   <div class="section">
     <div class="section-head">
-      <div class="section-title"><span class="ico">🍱</span><span>食品分类（点击展开可用添加剂）</span></div>
+      <div class="section-title"><span class="ico">🍱</span><span>食品分类（点击卡片查看可用添加剂）</span></div>
       <div class="section-meta" id="catListMeta">—</div>
     </div>
-    <div id="catList" style="padding: 14px;"></div>
+    <div class="hero-grid" id="catList"></div>
     <div class="empty" id="catEmpty" hidden>未找到匹配的食品分类</div>
   </div>
 </div>
@@ -391,7 +488,135 @@ footer a:hover { color: var(--c-primary); }
 
 <div class="toast" id="toast"></div>
 
+<!-- 弹窗 -->
+<div class="modal-mask" id="modalMask">
+  <div class="modal" id="modalBox">
+    <div class="modal-head">
+      <div class="mh-art" id="modalArt"></div>
+      <div class="mh-text">
+        <div class="mh-title" id="modalTitle">—</div>
+        <div class="mh-sub" id="modalSub">—</div>
+        <div class="mh-chips" id="modalChips"></div>
+      </div>
+      <button class="modal-close" id="modalClose" title="关闭 (Esc)">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
 <script>
+/* ===== CAT_ART_INLINE_START ===== */
+window.CAT_ART = {
+  "01.0": { bg: ["#e8f2fb", "#c9dff5"], ink: "#2c5282", art: `
+    <path d="M52 26 h16 a5 5 0 0 1 5 5 v34 a5 5 0 0 1 -5 5 h-16 a5 5 0 0 1 -5 -5 v-34 a5 5 0 0 1 5 -5z" fill="#fff" stroke="#2c5282" stroke-width="2.4"/>
+    <path d="M48 26 h24 v-8 h-24z" fill="#2c5282"/>
+    <path d="M53 14 h14 v4 h-14z" fill="#2c5282"/>
+    <path d="M47 42 h26 v20 h-26z" fill="#e8f2fb"/>
+    <circle cx="60" cy="52" r="6" fill="#fff" stroke="#2c5282" stroke-width="1.6"/>` },
+
+  "02.0": { bg: ["#fff4e0", "#f8dcb0"], ink: "#9a6b1f", art: `
+    <path d="M56 22 h8 v8 c8 4 12 12 12 22 v14 a4 4 0 0 1 -4 4 h-24 a4 4 0 0 1 -4 -4 v-14 c0 -10 4 -18 12 -22z" fill="#fff" stroke="#9a6b1f" stroke-width="2.4"/>
+    <path d="M58 14 h4 v9 h-4z" fill="#9a6b1f"/>
+    <path d="M48 52 h24 v14 h-24z" fill="#f5c33b"/>
+    <ellipse cx="60" cy="20" rx="7" ry="3" fill="#e8a33d"/>` },
+
+  "03.0": { bg: ["#e6f6fb", "#bfe8f5"], ink: "#1c7a9c", art: `
+    <path d="M46 42 h28 l-14 30z" fill="#e8b06a" stroke="#1c7a9c" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M46 42 h28" stroke="#1c7a9c" stroke-width="2.4"/>
+    <circle cx="49" cy="34" r="8" fill="#f7a8bd" stroke="#1c7a9c" stroke-width="2"/>
+    <circle cx="71" cy="34" r="8" fill="#f7c9a0" stroke="#1c7a9c" stroke-width="2"/>
+    <circle cx="60" cy="26" r="10" fill="#fff3e0" stroke="#1c7a9c" stroke-width="2.2"/>
+    <path d="M53 56 l4 8 M67 56 l-4 8" stroke="#c98a4b" stroke-width="1.6"/>` },
+
+  "04.0": { bg: ["#eaf7ec", "#c8e9ce"], ink: "#2f7d43", art: `
+    <circle cx="42" cy="40" r="15" fill="#e35d5d" stroke="#2f7d43" stroke-width="2.4"/>
+    <path d="M42 25 c0 -6 4 -10 10 -11 c0 6 -4 10 -10 11z" fill="#4aa05e" stroke="#2f7d43" stroke-width="1.8"/>
+    <path d="M78 34 c7 -4 14 -1 14 7 c0 10 -10 18 -10 18 s-8 -9 -8 -17 c0 -4 1 -6 4 -8z" fill="#f0a03c" stroke="#2f7d43" stroke-width="2.2"/>
+    <path d="M76 30 c3 -5 8 -7 13 -5" stroke="#2f7d43" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M26 66 h68" stroke="#8a6b45" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="30" cy="34" rx="8" ry="11" fill="#7bbd6a" stroke="#2f7d43" stroke-width="2"/>` },
+
+  "05.0": { bg: ["#f6ecfa", "#ddc4ee"], ink: "#6b3f8f", art: `
+    <circle cx="60" cy="45" r="19" fill="#c07ad8" stroke="#6b3f8f" stroke-width="2.4"/>
+    <path d="M46 32 c-6 -3 -10 2 -7 7 c2 4 7 5 11 3z" fill="#eeb4e2" stroke="#6b3f8f" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M74 32 c6 -3 10 2 7 7 c-2 4 -7 5 -11 3z" fill="#d4a8e8" stroke="#6b3f8f" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M52 66 h16 v12 h-16z" fill="#8a5a30" stroke="#6b3f8f" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M60 30 c-3 5 -3 11 0 15" stroke="#8a4f9e" stroke-width="1.8" fill="none" stroke-linecap="round"/>` },
+
+  "06.0": { bg: ["#fdf6e3", "#f3e2b3"], ink: "#8a6d1f", art: `
+    <path d="M60 20 v52" stroke="#8a6d1f" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M60 28 c-6 -6 -12 -5 -13 -1 c7 1 10 4 13 8z" fill="#d9b352" stroke="#8a6d1f" stroke-width="1.7"/>
+    <path d="M60 28 c6 -6 12 -5 13 -1 c-7 1 -10 4 -13 8z" fill="#d9b352" stroke="#8a6d1f" stroke-width="1.7"/>
+    <path d="M60 42 c-6 -6 -12 -5 -13 -1 c7 1 10 4 13 8z" fill="#d9b352" stroke="#8a6d1f" stroke-width="1.7"/>
+    <path d="M60 42 c6 -6 12 -5 13 -1 c-7 1 -10 4 -13 8z" fill="#d9b352" stroke="#8a6d1f" stroke-width="1.7"/>
+    <path d="M60 56 c-6 -6 -12 -5 -13 -1 c7 1 10 4 13 8z" fill="#d9b352" stroke="#8a6d1f" stroke-width="1.7"/>
+    <path d="M60 56 c6 -6 12 -5 13 -1 c-7 1 -10 4 -13 8z" fill="#d9b352" stroke="#8a6d1f" stroke-width="1.7"/>
+    <path d="M44 72 h32 l-4 8 h-24z" fill="#c9a961" stroke="#8a6d1f" stroke-width="2" stroke-linejoin="round"/>` },
+
+  "07.0": { bg: ["#fdf0e0", "#f2d2a8"], ink: "#a35d21", art: `
+    <path d="M34 44 c0 -10 10 -16 26 -16 s26 6 26 16 v18 h-52z" fill="#dba25c" stroke="#a35d21" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M34 46 h52" stroke="#a35d21" stroke-width="1.8"/>
+    <path d="M50 40 c2 -4 5 -5 8 -4 M66 40 c3 -4 6 -4 9 -2" stroke="#a35d21" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+    <rect x="30" y="62" width="60" height="10" rx="3" fill="#b87a3d" stroke="#a35d21" stroke-width="2.2"/>` },
+
+  "08.0": { bg: ["#fdecec", "#f6c9c9"], ink: "#a83232", art: `
+    <path d="M38 42 c0 -8 8 -14 18 -14 c6 0 11 2 14 6 c7 -1 13 4 13 10 c0 7 -6 12 -14 12 h-18 c-8 0 -13 -6 -13 -14z" fill="#e08a8a" stroke="#a83232" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M46 37 c3 -3 7 -3 9 0 M64 35 c3 -3 7 -2 9 1" stroke="#a83232" stroke-width="1.9" stroke-linecap="round" fill="none"/>
+    <path d="M58 36 c-2 5 -2 9 0 13" stroke="#a83232" stroke-width="1.9" fill="none" stroke-linecap="round"/>
+    <rect x="40" y="58" width="38" height="17" rx="4" fill="#fff" stroke="#a83232" stroke-width="2.3"/>
+    <path d="M49 66 h20" stroke="#a83232" stroke-width="2.1" stroke-linecap="round"/>
+    <path d="M40 66 h-8 M78 66 h8" stroke="#a83232" stroke-width="2.1" stroke-linecap="round"/>` },
+
+  "09.0": { bg: ["#e4f4f7", "#b9e0ea"], ink: "#1a6b7d", art: `
+    <path d="M30 46 c10 -12 34 -14 46 -2 c6 6 6 14 -2 18 c-14 7 -38 3 -44 -6 c-2 -3 -1 -7 0 -10z" fill="#7cc4d6" stroke="#1a6b7d" stroke-width="2.3"/>
+    <path d="M76 44 l14 -9 v22 l-12 -5z" fill="#a9dce8" stroke="#1a6b7d" stroke-width="2.2" stroke-linejoin="round"/>
+    <circle cx="46" cy="47" r="3.4" fill="#1a6b7d"/>
+    <path d="M56 62 c4 3 10 3 14 1 M40 60 c4 3 9 4 13 3" stroke="#1a6b7d" stroke-width="1.7" stroke-linecap="round" fill="none"/>` },
+
+  "10.0": { bg: ["#fff9e0", "#f6e6a8"], ink: "#96701a", art: `
+    <path d="M46 26 c8 0 14 7 14 16 c0 11 -8 20 -14 20 s-14 -9 -14 -20 c0 -9 6 -16 14 -16z" fill="#fff" stroke="#96701a" stroke-width="2.3"/>
+    <path d="M74 30 c7 0 12 6 12 13 c0 9 -7 16 -12 16 s-12 -7 -12 -16 c0 -7 5 -13 12 -13z" fill="#fdfaf0" stroke="#96701a" stroke-width="2.1"/>
+    <circle cx="52" cy="52" r="4" fill="#f0c04a"/>
+    <circle cx="78" cy="52" r="3.4" fill="#f0c04a"/>` },
+
+  "11.0": { bg: ["#fff5dc", "#f6dfa4"], ink: "#a8761a", art: `
+    <path d="M44 30 h32 a4 4 0 0 1 4 4 v34 a4 4 0 0 1 -4 4 h-32 a4 4 0 0 1 -4 -4 v-34 a4 4 0 0 1 4 -4z" fill="#ffc94d" stroke="#a8761a" stroke-width="2.4"/>
+    <path d="M40 30 h40 v-7 h-40z" fill="#8a6b45" stroke="#a8761a" stroke-width="2.2"/>
+    <path d="M50 46 c0 4 4 4 4 8 s-4 4 -4 8 s4 4 4 7" stroke="#a8761a" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M60 16 l-4 8 h8z" fill="#f0c04a" stroke="#a8761a" stroke-width="1.8" stroke-linejoin="round"/>` },
+
+  "12.0": { bg: ["#fdefe4", "#f3cfb0"], ink: "#8a4a1e", art: `
+    <path d="M50 30 h20 v10 c6 4 10 10 10 18 v20 a4 4 0 0 1 -4 4 h-32 a4 4 0 0 1 -4 -4 v-20 c0 -8 4 -14 10 -18z" fill="#7a3a12" stroke="#8a4a1e" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M50 20 h20 v11 h-20z" fill="#c88a4a" stroke="#8a4a1e" stroke-width="2.2"/>
+    <rect x="44" y="50" width="32" height="14" rx="2" fill="#f6e3c8"/>
+    <path d="M48 57 h24" stroke="#8a4a1e" stroke-width="1.9" stroke-linecap="round"/>
+    <path d="M60 14 c4 -4 8 -3 9 1" stroke="#8a4a1e" stroke-width="1.9" fill="none" stroke-linecap="round"/>` },
+
+  "13.0": { bg: ["#e8f6f4", "#bfe5df"], ink: "#1f6f66", art: `
+    <path d="M34 40 h52 a4 4 0 0 1 4 4 v26 a4 4 0 0 1 -4 4 h-52 a4 4 0 0 1 -4 -4 v-26 a4 4 0 0 1 4 -4z" fill="#fff" stroke="#1f6f66" stroke-width="2.4"/>
+    <path d="M52 40 v-8 a8 8 0 0 1 16 0 v8" stroke="#1f6f66" stroke-width="2.4" fill="none"/>
+    <path d="M48 54 l6 6 l12 -13" stroke="#2a9d8f" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M30 56 h10 M80 56 h10" stroke="#1f6f66" stroke-width="2.4" stroke-linecap="round"/>` },
+
+  "14.0": { bg: ["#e8f4fd", "#c2dff5"], ink: "#22548f", art: `
+    <path d="M42 26 h36 l-5 44 a5 5 0 0 1 -5 4 h-16 a5 5 0 0 1 -5 -4z" fill="#fff" stroke="#22548f" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M44 38 h32 l-4 30 h-24z" fill="#7cc0ea"/>
+    <path d="M66 26 l10 -14" stroke="#e05a6d" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M38 22 h44" stroke="#22548f" stroke-width="2.6" stroke-linecap="round"/>` },
+
+  "15.0": { bg: ["#f7e9ef", "#e2bccd"], ink: "#7a2540", art: `
+    <path d="M54 18 h12 v14 c8 4 12 12 12 22 v20 a4 4 0 0 1 -4 4 h-28 a4 4 0 0 1 -4 -4 v-20 c0 -10 4 -18 12 -22z" fill="#8b1e3f" stroke="#7a2540" stroke-width="2.4"/>
+    <path d="M52 12 h16 v7 h-16z" fill="#c9a33f" stroke="#7a2540" stroke-width="2"/>
+    <rect x="46" y="50" width="28" height="14" rx="2" fill="#f6e3ea"/>
+    <path d="M50 57 h20" stroke="#7a2540" stroke-width="1.8" stroke-linecap="round"/>` },
+
+  "16.0": { bg: ["#eef1f4", "#d2dae2"], ink: "#4a5b6b", art: `
+    <path d="M32 42 l28 -14 l28 14 v30 l-28 14 l-28 -14z" fill="#fff" stroke="#4a5b6b" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M32 42 l28 14 l28 -14 M60 56 v30" stroke="#4a5b6b" stroke-width="2.2" fill="none"/>
+    <path d="M46 35 l28 14 v-9" stroke="#4a5b6b" stroke-width="2" fill="none"/>` }
+};
+/* ===== CAT_ART_INLINE_END ===== */
+
 // ── 状态 ──
 let DATA = null;
 let currentTab = "by-additive";
@@ -520,34 +745,21 @@ function renderByAdditive(q) {
 }
 
 function showAdditiveDetail(a) {
-  const det = document.getElementById("addDetail");
-  det.innerHTML = `
-    <div class="detail-card">
-      <div class="header">
-        <span class="name-zh">${escapeHTML(a.name_zh || "")}</span>
-        ${a.name_en ? `<span class="name-en">${escapeHTML(a.name_en)}</span>` : ""}
-        <span class="cns">CNS ${escapeHTML(a.cns)}</span>
-        ${a.ins && a.ins !== "—" ? `<span class="cns">INS ${escapeHTML(a.ins)}</span>` : ""}
-      </div>
-      <div class="meta">
-        <span><b>添加剂数：</b>${a.item_count || 0} 条使用规定</span>
-        ${a.functions && a.functions.length ? `<span><b>功能：</b>${a.functions.join("、")}</span>` : ""}
-      </div>
-      ${a.aliases ? `<div class="aliases"><b>别名：</b>${escapeHTML(a.aliases)}</div>` : ""}
-      <div class="func-list">
-        ${(a.functions || []).map(f => `<span class="func-tag">${escapeHTML(f)}</span>`).join("")}
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-head">
-        <div class="section-title">使用范围（食品分类与最大使用量）</div>
-        <div class="section-meta">${a.items ? a.items.length : 0} 条</div>
-      </div>
+  openModal({
+    art: "",
+    title: `${escapeHTML(a.name_zh || "")} ${a.name_en ? `<span style="font-size:13px;color:var(--c-text-3);font-weight:500">${escapeHTML(a.name_en)}</span>` : ""}`,
+    sub: a.aliases ? `<b>别名：</b>${escapeHTML(a.aliases)}` : "",
+    chips: `
+      <span class="cns-chip">CNS ${escapeHTML(a.cns)}</span>
+      ${a.ins && a.ins !== "—" ? `<span class="cns-chip">INS ${escapeHTML(a.ins)}</span>` : ""}
+      <span class="item-chip">${a.item_count || 0} 条使用规定</span>
+      ${(a.functions || []).map(f => `<span class="func-chip">${escapeHTML(f)}</span>`).join("")}`,
+    body: `
+      <div class="modal-sec">使用范围（食品分类与最大使用量）— ${a.items ? a.items.length : 0} 条</div>
       <table class="data-table">
         <thead>
           <tr>
-            <th style="width:120px">食品分类号</th>
+            <th style="width:110px">食品分类号</th>
             <th>食品名称 / 分类</th>
             <th style="width:160px">最大使用量</th>
             <th>备注</th>
@@ -571,166 +783,222 @@ function showAdditiveDetail(a) {
             `;
           }).join("")}
         </tbody>
-      </table>
-    </div>
-  `;
-  det.scrollIntoView({ behavior: "smooth", block: "start" });
+      </table>`,
+  });
 }
+
+// ── 配图 SVG ──
+function artSVG(code, size) {
+  const a = (window.CAT_ART || {})[code];
+  if (!a) return "";
+  const w = size || 120, h = size ? Math.round(size * 0.75) : 90;
+  return `<svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <defs><linearGradient id="g_${code.replace(/\./g, "_")}" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="${a.bg[0]}"/><stop offset="100%" stop-color="${a.bg[1]}"/>
+    </linearGradient></defs>
+    <rect width="120" height="90" fill="url(#g_${code.replace(/\./g, "_")})"/>
+    ${a.art}
+  </svg>`;
+}
+
+// ── 弹窗 ──
+function openModal(opts) {
+  document.getElementById("modalArt").innerHTML = opts.art || "";
+  document.getElementById("modalTitle").innerHTML = opts.title || "";
+  document.getElementById("modalSub").innerHTML = opts.sub || "";
+  document.getElementById("modalChips").innerHTML = opts.chips || "";
+  document.getElementById("modalBody").innerHTML = opts.body || "";
+  document.getElementById("modalMask").classList.add("open");
+  document.body.style.overflow = "hidden";
+  document.getElementById("modalBody").scrollTop = 0;
+  if (opts.onMount) opts.onMount();
+}
+function closeModal() {
+  document.getElementById("modalMask").classList.remove("open");
+  document.body.style.overflow = "";
+}
+document.getElementById("modalClose").addEventListener("click", closeModal);
+document.getElementById("modalMask").addEventListener("click", e => {
+  if (e.target.id === "modalMask") closeModal();
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeModal();
+});
 
 function renderByCategory(q) {
   const fta = DATA.by_category.food_to_additives;
-  const codes = Object.keys(fta).sort();
-
-  // 按食品分类号 / 食品名称过滤
   const allCats = DATA.by_category.category_tree;
-  // 收集所有分类(代号,名称)用于搜索
   const allRows = [];
   for (const tbl of allCats) {
     for (const row of tbl.rows) {
       allRows.push({
-        code: row.code,
-        name: row.name,
-        desc: row.desc,
-        level: row.level,
-        table_no: tbl.table_no,
+        code: row.code, name: row.name, desc: row.desc,
+        level: row.level, table_no: tbl.table_no,
       });
     }
   }
-  const matched = q ? allRows.filter(r =>
-    `${r.code} ${r.name}`.toLowerCase().includes(q)
+  // 一级分类清单（16 个）
+  const l1List = DATA.by_category.categories || [];
+
+  // 搜索：命中任意子分类的一级分类才保留
+  const qLower = (q || "").toLowerCase();
+  const matchedRows = qLower ? allRows.filter(r =>
+    `${r.code} ${r.name}`.toLowerCase().includes(qLower)
   ) : allRows;
 
-  document.getElementById("catListMeta").textContent = `${matched.length} / ${allRows.length} 分类`;
-  document.getElementById("counter").textContent = `${matched.length} 项`;
-  document.getElementById("b-cat").textContent = matched.length;
+  // 每个一级分类下的子分类数量（全部 / 搜索命中）
+  const subAll = {}, subHit = {};
+  for (const r of allRows) {
+    const k = r.code.split(".")[0] + ".0";
+    subAll[k] = (subAll[k] || 0) + 1;
+  }
+  for (const r of matchedRows) {
+    const k = r.code.split(".")[0] + ".0";
+    subHit[k] = (subHit[k] || 0) + 1;
+  }
+
+  // 哪些一级分类有实际可用添加剂
+  const addCount = {};
+  for (const code of Object.keys(fta)) {
+    const k = code.split(".")[0] + ".0";
+    addCount[k] = (addCount[k] || 0) + fta[code].length;
+  }
+
+  const shown = qLower
+    ? l1List.filter(c => subHit[c.code] > 0)
+    : l1List;
+
+  document.getElementById("catListMeta").textContent = qLower
+    ? `${shown.length} / ${l1List.length} 个大类 · 命中子分类 ${matchedRows.length} 项`
+    : `${l1List.length} 个大类 · ${allRows.length} 个分类节点`;
+  document.getElementById("counter").textContent = qLower ? `${shown.length} 项` : `${l1List.length} 项`;
+  document.getElementById("b-cat").textContent = shown.length;
 
   const wrap = document.getElementById("catList");
   const empty = document.getElementById("catEmpty");
-  if (matched.length === 0) {
+  if (shown.length === 0) {
     wrap.innerHTML = "";
     empty.hidden = false;
     return;
   }
   empty.hidden = true;
 
-  // 分组：按一级分类(XX.0)
-  const groups = {};
-  for (const r of matched) {
-    const level1 = r.code.split(".")[0] + ".0";
-    if (!groups[level1]) groups[level1] = [];
-    groups[level1].push(r);
-  }
-  // 按一级分类代码排序
-  const sortedLevel1 = Object.keys(groups).sort();
-  const level1Names = {};
-  for (const cat of DATA.by_category.categories) {
-    level1Names[cat.code] = cat.title;
-  }
-
-  let html = "";
-  for (const l1 of sortedLevel1) {
-    const title = level1Names[l1] || l1;
-    const rows = groups[l1];
-    html += `
-        <div style="margin-bottom:14px">
-          <div style="font-size:13px;font-weight:600;color:var(--c-primary);padding:8px 0;border-bottom:1px solid var(--c-border)">
-            ${escapeHTML(l1)} ${escapeHTML(title)} <span style="font-size:11px;color:var(--c-text-3);font-weight:400">（${rows.length} 项）</span>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:6px;padding-top:8px">
-            ${rows.map(r => {
-              const cnt = fta[r.code] ? fta[r.code].length : 0;
-              return `
-                <div class="cat-card" data-code="${escapeHTML(r.code)}" style="
-                  padding: 8px 12px; border: 1px solid var(--c-border);
-                  border-radius: 6px; cursor: pointer; font-size: 12px;
-                  background: var(--c-surface); transition: all .15s;
-                ">
-                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">
-                    <span style="font-family:monospace;color:var(--c-text-3)">${highlight(r.code, q)}</span>
-                    <span style="font-size:10px;color:var(--c-text-3)">L${r.level}</span>
-                  </div>
-                  <div style="color:var(--c-text-1);margin-top:2px">${highlight(r.name || "—", q)}</div>
-                  <div style="font-size:10px;color:var(--c-text-3);margin-top:4px">
-                    ${cnt > 0 ? `${cnt} 种可用添加剂` : '<span style="color:var(--c-high)">A.2 例外（不可添加）</span>'}
-                  </div>
-                </div>
-              `;
-            }).join("")}
+  wrap.innerHTML = shown.map(c => {
+    const nSub = qLower ? subHit[c.code] : subAll[c.code];
+    const nAdd = addCount[c.code] || 0;
+    return `
+      <div class="hero-card" data-code="${escapeHTML(c.code)}">
+        <div class="hero-art">
+          ${artSVG(c.code)}
+          <span class="hero-no">${escapeHTML(c.code)}</span>
+          <span class="hero-badge">${nSub} 个分类</span>
+        </div>
+        <div class="hero-info">
+          <div class="hero-title">${highlight(c.title || c.code, q)}</div>
+          <div class="hero-meta">
+            <span class="hero-count">${nAdd > 0 ? `${nAdd} 种添加剂` : "表 A.2 例外"}</span>
+            <span class="hero-go">查看 →</span>
           </div>
         </div>
-      `;
-  }
-  wrap.innerHTML = html;
+      </div>`;
+  }).join("");
 
-  // 点击展开
-  wrap.querySelectorAll(".cat-card").forEach(card => {
-    card.addEventListener("mouseover", () => {
-      card.style.borderColor = "var(--c-primary-2)";
-      card.style.background = "var(--c-primary-soft)";
-    });
-    card.addEventListener("mouseout", () => {
-      card.style.borderColor = "var(--c-border)";
-      card.style.background = "var(--c-surface)";
-    });
-    card.addEventListener("click", () => {
-      const code = card.dataset.code;
-      showCategoryDetail(code);
-    });
+  wrap.querySelectorAll(".hero-card").forEach(card => {
+    card.addEventListener("click", () => showCategoryModal(card.dataset.code));
   });
 }
 
-function showCategoryDetail(code) {
+// ── 一级分类弹窗：列出子分类 → 点子分类再展开添加剂 ──
+function showCategoryModal(code) {
   const fta = DATA.by_category.food_to_additives;
-  const allRows = DATA.by_category.category_tree;
+  const allCats = DATA.by_category.category_tree;
+  const l1 = (DATA.by_category.categories || []).find(c => c.code === code);
+  const l1Name = l1 ? l1.title : code;
+
+  // 该一级下的所有分类行（保持原表顺序，天然是层级序）
+  const rows = [];
+  for (const tbl of allCats) {
+    for (const r of tbl.rows) {
+      if (r.code.split(".")[0] + ".0" === code) {
+        rows.push({ ...r, table_no: tbl.table_no });
+      }
+    }
+  }
+
+  const totalAdds = rows.reduce((s, r) => s + (fta[r.code] ? fta[r.code].length : 0), 0);
+
+  openModal({
+    art: artSVG(code),
+    title: `${escapeHTML(l1Name)}`,
+    sub: escapeHTML((rows.find(r => r.level === 1) || {}).desc || ""),
+    chips: `
+      <span class="cns-chip">${escapeHTML(code)}</span>
+      <span class="item-chip">${rows.length} 个分类节点</span>
+      <span class="func-chip">${totalAdds} 种可用添加剂</span>`,
+    body: `
+      <div class="modal-sec">选择具体食品分类查看可用添加剂</div>
+      <div class="sub-list">
+        ${rows.map(r => {
+          const cnt = fta[r.code] ? fta[r.code].length : 0;
+          return `
+            <div class="sub-card" data-code="${escapeHTML(r.code)}">
+              <div class="sc-top">
+                <span class="sc-code">${escapeHTML(r.code)}</span>
+                <span class="sc-lv">L${r.level}</span>
+              </div>
+              <div class="sc-name">${escapeHTML(r.name || "—")}</div>
+              <div class="sc-meta">${cnt > 0 ? `${cnt} 种可用添加剂` : '<span class="no-add">A.2 例外（不可添加）</span>'}</div>
+            </div>`;
+        }).join("")}
+      </div>`,
+    onMount: () => {
+      document.getElementById("modalBody").querySelectorAll(".sub-card").forEach(sc => {
+        sc.addEventListener("click", () => showAdditiveTable(sc.dataset.code, code));
+      });
+    },
+  });
+}
+
+// ── 子分类弹窗：可用添加剂明细（带返回上级） ──
+function showAdditiveTable(code, parentCode) {
+  const fta = DATA.by_category.food_to_additives;
+  const allCats = DATA.by_category.category_tree;
   let catRow = null;
-  for (const tbl of allRows) {
+  for (const tbl of allCats) {
     for (const r of tbl.rows) {
       if (r.code === code) { catRow = r; break; }
     }
     if (catRow) break;
   }
-
   const adds = fta[code] || [];
+  const l1 = (DATA.by_category.categories || []).find(c => c.code === parentCode);
 
-  const det = document.createElement("div");
-  det.innerHTML = `
-    <div class="detail-card">
-      <div class="header">
-        <span class="name-zh">${escapeHTML(catRow ? catRow.name : code)}</span>
-        <span class="cns">${escapeHTML(code)}</span>
-      </div>
-      ${catRow && catRow.desc ? `<div class="meta"><span>${escapeHTML(catRow.desc)}</span></div>` : ""}
-      <div class="meta">
-        <span><b>分类层级：</b>L${catRow ? catRow.level : "—"}</span>
-        <span><b>可用添加剂：</b>${adds.length} 种</span>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-head">
-        <div class="section-title">该食品类别下允许使用的添加剂</div>
-        <div class="section-meta">${adds.length} 种</div>
-      </div>
+  openModal({
+    art: artSVG(parentCode),
+    title: `${escapeHTML(catRow ? catRow.name : code)}`,
+    sub: escapeHTML(catRow && catRow.desc ? catRow.desc : ""),
+    chips: `
+      <span class="cns-chip">${escapeHTML(code)}</span>
+      ${parentCode ? `<span class="cns-chip">${escapeHTML(l1 ? l1.title : parentCode)}</span>` : ""}
+      <span class="item-chip">L${catRow ? catRow.level : "—"}</span>
+      <span class="func-chip">${adds.length} 种可用添加剂</span>`,
+    body: `
+      <button class="modal-back" id="modalBack">← 返回 ${escapeHTML(l1 ? l1.title : parentCode)} 全部分类</button>
       ${adds.length === 0 ? `
         <div class="empty">⚠️ 该食品类别属于表 A.2 例外列表，按 GB 2760 规定不允许使用食品添加剂</div>
       ` : `
+        <div class="modal-sec">该食品类别下允许使用的添加剂（${adds.length} 种）</div>
         <table class="data-table">
           <thead>
             <tr>
-              <th>添加剂</th>
-              <th>英文名</th>
-              <th style="width:90px">CNS</th>
-              <th style="width:90px">INS</th>
-              <th>功能</th>
-              <th style="width:140px">最大使用量</th>
-              <th>备注</th>
+              <th>添加剂</th><th style="width:90px">CNS</th><th style="width:80px">INS</th>
+              <th>功能</th><th style="width:140px">最大使用量</th><th>备注</th>
             </tr>
           </thead>
           <tbody>
             ${adds.map(a => `
               <tr>
                 <td class="col-name">${escapeHTML(a.additive_zh)}</td>
-                <td style="color:var(--c-text-2);font-size:12px">${escapeHTML(a.additive_en || "")}</td>
                 <td class="col-code">${escapeHTML(a.cns)}</td>
                 <td class="col-code">${escapeHTML(a.ins || "—")}</td>
                 <td style="font-size:11px;color:var(--c-text-2)">${(a.functions || []).join("、")}</td>
@@ -739,16 +1007,12 @@ function showCategoryDetail(code) {
               </tr>
             `).join("")}
           </tbody>
-        </table>
-      `}
-    </div>
-  `;
-  // 替换 detail 容器内容
-  const old = document.getElementById("catDetail");
-  if (old) old.remove();
-  det.id = "catDetail";
-  document.getElementById("panel-by-category").appendChild(det);
-  det.scrollIntoView({ behavior: "smooth", block: "start" });
+        </table>`}`,
+    onMount: () => {
+      const back = document.getElementById("modalBack");
+      if (back) back.addEventListener("click", () => showCategoryModal(parentCode));
+    },
+  });
 }
 
 function renderByFunction(q) {
@@ -795,36 +1059,22 @@ function renderByFunction(q) {
 }
 
 function showFunctionDetail(f) {
-  const adds = DATA.by_function.index[f] || [];
-  const det = document.createElement("div");
-  det.innerHTML = `
-    <div class="detail-card">
-      <div class="header">
-        <span class="name-zh">${escapeHTML(f)}</span>
-        <span class="cns">${adds.length} 种</span>
-      </div>
-      <div class="meta">
-        <span><b>功能分类：</b>${escapeHTML(f)}</span>
-        <span><b>添加剂数：</b>${adds.length}</span>
-      </div>
-    </div>
-    <div class="section">
-      <div class="section-head">
-        <div class="section-title">${escapeHTML(f)} - 全部添加剂</div>
-        <div class="section-meta">${adds.length} 种</div>
-      </div>
+  const adds = (DATA.by_function.index[f] || []).slice().sort((a, b) => (b.item_count || 0) - (a.item_count || 0));
+  openModal({
+    art: "",
+    title: escapeHTML(f),
+    sub: "该功能分类下的全部食品添加剂，按使用规定数量排序",
+    chips: `<span class="func-chip">${adds.length} 种添加剂</span>`,
+    body: `
+      <div class="modal-sec">${escapeHTML(f)} — 全部添加剂</div>
       <table class="data-table">
         <thead>
           <tr>
-            <th style="width:90px">CNS</th>
-            <th>中文名</th>
-            <th>英文名</th>
-            <th>别名</th>
-            <th style="width:100px">用途数</th>
+            <th style="width:90px">CNS</th><th>中文名</th><th>英文名</th><th>别名</th><th style="width:100px">用途数</th>
           </tr>
         </thead>
         <tbody>
-          ${adds.sort((a, b) => b.item_count - a.item_count).map(a => `
+          ${adds.map(a => `
             <tr>
               <td class="col-code">${escapeHTML(a.cns)}</td>
               <td class="col-name">${escapeHTML(a.name_zh)}</td>
@@ -834,14 +1084,8 @@ function showFunctionDetail(f) {
             </tr>
           `).join("")}
         </tbody>
-      </table>
-    </div>
-  `;
-  const old = document.getElementById("funcDetail");
-  if (old) old.remove();
-  det.id = "funcDetail";
-  document.getElementById("panel-by-function").appendChild(det);
-  det.scrollIntoView({ behavior: "smooth", block: "start" });
+      </table>`,
+  });
 }
 
 function renderExceptions(q) {
@@ -863,7 +1107,6 @@ function renderExceptions(q) {
     </tr>
   `).join("");
 }
-
 // ── 事件 ──
 document.getElementById("search").addEventListener("input", render);
 document.getElementById("select-func").addEventListener("change", render);
