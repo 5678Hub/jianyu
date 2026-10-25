@@ -490,6 +490,39 @@ footer {
   .data-table thead th, .data-table tbody td { padding: 8px 9px; font-size: 12px; }
 }
 
+
+/* ── v3.0 新增：合并单元格还原 + 说明区 + 法定定义 ── */
+.data-table tbody td[rowspan] { vertical-align: top; }
+.data-table tbody td.col-remark  { color: var(--c-text-2); font-size: 12px; }
+.data-table tbody td.col-product { color: var(--c-text-2); font-size: 12px; }
+.data-table tbody td.col-remark[rowspan],
+.data-table tbody td.col-product[rowspan] {
+  background: var(--v2-primary-soft, #eaf0f8);
+  border-left: 2px solid var(--v2-primary-2, #2c5282);
+}
+
+.cat-note {
+  margin: 12px 0 0; padding: 11px 14px;
+  background: var(--v2-accent-soft, #fdf3e3);
+  border: 1px solid #f0dcb8; border-left: 3px solid var(--v2-accent, #c8811f);
+  border-radius: 8px; font-size: 12.5px; line-height: 1.75;
+  color: var(--v2-ink-2, #556577);
+}
+.cat-note-k {
+  display: inline-block; margin-right: 8px; padding: 1px 7px;
+  background: var(--v2-accent, #c8811f); color: #fff;
+  border-radius: 4px; font-size: 11.5px; font-weight: 600; vertical-align: 1px;
+}
+.item-def {
+  margin-top: 5px; padding: 5px 8px;
+  background: var(--v2-primary-soft, #eaf0f8);
+  border-left: 2px solid var(--v2-primary-2, #2c5282);
+  border-radius: 0 5px 5px 0;
+  font-size: 11.5px; line-height: 1.7; font-weight: 400;
+  color: var(--v2-ink-2, #556577);
+}
+.foot-tip { color: var(--v2-ink-3, #8b9aab); }
+
 /* ── 打印 ── */
 @media print {
   header.brand { background: none; color: #000; box-shadow: none; border-bottom: 2px solid #000; }
@@ -543,9 +576,9 @@ footer {
       <span class="zh">索证索票工具</span>
       <span class="en">Quality · 各类产品索证索票查询</span>
     </div>
-    <div class="subtitle">从供应商处需索取的证照 / 票据 / 检验报告，按产品类别和采购途径归档</div>
+    <div class="subtitle">按「产品类别 × 采购途径」速查各类产品需索取的证照 / 票据 / 检验报告 · 收证前先查这里</div>
   </div>
-  <span class="ver">jianyu · v1.0</span>
+  <span class="ver">jianyu · v3.0</span>
 </header>
 
 <div class="toolbar">
@@ -588,6 +621,7 @@ footer {
     <tbody id="tbl-food"></tbody>
   </table>
   <div class="empty" id="empty-food" hidden>无匹配结果</div>
+  <div class="cat-note" id="note-food" hidden></div>
 </section>
 
 <section class="section" id="sec-contact" hidden>
@@ -609,6 +643,7 @@ footer {
     <tbody id="tbl-contact"></tbody>
   </table>
   <div class="empty" id="empty-contact" hidden>无匹配结果</div>
+  <div class="cat-note" id="note-contact" hidden></div>
 </section>
 
 <!-- 塑化剂 -->
@@ -631,6 +666,7 @@ footer {
     <tbody id="tbl-plasticizer"></tbody>
   </table>
   <div class="empty" id="empty-plasticizer" hidden>无匹配结果</div>
+  <div class="cat-note" id="note-plasticizer" hidden></div>
 </section>
 
 <!-- 非转基因 -->
@@ -651,10 +687,12 @@ footer {
     <tbody id="tbl-non_gmo"></tbody>
   </table>
   <div class="empty" id="empty-non_gmo" hidden>无匹配结果</div>
+  <div class="cat-note" id="note-non_gmo" hidden></div>
 </section>
 
 <footer>
-  数据来源：各类产品索证索票汇总.xlsx · 共 4 类 28 个项目 · jianyu 工具箱
+  数据来源：各类产品索证索票汇总.xlsx · 共 4 大类 27 个项目 126 条细则 ·
+  <span class="foot-tip">本工具为「索证要求速查表」，供收证前查询参考，不含供应商台账与索证状态跟踪</span>
 </footer>
 
 </div>
@@ -689,6 +727,63 @@ function highlight(s, q) {
   const re = new RegExp("(" + q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi");
   return safe.replace(re, '<mark style="background:#fff59d;color:inherit;border-radius:2px;padding:0 2px">$1</mark>');
 }
+// ── v3.0 合并单元格还原 ──
+// 原表（各类产品索证索票汇总.xlsx）大量使用**跨行合并单元格**：
+//   remark  合并（food seq=3 覆盖 18 行 / contact seq=3 覆盖 13 行）
+//   product 合并（plasticizer seq=5「食品相关产品」覆盖 16 行）
+//   item/limit 合并（plasticizer seq=1 第 2 行继承 DEHP / 1.5mg/kg）
+// 数据层保持「锚点语义」（值只在首行），渲染层用 rowspan 还原原表视觉。
+// ⚠ 不能用 forward-fill：会把「食品相关产品」那段 200 字复制 16 次。
+//
+// mergePlan(完整列表, 取值函数) → 返回 {span[], owner[]}
+//   span[i]  : i 行作为锚点时向下覆盖的行数（0 = 该行不是锚点）
+//   owner[i] : i 行应显示哪个锚点的值（-1 = 无值）
+//   ★ 必须基于**完整列表**计算锚点，不能基于过滤后的子集，
+//     否则搜索后会把不相邻的行误判为同一合并区。
+function mergePlan(full, getVal) {
+  const n = full.length;
+  const span = new Array(n).fill(0);
+  const owner = new Array(n).fill(-1);
+  const anchors = [];
+  for (let i = 0; i < n; i++) {
+    if ((getVal(full[i]) || "").trim()) anchors.push(i);
+  }
+  for (let k = 0; k < anchors.length; k++) {
+    const start = anchors[k];
+    const end = (k + 1 < anchors.length) ? anchors[k + 1] : n;
+    span[start] = end - start;
+    for (let i = start; i < end; i++) owner[i] = start;
+  }
+  return {span, owner};
+}
+
+// 把合并计划映射到「当前可见行」上：
+//   若一个合并区内的行被搜索过滤掉了，就降级为逐行独立显示（不产生空洞），
+//   并且让被过滤掉行的值仍然显示在剩余行上（继承其锚点值）。
+function mergeCells(full, getVal, visibleIdx) {
+  const {span, owner} = mergePlan(full, getVal);
+  const visSet = new Set(visibleIdx);
+  // 统计每个合并区在可见行中的连续性
+  const cells = new Array(full.length).fill(null);
+  for (let i = 0; i < full.length; i++) {
+    const o = owner[i];
+    if (o < 0) { cells[i] = {text: "", rowspan: 0, omit: false}; continue; }
+    const s = span[o];
+    // 合并区 [o, o+s) 内是否所有行都可见
+    let all = true;
+    for (let j = o; j < o + s; j++) { if (!visSet.has(j)) { all = false; break; } }
+    if (all) {
+      // 锚点行带 rowspan；被覆盖行必须**整体省略**该格（否则列数溢出）
+      cells[i] = {text: getVal(full[i]) || "", rowspan: (i === o ? s : 0),
+                  omit: (i !== o), owner: o};
+    } else {
+      // 降级：每行独立显示，值取锚点值
+      cells[i] = {text: getVal(full[o]) || "", rowspan: 0, omit: false, owner: o};
+    }
+  }
+  return cells;
+}
+
 function showToast(msg) {
   const t = document.getElementById("toast");
   t.textContent = msg;
@@ -759,16 +854,36 @@ function renderFoodOrContact(catId) {
   }
   empty.hidden = true;
 
-  tbody.innerHTML = rows.map(({item, reqs}) => reqs.map((req, i) => `
+  // ★ v3.0：remark 为跨行合并单元格，用 rowspan 还原原表视觉；
+  //   序号/项目/范围 在原 Excel 中同样跨该项目的全部行合并
+  let html = "";
+  for (const {item, reqs} of rows) {
+    const full = item.requirements;
+    const visibleIdx = reqs.map(req => {
+      const gi = full.indexOf(req);
+      return gi < 0 ? -1 : gi;
+    });
+    const cells = mergeCells(full, r => r.remark, visibleIdx);
+    reqs.forEach((req, i) => {
+      const gi = visibleIdx[i];
+      const c = (gi >= 0 && cells[gi]) ? cells[gi] : {text: "", rowspan: 0, omit: false};
+      const isHead = i === 0;
+      const headRs = isHead ? ` rowspan="${reqs.length}"` : "";
+      const remarkTd = c.omit ? "" :
+        `<td class="col-remark"${c.rowspan > 0 ? ` rowspan="${c.rowspan}"` : ""}>${highlight(c.text, q)}</td>`;
+      html += `
     <tr>
-      <td class="col-seq">${i === 0 ? item.seq : ""}</td>
-      <td class="col-name">${i === 0 ? highlight(item.name, q) : ""}</td>
-      <td class="col-scope">${i === 0 ? highlight(item.scope, q) : ""}</td>
+      ${isHead ? `<td class="col-seq"${headRs}>${item.seq}</td>` : ""}
+      ${isHead ? `<td class="col-name"${headRs}>${highlight(item.name, q)}${
+        item.definition ? `<div class="item-def">${highlight(item.definition, q)}</div>` : ""}</td>` : ""}
+      ${isHead ? `<td class="col-scope"${headRs}>${highlight(item.scope, q)}</td>` : ""}
       <td><span class="col-channel">${highlight(req.channel, q)}</span></td>
       <td>${highlight(req.detail, q)}</td>
-      <td style="color:var(--c-text-2);font-size:12px">${highlight(req.remark, q)}</td>
-    </tr>
-  `).join("")).join("");
+      ${remarkTd}
+    </tr>`;
+    });
+  }
+  tbody.innerHTML = html;
 }
 
 function renderPlasticizer() {
@@ -777,9 +892,12 @@ function renderPlasticizer() {
   const meta = document.getElementById("meta-plasticizer");
   const empty = document.getElementById("empty-plasticizer");
   const q = document.getElementById("search").value.trim();
+  // ★ v3.0 修复：范围筛选器此前在这两页完全不生效
+  const scopeFilter = document.getElementById("scopeFilter").value;
 
   const rows = [];
   for (const it of cat.items) {
+    if (scopeFilter && it.category !== scopeFilter) continue;
     const triples = q
       ? it.triples.filter(t => {
           const hay = `${it.category} ${t.product} ${t.item} ${t.limit} ${t.remark}`;
@@ -799,16 +917,40 @@ function renderPlasticizer() {
   }
   empty.hidden = true;
 
-  tbody.innerHTML = rows.map(({item, triples}) => triples.map((t, i) => `
+  // ★ v3.0：product / item / limit / remark 均为跨行合并单元格，用 rowspan 还原
+  let html = "";
+  for (const {item, triples} of rows) {
+    const full = item.triples;
+    const visibleIdx = triples.map(t => {
+      const gi = full.indexOf(t);
+      return gi < 0 ? -1 : gi;
+    });
+    const cP = mergeCells(full, t => t.product, visibleIdx);
+    const cI = mergeCells(full, t => t.item, visibleIdx);
+    const cL = mergeCells(full, t => t.limit, visibleIdx);
+    const cR = mergeCells(full, t => t.remark, visibleIdx);
+    triples.forEach((t, i) => {
+      const gi = visibleIdx[i];
+      const g = (arr, fallback) => (gi >= 0 && arr[gi])
+        ? arr[gi] : {text: fallback, rowspan: 0, omit: false};
+      const p = g(cP, t.product), ii = g(cI, t.item),
+            l = g(cL, t.limit), r = g(cR, t.remark);
+      const isHead = i === 0;
+      const headRs = isHead ? ` rowspan="${triples.length}"` : "";
+      const cell = (c, cls, txt) => c.omit ? "" :
+        `<td class="${cls}"${c.rowspan > 0 ? ` rowspan="${c.rowspan}"` : ""}>${txt}</td>`;
+      html += `
     <tr>
-      <td class="col-seq">${i === 0 ? item.seq : ""}</td>
-      <td class="col-name">${i === 0 ? highlight(item.category, q) : ""}</td>
-      <td style="color:var(--c-text-2);font-size:12px">${highlight(t.product, q)}</td>
-      <td><span class="col-channel">${highlight(t.item || "—", q)}</span></td>
-      <td class="col-limit">${highlight(t.limit || "—", q)}</td>
-      <td style="color:var(--c-text-2);font-size:12px">${highlight(t.remark, q)}</td>
-  </tr>
-  `).join("")).join("");
+      ${isHead ? `<td class="col-seq"${headRs}>${item.seq}</td>` : ""}
+      ${isHead ? `<td class="col-name"${headRs}>${highlight(item.category, q)}</td>` : ""}
+      ${cell(p, "col-product", highlight(p.text, q))}
+      ${cell(ii, "col-channel2", `<span class="col-channel">${highlight(ii.text || "—", q)}</span>`)}
+      ${cell(l, "col-limit", highlight(l.text || "—", q))}
+      ${cell(r, "col-remark", highlight(r.text, q))}
+  </tr>`;
+    });
+  }
+  tbody.innerHTML = html;
 }
 
 function renderNonGMO() {
@@ -817,9 +959,12 @@ function renderNonGMO() {
   const meta = document.getElementById("meta-non_gmo");
   const empty = document.getElementById("empty-non_gmo");
   const q = document.getElementById("search").value.trim();
+  // ★ v3.0 修复：范围筛选器此前在这两页完全不生效
+  const scopeFilter = document.getElementById("scopeFilter").value;
 
   const rows = [];
   for (const it of cat.items) {
+    if (scopeFilter && it.category !== scopeFilter) continue;
     const products = q
       ? it.products.filter(p => {
           const hay = `${it.category} ${p.product} ${p.detail}`;
@@ -849,6 +994,16 @@ function renderNonGMO() {
   `).join("")).join("");
 }
 
+function renderCatNote(catId) {
+  // ★ v3.0：显示被剔除的「说明」伪项目文本（category.note）
+  const cat = DATA.categories.find(c => c.id === catId);
+  const box = document.getElementById("note-" + catId);
+  if (!box) return;
+  const txt = cat && cat.note ? cat.note : "";
+  box.hidden = !txt;
+  if (txt) box.innerHTML = `<span class="cat-note-k">补充说明</span>` + escapeHTML(txt);
+}
+
 function render() {
   document.getElementById("sec-food").hidden = currentTab !== "food";
   document.getElementById("sec-contact").hidden = currentTab !== "contact";
@@ -864,31 +1019,35 @@ function render() {
   } else if (currentTab === "non_gmo") {
     renderNonGMO();
   }
+  renderCatNote(currentTab);
   updateFilters();
   updateAllBadges();
 }
 
 // 仅更新 Tab 徽章（不切换 section），让所有 Tab 都显示正确计数
 function updateAllBadges() {
+  // ★ v3.0 修复：此前忽略 scopeFilter，徽章数与表格实际行数对不上
   const q = document.getElementById("search").value.trim();
   const catFilter = document.getElementById("catFilter").value;
   const scopeFilter = document.getElementById("scopeFilter").value;
-
   for (const cat of DATA.categories) {
     let count = 0;
     if (cat.id === "food" || cat.id === "contact") {
       for (const it of cat.items) {
         if (scopeFilter && it.scope !== scopeFilter) continue;
-        let hasMatch = false;
+        let hit = false;
         for (const req of it.requirements) {
           if (catFilter && req.channel !== catFilter) continue;
           const hay = `${it.name} ${it.scope} ${req.channel} ${req.detail} ${req.remark}`;
-          if (!q || hay.toLowerCase().includes(q.toLowerCase())) { hasMatch = true; break; }
+          if (q && !hay.toLowerCase().includes(q.toLowerCase())) continue;
+          hit = true;
+          break;
         }
-        if (hasMatch) count++;
+        if (hit) count++;
       }
     } else if (cat.id === "plasticizer") {
       for (const it of cat.items) {
+        if (scopeFilter && it.category !== scopeFilter) continue;
         const triples = q
           ? it.triples.filter(t => `${it.category} ${t.product} ${t.item} ${t.limit} ${t.remark}`.toLowerCase().includes(q.toLowerCase()))
           : it.triples;
@@ -896,13 +1055,15 @@ function updateAllBadges() {
       }
     } else if (cat.id === "non_gmo") {
       for (const it of cat.items) {
+        if (scopeFilter && it.category !== scopeFilter) continue;
         const products = q
           ? it.products.filter(p => `${it.category} ${p.product} ${p.detail}`.toLowerCase().includes(q.toLowerCase()))
           : it.products;
         if (products.length > 0) count++;
       }
     }
-    document.getElementById("cnt-" + cat.id).textContent = count;
+    const badge = document.getElementById("cnt-" + cat.id);
+    if (badge) badge.textContent = count;
   }
 }
 
@@ -923,6 +1084,7 @@ function updateFilters() {
       for (const req of it.requirements) channels.add(req.channel);
     }
   } else if (cat) {
+    // ★ v3.0：塑化剂/非转基因的「范围」就是 category
     for (const it of cat.items) {
       if (it.scope) scopes.add(it.scope);
       if (it.category) scopes.add(it.category);
@@ -944,14 +1106,29 @@ function updateFilters() {
 }
 
 function getCurrentRows() {
-  // 返回当前可见行的扁平数据，用于复制 / 导出
+  // ★ v3.0 修复：此前遍历全量 items，忽略搜索与筛选，导致
+  //   搜「保健食品」表格 3 行、导出却是 41 行（与注释「返回当前可见行」矛盾）。
   const cat = DATA.categories.find(c => c.id === currentTab);
   if (!cat) return {headers: [], rows: []};
+  const q = document.getElementById("search").value.trim();
+  const catFilter = document.getElementById("catFilter").value;
+  const scopeFilter = document.getElementById("scopeFilter").value;
+  const ql = q.toLowerCase();
+  const hasQ = !!q;
+
   if (cat.id === "food" || cat.id === "contact") {
     const headers = ["序号", "项目", "范围", "采购途径", "索证明细", "备注"];
     const rows = [];
     for (const it of cat.items) {
+      if (scopeFilter && it.scope !== scopeFilter) continue;
+      const reqs = [];
       for (const req of it.requirements) {
+        if (catFilter && req.channel !== catFilter) continue;
+        const hay = `${it.name} ${it.scope} ${req.channel} ${req.detail} ${req.remark}`;
+        if (hasQ && !hay.toLowerCase().includes(ql)) continue;
+        reqs.push(req);
+      }
+      for (const req of reqs) {
         rows.push([it.seq, it.name, it.scope, req.channel, req.detail, req.remark]);
       }
     }
@@ -960,7 +1137,14 @@ function getCurrentRows() {
     const headers = ["序号", "食品类别", "产品明细", "塑化剂项目", "限值", "备注"];
     const rows = [];
     for (const it of cat.items) {
+      if (scopeFilter && it.category !== scopeFilter) continue;
+      const ts = [];
       for (const t of it.triples) {
+        const hay = `${it.category} ${t.product} ${t.item} ${t.limit} ${t.remark}`;
+        if (hasQ && !hay.toLowerCase().includes(ql)) continue;
+        ts.push(t);
+      }
+      for (const t of ts) {
         rows.push([it.seq, it.category, t.product, t.item, t.limit, t.remark]);
       }
     }
@@ -969,12 +1153,20 @@ function getCurrentRows() {
     const headers = ["序号", "类别", "产品明细", "索要明细"];
     const rows = [];
     for (const it of cat.items) {
+      if (scopeFilter && it.category !== scopeFilter) continue;
+      const ps = [];
       for (const p of it.products) {
+        const hay = `${it.category} ${p.product} ${p.detail}`;
+        if (hasQ && !hay.toLowerCase().includes(ql)) continue;
+        ps.push(p);
+      }
+      for (const p of ps) {
         rows.push([it.seq, it.category, p.product, p.detail]);
       }
     }
     return {headers, rows};
   }
+  return {headers: [], rows: []};
 }
 
 function exportCSV() {
@@ -1130,7 +1322,7 @@ document.getElementById("btnCopy").addEventListener("click", copyRows);
   /* ── ⑤ 版本号 ── */
   function bumpVer() {
     var v = document.querySelector('header.brand .ver');
-    if (v) v.textContent = 'jianyu · v2.0';
+    if (v) v.textContent = 'jianyu · v3.0';
   }
 
   /* ── ⑥ 工具栏图标（内联 SVG，纯装饰；不改按钮文字 / id / 事件） ── */
