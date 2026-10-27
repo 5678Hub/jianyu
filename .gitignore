@@ -31,3 +31,6 @@ data/gb2762/GB_2762-2025.pdf
 *_backup.html
 *.bak*
 _test_*.html
+
+# GB2760 工具本地源码工作区（构建产物 gb2760.html 已入库，源码目录不入库）
+gb2760_docs/
