@@ -8671,6 +8671,144 @@ footer {
   div.split-main { border: none; box-shadow: none; overflow: visible; height: auto; }
 }
 
+/* ══════════════════════════════════════════════════════════════════════
+   v5.1 检索栏 · 食品类别详情面板内的表内检索
+   ──────────────────────────────────────────────────────────────────────
+   目标：在「按食品类别」视图选中任一分类后，可直接在该分类展示出的
+        全部添加剂中按名称检索，无需翻阅多张长表。
+   ⚠ 本层只加视觉，不改数据与判定逻辑
+   ══════════════════════════════════════════════════════════════════════ */
+.cat-filter {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 0 16px;
+  padding: 11px 14px;
+  background: var(--v5-surface, #fff);
+  border: 1px solid var(--v5-border, #dfe3e8);
+  border-radius: var(--v5-r-lg, 12px);
+  box-shadow: var(--v5-shadow-sm, 0 1px 3px rgba(0, 0, 0, .06));
+}
+.cat-filter-box {
+  position: relative;
+  flex: 1 1 260px;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+}
+.cat-filter-ico {
+  position: absolute;
+  left: 11px;
+  width: 15px;
+  height: 15px;
+  pointer-events: none;
+  color: var(--v5-text-3, #8a9099);
+}
+.cat-filter input {
+  width: 100%;
+  height: 34px;
+  padding: 0 32px 0 33px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--v5-text-1, #1d2530);
+  background: var(--v5-bg-soft, #f6f8fa);
+  border: 1px solid var(--v5-border, #dfe3e8);
+  border-radius: var(--v5-r-md, 8px);
+  outline: none;
+  transition: border-color .15s, box-shadow .15s, background .15s;
+}
+.cat-filter input::placeholder { color: var(--v5-text-3, #8a9099); }
+.cat-filter input:focus {
+  border-color: var(--v5-primary-3, #3d6aa8);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(61, 106, 168, .13);
+}
+.cat-filter-clear {
+  position: absolute;
+  right: 6px;
+  width: 20px;
+  height: 20px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--v5-text-3, #8a9099);
+  background: var(--v5-bg-soft, #eef1f4);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+}
+.cat-filter-clear.show { display: flex; }
+.cat-filter-clear:hover { color: var(--v5-text-1, #1d2530); background: #dfe4ea; }
+.cat-filter-count {
+  flex: 0 0 auto;
+  font-size: 12px;
+  color: var(--v5-text-2, #5b636e);
+  white-space: nowrap;
+}
+.cat-filter-count b {
+  color: var(--v5-primary-2, #2f5c96);
+  font-weight: 600;
+}
+.cat-filter-count.zero b { color: var(--v5-danger, #b3261e); }
+.cat-filter-hint {
+  flex: 1 0 100%;
+  font-size: 11px;
+  color: var(--v5-text-3, #8a9099);
+}
+
+/* 分区标题右侧的命中计数 */
+.sec-count {
+  float: right;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--v5-text-3, #8a9099);
+  padding-left: 10px;
+  line-height: 1.6;
+}
+.sec-count b { color: var(--v5-primary-2, #2f5c96); font-weight: 600; }
+.sec-count.zero b { color: var(--v5-danger, #b3261e); }
+
+/* 分区标题建立 BFC，把右侧浮动计数包进行内，避免与下方空态文字视觉重叠 */
+.main-sec { overflow: hidden; }
+
+/* 过滤后整张表为空 → 显示空态 */
+.filter-empty {
+  clear: both;              /* 清除上方浮动计数，避免与其重叠 */
+  padding: 22px 16px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--v5-text-3, #8a9099);
+  background: var(--v5-bg-soft, #f6f8fa);
+  border: 1px dashed var(--v5-border, #dfe3e8);
+  border-radius: var(--v5-r-md, 8px);
+}
+.filter-empty b { color: var(--v5-text-1, #1d2530); }
+
+/* 高亮：复用工具已有的 mark 风格，这里做主题化 */
+.cat-filter mark,
+.main-inner mark {
+  background: #fff59d;
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 2px;
+  font-weight: 600;
+}
+
+/* 命中行的轻微底色，便于在长表中定位 */
+tr.row-hit-filter { background: rgba(255, 245, 157, .16); }
+
+@media (max-width: 560px) {
+  .cat-filter { padding: 9px 10px; gap: 7px; }
+  .cat-filter-box { flex-basis: 100%; }
+  .cat-filter-count { font-size: 11px; }
+}
 </style>
 </head>
 <body>
@@ -9555,6 +9693,8 @@ function clearSideSearch() {
   if (sb && sb.value) sb.value = '';
   const cb = document.getElementById('sideClear');
   if (cb) cb.classList.remove('show');
+  // v5.1：切换分类时同步清空表内检索词，避免残留词把新分类过滤成空白
+  if (typeof catFilterReset === 'function') catFilterReset();
 }
 
 /* ── 配图 ── */
@@ -9749,83 +9889,109 @@ function renderCategoryMain() {
     </div>`;
   }
 
+  // v5.1 表内检索栏（仅视觉/交互层，不改数据）
+  html += `
+    <div class="cat-filter" id="catFilter">
+      <div class="cat-filter-box">
+        <svg class="cat-filter-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <circle cx="7" cy="7" r="4.6"></circle><path d="M10.6 10.6L14 14"></path>
+        </svg>
+        <input id="catFilterInput" type="search" autocomplete="off" spellcheck="false"
+               placeholder="在本分类的添加剂中检索…（如 苯甲酸）">
+        <button class="cat-filter-clear" id="catFilterClear" type="button" title="清除" aria-label="清除">×</button>
+      </div>
+      <div class="cat-filter-count" id="catFilterCount"></div>
+      <div class="cat-filter-hint" id="catFilterHint"></div>
+    </div>`;
+
   // 本级直接规定
-  html += `<div class="main-sec">本级直接规定（表 A.1 · ${res.direct.length} 条）</div>`;
+  html += `<div class="main-sec">本级直接规定（表 A.1 · ${res.direct.length} 条）<span class="sec-count"></span></div>`;
   if (res.direct.length) {
-    html += `<table class="data-table">
+    html += `<div data-cf-group="direct">
+      <div class="filter-empty" style="display:none"></div>
+      <table class="data-table">
       <thead><tr>
         <th style="width:96px">CNS</th><th>添加剂</th><th>功能</th>
         <th style="width:150px">最大使用量</th><th>备注</th>
       </tr></thead><tbody>
       ${res.direct.map(a => `
-        <tr>
+        <tr data-cf-name="${escapeHTML(a.additive_zh)}">
           <td class="col-code">${cnsHTML(a.cns)}</td>
-          <td class="addrow"><span class="ar-name">${escapeHTML(a.additive_zh)}</span>
+          <td class="addrow"><span class="ar-name" data-cf-title data-cf-raw="${escapeHTML(a.additive_zh)}">${escapeHTML(a.additive_zh)}</span>
             ${a.additive_en ? `<div class="ar-en">${escapeHTML(a.additive_en)}</div>` : ''}
             <span class="src-flag direct">本级规定</span></td>
           <td style="font-size:11px;color:var(--c-text-2)">${escapeHTML((a.functions || []).join('、'))}</td>
           <td class="col-limit">${escapeHTML(a.limit || '—')}</td>
           <td class="col-remark">${escapeHTML(a.remark || '')}</td>
         </tr>`).join('')}
-      </tbody></table>`;
+      </tbody></table>
+    </div>`;
   } else {
     html += `<div class="empty" style="padding:26px">本类别在表 A.1 中无直接规定${res.inherited.length ? '（见下方继承部分）' : ''}</div>`;
   }
 
   // 继承块（逐条标注来源级）
   if (res.inherited.length) {
-    html += `<div class="main-sec">继承自上级的规定（${res.inherited.length} 条）</div>
+    html += `<div class="main-sec">继承自上级的规定（${res.inherited.length} 条）<span class="sec-count"></span></div>
       <div class="inherit-block open" id="inheritBox">
         <div class="ib-head" id="inheritHead"><span class="ib-caret">▼</span>
           <span>共 ${res.inherited.length} 条继承规定，来源：${res.src.map(s => escapeHTML(s)).join('、')}</span>
         </div>
         <div class="ib-body">
+          <div data-cf-group="inherit">
+          <div class="filter-empty" style="display:none"></div>
           <table class="data-table">
             <thead><tr><th style="width:96px">CNS</th><th>添加剂</th><th>功能</th>
               <th style="width:150px">最大使用量</th><th>备注</th></tr></thead>
             <tbody>${res.inherited.map(x => `
-              <tr>
+              <tr data-cf-name="${escapeHTML(x.item.additive_zh)}">
                 <td class="col-code">${cnsHTML(x.item.cns)}</td>
-                <td><span class="ar-name">${escapeHTML(x.item.additive_zh)}</span>
+                <td><span class="ar-name" data-cf-title data-cf-raw="${escapeHTML(x.item.additive_zh)}">${escapeHTML(x.item.additive_zh)}</span>
                   <span class="src-flag inherit">继承自 ${escapeHTML(x.from)}</span></td>
                 <td style="font-size:11px;color:var(--c-text-2)">${escapeHTML((x.item.functions || []).join('、'))}</td>
                 <td class="col-limit">${escapeHTML(x.item.limit || '—')}</td>
                 <td class="col-remark">${escapeHTML(x.item.remark || '')}</td>
               </tr>`).join('')}</tbody>
           </table>
+          </div>
         </div>
       </div>`;
   }
 
   // 被「XX.XX 类别除外」排除的上级规定
   if (res.excluded && res.excluded.length) {
-    html += `<div class="main-sec">因本类别被排除的上级规定（${res.excluded.length} 条，不适用于本类别）</div>
+    html += `<div class="main-sec">因本类别被排除的上级规定（${res.excluded.length} 条，不适用于本类别）<span class="sec-count"></span></div>
       <div class="notice warn">
         <div class="nt-title">⊘ 除外限定</div>
         上级规定中带有「${res.excluded.map(e => escapeHTML(e.exclude.join('、'))).join('、')} 除外」的限定，
         本类别落入排除范围，故相应添加剂<b>不适用于本类别</b>。
       </div>
+      <div data-cf-group="excluded">
+      <div class="filter-empty" style="display:none"></div>
       <table class="data-table">
         <thead><tr><th style="width:96px">CNS</th><th>添加剂</th><th style="width:130px">上级用量</th>
           <th>排除依据</th></tr></thead>
-        <tbody>${res.excluded.map(e => `<tr>
+        <tbody>${res.excluded.map(e => `<tr data-cf-name="${escapeHTML(e.item.additive_zh)}">
           <td class="col-code">${cnsHTML(e.item.cns)}</td>
-          <td><span class="ar-name">${escapeHTML(e.item.additive_zh)}</span>
+          <td><span class="ar-name" data-cf-title data-cf-raw="${escapeHTML(e.item.additive_zh)}">${escapeHTML(e.item.additive_zh)}</span>
             <span class="src-flag over">上级 ${escapeHTML(e.from)}</span></td>
           <td class="col-limit" style="color:var(--c-text-3);text-decoration:line-through">${escapeHTML(e.item.limit || '—')}</td>
           <td style="font-size:11px;color:var(--c-text-2)">${escapeHTML(e.exclude.join('、'))} 除外</td>
         </tr>`).join('')}</tbody>
-      </table>`;
+      </table>
+      </div>`;
   }
 
   // 被覆盖的上级规定明细
   if (res.overridden.length) {
-    html += `<div class="main-sec">被下级覆盖的上级规定（${res.overridden.length} 条，不适用于本类别）</div>
+    html += `<div class="main-sec">被下级覆盖的上级规定（${res.overridden.length} 条，不适用于本类别）<span class="sec-count"></span></div>
       <div class="notice warn">
         <div class="nt-title">↓ 下级优先</div>
         下列添加剂在更下级（或本级）已有规定，按 A.3「应遵守下级食品类别的规定」执行，
         上级所载用量<b>不适用于本类别</b>。
       </div>
+      <div data-cf-group="overridden">
+      <div class="filter-empty" style="display:none"></div>
       <table class="data-table">
         <thead><tr><th style="width:96px">CNS</th><th>添加剂</th><th style="width:130px">上级用量</th>
           <th style="width:150px">本类别实际用量</th><th>说明</th></tr></thead>
@@ -9834,23 +10000,24 @@ function renderCategoryMain() {
             || res.inherited.find(x => akey(x.item) === akey(o.item));
           const winLimit = win ? (win.limit || (win.item ? win.item.limit : '')) : '';
           const winFrom = win ? (win.item ? win.from : '本级') : '';
-          return `<tr>
+          return `<tr data-cf-name="${escapeHTML(o.item.additive_zh)}">
             <td class="col-code">${cnsHTML(o.item.cns)}</td>
-            <td><span class="ar-name">${escapeHTML(o.item.additive_zh)}</span>
+            <td><span class="ar-name" data-cf-title data-cf-raw="${escapeHTML(o.item.additive_zh)}">${escapeHTML(o.item.additive_zh)}</span>
               <span class="src-flag over">上级 ${escapeHTML(o.from)}</span></td>
             <td class="col-limit" style="color:var(--c-text-3);text-decoration:line-through">${escapeHTML(o.item.limit || '—')}</td>
             <td class="col-limit"><b>${escapeHTML(winLimit || '—')}</b></td>
             <td style="font-size:11px;color:var(--c-text-2)">按 ${escapeHTML(winFrom === '本级' ? '本级规定' : winFrom + ' 规定')}执行</td>
           </tr>`;
         }).join('')}</tbody>
-      </table>`;
+      </table>
+      </div>`;
   }
 
   // 通用条款（例外判定逐添加剂）
   if (GENERIC.length) {
     const gApply = GENERIC.filter(g => genericAppliesTo(g, code));
     const gExcl = GENERIC.filter(g => !genericAppliesTo(g, code));
-    html += `<div class="main-sec">通用条款 · 各类食品（表 A.2 所列类别除外）</div>
+    html += `<div class="main-sec">通用条款 · 各类食品（表 A.2 所列类别除外）<span class="sec-count"></span></div>
       <div class="notice info">
         <div class="nt-title">本类别适用 ${gApply.length} 条 / 排除 ${gExcl.length} 条</div>
         表 A.1 中以「各类食品」为使用范围的条款，在除其自身除外清单所列类别外的所有食品类别中均可使用。
@@ -9858,13 +10025,14 @@ function renderCategoryMain() {
         ${gExcl.length ? '<br><b style="color:var(--c-high)">本类别在表 A.2 内，' + gExcl.length + ' 条通用条款不适用于本类别。</b>' : ''}
         点击卡片可展开各自的除外清单。
       </div>
-      <div id="genericList">
+      <div id="genericList" data-cf-group="generic">
+        <div class="filter-empty" style="display:none"></div>
         ${GENERIC.map((g, i) => {
           const ok = genericAppliesTo(g, code);
           return `
-          <div class="generic-card${ok ? '' : ' excluded'}">
+          <div class="generic-card${ok ? '' : ' excluded'}" data-cf-name="${escapeHTML(g.additive.name_zh)}">
             <div class="gc-top">
-              <span class="gc-name">${escapeHTML(g.additive.name_zh)}</span>
+              <span class="gc-name" data-cf-title data-cf-raw="${escapeHTML(g.additive.name_zh)}">${escapeHTML(g.additive.name_zh)}</span>
               <span class="cns-chip">${escapeHTML(g.additive.cns)}</span>
               <span class="gc-limit">${escapeHTML(g.item.limit || '—')}</span>
               ${ok ? '<span class="src-flag generic">通用条款·适用</span>' : '<span class="excluded-tag">本类别不适用</span>'}
@@ -9907,6 +10075,14 @@ function renderCategoryMain() {
     </div>`;
 
   box.innerHTML = html;
+
+  // v5.1 表内检索：切换到新分类时先清空上一分类的检索状态，
+  //   再初始化并做一次空查询渲染。
+  //   ⚠ 必须在 box.innerHTML 替换**之后**调用：此时 DOM 已是新分类内容，
+  //     清空与过滤作用在正确对象上。
+  catFilterResetForNewCat();
+  catFilterInit();
+  catFilterApply();
 
   // 面包屑跳转
   box.querySelectorAll('.crumb .cb-item').forEach(el => {
@@ -10460,6 +10636,149 @@ document.getElementById('sideBack').addEventListener('click', () => {
   const t = params.get('task');
   if (t && TASK_META[t]) switchTask(t);
 })();
+
+/* ══════════════════════════════════════════════════════════════════════
+   v5.1 · 分类详情面板表内检索
+   ──────────────────────────────────────────────────────────────────────
+   作用域：仅「按食品类别」视图。选中分类后，对该分类展开的全部
+     5 张表（本级直接规定 / 继承自上级 / 因本类别被排除 / 被下级覆盖 /
+     通用条款）统一按「添加剂名称」过滤。
+   ⚠ 只过滤显示，不改任何数据、不改 A.3 判定结果
+   ══════════════════════════════════════════════════════════════════════ */
+const CAT_FILTER_Q = { q: '' };
+
+function catFilterHighlight(text, q) {
+  if (!q) return escapeHTML(text);
+  const safe = escapeHTML(text);
+  const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+  return safe.replace(re, '<mark>$1</mark>');
+}
+
+/* 判定一个分区是否应当整体隐藏（过滤后无任何命中行） */
+function catFilterApply() {
+  const root = document.getElementById('mainInner');
+  if (!root) return;
+  const q = (CAT_FILTER_Q.q || '').trim();
+
+  // 1) 逐行过滤：所有带 data-cf-name 的行/卡片
+  root.querySelectorAll('[data-cf-name]').forEach(el => {
+    const nm = el.getAttribute('data-cf-name') || '';
+    const hit = !q || nm.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+    el.style.display = hit ? '' : 'none';
+    el.classList.toggle('row-hit-filter', !!(q && hit));
+    // 高亮写入 / 还原
+    //   ⚠ 必须双向：清空检索词时要把 <mark> 还原为纯文本，
+    //     否则 <mark> 会永久残留在 DOM 里（v5.1 首版即有此缺陷）。
+    const nmEl = el.querySelector('[data-cf-title]');
+    if (nmEl && nmEl.getAttribute('data-cf-raw') === nm) {
+      if (q && hit) {
+        nmEl.innerHTML = catFilterHighlight(nm, q);
+      } else {
+        nmEl.textContent = nm;
+      }
+    }
+  });
+
+  // 2) 逐分区统计 + 空态
+  let totalHit = 0, totalAll = 0;
+  root.querySelectorAll('[data-cf-group]').forEach(g => {
+    const rows = Array.from(g.querySelectorAll('[data-cf-name]'));
+    const hit = rows.filter(r => r.style.display !== 'none').length;
+    totalHit += hit;
+    totalAll += rows.length;
+    const sec = g.previousElementSibling;
+    const badge = sec && sec.querySelector('.sec-count');
+    if (badge) {
+      if (q) {
+        badge.innerHTML = '命中 <b>' + hit + '</b> / 共 ' + rows.length + ' 条';
+        badge.classList.toggle('zero', hit === 0);
+      } else {
+        badge.textContent = '';
+        badge.classList.remove('zero');
+      }
+    }
+    // 空态
+    const ph = g.querySelector('.filter-empty');
+    if (ph) {
+      if (q && hit === 0 && rows.length > 0) {
+        ph.innerHTML = '本分区 <b>' + rows.length + '</b> 条规定中，没有名称含「<b>' +
+          escapeHTML(q) + '</b>」的添加剂';
+        ph.style.display = '';
+      } else {
+        ph.style.display = 'none';
+      }
+    }
+  });
+
+  // 3) 顶部计数
+  const cnt = document.getElementById('catFilterCount');
+  if (cnt) {
+    if (q) {
+      cnt.innerHTML = '命中 <b>' + totalHit + '</b> / 共 ' + totalAll + ' 条添加剂';
+      cnt.classList.toggle('zero', totalHit === 0);
+    } else {
+      cnt.innerHTML = '共 <b>' + totalAll + '</b> 条添加剂，可按名称检索';
+      cnt.classList.remove('zero');
+    }
+  }
+  const hint = document.getElementById('catFilterHint');
+  if (hint) {
+    hint.innerHTML = q
+      ? '检索范围：本分类下 <b>全部 5 张表</b>的添加剂名称（含继承、被排除、被下级覆盖与通用条款）。'
+      : '提示：输入添加剂名称即可在本分类全部 5 张表中筛选，例如「苯甲酸」「山梨酸」。';
+  }
+}
+
+function catFilterReset() {
+  // 重置「状态」+ 恢复当前 DOM 的显示
+  //   ⚠ 切换分类时本函数可能在**旧 DOM** 上执行（box.innerHTML 尚未替换），
+  //     此时恢复显示无害（旧 DOM 马上被替换掉）。
+  //     新 DOM 的过滤由渲染点统一调用 catFilterResetForNewCat() → catFilterApply() 完成。
+  CAT_FILTER_Q.q = '';
+  const inp = document.getElementById('catFilterInput');
+  if (inp) inp.value = '';
+  const cb = document.getElementById('catFilterClear');
+  if (cb) cb.classList.remove('show');
+  catFilterApply();
+}
+
+/* 渲染新分类详情后调用：清空上一分类的检索状态并重算显示 */
+function catFilterResetForNewCat() {
+  CAT_FILTER_Q.q = '';
+  const inp = document.getElementById('catFilterInput');
+  if (inp) inp.value = '';
+  const cb = document.getElementById('catFilterClear');
+  if (cb) cb.classList.remove('show');
+  const root = document.getElementById('mainInner');
+  if (!root) return;
+  // 先清掉残留的 display:none 与 <mark> 高亮，再统一重算
+  root.querySelectorAll('[data-cf-name]').forEach(el => {
+    el.style.display = '';
+    el.classList.remove('row-hit-filter');
+    const nm = el.getAttribute('data-cf-name') || '';
+    const nmEl = el.querySelector('[data-cf-title]');
+    if (nmEl && nmEl.getAttribute('data-cf-raw') === nm) nmEl.textContent = nm;
+  });
+  catFilterApply();
+}
+
+function catFilterInit() {
+  const inp = document.getElementById('catFilterInput');
+  if (!inp) return;
+  inp.addEventListener('input', () => {
+    CAT_FILTER_Q.q = inp.value;
+    const cb = document.getElementById('catFilterClear');
+    if (cb) cb.classList.toggle('show', !!inp.value);
+    catFilterApply();
+  });
+  inp.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { catFilterReset(); inp.blur(); }
+  });
+  const cb = document.getElementById('catFilterClear');
+  if (cb) {
+    cb.addEventListener('click', () => { catFilterReset(); inp.focus(); });
+  }
+}
 
 </script>
 </body>
