@@ -261,7 +261,18 @@ main.content {
         </div>
       </a>
 
-      <!-- 卡 4: 即将上线 -->
+      <!-- 卡 4: 药食同源原料查询 -->
+      <a class="card" data-cats="standard" href="./yaoshitongyuan.html">
+        <div class="card-icon">🌿</div>
+        <div class="card-title">药食同源及食品原料查询 <span class="new-tag">NEW</span></div>
+        <div class="card-desc">药食同源目录 / 新食品原料 / 地方标准 / 终止审查等 31 张表共 2769 条。支持按分类标签、地区、可用性多维筛选，全文检索与 Excel 通配符，结果可导出 CSV，每条可回溯原表行。</div>
+        <div class="card-foot">
+          <span class="tag t-standard">食品合规与标准</span>
+          <span class="open-btn">打开 →</span>
+        </div>
+      </a>
+
+      <!-- 卡 5: 即将上线 -->
       <div class="card disabled" data-cats="soon">
         <div class="card-icon ai">🤖</div>
         <div class="card-title">GB 2763-2026 农药残留限量查询</div>
@@ -283,6 +294,27 @@ const CATS = {
   'inspect':   { title: '🔍 抽检与追溯',        desc: '历史抽检不合格记录查询 · 按食品名 / 类别快速定位风险' },
   'soon':      { title: '🚧 即将上线',          desc: '更多工具陆续开发中 · 欢迎提需求' },
 };
+
+// 计数与总数由卡片自动统计，避免手写数字与实际工具数不一致
+(function(){
+  const cards = Array.from(document.querySelectorAll('.card'));
+  const byCat = {};
+  cards.forEach(c => {
+    const cats = (c.dataset.cats || '').split(' ').filter(Boolean);
+    cats.forEach(k => { byCat[k] = (byCat[k] || 0) + 1; });
+  });
+  const enabled = cards.filter(c => !c.classList.contains('disabled')).length;
+  document.querySelectorAll('.nav-item[data-cat]').forEach(item => {
+    const k = item.dataset.cat;
+    const el = item.querySelector('.count');
+    if (!el) return;
+    // 「全部工具」只计已上线（不含即将上线），与其余分类保持同一口径
+    if (k === 'all') el.textContent = enabled;
+    else el.textContent = byCat[k] || 0;
+  });
+  const totalEl = document.querySelector('.stats strong');
+  if (totalEl) totalEl.textContent = enabled;
+})();
 
 document.querySelectorAll('.nav-item').forEach(item => {
   item.addEventListener('click', () => {
