@@ -103,6 +103,9 @@ select.sel:focus{border-color:var(--c-pri2);box-shadow:0 0 0 3px var(--c-pri-sof
 .st.on .dot{box-shadow:0 0 0 2px rgba(255,255,255,.35)}
 .st .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .st .n{font-variant-numeric:tabular-nums;opacity:.7;font-size:11px}
+.st.st-more{border-style:dashed;color:var(--c-t3);background:transparent}
+.st.st-more:hover{border-color:var(--c-pri2);color:var(--c-pri);box-shadow:none}
+.st.st-more.on{border-style:solid;background:var(--c-pri-soft);border-color:#bfe3cd;color:var(--c-pri3);box-shadow:none}
 
 /* 结果区 */
 .resultbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 2px 10px;font-size:13px;color:var(--c-t2)}
@@ -345,7 +348,12 @@ const M = DATA.meta, ROWS = DATA.rows;
 // 列索引
 const K={SHEET:0,NAME:1,BASIS:2,CAT:3,DATE:4,STATUS:5,TAGS:6,NOTE:7,LOC:8,ROW:9,FIELDS:10,RISK:11,ALIAS:12,BATCH:13,LINKS:14};
 
-const S = {q:'', tag:'', region:'', sheet:'', group:'', statuses:new Set(), sort:'default', page:1, per:60, openIdx:-1};
+const S = {q:'', tag:'', region:'', sheet:'', group:'', statuses:new Set(), sort:'default', page:1, per:60, openIdx:-1, showMaint:false};
+
+// 维护类表/状态：主界面默认隐藏（数据保留，可一键展开）
+const MAINT_SHEETS = {'链接核查明细':1,'本轮更新_1115':1,'本轮核验来源_1115':1,'待核实事项_1115':1,'检索使用说明':1};
+const MAINT_STATUS = {'核查记录':1,'维护记录':1,'待核实':1,'说明':1};
+const effN = s => (!S.showMaint && MAINT_SHEETS[s] && S.sheet!==s) ? 0 : M.sheets[s].n;
 
 // ---------- 索引预处理 ----------
 // 检索文本只含【字段值】，不含字段名——否则搜"依据""备注"会全表命中
@@ -354,7 +362,7 @@ const ITEMS = ROWS.map((r,i)=>({
   i, sheet:r[K.SHEET], name:r[K.NAME], basis:r[K.BASIS], date:r[K.DATE],
   status:r[K.STATUS], tags:r[K.TAGS], note:r[K.NOTE], loc:r[K.LOC], row:r[K.ROW],
   fields:r[K.FIELDS], risk:r[K.RISK], aliases:r[K.ALIAS]||[], links:r[K.LINKS]||[],
-  hay: (r[K.NAME]+' '+r[K.BASIS]+' '+r[K.CAT]+' '+r[K.DATE]+' '+r[K.TAGS].join(' ')+' '+r[K.NOTE]+' '+
+  hay: (r[K.NAME]+' '+r[K.BASIS]+' '+r[K.CAT]+' '+r[K.DATE]+' '+r[K.STATUS]+' '+r[K.TAGS].join(' ')+' '+r[K.NOTE]+' '+
         r[K.FIELDS].map(f=>f[1]).join(' ')+' '+(r[K.ALIAS]||[]).join(' ')).toLowerCase()
 }));
 
@@ -391,6 +399,7 @@ function buildMatcher(q){
 function filtered(){
   const m = buildMatcher(S.q);
   let out = ITEMS.filter(it=>{
+    if(!S.showMaint && !S.q && MAINT_SHEETS[it.sheet] && it.sheet!==S.sheet && !S.statuses.has(it.status)) return false;
     if(S.group && M.groups[S.group] && M.groups[S.group].indexOf(it.sheet)<0) return false;
     if(S.sheet && it.sheet!==S.sheet) return false;
     if(S.tag && it.tags.indexOf(S.tag)<0) return false;
@@ -433,13 +442,15 @@ function tagChip(t){
 }
 
 function renderNav(){
+  const tot=Object.keys(M.sheets).reduce((a,s)=>a+effN(s),0);
   const g=document.createElement('div');
-  g.innerHTML='<div class="nav-i '+(S.group===''?'on':'')+'" data-g=""><span class="ic">📦</span>全部板块<span class="ct">'+M.total+'</span></div>';
+  g.innerHTML='<div class="nav-i '+(S.group===''?'on':'')+'" data-g=""><span class="ic">📦</span>全部板块<span class="ct">'+tot+'</span></div>';
   const gn=g.firstChild;
   gn.onclick=()=>{S.group='';S.sheet='';S.page=1;renderNav();renderSub();render();};
   $('grpNav').innerHTML=''; $('grpNav').appendChild(gn);
   for(const [gr,shs] of Object.entries(M.groups)){
-    let n=0; shs.forEach(s=>n+=M.sheets[s].n);
+    let n=0; shs.forEach(s=>n+=effN(s));
+    if(!n && S.group!==gr) continue;
     const d=document.createElement('div');
     d.className='nav-i '+(S.group===gr?'on':'');
     d.innerHTML='<span class="ic">📂</span>'+esc(gr)+'<span class="ct">'+n+'</span>';
@@ -453,10 +464,11 @@ function renderSub(){
   if(S.group) shs=M.groups[S.group]||[];
   else shs=Object.keys(M.sheets);
   for(const s of shs){
+    if(!S.showMaint && MAINT_SHEETS[s] && S.sheet!==s) continue;
     const d=document.createElement('div');
     const sl=(M.sheetLinks&&M.sheetLinks[s])||[];
     d.className='nav-i '+(S.sheet===s?'on':'');
-    d.innerHTML='<span class="ic">·</span>'+esc(s)+'<span class="ct">'+M.sheets[s].n+'</span>'+
+    d.innerHTML='<span class="ic">·</span>'+esc(s)+'<span class="ct">'+effN(s)+'</span>'+
       (sl.length?'<a class="nav-lk" href="'+esc(sl[0][0])+'" target="_blank" rel="noopener noreferrer" title="'+
         esc('表级参考链接：'+sl[0][0])+'" onclick="event.stopPropagation()">🔗</a>':'');
     d.onclick=()=>{S.sheet=(S.sheet===s?'':s);S.page=1;renderSub();render();};
@@ -469,12 +481,31 @@ function renderStats(){
   const el=$('statbar'); el.innerHTML='';
   for(const s of STATUS_ORDER){
     const hit=sc.find(x=>x[0]===s); if(!hit) continue;
+    if(MAINT_STATUS[s] && !S.showMaint && !S.statuses.has(s)) continue;
     const on=S.statuses.has(s);
     const d=document.createElement('div');
     d.className='st '+(on?'on':'');
     d.innerHTML='<span class="dot" style="background:'+dotColor(s)+'"></span>'+esc(s)+'<span class="n">'+hit[1]+'</span>';
     d.onclick=()=>{ if(on)S.statuses.delete(s); else S.statuses.add(s); S.page=1; renderStats(); render(); };
     el.appendChild(d);
+  }
+  const hidden=Object.keys(MAINT_SHEETS).reduce((a,s)=>a+M.sheets[s].n,0);
+  if(!S.showMaint){
+    const t=document.createElement('div');
+    t.className='st st-more';
+    t.title='链接核查明细 / 本轮更新 / 核验来源 / 待核实事项 / 检索说明 等维护类工作表，默认不在主界面展示';
+    t.innerHTML='＋ 维护类 '+hidden.toLocaleString()+' 条';
+    t.onclick=()=>{ S.showMaint=true; renderNav(); renderSub(); renderStats(); render(); };
+    el.appendChild(t);
+  }else{
+    const t=document.createElement('div');
+    t.className='st st-more on';
+    t.innerHTML='－ 收起维护类';
+    t.onclick=()=>{ S.showMaint=false;
+      for(const k in MAINT_STATUS) S.statuses.delete(k);
+      if(S.sheet && MAINT_SHEETS[S.sheet]) S.sheet='';
+      renderNav(); renderSub(); renderStats(); render(); };
+    el.appendChild(t);
   }
 }
 function dotColor(s){
@@ -511,7 +542,7 @@ function renderTable(rows){
     em.innerHTML='<div class="em">🌿</div>'+
       '<div style="font-size:14.5px;color:var(--c-t2);font-weight:600">输入关键词或选择筛选条件后开始查询</div>'+
       '<div style="font-size:12px;margin-top:9px;line-height:1.9;color:var(--c-t3)">库内共 '+M.total.toLocaleString()+
-      ' 条原料记录、'+Object.keys(M.sheets).length+' 张表，默认不铺开全量清单。<br>可按 名称 / 依据 / 说明 搜索，或用左侧板块、分类标签、地区、可用性逐步收窄。</div>';
+      ' 条原料记录、'+Object.keys(M.sheets).length+' 张表，默认不铺开全量清单。<br>可按 名称 / 依据 / 说明 搜索，或用左侧板块、分类标签、地区、可用性逐步收窄。<br>核查记录、维护记录、待核实等维护类内容默认隐藏，需要时点状态条「＋ 维护类」展开。</div>';
     $('cnt').textContent=M.total.toLocaleString();
     $('cntUnit').textContent='条在库记录';
     $('scopeTxt').textContent='　·　默认不铺开全量清单，请输入查询条件';
@@ -656,7 +687,7 @@ $('clr').onclick=()=>{$('q').value='';S.q='';S.page=1;$('clr').style.display='no
 $('fTag').onchange=function(){S.tag=this.value;S.page=1;render();};
 $('fRegion').onchange=function(){S.region=this.value;S.page=1;render();};
 $('fSort').onchange=function(){S.sort=this.value;S.page=1;render();};
-$('btnClear').onclick=()=>{S.q='';S.tag='';S.region='';S.sheet='';S.group='';S.statuses.clear();S.sort='default';S.page=1;
+$('btnClear').onclick=()=>{S.q='';S.tag='';S.region='';S.sheet='';S.group='';S.statuses.clear();S.sort='default';S.page=1;S.showMaint=false;
   $('q').value='';$('fTag').value='';$('fRegion').value='';$('fSort').value='default';$('clr').style.display='none';
   renderNav();renderSub();renderStats();render();};
 $('drClose').onclick=closeDetail; $('ov').onclick=closeDetail;
